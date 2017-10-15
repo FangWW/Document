@@ -1,0 +1,210 @@
+在网上看到这张单子，谁能把答案整理一下，让大家长长知识
+任何一个使用.NET的人
+　　描述线程与进程的区别？
+
+　　什么是Windows服务，它的生命周期与标准的EXE程序有什么不同
+
+　　Windows上的单个进程所能访问的最大内存量是多少？它与系统的最大虚拟内存一样吗？这对于系统设计有什么影响？
+
+　　EXE和DLL之间的区别是什么？
+
+　　什么是强类型，什么是弱类型？哪种更好些？为什么?
+
+　　PID是什么？在做系统的故障排除时如何使用它？
+
+　　单个TCP/IP端口上能够侦听多少个进程？
+
+　　什么是GAC？它解决了什么问题?
+
+　　中级.NET开发人员
+
+　　阐述面向接口、面向对象、面向方面编程的区别
+
+　　什么是Interface？它与Class有什么区别？
+
+　　什么是反射?
+
+　　使用ASMX的XML Web服务与使用SOAP的.NET Remoting的区别?
+
+　　类型系统是由XMLSchema表示的吗？CLS是XMLSchema表示的吗？
+
+　　从概念上阐述前期绑定（early-binding）和后期绑定（late-binding）的区别?
+
+　　调用Assembly.Load算静态引用还是动态引用？
+
+　　何时使用Assembly.LoadFrom？何时使用Assembly.LoadFile？
+
+　　什么叫Assembly Qualified Name？它是一个文件名吗？它有什么不同？
+
+　　Assembly.Load("foo.dll"); 这句话是否正确？
+
+　　做强签名的assembly与不做强签名的assembly有什么不同？
+
+　　DateTime是否可以为null?
+
+　　什么叫JIT？什么是NGEN？它们分别有什么限制和好处？
+
+　　.NET CLR中一代的垃圾收集器是如何管理对象的生命周期的？什么叫非确定性终结？
+
+　　Finalize()和Dispose()之间的区别?
+
+　　using() 语法有用吗？什么是IDisposable？它是如何实现确定性终结的。
+
+　　tasklist /m "mscor*" 这句命令是干嘛的？
+
+　　in-proc和out-of-proc的区别
+
+　　.NET里的哪一项技术能够实现out-of-proc通讯？
+
+　　当你在ASP.NET中运行一个组件时，它在Windows XP, Windows 2000, Windows 2003上分别跑在哪个进程里面？
+
+　　高级开发人员/架构师
+
+　　DateTime.Parse(myString); 这行代码有什么问题？
+
+　　PDB是什么东西? 在调试中它应该放在哪里？
+
+　　什么叫圈复杂度（cyclomatic complexity）？为什么它很重要？
+
+　　写一个标准的lock()，在访问变量的前后创建临界区，要有"双重检查"，
+
+　　什么叫FullTrust？放入GAC的assembly是否是FullTrust的?
+
+　　代码加上需要安全权限的特性有什么好处？
+
+　　gacutil /l | find /i "Corillian" 这句命令的作用是什么？
+
+　　sn -t foo.dll 这句命令是干嘛的？
+
+　　DCOM需要防火墙打开哪些端口？端口135是干嘛用的？
+
+　　对比OOP和SOA，它们的目的分别是什么？
+
+　　XmlSerializer是如何工作的？使用这个类的进程需要什么ACL权限？
+
+　　为什么不提倡catch(Exception)？
+
+　　Debug.Write和Trace.Write有什么不同？何时应该使用哪一个？
+
+　　Debug Build和Release Build的区别，是否会有明显的速度变化？请说明理由。
+
+　　JIT是以assembly为单位发生还是以方法为单位发生？这对于工作区有何影响?
+
+　　对比抽象基类和接口的使用
+
+　　a.Equals(b)和a == b一样吗？
+
+　　在对象比较中，对象一致和对象相等分别是指什么？
+
+　　在.NET中如何实现深拷贝（deep copy）？
+
+　　请解释一下IClonable
+
+　　什么叫装箱?
+
+　　string是值类型还是引用类型?
+
+　　XmlSerializer使用的针对属性的模式有什么好处？解决了什么问题？
+
+　　为什么不应该在.NET中使用out参数？它究竟好不好?
+
+　　特性能够放到某个方法的参数上？如果可以，这有什么用？
+C# 组件开发人员
+
+　　什么时候使用override？什么时候使用new? 什么叫shadowing?
+
+　　解释virtual、sealed、override和abstract的区别
+
+　　Foo.Bar, Version=2.0.205.0, Culture=neutral, PublicKeyToken=593777ae2d274679d 解释这个字符串每个部分的重要性和作用
+
+　　解释public、protected、private和internal的区别
+
+　　使用Primary Interop Assembly (PIA)有什么好处?
+
+　　NUnit是通过什么机制获知需要测试哪些方法的？
+
+　　catch(Exception e){throw e;}和catch(Exception e)的区别
+
+　　typeof(foo)和myFoo.GetType()的区别?
+
+　　public class c{ public c(string a) : this() ; public c() } 解释第一个构造函数中发生了什么？ 这个构造函数有什么用?
+
+　　this是干嘛用的？能够用在static方法中？
+
+ASP.NET (UI)开发人员
+
+　　阐述一个基于浏览器的Form POST如何变成一个服务器端的事件，如Button1_OnClick。
+
+　　什么是PostBack?
+
+　　什么是ViewState? 它是否被编码过? 是否被加密过？谁会使用ViewState?
+
+　　元素是干嘛用的？它用于哪两项ASP.NET技术?
+
+　　说出ASP.NET 1.1中的3种Session State提供程序以及它们的优缺点?
+
+　　什么叫Web Gardening? 在设计中如何使用它?
+
+　　假设有一个ASP.NET应用程序，那么单独一个进程中允许多少应用程序对象？那两个进程呢？启用了Web Gardening的2个进程呢？这对设计有何影响？
+
+　　ASP.NET会重用多个请求之间的线程吗？是否每个HttpRequest都有自己的线程？你是否应该用ASP.NET的Thread Local存储？
+
+　　[ThreadStatic]属性在ASP.NET中有用吗？它有没有副作用？是好是坏？
+
+　　如何使用HttpHandler简化现有的为.aspx页面提供验证图片的设计
+
+　　HttpModule订阅的是什么类型的事件? 这对于实现有何影响？如果不打算重新编译ASP.NE应用程序，应该怎么做？
+
+　　说出表示任意一个终端（URL）的方式，以及ASP.NET中把请求路由到那个终点的方式
+
+　　解释cookie的工作原理。给出一个滥用Cookie的例子。
+
+　　解释HttpRequest.ValidateInput()的重要性？
+
+　　哪些数据是通过HTTP Header传递的?
+
+　　对比HTTP动词GET和POST? 什么是HEAD?
+
+　　说出至少6个HTTP状态码以及它们的含义
+
+　　if-not-modified-since的工作原理是什么? 用ASP.NET如何实现它？
+
+　　解释 <@OutputCache%>和如何使用VaryByParam、VaryByHeader.
+
+　　VaryByCustom是如何工作的?
+
+　　如何通过q=? （除了q=5）来实现ASP.NET HTML输出缓冲和缓冲过期(比如http://localhost/page.aspx?q=5)?
+
+XML开发人员
+
+　　XML命名空间的作用?
+
+　　何时适合使用DOM？何时不适合？有没有尺度限制？
+
+　　什么是WS-I基本配置？它重要在哪里？
+
+　　写一个小XML文档，其中使用的是默认的命名空间，以及一个合法的（前缀）命名空间，其中要有分别属性这两个命名空间的元素
+
+　　元素和特性的基本区别在哪里？
+
+　　格式完好的XML和有效的XML有什么区别？
+
+　　.NET中如何验证XML？
+
+　　myXmlDocument.SelectNodes("//mynode"); 为什么这句代码不好？什么时候它是好的？
+
+　　拉式解析(XmlReader)与事件读取器(Sax)的区别
+
+　　XPathDocument和XmlDocument的区别? 在何种情况下应该用哪一个？
+
+　　“XML片断”与“XML文档”有什么区别
+
+　　什么叫格式规范的XML？
+
+　　XML InfoSet规范与Xml DOM有什么不同? InfoSet是要解决什么问题？
+
+　　比较DTD和XSD，它们的相似点与区别分别是什么？哪个更好些？为什么？
+
+　　System.Xml支持DTD吗？如果支持，如何使用？
+
+　　XML Schema能够表示为对象图？对象图能够表示为XML Schema？
