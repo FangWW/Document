@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 6.0.0 EJB//EN' 'http://www.bea.com/servers/wls600/dtd/weblogic-ejb-jar.dtd'>
+<weblogic-ejb-jar>
+    <weblogic-enterprise-bean>
+        <ejb-name>StatefulShop</ejb-name>
+       <jndi-name>StatefulShop</jndi-name>
+    </weblogic-enterprise-bean>
+</weblogic-ejb-jar>

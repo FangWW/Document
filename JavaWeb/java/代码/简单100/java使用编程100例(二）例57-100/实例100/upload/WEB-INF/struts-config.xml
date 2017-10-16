@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+
+<struts-config>
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+    <form-bean      name="uploadForm"
+                    type="com.webapp.upload.UploadForm"/>
+  </form-beans>
+  <!-- ========== Global Forward Definitions ============================== -->
+  <global-forwards>
+    <!-- Example logon forward 
+     <forward   name="logon"                path="/logon.jsp"/>
+     -->
+  </global-forwards>
+    <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+    <action    path="/upload"
+               type="com.webapp.upload.UploadAction"
+               name="uploadForm"
+              scope="request"
+              input="/upload.jsp"
+              validate="true">
+        <forward name="display" path="/display.jsp" />
+   </action>
+  </action-mappings>
+  
+  
+  <!-- ÅäÖÃÉÏ´«ÎÄ¼þ³ß´ç¡£-1 ±íÊ¾²»ÏÞÖÆ¡£Èç¹û²»ÅäÖÃÄ¬ÈÏÎª -1 -->
+  <controller maxFileSize="2M" />
+  <message-resources   parameter="resources.ApplicationResources"/>
+</struts-config>

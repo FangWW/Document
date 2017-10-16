@@ -1,0 +1,1 @@
+双击htm文件，如果浏览器不能加载Applet，请使用Applet Veiwer工具按照书中介绍的方法打开这个Applet。

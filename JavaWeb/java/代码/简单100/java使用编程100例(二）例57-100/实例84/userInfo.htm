@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>用户信息填写</title>
+</head>
+
+<body>
+<table width="70%"  border="0" align="center" bgcolor="#00CC33">
+  <tr>
+    <td><form name="form1" method="post" action="infoAffirm.jsp">
+      <table width="100%"  border="0" align="center">
+        <tr>
+          <th colspan="2" scope="col">用户信息填写</th>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th width="27%" scope="row"><div align="right">用户名：</div></th>
+          <td width="73%"><input name="username" type="text" id="username"></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th scope="row"><div align="right">昵称：</div></th>
+          <td><input name="nickname" type="text" id="nickname"></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th scope="row"><div align="right">性别：</div></th>
+          <td><select name="sex" id="sex">
+            <option value="1">男</option>
+            <option value="2">女</option>
+          </select></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th scope="row"><div align="right">学历：</div></th>
+          <td><select name="educate" id="educate">
+            <option value="1">小学</option>
+            <option value="2">初中</option>
+            <option value="3">高中</option>
+            <option value="4">大学</option>
+          </select></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th scope="row"><div align="right">出生：</div></th>
+          <td><input name="birthday" type="text" id="birthday"></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th scope="row"><div align="right"></div></th>
+          <td>&nbsp;</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <th scope="row"><div align="right"></div></th>
+          <td><input type="submit" name="Submit" value="提交">
+            <input type="reset" name="Submit2" value="重置"></td>
+        </tr>
+      </table>
+        </form></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<book>
+  <title>Java实例一百例</title>
+  <page id="1">
+    <title>基础知识篇</title>
+    <file>base.htm</file>
+  </page>
+  <page id="3">
+    <title>SWING篇</title>
+    <file>swing.htm</file>
+  </page>
+  <page id="28">
+    <title>EJB篇</title>
+    <file>ejb.htm</file>
+  </page>
+  <page id="33">
+    <title>DOM篇</title>
+    <file>xmldom.htm</file>
+  </page>
+</book>

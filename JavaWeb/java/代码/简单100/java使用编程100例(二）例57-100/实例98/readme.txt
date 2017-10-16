@@ -1,0 +1,3 @@
+将messager目录拷贝到JSP服务器上相应的目录。
+例如：
+将messager目录拷贝到tomcat服务器的webapps目录下，重启服务后即可浏览本实例。

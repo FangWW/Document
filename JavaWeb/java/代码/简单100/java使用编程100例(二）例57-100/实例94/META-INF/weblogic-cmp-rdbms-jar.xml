@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-rdbms-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 6.0.0 EJB RDBMS Persistence//EN' 'http://www.bea.com/servers/wls600/dtd/weblogic-rdbms20-persistence-600.dtd'>
+<weblogic-rdbms-jar>
+    <weblogic-rdbms-bean>
+        <ejb-name>TblUserInfo</ejb-name>
+        <data-source-name>myDB</data-source-name>
+        <table-name>TBL_USER_INFO</table-name>
+        <field-map>
+            <cmp-field>id</cmp-field>
+            <dbms-column>ID</dbms-column>
+        </field-map>
+        <field-map>
+            <cmp-field>name</cmp-field>
+            <dbms-column>NAME</dbms-column>
+        </field-map>
+        <field-map>
+            <cmp-field>phone</cmp-field>
+            <dbms-column>PHONE</dbms-column>
+        </field-map>
+        <field-map>
+            <cmp-field>home</cmp-field>
+            <dbms-column>HOME</dbms-column>
+        </field-map>
+        <field-map>
+            <cmp-field>brithday</cmp-field>
+            <dbms-column>BRITHDAY</dbms-column>
+        </field-map>
+
+        <automatic-key-generation>
+             <generator-type>ORACLE</generator-type>
+             <generator-name>seq_user_info</generator-name>
+             <key-cache-size>10</key-cache-size>
+        </automatic-key-generation>
+
+    </weblogic-rdbms-bean>
+</weblogic-rdbms-jar>

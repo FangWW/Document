@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+<!-- ========== Data Source Configuration =============================== -->
+<data-sources>
+ <data-source>
+   <set-property property="autoCommit" value="false"/>
+   <set-property property="description" value="Example Data Source Configuration"/>
+   <set-property property="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+   <set-property property="maxCount" value="4"/>
+   <set-property property="minCount" value="2"/>
+   <set-property property="password" value="test"/>
+   <set-property property="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>
+   <set-property property="user" value="test"/>
+ </data-source>
+ 
+ <!-- configuration for commons BasicDataSource -->
+<!-- <data-source type="org.apache.commons.legacy.BasicDataSource">
+    <set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+    <set-property property="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL" />
+    <set-property property="username" value="test" />
+    <set-property property="password" value="test" />
+    <set-property property="maxActive" value="10" />
+    <set-property property="maxWait" value="5000" />
+    <set-property property="defaultAutoCommit" value="false" />
+    <set-property property="defaultReadOnly" value="false" />
+    <set-property property="validationQuery" value="SELECT COUNT(*) FROM tbl_user" />
+  </data-source>
+ -->
+ </data-sources>
+
+
+<!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+    <form-bean      name="loginForm"
+                    type="com.riverwind.loginForm"/>
+
+  </form-beans>
+  <!-- ========== Global Forward Definitions ============================== -->
+  <global-forwards>
+    <!-- Example logon forward 
+     <forward   name="logon"                path="/logon.jsp"/>
+     -->
+  </global-forwards>
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+    <action    path="/login"
+               type="com.riverwind.loginAction"
+               name="loginForm"
+               scope="request"
+               input="/login.jsp"
+               validate="true">
+      <forward name="failes" path="/failes.jsp"/>
+      <forward name="success" path="/showMenu.jsp"/>
+    </action>
+
+  </action-mappings>
+  <message-resources
+    parameter="ApplicationResources"/>
+</struts-config>

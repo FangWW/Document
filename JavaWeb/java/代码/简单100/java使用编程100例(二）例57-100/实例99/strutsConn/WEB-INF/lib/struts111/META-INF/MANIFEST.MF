@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Created-By: Apache Ant 1.5.1
+Extension-Name: Struts Framework
+Specification-Title: Struts Framework
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 1.1
+Implementation-Title: Struts Framework
+Implementation-Vendor: Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 1.1
+Class-Path:  commons-beanutils.jar commons-collections.jar commons-dig
+ ester.jar commons-logging.jar commons-validator.jar jakarta-oro.jar s
+ truts-legacy.jar
+

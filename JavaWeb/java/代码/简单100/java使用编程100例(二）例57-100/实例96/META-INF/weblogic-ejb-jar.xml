@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE weblogic-ejb-jar PUBLIC "-//BEA Systems, Inc.//DTD WebLogic 6.0.0 EJB//EN" "http://www.bea.com/servers/wls600/dtd/weblogic-ejb-jar.dtd">
+
+<weblogic-ejb-jar>
+
+  <weblogic-enterprise-bean>
+    <ejb-name>myMDBean</ejb-name>
+    <message-driven-descriptor>
+      <pool>
+        <max-beans-in-free-pool>200</max-beans-in-free-pool>
+        <initial-beans-in-free-pool>2</initial-beans-in-free-pool>
+      </pool>
+
+      <destination-jndi-name>myQQ</destination-jndi-name>
+    </message-driven-descriptor>
+    <jndi-name>myMDBean</jndi-name>
+  </weblogic-enterprise-bean>
+</weblogic-ejb-jar>
+

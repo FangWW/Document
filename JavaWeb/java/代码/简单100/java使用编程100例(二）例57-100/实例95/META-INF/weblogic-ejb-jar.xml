@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 6.0.0 EJB//EN' 'http://www.bea.com/servers/wls600/dtd/weblogic-ejb-jar.dtd'>
+<weblogic-ejb-jar>
+  <weblogic-enterprise-bean>
+    <ejb-name>bmpbean</ejb-name>
+    <entity-descriptor>
+      <entity-cache>
+	     <max-beans-in-cache>100</max-beans-in-cache>
+      </entity-cache>
+    </entity-descriptor>
+    <reference-descriptor>
+      <resource-description>
+	    <res-ref-name>jdbc/myDB</res-ref-name>
+	    <jndi-name>myDB</jndi-name>
+      </resource-description>
+    </reference-descriptor>
+    <jndi-name>bmpbean</jndi-name>
+  </weblogic-enterprise-bean>
+</weblogic-ejb-jar>

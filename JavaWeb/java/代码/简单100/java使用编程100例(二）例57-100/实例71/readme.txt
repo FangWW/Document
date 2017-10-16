@@ -1,0 +1,3 @@
+运行本实例必须将lib目录下的jdom.jar、xercesImpl.jar类文件引入到classpath环境中。
+
+myJDOM.xml 文件文本实例生成的xml文件。使用任何的文本编辑器都可以打开。

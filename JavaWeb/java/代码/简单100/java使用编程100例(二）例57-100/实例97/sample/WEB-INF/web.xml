@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+<!--  Standard Action Servlet Configuration (with debugging) -->
+<servlet>
+<servlet-name>action</servlet-name>
+<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+<init-param>
+<param-name>config</param-name>
+<param-value>/WEB-INF/struts-config.xml</param-value>
+</init-param>
+<load-on-startup>2</load-on-startup>
+</servlet>
+<!--  Standard Action Servlet Mapping -->
+<servlet-mapping>
+<servlet-name>action</servlet-name>
+<url-pattern>*.do</url-pattern>
+</servlet-mapping>
+<!--  This Usual Welcome File List -->
+<welcome-file-list>
+ <welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+<!-- Struts Tag Library Descriptors-->
+<taglib>
+<taglib-uri>/tags/struts-bean</taglib-uri>
+<taglib-location>/WEB-INF/lib/struts-bean.tld</taglib-location>
+</taglib>
+<taglib>
+<taglib-uri>/tags/struts-html</taglib-uri>
+<taglib-location>/WEB-INF/lib/struts-html.tld</taglib-location>
+</taglib>
+<taglib>
+<taglib-uri>/tags/struts-logic</taglib-uri>
+<taglib-location>/WEB-INF/lib/struts-logic.tld</taglib-location>
+</taglib>
+<taglib>
+<taglib-uri>/tags/struts-nested</taglib-uri>
+<taglib-location>/WEB-INF/lib/struts-nested.tld</taglib-location>
+</taglib>
+
+<taglib>
+  <taglib-uri>/tags/struts-tiles</taglib-uri>
+  <taglib-location>/WEB-INF/lib/struts-tiles.tld</taglib-location>
+</taglib>
+</web-app>

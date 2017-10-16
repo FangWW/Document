@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 6.0.0 EJB//EN' 'http://www.bea.com/servers/wls600/dtd/weblogic-ejb-jar.dtd'>
+<weblogic-ejb-jar>
+    <weblogic-enterprise-bean>
+        <ejb-name>userinfo</ejb-name>
+        <reference-descriptor>
+            <ejb-local-reference-description>
+                <ejb-ref-name>userinfo</ejb-ref-name>
+                <jndi-name>TblUserInfo</jndi-name>
+            </ejb-local-reference-description>
+        </reference-descriptor>
+        <jndi-name>userinfo</jndi-name>
+    </weblogic-enterprise-bean>
+    <weblogic-enterprise-bean>
+        <ejb-name>TblUserInfo</ejb-name>
+        <entity-descriptor>
+            <persistence>
+                <persistence-type>
+                    <type-identifier>WebLogic_CMP_RDBMS</type-identifier>
+                    <type-version>6.0</type-version>
+                    <type-storage>META-INF/weblogic-cmp-rdbms-jar.xml</type-storage>
+                </persistence-type>
+                <persistence-use>
+                    <type-identifier>WebLogic_CMP_RDBMS</type-identifier>
+                    <type-version>6.0</type-version>
+                </persistence-use>
+            </persistence>
+        </entity-descriptor>
+        <local-jndi-name>TblUserInfo</local-jndi-name>
+    </weblogic-enterprise-bean>
+</weblogic-ejb-jar>

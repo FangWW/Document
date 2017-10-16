@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <!-- example 76 -->
+  <servlet>
+    <servlet-name>HelloWorld</servlet-name>
+    <servlet-class>HelloWorld</servlet-class>
+    <init-param>
+      <param-name>name</param-name>
+      <param-value>RiverWind</param-value>
+    </init-param>
+    <init-param>
+      <param-name>message</param-name>
+      <param-value>welcome to Servlet!</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloWorld</servlet-name>
+    <url-pattern>/HelloWorld/*</url-pattern>
+  </servlet-mapping>
+  <!-- example 77 -->
+  <servlet>
+   <servlet-name>LoginForm</servlet-name>
+   <servlet-class>LoginForm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginForm</servlet-name>
+    <url-pattern>/LoginForm/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- example 78 -->
+  <servlet>
+   <servlet-name>CookieCounter</servlet-name>
+   <servlet-class>CookieCounter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieCounter</servlet-name>
+    <url-pattern>/CookieCounter/*</url-pattern>
+  </servlet-mapping>
+  
+    <!-- example 79 -->
+  <servlet>
+   <servlet-name>SessionServlet</servlet-name>
+   <servlet-class>SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionServlet</servlet-name>
+    <url-pattern>/SessionServlet/*</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

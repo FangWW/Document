@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+<!-- ========== Form Bean Definitions =================================== -->
+<!--    <form-beans>
+   
+   Example logon form bean 
+    <form-bean      name="logonForm"
+                    type="org.apache.struts.example.LogonForm"/>
+     
+  </form-beans>-->
+  <!-- ========== Global Forward Definitions ============================== -->
+    <global-forwards>
+   <!--Example logon forward 
+     <forward   name="logon"                path="/logon.jsp"/>
+     -->
+  </global-forwards>
+  <!-- ========== Action Mapping Definitions ============================== -->
+ <!-- <action-mappings>
+
+ 
+  </action-mappings>-->
+  <!-- ==================== Message Resources Definitions ============ -->
+ <message-resources parameter="resources.application"/>
+ 
+</struts-config>

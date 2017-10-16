@@ -1,0 +1,1 @@
+运行本实例必须将lib目录下的classes12.zip数据库驱动添加到classpath环境中。

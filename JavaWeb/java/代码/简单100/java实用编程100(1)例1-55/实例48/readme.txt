@@ -1,0 +1,1 @@
+运行本实例必须将lib目录下的activation.jar、mail.jar两个类文件导入classpath环境中。

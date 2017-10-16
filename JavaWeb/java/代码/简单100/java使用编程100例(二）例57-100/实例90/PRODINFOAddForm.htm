@@ -1,0 +1,106 @@
+
+<html>
+<head>
+<title>商品信息添加</title>
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div>商品信息添加</div>
+<form name="form1" method="post" action="PRODINFOAdd.jsp" enctype="MULTIPART/FORM-DATA" >
+<table width="100%" border="0">
+<tr>
+  <td width="23%" align="right">商品名称:</td>
+  <td width="77%">
+  <input type="text" name="PNAME"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品大图:</td>
+  <td width="77%">
+  <input type="file" name="filename1" ><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品小图:</td>
+  <td width="77%">
+  <input type="file" name="filename2" ><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品描述:</td>
+  <td width="77%">
+  <textarea  name="PDESC"　rows="10" cols="40"></textarea><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品用途:</td>
+  <td width="77%">
+  <textarea  name="PUSE"　rows="10" cols="40"></textarea><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品原价格:</td>
+  <td width="77%">
+  <input type="text" name="PREPRICE"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品现在价格:</td>
+  <td width="77%">
+  <input type="text" name="CURRPRICE"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">库存数:</td>
+  <td width="77%">
+  <input type="text" name="AMOUNT"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">是否上架:</td>
+  <td width="77%">
+  <input type="checkbox" name="STATUS"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商品型号:</td>
+  <td width="77%">
+  <input type="text" name="MODEL"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">商标:</td>
+  <td width="77%">
+  <select name="BRANDNAME">
+     <option value="TCL">TCL</option>
+     <option value="海尔">海尔</option>
+     <option value="熊猫">熊猫</option>
+  </select><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">单位:</td>
+  <td width="77%">
+  <input type="text" name="UNIT"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">附件说明:</td>
+  <td width="77%">
+  <input type="text" name="ATTACHMENT"><font color=red>*</font>
+  </td>
+</tr>
+<tr>
+  <td width="23%" align="right">
+  </td>
+  <td width="77%">
+  <input type="submit" name="Submit" value="提交" >
+  <input type="reset" name="Submit2" value="重写" >
+  </td>
+</tr>
+</table>
+</form>
+</body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+<ejb-jar>
+    <enterprise-beans>
+      <entity>
+	<ejb-name>bmpbean</ejb-name>
+	<home>bmp.bmpTradeHome</home>
+	<remote>bmp.bmpTrade</remote>
+	<ejb-class>bmp.bmpTradeBean</ejb-class>
+	<persistence-type>Bean</persistence-type>
+	<prim-key-class>java.lang.String</prim-key-class>
+	<reentrant>False</reentrant>
+        <resource-ref>
+         <res-ref-name>jdbc/myDB</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+        </resource-ref>
+      </entity>
+    </enterprise-beans>
+    <assembly-descriptor>
+      <container-transaction>
+	<method>
+	  <ejb-name>bmpbean</ejb-name>
+	  <method-intf>Remote</method-intf>
+	  <method-name>*</method-name>
+	</method>
+	<trans-attribute>Required</trans-attribute>
+      </container-transaction>
+    </assembly-descriptor>
+  </ejb-jar>

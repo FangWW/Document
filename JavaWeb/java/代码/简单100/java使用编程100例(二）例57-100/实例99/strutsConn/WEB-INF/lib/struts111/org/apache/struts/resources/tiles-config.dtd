@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+     DTD for the Tile Definition File, Version 1.0
+
+     To support validation of your configuration file, include the following
+     DOCTYPE element at the beginning (after the "xml" declaration):
+
+     <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+     $Id: tiles-config.dtd,v 1.1 2002/06/25 03:23:20 craigmcc Exp $
+-->
+<!ELEMENT component-definitions (definition+)>
+<!ELEMENT tiles-definitions (definition+)>
+<!ELEMENT definition (put*, putList*)>
+<!ATTLIST definition
+	name CDATA #REQUIRED
+	page CDATA #IMPLIED
+	path CDATA #IMPLIED
+	extends CDATA #IMPLIED
+	role CDATA #IMPLIED
+	template CDATA #IMPLIED
+	controllerClass CDATA #IMPLIED
+	controllerUrl CDATA #IMPLIED
+>
+<!ELEMENT put (#PCDATA)>
+<!ATTLIST put
+	name CDATA #REQUIRED
+	value CDATA #IMPLIED
+	type (string | page | template | definition) #IMPLIED
+	content CDATA #IMPLIED
+	direct (true | false) #IMPLIED
+>
+<!ELEMENT putList ( (add* | item* | bean* | putList*)+) >
+<!ATTLIST putList
+	name CDATA #REQUIRED
+>
+<!ELEMENT putListElements (add | item | bean)>
+
+<!ELEMENT add (#PCDATA)>
+<!ATTLIST add
+	value CDATA #IMPLIED
+	type (string | page | template | definition) #IMPLIED
+	content CDATA #IMPLIED
+	direct (true | false) #IMPLIED
+>
+
+<!ELEMENT bean (#PCDATA)>
+<!ATTLIST bean
+	classtype CDATA #REQUIRED
+>
+
+<!ELEMENT item (#PCDATA)>
+<!ATTLIST item
+	value CDATA #REQUIRED
+	link CDATA #REQUIRED
+	classtype CDATA #IMPLIED
+	icon CDATA #IMPLIED
+	tooltip CDATA #IMPLIED
+>

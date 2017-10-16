@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+<ejb-jar>
+    <enterprise-beans>
+        <session>
+            <display-name>userinfo</display-name>
+            <ejb-name>userinfo</ejb-name>
+            <home>cmp.userinfoHome</home>
+            <remote>cmp.userinfo</remote>
+            <ejb-class>cmp.userinfoBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            <ejb-local-ref>
+                <description />
+                <ejb-ref-name>userinfo</ejb-ref-name>
+                <ejb-ref-type>Entity</ejb-ref-type>
+                <local-home>cmp.TblUserInfoHome</local-home>
+                <local>cmp.TblUserInfo</local>
+                <ejb-link>TblUserInfo</ejb-link>
+            </ejb-local-ref>
+        </session>
+        <entity>
+            <display-name>TblUserInfo</display-name>
+            <ejb-name>TblUserInfo</ejb-name>
+            <local-home>cmp.TblUserInfoHome</local-home>
+            <local>cmp.TblUserInfo</local>
+            <ejb-class>cmp.TblUserInfoBean</ejb-class>
+            <persistence-type>Container</persistence-type>
+            <prim-key-class>java.lang.Integer</prim-key-class>
+            <reentrant>False</reentrant>
+            <cmp-version>2.x</cmp-version>
+            <abstract-schema-name>TblUserInfo</abstract-schema-name>
+            <cmp-field>
+                <field-name>id</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>name</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>phone</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>home</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>brithday</field-name>
+            </cmp-field>
+            <primkey-field>id</primkey-field>
+            <query>
+               <query-method>
+                 <method-name>findUserId</method-name>
+                 <method-params>
+                   <method-param>java.lang.String</method-param>
+                 </method-params>
+               </query-method>
+               <ejb-ql>
+                 <![CDATA[SELECT DISTINCT OBJECT(a) FROM TblUserInfo AS a WHERE a.name = ?1]]>
+               </ejb-ql>
+            </query>
+        </entity>
+    </enterprise-beans>
+    <assembly-descriptor>
+        <container-transaction>
+            <method>
+                <ejb-name>TblUserInfo</ejb-name>
+                <method-name>*</method-name>
+            </method>
+            <method>
+                <ejb-name>userinfo</ejb-name>
+                <method-name>*</method-name>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+    </assembly-descriptor>
+</ejb-jar>
