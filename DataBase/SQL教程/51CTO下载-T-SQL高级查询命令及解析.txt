@@ -1,0 +1,47 @@
+数据库第三章实验命令
+实验一
+Select  starttime  as ‘开始时间’,endtime  as ‘结束时间’,phonenumber as’电话号码’,
+calltype as ‘通话类型’,accountbillid as ‘账单’ from call
+Where  starttime between ‘2008-08-01 00:00:01’and’2008-08-31 23:59:59’
+and phonenumber=’13101337079’
+  实验二：
+长话费
+select sum (ceiling(datediff(ss,starttime,endtime)/60.0 )) as '长话时间
+from call
+where phonenumber='13101337079'and calltype=1
+
+市话费
+select sum (ceiling(datediff(ss,starttime,endtime)/60.0 )) as '市话时间'
+from call
+where phonenumber='13101337079'and calltype=0
+
+
+实验三：
+select sum (ceiling(datediff(ss,starttime,endtime)/60.0 )*tariffrate.tariffrate)
+from call,tariffrate
+where phonenumber='13101337079' and call.calltype=tariffrate.calltype
+解析
+(ceiling(datediff(ss,starttime,endtime)/60.0 )
+这是算出时间
+
+(ceiling(datediff(ss,starttime,endtime)/60.0 )*tariffrate.tariffrate)
+这是算出费用
+sum   求和
+   from   从那个表中提取
+     where    后面为条件 电话号码 +  大部分call里面的calltype和tariffrate表里面的calltype相同时才发生上面的求和算法
+   实验四：
+select cast(datepart(day,paytime) as int) as 日期,sum(charge) as 合计费用
+from [history-accountbill]
+where paytime between '2008-06-01 00:00:00' and '2008-06-30 23:59:59'
+group by  cast(datepart(day,paytime) as int)
+order by  cast(datepart(day,paytime) as int)
+
+解析
+select cast(datepart(day,paytime) as int) as 日期,sum(charge) as 合计费用
+from [history-accountbill]
+where paytime between '2008-06-01 00:00:00' and '2008-06-30 23:59:59'
+这是从历史表[history-accountbill]中取出6月的1到30号      sum(charge0   是求合计费用
+group by  cast(datepart(day,paytime) as int)
+这是按天分组
+order by  cast(datepart(day,paytime) as int)
+这是按天排序

@@ -1,0 +1,159 @@
+/*--创建文件夹--*/
+
+USE master
+GO
+/*---检查是否存在BBSDB数据库：查询master数据库中的系统表sysdatabases---*/
+if exists (select * from sysdatabases where name = 'bbsDB')
+DROP DATABASE bbsDB
+GO
+EXEC XP_cmdshell 'mkdir D:\project'--调用dos命令创建文件夹
+
+
+创建一个数据库文件和一个日志文件
+
+create database （stuDB）--数据库名
+on primary    -- 默认就属性primary主文件组，可忽略
+(
+  /*--数据文件的具体描述--*/
+   name='stuDB_data',       --主数据文件的逻辑名称
+   filename='D:\project\stuDB_data.mdf'   --主数据文件的物理名称
+   size=5mb                  --主数据文件的初始大小
+   maxsize=100mb             --主数据文件增长最大值
+   filegrowth=15%            --主数据文件的增长率
+)
+log on 
+(
+/*--日志文件的具体描述，各参数含义同上--*/
+   name='stuDB_log'
+   filename='D:\project\stuDB_log.ldf'
+   size=2mb
+   filegrowth=1mb
+)
+go
+
+
+
+/*---创建表---*/ 
+
+use bbsDB
+go
+if exists (select * from sysobjects where name='bbsUser')        --查询是否存在bbsUser表
+drop database bbsUser                                            --如果有删除它
+go
+
+create table bbsUser                                             --创建新bbsUser
+(
+	UId int identity(1,1) not null,
+	UName varchar(15) not null,
+	UPass varchar(10),
+	UEmail varchar(20),
+	USex bit not null,
+	UBirthday datetime not null,
+	UClass int ,
+	URemark varchar(20),
+	UregDate datetime not null,
+	UState int null,
+	UPoint int null
+)
+go 
+
+
+
+
+/*---创建约束---*/
+   --添加约束语法
+alter table 表名
+add constraint 约束名 约束类型 具体的约束说明
+
+        alter table bbsUser 
+	add constraint PK_UId primary key(UId)            --建立主键
+	alter table bbsUser
+	add constraint DF_Pass default ('888888') for UPass         --添加默认值  df_***
+	alter table bbsUser
+	add constraint DF_Sex default(1) for USex 
+	alter table bbsUser
+	add constraint DF_Class default(1) for UClass 
+	alter table bbsUser
+	add constraint DF_UregDate default(getdate()) for UregDate 
+	alter table bbsUser
+	add constraint DF_State default(0) for UState
+	alter table bbsUser
+	add constraint DF_UPoint default(20) for UPoint
+	alter table bbsUser
+	add constraint CK_Email check(UEmail like '%@%')            --检查约束  ck_***
+	alter table bbsUser
+	add constraint CK_Pass check(len(UPass)>=6) 
+go
+
+  --还有外键连接     fk_***          唯一   uq_***
+  --删除约束语法
+   alter table 表名
+   drop constraint    约束名
+
+
+/*--------------局部变量---------------*/
+--语法
+  declare @variable_name dataType   --variable 为变量名称 dataType 为数据类型
+  declare @name varchar(5) 
+  declare @seat int
+  --变量赋值方法
+   set @name = value
+   select @name = value
+/*--------------全局变量---------------*/
+--语法
+  @@error   --最后一个T-SQL错误的错误号  大于0发生错误
+  @@identity       --最后一次插入的标识值
+  @@servername       --本地服务器名称
+  如：
+   print '服务器名称：'+@@servername
+   select @@servername as '服务器名称'
+   
+   print '当前错误号'+convert(varchar(7),@@error)  --@@error 是整形类型
+
+
+
+/*------逻辑控制语句-----*/
+
+if-else
+语法
+if(条件)
+语句或语句块
+else
+语句或语句块
+
+执行多条语句是使用 begin....end
+if(条件)
+begin
+    语句一
+    语句二
+     ....
+   end
+else
+     ....
+
+
+
+while  循环语句
+while(条件)
+begin 
+    语句或语句块
+    [break]   --跳出循环
+
+end 
+
+
+case 多分支语句
+
+   case
+       when 条件1  then  结果1
+       when 条件2  then  结果2
+       else 其他结果
+   end
+   例如：
+   print 'ABCDE 五星显示成绩如下'
+   select stuNo , 成绩=case
+                         when count between 70 and 80  then  'c'
+                         when count between 81 and 90  then  'b'                         
+                         else 'a'
+                       end
+               from stuMarks
