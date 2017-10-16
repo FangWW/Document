@@ -1,0 +1,528 @@
+ protected void imgb_Buy_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["CurrentUser"] != null)//如果用户没有登录
+        {
+            if (Session["Cart"] == null)//如果购物篮不存在
+            {
+                this.BuildCart();//创建购物篮并将商品存入
+            }
+            else//购物篮存在
+            {
+                DataTable cart = Session["Cart"] as DataTable;
+                if (this.ExistBook(cart))//如果购物篮已存在该商品
+                {
+                    this.BuildSession(cart); //修改购物篮中的商品
+                }                
+            }
+            Response.Redirect("Cart.aspx");//跳转到购物车界面
+        }
+
+
+
+
+
+原理：利用session会话保持用户一次购物操作的购买记录，当用户点击“结帐”后将保存在session中的hashmap容器中的信息insert到DB中，完成一次购物操作。
+
+模块所需要配置文件：hibernate.cfg.xml  ,TableGoods.hbm.xml  ,struts-config.xml 
+
+模块对应的jsp有：index.jsp(商品信息一览页面)，buy.jsp(购买操作后的商品清单页面)
+
+模块对应的action有：IndexAction (实现对DB中的商品表信息结果集的遍历，并转向对应的index.jsp) 
+                                     ListAction (将JSP上的商品信息存入hashmap容器，并转向对应的buy.jsp)
+                                     UpdateAction (对buy.jsp页面上的商品数量修改的业务逻辑处理)
+                                     DeleteAction (对buy.jsp页面上的商品列表信息的业务逻辑处理)
+
+模块所需的相关Java容器选择：存储商品id,sum,price,name,allprices信息用hashmap，主要是考虑到其key重复后可以覆盖上次的value记录。存储点击商品后的商品id用list容器，主要考虑到list是有序并可以重复的特点，用其可以跟踪用户多次点击相同商品的操作，并对商品的数量进行相应的增加。
+
+模块主要Action类如下：
+
+
+
+IndexAction：
+
+public class IndexAction extends Action {
+
+ public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  
+  //查找商品表中的所有商品信息
+     GoodsDAO dao = new GoodsDAO();
+  List list = dao.find();
+  request.setAttribute("lister",list);
+  
+  return mapping.findForward("a");
+ }
+}
+
+
+ListAction：
+
+public class ListAction extends Action {
+
+ // 将hashmap中value转到list中
+ public static List getList(HashMap hs) {
+  List list = new ArrayList();
+  Iterator itr = hs.keySet().iterator();
+  while (itr.hasNext()) {
+   list.add(hs.get(itr.next()));
+   }
+  return list;
+ }
+//优化后的getList方法
+ public static List getList(HashMap hs) {
+  return new ArrayList(hs.values());
+ }
+
+
+ // 将点击的商品id和已经点击过的商品id数组中去比较，看是否有重复,真为有重复
+ public static boolean isCheck_on(int[] ids, int _id) {
+  boolean flag = false;
+  for (int i = 0; i < ids.length; i++) {
+   if (ids[i] == _id) {
+    flag = true;
+   }
+  }
+  return flag;
+ }
+
+ // 将新点击商品的id和list(存放在session中的allIdSumList容器)中元素的id属性比较
+ public static void test_ListCheck(List list, int check_id, float _p,String _n) {
+  for (int i = 0; i < list.size(); i++) {
+   int j = ((IdSumPriceNameDTO) list.get(i)).getId();
+   // 将list_sumId的第i个元素++
+   int k = ((IdSumPriceNameDTO) list.get(i)).getSum();
+   if (j == check_id) {
+   //相等条件则将k(商品数量)++
+    k++;
+   //session中的"allIdSumList"也随之更新，引用传参原理
+    ((IdSumPriceNameDTO) list.get(i)).setSum(k);
+    //list.remove(i);
+    //IdSumPriceNameDTO idSumDTO = new IdSumPriceNameDTO(j, k, _p,_n);
+    //将更新后的idSumDTO重新add到list中，session中的"allIdSumList"也随之更新，引用传参原理
+    //list.add(i, idSumDTO);
+   }
+  }
+ }
+ 
+ // 将点击商品id和allIdSumList(session中)比较，并返回比较后的list_sumId
+ public static List getCounter_List(List _list_check, int id, HttpSession sess,
+   float price,String _name) {
+
+  List list_sumId = null;
+  String flag = (String) sess.getAttribute("flags");
+  // 执行了修改操作的条件
+  if (flag != null) {
+   // 从session中获得已经修改过商品的id的数组
+   int[] ider = (int[]) sess.getAttribute("ider");
+   // 在修改操作后，在已修改商品上继续购物操作
+   if (isCheck_on(ider, id)) {
+     list_sumId = (List) sess.getAttribute("allIdSumList");
+   // 调用test_ListCheck方法
+     test_ListCheck(list_sumId,id,price,_name);
+    } 
+   // 修改操作后，点击没有被修改数量过的商品
+   else {
+   // 标志位
+    boolean flag_c = true;
+    // 新点击商品id和list中历史点击记录比较
+    for (int i = 0; i < _list_check.size() - 1; i++) {
+     if (_list_check.get(i).equals(id)) {
+      flag_c = false;
+     }
+    }
+     // session中获得"allIdSumList"
+    list_sumId = (List) sess.getAttribute("allIdSumList");
+     // 新点击操作
+    if(flag_c){
+     IdSumPriceNameDTO idSumDTO = new IdSumPriceNameDTO(id, 1, price,_name);
+    // session中的"allIdSumList"也随之更新，引用copy
+     list_sumId.add(idSumDTO);
+     }
+     // 重复点击操作
+    else{
+     // 调用test_ListCheck方法
+     test_ListCheck(list_sumId,id,price,_name);
+    }
+   }
+  }
+     // 未点击修改的操作条件
+  else {
+   // session中获得"allIdSumList"
+   list_sumId = (List) sess.getAttribute("allIdSumList");
+   // 标志位
+   boolean flag_c = true;
+   // 新点击商品id和list中历史点击记录比较
+   for (int i = 0; i < _list_check.size() - 1; i++) {
+    if (_list_check.get(i).equals(id)) {
+     flag_c = false;
+    }
+   }
+   // 新点击操作
+   if (flag_c) {
+    IdSumPriceNameDTO idSumDTO = new IdSumPriceNameDTO(id, 1, price,_name);
+   // session中的"allIdSumList"也随之更新，引用copy
+    list_sumId.add(idSumDTO);
+   }
+   // 重复点击操作
+   else {
+     // 调用test_ListCheck方法
+     test_ListCheck(list_sumId,id,price,_name);
+   }
+  }
+  return list_sumId;
+ }
+
+
+ public ActionForward execute(ActionMapping mapping, ActionForm form,
+   HttpServletRequest request, HttpServletResponse response)
+   throws Exception {
+  // 商品编号
+  int id = Integer.parseInt(request.getParameter("id"));
+  GoodsDAO dao = new GoodsDAO();
+  int goodsid = dao.findbyId(id).getId();
+  String goodsName = dao.findbyId(id).getGoodsName();
+  float goodsPrice = (float) dao.findbyId(id).getGoodsPrice();
+  //set进idSumDTO 
+  IdSumPriceNameDTO idSumDTO = new IdSumPriceNameDTO();
+  idSumDTO.setId(goodsid);
+  idSumDTO.setGoodsName(goodsName);
+  idSumDTO.setGoodsPrice(goodsPrice);
+  // idSumDTO中的sum属性缺省为1
+  idSumDTO.setAllPrices(goodsPrice);
+  System.out.println(idSumDTO.getAllPrices());
+  
+  // hid做为hashmap中的key
+  Integer hid = Integer.valueOf(idSumDTO.getId());
+  
+  HttpSession sess = request.getSession();
+  HashMap hs = (HashMap) sess.getAttribute("shops");
+  /** *//**
+   * 客户第一次访问
+   */
+  if (hs == null) {
+   //将商品id放入list中
+   List list = new ArrayList();
+   list.add(hid);
+   hs = new HashMap();
+   hs.put(hid, idSumDTO);
+   // jsp显示
+   sess.setAttribute("shop", getList(hs));
+   // 将hs放到session中,删除修改用
+   sess.setAttribute("shops", hs);
+   // 将list(商品id)放入session中
+   sess.setAttribute("ids_go", list);
+   // 将商品id,sum,price,name放入idSumDTO_1并置于idSum_list中
+   IdSumPriceNameDTO idSumDTO_1 = new IdSumPriceNameDTO(idSumDTO.getId(), idSumDTO
+     .getSum(), idSumDTO.getGoodsPrice(),idSumDTO.getGoodsName());
+   List idSum_list = new ArrayList();
+   idSum_list.add(idSumDTO_1);
+   // 将idSum_list对象至于sess中，和updateAction中的"allIdSumList"对应
+   sess.setAttribute("allIdSumList", idSum_list);
+  }
+  /** *//**
+   * 客户第二次以后的访问
+   */
+  else {
+   List list_check = (List) sess.getAttribute("ids_go");
+   list_check.add(hid);
+   // list_sumId包含id,sum,price,name
+    List list_sumId = getCounter_List(list_check, hid, sess, goodsPrice,goodsName);
+   for (int i = 0; i < list_sumId.size(); i++) {
+    IdSumPriceNameDTO isp = new IdSumPriceNameDTO();
+    int a = ((IdSumPriceNameDTO) list_sumId.get(i)).getId();
+    isp.setId(a);
+    int b = ((IdSumPriceNameDTO) list_sumId.get(i)).getSum();
+    isp.setSum(b);
+    float c = ((IdSumPriceNameDTO) list_sumId.get(i)).getGoodsPrice();
+    isp.setGoodsPrice(c);
+    isp.setAllPrices(c);
+    String d  =((IdSumPriceNameDTO) list_sumId.get(i)).getGoodsName();
+    isp.setGoodsName(d);
+    //session中的shops也随之更新，引用copy
+    hs.put(a, isp);
+    //引用赋null
+    isp = null;
+   }
+   // jsp显示
+   sess.setAttribute("shop", getList(hs));
+  }
+  //转向buy.jsp
+  return mapping.findForward("b");
+ }
+
+}
+
+UpdateAction：
+
+public class UpdateAction extends Action {
+ 
+ /** *//**
+  * 修改商品信息
+  */
+//优化后的getList方法
+ public static List getList(HashMap hs) {
+  return new ArrayList(hs.values());
+ }
+
+ public ActionForward execute(ActionMapping mapping, ActionForm form,
+   HttpServletRequest request, HttpServletResponse response)
+   throws Exception {
+  GoodsForm gs = (GoodsForm)form;
+  int[] ids = gs.getId();
+  int[] sums = gs.getSum();
+  float[] goodsPrices = gs.getGoodsPrice();
+  String[] goodsName = gs.getGoodsName();
+  //从session获得hs
+  HashMap hs = (HashMap)request.getSession().getAttribute("shops");
+  //从session中获得allIdSumList容器
+  List idSum_list = (List)request.getSession().getAttribute("allIdSumList");
+  //清空上次idSum_list容器中更新后的记录
+  if(idSum_list!=null){
+   idSum_list.clear();
+  }
+  for(int i = 0;i<ids.length;i++){
+   //循环将 ids[i]和idSumPriceNameDTO put到hs容器中
+   IdSumPriceNameDTO idSumPriceNameDTO = new IdSumPriceNameDTO();
+   idSumPriceNameDTO.setId(ids[i]);
+   idSumPriceNameDTO.setGoodsName(goodsName[i]);
+   idSumPriceNameDTO.setGoodsPrice(goodsPrices[i]);
+   idSumPriceNameDTO.setSum(sums[i]);
+   idSumPriceNameDTO.setAllPrices(goodsPrices[i]);
+   // session中的"shops"也随之更新，引用copy
+   hs.put(ids[i], idSumPriceNameDTO);
+   //每次循环后将idSumPriceNameDTO 的引用设null
+   idSumPriceNameDTO = null;
+
+   //idSum_list
+   IdSumPriceNameDTO idSumDTO = new IdSumPriceNameDTO(ids[i],sums[i],goodsPrices[i],goodsName[i]);
+   if(idSum_list == null){
+    idSum_list = new ArrayList();
+   }
+   // session中的"allIdSumList"也随之更新，引用copy
+   idSum_list.add(idSumDTO);
+  }
+  request.getSession().setAttribute("shop", getList(hs));
+  
+     // 将过到updateAction中的商品id数组放入session中对修改操作完成后用户继续点击操作时和ider数组记录比较
+     request.getSession().setAttribute("ider", ids);
+     // 设置一个标志位，标志是经过修改数量的操作
+     String flag = "update";
+     request.getSession().setAttribute("flags", flag);
+  //转向buy.jsp
+  return mapping.findForward("b");
+ }
+
+}
+
+DeleteAction：
+
+public class DeleteAction extends Action {
+
+//优化后的getList方法
+ public static List getList(HashMap hs) {
+  return new ArrayList(hs.values());
+ }
+
+ public ActionForward execute(ActionMapping mapping, ActionForm form,
+   HttpServletRequest request, HttpServletResponse response)
+   throws Exception {
+
+  Integer id = Integer.parseInt(request.getParameter("id"));
+
+  // 将ids_go中点击Id的历史记录中与页面传来的id比较，将相同的元素全delete掉
+  List list_check = (List) request.getSession().getAttribute("ids_go");
+  int size = list_check.size();
+  int h = 0;
+  for (int i = 0; i < size; i++) {
+   int j = (Integer)list_check.get(h);
+   if (j == id) {
+    //session中的"ids_go"也随之更新，引用copy
+    list_check.remove(h);
+   }else{
+    h++;
+   }
+  }
+   // remove容器allIdSumList中和id相等的整个元素，保持delete后继续购物操作的正确性
+  List list = (List) request.getSession().getAttribute("allIdSumList");
+  for (int i = 0; i < list.size(); i++) {
+   int j = ((IdSumPriceNameDTO) list.get(i)).getId();
+   if (j == id) {
+   //session中的"allIdSumList"也随之更新，引用copy
+    list.remove(i);
+   }
+  }
+  // 从session中取出购物的hashmap容器
+  HashMap hashmap = (HashMap) request.getSession().getAttribute("shops");
+  //session中的shops也随之更新，引用copy
+  hashmap.remove(id);
+  //jsp显示
+  request.getSession().setAttribute("shop", getList(hashmap));
+  
+  //执行了delete操作后，将updateAction中的标记flag设置为null
+  //delete后，将修改信息的标记去除，还原为无修改操作状态
+  String flag = null;
+  request.getSession().setAttribute("flags", flag);
+  //转向buy.jsp
+  return mapping.findForward("b");
+ }
+
+}
+
+IdSumPriceNameDTO ：(JavaBean)
+
+public class IdSumPriceNameDTO {
+
+ private int id;
+
+ private int sum = 1;
+
+ private float goodsPrice;
+ 
+ private float allPrices;
+ 
+ private String goodsName;
+
+ public IdSumPriceNameDTO() {
+  super();
+ }
+ //id,sum,goodsPrice,goodsName
+ public IdSumPriceNameDTO(int id, int sum, float goodsPrice, String goodsName) {
+  super();
+  this.id = id;
+  this.sum = sum;
+  this.goodsPrice = goodsPrice;
+  this.goodsName = goodsName;
+ }
+
+ public String getGoodsName() {
+  return goodsName;
+ }
+
+ public void setGoodsName(String goodsName) {
+  this.goodsName = goodsName;
+ }
+
+
+ public float getAllPrices() {
+  return allPrices;
+ }
+ //注意javabean中set 只有一个参数，定义多个时到jsp页面会出现无法找到getProperty异常
+ public void setAllPrices(float goodsPrice) {
+  this.allPrices = (float)(this.sum * goodsPrice);
+ }
+ 
+
+ public float getGoodsPrice() {
+  return goodsPrice;
+ }
+
+ public void setGoodsPrice(float goodsPrice) {
+  this.goodsPrice = goodsPrice;
+ }
+
+ public int getId() {
+  return id;
+ }
+
+ public void setId(int id) {
+  this.id = id;
+ }
+
+ public int getSum() {
+  return sum;
+ }
+
+ public void setSum(int sum) {
+  this.sum = sum;
+ }
+
+}
+
+index.jsp：
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="WEB-INF/struts-logic.tld" prefix="logic"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html:html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body  bgcolor="#CCCCCC">
+<table width="315" border="1">
+  <tr>
+     <td colspan="2"><img src="1140438022_min.jpg" width="160" height="120"></td>
+     <td colspan="2"><img src="1140437663_min.jpg" width="160" height="120"></td>
+     <td colspan="2"><img src="1140438022_min.jpg" width="160" height="120"></td>
+  </tr>
+  <logic:iterate id="list" name="lister">
+    <tr>
+      <td><bean:write name="list" property="id" /></td>
+      <td width="85"><html:link page="/list.do" paramId="id" paramName="list" paramProperty="id" >在线订购</html:link></td>
+    </tr>
+  </logic:iterate>
+</table>
+
+</body>
+</html:html>
+
+buy.jsp：
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<%@ taglib uri="WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="WEB-INF/struts-logic.tld" prefix="logic"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html:html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body bgcolor="#CCCCCC">
+<html:form action="/update">
+<html:submit value="update" />
+<table width="302" height="55" border="1">
+ <tr>
+     <td width="59">Delete</td>
+  <td width="68">NAME</td>
+  <td width="77">PRICE</td>
+  <td width="77">NUM</td>
+  <td width="77">ALLPRICE</td>
+ </tr>
+ <logic:iterate id="sh" name="shop">
+ <tr>
+    <html:hidden  name="sh"  property="id" />
+    <html:hidden  name="sh"  property="goodsPrice" />
+    <html:hidden  name="sh"  property="goodsName" />
+    <td><html:link  page="/delete.do" paramId="id" paramName="sh" paramProperty="id" >delete</html:link></td>
+    <td><bean:write name="sh" property="goodsName" /></td>
+    <td><bean:write name="sh" property="goodsPrice" /></td>
+    <td><html:text  name="sh"  property="sum" /></td>
+    <td><bean:write name="sh" property="allPrices" /></td>
+ </tr>   
+ </logic:iterate>
+</table>
+</html:form>
+<html:link page="/shop.do">去收银台</html:link><html:link page="/index.do">继续购物</html:link>
+
+</body>
+</html:html>
+
+模块主要是围绕hashmap容器和list容器编程，并用session会话保持整个操作的记录，其中需要注意的一些问题总结如下：
+        
+        (1)用户没有进行修改操作时，点击一件商品后，继续购物，点击相同商品时sum++控制。 
+
+        (2)用户没有进行修改操作时，点击一件商品后，继续购物，点击新商品时sum=1控制。
+
+        (3)用户没有进行修改操作时，delete某件商品信息清单时，注意将allIdSumList容器(在session范围内)中元素的id属性对应的整个元素删除操作，并将“ids_go”(session范围内)中和此次delete操作带的商品id比较，将相同的id在“ids_go”(list容器)中全部删除，保证用户成功执行delete操作，返回继续购物时还原为初始状态。
+
+        (4)用户进行修改操作时，将allIdSumList容器中的元素属性sum和allprices保持同步更新，并设置一个标志位flag="update"，标志是经过修改数量的操作，同时当修改操作后继续在进行修改操作时将idSum_list中的数据clear()，保证下次修改时是全新的数据,主要原因是考虑到list对于重复的元素没有覆盖功能。
+
+        (5)用户进行删除操作后，将updateAction中的标记flag设置为null(flag用来标记用户是否有过update操作，session范围内有效) 
+
+
+
+
