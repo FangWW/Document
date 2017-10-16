@@ -1,10 +1,5 @@
 //package mypack;
-import java.io.*;
-import java.util.*;
-
-
-
-//////////ÉèÖÃ·şÎñÆ÷IPµØÖ·/////////
+//////////ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·/////////
 public class ChatClient 
 {
      
@@ -17,14 +12,14 @@ public class ChatClient
 	}
 }
     
-//µÇÂ¼ĞÅÏ¢ĞòÁĞ»¯
+//ï¿½ï¿½Â¼ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ğ»ï¿½
 class Customer extends Object implements java.io.Serializable
 {
      String custName;
      String custPassword;
 }
 
-//×¢²áĞÅÏ¢ĞòÁĞ»¯
+//×¢ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ğ»ï¿½
 class Register_Customer extends Object implements java.io.Serializable
 {
      String custName;
@@ -35,13 +30,13 @@ class Register_Customer extends Object implements java.io.Serializable
      String picture;
 }
 
-//ÁÄÌìºÍÔÚÏßÓÃ»§µÄĞÅÏ¢  
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢  
 class Message implements Serializable
 {
   	Vector userOnLine;
   	Vector chat;
 }
-//ÁÄÌìĞÅÏ¢ĞòÁĞ»¯
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ğ»ï¿½
 class Chat implements Serializable
 {
 	String  chatUser;
@@ -49,7 +44,7 @@ class Chat implements Serializable
 	String  chatToUser;
     boolean whisper;
 }  
-//ÎÄ¼şµÄ·¢ËÍ
+//ï¿½Ä¼ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 //class SendFile implements Serializable
 //{    String  chatUser;
 //     String  chatToUser;

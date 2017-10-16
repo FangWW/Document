@@ -1,9 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
-import java.io.*;
-
 public class  Login extends JFrame  implements ActionListener
 {
 	JPanel  pnlLogin;
@@ -13,19 +7,19 @@ public class  Login extends JFrame  implements ActionListener
 	//JPasswordField pwdPassword;
 	TextField pwdPassword;
 	String  strServerIp;
-   //ÓÃÓÚ½«´°¿Ú¶¨Î»
+   //ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Î»
 	Dimension scrnsize;
 	Toolkit toolkit=Toolkit.getDefaultToolkit();
-	//¹¹Ôì·½·¨           	   
+	//ï¿½ï¿½ï¿½ì·½ï¿½ï¿½           	   
 	public Login()
 	{
-		super("½ªÊï¹âÁÄÌìÊÒ");
+		super("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		pnlLogin=new JPanel();
 		this.getContentPane().add(pnlLogin);
 		
-		lblServer=new JLabel("·þÎñÆ÷IP(S):");
-		lblUserName=new JLabel("ÓÃ»§Ãû(U):");
-		lblPassword=new JLabel("ÃÜ  Âë(P):");
+		lblServer=new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IP(S):");
+		lblUserName=new JLabel("ï¿½Ã»ï¿½ï¿½ï¿½(U):");
+		lblPassword=new JLabel("ï¿½ï¿½  ï¿½ï¿½(P):");
 		txtServer=new JTextField(20);
 		txtServer.setText("127.0.0.1");
 		txtUserName=new JTextField(20);
@@ -33,25 +27,25 @@ public class  Login extends JFrame  implements ActionListener
 		
 		pwdPassword=new TextField(20);
 		
-		btnLogin=new JButton("µÇÂ¼");
-		btnLogin.setToolTipText("µÇÂ¼µ½·þÎñÆ÷");
+		btnLogin=new JButton("ï¿½ï¿½Â¼");
+		btnLogin.setToolTipText("ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		btnLogin.setMnemonic('L');
 		
-		btnRegister=new JButton("×¢²á");
-		btnRegister.setToolTipText("×¢²áÐÂÓÃ»§");
+		btnRegister=new JButton("×¢ï¿½ï¿½");
+		btnRegister.setToolTipText("×¢ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½");
 		btnRegister.setMnemonic('R');
 		
-		btnExit=new JButton("ÍË³ö");
-		btnExit.setToolTipText("ÍË³öÏµÍ³");
+		btnExit=new JButton("ï¿½Ë³ï¿½");
+		btnExit.setToolTipText("ï¿½Ë³ï¿½ÏµÍ³");
 		btnExit.setMnemonic('X');
 		
-		/*  ¸Ã²¼¾Ö²ÉÓÃÊÖ¶¯²¼¾Ö           *
-		 *¡¡setBoundsÉèÖÃ×é¼þÎ»ÖÃ        *
-		 *  setFontÉèÖÃ×ÖÌå¡¢×ÖÐÍ¡¢×ÖºÅ  *
-		 *¡¡setForegroundÉèÖÃÎÄ×ÖµÄÑÕÉ«  *
-		 *  setBackgroundÉèÖÃ±³¾°É«      *
-		 *  setOpaque½«±³¾°ÉèÖÃÎªÍ¸Ã÷    */
-		pnlLogin.setLayout(null);  //×é¼þÓÃÊÖ¶¯²¼¾Ö
+		/*  ï¿½Ã²ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½           *
+		 *ï¿½ï¿½setBoundsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½        *
+		 *  setFontï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¡¢ï¿½ï¿½ï¿½Í¡ï¿½ï¿½Öºï¿½  *
+		 *ï¿½ï¿½setForegroundï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½É«  *
+		 *  setBackgroundï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½É«      *
+		 *  setOpaqueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÍ¸ï¿½ï¿½    */
+		pnlLogin.setLayout(null);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½
 		pnlLogin.setBackground(new Color(255,130,203));
 		
 		lblServer.setBounds(50,100,100,30);
@@ -64,7 +58,7 @@ public class  Login extends JFrame  implements ActionListener
 		btnRegister     .setBounds(300,135,80,25);
 		btnExit        .setBounds(300,170,80,25);
 		
-		Font fontstr=new Font("ËÎÌå",Font.PLAIN,12);
+		Font fontstr=new Font("ï¿½ï¿½ï¿½ï¿½",Font.PLAIN,12);
 		lblServer.setFont(fontstr);
 		txtServer.setFont(fontstr);
 		lblUserName    .setFont(fontstr);
@@ -94,12 +88,12 @@ public class  Login extends JFrame  implements ActionListener
 		pnlLogin.add(btnRegister);
 		pnlLogin.add(btnExit);
 		
-		//ÉèÖÃ±³¾°Í¼Æ¬
+		//ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½Í¼Æ¬
 		Icon logo1 = new ImageIcon("images\\denglu.jpg");
 	 	lblLogo = new JLabel(logo1);
 		lblLogo.setBounds(0,0,440,80);//340
 		pnlLogin.add(lblLogo);
-        //ÉèÖÃµÇÂ¼´°¿Ú
+        //ï¿½ï¿½ï¿½Ãµï¿½Â¼ï¿½ï¿½ï¿½ï¿½
         setResizable(false);
 		setSize(440,260);
 		setVisible(true);
@@ -109,25 +103,25 @@ public class  Login extends JFrame  implements ActionListener
     	Image img=toolkit.getImage("images\\appico.jpg");
         setIconImage(img);
 			
-		//Èý¸ö°´Å¥×¢²á¼àÌý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥×¢ï¿½ï¿½ï¿½ï¿½ï¿½
 		btnLogin  .addActionListener(this);
 		btnRegister.addActionListener(this);
 		btnExit   .addActionListener(this);
 		
-	}  //¹¹Ôì·½·¨½áÊø
+	}  //ï¿½ï¿½ï¿½ì·½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
 		
-	//°´Å¥¼àÌýÏìÓ¦
+	//ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 	public void actionPerformed(ActionEvent ae)
 	{
 		Object source=ae.getSource();
 		if (source.equals(btnLogin))
 		{
-		    //ÅÐ¶ÏÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÎª¿Õ
+		    //ï¿½Ð¶ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
 	    	if(txtUserName.getText().equals("") || pwdPassword.getText().equals(""))
 		    {
 //			    JOptionPane op1=new JOptionPane();
-			    JOptionPane.showMessageDialog(null,"ÓÃ»§Ãû»òÃÜÂë²»ÄÜÎª¿Õ");
+			    JOptionPane.showMessageDialog(null,"ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½");
             }
             else
 		    {
@@ -145,28 +139,28 @@ public class  Login extends JFrame  implements ActionListener
 		{
 		    System.exit(0);
 		}
-	}  //actionPerformed()½áÊø
+	}  //actionPerformed()ï¿½ï¿½ï¿½ï¿½
 	
 	
 	
 		
-	//////////µÇÂ¼ÊÂ¼þÏìÓ¦·½·¨//////////
+	//////////ï¿½ï¿½Â¼ï¿½Â¼ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½//////////
 	public void login()
 	{
-	    //½ÓÊÜ¿Í»§µÄÏêÏ¸×ÊÁÏ
+	    //ï¿½ï¿½ï¿½Ü¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½
         Customer data=new Customer();
 	   	data.custName=txtUserName.getText();
 		data.custPassword = pwdPassword.getText();
 		try
 		{
-			//Á¬½Óµ½·þÎñÆ÷
+			//ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		   	Socket toServer;
   		   	toServer = new Socket(strServerIp,8000);
 		   	ObjectOutputStream streamToServer=new ObjectOutputStream (toServer.getOutputStream());					
-		   	//Ð´¿Í»§ÏêÏ¸×ÊÁÏµ½·þÎñÆ÷socket
+		   	//Ð´ï¿½Í»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½socket
 		   	streamToServer.writeObject((Customer)data);  
 		   	
-           	//¶ÁÀ´×Ô·þÎñÆ÷socketµÄµÇÂ¼×´Ì¬
+           	//ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½socketï¿½Äµï¿½Â¼×´Ì¬
            	BufferedReader fromServer=new BufferedReader(new InputStreamReader(toServer.getInputStream()));
            	String status=fromServer.readLine();
            //	String picturee=fromServer.readLine();
@@ -179,7 +173,7 @@ public class  Login extends JFrame  implements ActionListener
            	{
            		
             
-           	String staruse=status.substring(0,1);//ÓÃ»§Í·Ïñ
+           	String staruse=status.substring(0,1);//ï¿½Ã»ï¿½Í·ï¿½ï¿½
            
            	  
 				new ChatRoom((String)data.custName,strServerIp,staruse);
@@ -188,15 +182,15 @@ public class  Login extends JFrame  implements ActionListener
 				
 				this.dispose();
            	    
-           	    //¹Ø±ÕÁ÷¶ÔÏó
-		        streamToServer.close();   //ObjectOutputStreamÁ÷£¬Ð´µ½·þÎñÆ÷¡£
-                fromServer.close();       //Á÷£¬À´×Ô·þÎñÆ÷£¬
-                toServer.close();         //Á¬½Óµ½·þÎñÆ÷µÄÌ×½Ó×Ö¹Ø±Õ
+           	    //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		        streamToServer.close();   //ObjectOutputStreamï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                fromServer.close();       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                toServer.close();         //ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½Ö¹Ø±ï¿½
            	}
            	else
            	{
            	    JOptionPane.showMessageDialog(null,status);
-               //¹Ø±ÕÁ÷¶ÔÏó
+               //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		        streamToServer.close();
                 fromServer.close();
                 toServer.close();
@@ -204,25 +198,25 @@ public class  Login extends JFrame  implements ActionListener
          }
          catch(ConnectException e1)
          {
-         	JOptionPane.showMessageDialog(null,"Î´ÄÜ½¨Á¢µ½Ö¸¶¨·þÎñÆ÷µÄÁ¬½Ó!");
+         	JOptionPane.showMessageDialog(null,"Î´ï¿½Ü½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
          }
 		 catch(InvalidClassException e2)
 		 {
-		    JOptionPane.showMessageDialog(null,"Àà´íÎó!");
+		    JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½ï¿½ï¿½!");
 		 }
 		 catch(NotSerializableException e3)
 		 {
-			JOptionPane.showMessageDialog(null,"¶ÔÏóÎ´ÐòÁÐ»¯!");
+			JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½Ð»ï¿½!");
 		 }
 		 catch(IOException e4)
 		 {
-		 	JOptionPane.showMessageDialog(null,"²»ÄÜÐ´Èëµ½Ö¸¶¨·þÎñÆ÷!");
+		 	JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ëµ½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 		 }
-	}   //login()½áÊø
+	}   //login()ï¿½ï¿½ï¿½ï¿½
 	
 	public static void main(String args[])
 	{
 		new Login();
 	}
 	
-}  //Class Login½áÊø
+}  //Class Loginï¿½ï¿½ï¿½ï¿½

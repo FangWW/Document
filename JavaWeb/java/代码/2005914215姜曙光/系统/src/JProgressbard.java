@@ -1,7 +1,4 @@
 
-import java.awt.*;
-
-import javax.swing.*;
 import java.io.File;
       
 public class JProgressbard extends JFrame 
@@ -10,13 +7,13 @@ public class JProgressbard extends JFrame
 	JLabel  lacomplement; 
 	JPanel  Progressbar;
 	JButton bucancel;
-	//½«´°¿Ú¶¨Î»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Î»
 	Dimension scrnsize;
 	Toolkit toolkit=Toolkit.getDefaultToolkit();
 	
 	public JProgressbard() 
     {
-       super("ÕýÔÚ´«ËÍÎÄ¼þ¡¾  ¡¿.....");
+       super("ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½  ï¿½ï¿½.....");
        setSize(400, 200);
        
        Progressbar=new JPanel();
@@ -24,21 +21,21 @@ public class JProgressbard extends JFrame
        Progressbar.setLayout(null);
        
 	  
-       //´´½¨½ø¶ÈÌõ
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        progressBar = new JProgressBar();
-       progressBar.setMinimum(0);         //ÉèÖÃ×îÐ¡Öµ,×î´óÖµ,³õÖµ
+       progressBar.setMinimum(0);         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµ,ï¿½ï¿½ï¿½Öµ,ï¿½ï¿½Öµ
        progressBar.setMaximum(100);
-       progressBar.setValue(0);           //ÉèÖÃ½ø¶ÈÌõµÄµ±Ç°ÖµÎª0£»
-       progressBar.setStringPainted(true);//ÏÔÊ¾½ø¶ÈÌõ½ø¶ÈÎÄ±¾
-       progressBar.setBorderPainted(true);//ÏÔÊ¾½ø¶ÈÌõ±ß¿ò
-       //progressBar.setPreferredSize(new Dimension(200,30));//ÉèÖÃ½ø¶ÈÌõ´óÐ¡,±³¾°É«,Ç°¾°É«
+       progressBar.setValue(0);           //ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ç°ÖµÎª0ï¿½ï¿½
+       progressBar.setStringPainted(true);//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
+       progressBar.setBorderPainted(true);//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½
+       //progressBar.setPreferredSize(new Dimension(200,30));//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡,ï¿½ï¿½ï¿½ï¿½É«,Ç°ï¿½ï¿½É«
        progressBar.setBackground(Color.WHITE);
        progressBar.setForeground(Color.GREEN);
        
        
        
-       lacomplement=new JLabel("ÎÄ¼þ´«ËÍÒÑÍê³É.....");
-        bucancel=new JButton("È¡Ïû");
+       lacomplement=new JLabel("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.....");
+        bucancel=new JButton("È¡ï¿½ï¿½");
        
        lacomplement.setBounds(10, 10, 150, 30);
        progressBar.setBounds(50,50,300,30);
@@ -53,7 +50,7 @@ public class JProgressbard extends JFrame
        setVisible(true);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
-       // ½«´°¿Ú¶¨Î»ÔÚÆÁÄ»µÄÖÐÑë
+       // ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        scrnsize=toolkit.getScreenSize();
        this.setLocation(scrnsize.width/2-this.getWidth()/2,
     	                 scrnsize.height/2-this.getHeight()/2);
@@ -61,7 +58,7 @@ public class JProgressbard extends JFrame
 	
     public JProgressbard(File f) 
     {
-       super("ÕýÔÚ´«ËÍÎÄ¼þ¡¾  ¡¿.....");
+       super("ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½  ï¿½ï¿½.....");
        setSize(400, 200);
        
        Progressbar=new JPanel();
@@ -69,21 +66,21 @@ public class JProgressbard extends JFrame
        Progressbar.setLayout(null);
        
 	  
-       //´´½¨½ø¶ÈÌõ
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        progressBar = new JProgressBar();
-       progressBar.setMinimum(0);         //ÉèÖÃ×îÐ¡Öµ,×î´óÖµ,³õÖµ
+       progressBar.setMinimum(0);         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµ,ï¿½ï¿½ï¿½Öµ,ï¿½ï¿½Öµ
        progressBar.setMaximum(100);
-       progressBar.setValue(0);           //ÉèÖÃ½ø¶ÈÌõµÄµ±Ç°ÖµÎª0£»
-       progressBar.setStringPainted(true);//ÏÔÊ¾½ø¶ÈÌõ½ø¶ÈÎÄ±¾
-       progressBar.setBorderPainted(true);//ÏÔÊ¾½ø¶ÈÌõ±ß¿ò
-       //progressBar.setPreferredSize(new Dimension(200,30));//ÉèÖÃ½ø¶ÈÌõ´óÐ¡,±³¾°É«,Ç°¾°É«
+       progressBar.setValue(0);           //ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ç°ÖµÎª0ï¿½ï¿½
+       progressBar.setStringPainted(true);//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
+       progressBar.setBorderPainted(true);//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½
+       //progressBar.setPreferredSize(new Dimension(200,30));//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡,ï¿½ï¿½ï¿½ï¿½É«,Ç°ï¿½ï¿½É«
        progressBar.setBackground(Color.WHITE);
        progressBar.setForeground(Color.GREEN);
        
        
        
-       lacomplement=new JLabel("ÎÄ¼þ´«ËÍÒÑÍê³É.....");
-        bucancel=new JButton("È¡Ïû");
+       lacomplement=new JLabel("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.....");
+        bucancel=new JButton("È¡ï¿½ï¿½");
        
        lacomplement.setBounds(10, 10, 150, 30);
        progressBar.setBounds(50,50,300,30);

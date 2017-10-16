@@ -1,7 +1,8 @@
+import java.io.File;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import java.io.File;
 
 
 public class SaveFile extends JFrame 
@@ -16,7 +17,7 @@ public class SaveFile extends JFrame
     	
         
         try
-		{    //ÉèÖÃÍâ¹Û
+		{    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}catch(Exception e){}
 		
@@ -24,8 +25,8 @@ public class SaveFile extends JFrame
         
         
         fileChooser = new JFileChooser("e:");
-        fileChooser.setApproveButtonText("È·¶¨");
-        fileChooser.setDialogTitle("±£´æÎÄ¼þ");
+        fileChooser.setApproveButtonText("È·ï¿½ï¿½");
+        fileChooser.setDialogTitle("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½");
         
         fileChooser.showSaveDialog(this);
 
