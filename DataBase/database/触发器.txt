@@ -1,0 +1,133 @@
+
+触发器是一种特殊类型的存储过程，它不同于之前的我们介绍的存储过程。触发器主要是通过事件进行触发被自动调用执行的。而存储过程可以通过存储过程的名称被调用。
+
+   DML触发器分为： 
+
+    1、 after触发器（之后触发） 
+
+        a、 insert触发器 
+
+        b、 update触发器 
+
+        c、 delete触发器 
+
+  
+
+    2、 instead of 触发器 （之前触发） 
+
+  
+
+         1.如果我更改了学生的学号,我希望他的借书记录仍然与这个学生相关(也就是同时更改借书记录表的学号);
+         2.如果该学生已经毕业，我希望删除他的学号的同时，也删除它的借书记录。
+
+
+
+    其中after触发器要求只有执行某一操作insert、update、delete之后触发器才被触发，且只能定义在表上。而instead of触发器表示并不执行其定义的操作（insert、update、delete）而仅是执行触发器本身。既可以在表上定义instead of触发器，也可以在视图上定义。 
+
+  
+
+    触发器有两个特殊的表：插入表（instered表）和删除表（deleted表）。这两张是逻辑表也是虚表。有系统在内存中创建者两张表，不会存储在数据库中。而且两张表的都是只读的，只能读取数据而不能修改数据。这两张表的结果总是与被改触发器应用的表的结构相同。当触发器完成工作后，这两张表就会被删除。Inserted表的数据是插入或是修改后的数据，而deleted表的数据是更新前的或是删除的数据。
+
+create trigger tgr_name
+on table_name
+with encrypion –加密触发器
+    for update...
+as
+    Transact-SQL
+
+
+
+
+create trigger tgr_classes_insert
+on classes --班级表
+    for insert --插入触发
+as
+    --定义变量
+    declare @id int, @name varchar(20), @temp int;
+    --在inserted表中查询已经插入记录信息
+    select @id = id, @name = name from inserted;
+    set @name = @name + convert(varchar, @id);
+    set @temp = @id / 2;
+    insert into student values(@name, 18 + @id, @temp, @id);
+    print '添加学生成功！';
+
+
+create trigger tgr_classes_delete
+on classes
+    for delete --删除触发
+as
+    print '备份数据中……'; 
+       if (object_id('classesBackup', 'U') is not null)
+        --存在classesBackup，直接插入数据
+        insert into classesBackup select name, createDate from deleted;
+    else
+        --不存在classesBackup创建再插入
+        select * into classesBackup from deleted;
+    print '备份数据成功！';
+
+
+# instead of类型触发器 
+
+       instead of触发器表示并不执行其定义的操作（insert、update、delete）而仅是执行触发器本身的内容。 
+
+       创建语法 
+
+create trigger tgr_name
+on table_name
+with encryption
+    instead of update...
+as    T-SQL
+
+create trigger tgr_classes_inteadOf
+on classes
+    instead of delete/*, update, insert*/
+as
+    declare @id int, @name varchar(20);
+    --查询被删除的信息，病赋值
+    select @id = id, @name = name from deleted;
+    print 'id: ' + convert(varchar, @id) + ', name: ' + @name;
+    --先删除student的信息
+    delete student where cid = @id;
+    --再删除classes的信息
+    delete classes where id = @id;
+    print '删除[ id: ' + convert(varchar, @id) + ', name: ' + @name + ' ] 的信息成功！';
+
+--修改触发器
+--实质上，是将CREATE TRIGGER ... 修改为ALTER TRIGGER ...即可。
+ 
+--删除触发器
+DROP TRIGGER xxx
+ GO
+  
+
+
+create trigger tr_name
+ on table/view
+ {for | after | instead of } [update][,][insert][,][delete]
+ [with encryption]
+ as {batch | if update (col_name) [{and|or} update (col_name)] }
+  
+说明：
+1 tr_name ：触发器名称
+2 on table/view ：触发器所作用的表。一个触发器只能作用于一个表
+3 for 和after ：同义
+4 after 与instead of :sql 2000新增项目afrer 与instead of 的区别
+After
+在触发事件发生以后才被激活,只可以建立在表上
+Instead of
+代替了相应的触发事件而被执行,既可以建立在表上也可以建立在视图上
+5 insert、update、delete：激活触发器的三种操作，可以同时执行，也可选其一
+6 if update (col_name)：表明所作的操作对指定列是否有影响，有影响，则激活触发器。此外，因为delete 操作只对行有影响，
+ 所以如果使用delete操作就不能用这条语句了(虽然使用也不出错，但是不能激活触发器，没意义)。
+7 触发器执行时用到的两个特殊表：deleted ,inserted
+ deleted 和inserted 可以说是一种特殊的临时表，是在进行激活触发器时由系统自动生成的，其结构与触发器作用的表结构是一
+ 样的，只是存放 的数据有差异。
+ 
+只要所 on 的table执行相应的操作就执行触发器
+
+
+
+
+
+
+
