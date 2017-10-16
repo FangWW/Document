@@ -1,0 +1,3 @@
+<undeployment name="test" xmlns="http://xml.apache.org/axis/wsdd/">
+  <service name="urn:helloservice"/>
+</undeployment>

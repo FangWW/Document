@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<project name="Learning Java" default="compile" basedir=".">
+
+  <!-- Set up properties containing important project directories -->
+  <property name="source.root" value="src"/>
+  <property name="class.root" value="classes"/>
+
+  <!-- Set up the class path for compilation and execution -->
+  <path id="project.class.path">
+      <!-- Include our own classes, of course -->
+      <pathelement location="${class.root}" />
+  </path>
+
+
+ <!-- Compile the java source of the project -->
+  <target name="compile" description="Compiles all Java classes">
+    <javac srcdir="${source.root}"
+           destdir="${class.root}"
+           debug="on"
+           optimize="off"
+           deprecation="on">
+      <classpath refid="project.class.path"/>
+    </javac>
+  </target> 
+
+</project>

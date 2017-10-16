@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<title>Apache-Axis</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Apache-AXIS</h1>
+
+<p>Hello! <em>Welcome</em> to Apache-Axis.</p>
+
+<p>What do you want to do today?</p>
+
+<ul>
+    <li><a href="happyaxis.jsp">Validate</a>
+        the local installation's configuration<br>
+        <i>see below if this does not work.</i></li>
+    <li><a href="servlet/AxisServlet">View</a>
+        the list of deployed Web services</li>
+    <li><a href="EchoHeaders.jws?method=list">
+        Call a local endpoint</a> that list's the caller's
+        http headers (or see its
+        <a href="EchoHeaders.jws?wsdl">WSDL</a>). 
+    <li><a href="http://xml.apache.org/axis">Visit</a>
+        the Apache-Axis Home Page</li>
+    <li><a href="servlet/AdminServlet">Administer Axis</a> <br>
+        [disabled by default for security reasons]</li>
+    <li><a href="SOAPMonitor">SOAPMonitor</a> <br>
+        [disabled by default for security reasons]</li>
+</ul>
+To enable the disabled features, uncomment the appropriate declarations in 
+WEB-INF/web.xml in the webapplication and restart it.
+<h3>Validating Axis</h3>
+
+If the "happyaxis" validation page displays an exception instead of a 
+status page, the likely cause is that you have multiple XML parsers in 
+your classpath. Clean up your classpath by eliminating extraneous parsers. 
+
+<p>
+If you have problems getting Axis to work, consult the Axis 
+<a
+href="http://nagoya.apache.org/wiki/apachewiki.cgi?AxisProjectPages">Wiki</a>
+and then try the Axis user mailing list. 
+</body>
+</html>

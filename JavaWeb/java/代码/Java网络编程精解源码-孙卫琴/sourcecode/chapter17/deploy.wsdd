@@ -1,0 +1,17 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment name="test" xmlns="http://xml.apache.org/axis/wsdd/" 
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <service name="urn:helloservice" provider="java:RPC">
+    <parameter name="className" value="mypack.HelloService" />
+    <parameter name="allowedMethods" value="sayHello" />
+  </service>
+
+</deployment>

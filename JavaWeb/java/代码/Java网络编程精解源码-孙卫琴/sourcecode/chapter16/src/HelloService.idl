@@ -1,0 +1,6 @@
+module hello{
+  interface HelloService{
+    string sayHello();
+    oneway void shutdown();
+  };
+};
