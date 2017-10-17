@@ -1,5 +1,4 @@
 package proxy1;
-import java.lang.reflect.*;
 public class ProxyFactory {
   public static Object getProxy(final Class classType,final String host,final int port){
     InvocationHandler handler=new InvocationHandler(){
@@ -29,7 +28,7 @@ public class ProxyFactory {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

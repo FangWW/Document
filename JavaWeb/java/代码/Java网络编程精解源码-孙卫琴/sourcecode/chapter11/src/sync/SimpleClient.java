@@ -1,7 +1,4 @@
 package sync;
-import javax.naming.*;
-import java.rmi.*;
-
 public class SimpleClient {
   public static void main(String args[]) throws Exception{
     String url="rmi://localhost/";
@@ -13,14 +10,14 @@ public class SimpleClient {
   }
 }
 
-/**  Éú²úÕßÏß³Ì  */
+/**  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½  */
 class Producer extends Thread {
   private Stack theStack;
 
   public Producer (Stack s,String name) {
     super(name);
     theStack = s;
-    start();  //Æô¶¯×ÔÉíÉú²úÕßÏß³Ì
+    start();  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
   }
 
   public void run() {
@@ -40,14 +37,14 @@ class Producer extends Thread {
   }
 }
 
-/**  Ïû·ÑÕßÏß³Ì */
+/**  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ */
 class Consumer extends Thread {
   private Stack theStack;
 
   public Consumer (Stack s,String name) {
     super(name);
     theStack = s;  
-    start();  //Æô¶¯×ÔÉíÏû·ÑÕßÏß³Ì
+    start();  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
   }
 
   public void run() {
@@ -66,7 +63,7 @@ class Consumer extends Thread {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

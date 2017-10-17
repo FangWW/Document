@@ -1,4 +1,3 @@
-import java.sql.*;
 public class SavepointTester{
   public static void main(String args[])throws Exception{
     Connection con=new ConnectionProvider().getConnection();
@@ -15,7 +14,7 @@ public class SavepointTester{
         +"values(2,'Jack',1000)");
       con.commit();
     }catch(SQLException e){
-      con.rollback(); //³·ÏúÕû¸öÊÂÎñ
+      con.rollback(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }finally{
       con.close();
     }
@@ -24,7 +23,7 @@ public class SavepointTester{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

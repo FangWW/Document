@@ -1,12 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 /**
- * <p>Title: ¼ì²éºÐÑÝÊ¾</p>
- * <p>Description: Ñ¡Ôñ²»Í¬µÄÑ¡Ôñ¿òÏÔÊ¾²»Í¬µÄÍ¼Æ¬</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: Ñ¡ï¿½ï¿½Í¬ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Í¬ï¿½ï¿½Í¼Æ¬</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: CheckBoxDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class CheckBoxDemo extends JPanel
@@ -17,31 +14,31 @@ public class CheckBoxDemo extends JPanel
     JCheckBox teethButton;
 
     /*
-     * ÓÐËÄ¸ö¼ì²éºÐ£¬·Ö±ð¶ÔÓ¦ÏÂ°Í¡¢ÑÛ¾µ¡¢Í··¢ºÍÑÀ³Ý
-     * Í¼Æ¬²»ÊÇÆ´³öÀ´µÄ£¬¶øÊÇ¸ù¾Ý¼ì²éºÐÑ¡ÔñÆ´Ð´Í¼Æ¬ÎÄ¼þÃû
-     * Í¼Æ¬ÎÄ¼þÃûµÄ¶¨Òå¸ñÊ½Îª"geek-XXXX.gif"
-     * ÆäÖÐ XXXX ¸ù¾Ý¼ì²éºÐµÄ²»Í¬Ñ¡Ôñ£¬¶ø²»Í¬¡£ËüµÄ¸ñÊ½ÈçÏÂ£º
+     * ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½Ö±ï¿½ï¿½Ó¦ï¿½Â°Í¡ï¿½ï¿½Û¾ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Æ´Ð´Í¼Æ¬ï¿½Ä¼ï¿½ï¿½ï¿½
+     * Í¼Æ¬ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½Ê½Îª"geek-XXXX.gif"
+     * ï¿½ï¿½ï¿½ï¿½ XXXX ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ÐµÄ²ï¿½Í¬Ñ¡ï¿½ñ£¬¶ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½Â£ï¿½
 
-       ----             //Ã»ÓÐÑ¡Ôñ
+       ----             //Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½
 
-       c---             //Ò»¸öÑ¡Ôñ
+       c---             //Ò»ï¿½ï¿½Ñ¡ï¿½ï¿½
        -g--
        --h-
        ---t
 
-       cg--             //Á½¸öÑ¡Ôñ
+       cg--             //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
        c-h-
        c--t
        -gh-
        -g-t
        --ht
 
-       -ght             //Èý¸öÑ¡Ôñ
+       -ght             //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
        c-ht
        cg-t
        cgh-
 
-       cght             //ËùÓÐ¶¼Ñ¡
+       cght             //ï¿½ï¿½ï¿½Ð¶ï¿½Ñ¡
      */
 
     StringBuffer choices;
@@ -50,24 +47,24 @@ public class CheckBoxDemo extends JPanel
     public CheckBoxDemo() {
         super(new BorderLayout());
 
-        //´´½¨¼ì²éºÐ
-        chinButton = new JCheckBox("ÏÂ°Í(c)");
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        chinButton = new JCheckBox("ï¿½Â°ï¿½(c)");
         chinButton.setMnemonic(KeyEvent.VK_C);
         chinButton.setSelected(true);
 
-        glassesButton = new JCheckBox("ÑÛ¾µ(g)");
+        glassesButton = new JCheckBox("ï¿½Û¾ï¿½(g)");
         glassesButton.setMnemonic(KeyEvent.VK_G);
         glassesButton.setSelected(true);
 
-        hairButton = new JCheckBox("Í··¢(h)");
+        hairButton = new JCheckBox("Í·ï¿½ï¿½(h)");
         hairButton.setMnemonic(KeyEvent.VK_H);
         hairButton.setSelected(true);
 
-        teethButton = new JCheckBox("ÑÀ³Ý(t)");
+        teethButton = new JCheckBox("ï¿½ï¿½ï¿½ï¿½(t)");
         teethButton.setMnemonic(KeyEvent.VK_T);
         teethButton.setSelected(true);
 
-        //¸ø¼ì²éºÐÌí¼Ó¼àÌý
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½
         chinButton.addItemListener(this);
         glassesButton.addItemListener(this);
         hairButton.addItemListener(this);
@@ -75,12 +72,12 @@ public class CheckBoxDemo extends JPanel
 
         choices = new StringBuffer("cght");
 
-        //·ÅÖÃÒ»¸ö´øÍ¼Æ¬µÄ±êÇ©
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä±ï¿½Ç©
         pictureLabel = new JLabel();
         pictureLabel.setFont(pictureLabel.getFont().deriveFont(Font.ITALIC));
         updatePicture();
 
-        //½«¼ì²éºÐ·ÅÖÃµ½Ãæ°æÖÐ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JPanel checkPanel = new JPanel(new GridLayout(0, 1));
         checkPanel.add(chinButton);
         checkPanel.add(glassesButton);
@@ -92,9 +89,9 @@ public class CheckBoxDemo extends JPanel
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
     }
 /**
- *<br>·½·¨ËµÃ÷£º¼àÌý¼ì²éºÐÊÂ¼þ£¬Æ´´ÕÍ¼Æ¬µÄÎÄ¼þÃûXXXX²¿·Ö
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Æ´ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½XXXXï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void itemStateChanged(ItemEvent e) {
         int index = 0;
@@ -115,23 +112,23 @@ public class CheckBoxDemo extends JPanel
             c = 't';
         }
         
-        //È¡ÏûÑ¡ÔñÊÂ¼þ
+        //È¡ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½
         if (e.getStateChange() == ItemEvent.DESELECTED) {
             c = '-';
         }
 
-        //¸Ä±äÎÄ¼þÃû×ÖXXXX
+        //ï¿½Ä±ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½XXXX
         choices.setCharAt(index, c);
 
         updatePicture();
     }
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆÍ¼Æ¬
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected void updatePicture() {
-        //½«µÃµ½µÄÍ¼Æ¬ÖÆ³ÉÍ¼±ê
+        //ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Í¼Æ¬ï¿½Æ³ï¿½Í¼ï¿½ï¿½
         ImageIcon icon = createImageIcon(
                                     "images/geek/geek-"
                                     + choices.toString()
@@ -139,15 +136,15 @@ public class CheckBoxDemo extends JPanel
         pictureLabel.setIcon(icon);
         pictureLabel.setToolTipText(choices.toString());
         if (icon == null) {
-            pictureLabel.setText("Ã»ÓÐ·¢ÏÖÍ¼Æ¬");
+            pictureLabel.setText("Ã»ï¿½Ð·ï¿½ï¿½ï¿½Í¼Æ¬");
         } else {
             pictureLabel.setText(null);
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡Í¼±ê
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬Â·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Í¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIconï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = CheckBoxDemo.class.getResource(path);
@@ -159,23 +156,23 @@ public class CheckBoxDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String s[]) {
          JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨Ò»¸ö´°Ìå£¬
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½å£¬
         JFrame frame = new JFrame("CheckBoxDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ò»¸öÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         JComponent newContentPane = new CheckBoxDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

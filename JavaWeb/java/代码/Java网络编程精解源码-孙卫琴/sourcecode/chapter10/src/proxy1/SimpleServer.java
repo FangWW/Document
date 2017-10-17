@@ -1,8 +1,4 @@
 package proxy1;
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.lang.reflect.*;
 public class SimpleServer {
   private Map remoteObjects=new HashMap();
   
@@ -11,7 +7,7 @@ public class SimpleServer {
   } 
   public void service()throws Exception{
     ServerSocket serverSocket = new ServerSocket(8000);
-    System.out.println("·þÎñÆ÷Æô¶¯.");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
     while(true){
       Socket socket=serverSocket.accept();
       InputStream in=socket.getInputStream();
@@ -41,7 +37,7 @@ public class SimpleServer {
       Method method=classType.getMethod(methodName,paramTypes);  
       Object remoteObject=remoteObjects.get(className);
       if(remoteObject==null){
-        throw new Exception(className+"µÄÔ¶³Ì¶ÔÏó²»´æÔÚ");
+        throw new Exception(className+"ï¿½ï¿½Ô¶ï¿½Ì¶ï¿½ï¿½ó²»´ï¿½ï¿½ï¿½");
       }else{
         result=method.invoke(remoteObject,params);
       }
@@ -60,7 +56,7 @@ public class SimpleServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

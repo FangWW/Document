@@ -1,23 +1,19 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
 /**
- * <p>Title: »¬¶¯¸ËÑÝÊ¾</p>
- * <p>Description: Ê¹ÓÃ»¬¶¯¸Ë¿ØÖÆ¶¨Ê±Æ÷£¬À´¿ØÖÆÍ¼Æ¬µÄ²¥·ÅËÙ¶È</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: Ê¹ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Æ¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: SliderDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class SliderDemo extends JPanel
                         implements ActionListener,
                                    WindowListener,
                                    ChangeListener {
-    //ÉèÖÃÍ¼Æ¬µÄ²ÎÊý
-    static final int FPS_MIN = 0; //ÉèÖÃ×îÐ¡Öµ
-    static final int FPS_MAX = 30; //ÉèÖÃ×î´óÖµ
-    static final int FPS_INIT = 15;  //³õÊ¼ÊýÖµ
+    //ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä²ï¿½ï¿½ï¿½
+    static final int FPS_MIN = 0; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµ
+    static final int FPS_MAX = 30; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+    static final int FPS_INIT = 15;  //ï¿½ï¿½Ê¼ï¿½ï¿½Öµ
     int frameNumber = 0;
     int NUM_FRAMES = 14;
     ImageIcon[] images = new ImageIcon[NUM_FRAMES];
@@ -25,7 +21,7 @@ public class SliderDemo extends JPanel
     Timer timer;
     boolean frozen = false;
 
-    //Õâ¸ö±êÇ©ÓÃÀ´ÏÔÊ¾ÕâÖ»Ð¡¹·
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ö»Ð¡ï¿½ï¿½
     JLabel picture;
 
     public SliderDemo() {
@@ -33,47 +29,47 @@ public class SliderDemo extends JPanel
 
         delay = 1000 / FPS_INIT;
 
-        //ÐÅÏ¢ÌáÊ¾±êÇ©
-        JLabel sliderLabel = new JLabel("µ÷Õû»¬¶¯¸Ë£¬¸Ä±ä²¥·ÅËÙ¶È£¡", JLabel.CENTER);
+        //ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½Ç©
+        JLabel sliderLabel = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½Ä±ä²¥ï¿½ï¿½ï¿½Ù¶È£ï¿½", JLabel.CENTER);
         sliderLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        //´´½¨Ò»¸ö»¬¶¯¸Ë£¬¶¨ÒåÁË×îÐ¡ÖµºÍ×î´óÖµÒÔ¼°³õÊ¼Öµ
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ô¼ï¿½ï¿½ï¿½Ê¼Öµ
         JSlider framesPerSecond = new JSlider(JSlider.HORIZONTAL,
                                               FPS_MIN, FPS_MAX, FPS_INIT);
         framesPerSecond.addChangeListener(this);
 
-        //¶¨Òå»¬¶¯¸Ë²ÎÊý
-        framesPerSecond.setMajorTickSpacing(10);//Ã¿10¿Ì¶È±ê×¢Ò»´Î
-        framesPerSecond.setMinorTickSpacing(1);//×îÐ¡¿Ì¶ÈÎª1
-        framesPerSecond.setPaintTicks(true);//»æÖÆ»¬¶¯¸ËÉÏµÄ¿Ì¶È
-        framesPerSecond.setPaintLabels(true);//ÔÚ»¬¶¯¹ý³ÌÖÐ»æÖÆ»¬¶¯¿é
+        //ï¿½ï¿½ï¿½å»¬ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½
+        framesPerSecond.setMajorTickSpacing(10);//Ã¿10ï¿½Ì¶È±ï¿½×¢Ò»ï¿½ï¿½
+        framesPerSecond.setMinorTickSpacing(1);//ï¿½ï¿½Ð¡ï¿½Ì¶ï¿½Îª1
+        framesPerSecond.setPaintTicks(true);//ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ¿Ì¶ï¿½
+        framesPerSecond.setPaintLabels(true);//ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½
         framesPerSecond.setBorder(
                 BorderFactory.createEmptyBorder(0,0,10,0));
 
-        //¶¨ÒåÒ»¸öÓÃÀ´ÏÔÊ¾Í¼Æ¬µÄ±êÇ©
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼Æ¬ï¿½Ä±ï¿½Ç©
         picture = new JLabel();
         picture.setHorizontalAlignment(JLabel.CENTER);
         picture.setAlignmentX(Component.CENTER_ALIGNMENT);
         picture.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLoweredBevelBorder(),
                 BorderFactory.createEmptyBorder(10,10,10,10)));
-        updatePicture(0); //ÏÔÊ¾µÚÒ»ÕÅÍ¼
+        updatePicture(0); //ï¿½ï¿½Ê¾ï¿½ï¿½Ò»ï¿½ï¿½Í¼
 
-        //½«³ÉÔ±Ìí¼Óµ½Ãæ°åÉÏ
+        //ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         add(sliderLabel);
         add(framesPerSecond);
         add(picture);
         setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
-        //ÉèÖÃÒ»¸ö¶¨Ê±Æ÷À´´¥·¢Õâ¸öÊÂ¼þ
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         timer = new Timer(delay, this);
-        timer.setInitialDelay(delay * 7); //ÔÚÃ¿ÂÖÑ­»·Í£¶ÙÊ±¼ä
-        timer.setCoalesce(true);//ÉèÖÃÖØ¸´Ñ­»·
+        timer.setInitialDelay(delay * 7); //ï¿½ï¿½Ã¿ï¿½ï¿½Ñ­ï¿½ï¿½Í£ï¿½ï¿½Ê±ï¿½ï¿½
+        timer.setCoalesce(true);//ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½Ñ­ï¿½ï¿½
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÌí¼ÓÒ»¸ö´°Ìå¼àÌý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     void addWindowListener(Window w) {
         w.addWindowListener(this);
@@ -90,14 +86,14 @@ public class SliderDemo extends JPanel
     public void windowActivated(WindowEvent e) {}
     public void windowDeactivated(WindowEvent e) {}
 /**
- *<br>·½·¨ËµÃ÷£º¶Ô»¬¶¯¸Ë½øÐÐ¼àÌý
- *<br>ÊäÈë²ÎÊý£ºChangeEvent e »¬¶¯¸Ë±ä¶¯ÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ChangeEvent e ï¿½ï¿½ï¿½ï¿½ï¿½Ë±ä¶¯ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void stateChanged(ChangeEvent e) {
         JSlider source = (JSlider)e.getSource();
         if (!source.getValueIsAdjusting()) {
-            int fps = (int)source.getValue();//»ñµÃ»¬¶¯¸ËµÄÖµ
+            int fps = (int)source.getValue();//ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ëµï¿½Öµ
             if (fps == 0) {
                 if (!frozen) stopAnimation();
             } else {
@@ -109,37 +105,37 @@ public class SliderDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º¿ªÊ¼¶¯»­
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void startAnimation() {
         timer.start();
         frozen = false;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÍ£Ö¹¶¯»­
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void stopAnimation() {
         timer.stop();
         frozen = true;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ¼àÌý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
-        //¸Ä±äÍ¼Æ¬Ö¡
+        //ï¿½Ä±ï¿½Í¼Æ¬Ö¡
         if (frameNumber == (NUM_FRAMES - 1)) {
             frameNumber = 0;
         } else {
             frameNumber++;
         }
 
-        updatePicture(frameNumber); //ÏÔÊ¾ÏÂÕÅÍ¼
+        updatePicture(frameNumber); //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í¼
 
         if ( frameNumber==(NUM_FRAMES - 1)
           || frameNumber==(NUM_FRAMES/2 - 1) ) {
@@ -147,9 +143,9 @@ public class SliderDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆµ±Ç°Ö¡
- *<br>ÊäÈë²ÎÊý£ºint frameNum Í¼Æ¬Ö¡ÊýÊý
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ç°Ö¡
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int frameNum Í¼Æ¬Ö¡ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected void updatePicture(int frameNum) {
         if (images[frameNumber] == null) {
@@ -158,17 +154,17 @@ public class SliderDemo extends JPanel
                                                   + ".gif");
         }
 
-        //»æÖÆÍ¼Æ¬
+        //ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
         if (images[frameNumber] != null) {
             picture.setIcon(images[frameNumber]);
-        } else { //Èç¹ûÃ»ÓÐ·¢ÏÖÍ¼Æ¬
+        } else { //ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½ï¿½ï¿½Í¼Æ¬
             picture.setText("image #" + frameNumber + " not found");
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡Í¼Æ¬
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬Â·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼Æ¬¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Í¼Æ¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = SliderDemo.class.getResource(path);
@@ -180,23 +176,23 @@ public class SliderDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //¶¨Òå´°Ìå
+        //ï¿½ï¿½ï¿½å´°ï¿½ï¿½
         JFrame frame = new JFrame("SliderDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //ÊµÀý»¯±¾Àà
+        //Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         SliderDemo animator = new SliderDemo();
         animator.setOpaque(true);
         frame.setContentPane(animator);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
         animator.startAnimation(); 

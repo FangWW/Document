@@ -1,26 +1,22 @@
 package hello;
-import org.omg.CosNaming.*;
-import org.omg.CosNaming.NamingContextPackage.*;
-import org.omg.CORBA.*;
-
 public class HelloClient{
   static HelloService helloServiceImpl;
 
   public static void main(String args[]){
     try{
-      //´´½¨ºÍ³õÊ¼»¯ORB
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Ê¼ï¿½ï¿½ORB
       ORB orb = ORB.init(args, null);
 
-      //»ñµÃÃüÃû·þÎñµÄContext
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Context
       org.omg.CORBA.Object objRef = 
 	    orb.resolve_initial_references("NameService");
       NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
  
-      //»ñµÃÃûÎª¡°HelloService¡±µÄHelloService¶ÔÏóµÄÔ¶³ÌÒýÓÃ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½HelloServiceï¿½ï¿½ï¿½ï¿½HelloServiceï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       String name = "HelloService";
       helloServiceImpl = HelloServiceHelper.narrow(ncRef.resolve_str(name));
       
-      //µ÷ÓÃHelloService¶ÔÏóµÄÔ¶³Ì·½·¨
+      //ï¿½ï¿½ï¿½ï¿½HelloServiceï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ì·ï¿½ï¿½ï¿½
       System.out.println("Obtained a handle on server object: " + helloServiceImpl);
       System.out.println(helloServiceImpl.sayHello());
       helloServiceImpl.shutdown();
@@ -33,7 +29,7 @@ public class HelloClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

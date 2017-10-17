@@ -1,11 +1,9 @@
-import java.awt.*;
-import java.applet.*;
 /**
- * <p>Title: ´øÒõÓ°µÄÎÄ×Ö</p>
- * <p>Description: Ê¹ÓÃAppletºÍGraphics£¬ÊµÏÖÒ»¸öÎÄ×ÖµÄÒÆ¶¯¹ã¸æ¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½Appletï¿½ï¿½Graphicsï¿½ï¿½Êµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Æ¶ï¿½ï¿½ï¿½æ¡£</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ShadowText.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ShadowText extends Applet implements Runnable
@@ -22,37 +20,37 @@ public class ShadowText extends Applet implements Runnable
   private Font font;
   private int textcolor, backcolor, shadowcolor;
 /**
- *<br>·½·¨ËµÃ÷£ºApplet³õÊ¼»¯£¬ä¯ÀÀÆ÷¼ÓÔØAppletÊÇµ÷ÓÃ¡£
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Appletï¿½Çµï¿½ï¿½Ã¡ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void init()
   {    
     width = this.size().width;
     height = this.size().height;
-    //»ñÈ¡ÏÔÊ¾ÐÅÏ¢
+    //ï¿½ï¿½È¡ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
     String s = new String(getParameter("Text"));
     
     text = new String("Hello");
     if(s != null)
       text = s;
-    //»ñÈ¡×ÖÌå´óÐ¡
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
     FontSize = 30;
     s = new String(getParameter("FontSize"));
     if(s != null)
       FontSize = Integer.parseInt(s);
-    //»ñµÃ×ÖÌåÑÕÉ«
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
     s = getParameter("Fore");
     textcolor = (s==null) ? 0x000000 : Integer.parseInt(s, 16);
-    //»ñÈ¡±³¾°ÑÕÉ«
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
     s = getParameter("Back");
     backcolor = (s==null) ? 0x000000 : Integer.parseInt(s, 16);
-    //»ñÈ¡ÒõÓ°ÑÕÉ«
+    //ï¿½ï¿½È¡ï¿½ï¿½Ó°ï¿½ï¿½É«
     s = getParameter("shadow");
     shadowcolor = (s==null) ? 0x000000 : Integer.parseInt(s, 16);
-    //ÉèÖÃ±³¾°ÑÕÉ«
+    //ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½É«
     this.setBackground(new Color(backcolor));
-    //Ê¹ÓÃGraphics´´½¨Ò»ÕÅÍ¼Æ¬
+    //Ê¹ï¿½ï¿½Graphicsï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼Æ¬
     img = createImage(width+300,height);
     Graphics temp = img.getGraphics();
     temp.setColor(new Color(backcolor));
@@ -65,15 +63,15 @@ public class ShadowText extends Applet implements Runnable
     temp.setColor(new Color(textcolor));
     temp.drawString(text,10-3,height*3/4 - 3);
     
-    //¹¹Ôì¿É¿ØÖÆµÄÍ¼Æ¬¶ÔÏó          
+    //ï¿½ï¿½ï¿½ï¿½É¿ï¿½ï¿½Æµï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½          
     offI = createImage(width,height);
     offG = offI.getGraphics();
     
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖØÔØstart()·½·¨£¬Æô¶¯Ïß³Ì
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½start()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void start()
   {
@@ -84,9 +82,9 @@ public class ShadowText extends Applet implements Runnable
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÏß³ÌÌå¡£»æÖÆÆÁÄ»
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½å¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void run()
   {
@@ -110,18 +108,18 @@ public class ShadowText extends Applet implements Runnable
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºAppletg¸üÐÂ»­Ãæµ÷ÓÃµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£ºGraphics g »æÍ¼¶ÔÏó
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Appletgï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Graphics g ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void update(Graphics g)
   {
     paint(g);
   }
 /**
- *<br>·½·¨ËµÃ÷£ºApplet»æÖÆÆÁÄ»µÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Ä·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void paint(Graphics g)
   {

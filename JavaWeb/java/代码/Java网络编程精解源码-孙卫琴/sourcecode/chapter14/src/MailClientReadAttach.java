@@ -1,12 +1,9 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
-import java.util.*;
-import java.io.*;
 
 public class MailClientReadAttach extends MailClientSendAttach{
-  private String fromAddr="java_mail@citiz.net";  //·¢ËÍÕßµØÖ·
-  private String toAddr="java_mail@citiz.net"; //½ÓÊÕÕßµØÖ·
+  private String fromAddr="java_mail@citiz.net";  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
+  private String toAddr="java_mail@citiz.net"; //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
 
   public void receiveMessage()throws Exception{
     Folder folder=store.getFolder("inbox");
@@ -14,22 +11,22 @@ public class MailClientReadAttach extends MailClientSendAttach{
     System.out.println("You have "+folder.getMessageCount()+" messages in inbox.");
     System.out.println("You have "+folder.getUnreadMessageCount()+" unread messages in inbox.");
 
-    //¶ÁÓÊ¼þ
+    //ï¿½ï¿½ï¿½Ê¼ï¿½
     Message[] messages=folder.getMessages();
     for(int i=1;i<=messages.length;i++){
-      System.out.println("------µÚ"+i+"·âÓÊ¼þ-------");
-      //´¦ÀíÓÊ¼þ
+      System.out.println("------ï¿½ï¿½"+i+"ï¿½ï¿½ï¿½Ê¼ï¿½-------");
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
       processMessage(folder.getMessage(i));
       System.out.println();
     }
 
-    folder.close(false);  //¹Ø±ÕÓÊ¼þ¼Ð£¬µ«²»É¾³ýÓÊ¼þ¼ÐÖÐ±êÖ¾Îª¡°deleted¡±µÄÓÊ¼þ
+    folder.close(false);  //ï¿½Ø±ï¿½ï¿½Ê¼ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ö¾Îªï¿½ï¿½deletedï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
   }
 
   public static void processMessage(Message msg)throws Exception{
-    processMessageHeader(msg);  //´¦ÀíÓÊ¼þÍ·²¿
+    processMessageHeader(msg);  //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Í·ï¿½ï¿½
 
-    Object body=msg.getContent();  //»ñµÃÓÊ¼þÕýÎÄ
+    Object body=msg.getContent();  //ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
     if(body instanceof Multipart){ 
       processMultipart((Multipart)body);
     }else{
@@ -66,17 +63,17 @@ public class MailClientReadAttach extends MailClientSendAttach{
       fileName=File.createTempFile("attachment",".data").getName();
     }
     
-    if(fileName==null){ //Èç¹û²»ÊÇ¸½¼þ£¬´òÓ¡µ½¿ØÖÆÌ¨
+    if(fileName==null){ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨
       part.writeTo(System.out);
       System.out.println();
     }else{  
       File file=new File(fileName);
-      //´´½¨Ò»¸öÔÚÎÄ¼þÏµÍ³ÖÐ²»´æÔÚµÄÎÄ¼þ
+      //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ÏµÍ³ï¿½Ð²ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ä¼ï¿½
       for(int i=1;file.exists();i++){
         String newName=i+"_"+fileName;
         file=new File(newName);
       }
-      //°Ñ¸½¼þ±£´æµ½Ò»¸öÎÄ¼þÖÐ
+      //ï¿½Ñ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æµ½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
       OutputStream out=new BufferedOutputStream(new FileOutputStream(file));
       InputStream in=new BufferedInputStream(part.getInputStream());
       int b;
@@ -97,7 +94,7 @@ public class MailClientReadAttach extends MailClientSendAttach{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

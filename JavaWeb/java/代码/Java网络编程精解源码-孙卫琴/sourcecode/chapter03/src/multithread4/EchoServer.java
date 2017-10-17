@@ -1,21 +1,17 @@
 package multithread4;
-import java.io.*;
-import java.net.*;
-import java.util.concurrent.*;
-
 public class EchoServer {
   private int port=8000;
   private ServerSocket serverSocket;
-  private ExecutorService executorService; //Ïß³Ì³Ø
-  private final int POOL_SIZE=4;  //µ¥¸öCPUÊ±Ïß³Ì³ØÖÐ¹¤×÷Ïß³ÌµÄÊýÄ¿
+  private ExecutorService executorService; //ï¿½ß³Ì³ï¿½
+  private final int POOL_SIZE=4;  //ï¿½ï¿½ï¿½ï¿½CPUÊ±ï¿½ß³Ì³ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½Ä¿
   
-  private int portForShutdown=8001;  //ÓÃÓÚ¼àÌý¹Ø±Õ·þÎñÆ÷ÃüÁîµÄ¶Ë¿Ú
+  private int portForShutdown=8001;  //ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶Ë¿ï¿½
   private ServerSocket serverSocketForShutdown;
-  private boolean isShutdown=false; //·þÎñÆ÷ÊÇ·ñÒÑ¾­¹Ø±Õ
+  private boolean isShutdown=false; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½Ø±ï¿½
 
-  private Thread shutdownThread=new Thread(){   //¸ºÔð¹Ø±Õ·þÎñÆ÷µÄÏß³Ì
+  private Thread shutdownThread=new Thread(){   //ï¿½ï¿½ï¿½ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     public void start(){
-      this.setDaemon(true);  //ÉèÖÃÎªÊØ»¤Ïß³Ì£¨Ò²³ÆÎªºóÌ¨Ïß³Ì£©
+      this.setDaemon(true);  //ï¿½ï¿½ï¿½ï¿½Îªï¿½Ø»ï¿½ï¿½ß³Ì£ï¿½Ò²ï¿½ï¿½Îªï¿½ï¿½Ì¨ï¿½ß³Ì£ï¿½
       super.start();
     }
 
@@ -29,25 +25,25 @@ public class EchoServer {
           String command=br.readLine();
          if(command.equals("shutdown")){
             long beginTime=System.currentTimeMillis(); 
-            socketForShutdown.getOutputStream().write("·þÎñÆ÷ÕýÔÚ¹Ø±Õ\r\n".getBytes());
+            socketForShutdown.getOutputStream().write("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹Ø±ï¿½\r\n".getBytes());
             isShutdown=true;
-            //ÇëÇó¹Ø±ÕÏß³Ì³Ø
-//Ïß³Ì³Ø²»ÔÙ½ÓÊÕÐÂµÄÈÎÎñ£¬µ«ÊÇ»á¼ÌÐøÖ´ÐÐÍê¹¤×÷¶ÓÁÐÖÐÏÖÓÐµÄÈÎÎñ
+            //ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ß³Ì³ï¿½
+//ï¿½ß³Ì³Ø²ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ñ£¬µï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ê¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
             executorService.shutdown();  
             
-            //µÈ´ý¹Ø±ÕÏß³Ì³Ø£¬Ã¿´ÎµÈ´ýµÄ³¬Ê±Ê±¼äÎª30Ãë
+            //ï¿½È´ï¿½ï¿½Ø±ï¿½ï¿½ß³Ì³Ø£ï¿½Ã¿ï¿½ÎµÈ´ï¿½ï¿½Ä³ï¿½Ê±Ê±ï¿½ï¿½Îª30ï¿½ï¿½
             while(!executorService.isTerminated())
               executorService.awaitTermination(30,TimeUnit.SECONDS); 
             
-            serverSocket.close(); //¹Ø±ÕÓëEchoClient¿Í»§Í¨ÐÅµÄServerSocket 
+            serverSocket.close(); //ï¿½Ø±ï¿½ï¿½ï¿½EchoClientï¿½Í»ï¿½Í¨ï¿½Åµï¿½ServerSocket 
             long endTime=System.currentTimeMillis(); 
-            socketForShutdown.getOutputStream().write(("·þÎñÆ÷ÒÑ¾­¹Ø±Õ£¬"+
-                "¹Ø±Õ·þÎñÆ÷ÓÃÁË"+(endTime-beginTime)+"ºÁÃë\r\n").getBytes());
+            socketForShutdown.getOutputStream().write(("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ø±Õ£ï¿½"+
+                "ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+(endTime-beginTime)+"ï¿½ï¿½ï¿½ï¿½\r\n").getBytes());
             socketForShutdown.close();
             serverSocketForShutdown.close();
             
           }else{
-            socketForShutdown.getOutputStream().write("´íÎóµÄÃüÁî\r\n".getBytes());
+            socketForShutdown.getOutputStream().write("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n".getBytes());
             socketForShutdown.close();
           }  
         }catch (Exception e) {
@@ -59,34 +55,34 @@ public class EchoServer {
 
   public EchoServer() throws IOException {
     serverSocket = new ServerSocket(port);
-    serverSocket.setSoTimeout(60000); //Éè¶¨µÈ´ý¿Í»§Á¬½ÓµÄ³¬¹ýÊ±¼äÎª60Ãë
+    serverSocket.setSoTimeout(60000); //ï¿½è¶¨ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ÓµÄ³ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª60ï¿½ï¿½
     serverSocketForShutdown = new ServerSocket(portForShutdown);
 
-    //´´½¨Ïß³Ì³Ø
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì³ï¿½
     executorService= Executors.newFixedThreadPool( 
 	    Runtime.getRuntime().availableProcessors() * POOL_SIZE);
     
-    shutdownThread.start(); //Æô¶¯¸ºÔð¹Ø±Õ·þÎñÆ÷µÄÏß³Ì
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    shutdownThread.start(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
   
   public void service() {
     while (!isShutdown) {
       Socket socket=null;
       try {
-        socket = serverSocket.accept();  //¿ÉÄÜ»áÅ×³öSocketTimeoutExceptionºÍSocketException
-        socket.setSoTimeout(60000);  //°ÑµÈ´ý¿Í»§·¢ËÍÊý¾ÝµÄ³¬Ê±Ê±¼äÉèÎª60Ãë          
-        executorService.execute(new Handler(socket));  //¿ÉÄÜ»áÅ×³öRejectedExecutionException
+        socket = serverSocket.accept();  //ï¿½ï¿½ï¿½Ü»ï¿½ï¿½×³ï¿½SocketTimeoutExceptionï¿½ï¿½SocketException
+        socket.setSoTimeout(60000);  //ï¿½ÑµÈ´ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ³ï¿½Ê±Ê±ï¿½ï¿½ï¿½ï¿½Îª60ï¿½ï¿½          
+        executorService.execute(new Handler(socket));  //ï¿½ï¿½ï¿½Ü»ï¿½ï¿½×³ï¿½RejectedExecutionException
       }catch(SocketTimeoutException e){
-         //²»±Ø´¦ÀíµÈ´ý¿Í»§Á¬½ÓÊ±³öÏÖµÄ³¬Ê±Òì³£
+         //ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ÖµÄ³ï¿½Ê±ï¿½ì³£
       }catch(RejectedExecutionException e){
          try{
            if(socket!=null)socket.close();
          }catch(IOException x){}
          return;
       }catch(SocketException e) {
-         //Èç¹ûÊÇÓÉÓÚÔÚÖ´ÐÐserverSocket.accept()·½·¨Ê±£¬
-         //ServerSocket±»ShutdownThreadÏß³Ì¹Ø±Õ¶øµ¼ÖÂµÄÒì³££¬¾ÍÍË³öservice()·½·¨
+         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½serverSocket.accept()ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+         //ServerSocketï¿½ï¿½ShutdownThreadï¿½ß³Ì¹Ø±Õ¶ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½service()ï¿½ï¿½ï¿½ï¿½
          if(e.getMessage().indexOf("socket closed")!=-1)return;
        }catch(IOException e) {
          e.printStackTrace();
@@ -140,7 +136,7 @@ class Handler implements Runnable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,9 +1,4 @@
 package channel;
-import java.io.*;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
 public class EchoServer {
   private int port=8000;
   private DatagramChannel channel;
@@ -14,7 +9,7 @@ public class EchoServer {
     DatagramSocket socket=channel.socket();
     SocketAddress localAddr=new InetSocketAddress(8000);
     socket.bind(localAddr);
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public String echo(String msg) {
@@ -26,13 +21,13 @@ public class EchoServer {
     while (true) {
       try {
         receiveBuffer.clear(); 
-        InetSocketAddress client=(InetSocketAddress)channel.receive(receiveBuffer);  //½ÓÊÕÀ´×ÔÈÎÒâÒ»¸öEchoClientµÄÊý¾Ý±¨
+        InetSocketAddress client=(InetSocketAddress)channel.receive(receiveBuffer);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½EchoClientï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½
         receiveBuffer.flip();  
         String msg=Charset.forName("GBK").decode(receiveBuffer).toString();     
         System.out.println(client.getAddress() + ":" +client.getPort()
                             +">"+msg);
         
-        channel.send(ByteBuffer.wrap(echo(msg).getBytes()),client);  //¸øEchoClient»Ø¸´Ò»¸öÊý¾Ý±¨
+        channel.send(ByteBuffer.wrap(echo(msg).getBytes()),client);  //ï¿½ï¿½EchoClientï¿½Ø¸ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½
       }catch (IOException e) {
          e.printStackTrace();
       }
@@ -47,7 +42,7 @@ public class EchoServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,8 +1,6 @@
 package com.webapp.upload;
 
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -10,12 +8,14 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 import org.apache.struts.upload.MultipartRequestHandler;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
- * <p>Title: ÉÏ´«ÎÄ¼þ</p>
+ * <p>Title: ï¿½Ï´ï¿½ï¿½Ä¼ï¿½</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: UploadForm.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class UploadForm extends ActionForm
@@ -49,9 +49,9 @@ public class UploadForm extends ActionForm
         this.theFile = theFile;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊý¾ÝÐ£Ñé
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */ 
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request)
     {

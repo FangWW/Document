@@ -1,18 +1,16 @@
-import java.io.*;
-
 /**
- * <p>Title: ÎÄ¼þµÄ¶ÁÈ¡ºÍÐ´Èë£¨×Ö·û£©</p>
- * <p>Description: Ê¹ÓÃFileReaderºÍFileWriterÀà£¬²ÉÓÃ×Ö·ûÎÄ¼þ·ÃÎÊ·½Ê½²Ù×÷ÎÄ¼þ¡£</p>
+ * <p>Title: ï¿½Ä¼ï¿½ï¿½Ä¶ï¿½È¡ï¿½ï¿½Ð´ï¿½ë£¨ï¿½Ö·ï¿½ï¿½ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½FileReaderï¿½ï¿½FileWriterï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ê·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class CopyChar {
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) throws IOException {
         String sFile;
@@ -25,24 +23,24 @@ public class CopyChar {
           oFile = args[1];
         }
         try{
-          File inputFile   = new File(sFile);//¶¨Òå¶ÁÈ¡µÄÎÄ¼þÔ´
-          File outputFile = new File(oFile);//¶¨Òå¿½±´µÄÄ¿±êÎÄ¼þ
-          //¶¨ÒåÊäÈëÎÄ¼þÁ÷
+          File inputFile   = new File(sFile);//ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ä¼ï¿½Ô´
+          File outputFile = new File(oFile);//ï¿½ï¿½ï¿½å¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½
+          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
           FileReader in   = new FileReader(inputFile);
-          //½«ÎÄ¼þÊäÈëÁ÷¹¹Ôìµ½»º´æ
+          //ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìµ½ï¿½ï¿½ï¿½ï¿½
           BufferedReader bin = new BufferedReader(in);
-          //¶¨ÒåÊä³öÎÄ¼þÁ÷
+          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
           FileWriter out  = new FileWriter(outputFile);
-          //½«Êä³öÎÄ¼þÁ÷¹¹Ôìµ½»º´æ
+          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìµ½ï¿½ï¿½ï¿½ï¿½
           BufferedWriter bout = new BufferedWriter(out);
           int c;
-          //Ñ­»·¶ÁÈ¡ºÍÊäÈëÎÄ¼þ¡£
+          //Ñ­ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
           while ((c = bin.read()) != -1)
              bout.write(c);
           bin.close();
           bout.close();
         }catch(IOException e){
-          //ÎÄ¼þ²Ù×÷£¬²¶»ñIOÒì³£¡£
+          //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IOï¿½ì³£ï¿½ï¿½
           System.err.println(e);
         }
     }

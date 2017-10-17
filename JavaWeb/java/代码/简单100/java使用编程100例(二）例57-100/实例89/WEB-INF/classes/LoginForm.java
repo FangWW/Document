@@ -1,17 +1,16 @@
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
 
 /**
- * <p>Title: Ê¹ÓÃservletÊä³öHtmlÒ³Ãæ</p>
- * <p>Description: HelloWorld3ÊµÀýÊéÐ´htmlÒ³Ãæ£¬³õÊ¼»¯²ÎÊý¶¨ÒåÔÚweb.xmlÎÄ¼þÖÐ</p>
+ * <p>Title: Ê¹ï¿½ï¿½servletï¿½ï¿½ï¿½HtmlÒ³ï¿½ï¿½</p>
+ * <p>Description: HelloWorld3Êµï¿½ï¿½ï¿½ï¿½Ð´htmlÒ³ï¿½æ£¬ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½web.xmlï¿½Ä¼ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: LoginForm.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
-//±ØÐë¼Ì³ÐHttpServletÀà
+//ï¿½ï¿½ï¿½ï¿½Ì³ï¿½HttpServletï¿½ï¿½
 public class LoginForm extends HttpServlet {
   
   String defaultGreeting;
@@ -20,11 +19,11 @@ public class LoginForm extends HttpServlet {
   String ICO2;
   String ICO3;
   String ICO4;
-  //³õÊ¼»¯
+  //ï¿½ï¿½Ê¼ï¿½ï¿½
   public void init(ServletConfig config) throws ServletException
   {
     super.init(config);
-    //»ñÈ¡²ÎÊý
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
     if ((defaultName = getInitParameter("name")) == null)
       defaultName = "Java";
     if ((defaultGreeting = getInitParameter("message")) == null)
@@ -40,22 +39,22 @@ public class LoginForm extends HttpServlet {
   
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÉú³ÉHTMLÒ³Ãæ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTMLÒ³ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void service(HttpServletRequest req, HttpServletResponse res)
        throws IOException
   {
-    // Ê×ÏÈÉèÖÃÎÄµµÀàÐÍ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
     res.setContentType("text/html; charset=GB2312");
-    //½ÓÊÕ²ÎÊý
+    //ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½
     String name = req.getParameter("name");
     String pwd = req.getParameter("pass");
-    // »ñÈ¡Êä³öÁ÷
+    // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
     PrintWriter out = res.getWriter();
-    //ÊéÐ´Ò³Ãæ
-    out.println("<html><head><title>»¶Ó­½øÈëJavaÊÀ½ç</title></head>");
+    //ï¿½ï¿½Ð´Ò³ï¿½ï¿½
+    out.println("<html><head><title>ï¿½ï¿½Ó­ï¿½ï¿½ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½</title></head>");
     out.println("<body>");
     out.println("<h1>");
     out.println(defaultName + " " +  defaultGreeting + "!");
@@ -64,7 +63,7 @@ public class LoginForm extends HttpServlet {
     out.println("<img src=\""+ICO2+"\">");
     out.println("<img src=\""+ICO3+"\">");
     out.println("<img src=\""+ICO4+"\">");
-    out.println("<p>»¶Ó­"+name+"µÇÂ½£¡");
+    out.println("<p>ï¿½ï¿½Ó­"+name+"ï¿½ï¿½Â½ï¿½ï¿½");
     out.println("</body></html>");
   }
 }

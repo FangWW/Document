@@ -1,39 +1,36 @@
-import java.net.*;
-import java.io.*;
-import java.util.*;
 /**
- * <p>Title: ÍøÂçÁÄÌì°É</p>
- * <p>Description: Ê¹ÓÃÊý¾Ý±¨´´½¨µÄÁÄÌì·þÎñÆ÷</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ChatServer.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ChatServer{
- static final int PORT = 4000;//ÉèÖÃ·þÎñ¶Ë¿Ú
+ static final int PORT = 4000;//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½Ë¿ï¿½
  private byte[] buf = new byte[1000];
  private DatagramPacket dgp =new  DatagramPacket(buf,buf.length);
  private DatagramSocket sk;
 /**
- *<br>·½·¨ËµÃ÷£º·þÎñ¶Ë¹¹ÔìÆ÷£¬ÊµÏÖ¶ÁÈ¡ÓÃ»§ÊäÈëºÍÍ¨Ñ¶
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö¶ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Ñ¶
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public ChatServer(){
    try{
-     //ÊµÀý»¯Êý¾Ý±¨
+     //Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½
      sk = new DatagramSocket(PORT);
      System.out.println("Server start.................");
      while(true){
-       //µÈ´ý½ÓÊÕ
+       //ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½
        sk.receive(dgp);
-       //»ñÈ¡½ÓÊÕÐÅÏ¢
+       //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
        String rcvd = new String(dgp.getData(),0,dgp.getLength())+ 
           ", from address: "+ dgp.getAddress()+
           ", port: "+ dgp.getPort();
        System.out.println(rcvd);
        String outMessage ="";  
-        //¶ÁÈ¡ÊäÈë
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
          BufferedReader stdin  = new BufferedReader(new InputStreamReader(System.in));
          try{
            outMessage = stdin.readLine();
@@ -41,9 +38,9 @@ public class ChatServer{
            System.err.println("IO error!");
          }
        String outString = "Server say: "+ outMessage;
-       //¿½±´×Ö·ûµ½»º´æ
+       //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        byte[] buf = outString.getBytes();
-       //´ò°üÊý¾Ý£¬·¢ËÍ»ØÐÅÏ¢¡£
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
        DatagramPacket out = new DatagramPacket(buf,buf.length,dgp.getAddress(),dgp.getPort());
        sk.send(out);
      }

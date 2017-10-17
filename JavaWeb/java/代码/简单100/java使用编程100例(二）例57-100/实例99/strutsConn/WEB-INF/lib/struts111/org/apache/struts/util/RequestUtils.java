@@ -7,14 +7,6 @@
 
 package org.apache.struts.util;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.*;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
 import org.apache.commons.beanutils.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,6 +14,14 @@ import org.apache.struts.action.*;
 import org.apache.struts.config.*;
 import org.apache.struts.upload.MultipartRequestHandler;
 import org.apache.struts.upload.MultipartRequestWrapper;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 
 // Referenced classes of package org.apache.struts.util:
 //            MessageResources, ErrorMessages

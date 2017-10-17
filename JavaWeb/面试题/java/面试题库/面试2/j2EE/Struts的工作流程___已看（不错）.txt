@@ -1,0 +1,36 @@
+在web应用启动时就会加载初始化ActionServlet,ActionServlet从
+  struts-config.xml文件中读取配置信息,把它们存放到各种配置对象
+  ,例如:Action的映射信息存放在ActionMapping对象中.
+
+  -
+  当ActionServlet接收到一个客户请求时,将执行如下流程.
+    -(1)检索和用户请求匹配的ActionMapping实例,如果不存在,就返回请求
+     路径无效信息;
+
+    -(2)如果ActionForm实例不存在,就创建一个ActionForm对象,把客户提交的
+     表单数据保存到ActionForm对象中;
+
+    -(3)根据配置信息决定是否需要表单验证.如果需要验证,就调用ActionForm     的validate()方法;
+
+    -(4)如果ActionForm的validate()方法返回null或返回一个不包含               ActionMessage的ActuibErrors对象,就表示表单验证成功;
+   
+    -(5)ActionServlet根据ActionMapping所包含的映射信息决定将请求转发给
+     哪个Action,如果相应的Action实例不存在,就先创建这个实例,然后调用
+     Action的execute()方法;
+
+    -(6)Action的execute()方法返回一个ActionForward对象,ActionServlet再     把客户请求转发给ActionForward对象指向的JSP组件;
+
+    -(7)ActionForward对象指向JSP组件生成动态网页,返回给客户;
+
+
+在web服务器启动的时候就会自动加载ActionServlet，ActionServlet从struts-config.xml文件中读取配置信息，把他们存放到各种配置对象
+
+当ActionServlet接收到一个客户请求的时候，将执行如下流程：
+
+（1）检索和用户请求匹配的ActionMapping实例，如果不存在，就返回请求路径无效
+（2）如果ActionForm实例不存在，就创建一个ActionForm对象，把客户提交的表单数据保存到ActionForm中
+（3）根据配置信息决定是否需要表单验证，如果需要验证，就调用ActionForm的validate()方法；
+（4）在ActionForm（）的方法返回一个null或者一个不包含ActionMeassage的ActionError对象，就表示表单验证通过
+（5）ActionServlet根据ActionMapping所包含的映射信息决定将请求转发个哪个Action，如果相应的Action不存在，就创建这个实例，再调用其execute（）方法
+（6）Action的execute()方法返回一个ActionForward对象，ActionServlet再把客户请求转发给ActionForward对象所指的jsp组建
+（7）ActionForward对象指向jsp组件生成的动态网页，返回给客户

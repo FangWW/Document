@@ -1,26 +1,25 @@
 package cmp;
 import javax.ejb.*;
-import java.util.*;
 /**
- * <p>Title: CMPÖ÷½Ó¿Ú</p>
- * <p>Description: ±ØÐè¼Ì³Ðjavax.ejb.EJBLocalHome </p>
+ * <p>Title: CMPï¿½ï¿½ï¿½Ó¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Ì³ï¿½javax.ejb.EJBLocalHome </p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: TblUserInfoHome.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public interface TblUserInfoHome extends javax.ejb.EJBLocalHome {
-/*¹¦ÄÜËµÃ÷£º±ØÐèÊµÏÖµÄ·½·¨¡£ÓëTblUserInfoBeanÖÐejbCreate·½·¨¶ÔÓ¦¡£
-* @²ÎÊý£ºjava.lang.String name ÓÃ»§Ãû
-* @²ÎÊý£ºjava.lang.String phone ÁªÏµµç»°
-* @²ÎÊý£ºjava.lang.String home ¼ÒÍ¥×¡Ö·
-* @²ÎÊý£ºjava.sql.Date brithday ³öÉúÈÕÆÚ
-* @Òì³££ºCreateException ´´½¨EJB´íÎóÊ±Å×³ö
+/*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TblUserInfoBeanï¿½ï¿½ejbCreateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String name ï¿½Ã»ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String phone ï¿½ï¿½Ïµï¿½ç»°
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String home ï¿½ï¿½Í¥×¡Ö·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.sql.Date brithday ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @ï¿½ì³£ï¿½ï¿½CreateException ï¿½ï¿½ï¿½ï¿½EJBï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
 */
   public TblUserInfo create(java.lang.String name, java.lang.String phone, java.lang.String home, java.sql.Date brithday) throws CreateException;
-/*¹¦ÄÜËµÃ÷£º¸ù¾ÝÖ÷¼ü¶ÔÏó£¬·µ»ØÓÃ»§ÐÅÏ¢¡£
-* @²ÎÊý£ºjava.lang.Integer id Ö÷¼üid
-* @Òì³££ºFinderExceptionÖ÷¼ü²»´æÔÚÊ±Å×³ö
+/*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.Integer id ï¿½ï¿½ï¿½ï¿½id
+* @ï¿½ì³£ï¿½ï¿½FinderExceptionï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
 */
   public TblUserInfo findByPrimaryKey(java.lang.Integer id) throws FinderException;
   public TblUserInfo findUserId(String uaername) throws FinderException;

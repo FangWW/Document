@@ -7,10 +7,12 @@
 
 package org.apache.struts.action;
 
+import org.apache.struts.upload.MultipartRequestHandler;
+
 import java.io.Serializable;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import org.apache.struts.upload.MultipartRequestHandler;
 
 // Referenced classes of package org.apache.struts.action:
 //            ActionServletWrapper, ActionServlet, ActionMapping, ActionErrors

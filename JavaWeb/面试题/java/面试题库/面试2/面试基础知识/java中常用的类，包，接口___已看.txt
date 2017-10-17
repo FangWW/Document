@@ -1,0 +1,25 @@
+类 
+String
+Integer
+Long 
+File 
+Date
+Thread
+(java.lang.Thread
+Thread类的定义：public class Thread extends Object implements Runnable
+)
+===========================
+包 
+java.lang.*;
+java.io.*;
+java.util.*;
+java.sql.*; 
+java.math.*; 
+=======================
+接口:
+Comparable 
+Collection
+Map
+List
+Runnable(java.lang.Runnable 该接口的定义public interface Runnable)
+

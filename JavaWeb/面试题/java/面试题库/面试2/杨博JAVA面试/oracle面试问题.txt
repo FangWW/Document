@@ -1,0 +1,252 @@
+. Explain the difference between a hot backup and a cold backup and the benefits associated with each. 
+
+A hot backup is basically taking a backup of the database while it is still up and running and it must be in archive log mode. A cold backup is taking a backup of the database while it is shut down and does not require being in archive log mode. The benefit of taking a hot backup is that the database is still available for use while the backup is occurring and you can recover the database to any point in time. The benefit of taking a cold backup is that it is typically easier to administer the backup and recovery process. In addition, since you are taking cold backups the database does not require being in archive log mode and thus there will be a slight performance gain as the database is not cutting archive logs to disk. 
+
+2. You have just had to restore from backup and do not have any control files. How would you go about bringing up this database? 
+
+I would create a text based backup control file, stipulating where on disk all the data files where and then issue the recover command with the using backup control file clause. 
+
+3. How do you switch from an init.ora file to a spfile? 
+
+Issue the create spfile from pfile command. 
+
+4. Explain the difference between a data block, an extent and a segment. 
+
+A data block is the smallest unit of logical storage for a database object. As objects grow they take chunks of additional storage that are composed of contiguous data blocks. These groupings of contiguous data blocks are called extents. All the extents that an object takes when grouped together are considered the segment of the database object. 
+
+5. Give two examples of how you might determine the structure of the table DEPT. 
+
+Use the describe command or use the dbms_metadata.get_ddl package. 
+
+6. Where would you look for errors from the database engine? 
+
+In the alert log. 
+
+7. Compare and contrast TRUNCATE and DELETE for a table. 
+
+Both the truncate and delete command have the desired outcome of getting rid of all the rows in a table. The difference between the two is that the truncate command is a DDL operation and just moves the high water mark and produces a now rollback. The delete command, on the other hand, is a DML operation, which will produce a rollback and thus take longer to complete. 
+
+8. Give the reasoning behind using an index. 
+
+Faster access to data blocks in a table. 
+
+9. Give the two types of tables involved in producing a star schema and the type of data they hold. 
+
+Fact tables and dimension tables. A fact table contains measurements while dimension tables will contain data that will help describe the fact tables. 
+
+10. . What type of index should you use on a fact table? 
+
+A Bitmap index. 
+
+11. Give two examples of referential integrity constraints. 
+
+A primary key and a foreign key. 
+
+12. A table is classified as a parent table and you want to drop and re-create it. How would you do this without affecting the children tables? 
+
+Disable the foreign key constraint to the parent, drop the table, re-create the table, enable the foreign key constraint. 
+
+13. Explain the difference between ARCHIVELOG mode and NOARCHIVELOG mode and the benefits and disadvantages to each. 
+
+ARCHIVELOG mode is a mode that you can put the database in for creating a backup of all transactions that have occurred in the database so that you can recover to any point in time. NOARCHIVELOG mode is basically the absence of ARCHIVELOG mode and has the disadvantage of not being able to recover to any point in time. NOARCHIVELOG mode does have the advantage of not having to write transactions to an archive log and thus increases the performance of the database slightly. 
+
+14. What command would you use to create a backup control file? 
+
+Alter database backup control file to trace. 
+
+15. Give the stages of instance startup to a usable state where normal users may access it. 
+
+STARTUP NOMOUNT - Instance startup 
+
+STARTUP MOUNT - The database is mounted 
+
+STARTUP OPEN - The database is opened 
+
+16. What column differentiates the V$ views to the GV$ views and how? 
+
+The INST_ID column which indicates the instance in a RAC environment the information came from. 
+
+17. How would you go about generating an EXPLAIN plan? 
+
+Create a plan table with utlxplan.sql. 
+
+Use the explain plan set statement_id = 'tst1' into plan_table for a SQL statement 
+
+Look at the explain plan with utlxplp.sql or utlxpls.sql 
+
+18. How would you go about increasing the buffer cache hit ratio? 
+
+Use the buffer cache advisory over a given workload and then query the v$db_cache_advice table. If a change was necessary then I would use the alter system set db_cache_size command. 
+
+19. Explain an ORA-01555 
+
+You get this error when you get a snapshot too old within rollback. It can usually be solved by increasing the undo retention or increasing the size of rollbacks. You should also look at the logic involved in the application getting the error message. 
+
+20. Explain the difference between $ORACLE_HOME and $ORACLE_BASE. 
+
+ORACLE_BASE is the root directory for oracle. ORACLE_HOME located beneath ORACLE_BASE is where the oracle products reside. 
+
+
+21. How would you determine the time zone under which a database was operating? 
+
+select DBTIMEZONE from dual; 
+22. Explain the use of setting GLOBAL_NAMES equal to TRUE. 
+
+Setting GLOBAL_NAMES dictates how you might connect to a database. This variable is either TRUE or FALSE and if it is set to TRUE it enforces database links to have the same name as the remote database to which they are linking. 
+
+23. What command would you use to encrypt a PL/SQL application? 
+
+WRAP 
+
+24. Explain the difference between a FUNCTION, PROCEDURE and PACKAGE. 
+
+A function and procedure are the same in that they are intended to be a collection of PL/SQL code that carries a single task. While a procedure does not have to return any values to the calling application, a function will return a single value. A package on the other hand is a collection of functions and procedures that are grouped together based on their commonality to a business function or application. 
+
+25. Explain the use of table functions. 
+
+Table functions are designed to return a set of rows through PL/SQL logic but are intended to be used as a normal table or view in a SQL statement. They are also used to pipeline information in an ETL process. 
+
+26. Name three advisory statistics you can collect. 
+
+Buffer Cache Advice, Segment Level Statistics, & Timed Statistics 
+
+27. Where in the Oracle directory tree structure are audit traces placed? 
+
+In unix $ORACLE_HOME/rdbms/audit, in Windows the event viewer 
+
+28. Explain materialized views and how they are used. 
+
+Materialized views are objects that are reduced sets of information that have been summarized, grouped, or aggregated from base tables. They are typically used in data warehouse or decision support systems. 
+
+29. When a user process fails, what background process cleans up after it? 
+
+PMON 
+
+30. What background process refreshes materialized views? 
+
+The Job Queue Processes. 
+
+31. How would you determine what sessions are connected and what resources they are waiting for? 
+
+Use of V$SESSION and V$SESSION_WAIT 
+
+32. Describe what redo logs are. 
+
+Redo logs are logical and physical structures that are designed to hold all the changes made to a database and are intended to aid in the recovery of a database. 
+
+33. How would you force a log switch? 
+
+ALTER SYSTEM SWITCH LOGFILE; 
+34. Give two methods you could use to determine what DDL changes have been made. 
+
+You could use Logminer or Streams 
+
+35. What does coalescing a tablespace do? 
+
+Coalescing is only valid for dictionary-managed tablespaces and de-fragments space by combining neighboring free extents into large single extents. 
+
+36. What is the difference between a TEMPORARY tablespace and a PERMANENT tablespace? 
+
+A temporary tablespace is used for temporary objects such as sort structures while permanent tablespaces are used to store those objects meant to be used as the true objects of the database. 
+
+37. Name a tablespace automatically created when you create a database. 
+
+The SYSTEM tablespace. 
+
+38. When creating a user, what permissions must you grant to allow them to connect to the database? 
+
+Grant the CONNECT to the user. 
+
+39. How do you add a data file to a tablespace? 
+
+ALTER TABLESPACE <tablespace_name> ADD DATAFILE <datafile_name> SIZE <size> 
+40. How do you resize a data file? 
+
+ALTER DATABASE DATAFILE <datafile_name> RESIZE <new_size>; 
+41. What view would you use to look at the size of a data file? 
+
+DBA_DATA_FILES 
+42. What view would you use to determine free space in a tablespace? 
+
+DBA_FREE_SPACE 
+43. How would you determine who has added a row to a table? 
+
+Turn on fine grain auditing for the table. 
+
+44. How can you rebuild an index? 
+
+ALTER INDEX <index_name> REBUILD; 
+45. Explain what partitioning is and what its benefit is. 
+
+Partitioning is a method of taking large tables and indexes and splitting them into smaller, more manageable pieces. 
+
+46. You have just compiled a PL/SQL package but got errors, how would you view the errors? 
+
+SHOW ERRORS 
+47. How can you gather statistics on a table? 
+
+The ANALYZE command. 
+
+48. How can you enable a trace for a session? 
+
+Use the DBMS_SESSION.SET_SQL_TRACE or 
+
+Use ALTER SESSION SET SQL_TRACE = TRUE; 
+
+49. What is the difference between the SQL*Loader and IMPORT utilities? 
+
+These two Oracle utilities are used for loading data into the database. The difference is that the import utility relies on the data being produced by another Oracle utility EXPORT while the SQL*Loader utility allows data to be loaded that has been produced by other utilities from different data sources just so long as it conforms to ASCII formatted or delimited files. 
+
+50. Name two files used for network connection to a database. 
+
+TNSNAMES.ORA and SQLNET.ORA 
+
+Technical ¨C UNIX 
+Every DBA should know something about the operating system that the database will be running on. The questions here are related to UNIX but you should equally be able to answer questions related to common Windows environments. 
+
+1. How do you list the files in an UNIX directory while also showing hidden files? 
+
+ls -ltra 
+2. How do you execute a UNIX command in the background? 
+
+Use the "&" 
+
+3. What UNIX command will control the default file permissions when files are created? 
+
+Umask 
+
+4. Explain the read, write, and execute permissions on a UNIX directory. 
+
+Read allows you to see and list the directory contents. 
+
+Write allows you to create, edit and delete files and subdirectories in the directory. 
+
+Execute gives you the previous read/write permissions plus allows you to change into the directory and execute programs or shells from the directory. 
+
+5. the difference between a soft link and a hard link? 
+
+A symbolic (soft) linked file and the targeted file can be located on the same or different file system while for a hard link they must be located on the same file system. 
+
+6. Give the command to display space usage on the UNIX file system. 
+
+df -lk 
+7. Explain iostat, vmstat and netstat. 
+
+Iostat reports on terminal, disk and tape I/O activity. 
+
+Vmstat reports on virtual memory statistics for processes, disk, tape and CPU activity. 
+
+Netstat reports on the contents of network data structures. 
+
+8. How would you change all occurrences of a value using VI? 
+
+Use :%s/<old>/<new>/g 
+
+9. Give two UNIX kernel parameters that effect an Oracle install 
+
+SHMMAX & SHMMNI 
+
+10. Briefly, how do you install Oracle software on UNIX. 
+
+Basically, set up disks, kernel parameters, and run orainst.
+

@@ -1,18 +1,18 @@
-import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+
 /**
- * <p>Title: Ñ¡Ïî¿¨ÑÝÊ¾</p>
- * <p>Description: ÕâÀïÊÇÒ»¸öÑ¡Ïî¿¨ÑÝÊ¾£¬µã»÷²»Í¬µÄ¿¨Æ¬£¬ÏÔÊ¾µÄÄÚÈÝ²»Í¬</p>
+ * <p>Title: Ñ¡ï¿½î¿¨ï¿½ï¿½Ê¾</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½Ä¿ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½Í¬</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: TabbedPaneDemo.java</p>
- * @author ¶Å½­
+ *
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
-import java.awt.*;
-import java.awt.event.*;
 
 public class TabbedPaneDemo extends JPanel {
     public TabbedPaneDemo() {
@@ -21,30 +21,30 @@ public class TabbedPaneDemo extends JPanel {
         ImageIcon icon = createImageIcon("images/middle.gif");
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        Component panel1 = makeTextPanel("#µÚÒ»¸ö¿¨Æ¬#");
+        Component panel1 = makeTextPanel("#ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æ¬#");
         tabbedPane.addTab("One", icon, panel1,
-                          "µÚÒ»¸ö¿¨Æ¬ÌáÊ¾ÐÅÏ¢£¡");
+                          "ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½");
         tabbedPane.setSelectedIndex(0);
 
-        Component panel2 = makeTextPanel("##µÚ¶þ¸ö¿¨Æ¬##");
+        Component panel2 = makeTextPanel("##ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬##");
         tabbedPane.addTab("Two", icon, panel2,
-                          "µÚ¶þ¸ö¿¨Æ¬ÌáÊ¾ÐÅÏ¢£¡");
+                          "ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½");
 
-        Component panel3 = makeTextPanel("###µÚÈý¸ö¿¨Æ¬###");
+        Component panel3 = makeTextPanel("###ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬###");
         tabbedPane.addTab("Three", icon, panel3,
-                          "µÚÈý¸ö¿¨Æ¬ÌáÊ¾ÐÅÏ¢£¡");
+                          "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½");
 
-        Component panel4 = makeTextPanel("####µÚËÄ¸ö¿¨Æ¬####");
+        Component panel4 = makeTextPanel("####ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Æ¬####");
         tabbedPane.addTab("Four", icon, panel4,
-                          "µÚËÄ¸ö¿¨Æ¬ÌáÊ¾ÐÅÏ¢£¡");
+                          "ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½");
 
-        //½«Ñ¡Ïî¿¨Ìí¼Óµ½panlÖÐ
+        //ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½Óµï¿½panlï¿½ï¿½
         add(tabbedPane);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÌí¼ÓÐÅÏ¢µ½Ñ¡Ïî¿¨ÖÐ
- *<br>ÊäÈë²ÎÊý£ºString text ÏÔÊ¾µÄÐÅÏ¢ÄÚÈÝ
- *<br>·µ»ØÀàÐÍ£ºComponent ³ÉÔ±¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String text ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Component ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
  */
     protected Component makeTextPanel(String text) {
         JPanel panel = new JPanel(false);
@@ -55,9 +55,9 @@ public class TabbedPaneDemo extends JPanel {
         return panel;
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÍ¼Æ¬
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬µÄÂ·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼Æ¬¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬ï¿½ï¿½Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = TabbedPaneDemo.class.getResource(path);
@@ -70,16 +70,16 @@ public class TabbedPaneDemo extends JPanel {
     }
 
     public static void main(String[] args) {
-        //Ê¹ÓÃSwing´°ÌåÃèÊö
+        //Ê¹ï¿½ï¿½Swingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("TabbedPaneDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(new TabbedPaneDemo(),
                                  BorderLayout.CENTER);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.setSize(400, 200);
         frame.setVisible(true);
     }

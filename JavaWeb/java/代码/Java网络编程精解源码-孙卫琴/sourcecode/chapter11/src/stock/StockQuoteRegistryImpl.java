@@ -1,9 +1,5 @@
 package stock;
 
-import java.rmi.*;
-import java.rmi.server.*;
-import java.util.*;
-
 public class StockQuoteRegistryImpl extends UnicastRemoteObject
            implements StockQuoteRegistry, Runnable{
   protected HashSet<StockQuote> clients;
@@ -13,22 +9,22 @@ public class StockQuoteRegistryImpl extends UnicastRemoteObject
   }
 
   public void run(){
-    //´´½¨Ò»Ð©¹ÉÆ±´úºÅ
+    //ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½
     String[] symbols = new String[] {"SUNW", "MSFT", "DAL", "WUTK", "SAMY", "KATY"};
     Random rand = new Random();
 
     double values[] = new double[symbols.length];
 
-    //ÎªÃ¿¸ö¹ÉÆ±·ÖÅäÈÎÒâ¼Û¸ñ
+    //ÎªÃ¿ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¸ï¿½
     for(int i=0; i < values.length; i++){
       values[i] = 25.0 + rand.nextInt(100);
     }
 
     for (;;){
-      //Ëæ»úÈ¡³öÒ»¸ö¹ÉÆ±
+      //ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æ±
       int sym = rand.nextInt(symbols.length);
  
-      // ÐÞ¸Ä¹ÉÆ±µÄ¼Û¸ñ
+      // ï¿½Þ¸Ä¹ï¿½Æ±ï¿½Ä¼Û¸ï¿½
       int change = 100 - rand.nextInt(201);
       values[sym] = values[sym] + ((double) change) / 100.0;
       if (values[sym] < 0) values[sym] = 0.01;
@@ -39,7 +35,7 @@ public class StockQuoteRegistryImpl extends UnicastRemoteObject
         try{
           client.quote(symbols[sym], values[sym]);
         }catch (Exception exc){
-           System.out.println("É¾³ýÒ»¸öÎÞÐ§µÄ¿Í»§");
+           System.out.println("É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä¿Í»ï¿½");
            iter.remove();
         }
       }
@@ -49,19 +45,19 @@ public class StockQuoteRegistryImpl extends UnicastRemoteObject
   }
 
   public void registerClient(StockQuote client)throws RemoteException{
-    System.out.println("¼ÓÈëÒ»¸ö¿Í»§");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í»ï¿½");
     clients.add(client);
   }
 
   public void unregisterClient(StockQuote client)throws RemoteException{
-    System.out.println("É¾³ýÒ»¸ö¿Í»§");
+    System.out.println("É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í»ï¿½");
     clients.remove(client);
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

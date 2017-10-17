@@ -1,12 +1,8 @@
 package flight2;
 
-import java.rmi.*;
-import java.rmi.server.*;
-import java.util.*;
-
 public class FlightFactoryImpl extends UnicastRemoteObject
                                      implements FlightFactory{
-    protected Hashtable<String,Flight> flights; //´æ·ÅFlight¶ÔÏóµÄ»º´æ
+    protected Hashtable<String,Flight> flights; //ï¿½ï¿½ï¿½Flightï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
 
     public FlightFactoryImpl()throws RemoteException{
         flights = new Hashtable<String,Flight>();
@@ -24,7 +20,7 @@ public class FlightFactoryImpl extends UnicastRemoteObject
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

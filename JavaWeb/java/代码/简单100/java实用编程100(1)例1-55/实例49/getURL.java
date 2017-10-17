@@ -1,12 +1,9 @@
-import java.io.*;
-import java.net.*;
-
 /**
- * <p>Title: »ñÈ¡Ò»¸öURLÎÄ±¾</p>
- * <p>Description: Í¨¹ıÊ¹ÓÃURLÀà£¬¹¹ÔìÒ»¸öÊäÈë¶ÔÏó£¬²¢¶ÁÈ¡ÆäÄÚÈİ¡£</p>
+ * <p>Title: ï¿½ï¿½È¡Ò»ï¿½ï¿½URLï¿½Ä±ï¿½</p>
+ * <p>Description: Í¨ï¿½ï¿½Ê¹ï¿½ï¿½URLï¿½à£¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½İ¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: getURL.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class getURL{
@@ -19,20 +16,20 @@ public class getURL{
   new getURL(arg[0]);
  }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷
- *<br>ÊäÈë²ÎÊı£ºString URL »¥ÁªÍøµÄÍøÒ³µØÖ·¡£
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String URL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ö·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public getURL(String URL){
     try {
-        //´´½¨Ò»¸öURL¶ÔÏó
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½URLï¿½ï¿½ï¿½ï¿½
         URL url = new URL(URL);
     
-        //¶ÁÈ¡´Ó·şÎñÆ÷·µ»ØµÄËùÓĞÎÄ±¾
+        //ï¿½ï¿½È¡ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
         String str;
         while ((str = in.readLine()) != null) {
-            //ÕâÀï¶ÔÎÄ±¾³öÀ´
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
             display(str);
         }
         in.close();
@@ -41,9 +38,9 @@ public class getURL{
     }
  }
 /**
- *<br>·½·¨ËµÃ÷£ºÏÔÊ¾ĞÅÏ¢
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  private void display(String s){
    if(s!=null)

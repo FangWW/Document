@@ -1,16 +1,13 @@
-import java.io.*;
-import java.net.*;
-
 public class RandomPort{
   public static void main(String args[])throws IOException{
     ServerSocket serverSocket=new ServerSocket(0);
-    System.out.println("¼àÌýµÄ¶Ë¿ÚÎª:"+serverSocket.getLocalPort());
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶Ë¿ï¿½Îª:"+serverSocket.getLocalPort());
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

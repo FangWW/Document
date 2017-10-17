@@ -1,15 +1,12 @@
-import javax.swing.JOptionPane;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import java.beans.*; //property change stuff
-import java.awt.*;
-import java.awt.event.*;
 /**
- * <p>Title: ÓÃ»§×Ô¶¨Òå¶Ô»°¿ò</p>
- * <p>Description: ×Ô¼º¶¨Òå¶Ô»°¿òµÄ·ç¸ñ¡£ÕâÊ¹µÃ¶Ô»°¿òµÄÑùÊ½¸ü¼Ó¶àÑù»¯</p>
+ * <p>Title: ï¿½Ã»ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¶Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: CustomDialog.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 class CustomDialog extends JDialog
@@ -22,40 +19,40 @@ class CustomDialog extends JDialog
     private String magicWord;
     private JOptionPane optionPane;
 
-    private String btnString1 = "È·¶¨";
-    private String btnString2 = "È¡Ïû";
+    private String btnString1 = "È·ï¿½ï¿½";
+    private String btnString2 = "È¡ï¿½ï¿½";
 /**
- *<br>·½·¨ËµÃ÷£º·µ»ØÎÄ±¾ÊäÈë×Ö·û
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public String getValidatedText() {
         return typedText;
     }
 /**
- *<br>·½·¨ËµÃ÷£º´´½¨Ò»¸ö½á¹û¶Ô»°¿ò
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public CustomDialog(Frame aFrame, String aWord, DialogDemo parent) {
         super(aFrame, true);
         dd = parent;
         
         magicWord = aWord.toUpperCase();
-        setTitle("²âÊÔ");
+        setTitle("ï¿½ï¿½ï¿½ï¿½");
 
         textField = new JTextField(10);
 
-        //¶¨ÒåÏÔÊ¾ÐÅÏ¢
-        String msgString1 = "ÀîÏÈÉú£º jeckÊÇÄãµÄÓ¢ÎÄÃû×ÖÂð£¿";
-        String msgString2 = "(Õâ¸ö´ð°¸ÊÇ£º \"" + magicWord
-                              + "\"¡£)";
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+        String msgString1 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ jeckï¿½ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+        String msgString2 = "(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç£ï¿½ \"" + magicWord
+                              + "\"ï¿½ï¿½)";
         Object[] array = {msgString1, msgString2, textField};
 
 
         Object[] options = {btnString1, btnString2};
 
-        //´´½¨¶Ô»°¿ò
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
         optionPane = new JOptionPane(array,
                                     JOptionPane.QUESTION_MESSAGE,
                                     JOptionPane.YES_NO_OPTION,
@@ -63,10 +60,10 @@ class CustomDialog extends JDialog
                                     options,
                                     options[0]);
 
-        //ÏÔÊ¾¶Ô»°¿ò
+        //ï¿½ï¿½Ê¾ï¿½Ô»ï¿½ï¿½ï¿½
         setContentPane(optionPane);
 
-        //ÉèÖÃµ±¹Ø±Õ´°Ìå¶¯×÷Ä£Ê½
+        //ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ø±Õ´ï¿½ï¿½å¶¯ï¿½ï¿½Ä£Ê½
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent we) {
@@ -76,26 +73,26 @@ class CustomDialog extends JDialog
             }
         });
 
-        //Ê¹µÄÎÄ±¾ÊäÈëÓòµÃµ½½¹µã
+        //Ê¹ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
         addComponentListener(new ComponentAdapter() {
             public void componentShown(ComponentEvent ce) {
                 textField.requestFocusInWindow();
             }
         });
 
-        //¸øÎÄ±¾ÓòÌí¼Ó¼àÌýÊÂ¼þ
+        //ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         textField.addActionListener(this);
 
-        //¼àÌýÊäÈë¸Ä±ä
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
         optionPane.addPropertyChangeListener(this);
     }
 
-    /** ÎÄ±¾Óò¼àÌý´¦Àí */
+    /** ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     public void actionPerformed(ActionEvent e) {
         optionPane.setValue(btnString1);
     }
 
-    /** ¼àÌýÊäÈëµÄ¸Ä±ä */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸Ä±ï¿½ */
     public void propertyChange(PropertyChangeEvent e) {
         String prop = e.getPropertyName();
 
@@ -116,35 +113,35 @@ class CustomDialog extends JDialog
                     typedText = textField.getText();
                 String ucText = typedText.toUpperCase();
                 if (magicWord.equals(ucText)) {
-                    //Èç¹ûÊäÈëÓÐÐ§£¬ÔòÇå³þÎÄ±¾Óò²¢Òþ²Ø¶Ô»°¿ò
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶Ô»ï¿½ï¿½ï¿½
                     clearAndHide();
                 } else {
-                    //ÎÄ±¾ÊäÈëÎÞÐ§
+                    //ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
                     textField.selectAll();
                     JOptionPane.showMessageDialog(
                                     CustomDialog.this,
-                                    "¶Ô²»Æð, \"" + typedText + "\" "
-                                    + "ÊÇÎÞÐ§µÄÊäÈë¡£\n"
-                                    + "ÇëÖØÐÂÊäÈë"
+                                    "ï¿½Ô²ï¿½ï¿½ï¿½, \"" + typedText + "\" "
+                                    + "ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£\n"
+                                    + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
                                     + magicWord + ".",
-                                    "ÔÙÊÔÒ»´Î",
+                                    "ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½",
                                     JOptionPane.ERROR_MESSAGE);
                     typedText = null;
                     textField.requestFocusInWindow();
                 }
-            } else { //ÓÃ»§¹Ø±ÕÁË¶Ô»°¿ò»òµã»÷ÁË¡°cancel¡±
-                dd.setLabel("ºÃ°É£¡ "
-                         + "ÎÒÃÇ²»ÄÜÓ°ÏìÄãµÄ¾ö¶¨ÊäÈë"
-                         + magicWord + "¡£");
+            } else { //ï¿½Ã»ï¿½ï¿½Ø±ï¿½ï¿½Ë¶Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½cancelï¿½ï¿½
+                dd.setLabel("ï¿½Ã°É£ï¿½ "
+                         + "ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+                         + magicWord + "ï¿½ï¿½");
                 typedText = null;
                 clearAndHide();
             }
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÇå³þÎÄ±¾Óò²¢Òþ²Ø¶»°¿òò
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void clearAndHide() {
         textField.setText(null);

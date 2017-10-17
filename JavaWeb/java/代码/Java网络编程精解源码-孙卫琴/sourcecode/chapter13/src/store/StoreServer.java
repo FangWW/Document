@@ -1,6 +1,4 @@
 package store;
-import java.rmi.*;
-import javax.naming.*;
 public class StoreServer {
   public static void main( String args[] ){
     try{
@@ -10,7 +8,7 @@ public class StoreServer {
       StoreModel storeModel=new StoreModelImpl();
       Context namingContext=new InitialContext();
       namingContext.rebind( "rmi:storeModel", storeModel );
-      System.out.println( "·þÎñÆ÷×¢²áÁËStoreModel¶ÔÏó" );
+      System.out.println( "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½StoreModelï¿½ï¿½ï¿½ï¿½" );
     }catch( Exception e ){
       e.printStackTrace();
     }
@@ -19,7 +17,7 @@ public class StoreServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

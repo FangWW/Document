@@ -1,15 +1,10 @@
 /*
- * ÕâÊÇ·þÎñÆ÷µÄ¿ØÖÆ½çÃæ£¬¿ÉÒÔÍê³ÉÆô¶¯·þÎñÆ÷£¬¹Ø±Õ·þÎñÆ÷
- * ¿ÉÒÔ¹ÜÀíºÍ¼à¿ØÓÃ»§
+ * ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Æ½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ã»ï¿½
  */
 package com.qq.server.view;
 
-import javax.swing.*;
-
 import com.qq.server.model.MyQqServer;
-
-import java.awt.*;
-import java.awt.event.*;
 public class MyServerFrame extends JFrame implements ActionListener{
 
 	JPanel jp1;
@@ -22,16 +17,16 @@ public class MyServerFrame extends JFrame implements ActionListener{
 	
 	public MyServerFrame(){
 		jp1=new JPanel();
-		jb1=new JButton("Æô¶¯·þÎñÆ÷");
+		jb1=new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		jb1.addActionListener(this);
-		jb2=new JButton("¹Ø±Õ·þÎñÆ÷");
+		jb2=new JButton("ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½");
 		jb2.addActionListener(this);
 		jp1.add(jb1);
 		jp1.add(jb2);
 		
 		this.add(jp1);
 		this.setSize(500,500);
-		this.setTitle("É½Õ¯QQ·þÎñÆ÷2010");
+		this.setTitle("É½Õ¯QQï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2010");
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);

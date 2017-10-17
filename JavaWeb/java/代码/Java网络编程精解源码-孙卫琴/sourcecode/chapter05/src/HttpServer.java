@@ -1,10 +1,3 @@
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.net.*;
-import java.util.*;
-
 public class HttpServer{
   private Selector selector = null;
   private ServerSocketChannel serverSocketChannel = null;
@@ -17,7 +10,7 @@ public class HttpServer{
     serverSocketChannel.socket().setReuseAddress(true);
     serverSocketChannel.configureBlocking(false);
     serverSocketChannel.socket().bind(new InetSocketAddress(port));
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() throws IOException{
@@ -60,7 +53,7 @@ public class HttpServer{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

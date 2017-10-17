@@ -1,44 +1,43 @@
-import java.sql.*;
 public class DBTester1{
   public static void main(String args[])throws Exception{
     Connection con;
     Statement stmt;
     ResultSet rs;
-    //¼ÓÔØÇý¶¯Æ÷£¬ÏÂÃæµÄ´úÂëÎª¼ÓÔØMySQLÇý¶¯Æ÷
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½MySQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Class.forName("com.mysql.jdbc.Driver");
-    //×¢²áMySQLÇý¶¯Æ÷
+    //×¢ï¿½ï¿½MySQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-    //Á¬½Óµ½Êý¾Ý¿âµÄURL
+    //ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½URL
     String dbUrl =
 "jdbc:mysql://localhost:3306/STOREDB?useUnicode=true&characterEncoding=GB2312";
     String dbUser="dbuser";
     String dbPwd="1234";
-    //½¨Á¢Êý¾Ý¿âÁ¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
     con = java.sql.DriverManager.getConnection(dbUrl,dbUser,dbPwd);
-    //´´½¨Ò»¸öStatement¶ÔÏó
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Statementï¿½ï¿½ï¿½ï¿½
     stmt = con.createStatement();
     
-    //Ôö¼ÓÐÂ¼ÇÂ¼
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Â¼
 stmt.executeUpdate("insert into CUSTOMERS (NAME,AGE,ADDRESS) " 
-+"VALUES ('Ð¡Íõ',20,'ÉÏº£')");
++"VALUES ('Ð¡ï¿½ï¿½',20,'ï¿½Ïºï¿½')");
 
-    //²éÑ¯¼ÇÂ¼
+    //ï¿½ï¿½Ñ¯ï¿½ï¿½Â¼
     rs= stmt.executeQuery("SELECT ID,NAME,AGE,ADDRESS from CUSTOMERS");
-    //Êä³ö²éÑ¯½á¹û
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½
     while (rs.next()){
       long id = rs.getLong(1);
       String name = rs.getString(2);
       int age = rs.getInt(3);
       String address = rs.getString(4);
         
-      //´òÓ¡ËùÏÔÊ¾µÄÊý¾Ý
+      //ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       System.out.println("id="+id+",name="+name+",age="+age+",address="+address);
     }
  
-    //É¾³ýÐÂÔö¼ÓµÄ¼ÇÂ¼
-    stmt.executeUpdate("delete from CUSTOMERS where name='Ð¡Íõ'");
+    //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ¼ï¿½Â¼
+    stmt.executeUpdate("delete from CUSTOMERS where name='Ð¡ï¿½ï¿½'");
 
-    //ÊÍ·ÅÏà¹Ø×ÊÔ´
+    //ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
     rs.close();
     stmt.close();
     con.close();
@@ -47,7 +46,7 @@ stmt.executeUpdate("insert into CUSTOMERS (NAME,AGE,ADDRESS) "
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,42 +1,40 @@
 
 package cmp;
 import javax.ejb.*;
-import java.util.*;
-import java.rmi.*;
 /**
- * <p>Title: 会话EJB远程口程序</p>
- * <p>Description: 定义会话EJB使用方法</p>
+ * <p>Title: 锟结话EJB远锟教口筹拷锟斤拷</p>
+ * <p>Description: 锟斤拷锟斤拷峄癊JB使锟矫凤拷锟斤拷</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: userinfo.java</p>
- * @author 杜江
+ * @author 锟脚斤拷
  * @version 1.0
  */
 public interface userinfo extends javax.ejb.EJBObject {
-/*功能说明：插入一条数据记录 
-* @参数：java.lang.String name 用户名
-* @参数：java.lang.String phone 联系电话
-* @参数：java.lang.String home 家庭住址
-* @参数：java.sql.Date brithday 出生日期
-* @异常：RemoteException当系统通讯发生故障时抛出
+/*锟斤拷锟斤拷说锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷锟斤拷锟捷硷拷录 
+* @锟斤拷锟斤拷锟斤拷java.lang.String name 锟矫伙拷锟斤拷
+* @锟斤拷锟斤拷锟斤拷java.lang.String phone 锟斤拷系锟界话
+* @锟斤拷锟斤拷锟斤拷java.lang.String home 锟斤拷庭住址
+* @锟斤拷锟斤拷锟斤拷java.sql.Date brithday 锟斤拷锟斤拷锟斤拷锟斤拷
+* @锟届常锟斤拷RemoteException锟斤拷系统通讯锟斤拷锟斤拷锟斤拷锟斤拷时锟阶筹拷
 */
   public  void ist_info(java.lang.String name, java.lang.String phone, java.lang.String home, java.sql.Date brithday) throws RemoteException;
-/*功能说明：删除一条记录 
-* @参数：java.lang.Integer id 主键id
-* @异常：RemoteException当系统通讯发生故障时抛出
+/*锟斤拷锟斤拷说锟斤拷锟斤拷删锟斤拷一锟斤拷锟斤拷录 
+* @锟斤拷锟斤拷锟斤拷java.lang.Integer id 锟斤拷锟斤拷id
+* @锟届常锟斤拷RemoteException锟斤拷系统通讯锟斤拷锟斤拷锟斤拷锟斤拷时锟阶筹拷
 */
   public  int del_info(java.lang.Integer id) throws RemoteException;
-/*功能说明：修改一条记录 
-* @参数：java.lang.Integer id 主键id
-* @参数：java.lang.String name 用户名
-* @参数：java.lang.String phone 联系电话
-* @参数：java.lang.String home 家庭住址
-* @参数：java.sql.Date brithday 出生日期
-* @异常：RemoteException当系统通讯发生故障时抛出
+/*锟斤拷锟斤拷说锟斤拷锟斤拷锟睫革拷一锟斤拷锟斤拷录 
+* @锟斤拷锟斤拷锟斤拷java.lang.Integer id 锟斤拷锟斤拷id
+* @锟斤拷锟斤拷锟斤拷java.lang.String name 锟矫伙拷锟斤拷
+* @锟斤拷锟斤拷锟斤拷java.lang.String phone 锟斤拷系锟界话
+* @锟斤拷锟斤拷锟斤拷java.lang.String home 锟斤拷庭住址
+* @锟斤拷锟斤拷锟斤拷java.sql.Date brithday 锟斤拷锟斤拷锟斤拷锟斤拷
+* @锟届常锟斤拷RemoteException锟斤拷系统通讯锟斤拷锟斤拷锟斤拷锟斤拷时锟阶筹拷
 */
   public  int up_info(java.lang.Integer id, java.lang.String name, java.lang.String phone, java.lang.String home, java.sql.Date brithday) throws RemoteException;
-/*功能说明：查询一条记录 
-* @参数：java.lang.Integer id 主键id
-* @异常：RemoteException当系统通讯发生故障时抛出
+/*锟斤拷锟斤拷说锟斤拷锟斤拷锟斤拷询一锟斤拷锟斤拷录 
+* @锟斤拷锟斤拷锟斤拷java.lang.Integer id 锟斤拷锟斤拷id
+* @锟届常锟斤拷RemoteException锟斤拷系统通讯锟斤拷锟斤拷锟斤拷锟斤拷时锟阶筹拷
 */
   public  Vector find_id(java.lang.Integer id) throws RemoteException;
   public  int findUser(String username) throws RemoteException;

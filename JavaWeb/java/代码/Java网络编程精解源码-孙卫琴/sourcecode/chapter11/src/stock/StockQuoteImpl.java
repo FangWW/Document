@@ -1,9 +1,6 @@
  
 package stock;
 
-import java.rmi.*;
-import java.rmi.server.*;
-
 public class StockQuoteImpl extends UnicastRemoteObject
                                       implements StockQuote{
   public StockQuoteImpl()throws RemoteException{}
@@ -16,7 +13,7 @@ public class StockQuoteImpl extends UnicastRemoteObject
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

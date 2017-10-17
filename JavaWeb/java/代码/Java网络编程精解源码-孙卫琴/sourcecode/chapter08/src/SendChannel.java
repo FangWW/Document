@@ -1,7 +1,3 @@
-import java.io.*;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
 public class SendChannel {
   public static void main(String args[])throws Exception {
     DatagramChannel channel= DatagramChannel.open();
@@ -12,9 +8,9 @@ public class SendChannel {
     while(true){
       ByteBuffer buffer=ByteBuffer.allocate(1024);
       buffer.clear();
-      System.out.println("»º³åÇøµÄÊ£Óà×Ö½ÚÎª"+buffer.remaining());
+      System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½Ö½ï¿½Îª"+buffer.remaining());
       int n=channel.send(buffer,remoteAddr);
-      System.out.println("·¢ËÍµÄ×Ö½ÚÊýÎª"+n);
+      System.out.println("ï¿½ï¿½ï¿½Íµï¿½ï¿½Ö½ï¿½ï¿½ï¿½Îª"+n);
       Thread.sleep(500);
     }
   }
@@ -23,7 +19,7 @@ public class SendChannel {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

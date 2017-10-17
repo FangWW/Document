@@ -1,22 +1,18 @@
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-
 import java.net.URL;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JToolBar;
 /**
- * <p>Title: ¹¤¾ßÀ¸ÑÝÊ¾</p>
- * <p>Description: Ìá¹©Ò»¸ö¹¤¾ßÀ¸£¬°üÀ¨¡°´ò¿ª¡±¡¢¡°±£´æ¡±¡¢¡°ËÑË÷¡±¹¤¾ß°´Å¥</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: ï¿½á¹©Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¿ª¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¡±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß°ï¿½Å¥</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ToolBarDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ToolBarDemo extends JPanel
@@ -27,79 +23,79 @@ public class ToolBarDemo extends JPanel
     static final private String SAVE = "SAVE";
     static final private String SEARCH = "SEARCH";
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public ToolBarDemo() {
         super(new BorderLayout());
 
-        //´´½¨¹¤¾ßÀ¸
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JToolBar toolBar = new JToolBar();
         addButtons(toolBar);
 
-        //´´½¨Ò»¸öÎÄ±¾Óò£¬ÓÃÀ´Êä³öÒ»Ð©ÐÅÏ¢
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½Ï¢
         textArea = new JTextArea(15, 30);
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
 
-        //°²·Å³ÉÔ±
+        //ï¿½ï¿½ï¿½Å³ï¿½Ô±
         setPreferredSize(new Dimension(450, 110));
         add(toolBar, BorderLayout.PAGE_START);
         add(scrollPane, BorderLayout.CENTER);
     }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹½¨¹¤¾ßÀ¸
- *<br>ÊäÈë²ÎÊý£ºJToolBar toolBar ¹¤¾ßÌõ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JToolBar toolBar ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected void addButtons(JToolBar toolBar) {
         JButton button = null;
 
-        //µÚÒ»¸ö°´Å¥£¬¡°´ò¿ª¡±
+        //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ò¿ª¡ï¿½
         button = makeNavigationButton("Open16", OPEN,
-                                      "´ò¿ªÒ»¸öÎÄ¼þ£¡",
-                                      "´ò¿ª");
+                                      "ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½",
+                                      "ï¿½ï¿½");
         toolBar.add(button);
 
-        //µÚ¶þ¸ö°´Å¥£¬¡°±£´æ¡±
+        //ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¡±
         button = makeNavigationButton("Save16", SAVE,
-                                      "±£´æµ±Ç°ÎÄ¼þ£¡",
-                                      "±£´æ");
+                                      "ï¿½ï¿½ï¿½æµ±Ç°ï¿½Ä¼ï¿½ï¿½ï¿½",
+                                      "ï¿½ï¿½ï¿½ï¿½");
         toolBar.add(button);
 
-        //µÚÈý¸ö°´Å¥£¬¡°ËÑË÷¡±
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         button = makeNavigationButton("Search16", SEARCH,
-                                      "ËÑË÷ÎÄ¼þÖÐµÄ×Ö·û£¡",
-                                      "ËÑË÷");
+                                      "ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½ï¿½Ö·ï¿½ï¿½ï¿½",
+                                      "ï¿½ï¿½ï¿½ï¿½");
         toolBar.add(button);
     }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹Ôì¹¤¾ßÀ¸ÉÏµÄ°´Å¥
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ°ï¿½Å¥
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected JButton makeNavigationButton(String imageName,
                                            String actionCommand,
                                            String toolTipText,
                                            String altText) {
-        //ËÑË÷Í¼Æ¬
+        //ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
         String imgLocation = "images/"
                              + imageName
                              + ".gif";
         URL imageURL = ToolBarDemo.class.getResource(imgLocation);
 
-        //³õÊ¼»¯¹¤¾ß°´Å¥
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ß°ï¿½Å¥
         JButton button = new JButton();
-        //ÉèÖÃ°´Å¥µÄÃüÁî
+        //ï¿½ï¿½ï¿½Ã°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         button.setActionCommand(actionCommand);
-        //ÉèÖÃÌáÊ¾ÐÅÏ¢
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
         button.setToolTipText(toolTipText);
         button.addActionListener(this);
         
-        if (imageURL != null) {                      //ÕÒµ½Í¼Ïñ
+        if (imageURL != null) {                      //ï¿½Òµï¿½Í¼ï¿½ï¿½
             button.setIcon(new ImageIcon(imageURL));
-        } else {                                     //Ã»ÓÐÍ¼Ïñ
+        } else {                                     //Ã»ï¿½ï¿½Í¼ï¿½ï¿½
             button.setText(altText);
             System.err.println("Resource not found: "
                                + imgLocation);
@@ -108,23 +104,23 @@ public class ToolBarDemo extends JPanel
         return button;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ¼àÌý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         String description = null;
 
-        if (OPEN.equals(cmd)) { //µã»÷µÚÒ»¸ö°´Å¥
-            description = "´ò¿ªÒ»¸öÎÄ¼þ²Ù×÷£¡";
-        } else if (SAVE.equals(cmd)) { //µã»÷µÚ¶þ¸ö°´Å¥
-            description = "±£´æÎÄ¼þ²Ù×÷";
-        } else if (SEARCH.equals(cmd)) { //µã»÷µÚÈý¸ö°´Å¥
-            description = "ËÑË÷×Ö·û²Ù×÷";
+        if (OPEN.equals(cmd)) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Å¥
+            description = "ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+        } else if (SAVE.equals(cmd)) { //ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Å¥
+            description = "ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½";
+        } else if (SEARCH.equals(cmd)) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥
+            description = "ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½";
         }
 
-        displayResult("Èç¹ûÕâÀïÊÇÕæÕýµÄ³ÌÐò£¬Äã½«½øÈë£º "
+        displayResult("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ã½«ï¿½ï¿½ï¿½ë£º "
                         + description);
     }
 
@@ -135,16 +131,16 @@ public class ToolBarDemo extends JPanel
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //¶¨Òå´°Ìå
+        //ï¿½ï¿½ï¿½å´°ï¿½ï¿½
         JFrame frame = new JFrame("ToolBarDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //¶¨ÒåÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ToolBarDemo newContentPane = new ToolBarDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

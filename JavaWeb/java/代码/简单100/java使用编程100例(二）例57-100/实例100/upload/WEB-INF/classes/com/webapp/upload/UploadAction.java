@@ -1,6 +1,12 @@
 package com.webapp.upload;
 
 
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,18 +16,12 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.upload.FormFile;
 /**
- * <p>Title: ÉÏ´«ÎÄ¼þ</p>
+ * <p>Title: ï¿½Ï´ï¿½ï¿½Ä¼ï¿½</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: UploadAction.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class UploadAction extends Action
@@ -36,31 +36,31 @@ public class UploadAction extends Action
 
             UploadForm theForm = (UploadForm) form;
 
-            //»ñÈ¡textÊý¾Ý
+            //ï¿½ï¿½È¡textï¿½ï¿½ï¿½ï¿½
             String text = theForm.getTheText();
 
-            //»ñÈ¡´«µÝµÄ²ÎÊý
+            //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½
             String queryValue = theForm.getQueryParam();
 
-            //»ñµÃÉÏ´«µÄÎÄ¼þ
+            //ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
             FormFile file = theForm.getTheFile();
-            //»ñÈ¡ÉÏ´«ÎÄ¼þÃû
+            //ï¿½ï¿½È¡ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
             String fileName= file.getFileName();
-            //»ñÈ¡ÉÏ´«ÎÄ¼þÀàÐÍ
+            //ï¿½ï¿½È¡ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
             String contentType = file.getContentType();
          
-            //»ñÈ¡ÉÏ´«ÎÄ¼þ³ß´ç´óÐ¡
+            //ï¿½ï¿½È¡ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ß´ï¿½ï¿½Ð¡
             String size = (file.getFileSize() + " bytes");
 
             String data = null;
 
             try {
-            	//»ñÈ¡±£´æÎÄ¼þÂ·¾¶£¬ÔÚweb.xmlÖÐÅäÖÃ
+            	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½web.xmlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             	String path = servlet.getServletConfig().getInitParameter("uploadpath");
-                //»ñÈ¡ÎÄ¼þÊý¾Ý
+                //ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 InputStream stream = file.getInputStream();
-                //Ð´ÈëÖ¸¶¨µÄÎÄ¼þ
+                //Ð´ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
                  OutputStream bos = new FileOutputStream(path+fileName);
                  int bytesRead = 0;
                  byte[] buffer = new byte[8192];
@@ -70,7 +70,7 @@ public class UploadAction extends Action
                  bos.close();
                  data =  path+fileName ;
                 
-                //¹Ø±ÕÁ÷
+                //ï¿½Ø±ï¿½ï¿½ï¿½
                 stream.close();
             }
             catch (FileNotFoundException fnfe) {
@@ -80,7 +80,7 @@ public class UploadAction extends Action
                 return null;
             }
 
-            //½«Êý¾Ý±£´æµ½requestÒÔÌá¹©display.jspÎÄ¼þÊµÓÃ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½æµ½requestï¿½ï¿½ï¿½á¹©display.jspï¿½Ä¼ï¿½Êµï¿½ï¿½
             request.setAttribute("text", text);
             request.setAttribute("queryValue", queryValue);
             request.setAttribute("fileName", fileName);
@@ -88,10 +88,10 @@ public class UploadAction extends Action
             request.setAttribute("size", size);
             request.setAttribute("data", data);
 
-            //Éú³ÉÁÙÊ±ÎÄ¼þ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä¼ï¿½
             file.destroy();
 
-            //ÏÔÊ¾display.jsp
+            //ï¿½ï¿½Ê¾display.jsp
             return mapping.findForward("display");
         }
 

@@ -1,19 +1,18 @@
-import java.util.*;
 /**
- * <p>Title: Ê¸Á¿²Ù×÷</p>
- * <p>Description: ÑİÊ¾Ò»¸öÊ¸Á¿£¨Vector£©µÄ»ù±¾²Ù×÷</p>
+ * <p>Title: Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾Ò»ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½Vectorï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: operateVector.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class operateVector 
 {
 /*
-*<br>·½·¨ËµÃ÷£ºÉú³ÉÒ»¸ö4*4µÄ¶şÎ¬Vector£¬¹©Ê¹ÓÃ¡£
-*<br>ÊäÈë²ÎÊı£º
-*<br>Êä³ö±äÁ¿£ºVector
-*<br>ÆäËüËµÃ÷£º
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½4*4ï¿½Ä¶ï¿½Î¬Vectorï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
 */
 	public Vector buildVector(){
 	   Vector vTemps = new Vector();
@@ -27,16 +26,16 @@ public class operateVector
 	   return vTemps;
 	}
 /*
-*<br>·½·¨ËµÃ÷£º²åÈëÊı¾İ
-*<br>ÊäÈë²ÎÊı£ºVector vTemp ´ı²åÈëµÄÊı¾İ¶ÔÏó
-*<br>ÊäÈë²ÎÊı£ºint iTemp ²åÈëÊı¾İµÄÎ»ÖÃ
-*<br>ÊäÈë²ÎÊı£ºObject oTemp ²åÈëÊı¾İÖµ
-*<br>Êä³ö±äÁ¿£ºVector ½á¹û
-*<br>ÆäËüËµÃ÷£ºÈç¹û²åÈëÎ»ÖÃ³¬³öÊµÀıÊµ¼ÊµÄÎ»ÖÃ½«·µ»Ønull
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector vTemp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¶ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int iTemp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½Î»ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Object oTemp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã³ï¿½ï¿½ï¿½Êµï¿½ï¿½Êµï¿½Êµï¿½Î»ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½null
 */
 	public Vector insert(Vector vTemp,int iTemp,Object oTemp){
 	    if(iTemp>vTemp.size()){
-			print("Êı¾İ³¬½ç!");
+			print("ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½!");
 			return null;
 		}else{
 			 vTemp.insertElementAt(oTemp,iTemp);
@@ -44,15 +43,15 @@ public class operateVector
 		return vTemp;
 	}
 /*
-*<br>·½·¨ËµÃ÷£ºÒÆ³ıÊı¾İ
-*<br>ÊäÈë²ÎÊı£ºVector vTemp ´ıÉ¾³ıÊ¸Á¿¶ÔÏó
-*<br>ÊäÈë²ÎÊı£ºint iTemp É¾³ıÊı¾İµÄÎ»ÖÃ
-*<br>Êä³ö±äÁ¿£ºVector
-*<br>ÆäËüËµÃ÷£ºÈç¹ûÉ¾³ı³¬½çµÄÊı¾İ£¬½«·µ»Ønull
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector vTemp ï¿½ï¿½É¾ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int iTemp É¾ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½Î»ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½null
 */
 	public Vector delete(Vector vTemp,int iTemp){
 	    if(iTemp>vTemp.size()){
-			print("Êı¾İ³¬½ç!");
+			print("ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½!");
 			return null;
 		}else{
 			 vTemp.removeElementAt(iTemp);
@@ -60,16 +59,16 @@ public class operateVector
 		return vTemp;
 	}
 /*
-*<br>·½·¨ËµÃ÷£ºĞŞ¸ÄÊı¾İ
-*<br>ÊäÈë²ÎÊı£ºVector vTemp ´ıĞŞ¸ÄÊ¸Á¿¶ÔÏó
-*<br>ÊäÈë²ÎÊı£ºint iTemp ĞŞ¸ÄÊı¾İµÄÎ»ÖÃ
-*<br>ÊäÈë²ÎÊı£ºObject oTemp ĞŞ¸ÄÊı¾İÖµ
-*<br>Êä³ö±äÁ¿£ºVector
-*<br>ÆäËüËµÃ÷£ºÈç¹ûĞŞ¸ÄÎ»ÖÃ³¬½çµÄÊı¾İ£¬½«·µ»Ønull
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector vTemp ï¿½ï¿½ï¿½Ş¸ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int iTemp ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½İµï¿½Î»ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Object oTemp ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½Î»ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½null
 */
 	public Vector updata(Vector vTemp,int iTemp,Object oTemp){
 	    if(iTemp>vTemp.size()){
-			print("Êı¾İ³¬½ç!");
+			print("ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½!");
 			return null;
 		}else{
 			 vTemp.setElementAt(oTemp,iTemp);
@@ -77,27 +76,27 @@ public class operateVector
 		return vTemp;
 	}
 /*
-*<br>·½·¨ËµÃ÷£ºÊä³öĞÅÏ¢
-*<br>ÊäÈë²ÎÊı£ºString sTemp Êä³öĞÅÏ¢Ãû³Æ
-*<br>ÊäÈë²ÎÊı£ºObject oTemp Êä³öĞÅÏ¢Öµ
-*<br>·µ»Ø±äÁ¿£ºÎŞ
+*<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sTemp ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+*<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Object oTemp ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Öµ
+*<br>ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 	public void print(String sTemp,Vector oTemp){
-	    System.out.println(sTemp+"Êı¾İ£º");
+	    System.out.println(sTemp+"ï¿½ï¿½ï¿½İ£ï¿½");
 	    this.print(oTemp);
 	}
 /**
- *<br>·½·¨ËµÃ÷£º´òÓ¡Êä³ö£¨¹ıÔØ£©
- *<br>ÊäÈë²ÎÊı£ºObject oPara Êä³öµÄ¶ÔÏó
- *<br>·µ»ØÀàĞÍ£ºÎŞ
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Object oPara ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½
  */
 	public void print(Object oPara){
 	    System.out.println(oPara);
 	}
 /**
- *<br>·½·¨ËµÃ÷£º´òÓ¡Êä³ö£¨¹ıÔØ£©
- *<br>ÊäÈë²ÎÊı£ºVector vPara ÏÔÊ¾Êä³öÊ¸Á¿¶ÔÏó
- *<br>·µ»ØÀàĞÍ£ºÎŞ
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vector vPara ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½
  */
 	public void print(Vector vPara){
 	   for(int i=0;i<vPara.size();i++){
@@ -105,18 +104,18 @@ public class operateVector
 	   }
 	}
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬³ÌĞòÈë¿Ú
- *<br>ÊäÈë²ÎÊı£ºString[] args
- *<br>·µ»ØÀàĞÍ£ºÎŞ
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String[] args
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½
  */
 	public static void main(String[] args) 
 	{
 		operateVector ov = new operateVector();
 		Vector vTemp = ov.buildVector();
 		ov.print("vTemp0",vTemp);
-		Vector vResult = ov.insert(vTemp,2,"Ìí¼ÓµÄÊı¾İ");
+		Vector vResult = ov.insert(vTemp,2,"ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½");
 		ov.print("vResult",vResult);
-        Vector vResultup = ov.updata(vResult,2,"ĞŞ¸ÄµÄÊı¾İ");
+        Vector vResultup = ov.updata(vResult,2,"ï¿½Ş¸Äµï¿½ï¿½ï¿½ï¿½ï¿½");
 		ov.print("vResultmp",vResultup);
         Vector vResultnow = ov.delete(vResultup,2);
 		ov.print("vResultnow",vResultnow);

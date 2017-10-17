@@ -1,4 +1,3 @@
-import java.sql.*;
 public class Pool2Tester implements Runnable{
   ConnectionPool pool=new ConnectionPoolImpl2();
   public static void main(String args[])throws Exception{
@@ -13,7 +12,7 @@ public class Pool2Tester implements Runnable{
     for(int i=0;i<threads.length;i++){
       threads[i].join();
     }
-    tester.close(); //¹Ø±ÕÁ¬½Ó³Ø
+    tester.close(); //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ó³ï¿½
   }
   public void close(){
     pool.close();
@@ -21,22 +20,22 @@ public class Pool2Tester implements Runnable{
   public void run(){
     try{
       Connection con=pool.getConnection();
-      System.out.println(Thread.currentThread().getName()+": ´ÓÁ¬½Ó³ØÈ¡³öÒ»¸öÁ¬½Ó"+con);
+      System.out.println(Thread.currentThread().getName()+": ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+con);
       Statement stmt=con.createStatement();
       stmt.executeUpdate("insert into CUSTOMERS (NAME,AGE,ADDRESS) " 
-        +"VALUES ('Ð¡Íõ',20,'ÉÏº£')");
+        +"VALUES ('Ð¡ï¿½ï¿½',20,'ï¿½Ïºï¿½')");
  
-      //ÊÍ·ÅÏà¹Ø×ÊÔ´
+      //ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
       stmt.close();
       con.close();
-      System.out.println(Thread.currentThread().getName()+": ÊÍ·ÅÁ¬½Ó"+con);
+      System.out.println(Thread.currentThread().getName()+": ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½"+con);
     }catch(Exception e){e.printStackTrace();}
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

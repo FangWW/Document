@@ -1,0 +1,22 @@
+
+Struts 使用 Model 2 架构。Struts 的ActionServlet 控制导航流。其他Struts 类，比如
+Action, 用来访问业务逻辑类。当 ActionServlet 从容器接收到一个请求，它使用URI (或者
+路径“path”) 来决定那个Action 将用来处理请求。一个 Action可以校验输入，并且访问业务
+层以从数据库或其他数据服务中检索信息。
+为校验输入或者使用输入来更新数据库， Action 需要知道什么指被提交上来。并不是
+强制每个Action 从请求中抓取这些值，而是由 ActionServlet 将输入绑定到JavaBean中。
+输入 bean是Struts ActionForm c类的子类。ActionServlet 通过查找请求的路径可以决定使用
+哪个ActionForm，Action 也是通过同样的方法选取的。ActionForm 扩展
+org.apache.struts.action.ActionForm类。每个都必须以HTTP 响应进行应答。 通
+常, Struts
+Action 并不自行加工响应信息，而是将请求转发到其他资源，比如JSP 页面。Struts 提
+供一个ActionForward 类，用来将一个页面的路径存储为逻辑名称。当完成业务逻辑后，
+Action 选择并向Servlet返回一个ActionForward。Servlet 然后使用存储在ActionForward 对
+象中的路径来调用页面完成响应。
+Struts 将这些细节都绑定在一个ActionMapping 对象中。每个ActionMapping 相对于一
+个特定的路径。当某个路径被请求时，Servlet 就查询ActionMapping 对象。ActionMapping
+对象告诉servlet，哪个Actions, ActionForms, 和 ActionForwards 将被使用。
+所有这些细节，关于Action， ActionForm， ActionForward， ActionMapping，以及其
+他一些东西，都在struts-config.xml 文件中定义。 ActionServlet 在启动时读取这个配置文件，
+并创建一个配置对象数据库。在运行时，Struts 应用根据文件创建的配置对象，而不是文件
+本身

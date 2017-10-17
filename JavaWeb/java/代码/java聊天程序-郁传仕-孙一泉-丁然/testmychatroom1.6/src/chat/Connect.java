@@ -1,26 +1,19 @@
 package chat;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-import java.net.*;
-import java.io.*;
-
 class Connect extends JFrame implements ActionListener, ItemListener,
 		KeyListener
 {
 	/**
-	 * ÓÃ»§µÇÂ¼½çÃæp
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½p
 	 */
 	private static final long serialVersionUID = 1L;
-	private Socket client;// Ì×½Ó×Ö
+	private Socket client;// ï¿½×½ï¿½ï¿½ï¿½
 	private String hostName = "localhost";
 	private int port = 6000;
 	private JLabel nameLabel;
 	private JTextField nameText;
 	private JRadioButton boyRadio, girlRadio, secretRadio;
-	private String sex = ""; // ±êÊ¾ÓÃ»§ÐÔ±ðÐÅÏ¢
+	private String sex = ""; // ï¿½ï¿½Ê¾ï¿½Ã»ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ï¢
 	private JLabel hostLabel;
 	private JLabel portLabel;
 	private JTextField hostText;
@@ -32,12 +25,12 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 	private PrintWriter out;
 
 	public Connect()
-	{ // ¹¹ÔìÆ÷
+	{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		super("¼Æ¿Æ0704ÁÄÌìµÇÂ½");
+		super("ï¿½Æ¿ï¿½0704ï¿½ï¿½ï¿½ï¿½ï¿½Â½");
 
 		try
-		{ // Ê¹ÓÃWindowsµÄ½çÃæ·ç¸ñ
+		{ // Ê¹ï¿½ï¿½Windowsï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½
 			UIManager
 					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e)
@@ -48,25 +41,25 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		c = this.getContentPane();
 		c.setLayout(new BorderLayout());
 
-		hostLabel = new JLabel("µØÖ·: ");
-		portLabel = new JLabel("¶Ë¿Ú: ");
+		hostLabel = new JLabel("ï¿½ï¿½Ö·: ");
+		portLabel = new JLabel("ï¿½Ë¿ï¿½: ");
 		hostText = new JTextField(10);
-		hostText.setText(hostName); // ÉèÖÃÄ¬ÈÏÖµ
+		hostText.setText(hostName); // ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµ
 		portText = new JTextField(10);
 		portText.setText(Integer.toString(port));
-		cancell = new JButton("ÍË³ö");
-		ok = new JButton("µÇÂ½");
-		nameLabel = new JLabel("ÐÕÃû£º");
+		cancell = new JButton("ï¿½Ë³ï¿½");
+		ok = new JButton("ï¿½ï¿½Â½");
+		nameLabel = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		nameText = new JTextField(17);
-		boyRadio = new JRadioButton("ÄÐÉú");
-		girlRadio = new JRadioButton("Å®Éú");
-		secretRadio = new JRadioButton("±£ÃÜ");
+		boyRadio = new JRadioButton("ï¿½ï¿½ï¿½ï¿½");
+		girlRadio = new JRadioButton("Å®ï¿½ï¿½");
+		secretRadio = new JRadioButton("ï¿½ï¿½ï¿½ï¿½");
 		ButtonGroup sexGroup = new ButtonGroup();
 		sexGroup.add(boyRadio);
 		sexGroup.add(girlRadio);
 		sexGroup.add(secretRadio);
 
-		// *********ÓÃ»§ÐÅÏ¢Ãæ°å*********************//
+		// *********ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½*********************//
 		JPanel userInfoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		userInfoPanel.add(nameLabel);
 		userInfoPanel.add(nameText);
@@ -86,7 +79,7 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		pi.add(pic);
 		pi.add(picc);
 
-		// ****************Á¬½Ó·þÎñÆ÷Ãæ°å******************//
+		// ****************ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******************//
 		JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		// centerPanel.add(hostLabel);
 		// centerPanel.add(hostText);
@@ -96,35 +89,35 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		centerPanel.add(girlRadio);
 		centerPanel.add(secretRadio);
 
-		// *******************×éºÏÒÔÉÏÈý¸öÃæ°å*****************//
-		JPanel ul = new JPanel(new GridLayout(2, 1)); // Ãæ°å
+		// *******************ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*****************//
+		JPanel ul = new JPanel(new GridLayout(2, 1)); // ï¿½ï¿½ï¿½
 		ul.setBackground(new Color(70, 61, 129));
 		ul.add(userInfoPanel);
 		ul.add(centerPanel);
 
 		JPanel upperPanel = new JPanel(new GridLayout(1, 2));
 		upperPanel.setBorder(BorderFactory.createLineBorder(new Color(125, 161,
-				253), 2));// Éè¶¨ÑÕÉ«
+				253), 2));// ï¿½è¶¨ï¿½ï¿½É«
 
 		upperPanel.add(ul);
 		upperPanel.add(pi);
-		// upperPanel.setBorder(new LineBorder(Color.blue,2));//ÁíÒ»ÖÖÉèÖÃ±ß¿òµÄ·½·¨
+		// upperPanel.setBorder(new LineBorder(Color.blue,2));//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ß¿ï¿½Ä·ï¿½ï¿½ï¿½
 		//upperPanel.setBorder(BorderFactory.createEtchedBorder(Color.red,Color.
 		// yellow));
-		// ´´ÔìÒ»¸ö¸¡µñµÄ±ß¿òÉèÖÃ¸ßÁÁºÍÒõÓ°µÄÑÕÉ«
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ß¿ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½É«
 
-		// ****************Á¬½ÓÈ·ÈÏÁ¬½ÓµÄÃæ°å******************//
+		// ****************ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½******************//
 		JPanel lowerPanel = new JPanel();
 		JLabel spaceLabel = new JLabel("");
 		spaceLabel.setPreferredSize(new Dimension(20, 20));
 		lowerPanel.add(ok);
 		lowerPanel.add(spaceLabel);
 		lowerPanel.add(cancell);
-		// ***************×éºÏÕû¸ö¿ò¼Ü**********************//
+		// ***************ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**********************//
 		c.add(upperPanel, BorderLayout.NORTH);
 		c.add(lowerPanel, BorderLayout.SOUTH);
 
-		// ÊÂ¼þ¼àÌý µ¥Ñ¡
+		// ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ñ¡
 		boyRadio.addItemListener(this);
 		girlRadio.addItemListener(this);
 		secretRadio.addItemListener(this);
@@ -134,19 +127,19 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		hostText.addKeyListener(this);
 		portText.addKeyListener(this);
 		nameText.addKeyListener(this);
-		// ÊÂ¼þ¼àÌý °´Å¥
+		// ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¥
 		cancell.addActionListener(this);
 		ok.addActionListener(this);
 
-		this.setPreferredSize(new Dimension(350, 150));// Ä¬ÈÏ´óÐ¡
-		this.setMaximumSize(new Dimension(350, 150));// ×î´ó
+		this.setPreferredSize(new Dimension(350, 150));// Ä¬ï¿½Ï´ï¿½Ð¡
+		this.setMaximumSize(new Dimension(350, 150));// ï¿½ï¿½ï¿½
 		this.setLocationRelativeTo(null);
-		this.pack(); // ÉèÖÃ´°ÌåµÄ´óÐ¡×îÊÊºÏÀïÃæÄÚÈÝ
-		this.setResizable(false); // ÉèÖÃ²»ÄÜ×î´ó»¯
-		this.setVisible(true);// ÉèÖÃ¿É²»¿É¼û
+		this.pack(); // ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		this.setResizable(false); // ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		this.setVisible(true);// ï¿½ï¿½ï¿½Ã¿É²ï¿½ï¿½É¼ï¿½
 	}
 
-	// ÊÂ¼þ µ¥Ñ¡ ÔÚÓÃ»§ÒÑÑ¡¶¨»òÈ¡ÏûÑ¡¶¨Ä³ÏîÊ±µ÷ÓÃ¡£
+	// ï¿½Â¼ï¿½ ï¿½ï¿½Ñ¡ ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ñ¡ï¿½ï¿½Ä³ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã¡ï¿½
 	public void itemStateChanged(ItemEvent e)
 	{
 		if (e.getSource() == boyRadio)
@@ -163,7 +156,7 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		}
 	}
 
-	// ÊÂ¼þ °´Å¥
+	// ï¿½Â¼ï¿½ ï¿½ï¿½Å¥
 	public void actionPerformed(ActionEvent e)
 	{
 		if (e.getSource() == cancell)
@@ -173,13 +166,13 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		{
 			if ((nameText.getText()).trim().length() == 0)
 			{
-				// ÓÐÖúÓÚ·½±ãµØµ¯³öÒªÇóÓÃ»§Ìá¹©Öµ»òÏòÆä·¢³öÍ¨ÖªµÄ±ê×¼¶Ô»°¿ò¡£
-				JOptionPane.showMessageDialog(this, "ÇëÊäÈëÒ»¸öÃû×Ö", "ÌáÊ¾",
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã»ï¿½ï¿½á¹©Öµï¿½ï¿½ï¿½ï¿½ï¿½ä·¢ï¿½ï¿½Í¨Öªï¿½Ä±ï¿½×¼ï¿½Ô»ï¿½ï¿½ï¿½
+				JOptionPane.showMessageDialog(this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½Ê¾",
 						JOptionPane.INFORMATION_MESSAGE);
 				return;
 			} else if (sex.length() == 0)
 			{
-				JOptionPane.showMessageDialog(this, "ÇëÑ¡ÔñÐÔ±ð", "ÌáÊ¾",
+				JOptionPane.showMessageDialog(this, "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ô±ï¿½", "ï¿½ï¿½Ê¾",
 						JOptionPane.INFORMATION_MESSAGE);
 				return;
 			} else
@@ -190,13 +183,13 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 					ChatFrame app = new ChatFrame(nameText.getText());
 					//app.ct= null;//new Thread(app.sendfilethread);
 					app.init(in, out);
-					ok.setEnabled(false); // È·±£²»»á±»ÔÙ´Îµã»÷
+					ok.setEnabled(false); // È·ï¿½ï¿½ï¿½ï¿½ï¿½á±»ï¿½Ù´Îµï¿½ï¿½
 					// this.setVisible(false);
 					this.dispose();
 
 				} catch (Exception ee)
 				{
-					JOptionPane.showMessageDialog(this, "µÇÂ½Ê§°Ü", "Ê§°Ü",
+					JOptionPane.showMessageDialog(this, "ï¿½ï¿½Â½Ê§ï¿½ï¿½", "Ê§ï¿½ï¿½",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -205,10 +198,10 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 	}
 
 	public void link() throws Exception
-	{ // Á¬½Ó·þÎñÆ÷
+	{ // ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½
 		hostName = hostText.getText().trim();
 		port = Integer.parseInt(portText.getText());
-		client = new Socket(hostName, port);// ´´½¨Ò»¸öÁ÷Ì×½Ó×Ö²¢½«ÆäÁ¬½Óµ½Ö¸¶¨ IP µØÖ·µÄÖ¸¶¨¶Ë¿ÚºÅ¡£
+		client = new Socket(hostName, port);// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö¸ï¿½ï¿½ IP ï¿½ï¿½Ö·ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ë¿ÚºÅ¡ï¿½
 
 		in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 		out = new PrintWriter(client.getOutputStream());
@@ -217,7 +210,7 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 	}
 
 	/**
-	 * ¹Ø±Õ´°¿Ú
+	 * ï¿½Ø±Õ´ï¿½ï¿½ï¿½
 	 */
 	public void shutDown()
 	{
@@ -229,7 +222,7 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		Connect app = new Connect();
 		//app.
 
-		app.addWindowListener( // ÄÚ²¿Àà
+		app.addWindowListener( // ï¿½Ú²ï¿½ï¿½ï¿½
 				new WindowAdapter()
 				{
 					public void windowClosing(WindowEvent e)
@@ -245,13 +238,13 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 		{
 			if ((nameText.getText()).trim().length() == 0)
 			{
-				// ÓÐÖúÓÚ·½±ãµØµ¯³öÒªÇóÓÃ»§Ìá¹©Öµ»òÏòÆä·¢³öÍ¨ÖªµÄ±ê×¼¶Ô»°¿ò¡£
-				JOptionPane.showMessageDialog(this, "ÇëÊäÈëÒ»¸öÃû×Ö", "ÌáÊ¾",
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã»ï¿½ï¿½á¹©Öµï¿½ï¿½ï¿½ï¿½ï¿½ä·¢ï¿½ï¿½Í¨Öªï¿½Ä±ï¿½×¼ï¿½Ô»ï¿½ï¿½ï¿½
+				JOptionPane.showMessageDialog(this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½Ê¾",
 						JOptionPane.INFORMATION_MESSAGE);
 				return;
 			} else if (sex.length() == 0)
 			{
-				JOptionPane.showMessageDialog(this, "ÇëÑ¡ÔñÐÔ±ð", "ÌáÊ¾",
+				JOptionPane.showMessageDialog(this, "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ô±ï¿½", "ï¿½ï¿½Ê¾",
 						JOptionPane.INFORMATION_MESSAGE);
 				return;
 			} else
@@ -261,12 +254,12 @@ class Connect extends JFrame implements ActionListener, ItemListener,
 					this.link();
 					ChatFrame app = new ChatFrame(nameText.getText());
 					app.init(in, out);
-					ok.setEnabled(false); // È·±£²»»á±»ÔÙ´Îµã»÷
+					ok.setEnabled(false); // È·ï¿½ï¿½ï¿½ï¿½ï¿½á±»ï¿½Ù´Îµï¿½ï¿½
 					// this.setVisible(false);
 					this.dispose();
 				} catch (Exception ee)
 				{
-					JOptionPane.showMessageDialog(this, "µÇÂ½Ê§°Ü", "Ê§°Ü",
+					JOptionPane.showMessageDialog(this, "ï¿½ï¿½Â½Ê§ï¿½ï¿½", "Ê§ï¿½ï¿½",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}

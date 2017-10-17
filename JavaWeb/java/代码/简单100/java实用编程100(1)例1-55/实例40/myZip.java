@@ -1,36 +1,33 @@
-//ÎÄ¼şÃû£ºmyZip.java
-import java.io.*;
-import java.util.*;
-import java.util.zip.*;
+//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½myZip.java
 /**
- * <p>Title: ÎÄ¼şÑ¹ËõºÍ½âÑ¹</p>
- * <p>Description: Ê¹ÓÃZipInputStreamºÍZipOutputStream¶ÔÎÄ¼ş
- *                 ºÍÄ¿Â¼½øĞĞÑ¹ËõºÍ½âÑ¹´¦Àí</p>
+ * <p>Title: ï¿½Ä¼ï¿½Ñ¹ï¿½ï¿½ï¿½Í½ï¿½Ñ¹</p>
+ * <p>Description: Ê¹ï¿½ï¿½ZipInputStreamï¿½ï¿½ZipOutputStreamï¿½ï¿½ï¿½Ä¼ï¿½
+ *                 ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½Í½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: myZip.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class myZip{
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖÎÄ¼şµÄÑ¹Ëõ´¦Àí
- *<br>ÊäÈë²ÎÊı£ºString[] fs Ñ¹ËõµÄÎÄ¼şÊı×é
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String[] fs Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void ZipFiles(String[] fs){
    try{
      String fileName = fs[0];
      FileOutputStream f =
        new FileOutputStream(fileName+".zip");
-     //Ê¹ÓÃÊä³öÁ÷¼ì²é
+     //Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      CheckedOutputStream cs = 
         new CheckedOutputStream(f,new Adler32());
-      //ÉùÃ÷Êä³özipÁ÷
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½zipï¿½ï¿½
       ZipOutputStream out =
         new ZipOutputStream(new BufferedOutputStream(cs));
-      //Ğ´Ò»¸ö×¢ÊÍ
+      //Ğ´Ò»ï¿½ï¿½×¢ï¿½ï¿½
       out.setComment("A test of Java Zipping");
-      //¶Ô¶àÎÄ¼ş½øĞĞÑ¹Ëõ
+      //ï¿½Ô¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½
       for(int i=1;i<fs.length;i++){
         System.out.println("Write file "+fs[i]);
         BufferedReader in =
@@ -42,7 +39,7 @@ public class myZip{
           out.write(c);
         in.close();
        }
-       //¹Ø±ÕÊä³öÁ÷
+       //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        out.close();
        System.out.println("Checksum::"+cs.getChecksum().getValue());
     }catch(Exception e){
@@ -51,30 +48,30 @@ public class myZip{
   }
 
 /**
- *<br>·½·¨ËµÃ÷£º½âÑ¹ËõZipÎÄ¼ş
- *<br>ÊäÈë²ÎÊı£ºString fileName ½âÑ¹zipÎÄ¼şÃû
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½Zipï¿½Ä¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String fileName ï¿½ï¿½Ñ¹zipï¿½Ä¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void unZipFile(String fileName){
     try{
-       System.out.println("¶ÁÈ¡ZIPÎÄ¼ş........");
-       //ÎÄ¼şÊäÈëÁ÷
+       System.out.println("ï¿½ï¿½È¡ZIPï¿½Ä¼ï¿½........");
+       //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        FileInputStream fi =
          new FileInputStream(fileName+".zip");
-       //ÊäÈëÁ÷¼ì²é
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        CheckedInputStream csi = new CheckedInputStream(fi,new Adler32());
-       //ÊäÈëÁ÷Ñ¹Ëõ
+       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½
        ZipInputStream in2 =
          new ZipInputStream(
            new BufferedInputStream(csi));
        ZipEntry ze;
        System.out.println("Checksum::"+csi.getChecksum().getValue());
-       //½âÑ¹È«²¿ÎÄ¼ş
+       //ï¿½ï¿½Ñ¹È«ï¿½ï¿½ï¿½Ä¼ï¿½
        while((ze = in2.getNextEntry())!=null){
          System.out.println("Reading file "+ze);
          int x;
          while((x= in2.read())!=-1)
-           //ÕâÀïÊÇĞ´ÎÄ¼ş£¬writeÊÇÒÔbyte·½Ê½Êä³ö¡£
+           //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ä¼ï¿½ï¿½ï¿½writeï¿½ï¿½ï¿½ï¿½byteï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½
            System.out.write(x);
        }
        in2.close();
@@ -83,15 +80,15 @@ public class myZip{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£º¶ÁÈ¡ZipÎÄ¼şÁĞ±í
- *<br>ÊäÈë²ÎÊı£ºString fileName zipÎÄ¼şÃû
- *<br>·µ»ØÀàĞÍ£ºVector ÎÄ¼şÁĞ±í
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Zipï¿½Ä¼ï¿½ï¿½Ğ±ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String fileName zipï¿½Ä¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Vector ï¿½Ä¼ï¿½ï¿½Ğ±ï¿½
  */
   public Vector listFile(String fileName){
     try{
        String[] aRst=null;
        Vector vTemp = new Vector();
-       //zipÎÄ¼ş¶ÔÏó
+       //zipï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
        ZipFile zf = new ZipFile(fileName+".zip");
        Enumeration e = zf.entries();
        while(e.hasMoreElements()){
@@ -106,9 +103,9 @@ public class myZip{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args){
     try{

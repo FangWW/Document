@@ -1,14 +1,12 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
-import java.util.*;
 
 public class MailClientSendAttach extends MailClientForCitiz{
-  private String fromAddr="java_mail@citiz.net";  //·¢ËÍÕßµØÖ·
-  private String toAddr="java_mail@citiz.net"; //½ÓÊÕÕßµØÖ·
+  private String fromAddr="java_mail@citiz.net";  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
+  private String toAddr="java_mail@citiz.net"; //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
 
   public void sendMessage(String fromAddr,String toAddr) throws Exception{
-    //´´½¨Ò»¸öÓÊ¼þ
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ê¼ï¿½
     Message msg = new MimeMessage(session);
     InternetAddress[] toAddrs =InternetAddress.parse(toAddr, false);
     msg.setRecipients(Message.RecipientType.TO, toAddrs);
@@ -21,31 +19,31 @@ public class MailClientSendAttach extends MailClientForCitiz{
 
     Multipart multipart=new MimeMultipart();
     
-    //¼ÓÈëÎÄ±¾ÄÚÈÝ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
     MimeBodyPart mimeBodyPart1=new MimeBodyPart(); 
     mimeBodyPart1.setText("How are you");
     multipart.addBodyPart(mimeBodyPart1); 
     
-    //¼ÓÈëµÚÒ»¸ö¸½¼þ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     MimeBodyPart mimeBodyPart2=new MimeBodyPart(); 
-    FileDataSource fds=new FileDataSource(attch1); //µÃµ½Êý¾ÝÔ´ 
+    FileDataSource fds=new FileDataSource(attch1); //ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ô´ 
     mimeBodyPart2.setDataHandler(new DataHandler(fds)); 
     mimeBodyPart2.setDisposition(Part.ATTACHMENT);
-    mimeBodyPart2.setFileName(fds.getName()); //ÉèÖÃÎÄ¼þÃû
+    mimeBodyPart2.setFileName(fds.getName()); //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
     multipart.addBodyPart(mimeBodyPart2); 
 
-    //¼ÓÈëµÚ¶þ¸ö¸½¼þ
+    //ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     MimeBodyPart mimeBodyPart3=new MimeBodyPart(); 
-    fds=new FileDataSource(attch2); //µÃµ½Êý¾ÝÔ´ 
+    fds=new FileDataSource(attch2); //ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ô´ 
     mimeBodyPart3.setDataHandler(new DataHandler(fds)); 
     mimeBodyPart3.setDisposition(Part.ATTACHMENT);
-    mimeBodyPart3.setFileName(fds.getName()); //ÉèÖÃÎÄ¼þÃû
+    mimeBodyPart3.setFileName(fds.getName()); //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
     multipart.addBodyPart(mimeBodyPart3); 
 
-    //ÉèÖÃÓÊ¼þµÄÕýÎÄ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     msg.setContent(multipart); 
     
-    //·¢ËÍÓÊ¼þ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
     Transport.send(msg);
   }
   
@@ -60,7 +58,7 @@ public class MailClientSendAttach extends MailClientForCitiz{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

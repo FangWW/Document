@@ -1,42 +1,37 @@
 package hello;
-import org.omg.CosNaming.*;
-import org.omg.CosNaming.NamingContextPackage.*;
-import org.omg.CORBA.*;
-import org.omg.PortableServer.*;
 import org.omg.PortableServer.POA;
-import java.util.Properties;
 
 public class HelloServer {
   public static void main(String args[]) {
     try{
-      //´´½¨ºÍ³õÊ¼»¯ORB
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Ê¼ï¿½ï¿½ORB
       ORB orb = ORB.init(args, null);
 
-      //»ñµÃ¸ùPOAµÄÒýÓÃ£¬²¢ÇÒ¼¤»îPOAManager
+      //ï¿½ï¿½Ã¸ï¿½POAï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½POAManager
       POA rootpoa =POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
       rootpoa.the_POAManager().activate();
 
-      //´´½¨Ò»¸öHelloServiceImpl¶ÔÏó£¬²¢ÇÒ°ÑËüÓëORB¹ØÁª
+      //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½HelloServiceImplï¿½ï¿½ï¿½ó£¬²ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ORBï¿½ï¿½ï¿½ï¿½
       HelloServiceImpl helloServiceImpl = new HelloServiceImpl();
       helloServiceImpl.setORB(orb); 
 
-      //»ñµÃHelloServiceImpl¶ÔÏóµÄCORBAÀàÐÍµÄ¶ÔÏóÒýÓÃ
+      //ï¿½ï¿½ï¿½HelloServiceImplï¿½ï¿½ï¿½ï¿½ï¿½CORBAï¿½ï¿½ï¿½ÍµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       org.omg.CORBA.Object ref = rootpoa.servant_to_reference(helloServiceImpl);
       HelloService href = HelloServiceHelper.narrow(ref);
 	  
-      //»ñµÃÃüÃû·þÎñµÄContext
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Context
       org.omg.CORBA.Object objRef =
           orb.resolve_initial_references("NameService");
       NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-      //°ÑHelloService¶ÔÏóÓë¡°HelloService¡±Ãû×Ö°ó¶¨
+      //ï¿½ï¿½HelloServiceï¿½ï¿½ï¿½ï¿½ï¿½ë¡°HelloServiceï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½
       String name = "HelloService";
       NameComponent path[] = ncRef.to_name( name );
       ncRef.rebind(path, href);
 
       System.out.println("HelloServer ready and waiting ...");
 
-      //µÈ´ý¿Í»§¶Ë·ÃÎÊHelloService¶ÔÏó
+      //ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½HelloServiceï¿½ï¿½ï¿½ï¿½
       orb.run();
     }catch (Exception e) {
       System.err.println("ERROR: " + e);
@@ -48,7 +43,7 @@ public class HelloServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,6 +1,3 @@
-import java.sql.*;
-import java.io.*;
-
 public class ClobTester{
   Connection con;
   public ClobTester(Connection con){this.con=con;}
@@ -19,7 +16,7 @@ public class ClobTester{
     stmt.execute("create table ACLOB(ID bigint auto_increment primary key,FILE clob)");
     stmt.close();
   }
-  /**ÏòÊý¾Ý¿âÖÐ±£´æClobÊý¾Ý */ 
+  /**ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Clobï¿½ï¿½ï¿½ï¿½ */ 
   public void saveClobToDatabase()throws Exception{
     PreparedStatement stmt=con.prepareStatement("insert into ACLOB(ID,FILE) values(?,?) ");  
     stmt.setLong(1,1);
@@ -30,14 +27,14 @@ public class ClobTester{
     reader.close();
     stmt.close();
   }
-  /** ´ÓÊý¾Ý¿âÖÐ¶ÁÈ¡ClobÊý¾Ý */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð¶ï¿½È¡Clobï¿½ï¿½ï¿½ï¿½ */
   public void getClobFromDatabase()throws Exception{
     Statement stmt=con.createStatement();
     ResultSet rs=stmt.executeQuery("select FILE from ACLOB where ID=1");
     rs.next();
     Clob clob=rs.getClob(1);
     
-    //°ÑÊý¾Ý¿âÖÐµÄClobÊý¾Ý¿½±´µ½test_bak.txtÎÄ¼þÖÐ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ðµï¿½Clobï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½test_bak.txtï¿½Ä¼ï¿½ï¿½ï¿½
     Reader reader=clob.getCharacterStream();
     FileWriter writer = new FileWriter("test_bak.txt");  
     int c=-1;
@@ -52,7 +49,7 @@ public class ClobTester{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

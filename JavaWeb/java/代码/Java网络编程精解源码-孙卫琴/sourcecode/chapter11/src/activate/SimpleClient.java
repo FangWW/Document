@@ -1,7 +1,4 @@
 package activate;
-import java.rmi.*;
-import javax.naming.*;
-
 public class SimpleClient{
   public static void showRemoteObjects(Context namingContext)throws Exception{
     NamingEnumeration<NameClassPair> e=namingContext.list("rmi:");
@@ -17,10 +14,10 @@ public class SimpleClient{
       HelloService service2=(HelloService)namingContext.lookup(url+"HelloService2"); 
       
       Class stubClass=service1.getClass();
-      System.out.println("service1ÊÇ"+stubClass.getName()+"µÄÊµÀý"); 
+      System.out.println("service1ï¿½ï¿½"+stubClass.getName()+"ï¿½ï¿½Êµï¿½ï¿½"); 
       Class[] interfaces=stubClass.getInterfaces();
       for(int i=0;i<interfaces.length;i++)  
-        System.out.println("´æ¸ùÀàÊµÏÖÁË"+interfaces[i].getName()); 
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½"+interfaces[i].getName()); 
 
       System.out.println(service1.echo("hello")); 
       System.out.println(service1.getTime()); 
@@ -37,7 +34,7 @@ public class SimpleClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

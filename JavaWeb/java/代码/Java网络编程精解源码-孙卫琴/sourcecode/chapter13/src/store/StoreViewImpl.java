@@ -1,11 +1,5 @@
 package store;
-import java.util.*;
 import java.io.Serializable;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.rmi.*;
-import java.rmi.server.*;
 
 public class StoreViewImpl extends UnicastRemoteObject
 implements StoreView,Serializable{
@@ -25,16 +19,16 @@ implements StoreView,Serializable{
     }
 
     gui=new StoreGui();
-    //ÏòÍ¼ÐÎ½çÃæ×¢²á¼àÌýÆ÷
+    //ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     gui.addSelectionPanelListeners(selectionPanelListeners);
     gui.addCustPanelListeners(custPanelListeners);
   }
   
-  /** ¼ÓÈë¿ØÖÆÆ÷*/
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
   public void addUserGestureListener(StoreController b) throws StoreException,RemoteException{
     storeControllers.add(b);
   }
-  /** ÔÚÍ¼ÐÎ½çÃæÉÏÕ¹Ê¾²ÎÊýdisplayÖ¸¶¨µÄÊý¾Ý */
+  /** ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹Ê¾ï¿½ï¿½ï¿½ï¿½displayÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public void showDisplay(Object display) throws StoreException,RemoteException{
     if(!(display instanceof Exception))this.display=display;
 
@@ -52,7 +46,7 @@ implements StoreView,Serializable{
 
   }
 
-  /** Ë¢ÐÂ½çÃæÉÏµÄ¿Í»§ÐÅÏ¢*/
+  /** Ë¢ï¿½Â½ï¿½ï¿½ï¿½ï¿½ÏµÄ¿Í»ï¿½ï¿½ï¿½Ï¢*/
   public void handleCustomerChange(Customer cust)throws StoreException,RemoteException{
      long cIdOnPan=-1;
 
@@ -72,7 +66,7 @@ implements StoreView,Serializable{
     }
   }
   
-  /** ¼àÌýÍ¼ÐÎ½çÃæÉÏ[²éÑ¯¿Í»§]°´Å¥µÄActionEventµÄ¼àÌýÆ÷ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½Ñ¯ï¿½Í»ï¿½]ï¿½ï¿½Å¥ï¿½ï¿½ActionEventï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   transient ActionListener custGetHandler=new ActionListener(){
      public void actionPerformed(ActionEvent e){
         StoreController sc;
@@ -86,7 +80,7 @@ implements StoreView,Serializable{
      }
   };
   
-  /** ¼àÌýÍ¼ÐÎ½çÃæÉÏ[Ìí¼Ó¿Í»§]°´Å¥µÄActionEventµÄ¼àÌýÆ÷ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½Ó¿Í»ï¿½]ï¿½ï¿½Å¥ï¿½ï¿½ActionEventï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   transient ActionListener custAddHandler=new ActionListener(){
      public void actionPerformed(ActionEvent e){
         StoreController sc;
@@ -100,7 +94,7 @@ implements StoreView,Serializable{
      }
   };
 
-  /** ¼àÌýÍ¼ÐÎ½çÃæÉÏ[É¾³ý¿Í»§]°´Å¥µÄActionEventµÄ¼àÌýÆ÷ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½[É¾ï¿½ï¿½ï¿½Í»ï¿½]ï¿½ï¿½Å¥ï¿½ï¿½ActionEventï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   transient ActionListener custDeleteHandler=new ActionListener(){
      public void actionPerformed(ActionEvent e){
         StoreController sc;
@@ -114,7 +108,7 @@ implements StoreView,Serializable{
      }
   };
 
-  /** ¼àÌýÍ¼ÐÎ½çÃæÉÏ[¸üÐÂ¿Í»§]°´Å¥µÄActionEventµÄ¼àÌýÆ÷ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Â¿Í»ï¿½]ï¿½ï¿½Å¥ï¿½ï¿½ActionEventï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   transient ActionListener custUpdateHandler=new ActionListener(){
      public void actionPerformed(ActionEvent e){
         StoreController sc;
@@ -128,7 +122,7 @@ implements StoreView,Serializable{
      }
   };
 
-  /** ¼àÌýÍ¼ÐÎ½çÃæÉÏ[¿Í»§ÏêÏ¸ÐÅÏ¢]°´Å¥µÄActionEventµÄ¼àÌýÆ÷ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Í»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢]ï¿½ï¿½Å¥ï¿½ï¿½ActionEventï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   transient ActionListener custDetailsPageHandler=new ActionListener(){
      public void actionPerformed(ActionEvent e){
         StoreController sc;
@@ -147,7 +141,7 @@ implements StoreView,Serializable{
      }
   };
 
-  /** ¼àÌýÍ¼ÐÎ½çÃæÉÏ[ËùÓÐ¿Í»§Çåµ¥]°´Å¥µÄActionEventµÄ¼àÌýÆ÷ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½åµ¥]ï¿½ï¿½Å¥ï¿½ï¿½ActionEventï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   transient ActionListener allCustsPageHandler=new ActionListener(){
      public void actionPerformed(ActionEvent e){
         StoreController sc;
@@ -159,18 +153,18 @@ implements StoreView,Serializable{
      }
   };
   
-  /** ¸ºÔð¼àÌýµ¥¸ö¿Í»§Ãæ°åcustPanÉÏµÄËùÓÐ°´Å¥µÄActionEventÊÂ¼þµÄ¼àÌýÆ÷ */  
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½custPanï¿½Ïµï¿½ï¿½ï¿½ï¿½Ð°ï¿½Å¥ï¿½ï¿½ActionEventï¿½Â¼ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */  
   transient ActionListener custPanelListeners[] ={custGetHandler,custAddHandler,
    custDeleteHandler,custUpdateHandler};
 
-  /** ¸ºÔð¼àÌýÑ¡ÔñÃæ°åselPanÉÏµÄËùÓÐ°´Å¥µÄActionEventÊÂ¼þµÄ¼àÌýÆ÷ */    
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½selPanï¿½Ïµï¿½ï¿½ï¿½ï¿½Ð°ï¿½Å¥ï¿½ï¿½ActionEventï¿½Â¼ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */    
   transient ActionListener selectionPanelListeners[]={
      custDetailsPageHandler,allCustsPageHandler};
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

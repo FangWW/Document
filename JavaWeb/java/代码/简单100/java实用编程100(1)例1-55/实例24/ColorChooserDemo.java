@@ -1,14 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.colorchooser.*;
 /**
- * <p>Title: ÑÕÉ«Ñ¡ÔñÆ÷</p>
- * <p>Description: ÑÝÊ¾Ò»¸öÑÕÉ«Ñ¡ÔñÆ÷£¬¿ÉÒÔ´ÓÑù±¾ÖÐÑ¡Ôñ£¬¿ÉÒÔÊ¹ÓÃHSBÄ£Ê½ºÍRGBÄ£Ê½</p>
+ * <p>Title: ï¿½ï¿½É«Ñ¡ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½É«Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ñ£¬¿ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½HSBÄ£Ê½ï¿½ï¿½RGBÄ£Ê½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ColorChooserDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 
@@ -21,8 +16,8 @@ public class ColorChooserDemo extends JPanel
     public ColorChooserDemo() {
         super(new BorderLayout());
 
-        //ÉèÖÃÒ»¸ö±êÇ©£¬×ö¹ã¸æµÄ¡£Ò²ÓÃÀ´ÏÔÊ¾ÓÃ»§Ñ¡ÔñµÄÑÕÉ«¡£
-        banner = new JLabel("»¶Ó­Ê¹ÓÃÑÕÉ«Ñ¡ÔñÆ÷£¡",
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
+        banner = new JLabel("ï¿½ï¿½Ó­Ê¹ï¿½ï¿½ï¿½ï¿½É«Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
                             JLabel.CENTER);
         banner.setForeground(Color.yellow);
         banner.setBackground(Color.blue);
@@ -32,43 +27,43 @@ public class ColorChooserDemo extends JPanel
 
         JPanel bannerPanel = new JPanel(new BorderLayout());
         bannerPanel.add(banner, BorderLayout.CENTER);
-        bannerPanel.setBorder(BorderFactory.createTitledBorder("¹ã¸æ"));
+        bannerPanel.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½"));
 
-        //ÉèÖÃÑ¡ÔñÑÕÉ«Ñ¡ÔñÆ÷
-        tcc = new JColorChooser(banner.getForeground());//ÉèÖÃ³õÊ¼ÑÕÉ«
-        tcc.getSelectionModel().addChangeListener(this);//¸øËùÓÐÄ£Ê½Ìí¼Ó¼àÌý
-        tcc.setBorder(BorderFactory.createTitledBorder("Ñ¡ÔñÑÕÉ«"));
+        //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½É«Ñ¡ï¿½ï¿½ï¿½ï¿½
+        tcc = new JColorChooser(banner.getForeground());//ï¿½ï¿½ï¿½Ã³ï¿½Ê¼ï¿½ï¿½É«
+        tcc.getSelectionModel().addChangeListener(this);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½
+        tcc.setBorder(BorderFactory.createTitledBorder("Ñ¡ï¿½ï¿½ï¿½ï¿½É«"));
 
         add(bannerPanel, BorderLayout.CENTER);
         add(tcc, BorderLayout.PAGE_END);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ¼àÌý¡£ÓÃ»§Ñ¡ÔñÑÕÉ«´¥·¢
- *<br>ÊäÈë²ÎÊý£ºChangeEvent e ÓÃ»§Ñ¡ÔñÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ChangeEvent e ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void stateChanged(ChangeEvent e) {
-        Color newColor = tcc.getColor();//»ñÈ¡ÓÃ»§Ñ¡ÔñµÄÑÕÉ«
+        Color newColor = tcc.getColor();//ï¿½ï¿½È¡ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½É«
         banner.setForeground(newColor);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("ColorChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ãæ°åÈÝÆ÷
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JComponent newContentPane = new ColorChooserDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

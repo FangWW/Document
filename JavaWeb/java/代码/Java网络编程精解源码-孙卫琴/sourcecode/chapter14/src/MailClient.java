@@ -1,36 +1,34 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
-import java.util.*;
 
 public class MailClient {
   protected Session session;
   protected Store store;
-  private String sendHost="localhost"; //·¢ËÍÓÊ¼ş·şÎñÆ÷
-  private String receiveHost="localhost"; //½ÓÊÕÓÊ¼ş·şÎñÆ÷
-  private String sendProtocol="smtp"; //·¢ËÍÓÊ¼şĞ­Òé
-  private String receiveProtocol="imap"; //½ÓÊÕÓÊ¼şĞ­Òé
+  private String sendHost="localhost"; //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private String receiveHost="localhost"; //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private String sendProtocol="smtp"; //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Ğ­ï¿½ï¿½
+  private String receiveProtocol="imap"; //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Ğ­ï¿½ï¿½
   private String username = "admin";
   private String password = "1234";
-  private String fromAddr="admin@mydomain.com";  //·¢ËÍÕßµØÖ·
-  private String toAddr="admin@mydomain.com"; //½ÓÊÕÕßµØÖ·
+  private String fromAddr="admin@mydomain.com";  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
+  private String toAddr="admin@mydomain.com"; //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
 
   public void init()throws Exception{
-    //ÉèÖÃÊôĞÔ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Properties  props = new Properties();
     props.put("mail.transport.protocol", sendProtocol);
     props.put("mail.store.protocol", receiveProtocol);
     props.put("mail.smtp.class", "com.sun.mail.smtp.SMTPTransport");
     props.put("mail.imap.class", "com.sun.mail.imap.IMAPStore");
-    props.put("mail.smtp.host", sendHost); //ÉèÖÃ·¢ËÍÓÊ¼ş·şÎñÆ÷
+    props.put("mail.smtp.host", sendHost); //ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    // ´´½¨Session¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Sessionï¿½ï¿½ï¿½ï¿½
     session = Session.getDefaultInstance(props);
-    //session.setDebug(true); //Êä³ö¸ú×ÙÈÕÖ¾
+    //session.setDebug(true); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
 
-    // ´´½¨Store¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Storeï¿½ï¿½ï¿½ï¿½
     store = session.getStore(receiveProtocol);
-    //Á¬½Óµ½ÊÕÓÊ¼ş·şÎñÆ÷
+    //ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     store.connect(receiveHost,username,password);
   }
   
@@ -38,14 +36,14 @@ public class MailClient {
     store.close();
   }
   public void sendMessage(String fromAddr,String toAddr)throws Exception{
-    //´´½¨Ò»¸öÓÊ¼ş
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ê¼ï¿½
     Message msg = createSimpleMessage(fromAddr,toAddr);
-    //·¢ËÍÓÊ¼ş
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
     Transport.send(msg);
   }
   
   public Message createSimpleMessage(String fromAddr,String toAddr)throws Exception{
-    //´´½¨Ò»·â´¿ÎÄ±¾ÀàĞÍµÄÓÊ¼ş
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½â´¿ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ê¼ï¿½
     Message msg = new MimeMessage(session);
     InternetAddress[] toAddrs =InternetAddress.parse(toAddr, false);
     msg.setRecipients(Message.RecipientType.TO, toAddrs);
@@ -62,7 +60,7 @@ public class MailClient {
   public void browseMessagesFromFolder(String folderName)throws Exception{
     Folder folder=store.getFolder(folderName);
     if(folder==null)
-      throw new Exception(folderName+"ÓÊ¼ş¼Ğ²»´æÔÚ");
+      throw new Exception(folderName+"ï¿½Ê¼ï¿½ï¿½Ğ²ï¿½ï¿½ï¿½ï¿½ï¿½");
     browseMessagesFromFolder(folder);
   }
   
@@ -71,15 +69,15 @@ public class MailClient {
     System.out.println("You have "+folder.getMessageCount()+" messages in inbox.");
     System.out.println("You have "+folder.getUnreadMessageCount()+" unread messages in inbox.");
 
-    //¶ÁÓÊ¼ş
+    //ï¿½ï¿½ï¿½Ê¼ï¿½
     Message[] messages=folder.getMessages();
     for(int i=1;i<=messages.length;i++){
-      System.out.println("------µÚ"+i+"·âÓÊ¼ş-------");
-      //´òÓ¡ÓÊ¼şĞÅÏ¢
+      System.out.println("------ï¿½ï¿½"+i+"ï¿½ï¿½ï¿½Ê¼ï¿½-------");
+      //ï¿½ï¿½Ó¡ï¿½Ê¼ï¿½ï¿½ï¿½Ï¢
       folder.getMessage(i).writeTo(System.out);
       System.out.println();
     }
-    folder.close(false);  //¹Ø±ÕÓÊ¼ş¼Ğ£¬µ«²»É¾³ıÓÊ¼ş¼ĞÖĞ±êÖ¾Îª¡°deleted¡±µÄÓÊ¼ş
+    folder.close(false);  //ï¿½Ø±ï¿½ï¿½Ê¼ï¿½ï¿½Ğ£ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½Ö¾Îªï¿½ï¿½deletedï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
   }
 
   public static void main(String[] args)throws Exception {
@@ -93,7 +91,7 @@ public class MailClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

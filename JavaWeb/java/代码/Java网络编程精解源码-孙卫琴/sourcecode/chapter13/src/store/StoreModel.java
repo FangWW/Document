@@ -1,24 +1,22 @@
 package store;
-import java.rmi.*;
-import java.util.*;
 public interface StoreModel extends Remote {
-  /** ×¢²áÊÓÍ¼£¬ÒÔ±ãµ±Ä£ÐÍÐÞ¸ÄÁËÊý¾Ý¿âÖÐµÄ¿Í»§ÐÅÏ¢Ê±£¬¿ÉÒÔ»Øµ÷ÊÓÍ¼µÄË¢ÐÂ½çÃæµÄ·½·¨ */
+  /** ×¢ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ô±ãµ±Ä£ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ÐµÄ¿Í»ï¿½ï¿½ï¿½Ï¢Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ô»Øµï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ë¢ï¿½Â½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ */
   public void addChangeListener(StoreView sv) throws StoreException,RemoteException;
-  /** ÏòÊý¾Ý¿âÖÐÌí¼ÓÒ»¸öÐÂµÄ¿Í»§ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ÂµÄ¿Í»ï¿½ */
   public void addCustomer(Customer cust) throws StoreException,RemoteException;
-  /** ´ÓÊý¾Ý¿âÖÐÉ¾³ýÒ»¸ö¿Í»§ */ 
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í»ï¿½ */ 
   public void deleteCustomer(Customer cust) throws StoreException,RemoteException;
-  /** ¸üÐÂÊý¾Ý¿âÖÐµÄ¿Í»§ */ 
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ÐµÄ¿Í»ï¿½ */ 
   public void updateCustomer(Customer cust) throws StoreException,RemoteException;
-  /** ¸ù¾Ý²ÎÊýid¼ìË÷¿Í»§ */
+  /** ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ */
   public Customer getCustomer(long id) throws StoreException,RemoteException;
-  /** ·µ»ØÊý¾Ý¿âÖÐËùÓÐµÄ¿Í»§Çåµ¥ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¿Í»ï¿½ï¿½åµ¥ */
   public Set<Customer> getAllCustomers() throws StoreException,RemoteException;
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

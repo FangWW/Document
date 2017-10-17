@@ -1,14 +1,13 @@
-import java.util.*;
 /**
- * <p>Title: Ìá¸ßÏß³ÌÓÅÏÈ¼¶</p>
- * <p>Description: Í¨¹ýÐÞ¸ÄÏß³ÌµÄÓÅÏÈ¼¶£¬ÊÇÏß³Ì»ñµÃÓÅÏÈ´¦Àí¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½È¼ï¿½</p>
+ * <p>Description: Í¨ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì»ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: upPRIThread.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class upPRIThread {
- //Ö÷·½·¨
+ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  public static void main(String[] args) throws Exception {
   Thread1 t1 = new Thread1();
   t1.start();
@@ -20,7 +19,7 @@ public class upPRIThread {
   t2.setPriority(Thread.MAX_PRIORITY);
   new Thread().sleep(10500);
  }
- //ÀàËµÃ÷£ºÏß³Ì1£¬²»¸ü¸ÄÓÅÏÈ¼¶
+ //ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
  static class Thread1 extends Thread {
   public void run(){
    while(true){
@@ -30,11 +29,11 @@ public class upPRIThread {
     catch (Exception e){
      e.printStackTrace();
      }
-     System.out.println("ÎÒÊÇÏß³Ì111");
+     System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½111");
     }
    }
   }
- //ÀàËµÃ÷£ºÏß³Ì2£¬Ìá¸ßÓÅÏÈ¼¶
+ //ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
  static class Thread2 extends Thread {
 
   public void run(){
@@ -45,7 +44,7 @@ public class upPRIThread {
     catch (Exception e){
      e.printStackTrace();
      }
-     System.out.println("ÎÒÊÇÏß³Ì222.........................");
+     System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½222.........................");
     }
    }
  }

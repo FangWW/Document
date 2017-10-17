@@ -1,23 +1,22 @@
 package com.bean;
 
-import java.io.*;
 import java.util.Properties;
 /**
- * <p>Title: ¶ÁÈ¡ÊôĞÔÎÄ¼ş</p>
- * <p>Description: »ñÈ¡ÊôĞÔÎÄ¼ş£¬¼ÓÔØÊôĞÔ±äÁ¿£»ÏÔÊ¾ÊôĞÔ±äÁ¿£»Ìá¹©»ñÈ¡ÊôĞÔ±äÁ¿</p>
+ * <p>Title: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½</p>
+ * <p>Description: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: loadEnv.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class loadEnv {
-  public static boolean hasInit = false;  //³õÊ¼»¯±êÖ¾
-  private static Properties prop = null; //ÊôĞÔ¼¯
-  public static String propertyFile = "system.properties"; //ÅäÖÃÎÄ¼ş
+  public static boolean hasInit = false;  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ö¾
+  private static Properties prop = null; //ï¿½ï¿½ï¿½Ô¼ï¿½
+  public static String propertyFile = "system.properties"; //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÀı»¯ÊôĞÔÀà
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£ºProperties ÊôĞÔ¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Properties ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½
  */
   private static Properties getProp()
   {
@@ -27,9 +26,9 @@ public class loadEnv {
             return prop = new Properties();
   }
 /**
- *<br>·½·¨ËµÃ÷£º³õÊ¼»¯»·¾³±äÁ¿
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void init(){
     try{
@@ -44,9 +43,9 @@ public class loadEnv {
 	}
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡ÊôĞÔ±äÁ¿
- *<br>ÊäÈë²ÎÊı£ºString name »ñÈ¡ÊôĞÔ±äÁ¿Ãû
- *<br>·µ»ØÀàĞÍ£ºString ÊôĞÔ±äÁ¿Öµ
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String name ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Öµ
  */
   public static String getProperty(String name)
   {
@@ -55,10 +54,10 @@ public class loadEnv {
     return getProp().getProperty(name);
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡ÊôĞÔ±äÁ¿
- *<br>ÊäÈë²ÎÊı£ºString name »ñÈ¡µÄÊôĞÔ±äÁ¿Ãû
- *<br>ÊäÈë²ÎÊı£ºString defaultValue µ±ÊôĞÔ±äÁ¿²»´æÔÚµÄÇé¿öÏÂÄ¬ÈÏµÄÊôĞÔÖµ
- *<br>·µ»ØÀàĞÍ£ºString ÊôĞÔ±äÁ¿Öµ
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String name ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String defaultValue ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Öµ
  */    
   public static String getProperty(String name, String defaultValue)
   {
@@ -67,9 +66,9 @@ public class loadEnv {
      return getProp().getProperty(name, defaultValue);
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬µ÷ÊÔÓÃ
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] arg){
     loadEnv env = new loadEnv();

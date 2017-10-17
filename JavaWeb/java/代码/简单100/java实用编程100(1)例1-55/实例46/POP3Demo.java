@@ -1,19 +1,17 @@
-import java.io.*;
-import java.net.*;
 /**
- * <p>Title: SMTPĞ­Òé½ÓÊÕÓÊ¼ş</p>
- * <p>Description: Í¨¹ıSocketÁ¬½ÓPOP3·şÎñÆ÷£¬Ê¹ÓÃSMTPĞ­Òé½ÓÊÕÓÊ¼ş·şÎñÆ÷ÖĞµÄÓÊ¼ş</p>
+ * <p>Title: SMTPĞ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½</p>
+ * <p>Description: Í¨ï¿½ï¿½Socketï¿½ï¿½ï¿½ï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½SMTPĞ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½Ê¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 class POP3Demo
 {
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬½ÓÊÕÓÃ»§ÊäÈë
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args){
   	if(args.length!=3){
@@ -22,11 +20,11 @@ class POP3Demo
   	new POP3Demo().receive(args[0],args[1],args[2]);
   }
 /**
- *<br>·½·¨ËµÃ÷£º½ÓÊÕÓÊ¼ş
- *<br>ÊäÈë²ÎÊı£ºString popServer ·şÎñÆ÷µØÖ·
- *<br>ÊäÈë²ÎÊı£ºString popUser ÓÊÏäÓÃ»§Ãû
- *<br>ÊäÈë²ÎÊı£ºString popPassword ÓÊÏäÃÜÂë
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String popServer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String popUser ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String popPassword ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void receive (String popServer, String popUser, String popPassword)
   {
@@ -35,56 +33,56 @@ class POP3Demo
    Socket client = null;
    try
    {
-     // ´´½¨Ò»¸öÁ¬½Óµ½POP3·şÎñ³ÌĞòµÄÌ×½Ó×Ö¡£
+     // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½Ö¡ï¿½
      client = new Socket (POP3Server, POP3Port);
-     //´´½¨Ò»¸öBufferedReader¶ÔÏó£¬ÒÔ±ã´ÓÌ×½Ó×Ö¶ÁÈ¡Êä³ö¡£
+     //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½BufferedReaderï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½×½ï¿½ï¿½Ö¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
      InputStream is = client.getInputStream ();
      BufferedReader sockin;
      sockin = new BufferedReader (new InputStreamReader (is));
-     //´´½¨Ò»¸öPrintWriter¶ÔÏó£¬ÒÔ±ãÏòÌ×½Ó×ÖĞ´ÈëÄÚÈİ¡£
+     //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½PrintWriterï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½ï¿½ï¿½İ¡ï¿½
      OutputStream os = client.getOutputStream ();
      PrintWriter sockout;
      sockout = new PrintWriter (os, true); // true for auto-flush
-     // ÏÔÊ¾POP3ÎÕÊÖĞÅÏ¢¡£
+     // ï¿½ï¿½Ê¾POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
      System.out.println ("S:" + sockin.readLine ());
      
-     /*--   ÓëPOP3·şÎñÆ÷ÎÕÊÖ¹ı³Ì   --*/     
+     /*--   ï¿½ï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½   --*/     
       System.out.print ("C:");
       String cmd = "user "+popUser;
-      // ½«ÓÃ»§Ãû·¢ËÍµ½POP3·şÎñ³ÌĞò¡£
+      // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       System.out.println (cmd);
       sockout.println (cmd);
-      // ¶ÁÈ¡POP3·şÎñ³ÌĞòµÄ»ØÓ¦ÏûÏ¢¡£
+      // ï¿½ï¿½È¡POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Ó¦ï¿½ï¿½Ï¢ï¿½ï¿½
       String reply = sockin.readLine ();
       System.out.println ("S:" + reply);
 
       System.out.print ("C:");
       cmd = "pass ";
-      // ½«ÃÜÂë·¢ËÍµ½POP3·şÎñ³ÌĞò¡£
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ë·¢ï¿½Íµï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       System.out.println(cmd+"*********");
       sockout.println (cmd+popPassword);
-      // ¶ÁÈ¡POP3·şÎñ³ÌĞòµÄ»ØÓ¦ÏûÏ¢¡£
+      // ï¿½ï¿½È¡POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Ó¦ï¿½ï¿½Ï¢ï¿½ï¿½
       reply = sockin.readLine ();
       System.out.println ("S:" + reply);
       
            
       System.out.print ("C:");
       cmd = "stat";
-      // »ñÈ¡ÓÊ¼şÊı¾İ¡£
+      // ï¿½ï¿½È¡ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½İ¡ï¿½
       System.out.println(cmd);
       sockout.println (cmd);
-      // ¶ÁÈ¡POP3·şÎñ³ÌĞòµÄ»ØÓ¦ÏûÏ¢¡£
+      // ï¿½ï¿½È¡POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Ó¦ï¿½ï¿½Ï¢ï¿½ï¿½
       reply = sockin.readLine ();
       System.out.println ("S:" + reply);
       if(reply==null) return;
       System.out.print ("C:");
       cmd = "retr 1";
-      // ½«½ÓÊÕµÚÒ»·áÓÊ¼şÃüÁî·¢ËÍµ½POP3·şÎñ³ÌĞò¡£
+      // ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½Ò»ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½î·¢ï¿½Íµï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       System.out.println(cmd);
       sockout.println (cmd);
       
-      // ÊäÈëÁËRETRÃüÁî²¢ÇÒ·µ»ØÁË³É¹¦µÄ»ØÓ¦Âë£¬³ÖĞø´ÓÌ×½Ó×Ö¶ÁÈ¡Êä³ö£¬ 
-      // Ö±µ½Óöµ½<CRLF>.<CRLF>¡£ÕâÊ±´ÓÌ×½Ó×Ö¶Á³öµÄÊä³ö¾ÍÊÇÓÊ¼şµÄÄÚÈİ¡£
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RETRï¿½ï¿½ï¿½î²¢ï¿½Ò·ï¿½ï¿½ï¿½ï¿½Ë³É¹ï¿½ï¿½Ä»ï¿½Ó¦ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½ï¿½Ö¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ 
+      // Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<CRLF>.<CRLF>ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½×½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¡ï¿½
       if (cmd.toLowerCase ().startsWith ("retr") &&
         reply.charAt (0) == '+')
         do
@@ -97,7 +95,7 @@ class POP3Demo
         }
         while (true);
       cmd = "quit";
-      // ½«ÃüÁî·¢ËÍµ½POP3·şÎñ³ÌĞò¡£
+      // ï¿½ï¿½ï¿½ï¿½ï¿½î·¢ï¿½Íµï¿½POP3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       System.out.print (cmd);
       sockout.println (cmd);     
    }

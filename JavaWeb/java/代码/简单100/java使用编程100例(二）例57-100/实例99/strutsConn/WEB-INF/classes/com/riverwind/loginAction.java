@@ -1,33 +1,33 @@
 package com.riverwind;
 
-import javax.servlet.http.*;
 import org.apache.struts.action.*;
-import java.sql.*;
+
+import javax.servlet.http.*;
 /**
- * ¼Ì³ÐActionÀà
+ * ï¿½Ì³ï¿½Actionï¿½ï¿½
  */
 public final class loginAction extends Action {
   public ActionForward execute(ActionMapping mapping,
                                ActionForm form,
                                HttpServletRequest request,
                                HttpServletResponse response) {
-    //¶¨ÒåBeanÈ¡µÃ±äÁ¿Àà
+    //ï¿½ï¿½ï¿½ï¿½BeanÈ¡ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½
     loginForm login = (loginForm)form;
-    //»ñÈ¡±äÁ¿²ÎÊý
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     String name = login.getName();
     String pass = login.getPassword();
 
     javax.sql.DataSource dataSource;
     java.sql.Connection conn =null;
     try{
-      //»ñÈ¡Êý¾ÝÔ´
+      //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ô´
       dataSource = getDataSource(request);
-      //»ñÈ¡Êý¾Ý¿âÁ¬½Ó
+      //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
       conn = dataSource.getConnection();
       String sql = "select * from tbl_user where name='"+name+"' and password='"+pass+"'";
       System.out.println("sql="+sql);
       Statement stmt = conn.createStatement();
-      //Ö´ÐÐÊý¾Ý¿âsqlÃüÁî
+      //Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½sqlï¿½ï¿½ï¿½ï¿½
       ResultSet rs = stmt.executeQuery(sql);
       while(rs.next())
 	 {
@@ -36,7 +36,7 @@ public final class loginAction extends Action {
    }catch(SQLException sqle){
       getServlet().log("Connection.process", sqle);
    }finally {
-    //ÊÍ·Å×ÊÔ´
+    //ï¿½Í·ï¿½ï¿½ï¿½Ô´
      try {
        conn.close();
      }catch (SQLException e) {

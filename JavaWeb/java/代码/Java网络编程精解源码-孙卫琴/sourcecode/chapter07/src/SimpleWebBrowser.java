@@ -1,13 +1,3 @@
-import javax.swing.text.*;
-import javax.swing.*;
-import java.net.*;
-import java.io.*;
-import javax.swing.event.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.text.html.*;
-import java.beans.*;
-
 public class SimpleWebBrowser extends JFrame implements HyperlinkListener,ActionListener{
   private JTextField jtf=new JTextField(40); 
   private JEditorPane jep=new JEditorPane();
@@ -20,7 +10,7 @@ public class SimpleWebBrowser extends JFrame implements HyperlinkListener,Action
     jep.setEditable(false);
     jep.addHyperlinkListener(this);
      
-    //¼àÌýeditorKitÊôÐÔ±»ÖØÐÂÉèÖÃµÄÊÂ¼þ
+    //ï¿½ï¿½ï¿½ï¿½editorKitï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Â¼ï¿½
     jep.addPropertyChangeListener("editorKit", new PropertyChangeListener(){
       public void propertyChange(PropertyChangeEvent evt){
         System.out.println("set editorKit");
@@ -48,7 +38,7 @@ public class SimpleWebBrowser extends JFrame implements HyperlinkListener,Action
     
   public void showError(String url){
      jep.setContentType("text/html"); 
-     jep.setText("<html>ÎÞ·¨´ò¿ªÍøÒ³:"+url+"¡£ÊäÈëµÄURL²»ºÏ·¨£¬»òÕßÍøÒ³²»´æÔÚ¡£</html>");
+     jep.setText("<html>ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³:"+url+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½URLï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½</html>");
   }
 
   public static void main(String[] args){
@@ -62,27 +52,27 @@ public class SimpleWebBrowser extends JFrame implements HyperlinkListener,Action
        showError(jtf.getText());
     }
   }
-  /** ´¦ÀíÓÃ»§Ñ¡Ôñ³¬¼¶Á´½Ó»òÕßÌá½»±íµ¥ÊÂ¼þ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ñ¡ï¿½ñ³¬¼ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½Â¼ï¿½ */
   public void hyperlinkUpdate(HyperlinkEvent evt){
     try{ 
-      if (evt.getClass() == FormSubmitEvent.class) {  //´¦ÀíÌá½»±íµ¥ÊÂ¼þ
+      if (evt.getClass() == FormSubmitEvent.class) {  //ï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½Â¼ï¿½
         FormSubmitEvent fevt = (FormSubmitEvent)evt;
-        URL url=fevt.getURL(); //»ñµÃURL
-        String method=fevt.getMethod().toString(); //»ñµÃÇëÇó·½Ê½
-        String data=fevt.getData(); //»ñµÃ±íµ¥Êý¾Ý
+        URL url=fevt.getURL(); //ï¿½ï¿½ï¿½URL
+        String method=fevt.getMethod().toString(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+        String data=fevt.getData(); //ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½
        
-        if(method.equals("GET")){  //Èç¹ûÎªGETÇëÇó·½Ê½
+        if(method.equals("GET")){  //ï¿½ï¿½ï¿½ÎªGETï¿½ï¿½ï¿½ï¿½Ê½
            jep.setPage(url.toString()+"?"+data);
-           jtf.setText(url.toString()+"?"+data); //°ÑÎÄ±¾¿òÉèÎªÓÃ»§Ñ¡ÔñµÄ³¬¼¶Á´½Ó
-        }else if(method.equals("POST")){  //Èç¹ûÎªPOSTÇëÇó·½Ê½
+           jtf.setText(url.toString()+"?"+data); //ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ã»ï¿½Ñ¡ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        }else if(method.equals("POST")){  //ï¿½ï¿½ï¿½ÎªPOSTï¿½ï¿½ï¿½ï¿½Ê½
            URLConnection uc=url.openConnection(); 
-           //·¢ËÍHTTPÏìÓ¦ÕýÎÄ
+           //ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
            uc.setDoOutput(true);
            OutputStreamWriter out=new OutputStreamWriter(uc.getOutputStream()); 
            out.write(data);
            out.close();
           
-           //½ÓÊÕHTTPÏìÓ¦ÕýÎÄ    
+           //ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½    
            InputStream in=uc.getInputStream();
            ByteArrayOutputStream buffer=new ByteArrayOutputStream();
            byte[] buff=new byte[1024];  
@@ -94,13 +84,13 @@ public class SimpleWebBrowser extends JFrame implements HyperlinkListener,Action
            in.close();
 
            jep.setText(new String(buffer.toByteArray()));
-           jtf.setText(url.toString()); //°ÑÎÄ±¾¿òÉèÎªÓÃ»§Ñ¡ÔñµÄ³¬¼¶Á´½Ó  
+           jtf.setText(url.toString()); //ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ã»ï¿½Ñ¡ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
         }
         System.out.println(fevt.getData()+"|"+fevt.getMethod()+"|"+fevt.getURL());
       }else if(evt.getEventType()==HyperlinkEvent.EventType.ACTIVATED){  
-        //´¦ÀíÓÃ»§Ñ¡ÔñµÄ³¬¼¶Á´½Ó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         jep.setPage(evt.getURL());
-        jtf.setText(evt.getURL().toString()); //°ÑÎÄ±¾¿òÉèÎªÓÃ»§Ñ¡ÔñµÄ³¬¼¶Á´½Ó 
+        jtf.setText(evt.getURL().toString()); //ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ã»ï¿½Ñ¡ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
       } 
       
     }catch(Exception e){
@@ -111,7 +101,7 @@ public class SimpleWebBrowser extends JFrame implements HyperlinkListener,Action
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

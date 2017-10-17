@@ -1,5 +1,3 @@
-import java.io.*;
-import java.net.*;
 public class DatagramTester {
   private int port=8000;
   private DatagramSocket sendSocket;
@@ -24,7 +22,7 @@ public class DatagramTester {
   }
 
   public static long[] byteToLong(byte[] data)throws IOException{
-    long[] result=new long[data.length/8];  //Ò»¸ölongÊý¾ÝÕ¼8¸ö×Ö½Ú
+    long[] result=new long[data.length/8];  //Ò»ï¿½ï¿½longï¿½ï¿½ï¿½ï¿½Õ¼8ï¿½ï¿½ï¿½Ö½ï¿½
     ByteArrayInputStream bai=new ByteArrayInputStream(data);
     DataInputStream dis=new DataInputStream(bai);
     for(int i=0;i<data.length/8;i++){
@@ -35,47 +33,47 @@ public class DatagramTester {
 
   public void send(byte[] bigData)throws IOException{
     DatagramPacket packet=new DatagramPacket(bigData,0,512,InetAddress.getByName("localhost"),port);
-    int bytesSent=0;  //±íÊ¾ÒÑ¾­·¢ËÍµÄ×Ö½ÚÊý
-    int count=0;  //±íÊ¾·¢ËÍµÄ´ÎÊý
+    int bytesSent=0;  //ï¿½ï¿½Ê¾ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+    int count=0;  //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ÍµÄ´ï¿½ï¿½ï¿½
     while(bytesSent<bigData.length){
       sendSocket.send(packet);
-      System.out.println("SendSocket>µÚ"+(++count)+"´Î·¢ËÍÁË"+packet.getLength()+"¸ö×Ö½Ú");
-      bytesSent+=packet.getLength(); //getLength()·½·¨·µ»ØÊµ¼Ê·¢ËÍµÄ×Ö½ÚÊý
-      int remain=bigData.length-bytesSent; //¼ÆËãÊ£ÓàµÄÎ´·¢ËÍµÄ×Ö½ÚÊý
-      int length=(remain>512) ? 512: remain;  //¼ÆËãÏÂ´Î·¢ËÍµÄÊý¾ÝµÄ³¤¶È
-      packet.setData(bigData, bytesSent,length);  //¸Ä±äDatagramPacketµÄoffsetºÍlengthÊôÐÔ
+      System.out.println("SendSocket>ï¿½ï¿½"+(++count)+"ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½"+packet.getLength()+"ï¿½ï¿½ï¿½Ö½ï¿½");
+      bytesSent+=packet.getLength(); //getLength()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ê·ï¿½ï¿½Íµï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+      int remain=bigData.length-bytesSent; //ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½Íµï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+      int length=(remain>512) ? 512: remain;  //ï¿½ï¿½ï¿½ï¿½ï¿½Â´Î·ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ÝµÄ³ï¿½ï¿½ï¿½
+      packet.setData(bigData, bytesSent,length);  //ï¿½Ä±ï¿½DatagramPacketï¿½ï¿½offsetï¿½ï¿½lengthï¿½ï¿½ï¿½ï¿½
     }
   }
   public byte[] receive()throws IOException{
     byte[] bigData=new byte[MAX_LENGTH];
     DatagramPacket packet=new DatagramPacket(bigData,0,MAX_LENGTH);
-    int bytesReceived=0;  //±íÊ¾ÒÑ¾­½ÓÊÕµÄ×Ö½ÚÊý
-    int count=0;  //±íÊ¾½ÓÊÕµÄ´ÎÊý
+    int bytesReceived=0;  //ï¿½ï¿½Ê¾ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+    int count=0;  //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ÕµÄ´ï¿½ï¿½ï¿½
     long beginTime=System.currentTimeMillis();
     while((bytesReceived<bigData.length)
       && (System.currentTimeMillis()-beginTime<60000*5)){
       receiveSocket.receive(packet);
-      System.out.println("ReceiveSocket>µÚ"+(++count)+"´Î½ÓÊÕµ½"+packet.getLength()+"¸ö×Ö½Ú");
-      bytesReceived+=packet.getLength(); //getLength()·½·¨·µ»ØÊµ¼Ê·¢ËÍµÄ×Ö½ÚÊý
-      packet.setData(bigData, bytesReceived,MAX_LENGTH-bytesReceived);  //¸Ä±äDatagramPacketµÄoffsetºÍlengthÊôÐÔ
+      System.out.println("ReceiveSocket>ï¿½ï¿½"+(++count)+"ï¿½Î½ï¿½ï¿½Õµï¿½"+packet.getLength()+"ï¿½ï¿½ï¿½Ö½ï¿½");
+      bytesReceived+=packet.getLength(); //getLength()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ê·ï¿½ï¿½Íµï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+      packet.setData(bigData, bytesReceived,MAX_LENGTH-bytesReceived);  //ï¿½Ä±ï¿½DatagramPacketï¿½ï¿½offsetï¿½ï¿½lengthï¿½ï¿½ï¿½ï¿½
     }
     return packet.getData();  
   }
 
  
-  public Thread sender=new Thread(){ //·¢ËÍÕßÏß³Ì
+  public Thread sender=new Thread(){ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     public void run(){
       long[] longArray=new long[MAX_LENGTH/8];
       for(int i=0;i<longArray.length;i++)
         longArray[i]=i+1;
       try{
-        send(longToByte(longArray)); //·¢ËÍÒ»¸ölongÐÍÊý×éÖÐµÄÊý¾Ý
+        send(longToByte(longArray)); //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½longï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
      }catch(IOException e){e.printStackTrace();}
    }
 
  };
 
-  public Thread receiver=new Thread(){ //½ÓÊÕÕßÏß³Ì
+  public Thread receiver=new Thread(){ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     public void run(){
       try{
         long[] longArray=byteToLong(receive());
@@ -95,7 +93,7 @@ public class DatagramTester {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,17 +1,16 @@
-import java.io.*;
 /**
- * <p>Title: ¶ÁÈ¡Ëæ»úÎÄ¼þ</p>
- * <p>Description: ÑÝÊ¾Ê¹ÓÃRandomAccessFileÀà¶ÁÈ¡ÎÄ¼þ¡£</p>
+ * <p>Title: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½RandomAccessFileï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: RandFile.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class RandFile{
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args){
     String sFile;
@@ -21,19 +20,19 @@ public class RandFile{
     }else{
       sFile = args[0];
     }
-    //½ÓÊÜIOExceptionÒì³£
+    //ï¿½ï¿½ï¿½ï¿½IOExceptionï¿½ì³£
     try{
-      //¹¹ÔìËæ»ú·ÃÎÊÎÄ¼þ£¬Ê¹ÓÃ¿É¶ÁÐ´·½Ê½¡£
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¹ï¿½Ã¿É¶ï¿½Ð´ï¿½ï¿½Ê½ï¿½ï¿½
       RandomAccessFile rf = new  RandomAccessFile(sFile, "rw");
       for(int i = 0; i < 10; i++)
       	rf.writeDouble(i*1.414);
       rf.close();
-      //¹¹ÔìÒ»¸öËæ»ú·ÃÎÊÎÄ¼þ£¬Ê¹ÓÃÖ»¶Á·½Ê½
+      //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ê½
       rf = new RandomAccessFile(sFile, "rw");
       rf.seek(5*8);
       rf.writeDouble(47.0001);
       rf.close();
-      //¹¹ÔìÒ»¸öËæ»úÎÄ¼þ·ÃÎÊÎÄ¼þ£¬Ê¹ÓÃÖ»¶Á·½Ê½¡£
+      //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
       rf = new RandomAccessFile(sFile, "r");
       for(int i = 0; i < 10; i++)
        	System.out.println("Value " + i + ": " + rf.readDouble());

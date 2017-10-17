@@ -1,4 +1,3 @@
-import java.net.*;
 public class Client {
   public static void main(String args[])throws Exception{
     final int length=100;
@@ -6,20 +5,20 @@ public class Client {
     int port=8000;
 
     Socket[] sockets=new Socket[length];
-    for(int i=0;i<length;i++){  //ÊÔÍ¼½¨Á¢100´ÎÁ¬½Ó
+    for(int i=0;i<length;i++){  //ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       sockets[i]=new Socket(host, port);
-      System.out.println("µÚ"+(i+1)+"´ÎÁ¬½Ó³É¹¦");
+      System.out.println("ï¿½ï¿½"+(i+1)+"ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½");
     }
     Thread.sleep(3000);
     for(int i=0;i<length;i++){
-      sockets[i].close();  //¶Ï¿ªÁ¬½Ó
+      sockets[i].close();  //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½
     } 
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

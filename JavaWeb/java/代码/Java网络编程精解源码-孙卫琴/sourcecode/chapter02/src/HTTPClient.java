@@ -1,5 +1,3 @@
-import java.net.*;
-import java.io.*;
 public class HTTPClient {
   String host="www.javathinker.org";
   int port=80;
@@ -19,12 +17,12 @@ public class HTTPClient {
     sb.append("User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)\r\n");
     sb.append("Connection: Keep-Alive\r\n\r\n");
 
-    //·¢³öHTTPÇëÇó
+    //ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½
     OutputStream socketOut=socket.getOutputStream();
     socketOut.write(sb.toString().getBytes());
-    socket.shutdownOutput();  //¹Ø±ÕÊä³öÁ÷
+    socket.shutdownOutput();  //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        
-    //½ÓÊÕÏìÓ¦½á¹û
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
     InputStream socketIn=socket.getInputStream();
     ByteArrayOutputStream buffer=new ByteArrayOutputStream();
     byte[] buff=new byte[1024];  
@@ -33,7 +31,7 @@ public class HTTPClient {
       buffer.write(buff,0,len);
     }
     
-    System.out.println(new String(buffer.toByteArray()));  //°Ñ×Ö½ÚÊý×é×ª»»Îª×Ö·û´®
+    System.out.println(new String(buffer.toByteArray()));  //ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½
 
 
 /*
@@ -56,7 +54,7 @@ public class HTTPClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,25 +1,21 @@
-import javax.net.ssl.*;
 import javax.net.ssl.SSLEngineResult.*;
-import java.io.*;
-import java.security.*;
-import java.nio.*;
 
 public class SSLEngineDemo {
   private static boolean logging = true;
   private SSLContext sslc;
 
-  private SSLEngine clientEngine; // ¿Í»§¶ËEngine
-  private ByteBuffer clientOut;	  // ´æ·Å¿Í»§¶Ë·¢ËÍµÄÓ¦ÓÃÊı¾İ
-  private ByteBuffer clientIn;	  // ´æ·Å¿Í»§¶Ë½ÓÊÕµ½µÄÓ¦ÓÃÊı¾İ
+  private SSLEngine clientEngine; // ï¿½Í»ï¿½ï¿½ï¿½Engine
+  private ByteBuffer clientOut;	  // ï¿½ï¿½Å¿Í»ï¿½ï¿½Ë·ï¿½ï¿½Íµï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private ByteBuffer clientIn;	  // ï¿½ï¿½Å¿Í»ï¿½ï¿½Ë½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-  private SSLEngine serverEngine; //·şÎñÆ÷¶ËEngine
-  private ByteBuffer serverOut;	  //´æ·Å·şÎñÆ÷¶Ë·¢ËÍµÄÓ¦ÓÃÊı¾İ
-  private ByteBuffer serverIn;	  //´æ·Å·şÎñÆ÷¶Ë½ÓÊÕµ½µÄÓ¦ÓÃÊı¾İ
+  private SSLEngine serverEngine; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Engine
+  private ByteBuffer serverOut;	  //ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½Íµï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private ByteBuffer serverIn;	  //ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     
-  private ByteBuffer cTOs;	  //´æ·Å¿Í»§¶ËÏò·şÎñÆ÷¶Ë·¢ËÍµÄÍøÂçÊı¾İ
-  private ByteBuffer sTOc;	  //´æ·Å·şÎñÆ÷¶ËÏò¿Í»§¶Ë·¢ËÍµÄÍøÂçÊı¾İ
+  private ByteBuffer cTOs;	  //ï¿½ï¿½Å¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private ByteBuffer sTOc;	  //ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-  //ÉèÖÃÃÜÔ¿¿âÎÄ¼şºÍĞÅÈÎ¿âÎÄ¼şÒÔ¼°¿ÚÁî
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½Ä¼ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
   private static String keyStoreFile = "test.keys";
   private static String trustStoreFile = "test.keys";
   private static String passphrase = "654321";
@@ -31,7 +27,7 @@ public class SSLEngineDemo {
     System.out.println("Demo Completed.");
   }
 
-  /** ³õÊ¼»¯SSLContext */
+  /** ï¿½ï¿½Ê¼ï¿½ï¿½SSLContext */
   public SSLEngineDemo() throws Exception {
     KeyStore ks = KeyStore.getInstance("JKS");
     KeyStore ts = KeyStore.getInstance("JKS");
@@ -63,26 +59,26 @@ public class SSLEngineDemo {
 
     while (!isEngineClosed(clientEngine)|| !isEngineClosed(serverEngine)) {
       log("================");
-      clientResult = clientEngine.wrap(clientOut, cTOs); //¿Í»§¶Ë´ò°üÓ¦ÓÃÊı¾İ
+      clientResult = clientEngine.wrap(clientOut, cTOs); //ï¿½Í»ï¿½ï¿½Ë´ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       log("client wrap: ", clientResult);
-      runDelegatedTasks(clientResult, clientEngine);  //Íê³ÉÎÕÊÖÈÎÎñ
+      runDelegatedTasks(clientResult, clientEngine);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-      serverResult = serverEngine.wrap(serverOut, sTOc);  //·şÎñÆ÷¶Ë´ò°üÓ¦ÓÃÊı¾İ
+      serverResult = serverEngine.wrap(serverOut, sTOc);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë´ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       log("server wrap: ", serverResult);
-      runDelegatedTasks(serverResult, serverEngine); //Íê³ÉÎÕÊÖÈÎÎñ
+      runDelegatedTasks(serverResult, serverEngine); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
       cTOs.flip();
       sTOc.flip();
 
       log("----");
 
-      clientResult = clientEngine.unwrap(sTOc, clientIn);  //¿Í»§¶ËÕ¹¿ªÍøÂçÊı¾İ
+      clientResult = clientEngine.unwrap(sTOc, clientIn);  //ï¿½Í»ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       log("client unwrap: ", clientResult);
-      runDelegatedTasks(clientResult, clientEngine);  //Íê³ÉÎÕÊÖÈÎÎñ
+      runDelegatedTasks(clientResult, clientEngine);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-      serverResult = serverEngine.unwrap(cTOs, serverIn); //·şÎñÆ÷¶ËÕ¹¿ªÍøÂçÊı¾İ
+      serverResult = serverEngine.unwrap(cTOs, serverIn); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       log("server unwrap: ", serverResult);
-      runDelegatedTasks(serverResult, serverEngine);  //Íê³ÉÎÕÊÖÈÎÎñ
+      runDelegatedTasks(serverResult, serverEngine);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
       cTOs.compact();
       sTOc.compact();
@@ -99,7 +95,7 @@ public class SSLEngineDemo {
     }
   }
   
-  /** ´´½¨¿Í»§¶ËÒÔ¼°·şÎñÆ÷¶ËµÄSSLEngine */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½SSLEngine */
   private void createSSLEngines() throws Exception {
     serverEngine = sslc.createSSLEngine();
     serverEngine.setUseClientMode(false);
@@ -109,7 +105,7 @@ public class SSLEngineDemo {
     clientEngine.setUseClientMode(true);
   }
 
-  /** ´´½¨¿Í»§¶ËÒÔ¼°·şÎñÆ÷¶ËµÄÓ¦ÓÃ»º³åÇøºÍÍøÂç»º³åÇø */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ó¦ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç»ºï¿½ï¿½ï¿½ï¿½ */
   private void createBuffers() {
     SSLSession session = clientEngine.getSession();
     int appBufferMax = session.getApplicationBufferSize();
@@ -124,7 +120,7 @@ public class SSLEngineDemo {
     serverOut = ByteBuffer.wrap("Hello Client, I'm Server".getBytes());
   }
   
-  /** Ö´ĞĞSSLÎÕÊÖÈÎÎñ */ 
+  /** Ö´ï¿½ï¿½SSLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */ 
   private static void runDelegatedTasks(SSLEngineResult result,
 	    SSLEngine engine) throws Exception {
     if(result.getHandshakeStatus() == HandshakeStatus.NEED_TASK) {
@@ -141,12 +137,12 @@ public class SSLEngineDemo {
     }
   }
   
-  /** µ±SSLEngineµÄÊä³öÓëÊäÈë¶¼¹Ø±Õ£¬ÔòÒâÎ¶×ÅSSLEngine±»¹Ø±Õ */
+  /** ï¿½ï¿½SSLEngineï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¶¼ï¿½Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½SSLEngineï¿½ï¿½ï¿½Ø±ï¿½ */
   private static boolean isEngineClosed(SSLEngine engine) {
     return(engine.isOutboundDone() && engine.isInboundDone());
   }
   
-  /** ÅĞ¶ÏÁ½¸ö»º³åÇøÄÚÈİÊÇ·ñÏàÍ¬ */
+  /** ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¬ */
   private static void checkTransfer(ByteBuffer a, ByteBuffer b)throws Exception {
     a.flip();
     b.flip();
@@ -165,7 +161,7 @@ public class SSLEngineDemo {
 
   private static boolean resultOnce = true;
 
-  /** Êä³öÈÕÖ¾£¬´òÓ¡SSLEngineResultµÄ½á¹û */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ó¡SSLEngineResultï¿½Ä½ï¿½ï¿½ */
   private static void log(String str, SSLEngineResult result) {
     if(resultOnce){
       resultOnce = false;
@@ -182,7 +178,7 @@ public class SSLEngineDemo {
     }
   }
 
-  /** Êä³öÈÕÖ¾*/
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾*/
   private static void log(String str) {
     System.out.println(str);
   }
@@ -190,7 +186,7 @@ public class SSLEngineDemo {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

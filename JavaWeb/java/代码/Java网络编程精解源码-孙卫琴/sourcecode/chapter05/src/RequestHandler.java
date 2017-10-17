@@ -1,28 +1,24 @@
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-
 public class RequestHandler implements Handler {
   private ChannelIO channelIO;
-  private ByteBuffer requestByteBuffer = null;  //´æ·ÅHTTPÇëÇóµÄ»º³åÇø
+  private ByteBuffer requestByteBuffer = null;  //ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
 
-  private boolean requestReceived = false;  //ÊÇ·ñÒÑ¾­½ÓÊÕµ½ÁËËùÓÐµÄHTTPÇëÇó
-  private Request request = null;  //±íÊ¾HTTPÇëÇó
-  private Response response = null;  //±íÊ¾HTTPÏìÓ¦
+  private boolean requestReceived = false;  //ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½HTTPï¿½ï¿½ï¿½ï¿½
+  private Request request = null;  //ï¿½ï¿½Ê¾HTTPï¿½ï¿½ï¿½ï¿½
+  private Response response = null;  //ï¿½ï¿½Ê¾HTTPï¿½ï¿½Ó¦
 
   RequestHandler(ChannelIO channelIO) {
     this.channelIO = channelIO;
   }
 
   /* 
-   * ½ÓÊÕHTTPÇëÇó£¬Èç¹ûÒÑ¾­½ÓÊÕµ½ÁËËùÓÐµÄHTTPÇëÇóÊý¾Ý£¬¾Í·µ»Øtrue,·ñÔò·µ»Øfalse
+   * ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Í·ï¿½ï¿½ï¿½true,ï¿½ï¿½ï¿½ò·µ»ï¿½false
    */
   private boolean receive(SelectionKey sk) throws IOException {
     ByteBuffer tmp = null;
 
-    if (requestReceived)return true;  //Èç¹ûÒÑ¾­½ÓÊÕµ½ËùÓÐHTTPÇëÇóÊý¾Ý£¬·µ»Øtrue
+    if (requestReceived)return true;  //ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½true
     
-    //Èç¹ûÒÑ¾­¶Áµ½Í¨µÀµÄÄ©Î²£¬»òÕßÒÑ¾­¶Áµ½HTTPÇëÇóÊý¾ÝµÄÄ©Î²±êÖ¾¡°\r\n¡±£¬¾Í·µ»Øtrue
+    //ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ä©Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½Ä©Î²ï¿½ï¿½Ö¾ï¿½ï¿½\r\nï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½true
     if ((channelIO.read() < 0) || Request.isComplete(channelIO.getReadBuf())) {
       requestByteBuffer = channelIO.getReadBuf();
       return (requestReceived = true);
@@ -31,14 +27,14 @@ public class RequestHandler implements Handler {
   }
 
   /*
-   * Í¨¹ýRequestÀàµÄparse()·½·¨£¬½âÎörequestByteBufferÖÐµÄHTTPÇëÇóÊý¾Ý£¬¹¹ÔìÏàÓ¦µÄRequest¶ÔÏó 
+   * Í¨ï¿½ï¿½Requestï¿½ï¿½ï¿½parse()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½requestByteBufferï¿½Ðµï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Requestï¿½ï¿½ï¿½ï¿½ 
    */
   private boolean parse() throws IOException {
     try {
       request = Request.parse(requestByteBuffer);
       return true;
     } catch (MalformedRequestException x) {  
-      //Èç¹ûHTTPÇëÇóµÄ¸ñÊ½²»ÕýÈ·£¬¾Í·¢ËÍ´íÎóÐÅÏ¢
+      //ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Í·ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
       response = new Response(Response.Code.BAD_REQUEST,
                           new StringContent(x));
     }
@@ -46,11 +42,11 @@ public class RequestHandler implements Handler {
   }
 
   /*
-   * ´´½¨HTTPÏìÓ¦ 
+   * ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ 
    */
   private void build() throws IOException {
     Request.Action action = request.action();
-    //½ö½öÖ§³ÖGETºÍHEADÇëÇó·½Ê½
+    //ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½GETï¿½ï¿½HEADï¿½ï¿½ï¿½ï¿½Ê½
     if ((action != Request.Action.GET) &&
             (action != Request.Action.HEAD)){
        response = new Response(Response.Code.METHOD_NOT_ALLOWED,
@@ -61,19 +57,19 @@ public class RequestHandler implements Handler {
     }
   }
   
-  /*  ½ÓÊÕHTTPÇëÇó£¬·¢ËÍHTTPÏìÓ¦ */
+  /*  ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ */
   public void handle(SelectionKey sk) throws IOException {
     try {
-        if (request == null) { //Èç¹û»¹Ã»ÓÐ½ÓÊÕµ½HTTPÇëÇóµÄËùÓÐÊý¾Ý
-            //½ÓÊÕHTTPÇëÇó      
+        if (request == null) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð½ï¿½ï¿½Õµï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½      
             if (!receive(sk))return;
             requestByteBuffer.flip();
      
-            //Èç¹û³É¹¦½âÎöÁËHTTPÇëÇó£¬¾Í´´½¨Ò»¸öResponse¶ÔÏó
+            //ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ó£¬¾Í´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Responseï¿½ï¿½ï¿½ï¿½
             if (parse())build();
      
             try {
-                response.prepare();  //×¼±¸HTTPÏìÓ¦µÄÄÚÈÝ
+                response.prepare();  //×¼ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             } catch (IOException x) {
                 response.release();  
                 response = new Response(Response.Code.NOT_FOUND,
@@ -82,16 +78,16 @@ public class RequestHandler implements Handler {
             }
 
             if (send()) {  
-               //Èç¹ûHTTPÏìÓ¦Ã»ÓÐ·¢ËÍÍê±Ï£¬ÔòÐèÒª×¢²áÐ´¾ÍÐ÷ÊÂ¼þ£¬
-               //ÒÔ±ãÔÚÐ´¾ÍÐ÷ÊÂ¼þ·¢ÉúÊ±¼ÌÐø·¢ËÍÊý¾Ý
+               //ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦Ã»ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
+               //ï¿½Ô±ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                sk.interestOps(SelectionKey.OP_WRITE);
             } else {
-               //Èç¹ûHTTPÏìÓ¦·¢ËÍÍê±Ï£¬¾Í¶Ï¿ªµ×²ãµÄÁ¬½Ó£¬²¢ÇÒÊÍ·ÅResponseÕ¼ÓÃµÄ×ÊÔ´
+               //ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Í¶Ï¿ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ResponseÕ¼ï¿½Ãµï¿½ï¿½ï¿½Ô´
                channelIO.close();
                response.release();
             }
-        } else {  //Èç¹ûÒÑ¾­½ÓÊÕµ½HTTPÇëÇóµÄËùÓÐÊý¾Ý
-            if (!send()) {  //Èç¹ûHTTPÏìÓ¦·¢ËÍÍê±Ï
+        } else {  //ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õµï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            if (!send()) {  //ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
               channelIO.close();
               response.release();
             }
@@ -105,7 +101,7 @@ public class RequestHandler implements Handler {
     }
   }
 
-  /* ·¢ËÍHTTPÏìÓ¦£¬Èç¹ûÈ«²¿·¢ËÍÍê±Ï£¬¾Í·µ»Øfalse£¬·ñÔò·µ»Øtrue */  
+  /* ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Í·ï¿½ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½true */  
   private boolean send() throws IOException {
     return response.send(channelIO);
   }
@@ -113,7 +109,7 @@ public class RequestHandler implements Handler {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

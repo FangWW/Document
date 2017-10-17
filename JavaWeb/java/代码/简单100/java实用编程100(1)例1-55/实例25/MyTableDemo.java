@@ -1,36 +1,30 @@
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
-
-import javax.swing.DefaultCellEditor;
-
-import javax.swing.JScrollPane;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import java.awt.*;
-import java.awt.event.*;
 /**
- * <p>Title: ×Ô¼º¶¨ÒåµÄ±í¸ñ</p>
- * <p>Description: ¼Ì³ÐAbstractTableModelÀà£¬ÊµÏÖ×Ô¼ºµÄ±í¸ñ</p>
+ * <p>Title: ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½</p>
+ * <p>Description: ï¿½Ì³ï¿½AbstractTableModelï¿½à£¬Êµï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä±ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: MyTableDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class MyTableDemo extends JFrame {
 
     public MyTableDemo() {
         super("MyTableDemo");
-        //ÉùÃ÷×Ô¼ºµÄ±í¸ñ£¬²¢Ìí¼Óµ½JTableÖÐ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä±ï¿½ñ£¬²ï¿½ï¿½ï¿½Óµï¿½JTableï¿½ï¿½
         MyTableModel myModel = new MyTableModel();
         JTable table = new JTable(myModel);
         table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 
-        //½«±í¸ñÌí¼Óµ½¿É¹ö¶¯µÄÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JScrollPane scrollPane = new JScrollPane(table);
 
-        //½«¹ö¶¯Ãæ°åÌí¼Óµ½´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
         getContentPane().add(scrollPane, BorderLayout.CENTER);
-        //Ìí¼Ó¼àÌý
+        //ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
@@ -38,75 +32,75 @@ public class MyTableDemo extends JFrame {
         });
     }
 /**
- * <p>Title: ¶¨Òå×Ô¼ºµÄ±í¸ñÄ£Ê½</p>
- * <p>Description: Í¨¹ý¼Ì³ÐAbstractTableModelÀàÀ´¶¨Òå×Ô¼ºµÄ±í¸ñÄ£Ê½£¬
- *    ÕâÀïÊ¹µÃµÚÈý¸öÒÔºó²Å¿ÉÒÔ±à¼­</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä±ï¿½ï¿½Ä£Ê½</p>
+ * <p>Description: Í¨ï¿½ï¿½ï¿½Ì³ï¿½AbstractTableModelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä±ï¿½ï¿½Ä£Ê½ï¿½ï¿½
+ *    ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½Å¿ï¿½ï¿½Ô±à¼­</p>
  */
     class MyTableModel extends AbstractTableModel {
-        //¶¨Òå±íÍ·
-        final String[] columnNames = {"ÐÕÃû", 
-                                      "ÐÔ±ð",
-                                      "Ñ§Àú",
-                                      "ÄêÁä",
-                                      "ÊÇ·ñÒÑ»é"};
-        //³õÊ¼»¯±íÊý¾Ý
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Í·
+        final String[] columnNames = {"ï¿½ï¿½ï¿½ï¿½", 
+                                      "ï¿½Ô±ï¿½",
+                                      "Ñ§ï¿½ï¿½",
+                                      "ï¿½ï¿½ï¿½ï¿½",
+                                      "ï¿½Ç·ï¿½ï¿½Ñ»ï¿½"};
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         final Object[][] data = {
-            {"ÕÅÈý", "ÄÐ", 
-             "´ó±¾", new Integer(25), new Boolean(false)},
-            {"ÀîËÄ", "ÄÐ", 
-             "´ó±¾", new Integer(33), new Boolean(true)},
-            {"ÍõÎå", "ÄÐ",
-             "¸ßÖÐ", new Integer(20), new Boolean(false)},
-            {"ÕÔÙ»", "Å®",
-             "´ó×¨", new Integer(26), new Boolean(true)},
-            {"ÖÜ´ó", "ÄÐ",
-             "´ó±¾", new Integer(24), new Boolean(false)}
+            {"ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½", 
+             "ï¿½ï¿½", new Integer(25), new Boolean(false)},
+            {"ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½", 
+             "ï¿½ï¿½", new Integer(33), new Boolean(true)},
+            {"ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½",
+             "ï¿½ï¿½ï¿½ï¿½", new Integer(20), new Boolean(false)},
+            {"ï¿½ï¿½Ù»", "Å®",
+             "ï¿½ï¿½×¨", new Integer(26), new Boolean(true)},
+            {"ï¿½Ü´ï¿½", "ï¿½ï¿½",
+             "ï¿½ï¿½", new Integer(24), new Boolean(false)}
         };
 /**
- *<br>·½·¨ËµÃ÷£º¼Ì³ÐAbstractTableModel±ØÐëÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºint ÁÐÊý
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½AbstractTableModelï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½int ï¿½ï¿½ï¿½ï¿½
  */
         public int getColumnCount() {
             return columnNames.length;
         }
 /**
- *<br>·½·¨ËµÃ÷£º¼Ì³ÐAbstractTableModel±ØÐëÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºint ÁÐÊý
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½AbstractTableModelï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½int ï¿½ï¿½ï¿½ï¿½
  */        
         public int getRowCount() {
             return data.length;
         }
 /**
- *<br>·½·¨ËµÃ÷£º¼Ì³ÐAbstractTableModel±ØÐëÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºString ÁÐÃû
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½AbstractTableModelï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String ï¿½ï¿½ï¿½ï¿½
  */
         public String getColumnName(int col) {
             return columnNames[col];
         }
 /**
- *<br>·½·¨ËµÃ÷£º¼Ì³ÐAbstractTableModel±ØÐëÊµÏÖµÄ·½·¨£¬»ñÈ¡±í¸ñÖÐµÄÊý¾Ý
- *<br>ÊäÈë²ÎÊý£ºint row ÐÐÊý
- *<br>ÊäÈë²ÎÊý£ºint col ÁÐÊý
- *<br>·µ»ØÀàÐÍ£ºObject Êý¾Ý¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½AbstractTableModelï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int row ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int col ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Object ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½
  */
         public Object getValueAt(int row, int col) {
             return data[row][col];
         }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖÕâ¸ö·½·¨Ê¹µÃ×îºóÒ»ÁÐ²»ÊÇÏÔÊ¾trueºÍfalse¡£¶øÊÇÊ¹ÓÃ¼ì²éºÐ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾trueï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         public Class getColumnClass(int c) {
             return getValueAt(0, c).getClass();
         }
 /**
- *<br>·½·¨ËµÃ÷£ºÕâ¸ö·½·¨²»Ò»¶¨ÐèÒªÊµÏÖ¡£ÕâÀïÊÇÎªÁË¶¨Òå¿É±à¼­µÄÁÐ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºboolean ÊÇ·ñ¿É±à¼­
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ÒªÊµï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ë¶ï¿½ï¿½ï¿½É±à¼­ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½boolean ï¿½Ç·ï¿½É±à¼­
  */
         public boolean isCellEditable(int row, int col) {
             if (col < 2) { 
@@ -116,32 +110,32 @@ public class MyTableDemo extends JFrame {
             }
         }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖ´Ë·½·¨£¬»ñµÃ±à¼­Êý¾Ý¡£
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½Ö´Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã±à¼­ï¿½ï¿½ï¿½Ý¡ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         public void setValueAt(Object value, int row, int col) {
-                System.out.println("ÐÞ¸ÄÊý¾ÝÎ»ÖÃ£º " + row + "," + col
-                                   + " ÐÂÊý¾ÝÎª£º " + value);
+                System.out.println("ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½ " + row + "," + col
+                                   + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ " + value);
 
             data[row][col] = value;
             fireTableCellUpdated(row, col);
 
-                System.out.println("±í¸ñÐÂÊý¾Ý:");
+                System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:");
                 printDebugData();
 
         }
 /**
- *<br>·½·¨ËµÃ÷£ºÊä³ö±í¸ñÖÐµÄÐÂÊý¾Ý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         private void printDebugData() {
             int numRows = getRowCount();
             int numCols = getColumnCount();
 
             for (int i=0; i < numRows; i++) {
-                System.out.print("    ÐÐ " + i + ":");
+                System.out.print("    ï¿½ï¿½ " + i + ":");
                 for (int j=0; j < numCols; j++) {
                     System.out.print("  " + data[i][j]);
                 }
@@ -151,9 +145,9 @@ public class MyTableDemo extends JFrame {
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
     	JFrame.setDefaultLookAndFeelDecorated(true);

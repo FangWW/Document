@@ -1,36 +1,33 @@
-import java.net.*;
-import java.io.*;
-
 public class MailSender{
-  private String smtpServer="smtp.mydomain.com";  //SMTPÓÊ¼ş·şÎñÆ÷µÄÖ÷»úÃû
+  private String smtpServer="smtp.mydomain.com";  //SMTPï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   //private String smtpServer="localhost";
   private int port=25;
 
   public static void main(String[] args){
-    Message msg=new Message("tom@abc.com",   //·¢ËÍÕßµÄÓÊ¼şµØÖ·
-                            "linda@def.com",  //½ÓÊÕÕßµÄÓÊ¼şµØÖ·
-                           "hello",  //ÓÊ¼ş±êÌâ
-                           "hi,I miss you very much."); //ÓÊ¼şÕıÎÄ
+    Message msg=new Message("tom@abc.com",   //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
+                            "linda@def.com",  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
+                           "hello",  //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+                           "hi,I miss you very much."); //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
     new MailSender().sendMail(msg);
   }
 
   public void sendMail(Message msg){
     Socket socket=null;
     try{
-      socket = new Socket(smtpServer,port);  //Á¬½Óµ½ÓÊ¼ş·şÎñÆ÷
+      socket = new Socket(smtpServer,port);  //ï¿½ï¿½ï¿½Óµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       BufferedReader br =getReader(socket);
       PrintWriter pw = getWriter(socket);
-      String localhost= InetAddress.getLocalHost().getHostName();   //¿Í»§Ö÷»úµÄÃû×Ö
+      String localhost= InetAddress.getLocalHost().getHostName();   //ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-      sendAndReceive(null,br,pw); //½ö½öÊÇÎªÁË½ÓÊÕ·şÎñÆ÷µÄÏìÓ¦Êı¾İ
+      sendAndReceive(null,br,pw); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ë½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
       sendAndReceive("HELO " + localhost,br,pw);
       sendAndReceive("MAIL FROM: <" + msg.from+">",br,pw);
       sendAndReceive("RCPT TO: <" + msg.to+">",br,pw);
-      sendAndReceive("DATA",br,pw);  //½ÓÏÂÀ´¿ªÊ¼·¢ËÍÓÊ¼şÄÚÈİ
-      pw.println(msg.data);  //·¢ËÍÓÊ¼şÄÚÈİ
+      sendAndReceive("DATA",br,pw);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+      pw.println(msg.data);  //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
       System.out.println("Client>"+msg.data);
-      sendAndReceive(".",br,pw);  //ÓÊ¼ş·¢ËÍÍê±Ï
-      sendAndReceive("QUIT",br,pw);  //½áÊøÍ¨ĞÅ
+      sendAndReceive(".",br,pw);  //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      sendAndReceive("QUIT",br,pw);  //ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
     }catch (IOException e){
       e.printStackTrace();
     }finally{
@@ -40,11 +37,11 @@ public class MailSender{
     }
   }
 
-  /** ·¢ËÍÒ»ĞĞ×Ö·û´®£¬²¢½ÓÊÕÒ»ĞĞ·şÎñÆ÷µÄÏìÓ¦Êı¾İ*/
+  /** ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ğ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½*/
   private void sendAndReceive(String str,BufferedReader br,PrintWriter pw) throws IOException{
     if (str != null){
       System.out.println("Client>"+str);
-      pw.println(str);  //·¢ËÍÍêstr×Ö·û´®ºó£¬»¹»á·¢ËÍ¡°\r\n¡±¡£
+      pw.println(str);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½strï¿½Ö·ï¿½ï¿½ï¿½ï¿½ó£¬»ï¿½ï¿½á·¢ï¿½Í¡ï¿½\r\nï¿½ï¿½ï¿½ï¿½
     }
     String response;
     if ((response = br.readLine()) != null)
@@ -61,12 +58,12 @@ public class MailSender{
   }
 }
 
-class Message{  //±íÊ¾ÓÊ¼ş
-  String from;  //·¢ËÍÕßµÄÓÊ¼şµØÖ·
-  String to;  //½ÓÊÕÕßµÄÓÊ¼şµØÖ·
-  String subject;  //ÓÊ¼ş±êÌâ
-  String content;  //ÓÊ¼şÕıÎÄ
-  String data;  //ÓÊ¼şÄÚÈİ£¬°üÀ¨ÓÊ¼ş±êÌâºÍÕıÎÄ
+class Message{  //ï¿½ï¿½Ê¾ï¿½Ê¼ï¿½
+  String from;  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
+  String to;  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
+  String subject;  //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  String content;  //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  String data;  //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   public Message(String from,String to, String subject, String content){
     this.from=from;
     this.to=to;
@@ -78,7 +75,7 @@ class Message{  //±íÊ¾ÓÊ¼ş
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

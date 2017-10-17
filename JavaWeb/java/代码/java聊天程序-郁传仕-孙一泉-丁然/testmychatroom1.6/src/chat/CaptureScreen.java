@@ -3,26 +3,20 @@ package chat;
 /**
  * CaptureScreen.java
  */
-import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
-import javax.imageio.*;
-import java.awt.image.*;
 
 public class CaptureScreen extends JFrame implements ActionListener {
     private JButton start,cancel;
     private JPanel c;
     private BufferedImage get;
-    private JTabbedPane jtp;//Ò»¸ö·ÅÖÃºÜ¶à·ÝÍ¼Æ¬
-    private int index;//Ò»¸öÒ»Ö±»áµÝÔöµÄË÷Òý,ÓÃÓÚ±êÈÏÍ¼Æ¬
-    private JRadioButton java,system;//JAVA½çÃæ,ÏµÍ³½çÃæ
+    private JTabbedPane jtp;//Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ÃºÜ¶ï¿½ï¿½Í¼Æ¬
+    private int index;//Ò»ï¿½ï¿½Ò»Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Í¼Æ¬
+    private JRadioButton java,system;//JAVAï¿½ï¿½ï¿½ï¿½,ÏµÍ³ï¿½ï¿½ï¿½ï¿½
     /** Creates a new instance of CaptureScreen */
     public CaptureScreen() {
-        super("ÆÁÄ»½ØÈ¡");
+        super("ï¿½ï¿½Ä»ï¿½ï¿½È¡");
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }catch(Exception exe){
@@ -35,29 +29,29 @@ public class CaptureScreen extends JFrame implements ActionListener {
         jtp=new JTabbedPane(JTabbedPane.TOP,JTabbedPane.SCROLL_TAB_LAYOUT);
     }
     private void initWindow(){
-        start=new JButton("¿ªÊ¼½ØÈ¡");
-        cancel=new JButton("ÍË³ö");
+        start=new JButton("ï¿½ï¿½Ê¼ï¿½ï¿½È¡");
+        cancel=new JButton("ï¿½Ë³ï¿½");
         start.addActionListener(this);
         cancel.addActionListener(this);
         JPanel buttonJP=new JPanel();
         c=new JPanel(new BorderLayout());
-        JLabel jl=new JLabel("ÆÁÄ»½ØÈ¡", JLabel.CENTER);
-        JLabel jl1=new JLabel("ÌáÊ¾£ºË«»÷Ñ¡¶¨ÇøÓò½øÐÐ±£´æµÈ²Ù×÷",JLabel.CENTER);
-        jl.setFont(new Font("ºÚÌå",Font.BOLD,40));
-        jl1.setFont(new Font("ËÎÌå",Font.BOLD,20));
+        JLabel jl=new JLabel("ï¿½ï¿½Ä»ï¿½ï¿½È¡", JLabel.CENTER);
+        JLabel jl1=new JLabel("ï¿½ï¿½Ê¾ï¿½ï¿½Ë«ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½",JLabel.CENTER);
+        jl.setFont(new Font("ï¿½ï¿½ï¿½ï¿½",Font.BOLD,40));
+        jl1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½",Font.BOLD,20));
         jl.setForeground(Color.RED);
         jl1.setForeground(Color.BLUE);
         c.add(jl,BorderLayout.CENTER);
         c.add(jl1,BorderLayout.SOUTH);
         buttonJP.add(start);
         buttonJP.add(cancel);
-        buttonJP.setBorder(BorderFactory.createTitledBorder("¹«¹²²Ù×÷Çø"));
-        JPanel jp=new JPanel();//·ÅÖÃÁ½¸öµ¥Ñ¡°´Å¥µÄÃæ°å
-        jp.add(java=new JRadioButton("java½çÃæ"));
-        jp.add(system=new JRadioButton("ÏµÍ³½çÃæ",true));
+        buttonJP.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
+        JPanel jp=new JPanel();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½
+        jp.add(java=new JRadioButton("javaï¿½ï¿½ï¿½ï¿½"));
+        jp.add(system=new JRadioButton("ÏµÍ³ï¿½ï¿½ï¿½ï¿½",true));
         java.addActionListener(this);
         system.addActionListener(this);
-        jp.setBorder(BorderFactory.createTitledBorder("½çÃæ·ç¸ñ"));
+        jp.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
         ButtonGroup bg=new ButtonGroup();
         bg.add(java);
         bg.add(system);
@@ -76,32 +70,32 @@ public class CaptureScreen extends JFrame implements ActionListener {
     private void updates(){
         this.setVisible(true);
         if(get!=null){
-            //Èç¹ûË÷ÒýÊÇ0,Ôò±íÊ¾Ò»ÕÅÍ¼Æ¬¶¼Ã»ÓÐ±»¼ÓÈë¹ý,
-            //ÔòÒªÇå³ýµ±Ç°µÄ¶«Î÷,ÖØÐÂ°Ñtabpane·Å½øÀ´
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0,ï¿½ï¿½ï¿½Ê¾Ò»ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ã»ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
+            //ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Ä¶ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Â°ï¿½tabpaneï¿½Å½ï¿½ï¿½ï¿½
             if(index==0){
                 c.removeAll();
                 c.add(jtp,BorderLayout.CENTER);
-            }else{//·ñÔòµÄ»°,Ö±½Ó¶ÔtabpaneÌí¼ÓÃæ°å¾Í¿ÉÒÔÁË
-                //¾ÍÊ²Ã´¶¼²»ÓÃ×öÁË
+            }else{//ï¿½ï¿½ï¿½ï¿½Ä»ï¿½,Ö±ï¿½Ó¶ï¿½tabpaneï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½
+                //ï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             }
             PicPanel pic=new PicPanel(get);
             jtp.addTab("Í¼Æ¬"+(++index),pic);
             jtp.setSelectedComponent(pic);
-            SwingUtilities.updateComponentTreeUI(c); // µ÷ÕûLookAndFeel£¨javax.swing£©
+            SwingUtilities.updateComponentTreeUI(c); // ï¿½ï¿½ï¿½ï¿½LookAndFeelï¿½ï¿½javax.swingï¿½ï¿½
         }
     }
     
     private void doStart(){
         try{
             this.setVisible(false);
-            Thread.sleep(500);//Ë¯500ºÁÃëÊÇÎªÁËÈÃÖ÷´°ÍêÈ«²»¼û
-            Robot ro=new Robot(); // £¨Í¨¹ý±¾µØ²Ù×÷£©¿ØÖÆÊó±ê¡¢¼üÅÌµÈÊµ¼ÊÊäÈëÔ´£¨java.awt£©
-            Toolkit tk=Toolkit.getDefaultToolkit(); // AWT×é¼þµÄ³éÏó¸¸Àà£¨java.awt£©
+            Thread.sleep(500);//Ë¯500ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
+            Robot ro=new Robot(); // ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¡¢ï¿½ï¿½ï¿½Ìµï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½java.awtï¿½ï¿½
+            Toolkit tk=Toolkit.getDefaultToolkit(); // AWTï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½à£¨java.awtï¿½ï¿½
             Dimension di=tk.getScreenSize();
             Rectangle rec=new Rectangle(0,0,di.width,di.height);
             BufferedImage bi=ro.createScreenCapture(rec);
             JFrame jf=new JFrame();
-            Temp temp=new Temp(jf,bi,di.width,di.height); // ×Ô¶¨ÒåµÄTempÀàµÄ¶ÔÏó
+            Temp temp=new Temp(jf,bi,di.width,di.height); // ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Tempï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
             jf.getContentPane().add(temp,BorderLayout.CENTER);
             jf.setUndecorated(true);
             jf.setSize(di);
@@ -113,13 +107,13 @@ public class CaptureScreen extends JFrame implements ActionListener {
     }
     
     /**
-    *¹«ÓÃµÄ´¦Àí±£´æÍ¼Æ¬µÄ·½·¨
+    *ï¿½ï¿½ï¿½ÃµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä·ï¿½ï¿½ï¿½
     */
     public  void doSave(BufferedImage get){
         try{
             if(get==null){
                 JOptionPane.showMessageDialog(this
-                  , "Í¼Æ¬²»ÄÜÎª¿Õ!!", "´íÎó", JOptionPane.ERROR_MESSAGE);
+                  , "Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½!!", "ï¿½ï¿½ï¿½ï¿½", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             JFileChooser jfc=new JFileChooser(".");
@@ -159,9 +153,9 @@ public class CaptureScreen extends JFrame implements ActionListener {
                     }
                 }
                 if(ImageIO.write(get,about,file)){
-                    JOptionPane.showMessageDialog(this,"±£´æ³É¹¦£¡");
+                    JOptionPane.showMessageDialog(this,"ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
                 } else
-                    JOptionPane.showMessageDialog(this,"±£´æÊ§°Ü£¡");
+                    JOptionPane.showMessageDialog(this,"ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½");
             }
         } catch(Exception exe){
             exe.printStackTrace();
@@ -169,16 +163,16 @@ public class CaptureScreen extends JFrame implements ActionListener {
     }
     
     /** 
-     *¹«¹²µÄ´¦Àí°Ñµ±Ç°µÄÍ¼Æ¬¼ÓÈë¼ôÌû°åµÄ·½·¨
+     *ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Ñµï¿½Ç°ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
      */
     public void doCopy(final BufferedImage image){
         try{
             if(get==null){
                 JOptionPane.showMessageDialog(this
-                  ,"Í¼Æ¬²»ÄÜÎª¿Õ!!","´íÎó",JOptionPane.ERROR_MESSAGE);
+                  ,"Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½!!","ï¿½ï¿½ï¿½ï¿½",JOptionPane.ERROR_MESSAGE);
                 return;
-            } // java.awt.datatransfer£¨½Ó¿Ú£©
-            Transferable trans = new Transferable(){ // ÄÚ²¿Àà
+            } // java.awt.datatransferï¿½ï¿½ï¿½Ó¿Ú£ï¿½
+            Transferable trans = new Transferable(){ // ï¿½Ú²ï¿½ï¿½ï¿½
                 public DataFlavor[] getTransferDataFlavors() {
                     return new DataFlavor[] { DataFlavor.imageFlavor };
                 }
@@ -194,15 +188,15 @@ public class CaptureScreen extends JFrame implements ActionListener {
             };
             
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(trans, null);
-            JOptionPane.showMessageDialog(this,"ÒÑ¸´ÖÆµ½ÏµÍ³Õ³Ìû°å!!");
+            JOptionPane.showMessageDialog(this,"ï¿½Ñ¸ï¿½ï¿½Æµï¿½ÏµÍ³Õ³ï¿½ï¿½ï¿½ï¿½!!");
         }catch(Exception exe){
             exe.printStackTrace();
             JOptionPane.showMessageDialog(this
-              ,"¸´ÖÆµ½ÏµÍ³Õ³Ìû°å³ö´í!!","´íÎó",JOptionPane.ERROR_MESSAGE);
+              ,"ï¿½ï¿½ï¿½Æµï¿½ÏµÍ³Õ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!","ï¿½ï¿½ï¿½ï¿½",JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    //´¦Àí¹Ø±ÕÊÂ¼þ
+    //ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½Â¼ï¿½
     private void doClose(Component c){
         jtp.remove(c);
         c=null;
@@ -216,14 +210,14 @@ public class CaptureScreen extends JFrame implements ActionListener {
         } else if(source==cancel){
             this.dispose();
         	//System.exit(0);
-        }else if(source==java){ // ½ðÊôÍâ¹Û
+        }else if(source==java){ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             try{
                 UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
                 SwingUtilities.updateComponentTreeUI(this);
             }catch(Exception exe){
                 exe.printStackTrace();
             }
-        }else if(source==system){ // ±¾µØÍâ¹Û
+        }else if(source==system){ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             try{
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 SwingUtilities.updateComponentTreeUI(this);
@@ -233,20 +227,20 @@ public class CaptureScreen extends JFrame implements ActionListener {
         }
     }
     
-    //Ò»¸öÄÚ²¿Àà,Ëü±íÊ¾Ò»¸öÃæ°å,Ò»¸ö¿ÉÒÔ±»·Å½øtabpaneµÄÃæ°å
-    //Ò²ÓÐ×Ô¼ºµÄÒ»Ì×´¦Àí±£´æºÍ¸´ÖÆµÄ·½·¨
+    //Ò»ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½ï¿½,Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Å½ï¿½tabpaneï¿½ï¿½ï¿½ï¿½ï¿½
+    //Ò²ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ò»ï¿½×´ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ÆµÄ·ï¿½ï¿½ï¿½
     private class PicPanel extends JPanel implements ActionListener{
-        JButton save,copy,close;//±íÊ¾±£´æ,¸´ÖÆ,¹Ø±ÕµÄ°´Å¥
-        BufferedImage get;//µÃµ½µÄÍ¼Æ¬
+        JButton save,copy,close;//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½,ï¿½Ø±ÕµÄ°ï¿½Å¥
+        BufferedImage get;//ï¿½Ãµï¿½ï¿½ï¿½Í¼Æ¬
         public PicPanel(BufferedImage get){
             super(new BorderLayout());
             this.get=get;
             initPanel();
         }
         private void initPanel(){
-            save=new JButton("±£´æ(S)");
-            copy=new JButton("¸´ÖÆµ½¼ôÌû°å(C)");
-            close=new JButton("¹Ø±Õ(X)");
+            save=new JButton("ï¿½ï¿½ï¿½ï¿½(S)");
+            copy=new JButton("ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(C)");
+            close=new JButton("ï¿½Ø±ï¿½(X)");
             save.setMnemonic('S');
             copy.setMnemonic('C');
             close.setMnemonic('X');
@@ -274,7 +268,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
         }
     }
     
-    //±£´æBMP¸ñÊ½µÄ¹ýÂËÆ÷
+    //ï¿½ï¿½ï¿½ï¿½BMPï¿½ï¿½Ê½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
     private class BMPfilter extends javax.swing.filechooser.FileFilter{
         public BMPfilter(){
         }
@@ -286,11 +280,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
                 return false;
         }
         public String getDescription(){
-            return "*.BMP(BMPÍ¼Ïñ)";
+            return "*.BMP(BMPÍ¼ï¿½ï¿½)";
         }
     }
     
-    //±£´æJPG¸ñÊ½µÄ¹ýÂËÆ÷
+    //ï¿½ï¿½ï¿½ï¿½JPGï¿½ï¿½Ê½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
     private class JPGfilter extends javax.swing.filechooser.FileFilter{
         public JPGfilter(){
         }
@@ -302,11 +296,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
                 return false;
         }
         public String getDescription(){
-            return "*.JPG(JPGÍ¼Ïñ)";
+            return "*.JPG(JPGÍ¼ï¿½ï¿½)";
         }
     }
     
-    //±£´æGIF¸ñÊ½µÄ¹ýÂËÆ÷
+    //ï¿½ï¿½ï¿½ï¿½GIFï¿½ï¿½Ê½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
     private class GIFfilter extends javax.swing.filechooser.FileFilter{
         public GIFfilter(){
         }
@@ -318,11 +312,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
                 return false;
         }
         public String getDescription(){
-            return "*.GIF(GIFÍ¼Ïñ)";
+            return "*.GIF(GIFÍ¼ï¿½ï¿½)";
         }
     }
     
-    //±£´æPNG¸ñÊ½µÄ¹ýÂËÆ÷
+    //ï¿½ï¿½ï¿½ï¿½PNGï¿½ï¿½Ê½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
     private class PNGfilter extends javax.swing.filechooser.FileFilter{
         public boolean accept(File file){
             if(file.toString().toLowerCase().endsWith(".png")||
@@ -332,28 +326,28 @@ public class CaptureScreen extends JFrame implements ActionListener {
                 return false;
         }
         public String getDescription(){
-            return "*.PNG(PNGÍ¼Ïñ)";
+            return "*.PNG(PNGÍ¼ï¿½ï¿½)";
         }
     }
     
-    //Ò»¸öÁÙÊ±Àà£¬ÓÃÓÚÏÔÊ¾µ±Ç°µÄÆÁÄ»Í¼Ïñ
+    //Ò»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ä»Í¼ï¿½ï¿½
     private class Temp extends JPanel implements MouseListener,MouseMotionListener{
         private BufferedImage bi;
         private int width,height;
         private int startX,startY,endX,endY,tempX,tempY;
         private JFrame jf;
-        private Rectangle select=new Rectangle(0,0,0,0);//±íÊ¾Ñ¡ÖÐµÄÇøÓò
-        private Cursor cs=new Cursor(Cursor.CROSSHAIR_CURSOR);//±íÊ¾Ò»°ãÇé¿öÏÂµÄÊó±ê×´Ì¬£¨Ê®×ÖÏß£©
-        private States current=States.DEFAULT;// ±íÊ¾µ±Ç°µÄ±à¼­×´Ì¬
-        private Rectangle[] rec;//±íÊ¾°Ë¸ö±à¼­µãµÄÇøÓò
-        //ÏÂÃæËÄ¸ö³£Á¿,·Ö±ð±íÊ¾Ë­ÊÇ±»Ñ¡ÖÐµÄÄÇÌõÏßÉÏµÄ¶Ëµã
+        private Rectangle select=new Rectangle(0,0,0,0);//ï¿½ï¿½Ê¾Ñ¡ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
+        private Cursor cs=new Cursor(Cursor.CROSSHAIR_CURSOR);//ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ß£ï¿½
+        private States current=States.DEFAULT;// ï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½Ä±à¼­×´Ì¬
+        private Rectangle[] rec;//ï¿½ï¿½Ê¾ï¿½Ë¸ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ö±ï¿½ï¿½Ê¾Ë­ï¿½Ç±ï¿½Ñ¡ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ¶Ëµï¿½
         public static final int START_X=1;
         public static final int START_Y=2;
         public static final int END_X=3;
         public static final int END_Y=4;
-        private int currentX,currentY;//µ±Ç°±»Ñ¡ÖÐµÄXºÍY,Ö»ÓÐÕâÁ½¸öÐèÒª¸Ä±ä
-        private Point p=new Point();//µ±Ç°Êó±êÒÆµÄµØµã
-        private boolean showTip=true;//ÊÇ·ñÏÔÊ¾ÌáÊ¾.Èç¹ûÊó±ê×ó¼üÒ»°´,ÔòÌáÊ¾¾Í²»ÔÙÏÔÊ¾ÁË
+        private int currentX,currentY;//ï¿½ï¿½Ç°ï¿½ï¿½Ñ¡ï¿½Ðµï¿½Xï¿½ï¿½Y,Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä±ï¿½
+        private Point p=new Point();//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ÆµÄµØµï¿½
+        private boolean showTip=true;//ï¿½Ç·ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê¾.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
         
         public Temp(JFrame jf,BufferedImage bi,int width,int height){
             this.jf=jf;
@@ -406,11 +400,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
                 g.setColor(Color.RED);
                 g.drawRect(p.x,p.y,170,20);
                 g.setColor(Color.BLACK);
-                g.drawString("Çë°´×¡Êó±ê×ó¼ü²»·ÅÑ¡Ôñ½ØÍ¼Çø",p.x,p.y+15);
+                g.drawString("ï¿½ë°´×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Í¼ï¿½ï¿½",p.x,p.y+15);
             }
         }
         
-        //¸ù¾Ý¶«ÄÏÎ÷±±µÈ°Ë¸ö·½Ïò¾ö¶¨Ñ¡ÖÐµÄÒªÐÞ¸ÄµÄXºÍYµÄ×ù±ê
+        //ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È°Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ðµï¿½Òªï¿½Þ¸Äµï¿½Xï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void initSelect(States state){
             switch(state){
                 case DEFAULT:
@@ -458,14 +452,14 @@ public class CaptureScreen extends JFrame implements ActionListener {
         
         public void mouseMoved(MouseEvent me){
             doMouseMoved(me);
-            initSelect(current); // current£ºµ±Ç°×´Ì¬£¨state£©
+            initSelect(current); // currentï¿½ï¿½ï¿½ï¿½Ç°×´Ì¬ï¿½ï¿½stateï¿½ï¿½
             if(showTip){
                 p=me.getPoint();
                 repaint();
             }
         }
         
-        //ÌØÒâ¶¨ÒåÒ»¸ö·½·¨´¦ÀíÊó±êÒÆ¶¯,ÊÇÎªÁËÃ¿´Î¶¼ÄÜ³õÊ¼»¯Ò»ÏÂËùÒªÑ¡ÔñµÄÇøÓò
+        //ï¿½ï¿½ï¿½â¶¨ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½,ï¿½ï¿½Îªï¿½ï¿½Ã¿ï¿½Î¶ï¿½ï¿½Ü³ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ÒªÑ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void doMouseMoved(MouseEvent me){
             if(select.contains(me.getPoint())){
                 this.setCursor(new Cursor(Cursor.MOVE_CURSOR));
@@ -493,7 +487,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
         public void mouseDragged(MouseEvent me){
             int x=me.getX();
             int y=me.getY();
-            // ·Ö±ð´¦ÀíÒ»ÏµÁÐµÄ£¨¹â±ê£©×´Ì¬£¨Ã¶¾ÙÖµ£©
+            // ï¿½Ö±ï¿½ï¿½ï¿½Ò»Ïµï¿½ÐµÄ£ï¿½ï¿½ï¿½ê£©×´Ì¬ï¿½ï¿½Ã¶ï¿½ï¿½Öµï¿½ï¿½
             if(current==States.MOVE){
                 startX+=(x-tempX);
                 startY+=(y-tempY);
@@ -549,7 +543,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
         }
         
         public void mouseReleased(MouseEvent me){
-            if(me.isPopupTrigger()){ // ÓÒ¼ü
+            if(me.isPopupTrigger()){ // ï¿½Ò¼ï¿½
                 if(current==States.MOVE){
                     showTip=true;
                     p=me.getPoint();
@@ -558,7 +552,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
                     endX=0;
                     endY=0;
                     repaint();
-                } else{ // ÆÕÍ¨Çé¿ö
+                } else{ // ï¿½ï¿½Í¨ï¿½ï¿½ï¿½
                     jf.dispose();
                     updates();
                 }
@@ -600,9 +594,9 @@ public class CaptureScreen extends JFrame implements ActionListener {
     }
 }
 
-//Ò»Ð©±íÊ¾×´Ì¬µÄÃ¶¾Ù
+//Ò»Ð©ï¿½ï¿½Ê¾×´Ì¬ï¿½ï¿½Ã¶ï¿½ï¿½
 enum States{
-    NORTH_WEST(new Cursor(Cursor.NW_RESIZE_CURSOR)),//±íÊ¾Î÷±±½Ç
+    NORTH_WEST(new Cursor(Cursor.NW_RESIZE_CURSOR)),//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     NORTH(new Cursor(Cursor.N_RESIZE_CURSOR)),
     NORTH_EAST(new Cursor(Cursor.NE_RESIZE_CURSOR)),
     EAST(new Cursor(Cursor.E_RESIZE_CURSOR)),

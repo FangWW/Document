@@ -1,16 +1,14 @@
 package cmp;
 import javax.ejb.*;
-import java.util.*;
-import java.rmi.*;
 /**
- * <p>Title: »á»°EJBÖ÷½Ó¿Ú</p>
- * <p>Description: ¿Í»§¶Ëµ÷ÓÃcreate·½·¨</p>
+ * <p>Title: ï¿½á»°EJBï¿½ï¿½ï¿½Ó¿ï¿½</p>
+ * <p>Description: ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½createï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: userinfoHome.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public interface userinfoHome extends javax.ejb.EJBHome {
-//±ØÐèÊµÏÖµÄ·½·¨¡£´´½¨ejbÊ±µ÷ÓÃ¡£
+//ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ejbÊ±ï¿½ï¿½ï¿½Ã¡ï¿½
   public userinfo create() throws CreateException, RemoteException;
 }

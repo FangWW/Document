@@ -1,8 +1,3 @@
-import java.net.*;
-import java.io.*;
-import javax.net.ssl.*;
-import java.security.*;
-
 public class HTTPSClient {
   String host="www.usps.com";
   int port=443;
@@ -22,11 +17,11 @@ public class HTTPSClient {
     sb.append("Accept: */*\r\n");
     sb.append("\r\n");
 
-    //·¢³öHTTPÇëÇó
+    //ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½
     OutputStream socketOut=socket.getOutputStream();
     socketOut.write(sb.toString().getBytes());
         
-    //½ÓÊÕÏìÓ¦½á¹û
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
     InputStream socketIn=socket.getInputStream();
     ByteArrayOutputStream buffer=new ByteArrayOutputStream();
     byte[] buff=new byte[1024];  
@@ -34,7 +29,7 @@ public class HTTPSClient {
     while((len=socketIn.read(buff))!=-1){
         buffer.write(buff,0,len);
     }
-    //°Ñ×Ö½ÚÊý×é×ª»»Îª×Ö·û´®£¬²¢ÇÒÖ»ÏÔÊ¾²¿·ÖÄÚÈÝ
+    //ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     System.out.println(new String(buffer.toByteArray()).substring(1,1000));  
     
     socket.close();
@@ -49,7 +44,7 @@ public class HTTPSClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

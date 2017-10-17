@@ -1,11 +1,4 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-public class HttpClient3{  
+public class HttpClient3{
   public static void main(String[] args){  
     JFrame frame = new PostTestFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,7 +11,7 @@ class PostTestFrame extends JFrame{
       throws IOException{  
       URL url = new URL(urlString);
       URLConnection connection = url.openConnection();
-      connection.setDoOutput(true);  //ÔÊÐíÊä³öÊý¾Ý
+      connection.setDoOutput(true);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
       PrintWriter out = new PrintWriter(connection.getOutputStream());
 
@@ -30,12 +23,12 @@ class PostTestFrame extends JFrame{
          String value = pair.getValue();
          out.print(name);
          out.print('=');
-         out.print(URLEncoder.encode(value, "GB2312"));  //ÇëÇóÕýÎÄ²ÉÓÃGB2312±àÂë
+         out.print(URLEncoder.encode(value, "GB2312"));  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½GB2312ï¿½ï¿½ï¿½ï¿½
       }
 
       out.close();
 
-      InputStream in=connection.getInputStream(); //¶ÁÈ¡ÏìÓ¦ÕýÎÄ
+      InputStream in=connection.getInputStream(); //ï¿½ï¿½È¡ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
       ByteArrayOutputStream buffer=new ByteArrayOutputStream();
       byte[] buff=new byte[1024];  
       int len=-1;
@@ -45,12 +38,12 @@ class PostTestFrame extends JFrame{
       }
      
       in.close();
-      return new String(buffer.toByteArray()); //°Ñ×Ö½ÚÊý×é×ª»»Îª×Ö·û´®
+      return new String(buffer.toByteArray()); //ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½
    }
 
    public PostTestFrame(){  
       setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-      setTitle("ÎÀÇÙÊé¼®ÏµÁÐ");
+      setTitle("ï¿½ï¿½ï¿½ï¿½ï¿½é¼®Ïµï¿½ï¿½");
 
       JPanel northPanel = new JPanel();
       add(northPanel, BorderLayout.NORTH);
@@ -63,7 +56,7 @@ class PostTestFrame extends JFrame{
       final JTextArea result = new JTextArea();
       add(new JScrollPane(result));
 
-      JButton getButton = new JButton("²é¿´");
+      JButton getButton = new JButton("ï¿½é¿´");
       northPanel.add(getButton);
       getButton.addActionListener(new  ActionListener(){
             public void actionPerformed(ActionEvent event){  
@@ -84,11 +77,11 @@ class PostTestFrame extends JFrame{
          });   
    }
 
-   private static String[] books = {"JavaÃæÏò¶ÔÏó±à³Ì", 
-      "TomcatÓëJavaWeb¿ª·¢¼¼ÊõÏê½â", 
-      "¾«Í¨Struts:»ùÓÚMVCµÄJavaWebÉè¼ÆÓë¿ª·¢", 
-      "¾«Í¨Hibernate:Java¶ÔÏó³Ö¾Ã»¯¼¼ÊõÏê½â", 
-      "Java2ÈÏÖ¤¿¼ÊÔÖ¸ÄÏÓëÊÔÌâ½âÎö"};
+   private static String[] books = {"Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 
+      "Tomcatï¿½ï¿½JavaWebï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 
+      "ï¿½ï¿½Í¨Struts:ï¿½ï¿½ï¿½ï¿½MVCï¿½ï¿½JavaWebï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½", 
+      "ï¿½ï¿½Í¨Hibernate:Javaï¿½ï¿½ï¿½ï¿½Ö¾Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 
+      "Java2ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"};
 
    public static final int DEFAULT_WIDTH = 400;
    public static final int DEFAULT_HEIGHT = 300;  
@@ -96,7 +89,7 @@ class PostTestFrame extends JFrame{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

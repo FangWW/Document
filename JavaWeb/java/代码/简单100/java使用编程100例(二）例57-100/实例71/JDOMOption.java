@@ -1,60 +1,60 @@
 import org.jdom.*;
 import org.jdom.output.*;
-import java.io.*;
+
 import java.util.List;
 /**
- * <p>Title: Ê¹ÓÃJDOM²Ù×÷XMLÎÄ¼þ¡£</p>
+ * <p>Title: Ê¹ï¿½ï¿½JDOMï¿½ï¿½ï¿½ï¿½XMLï¿½Ä¼ï¿½ï¿½ï¿½</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDOMOption.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDOMOption {
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÊµÏÖ¹¹ÔìXMLÎÄ¼þ£¬É¾³ýÔªËØ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö¹ï¿½ï¿½ï¿½XMLï¿½Ä¼ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ôªï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public JDOMOption() {
 
-    String[] strChapter = { "»ù´¡ÖªÊ¶", "Í¼ÐÎ½çÃæ", "Í¼ÐÎ´¦Àí", "I/O²Ù×÷", "ÍøÂç±à³Ì", "Êý¾Ý¿â" };
+    String[] strChapter = { "ï¿½ï¿½ï¿½ï¿½ÖªÊ¶", "Í¼ï¿½Î½ï¿½ï¿½ï¿½", "Í¼ï¿½Î´ï¿½ï¿½ï¿½", "I/Oï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½Ý¿ï¿½" };
     Element elmtRoot = new Element("Article");
     Document docJDOM = new Document(elmtRoot);
-    //ÐÂ½¨ÔªËØ
+    //ï¿½Â½ï¿½Ôªï¿½ï¿½
     for(int i=0; i<6; i++) {
-     //ÉùÃ÷ÐÂÔªËØ
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
       Element elmtChapter = new Element("Chapter");
-      //Ìí¼ÓÄÚÈÝ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       elmtChapter.addContent(strChapter[i]);
-      //¹¹ÔìÊôÐÔ£¬²¢Ìí¼Óµ½ÔªËØÖÐ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ôªï¿½ï¿½ï¿½ï¿½
       Attribute a=new Attribute("sort",new Integer(i).toString()); 
       elmtChapter.addAttribute(a);
-      //½«ÔªËØÌí¼Óµ½¸ù½ÚµãÏÂ
+      //ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
       elmtRoot.addContent(elmtChapter);
     }
-    //„h³ýµÚ4¸öÔªËØ
+    //ï¿½hï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½Ôªï¿½ï¿½
     List lstChapter = elmtRoot.getChildren("Chapter");
     lstChapter.remove(4);
-    //Ý”³ö
+    //Ý”ï¿½ï¿½
     OutputXML(docJDOM, "myJDOM.xml");
 
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊä³öXMLÎÄ¼þ
- *<br>ÊäÈë²ÎÊý£ºDocument docXML XMLÎÄ¼þÄÚÈÝ
- *<br>ÊäÈë²ÎÊý£ºString strFilename Êä³öÎÄ¼þÃû³Æ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XMLï¿½Ä¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Document docXML XMLï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String strFilename ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   private void OutputXML(Document docXML, String strFilename) {
-    //Ê¹ÓÃJDOMµÄXMLÊä³ö
+    //Ê¹ï¿½ï¿½JDOMï¿½ï¿½XMLï¿½ï¿½ï¿½
     XMLOutputter fmt = new XMLOutputter();
     try {
-     //ÉùÃ÷Ê¹ÓÃGB2312×Ö·û¼¯
+     //ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½GB2312ï¿½Ö·ï¿½ï¿½ï¿½
       fmt.setEncoding("GB2312");
-      //¿ÉÒÔ»»ÐÐ
+      //ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
       fmt.setNewlines(true);
-      //Êä³öÎÄ¼þ¶ÔÏó
+      //ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
       FileWriter fwXML = new FileWriter(strFilename);
 
       fmt.output(docXML, fwXML);
@@ -66,9 +66,9 @@ public class JDOMOption {
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args) {
     JDOMOption Jpt = new JDOMOption();

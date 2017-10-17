@@ -1,0 +1,90 @@
+中远面试题
+    1、面向对象的三个基本特征
+    2、方法重载和方法重写的概念和区别
+    3、接口和内部类、抽象类的特性
+    4、文件读写的基本类
+    **5、串行化的注意事项以及如何实现串行化
+    6、线程的基本概念、线程的基本状态以及状态之间的关系
+    7、线程的同步、如何实现线程的同步
+    8、几种常用的数据结构及内部实现原理。
+    9、Socket通信(TCP、UDP区别及Java实现方式)
+   **10、Java的事件委托机制和垃圾回收机制
+   11、JDBC调用数据库的基本步骤
+   **12、解析XML文件的几种方式和区别
+   13、Java四种基本权限的定义
+   14、Java的国际化 
+二、JSP
+
+    1、至少要能说出7个隐含对象以及他们的区别
+   ** 2、forward 和redirect的区别
+    3、JSP的常用指令
+
+三、servlet
+
+    1、什么情况下调用doGet()和doPost()？
+    2、servlet的init()方法和service()方法的区别
+    3、servlet的生命周期
+    4、如何现实servlet的单线程模式
+    5、servlet的配置
+    6、四种会话跟踪技术
+
+四、EJB
+
+    **1、EJB容器提供的服务
+          主要提供声明周期管理、代码产生、持续性管理、安全、事务管理、锁和并发行管理等服务。
+    2、EJB的角色和三个对象
+          EJB角色主要包括Bean开发者 应用组装者 部署者 系统管理员 EJB容器提供者 EJB服务器提供者
+          三个对象是Remote（Local）接口、Home（LocalHome）接口，Bean类
+    2、EJB的几种类型
+          会话（Session）Bean ，实体（Entity）Bean 消息驱动的（Message Driven）Bean
+          会话Bean又可分为有状态（Stateful）和无状态（Stateless）两种
+          实体Bean可分为Bean管理的持续性（BMP）和容器管理的持续性（CMP）两种
+    3、bean 实例的生命周期
+          对于Stateless Session Bean、Entity Bean、Message Driven Bean一般存在缓冲池管理，而对于Entity Bean和Statefull Session Bean存在Cache管理，通常包含创建实例，设置上下文、创建EJB Object（create）、业务方法调用、remove等过程，对于存在缓冲池管理的Bean，在create之后实例并不从内存清除，而是采用缓冲池调度机制不断重用实例，而对于存在Cache管理的Bean则通过激活和去激活机制保持Bean的状态并限制内存中实例数量。
+    4、激活机制
+          以Statefull Session Bean 为例：其Cache大小决定了内存中可以同时存在的Bean实例的数量，根据MRU或NRU算法，实例在激活和去激活状态之间迁移，激活机制是当客户端调用某个EJB实例业务方法时，如果对应EJB Object发现自己没有绑定对应的Bean实例则从其去激活Bean存储中（通过序列化机制存储实例）回复（激活）此实例。状态变迁前会调用对应的ejbActive和ejbPassivate方法。
+    5、remote接口和home接口主要作用
+          remote接口定义了业务方法，用于EJB客户端调用业务方法
+          home接口是EJB工厂用于创建和移除查找EJB实例
+    6、客服端调用EJB对象的几个基本步骤
+一、   设置JNDI服务工厂以及JNDI服务地址系统属性
+二、   查找Home接口
+三、   从Home接口调用Create方法创建Remote接口
+四、   通过Remote接口调用其业务方法
+
+五、数据库
+
+    1、存储过程的编写
+    2、基本的SQL语句
+
+六、weblogic
+
+1、    如何给weblogic指定大小的内存? 
+在启动Weblogic的脚本中（位于所在Domian对应服务器目录下的startServerName），增加set MEM_ARGS=-Xms32m -Xmx200m，可以调整最小内存为32M，最大200M
+2、    如何设定的weblogic的热启动模式(开发模式)与产品发布模式?
+可以在管理控制台中修改对应服务器的启动模式为开发或产品模式之一。或者修改服务的启动文件或者commenv文件，增加set PRODUCTION_MODE=true。
+3、    如何启动时不需输入用户名与密码?
+修改服务启动文件，增加 WLS_USER和WLS_PW项。也可以在boot.properties文件中增加加密过的用户名和密码.
+4、    在weblogic管理制台中对一个应用域(或者说是一个网站,Domain)进行jms及ejb或连接池等相关信息进行配置后,实际保存在什么文件中?
+保存在此Domain的config.xml文件中，它是服务器的核心配置文件。
+5、    说说weblogic中一个Domain的缺省目录结构?比如要将一个简单的helloWorld.jsp放入何目录下,然的在浏览器上就可打入http://主机:端口号//helloword.jsp就可以看到运行结果了? 又比如这其中用到了一个自己写的javaBean该如何办?
+Domain目录\服务器目录\applications，将应用目录放在此目录下将可以作为应用访问，如果是Web应用，应用目录需要满足Web应用目录要求，jsp文件可以直接放在应用目录中，Javabean需要放在应用目录的WEB-INF目录的classes目录中，设置服务器的缺省应用将可以实现在浏览器上无需输入应用名。
+6、    如何查看在weblogic中已经发布的EJB?
+可以使用管理控制台，在它的Deployment中可以查看所有已发布的EJB 
+7、    如何在weblogic中进行ssl配置与客户端的认证配置或说说j2ee(标准)进行ssl的配置
+缺省安装中使用DemoIdentity.jks和DemoTrust.jks   KeyStore实现SSL，需要配置服务器使用Enable SSL，配置其端口，在产品模式下需要从CA获取私有密钥和数字证书，创建identity和trust keystore，装载获得的密钥和数字证书。可以配置此SSL连接是单向还是双向的。
+    8、在weblogic中发布ejb需涉及到哪些配置文件
+不同类型的EJB涉及的配置文件不同，都涉及到的配置文件包括ejb-jar.xml,weblogic-ejb-jar.xmlCMP实体Bean一般还需要weblogic-cmp-rdbms-jar.xml
+    9、EJB需直接实现它的业务接口或Home接口吗,请简述理由.
+远程接口和Home接口不需要直接实现，他们的实现代码是由服务器产生的，程序运行中对应实现类会作为对应接口类型的实例被使用。
+   10、说说在weblogic中开发消息Bean时的persistent与non-persisten的差别
+persistent方式的MDB可以保证消息传递的可靠性,也就是如果EJB容器出现问题而JMS服务器依然会将消息在此MDB可用的时候发送过来，而non－persistent方式的消息将被丢弃。
+   11、说说你所熟悉或听说过的j2ee中的几种常用模式?及对设计模式的一些看法
+        Session Facade Pattern：使用SessionBean访问EntityBean
+Message Facade Pattern：实现异步调用
+EJB Command Pattern：使用Command JavaBeans取代SessionBean，实现轻量级访问
+Data Transfer Object Factory：通过DTO Factory简化EntityBean数据提供特性
+Generic Attribute Access：通过AttibuteAccess接口简化EntityBean数据提供特性
+Business Interface：通过远程（本地）接口和Bean类实现相同接口规范业务逻辑一致性
+ＥＪＢ架构的设计好坏将直接影响系统的性能、可扩展性、可维护性、组件可重用性及开发效率。项目越复杂，项目队伍越庞大则越能体现良好设计的重要性
+

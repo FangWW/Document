@@ -1,28 +1,27 @@
 /**
- * <p>Title: Ä¿Â¼²Ù×÷</p>
- * <p>Description: ÑÝÊ¾ÁÐÄ¿Â¼ÏÂµÄÎÄ¼þ£¬ºÍÒÆ¶¯Ò»¸öÄ¿Â¼</p>
+ * <p>Title: Ä¿Â¼ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾ï¿½ï¿½Ä¿Â¼ï¿½Âµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ò»ï¿½ï¿½Ä¿Â¼</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Dir.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
-import java.io.*;
 public class Dir{
  /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖÄ¿Â¼ÁÐ±í
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ä¿Â¼ï¿½Ð±ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */ 
   public String[] DirList(String pathName){
     try{
       File path = null;
       String[] fileList;
-      //Èç¹ûÃ»ÓÐÖ¸¶¨Ä¿Â¼£¬ÔòÁÐ³öµ±Ç°Ä¿Â¼¡£
+      //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ö¸ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½Ç°Ä¿Â¼ï¿½ï¿½
       if(pathName.equals(""))
         path = new File(".");
       else
         path = new File(pathName);
-      //»ñÈ¡Ä¿Â¼ÎÄ¼þÁÐ±í
+      //ï¿½ï¿½È¡Ä¿Â¼ï¿½Ä¼ï¿½ï¿½Ð±ï¿½
       if(path.isDirectory())
         fileList = path.list();
       else
@@ -34,24 +33,24 @@ public class Dir{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÒÆ¶¯Ò»¸öÄ¿Â¼
- *<br>ÊäÈë²ÎÊý£ºString sou Ô´Ä¿Â¼, String obj ÐÂÄ¿Â¼
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ò»ï¿½ï¿½Ä¿Â¼
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sou Ô´Ä¿Â¼, String obj ï¿½ï¿½Ä¿Â¼
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public boolean DirMove(String sou, String obj){
     try{
-     //¼ì²éÔ´ÎÄ¼þÊÇ·ñ´æÔÚ
+     //ï¿½ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
       boolean sexists = (new File(sou)).isDirectory();
       if(!sexists) return false;
       boolean oexists = (new File(obj)).isDirectory();
-      //Ä¿±êÄ¿Â¼²»´æÔÚ£¬½¨Á¢Ò»¸ö
+      //Ä¿ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
       if(!oexists){
         (new File(obj)).mkdirs();
       }
    
         File file = new File(sou);
         File dir = new File(obj);
-        //ÒÆ¶¯Ä¿Â¼
+        //ï¿½Æ¶ï¿½Ä¿Â¼
         boolean success = file.renameTo(new File(dir, file.getName()));
         if (!success) {
          System.out.println("copy error!");
@@ -66,9 +65,9 @@ public class Dir{
   }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args){
      Dir d = new Dir();

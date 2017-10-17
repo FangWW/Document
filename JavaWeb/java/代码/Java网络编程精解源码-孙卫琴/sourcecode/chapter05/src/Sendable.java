@@ -1,23 +1,22 @@
-import java.io.*;
 /*
- *±íÊ¾·þÎñÆ÷¿ÉÒÔ·¢ËÍ¸ø¿Í»§¶ËµÄ¶«Î÷
+ *ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Í¸ï¿½ï¿½Í»ï¿½ï¿½ËµÄ¶ï¿½ï¿½ï¿½
  */
 public interface Sendable {
-  // ×¼±¸·¢ËÍµÄÄÚÈÝ
+  // ×¼ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½
   public void prepare() throws IOException;
 
-  // ÀûÓÃÍ¨µÀ·¢ËÍ²¿·ÖÄÚÈÝ£¬Èç¹ûËùÓÐÄÚÈÝ·¢ËÍÍê±Ï£¬¾Í·µ»Øfalse
-  // Èç¹û»¹ÓÐÄÚÈÝÎ´·¢ËÍ£¬¾Í·µ»Øtrue
-  // Èç¹ûÄÚÈÝ»¹Ã»ÓÐ×¼±¸ºÃ£¬¾ÍÅ×³öIllegalStateException
+  // ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Í·ï¿½ï¿½ï¿½false
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½Í£ï¿½ï¿½Í·ï¿½ï¿½ï¿½true
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½Ã»ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½×³ï¿½IllegalStateException
   public boolean send(ChannelIO cio) throws IOException;
 
-  //µ±·þÎñÆ÷·¢ËÍÄÚÈÝÍê±Ï£¬¾Íµ÷ÓÃ´Ë·½·¨£¬ÊÍ·ÅÄÚÈÝÕ¼ÓÃµÄ×ÊÔ´
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Íµï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ãµï¿½ï¿½ï¿½Ô´
   public void release() throws IOException;
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

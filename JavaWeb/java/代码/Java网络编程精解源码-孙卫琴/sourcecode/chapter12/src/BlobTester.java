@@ -1,6 +1,3 @@
-import java.sql.*;
-import java.io.*;
-
 public class BlobTester{
   Connection con;
   public BlobTester(Connection con){this.con=con;}
@@ -19,7 +16,7 @@ public class BlobTester{
     stmt.execute("create table ABLOB(ID bigint auto_increment primary key,FILE mediumblob)");
     stmt.close();
   }
-  /**ÏòÊý¾Ý¿âÖÐ±£´æBlobÊý¾Ý */ 
+  /**ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Blobï¿½ï¿½ï¿½ï¿½ */ 
   public void saveBlobToDatabase()throws Exception{
     PreparedStatement stmt=con.prepareStatement("insert into ABLOB(ID,FILE) values(?,?) ");  
     stmt.setLong(1,1);
@@ -29,14 +26,14 @@ public class BlobTester{
     fin.close();
     stmt.close();
   }
-  /** ´ÓÊý¾Ý¿âÖÐ¶ÁÈ¡BlobÊý¾Ý */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð¶ï¿½È¡Blobï¿½ï¿½ï¿½ï¿½ */
   public void getBlobFromDatabase()throws Exception{
     Statement stmt=con.createStatement();
     ResultSet rs=stmt.executeQuery("select FILE from ABLOB where ID=1");
     rs.next();
     Blob blob=rs.getBlob(1);
     
-    //°ÑÊý¾Ý¿âÖÐµÄBlobÊý¾Ý¿½±´µ½test_bak.gifÎÄ¼þÖÐ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ðµï¿½Blobï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½test_bak.gifï¿½Ä¼ï¿½ï¿½ï¿½
     InputStream in=blob.getBinaryStream();
     FileOutputStream fout = new FileOutputStream("test_bak.gif");  
     int b=-1;
@@ -51,7 +48,7 @@ public class BlobTester{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

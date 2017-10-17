@@ -1,32 +1,31 @@
-import java.io.*;
 /**
- * <p>Title: ÔËĞĞÏµÍ³ÃüÁî</p>
- * <p>Description:ÔËĞĞÒ»¸öÏµÍ³µÄÃüÁî£¬ÑİÊ¾Ê¹ÓÃRuntimeÀà¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description:ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½î£¬ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½Runtimeï¿½à¡£</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: CmdExec.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class CmdExec {
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÔËĞĞÏµÍ³ÃüÁî
- *<br>ÊäÈë²ÎÊı£ºString cmdline ÃüÁî×Ö·û
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String cmdline ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public CmdExec(String cmdline) {
     try {
      String line;
-     //ÔËĞĞÏµÍ³ÃüÁî
+     //ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
      Process p = Runtime.getRuntime().exec(cmdline);
-     //Ê¹ÓÃ»º´æÊäÈëÁ÷»ñÈ¡ÆÁÄ»Êä³ö¡£
+     //Ê¹ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
      BufferedReader input = 
        new BufferedReader
          (new InputStreamReader(p.getInputStream()));
-     //¶ÁÈ¡ÆÁÄ»Êä³ö
+     //ï¿½ï¿½È¡ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
      while ((line = input.readLine()) != null) {
        System.out.println("java print:"+line);
        }
-     //¹Ø±ÕÊäÈëÁ÷
+     //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      input.close();
      } 
     catch (Exception err) {
@@ -34,9 +33,9 @@ public class CmdExec {
      }
    }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public static void main(String argv[]) {
    new CmdExec("myprog.bat");

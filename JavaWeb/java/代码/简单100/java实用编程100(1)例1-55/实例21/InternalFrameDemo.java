@@ -1,63 +1,59 @@
-import javax.swing.JInternalFrame;
 import javax.swing.JDesktopPane;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JMenuBar;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
-
-import java.awt.event.*;
-import java.awt.*;
 /**
- * <p>Title: ÄÚ²¿´°ÌåÑÝÊ¾</p>
- * <p>Description: ÕâÊÇÑÝÊ¾Ò»¸öÄÚ²¿´°Ìå¡£¿ÉÒÔÑ¡Ôñ¡°ÐÂÎÄµµ¡±²Ëµ¥²»Í£µÄÉú³ÉÄÚ²¿´°Ìå¡£</p>
+ * <p>Title: ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½å¡£ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½å¡£</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class InternalFrameDemo extends JFrame
                                implements ActionListener {
     JDesktopPane desktop;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬Ìí¼Ó´°Ìå³ÉÔ±
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½Ô±
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public InternalFrameDemo() {
         super("InternalFrameDemo");
 
-        //ÕâÀïÉèÖÃÁËÒ»¸ö±È½Ï´óµÄ´°Ìå£¬¸øËÄÖÜÖ»ÁôÁË50pxµÄ±ß½ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½È½Ï´ï¿½Ä´ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½50pxï¿½Ä±ß½ï¿½
         int inset = 50;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(inset, inset,
                   screenSize.width  - inset*2,
                   screenSize.height - inset*2);
         
-        //¶¨Òå½çÃæ
-        desktop = new JDesktopPane(); //×ÀÃæÃæ°å
-        createFrame(); //´´½¨µÚÒ»¸öÄÚ²¿´°Ìå
-        setContentPane(desktop);//½«×ÀÃæÌí¼Óµ½´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        desktop = new JDesktopPane(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        createFrame(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
+        setContentPane(desktop);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
         setJMenuBar(createMenuBar());
 
-        //ÉèÖÃÍÐ×§Ä£Ê½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§Ä£Ê½
         desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
     }
 /**
- *<br>·½·¨ËµÃ÷£º×é½¨²Ëµ¥
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½é½¨ï¿½Ëµï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
-        //¶¨ÒåÒ»¸ö²Ëµ¥
-        JMenu menu = new JMenu("ÎÄ¼þ");
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ëµï¿½
+        JMenu menu = new JMenu("ï¿½Ä¼ï¿½");
         menu.setMnemonic(KeyEvent.VK_D);
         menuBar.add(menu);
 
-        //¶¨Òå¡°ÐÂÎÄµµ¡±²Ëµ¥
-        JMenuItem menuItem = new JMenuItem("ÐÂÎÄµµ");
+        //ï¿½ï¿½ï¿½å¡°ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½Ëµï¿½
+        JMenuItem menuItem = new JMenuItem("ï¿½ï¿½ï¿½Äµï¿½");
         menuItem.setMnemonic(KeyEvent.VK_N);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_N, ActionEvent.ALT_MASK));
@@ -65,8 +61,8 @@ public class InternalFrameDemo extends JFrame
         menuItem.addActionListener(this);
         menu.add(menuItem);
 
-        //¶¨Òå¡°ÍË³ö¡±²Ëµ¥
-        menuItem = new JMenuItem("ÍË³ö");
+        //ï¿½ï¿½ï¿½å¡°ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ëµï¿½
+        menuItem = new JMenuItem("ï¿½Ë³ï¿½");
         menuItem.setMnemonic(KeyEvent.VK_Q);
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_Q, ActionEvent.ALT_MASK));
@@ -77,21 +73,21 @@ public class InternalFrameDemo extends JFrame
         return menuBar;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ¼àÌý£¬¶ÔÑ¡ÔñµÄ²Ëµ¥×ö³ö·´Ó³
- *<br>ÊäÈë²ÎÊý£ºActionEvent e ÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ä²Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ActionEvent e ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
-        if ("new".equals(e.getActionCommand())) { //ÐÂÎÄµµ
+        if ("new".equals(e.getActionCommand())) { //ï¿½ï¿½ï¿½Äµï¿½
             createFrame();
-        } else { //ÍË³ö
+        } else { //ï¿½Ë³ï¿½
             quit();
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºµ÷ÓÃMyInternalFrameÀà´´½¨ÐÂµÄÄÚ²¿´°Ìå£¬
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MyInternalFrameï¿½à´´ï¿½ï¿½ï¿½Âµï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½å£¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected void createFrame() {
         MyInternalFrame frame = new MyInternalFrame();
@@ -103,26 +99,26 @@ public class InternalFrameDemo extends JFrame
         } catch (java.beans.PropertyVetoException e) {}
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÍË³ö³ÌÐò
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected void quit() {
         System.exit(0);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //½¨Á¢Ò»¸öÄÚ²¿´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
         InternalFrameDemo frame = new InternalFrameDemo();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.setVisible(true);
     }
 }

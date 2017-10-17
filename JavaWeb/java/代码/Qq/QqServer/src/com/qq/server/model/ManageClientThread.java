@@ -1,11 +1,10 @@
 package com.qq.server.model;
 
-import java.util.*;
 public class ManageClientThread {
 
 	public static HashMap hm=new HashMap<String,SerConClientThread>();
 	
-	//ÏòhmÖĞÌí¼ÓÒ»¸ö¿Í»§¶ËÍ¨ĞÅÏß³Ì
+	//ï¿½ï¿½hmï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ß³ï¿½
 	public static void addClientThread(String uid,SerConClientThread ct){
 		
 		hm.put(uid, ct);
@@ -15,9 +14,9 @@ public class ManageClientThread {
 		return (SerConClientThread)hm.get(uid);
 	}
 	
-	//·µ»Øµ±Ç°ÔÚÏßµÄÈËµÄÇé¿ö
+	//ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ßµï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
 	public static String getAllOnlineUserId(){
-		//Ê¹ÓÃµü´úÆ÷Íê³É
+		//Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Iterator it=hm.keySet().iterator();
 		String res="";
 		while(it.hasNext()){

@@ -1,13 +1,12 @@
 package store;
-import java.sql.*;
 public interface ConnectionPool{
-  /** ´ÓÁ¬½Ó³ØÖÐÈ¡³öÁ¬½Ó */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public Connection getConnection()throws SQLException; 
     
-  /** °ÑÁ¬½Ó·µ»ØÁ¬½Ó³Ø */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ */
   public void releaseConnection(Connection con)throws SQLException;
 
-  /** ¹Ø±ÕÁ¬½Ó³Ø*/	
+  /** ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ó³ï¿½*/	
   public void close();
 }
 
@@ -20,7 +19,7 @@ public interface ConnectionPool{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

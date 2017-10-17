@@ -1,18 +1,11 @@
 package nonblock;
-import java.net.*;
-import java.nio.channels.*;
-import java.nio.*;
-import java.io.*;
-import java.nio.charset.*;
-import java.util.*;
-
-class Target {  //±íÊ¾Ò»ÏîÈÎÎñ
+class Target {  //ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   InetSocketAddress address;
   SocketChannel channel;
   Exception failure;
-  long connectStart;  //¿ªÊ¼Á¬½ÓÊ±µÄÊ±¼ä
-  long connectFinish = 0;  //Á¬½Ó³É¹¦Ê±µÄÊ±¼ä
-  boolean shown = false;  //¸ÃÈÎÎñÊÇ·ñÒÑ¾­´òÓ¡
+  long connectStart;  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ê±ï¿½ï¿½
+  long connectFinish = 0;  //ï¿½ï¿½ï¿½Ó³É¹ï¿½Ê±ï¿½ï¿½Ê±ï¿½ï¿½
+  boolean shown = false;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Ó¡
 
   Target(String host) {
       try {
@@ -22,7 +15,7 @@ class Target {  //±íÊ¾Ò»ÏîÈÎÎñ
       }
   }
 
-  void show() {  //´òÓ¡ÈÎÎñÖ´ÐÐµÄ½á¹û
+  void show() {  //ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ÐµÄ½ï¿½ï¿½
       String result;
       if (connectFinish != 0)
           result = Long.toString(connectFinish - connectStart) + "ms";
@@ -37,9 +30,9 @@ class Target {  //±íÊ¾Ò»ÏîÈÎÎñ
 
 public class PingClient{
   private Selector selector;
-  //´æ·ÅÓÃ»§ÐÂÌá½»µÄÈÎÎñ
+  //ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private LinkedList targets=new LinkedList();
-  //´æ·ÅÒÑ¾­Íê³ÉµÄÐèÒª´òÓ¡µÄÈÎÎñ
+  //ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½Òªï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private LinkedList finishedTargets=new LinkedList();
 
   public PingClient()throws IOException{
@@ -55,7 +48,7 @@ public class PingClient{
     new PingClient();
   }
   public void addTarget(Target target) {
-    //Ïòtargets¶ÓÁÐÖÐ¼ÓÈëÒ»¸öÈÎÎñ
+    //ï¿½ï¿½targetsï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      SocketChannel socketChannel = null;
       try {
           socketChannel = SocketChannel.open();
@@ -81,7 +74,7 @@ public class PingClient{
   }
 
   public void addFinishedTarget(Target target) {
-      //ÏòfinishedTargets¶ÓÁÐÖÐ¼ÓÈëÒ»¸öÈÎÎñ
+      //ï¿½ï¿½finishedTargetsï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       synchronized (finishedTargets) {
       finishedTargets.notify();
       finishedTargets.add(target);
@@ -89,7 +82,7 @@ public class PingClient{
   }
 
   public void printFinishedTargets() {
-    //´òÓ¡finisedTargets¶ÓÁÐÖÐµÄÈÎÎñ
+    //ï¿½ï¿½Ó¡finisedTargetsï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
      try {
         for (;;) {
             Target target = null;
@@ -106,7 +99,7 @@ public class PingClient{
   }
 
   public void registerTargets(){
-    //È¡³ötargets¶ÓÁÐÖÐµÄÈÎÎñ£¬ÏòSelector×¢²áÁ¬½Ó¾ÍÐ÷ÊÂ¼þ
+    //È¡ï¿½ï¿½targetsï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Selector×¢ï¿½ï¿½ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
     synchronized (targets) {
       while (targets.size() > 0) {
         Target target = (Target)targets.removeFirst();
@@ -123,7 +116,7 @@ public class PingClient{
   }
 
   public void processSelectedKeys() throws IOException {
-    //´¦ÀíÁ¬½Ó¾ÍÐ÷ÊÂ¼þ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
     for (Iterator it = selector.selectedKeys().iterator(); it.hasNext();) {
       SelectionKey selectionKey = (SelectionKey)it.next();
       it.remove();
@@ -147,7 +140,7 @@ public class PingClient{
   }
 
   public void receiveTarget(){
-    //½ÓÊÕÓÃ»§ÊäÈëµÄµØÖ·£¬Ïòtargets¶ÓÁÐÖÐ¼ÓÈëÈÎÎñ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½targetsï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     try{
       BufferedReader localReader=new BufferedReader(new InputStreamReader(System.in));
       String msg=null;
@@ -198,7 +191,7 @@ public class PingClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

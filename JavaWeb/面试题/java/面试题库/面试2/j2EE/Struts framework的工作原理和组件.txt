@@ -1,0 +1,232 @@
+对于Struts 如何控制、处理客户请求，让我们通过对struts的四个核心组件介绍来具体说明。这几个组件就是：ActionServlet。Action Classes，Action Mapping（此处包括ActionForward），ActionFrom Bean。
+
+Struts ActionServlet控制器对象
+
+       ActionServlet继承自javax.servlet.http.HttpServlet类，其在Struts framework中扮演的角色是中心控制器。它提供一个中心位置来处理全部的终端请求。控制器ActionServlet主要负责将HTTP的客户请求信息组装后，根据配置文件的指定描述，转发到适当的处理器。
+
+       按照Servelt的标准，所有得Servlet必须在web配置文件（web.xml）声明。同样，ActoinServlet必须在Web Application配置文件（web.xml）中描述，有关配置信息如下。
+
+<servlet>
+
+<servlet-name>action</servlet-name>
+
+<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+</servlet>
+
+全部的请求URI以*.do的模式存在并映射到这个servlet，其配置如下：
+
+<servlet-mapping>
+
+<servlet-name>action</servlet-name>
+
+<url-pattern>*.do</url-pattern>
+
+</servlet-mapping>
+
+一个该模式的请求URI符合如下格式：
+
+              http://www.my_site_name.com/mycontext/actionName.do
+
+
+
+中心控制器为所有的表示层请求提供了一个集中的访问点。这个控制器提供的抽象概念减轻了开发者建立公共应用系统服务的困难，如管理视图、会话及表单数据。它也提供一个通用机制如错误及异常处理，导航，国际化，数据验证，数据转换等。
+
+
+
+当用户向服务器端提交请求的时候，实际上信息是首先发送到控制器ActionServlet，一旦控制器获得了请求，其就会将请求信息传交给一些辅助类（help classes）处理。这些辅助类知道如何去处理与请求信息所对应的业务操作。在Struts中，这个辅助类就是org.apache.struts.action.Action。通常开发者需要自己继承Aciton类，从而实现自己的Action实例。
+
+Struts Action Classes
+
+       ActionServlet把全部提交的请求都被控制器委托到RequestProcessor对象。RequestProcessor使用struts-config.xml文件检查请求URI找到动作Action标示符。
+
+一个Action 类的角色，就像客户请求动作和业务逻辑处理之间的一个适配器（Adaptor），其功能就是将请求与业务逻辑分开。这样的分离，使得客户请求和Action类之间可以有多个点对点的映射。而且Action类通常还提供了其它的辅助功能，比如：认证（authorization）、日志（logging）和数据验证（validation）。
+
+public ActionForward execute(ActionMapping mapping,
+
+                             ActionForm form,
+
+                             javax.servlet.ServletRequest request,
+
+                             javax.servlet.ServletResponse response)
+
+                      throws java.io.IOException,javax.servlet.ServletException
+
+
+
+       Action最为常用的是execute（）方法。（注意，以前的perform方法在struts1.1中已经不再支持），还有一个execute（）方法，请参考apidoc，在此不在说明。
+
+       当Controller收到客户的请求的时候，在将请求转移到一个Action实例时，如果这个实例不存在，控制器会首先创建，然后会调用这个Action实例的execute（）方法。Struts Framework为应用系统中的每一个Action类只创建一个实例。因为所有的用户都使用这一个实例，所以你必须确定你的Action 类运行在一个多线程的环境中。下图显示了一个execute（）方法如何被访问：
+
+
+
+Action实例的execute()方法
+
+      
+
+注意，客户自己继承的Action子类，必须重写execute（）方法，因为Action类在默认情况下是返回null的。
+
+Struts Action Mapping
+
+上面讲到了一个客户请求是如何被控制器转发和处理的，但是，控制器如何知道什么样的信息转发到什么样的Action类呢？这就需要一些与动作和请求信息相对应的映射配置说明。在struts 中，这些配置映射信息是存储在特定的XML文件（比如struts-config.xml）。 
+
+这些配置信息在系统启动的时候被读入内存，供struts framework在运行期间使用。在内存中，每一个<action>元素都与org.apache.struts.action.ActionMapping类的一个实例对应。下表就显示了一个登陆的配置映射。
+
+<action-mappings>
+
+<action path="/logonAction"
+
+           type="com.test.LogonAction"
+
+           name="LogonForm"
+
+           scope="request"
+
+           input="logoncheck.jsp"
+
+validate="false">
+
+<forward name="welcome" path="/welcome.jsp"/>
+
+<forward name="failure" path="/logon_failure.jsp "/>
+
+</action>
+
+</action-mappings>
+
+
+
+
+
+<form-beans>
+
+<form-bean name="LoginForm"
+
+type="com.test.LoginForm"/>
+
+</form-beans>
+
+上面的配置表示：当可以通过/logonAction.do（此处假设配置的控制器映射为*.do）提交请求信息的时候，控制器将信息委托com.test.LogonAction处理。调用LogonAction实例的execute()方法。同时将Mapping实例和所对应的LogonForm Bean信息传入。其中name=LogonForm，使用的form-bean元素所声明的ActionForm Bean。有关form-bean的申明如下显示。
+
+使用ActionForward导航
+
+元素<forward>则表示了当Action实例的execute()方法运行完毕或，控制器根据Mapping可将响应信息转到适当的地方。如上面现实，如果客户登陆成功，则调用welcome forward，将成功信息返回到/welcome.jsp页面。在你的execute()方法的结尾可以使用下面的实例代码而返回welcome forward。当然你的welcome forward必须在action元素属性中定义，正如上面所声明的那样。
+
+return (mapping.findForward("welcome"));
+
+
+
+       ActionForward对象是配置对象。这些配置对象拥有独一无二的标识以允许它们按照有意义的名称如“success”，“failure”等来检索。ActionForward对象封装了向前进的URL路径且被请求处理器用于识别目标视图。ActionForward对象建立自<forward>元素位于struts-config.xml。下面是一个Struts中<forward>元素例子，属于<action>元素范围。
+
+<action path="/editCustomerProfile"
+
+type="packageName.EditCustomerProfileAction"
+
+name="customerProfileForm" scope="request">
+
+<forward name="success" path="/MainMenu.jsp"/>
+
+<forward name="failure" path="/CustomerService.jsp"/>
+
+</action>
+
+       基于执行请求处理器的execute(…)方法的结果，当传递一个值匹配指定于<forward>元素中name属性的值的时候，下一个视图可以在execute(…)方法中被开发者用方便的方法org.apache.struts.action.ActionMapping.findForward(…)选择。ActionMapping.findForward(…)方法既从它的本地范围又从全局范围提供一个ActionForward对象，该对象返回至RequestProcessor以RequestDispatcher.forward(…)或response.sendRedirect(…)调用下一个视图。当<forward>元素有redirect=“false”属性或redirect属性不存在的时候，RequestDispatcher.forward(…)被执行；当redirect=“true”是，将调用sendRedirect(…)方法。下例举例说明了redirect属性的用法：
+
+         <forward name="success" path="/Catalog.jsp" redirect="true"/>
+
+如果redirect=true, URL建立如/contextPath/path因为HttpServletResponse.sendRedirect(…)中解释URL采用”/”开头相对于servlet容器根目录。
+
+如果redirect=false, URI建立如/path因为ServletContext.getRequestDisptacher(…)采用虚拟目录相关URL。
+
+
+
+在此稍稍说一下有关global-forwards的概念。其在配置文件中描述了整个应用系统可以使用的ActionForward，而不是仅仅是一个特定的Action。
+
+<global-forwards>
+
+    <forward name="logout" path="/logout.do"/>
+
+<forward name="error" path="/error.jsp"/>
+
+</global-forwards>
+
+
+
+Struts ActionForm Bean捕获表单数据
+
+在上面讲解ActionServlet，Action Classes和Action Mapping的时候，我们都提到了ActionForm Bean的概念。一个应用系统的消息转移（或者说状态转移）的非持久性数据存储，是由ActionForm Bean的负责保持的。
+
+       ActionForm派生的对象用于保存请求对象的参数，因此它们和用户紧密联系。
+
+       一个ActionForm类被RequestProcessor建立。这是发生在已完成向前进到一个URL，该URL为映射到控制器servlet而不是JSP和相应的动作映射指定的表单属性的。在这个情况下，如果没有在指定的活动范围内找到，RequestProcessor将尝试寻找可能导致创建一个新ActionForm对象的表单bean。该ActionForm对象在指定的活动范围内被用<action>元素的name属性找到；
+
+RequestProcessor将随后重新安排表单属性，用请求时参数填充表单，随即调用表单对象的validate(…)方法以履行服务器端用户输入验证。仅当ActionMapping对象中validate属性被设为true时，validate(…)方法被调用；这就是默认的行为。request.getParameterValues(parameterName)被用于得到一个String[]对象，它用来表单填充；验证的结果应该是一个ActionErrors对象，用org.apache.struts.taglib.html.ErrorsTag来显示验证错误给用户。ActionForm也可以被用于为当前用户保存即将被一个视图引用的中间模型状态。
+
+当一个表单对象被RequestProcessor找到，它被传递到请求处理器的execute(…)方法。一个ActionForm对象也可以被请求处理器建立。表单对象建立目的是提供中间模型状态给使用请求范围JSP；这将确保对象不会在有效性过期后仍然存在。默认的，所有的表单都被保存为会话范围。会话中表单对象脱离有效性的存在可能导致浪费内存，同样的，请求处理器必须跟踪保存在会话中的表单对象的生命周期。一个好的捕获表单数据的实践是为横跨多用户交互的相关表单用一个单独的表单bean。表单bean也可以在反馈的时候用来储存能够被自定义标签改变的中间模型状态。在视图中标签用法避免结合Java代码，因此要成一个好的任务划分，web生产组主要处理标志，而应用开发组主要处理Java代码。标签因素退出访问中间模型状态的逻辑；当访问嵌套的对象或当通过聚集列举时这个逻辑可能很复杂。
+
+注意：在struts1.1中，ActionForm的校验功能，逐渐被剥离出来（当然依然可以使用）。使用了validator framework对整个应用系统的表单数据验证进行统一管理。详细信息请参考：http://home.earthlink.net/~dwinterfeldt
+
+在ActionForm的使用中，Struts提倡使用到值对象（Value Object）。这样将客户或开发人员，对数据状态与对象状态能够更加清晰的理解和使用。
+
+对于每一个客户请求，Struts framework在处理ActionForm的时候，一般需要经历如下几个步骤：
+
+（１）检查Action的映射，确定Action中已经配置了对ActionForm的映射
+
+       （２）根据name属性，查找form bean的配置信息
+
+       （３）检查Action的formbean的使用范围，确定在此范围下，是否已经有此form bean的实例。
+
+       （４）假如当前范围下，已经存在了此form bean的实例，而是对当前请求来说，是同一种类型的话，那么就重用。
+
+       （５）否则，就重新构建一个form bean的实例
+
+       （６）form bean的reset()方法备调用
+
+       （７）调用对应的setter方法，对状态属性赋值
+
+       （８）如果validatede的属性北设置为true，那么就调用form bean的validate()方法。
+
+（9）如果validate（）方法没有返回任何错误，控制器将ActionForm作为参数，传给Action实例的execute（）方法并执行。
+
+
+
+注意：直接从ActionFrom类继承的reset()和validate()方法，并不能实现什么处理功能，所以有必要自己重新覆盖。
+
+Struts的其他组件
+
+       Struts framework本身提供了很多可扩展的组件或sub framework，方便的开发人员在其构架上构建web层的应用系统。比如upload,collections ,logging等等。让我们来看看两个比较重要的组件：validationg framework和struts taglib。有关其他组件请参考Struts用户手册（http://jakarta.apache.org/struts/userGuide）。
+
+      
+
+Validation Framework for Struts
+
+在struts1.1中，新增了validation framework。增加了对form数据提交的验证。将原本需要在ActionFrom Bean的validate（）进行的验证通过配置文件的描述进行验证。
+
+有关其详细信息，请参考http://home.earthlink.net/~dwinterfeldt 。个人建议对于小型应用系统可以采用这种配置方式，但是对于应用系统中有大量web层表单应用的系统，并且业务需求变动比较大的，使用validation framework 可能会加重开发难度、系统维护难度。可以借鉴validation framework的Javascript Validator Tag。
+
+
+
+Struts TagLib
+
+       struts提供了一组可扩展的自定义标签库（TagLib），可以简化创建用户界面的过程。目前包括：Bean Tags，HTML Tags，Logic Tags，Nested Tags，Template Tags　这几个Taglib。有关Struts Taglib的结构和使用，可以参考前面有关Cutomer Tag Lib的介绍，有关起详细资料，请参考
+
+BeanUtils
+
+       这个组件的全称是Bean Introspection Utilites。是属于Jakarta Commons项目组的。主要是帮助构建javabean的属性操作的（getter,setter），已经提供一种动态定义和访问bean的属性。有关详细信息，请参考。
+
+http://jakarta.apache.org/commons/beanutils.html
+
+       如果各位对这方面有很兴趣，可以参考一些有关java反射（Reflectio）方面的资料。
+
+Collections
+
+       这个组件主要是提供了一些集合或列表对象，在原有的java collections framework的基础上进行了扩展。详细资料请参考：
+
+http://jakarta.apache.org/commons/collections.html 以及
+
+http://cvs.apache.org/viewcvs/~checkout~/jakarta-commons/collections/STATUS.html?rev=1.13
+
+Digester
+
+       这个组件翻译成中文的意思是“汇编”。其主要功能是根据xml配置文件，初始化系统的一些java类对象。Digester帮助你指定XML与java对象之间映射模型，而且允许客户话定制映射规则（rules）。详细资料请参考
+http://jakarta.apache.org/commons/digester.html

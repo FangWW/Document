@@ -1,18 +1,16 @@
-import java.io.*;
-import java.net.*;
 public class Receiver {
   private int port=8000;
   private ServerSocket serverSocket;
-  private static int stopWay=1;  //½áÊøÍ¨ÐÅµÄ·½Ê½
-  private final int NATURAL_STOP=1; //×ÔÈ»½áÊø
-  private final int SUDDEN_STOP=2;  //Í»È»ÖÕÖ¹³ÌÐò
-  private final int SOCKET_STOP=3;  //¹Ø±ÕSocket£¬ÔÙ½áÊø³ÌÐò
-  private final int INPUT_STOP=4;  //¹Ø±ÕÊäÈëÁ÷£¬ÔÙ½áÊø³ÌÐò
-  private final int SERVERSOCKET_STOP=5;  //¹Ø±ÕServerSocket£¬ÔÙ½áÊø³ÌÐò
+  private static int stopWay=1;  //ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ÅµÄ·ï¿½Ê½
+  private final int NATURAL_STOP=1; //ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½
+  private final int SUDDEN_STOP=2;  //Í»È»ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½
+  private final int SOCKET_STOP=3;  //ï¿½Ø±ï¿½Socketï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private final int INPUT_STOP=4;  //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private final int SERVERSOCKET_STOP=5;  //ï¿½Ø±ï¿½ServerSocketï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
   public Receiver() throws IOException {
     serverSocket = new ServerSocket(port);
-    System.out.println("·þÎñÆ÷ÒÑ¾­Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   private BufferedReader getReader(Socket socket)throws IOException{
@@ -29,20 +27,20 @@ public class Receiver {
        String msg=br.readLine();
        System.out.println("receive:"+msg);
        Thread.sleep(1000);
-       if(i==2){  //ÖÕÖ¹³ÌÐò£¬½áÊøÍ¨ÐÅ
+       if(i==2){  //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ò£¬½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
         if(stopWay==SUDDEN_STOP){
-          System.out.println("Í»È»ÖÕÖ¹³ÌÐò");
+          System.out.println("Í»È»ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           System.exit(0);
         }else if(stopWay==SOCKET_STOP){
-          System.out.println("¹Ø±ÕSocket²¢ÖÕÖ¹³ÌÐò");
+          System.out.println("ï¿½Ø±ï¿½Socketï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           socket.close();
           break;
         }else if(stopWay==INPUT_STOP){
-          System.out.println("¹Ø±ÕÊäÈëÁ÷²¢ÖÕÖ¹³ÌÐò");
+          System.out.println("ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           socket.shutdownInput();
           break;
         }else if(stopWay==SERVERSOCKET_STOP){
-          System.out.println("¹Ø±ÕServerSocket²¢ÖÕÖ¹³ÌÐò");
+          System.out.println("ï¿½Ø±ï¿½ServerSocketï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           serverSocket.close();
           break;
         } 
@@ -63,7 +61,7 @@ public class Receiver {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

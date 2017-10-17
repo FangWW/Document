@@ -1,7 +1,3 @@
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-
 public class ChannelIO {
   protected SocketChannel socketChannel;
   protected ByteBuffer requestBuffer;
@@ -10,7 +6,7 @@ public class ChannelIO {
   public ChannelIO(SocketChannel socketChannel, boolean blocking)
     throws IOException {
     this.socketChannel = socketChannel;
-    socketChannel.configureBlocking(blocking); //ÉèÖÃ×èÈûÄ£Ê½
+    socketChannel.configureBlocking(blocking); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
     requestBuffer = ByteBuffer.allocate(requestBufferSize);
   }
 
@@ -19,22 +15,22 @@ public class ChannelIO {
   }
 
   /*
-   * Èç¹ûÔ­»º³åÇøµÄÊ£ÓàÈÝÁ¿²»¹»£¬¾Í´´½¨Ò»¸öÐÂµÄ»º³åÇø£¬ÈÝÁ¿ÎªÔ­À´µÄÁ½±¶,
-   * °ÑÔ­À´»º³åÇøµÄÊý¾Ý¿½±´µ½ÐÂ»º³åÇø
+   * ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ÂµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÔ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
+   * ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   protected void resizeRequestBuffer(int remaining) {
     if (requestBuffer.remaining() < remaining) {
-      // °ÑÈÝÁ¿Ôö´óµ½Ô­À´µÄÁ½±¶
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       ByteBuffer bb = ByteBuffer.allocate(requestBuffer.capacity() * 2);
       requestBuffer.flip();
-      bb.put(requestBuffer);  //°ÑÔ­À´»º³åÇøÖÐµÄÊý¾Ý¿½±´µ½ÐÂµÄ»º³åÇø
+      bb.put(requestBuffer);  //ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½
       requestBuffer = bb;
     }
   }
 
   /*
-   * ½ÓÊÕÊý¾Ý£¬°ÑËüÃÇ´æ·Åµ½requestBufferÖÐ£¬Èç¹ûrequsetBufferµÄÊ£ÓàÈÝÁ¿²»×ã5%£¬
-   * ¾Íµ÷ÓÃresizeRequestBuffer()·½·¨À©³äÈÝÁ¿
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½Åµï¿½requestBufferï¿½Ð£ï¿½ï¿½ï¿½ï¿½requsetBufferï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5%ï¿½ï¿½
+   * ï¿½Íµï¿½ï¿½ï¿½resizeRequestBuffer()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   public int read() throws IOException {
     resizeRequestBuffer(requestBufferSize/20);
@@ -42,28 +38,28 @@ public class ChannelIO {
   }
 
   /*
-   * ·µ»ØrequestBuffer£¬Ëü´æ·ÅÁËËùÓÐµÄÇëÇóÊý¾Ý
+   * ï¿½ï¿½ï¿½ï¿½requestBufferï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   public ByteBuffer getReadBuf() {
       return requestBuffer;
   }
 
   /*
-   * ·¢ËÍ²ÎÊýÖ¸¶¨µÄByteBufferÖÐµÄÊý¾Ý
+   * ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ByteBufferï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
    */
   public int write(ByteBuffer src) throws IOException {
     return socketChannel.write(src);
   }
 
   /*
-   * °ÑFileChannelÖÐµÄÊý¾ÝÐ´µ½SocketChannelÖÐ
+   * ï¿½ï¿½FileChannelï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½SocketChannelï¿½ï¿½
    */
   public long transferTo(FileChannel fc, long pos, long len) throws IOException {
     return fc.transferTo(pos, len, socketChannel);
   }
 
   /*
-   * ¹Ø±ÕSocketChannel
+   * ï¿½Ø±ï¿½SocketChannel
    */
   public void close() throws IOException {
     socketChannel.close();
@@ -72,7 +68,7 @@ public class ChannelIO {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

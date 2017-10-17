@@ -1,7 +1,4 @@
 package dgc;
-import java.rmi.*;
-import javax.naming.*;
-
 public class SimpleServer1{
   public static void main( String args[] ){
     try{
@@ -9,13 +6,13 @@ public class SimpleServer1{
        HelloService service = new HelloServiceImpl();
        Context namingContext=new InitialContext();
        namingContext.rebind( "rmi:HelloService", service );
-       System.out.println( "·þÎñÆ÷×¢²áÁËÒ»¸öHelloServiceImpl¶ÔÏó" );
+       System.out.println( "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½HelloServiceImplï¿½ï¿½ï¿½ï¿½" );
        
-       //µÈ´ý¿Í»§¶Ë»ñµÃ¸ÃÔ¶³Ì¶ÔÏóµÄÒýÓÃ
+       //ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½Ë»ï¿½Ã¸ï¿½Ô¶ï¿½Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        while(!service.isAccessed())Thread.sleep(500);
        
        namingContext.unbind( "rmi:HelloService");
-       System.out.println( "·þÎñÆ÷×¢ÏúÁËÒ»¸öHelloServiceImpl¶ÔÏó" );
+       System.out.println( "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½HelloServiceImplï¿½ï¿½ï¿½ï¿½" );
   
     }catch(Exception e){
        e.printStackTrace();
@@ -28,7 +25,7 @@ public class SimpleServer1{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

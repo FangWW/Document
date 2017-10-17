@@ -1,12 +1,10 @@
 package chat;
 
-import javax.swing.*;
-import java.awt.event.*;
 /**
- * µ¯³ö²Ëµ¥´¥·¢ÊÂ¼şµÄ´¦Àí
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
  */
 class PopupListener extends MouseAdapter {
-	JPopupMenu popup;//Èç¹ûÓÒ»÷¼àÌıÏÔÊ¾ÏÂÀ­²Ëµ¥ÄÚÈİ
+	JPopupMenu popup;//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
 	PopupListener(JPopupMenu popupMenu) {
 		popup = popupMenu;
 	}
@@ -19,7 +17,7 @@ class PopupListener extends MouseAdapter {
 	private void maybeShowPopup(MouseEvent e) {
 		if (e.isPopupTrigger()) {
 			popup.show(e.getComponent(), e.getX(), e.getY());
-			//ÔÚÏàÓ¦µÄÎ»ÖÃÏÔÊ¾²Ëµ¥×é¼ş
+			//ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ëµï¿½ï¿½ï¿½ï¿½
     }
   }
 }

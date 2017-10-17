@@ -1,26 +1,25 @@
-import java.io.*;
 public class Customer3 implements Serializable {
-  private static int count; //ÓÃÓÚ¼ÆËãCustomer3¶ÔÏóµÄÊýÄ¿
+  private static int count; //ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½Customer3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
   private static final int MAX_COUNT=1000;
   private String name;
   private transient String password;
   
   static{
-     System.out.println("µ÷ÓÃCustomer3ÀàµÄ¾²Ì¬´úÂë¿é");
+     System.out.println("ï¿½ï¿½ï¿½ï¿½Customer3ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
   public Customer3(){
-    System.out.println("µ÷ÓÃCustomer3ÀàµÄ²»´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer3ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     count++;
   }
   public Customer3(String name, String password) {
-    System.out.println("µ÷ÓÃCustomer3ÀàµÄ´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer3ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     this.name=name;
     this.password=password;
     count++;
   }
 
-  /** ¼ÓÃÜÊý×é£¬½«buffÊý×éÖÐµÄÃ¿¸ö×Ö½ÚµÄÃ¿Ò»Î»È¡·´ 
-   *  ÀýÈç13µÄ¶þ½øÖÆÎª00001101£¬È¡·´ºóÎª11110010
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬ï¿½ï¿½buffï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ã¿ï¿½ï¿½ï¿½Ö½Úµï¿½Ã¿Ò»Î»È¡ï¿½ï¿½ 
+   *  ï¿½ï¿½ï¿½ï¿½13ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Îª00001101ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Îª11110010
    */
   private byte[] change(byte[] buff){
     for(int i=0;i<buff.length;i++){
@@ -35,14 +34,14 @@ public class Customer3 implements Serializable {
   }
 
   private void writeObject(ObjectOutputStream stream)throws IOException {
-    stream.defaultWriteObject();  //ÏÈ°´Ä¬ÈÏ·½Ê½ÐòÁÐ»¯ 
+    stream.defaultWriteObject();  //ï¿½È°ï¿½Ä¬ï¿½Ï·ï¿½Ê½ï¿½ï¿½ï¿½Ð»ï¿½ 
     stream.writeObject(change(password.getBytes()));
     stream.writeInt(count);
   }
 
   private void readObject(ObjectInputStream stream)
           throws IOException, ClassNotFoundException {
-    stream.defaultReadObject();  //ÏÈ°´Ä¬ÈÏ·½Ê½·´ÐòÁÐ»¯
+    stream.defaultReadObject();  //ï¿½È°ï¿½Ä¬ï¿½Ï·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½
     byte[] buff=(byte[])stream.readObject();
     password = new String(change(buff));
     count=stream.readInt();
@@ -58,7 +57,7 @@ public class Customer3 implements Serializable {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

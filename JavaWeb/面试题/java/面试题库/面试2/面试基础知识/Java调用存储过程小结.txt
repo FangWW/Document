@@ -1,0 +1,315 @@
+学生在学习jdbc的时候，会问到怎么调用存储过程，现在将java调用oracle存储过程的示例总结如下。（关于调用sqlserver的存储过程将在下次进行小结请关注）
+
+一：无返回值的存储过程
+
+存储过程为：
+
+? create or replace procedure adddept(deptno number,dname varchar2,loc varchar2)
+
+? as
+
+? begin
+
+? insert into dept values(deptno,dname,loc);
+
+? end;
+
+然后呢，在java里调用时就用下面的代码：
+
+? public class TestProcedure {
+
+? Connection conn=null ;
+
+? CallableStatement cstmt=null ;
+
+? PreparedStatement pstmt=null ;
+
+? String url="jdbc:oracle:thin:@localhost:1521:mydb";
+
+? String driver="oracle.jdbc.driver.OracleDriver";
+
+? String name="";
+
+? public TestProcedure() {
+
+? try {
+
+? Class.forName(driver);
+
+? conn=DriverManager.getConnection(url,"scott","tiger");
+
+? cstmt=conn.prepareCall("{call adddept(?,?,?)}");
+
+? cstmt.setInt(1,13);
+
+? cstmt.setString(2,"间谍部2");
+
+? cstmt.setString(3,"ningbo2");
+
+ cstmt.executeUpdate(); 
+
+? 
+
+? System.out.println("success");
+
+? }
+
+? catch (Exception e){e.printStackTrace();}
+
+? finally{
+
+? cstmt.close();
+
+? conn.close();
+
+? }
+
+? }
+
+? }
+
+dept表为oracle数据库方案scott中的一个表
+
+二：有返回值的存储过程（非列表）
+
+存储过程为：
+
+CREATE OR REPLACE PROCEDURE TESTB(PARA1 IN VARCHAR2,PARA2 OUT VARCHAR2) AS
+
+BEGIN 
+
+SELECT INTO PARA2 FROM TESTTB WHERE I_ID= PARA1; 
+
+END TESTB;
+
+在java里调用时就用下面的代码：
+
+package com.hyq.src;
+
+
+public class TestProcedureTWO {
+
+public TestProcedureTWO() {
+
+}
+
+public static void main(String[] args ){
+
+String driver = "oracle.jdbc.driver.OracleDriver";
+
+String strUrl = "jdbc:oracle:thin:@127.0.0.1:1521:hyq";
+
+Statement stmt = null;
+
+ResultSet rs = null;
+
+Connection conn = null;
+
+try {
+
+Class.forName(driver);
+
+conn = DriverManager.getConnection(strUrl, " hyq ", " hyq ");
+
+CallableStatement proc = null;
+
+proc = conn.prepareCall("{ call HYQ.TESTB(?,?) }");
+
+proc.setString(1, "100");
+
+proc.registerOutParameter(2, Types.VARCHAR);
+
+proc.execute();
+
+String testPrint = proc.getString(2);
+
+System.out.println("=testPrint=is="+testPrint);
+
+}
+
+catch (SQLException ex2) {
+
+ex2.printStackTrace();
+
+}
+
+catch (Exception ex2) {
+
+ex2.printStackTrace();
+
+}
+
+finally{
+
+try {
+
+if(rs != null){
+
+rs.close();
+
+if(stmt!=null){
+
+stmt.close();
+
+}
+
+if(conn!=null){
+
+conn.close();
+
+}
+
+}
+
+}
+
+catch (SQLException ex1) {
+
+}
+
+}
+
+}
+
+}
+
+
+}
+
+注意，这里的proc.getString(2)中的数值2并非任意的，而是和存储过程中的out列对应的，如果out是在第一个位置，那就是proc.getString(1)，如果是第三个位置，就是proc.getString(3)，当然也可以同时有多个返回值，那就是再多加几个out参数了。
+
+三：返回列表
+
+由于oracle存储过程没有返回值，它的所有返回值都是通过out参数来替代的，列表同样也不例外，但由于是集合，所以不能用一般的参数，必须要用pagkage了.所以要分两部分，
+
+1， 建一个程序包。如下：
+
+CREATE OR REPLACE PACKAGE TESTPACKAGE AS
+
+TYPE Test_CURSOR IS REF CURSOR;
+
+end TESTPACKAGE;
+
+2，建立存储过程，存储过程为：
+
+CREATE OR REPLACE PROCEDURE TESTC(p_CURSOR out TESTPACKAGE.Test_CURSOR) IS 
+
+BEGIN
+
+OPEN p_CURSOR FOR SELECT * FROM HYQ.TESTTB;
+
+END TESTC;
+
+可以看到，它是把游标（可以理解为一个指针），作为一个out 参数来返回值的。
+
+在java里调用时就用下面的代码：
+
+package com.hyq.src;
+
+import java.sql.*;
+
+import java.io.OutputStream;
+
+import java.io.Writer;
+
+import java.sql.PreparedStatement;
+
+import java.sql.ResultSet;
+
+import oracle.jdbc.driver.*;
+
+
+
+public class TestProcedureTHREE {
+
+public TestProcedureTHREE() {
+
+}
+
+public static void main(String[] args ){
+
+String driver = "oracle.jdbc.driver.OracleDriver";
+
+String strUrl = "jdbc:oracle:thin:@127.0.0.1:1521:hyq";
+
+Statement stmt = null;
+
+ResultSet rs = null;
+
+Connection conn = null;
+
+
+try {
+
+Class.forName(driver);
+
+conn = DriverManager.getConnection(strUrl, "hyq", "hyq");
+
+
+CallableStatement proc = null;
+
+proc = conn.prepareCall("{ call hyq.testc(?) }");
+
+proc.registerOutParameter(1,oracle.jdbc.OracleTypes.CURSOR);
+
+proc.execute();
+
+rs = (ResultSet)proc.getObject(1);
+
+
+while(rs.next())
+
+{
+
+System.out.println("<tr><td>" + rs.getString(1) + "</td><td>"+rs.getString(2)+"</td></tr>");
+
+}
+
+}
+
+catch (SQLException ex2) {
+
+ex2.printStackTrace();
+
+}
+
+catch (Exception ex2) {
+
+ex2.printStackTrace();
+
+}
+
+finally{
+
+try {
+
+if(rs != null){
+
+rs.close();
+
+if(stmt!=null){
+
+stmt.close();
+
+}
+
+if(conn!=null){
+
+conn.close();
+
+}
+
+}
+
+}
+
+catch (SQLException ex1) {
+
+}
+
+}
+
+}
+
+}
+

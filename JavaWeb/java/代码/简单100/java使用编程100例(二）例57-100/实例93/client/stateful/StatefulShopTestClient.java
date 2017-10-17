@@ -1,9 +1,9 @@
-//ÎÄ¼þÃû£ºStatefulShopTestClient.java
-//ÓÐ×´Ì¬»á»°EJB²âÊÔ¿Í»§¶Ë
+//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½StatefulShopTestClient.java
+//ï¿½ï¿½×´Ì¬ï¿½á»°EJBï¿½ï¿½ï¿½Ô¿Í»ï¿½ï¿½ï¿½
 package stateful;
-import javax.naming.*;
 import java.util.Properties;
 import java.util.Vector;
+
 import javax.rmi.PortableRemoteObject;
 public class StatefulShopTestClient {
   private static final String ERROR_NULL_REMOTE = "Remote interface reference is null.  It must be created by calling one of the Home interface methods first.";
@@ -11,15 +11,15 @@ public class StatefulShopTestClient {
   private boolean logging = true;
   private StatefulShopHome StatefulShopHome = null;
   private StatefulShop StatefulShop = null;
-  //¹¹ÔìÆ÷
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   public StatefulShopTestClient() {
    log("Initializing bean access.");
     try {
-      //µÃµ½contextÉÏÏÂÎÄ
+      //ï¿½Ãµï¿½contextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       Context ctx = getInitialContext();
-      //²éÑ¯StatefulShop
+      //ï¿½ï¿½Ñ¯StatefulShop
       Object ref = ctx.lookup("StatefulShop");
-      //´´½¨HomeÖ÷½Ó¿Ú
+      //ï¿½ï¿½ï¿½ï¿½Homeï¿½ï¿½ï¿½Ó¿ï¿½
       StatefulShopHome = (StatefulShopHome) PortableRemoteObject.narrow(ref, StatefulShopHome.class);
       log("Succeeded initializing bean access.");
     }
@@ -30,7 +30,7 @@ public class StatefulShopTestClient {
       e.printStackTrace();
     }
   }
-//·½·¨ËµÃ÷£º³õÊ¼»¯ÉÏÏÂÎÄ
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private Context getInitialContext() throws Exception {
     String url = "t3://localhost:7001";
     String user = null;
@@ -52,7 +52,7 @@ public class StatefulShopTestClient {
       throw e;
     }
   }
-//·½·¨ËµÃ÷£º´´½¨EJBÊµÀý
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½EJBÊµï¿½ï¿½
 public StatefulShop create() {
     log("Calling create()");
     try {
@@ -72,7 +72,7 @@ public StatefulShop create() {
     }
     return StatefulShop;
   }
-//·½·¨ËµÃ÷£ºÌí¼ÓÕË»§×Ê½ð
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ê½ï¿½
   public void addGoods(int id,String goods,double value) {
     if (StatefulShop == null) {
       System.out.println("Error in addGoods(): " + ERROR_NULL_REMOTE);
@@ -92,7 +92,7 @@ public StatefulShop create() {
       e.printStackTrace();
     }
   }
-//·½·¨ËµÃ÷£ºÌáÈ¡ÕË»§×Ê½ð
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ë»ï¿½ï¿½Ê½ï¿½
  public void removeGoods(int id) {
     if (StatefulShop == null) {
       System.out.println("Error in removeGoods(): " + ERROR_NULL_REMOTE);
@@ -112,7 +112,7 @@ public StatefulShop create() {
       e.printStackTrace();
     }
   }
-//·½·¨ËµÃ÷£º»ñÈ¡ÕË»§×Ê½ðÊý
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ë»ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
   public Vector seeGoods() {
     Vector returnValue = new Vector();;
     if (StatefulShop == null) {
@@ -137,7 +137,7 @@ public StatefulShop create() {
     }
     return returnValue;
   }
-//·½·¨ËµÃ÷£ºÏÔÊ¾ÐÅÏ¢
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
   private void log(String message) {
     if (message == null) {
       System.out.println("-- null");
@@ -155,10 +155,10 @@ public StatefulShop create() {
     StatefulShopTestClient client = new StatefulShopTestClient();
     client.create();
     client.seeGoods();
-    client.addGoods(1,"ACR¹âÇý",190);
+    client.addGoods(1,"ACRï¿½ï¿½ï¿½ï¿½",190);
     client.addGoods(2,"CPU AMD",280);
-    client.addGoods(3,"¾«Ó¢Ö÷°å",680);
+    client.addGoods(3,"ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½",680);
     client.removeGoods(2);
-    client.log("ÏÖÔÚµÄÉÌÆ·:"+client.seeGoods());
+    client.log("ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Æ·:"+client.seeGoods());
   }
 }

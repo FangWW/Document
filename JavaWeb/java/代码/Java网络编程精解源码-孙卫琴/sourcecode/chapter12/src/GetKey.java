@@ -1,19 +1,18 @@
-import java.sql.*;
 public class GetKey{
   public static void main(String args[])throws Exception{
     Connection con=new ConnectionProvider().getConnection();
     Statement stmt = con.createStatement();
     
-    //Ôö¼ÓÐÂ¼ÇÂ¼
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Â¼
     stmt.executeUpdate("insert into CUSTOMERS (NAME,AGE,ADDRESS) " 
-       +"VALUES ('Ð¡Íõ',20,'ÉÏº£')", Statement.RETURN_GENERATED_KEYS);
+       +"VALUES ('Ð¡ï¿½ï¿½',20,'ï¿½Ïºï¿½')", Statement.RETURN_GENERATED_KEYS);
     ResultSet rs=stmt.getGeneratedKeys();
-    //Êä³ö²éÑ¯½á¹û
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½
     if (rs.next()){
       System.out.println("id="+rs.getInt(1));
     }
 
-    //ÊÍ·ÅÏà¹Ø×ÊÔ´
+    //ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
     rs.close();
     stmt.close();
     con.close();
@@ -22,7 +21,7 @@ public class GetKey{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

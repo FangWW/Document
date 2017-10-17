@@ -1,21 +1,16 @@
-import java.net.*;
-import java.io.*;
-import javax.net.ssl.*;
-import java.security.*;
-
 public class EchoServer {
   private int port=8000;
   private SSLServerSocket serverSocket;
 
   public EchoServer() throws Exception {
-    //Êä³ö¸ú×ÙÈÕÖ¾
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
     //System.setProperty("javax.net.debug", "all"); 
     SSLContext context=createSSLContext();
     SSLServerSocketFactory factory=context.getServerSocketFactory();
     serverSocket =(SSLServerSocket)factory.createServerSocket(port);
-    System.out.println("·þÎñÆ÷Æô¶¯");
-    System.out.println(serverSocket.getUseClientMode()? "¿Í»§Ä£Ê½":"·þÎñÆ÷Ä£Ê½");
-    System.out.println(serverSocket.getNeedClientAuth()? "ÐèÒªÑéÖ¤¶Ô·½Éí·Ý":"²»ÐèÒªÑéÖ¤¶Ô·½Éí·Ý");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+    System.out.println(serverSocket.getUseClientMode()? "ï¿½Í»ï¿½Ä£Ê½":"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½");
+    System.out.println(serverSocket.getNeedClientAuth()? "ï¿½ï¿½Òªï¿½ï¿½Ö¤ï¿½Ô·ï¿½ï¿½ï¿½ï¿½":"ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ö¤ï¿½Ô·ï¿½ï¿½ï¿½ï¿½");
     
     String[] supported=serverSocket.getSupportedCipherSuites();
     serverSocket.setEnabledCipherSuites(supported);
@@ -34,9 +29,9 @@ public class EchoServer {
     SSLContext sslContext = SSLContext.getInstance("SSL");
     sslContext.init(kmf.getKeyManagers(), null, null);
 
-    //µ±ÒªÇó¿Í»§¶ËÌá¹©°²È«Ö¤ÊéÊ±£¬·þÎñÆ÷¶Ë¿É´´½¨TrustManagerFactory£¬
-    //²¢ÓÉËü´´½¨TrustManager£¬TrustManger¸ù¾ÝÓëÖ®¹ØÁªµÄKeyStoreÖÐµÄÐÅÏ¢£¬
-    //À´¾ö¶¨ÊÇ·ñÏàÐÅ¿Í»§Ìá¹©µÄ°²È«Ö¤Êé¡£
+    //ï¿½ï¿½Òªï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½È«Ö¤ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿É´ï¿½ï¿½ï¿½TrustManagerFactoryï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TrustManagerï¿½ï¿½TrustMangerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½KeyStoreï¿½Ðµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Å¿Í»ï¿½ï¿½á¹©ï¿½Ä°ï¿½È«Ö¤ï¿½é¡£
     //String trustStoreFile = "client.keys";    
     //KeyStore ts = KeyStore.getInstance("JKS");
     //ts.load(new FileInputStream(trustStoreFile), password);
@@ -65,7 +60,7 @@ public class EchoServer {
     while (true) {
       Socket socket=null;
       try {
-        socket = serverSocket.accept();  //µÈ´ý¿Í»§Á¬½Ó
+        socket = serverSocket.accept();  //ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½
         System.out.println("New connection accepted " 
                         +socket.getInetAddress() + ":" +socket.getPort());
         BufferedReader br =getReader(socket);
@@ -75,14 +70,14 @@ public class EchoServer {
         while ((msg = br.readLine()) != null) {
           System.out.println(msg); 
           pw.println(echo(msg));
-          if (msg.equals("bye")) //Èç¹û¿Í»§·¢ËÍµÄÏûÏ¢Îª¡°bye¡±£¬¾Í½áÊøÍ¨ÐÅ
+          if (msg.equals("bye")) //ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ï¢Îªï¿½ï¿½byeï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
             break;
         }
       }catch (IOException e) {
          e.printStackTrace();
       }finally {
          try{
-if(socket!=null)socket.close();  //¶Ï¿ªÁ¬½Ó
+if(socket!=null)socket.close();  //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½
          }catch (IOException e) {e.printStackTrace();}
       }
     }
@@ -95,7 +90,7 @@ if(socket!=null)socket.close();  //¶Ï¿ªÁ¬½Ó
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

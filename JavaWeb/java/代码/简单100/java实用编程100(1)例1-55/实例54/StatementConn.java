@@ -1,11 +1,9 @@
-import java.sql.*;
-import java.util.*;
 /**
- * <p>Title: Ê¹ÓÃÓï¾ä</p>
- * <p>Description: ±¾ÊµÀýÑÝÊ¾Ê¹ÓÃÓï¾ä·½Ê½²éÑ¯Êý¾Ý¿â²Ù×÷¡£Óï¾äÊÇÒ»ÖÖÔ¤´¦ÀíµÄÖ´ÐÐ·½·¨¡£</p>
+ * <p>Title: Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½ï¿½ï¿½ä·½Ê½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: StatementConn.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class StatementConn{
@@ -13,17 +11,17 @@ public class StatementConn{
   private static String username="";
   private static String password="";
   Connection con = null;
-  PreparedStatement updStmt=null;//Óï¾ä¶ÔÏó
+  PreparedStatement updStmt=null;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
-     	//¼ÓÔØJDBCÇý¶¯
+     	//ï¿½ï¿½ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        //´´½¨Êý¾Ý¿âÁ¬½Ó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
         con = DriverManager.getConnection(url, username, password);
         return con;
     }catch(ClassNotFoundException cnf){
@@ -38,9 +36,9 @@ public class StatementConn{
      }
   }
 /**
- *<br>·½·¨ËµÃ÷£º¹Ø±ÕÊý¾Ý¿â
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void close() 
   {
@@ -54,9 +52,9 @@ public class StatementConn{
 	con = null;
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÓï¾äÖ´ÐÐ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   private PreparedStatement getStatement(String sql,Vector vCondition) throws SQLException{
 	try
@@ -88,9 +86,9 @@ public class StatementConn{
 	return updStmt;
   }
 /**
- *<br>·½·¨ËµÃ÷£º¹Ø±ÕÓï¾ä¶ÔÏó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   private void closeUpdStmt()
   {
@@ -106,9 +104,9 @@ public class StatementConn{
 	updStmt=null;
   }	
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐSQL
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQL
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public Object execute(String sql,Vector vCondition) throws SQLException,Exception {
 	java.sql.ResultSet rs = null;
@@ -158,9 +156,9 @@ public class StatementConn{
 	return vResult;
   }
 /**
- *<br>·½·¨ËµÃ÷£º
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */	
   protected boolean isSelect(String psql) {
 	String sql = psql.trim().toUpperCase();
@@ -168,9 +166,9 @@ public class StatementConn{
 	return true;
   }
 /**
- *<br>·½·¨ËµÃ÷£º
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
  public static void main(String[] arg){
     if(arg.length!=3){
@@ -184,9 +182,9 @@ public class StatementConn{
     demo();
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÑÝÊ¾·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void demo(){
   	try{

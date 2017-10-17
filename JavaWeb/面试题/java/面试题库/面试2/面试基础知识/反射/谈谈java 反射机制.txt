@@ -1,0 +1,102 @@
+Person p=new Person();
+这是什么?当然是实例化一个对象了.可是这种实例化对象的方法存在一个问题,那就是必须要知道类名才可以实例化它的对象,这样我们在应用方面就会受到限制.那么有没有这样一种方式,让我们不知道这个类的类名就可以实例化它的对象呢?Thank Goodness!幸亏我们用的是java, java就提供了这样的机制.
+1).java程序在运行时可以获得任何一个类的字节码信息,包括类的修饰符(public,static等),基类(超类,父类),实现的接口,字段和方法等信息.
+2).java程序在运行时可以根据字节码信息来创建该类的实例对象,改变对象的字段内容和调用对象方法.
+这样的机制就叫反射技术.可以想象光学中的反射,就像我们照镜子,镜子中又出现一个自己(比喻可能不太恰当,但是足以表达清楚意思了).反射技术提供了一种通用的动态连接程序组件的方法,不必要把程序所需要的目标类硬编码到源程序中,从而使得我们可以创建灵活的程序.
+Java的反射机制是通过反射API来实现的,它允许程序在运行过程中取得任何一个已知名称的类的内部信息.反射API位于java.lang.reflect包中.主要包括以下几类:
+1).Constructor类:用来描述一个类的构造方法
+2).Field类:用来描述一个类的成员变量
+3).Method类:用来描述一个类的方法.
+4).Modifer类:用来描述类内各元素的修饰符
+5).Array:用来对数组进行操作.
+Constructor,Field,Method这三个类都是JVM(虚拟机)在程序运行时创建的,用来表示加载类中相应的成员.这三个类都实现了java.lang.reflect.Member接口,Member接口定义了获取类成员或构造方法等信息的方法.要使用这些反射API,必须先得到要操作的对象或类的Class类的实例.通过调用Class类的newInstance方法(只能调用类的默认构造方法)可以创建类的实例.这样有局限性,我们可以先冲类的Class实例获取类需要的构造方法,然后在利用反射来创建类的一个实例.
+一.获取类的构造方法的Constructor对象(数组)
+    ● Constructor[] getDeclaredConstructors();返回已加载类声明的所有的构造方法的Constructor对象数组.
+  ● Constructor  getDeclaredConstructor(Class[] paramTypes);返回已加载类声明的指定构造方法的Constructor对象,paramTypes指定了参数类型.
+  ● Constructor[] getConstructors();返回已加载类声明的所有的public类型的构造方法的Constructor对象数组.
+  ● Constructor  getConstructor(Class[] paramTypes);返回已加载类声明的指定的public类型的构造方法的Constructor对象,paramTypes指定了参数类型.
+如果某个类中没有定义构造方法,第一个和第三个方法返回的数组中只有一个元素,就是缺省的构造方法;如果某个类中只定义了有参数的构造函数,而没有定义缺省构造函数,第一个和第三个方法返回的数组中不包含缺省的构造方法.
+例子:
+import java.lang.reflect.*;
+public class DumpMethods {
+  public static void main(String[] args) {
+  try{
+      if(args.length<1){
+            System.out.println("请输入完整的类名：");
+            return;
+      }
+      Class strClass=Class.forName(args[0]);
+        //检索带有指定参数的构造方法
+        Class[] strArgsClass=new Class[]{ byte[].class,String.class};
+        Constructor constructor=strClass.getConstructor(strArgsClass);
+        System.out.println("Constructor:"+constructor.toString());
+  
+        //调用带有参数的构造方法创建实例对象object
+        byte[] bytes="java就业培训".getBytes();
+        Object[] strArgs=new Object[]{bytes,"gb2312"};
+        Object object=constructor.newInstance(strArgs);
+        System.out.println("Object"+object.toString());
+        }catch(Exception e){
+                e.printStackTrace();
+        } 
+  }
+}
+运行结果:
+
+二.获取类成员变量的Field对象(数组)
+●Field[] getDeclaredFields():返回已加载类声明的所有成员变量的Field对象数组,不包括从父类继承的成员变量.
+●Field  getDeclaredField(String name):返回已加载类声明的所有成员变量的Field对象,不包括从父类继承的成员变量,参数name指定成员变量的名称.
+●Field[] getFields():返回已加载类声明的所有public型的成员变量的Field对象数组,包括从父类继承的成员变量
+●Field  getField(String name):返回已加载类声明的所有成员变量的Field对象,包括从父类继承的成员变量,参数name指定成员变量的名称.
+例子:
+import java.lang.reflect.*;
+public class ReflectTest {
+        private String name;
+        private String age;
+        public ReflectTest(String name,String age){
+                this.name=name;
+              this.age=age;
+        }
+
+        public static void main(String[] args) {
+            // TODO 自动生成方法存根
+            try{
+                  ReflectTest rt=new ReflectTest("zhanghandong","shiba");
+                fun(rt);
+            }catch(Exception e){
+                    e.printStackTrace();
+            }
+  
+      }
+        public static void fun(Object obj) throws Exception{
+              Field[] fields=obj.getClass().getDeclaredFields();
+              System.out.println("替换之前的:"); 
+              for(Field field:fields){
+                    System.out.println(field.getName()+"="+field.get(obj)); 
+                  if(field.getType().equals(java.lang.String.class)){
+                          field.setAccessible(true);  //必须设置为true才可以修改成员变量
+                          String org=(String)field.get(obj);
+                        field.set(obj,org.replaceAll("a","b"));
+                  }
+  
+        }
+                System.out.println("替换之后的：");
+        for(Field field:fields){
+                System.out.println(field.getName()+"="+field.get(obj)); 
+        }
+        }
+}
+运行结果如下:
+
+三.获取类的方法的Method对象(数组)
+●Method[] getDeclaredMethods():返回已加载类声明的所有方法的Method对象数组,不包括从父类继承的方法.
+●Method  getDeclaredMethod(String name,Class[] paramTypes):返回已加载类声明的所有方法的Method对象,不包括从父类继承的方法,参数name指定方法的名称,参数paramTypes指定方法的参数类型.
+●Method[] getMethods():返回已加载类声明的所有方法的Method对象数组,包括从父类继承的方法.
+●Method  getMethod(String name,Class[] paramTypes):返回已加载类声明的所有方法的Method对象,包括从父类继承的方法,参数name指定方法的名称,参数paramTypes指定方法的参数类型.
+四.检索类的其他信息
+●int  getModifiers():返回已加载类的修饰符的整形标识值.
+●Package getPackage():返回已加载类的包名
+●Class  getSuperclass():返回已加载类的父类的Class实例.
+●Class  []  getInterfaces():返回已加载类实现的接口的Class对象数组.
+●boolean  isInterface():返回已加载类是否是接口.
+反射的功能很强大,但是使用不当可能会缺点大于优点,反射使代码逻辑混乱,会带来维护的问题.　

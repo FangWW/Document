@@ -1,16 +1,15 @@
-import java.io.*;
 public class StringList implements Serializable{
   private int size=0;
   private Node head=null;
   private Node end=null;
   
-  private static class Node implements Serializable{ //NodeÀàÒ²±ØÐëÊµÏÖSerializable½Ó¿Ú
+  private static class Node implements Serializable{ //Nodeï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Serializableï¿½Ó¿ï¿½
     String data;
     Node next;
     Node previous;
   }
   
-  /** ÔÚÁÐ±íÄ©Î²¼ÓÈëÒ»¸ö×Ö·û´® */
+  /** ï¿½ï¿½ï¿½Ð±ï¿½Ä©Î²ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ */
   public void add(String data){
     Node node=new Node();
     node.data=data;
@@ -22,7 +21,7 @@ public class StringList implements Serializable{
     if(size==1)head=end;
   }	
   
-  /** ¶ÁÈ¡ÁÐ±íÖÐÖ¸¶¨Î»ÖÃµÄÒ»¸ö×Ö·û´® */
+  /** ï¿½ï¿½È¡ï¿½Ð±ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ */
   public String get(int index){
     if(index>=size)return null;
     Node node=head;
@@ -36,16 +35,16 @@ public class StringList implements Serializable{
 
   public static void main(String args[])throws Exception{
     StringList list=new StringList();
-    //ÏòÁÐ±íÖÐ¼ÓÈë1500¸ö×Ö·û´® 
+    //ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½1500ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ 
     for(int i=0;i<1500;i++)list.add("hello"+i);
 
     ByteArrayOutputStream buf = new ByteArrayOutputStream();
     
-    //°ÑStringList¶ÔÏóÐòÁÐ»¯µ½Ò»¸ö×Ö½Ú»º´æÖÐ
+    //ï¿½ï¿½StringListï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½
     ObjectOutputStream o =new ObjectOutputStream(buf);
     o.writeObject(list);
     
-    //´Ó×Ö½Ú»º´æÖÐ·´ÐòÁÐ»¯StringList¶ÔÏó
+    //ï¿½ï¿½ï¿½Ö½Ú»ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½Ð»ï¿½StringListï¿½ï¿½ï¿½ï¿½
     ObjectInputStream in =new ObjectInputStream(
        new ByteArrayInputStream(buf.toByteArray()));
     list= (StringList)in.readObject();
@@ -55,7 +54,7 @@ public class StringList implements Serializable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

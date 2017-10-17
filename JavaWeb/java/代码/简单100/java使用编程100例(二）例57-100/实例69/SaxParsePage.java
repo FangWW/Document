@@ -1,85 +1,81 @@
-import javax.xml.parsers.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-import java.io.*;
 /**
- * <p>Title: Ê¹ÓÃSAX½âÎöXML</p>
- * <p>Description: Ê¹ÓÃSAX½Ó¿Ú½âÎöbook.xmlÎÄ¼þ</p>
+ * <p>Title: Ê¹ï¿½ï¿½SAXï¿½ï¿½ï¿½ï¿½XML</p>
+ * <p>Description: Ê¹ï¿½ï¿½SAXï¿½Ó¿Ú½ï¿½ï¿½ï¿½book.xmlï¿½Ä¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: SaxParsePage.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class SaxParsePage extends DefaultHandler {
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬ÉùÃ÷½âÎö¹¤³§ºÍ¼ÓÔØXMLÎÄ¼þ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½XMLï¿½Ä¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] argv) {
     try {
-      //½¨Á¢SAX½âÎö¹¤³§
+      //ï¿½ï¿½ï¿½ï¿½SAXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       SAXParserFactory spfactory = SAXParserFactory.newInstance();
-      //Éú³ÉSAX½âÎö¶ÔÏó
+      //ï¿½ï¿½ï¿½ï¿½SAXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       SAXParser parser = spfactory.newSAXParser();
-      //Ö¸¶¨XMLÎÄ¼þ£¬½øÐÐXML½âÎö
+      //Ö¸ï¿½ï¿½XMLï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XMLï¿½ï¿½ï¿½ï¿½
       parser.parse(new File("book.xml"), new SaxParsePage());
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÎÄ¼þ´ò¿ªÊ±µ÷ÓÃ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void startDocument() {
-    System.out.println("***¿ªÊ¼½âÎö***");
+    System.out.println("***ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½***");
   }
 /**
- *<br>·½·¨ËµÃ÷£ºµ±Óöµ½¿ªÊ¼±ê¼ÇÊ±µ÷ÓÃ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void startElement(String uri,
                            String localName,
                            String qName,
                            Attributes attributes) throws SAXException {
 
-    System.out.println("½Úµã¿ªÊ¼£º" + qName);
+    System.out.println("ï¿½Úµã¿ªÊ¼ï¿½ï¿½" + qName);
     for(int i=0;i<attributes.getLength();i++){
-     System.out.println("½ÚµãÊôÐÔÃû³Æ£º" + attributes.getQName(i));
-     System.out.println("½ÚµãÊôÐÔÖµ£º"+attributes.getValue(i));
+     System.out.println("ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½" + attributes.getQName(i));
+     System.out.println("ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½"+attributes.getValue(i));
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºµ±·ÖÎöÆ÷Óöµ½ÎÞ·¨Ê¶±ðÎª±ê¼Ç»òÕßÖ¸ÁîÀàÐÍ×Ö·ûÊ±µ÷ÓÃ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½Ê¶ï¿½ï¿½Îªï¿½ï¿½Ç»ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void characters(char[] ch,
                          int offset,
                          int length) throws SAXException{
 
-    System.out.println("½ÚµãÊý¾Ý£º" + new String(ch, offset, length));
+    System.out.println("ï¿½Úµï¿½ï¿½ï¿½ï¿½Ý£ï¿½" + new String(ch, offset, length));
   }
 /**
- *<br>·½·¨ËµÃ÷£ºµ±Óöµ½½Úµã½áÊøÊ±µ÷ÓÃ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void endElement(String uri,
                          String localName,
                          String qName) {
 
-    System.out.println("½Úµã½áÊø£º" + qName);
+    System.out.println("ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + qName);
   }
 /**
- *<br>·½·¨ËµÃ÷£ºµ±µ½ÎÄµµµÄÄ©Î²µ÷ÓÃ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½Ä©Î²ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void endDocument() {
-    System.out.println("****ÎÄ¼þ½âÎöÍê±Ï****");
+    System.out.println("****ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****");
   }
 }

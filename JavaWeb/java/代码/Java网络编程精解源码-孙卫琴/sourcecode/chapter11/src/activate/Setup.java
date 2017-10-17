@@ -1,9 +1,5 @@
 package activate;
 
-import java.rmi.*;
-import javax.naming.*;
-import java.rmi.activation.*;
-import java.io.File;
 import java.util.Properties;
 
 public class Setup{
@@ -12,7 +8,7 @@ public class Setup{
        Properties prop=new Properties();
        prop.put("java.security.policy",SimpleClient.class.getResource("server.policy").toString());
        ActivationGroupDesc group=new ActivationGroupDesc(prop,null);
-        //×¢²áActivationGroup
+        //×¢ï¿½ï¿½ActivationGroup
        ActivationGroupID id=ActivationGroup.getSystem().registerGroup(group);
   
        String classURL=System.getProperty("java.rmi.server.codebase");
@@ -23,17 +19,17 @@ public class Setup{
 new ActivationDesc(id,"activate.HelloServiceImpl",classURL,param1);
        ActivationDesc desc2=
 new ActivationDesc(id,"activate.HelloServiceImpl",classURL,param2);
-       //Ïòrmid×¢²áÁ½¸ö¼¤»î¶ÔÏó
+       //ï¿½ï¿½rmid×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        HelloService s1=(HelloService)Activatable.register(desc1);
        HelloService s2=(HelloService)Activatable.register(desc2);
        System.out.println(s1.getClass().getName());
 
        Context namingContext=new InitialContext();
-       //Ïòrmiregistry×¢²áÁ½¸ö¼¤»î¶ÔÏó
+       //ï¿½ï¿½rmiregistry×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        namingContext.rebind( "rmi:HelloService1", s1 );
        namingContext.rebind( "rmi:HelloService2", s2 );
     
-       System.out.println( "·þÎñÆ÷×¢²áÁËÁ½¸ö¿É¼¤»îµÄ HelloService¶ÔÏó" );
+       System.out.println( "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½ HelloServiceï¿½ï¿½ï¿½ï¿½" );
     }catch(Exception e){
        e.printStackTrace();
     } 
@@ -42,7 +38,7 @@ new ActivationDesc(id,"activate.HelloServiceImpl",classURL,param2);
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

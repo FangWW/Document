@@ -1,4 +1,3 @@
-import java.io.*;
 public class EchoPlayer {
   public String echo(String msg) {
     return "echo:"+msg;
@@ -8,7 +7,7 @@ public class EchoPlayer {
     String msg=null;
     while((msg=br.readLine())!=null){
       System.out.println(echo(msg));
-      if(msg.equals("bye"))  //µ±ÓÃ»§ÊäÈë¡°bye¡±£¬½áÊø³ÌÐò
+      if(msg.equals("bye"))  //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ë¡°byeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         break;
     }
   }

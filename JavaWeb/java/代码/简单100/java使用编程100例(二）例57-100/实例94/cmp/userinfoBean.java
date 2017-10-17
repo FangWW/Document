@@ -1,21 +1,20 @@
-//»á»°ejbµÄÊµÏÖÀà¡£
+//ï¿½á»°ejbï¿½ï¿½Êµï¿½ï¿½ï¿½à¡£
 package cmp;
 
 import javax.ejb.*;
-import javax.naming.*;
 import javax.rmi.PortableRemoteObject;
 /*
-*ÊµÀý»¯Àà¡£±ØÐèÊµÏÖSessionBean¡£*
+*Êµï¿½ï¿½ï¿½ï¿½ï¿½à¡£ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½SessionBeanï¿½ï¿½*
 */
 public class userinfoBean implements SessionBean {
   SessionContext sessionContext;
   TblUserInfoHome TUIHome;
   TblUserInfo  TUI;
 /*
-*·½·¨ËµÃ÷£ºÕâ¸ö·½·¨ÓëuserinfoHome.javaÖÐµÄÖ÷½Ó¿ÚÖÐµÄcreate()·½·¨Ïà¶ÔÓ¦£¬
-*Á½¸ö·½·¨µÄ²ÎÊýÏàÍ¬¡£µ±¿Í»§¶Ëµ÷ÓÃÖ÷½Ó¿ÚµÄuserinfoHome.create()·½·¨Ê±£¬
-*ÈÝÆ÷½«·ÖÅäÒ»¸öEJBÊµÀý£¬²¢µ÷ÓÃËüµÄejbCreate()·½·¨¡£±¾Àý´´½¨CMPµÄhome½Ó¿Ú¡£
-* @Òì³££ºCreateException µ±ÏµÍ³´´½¨EJB³ö´íÊ±Å×³ö
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½userinfoHome.javaï¿½Ðµï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½Ðµï¿½create()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Úµï¿½userinfoHome.create()ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½EJBÊµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ejbCreate()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CMPï¿½ï¿½homeï¿½Ó¿Ú¡ï¿½
+* @ï¿½ì³£ï¿½ï¿½CreateException ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½EJBï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
 */
   public void ejbCreate() throws CreateException {
      try{
@@ -26,60 +25,60 @@ public class userinfoBean implements SessionBean {
         System.out.println("create error!");
       }
   }
-//ejb±ØÐèÊµÏÖµÄ·½·¨¡£±¾ÀýÃ»ÓÐÊ¹ÓÃ¡£
+//ejbï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½
   public void ejbRemove() { }
-//ejb±ØÐèÊµÏÖµÄ·½·¨¡£±¾ÀýÃ»ÓÐÊ¹ÓÃ¡£
+//ejbï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½
   public void ejbActivate() { }
-//ejb±ØÐèÊµÏÖµÄ·½·¨¡£±¾ÀýÃ»ÓÐÊ¹ÓÃ¡£
+//ejbï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½
   public void ejbPassivate() { }
-//ejb±ØÐèÊµÏÖµÄ·½·¨¡£ÉèÖÃ»á»°ÉÏÏÂÎÄ¡£
+//ejbï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»á»°ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½
   public void setSessionContext(SessionContext sessionContext) {
     this.sessionContext = sessionContext;
   }
-/*¹¦ÄÜËµÃ÷£ºÌí¼ÓÊý¾Ý¼ÇÂ¼ 
-* @²ÎÊý£ºjava.lang.String name ÓÃ»§Ãû
-* @²ÎÊý£ºjava.lang.String phone ÁªÏµµç»°
-* @²ÎÊý£ºjava.lang.String home ¼ÒÍ¥×¡Ö·
-* @²ÎÊý£ºjava.sql.Date brithday ³öÉúÈÕÆÚ
-* @Òì³££ºException´´½¨CMPµÄ½Ó¿ÚÊ±Å×³ö
+/*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½Â¼ 
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String name ï¿½Ã»ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String phone ï¿½ï¿½Ïµï¿½ç»°
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String home ï¿½ï¿½Í¥×¡Ö·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.sql.Date brithday ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @ï¿½ì³£ï¿½ï¿½Exceptionï¿½ï¿½ï¿½ï¿½CMPï¿½Ä½Ó¿ï¿½Ê±ï¿½×³ï¿½
 */
   public  void ist_info(java.lang.String name, java.lang.String phone, java.lang.String home, java.sql.Date brithday){
      try{
          TUI=TUIHome.create(name,phone,home,brithday);
      }catch(Exception ex){
-         ex.printStackTrace();//´òÓ¡³ö´íµãµÄ¶ÑÕ»ÐÅÏ¢
+         ex.printStackTrace();//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Õ»ï¿½ï¿½Ï¢
      }
   }
-/*¹¦ÄÜËµÃ÷£ºÉ¾³ýÒ»Ìõ¼ÇÂ¼ 
-* @²ÎÊý£ºjava.lang.Integer id Ö÷¼üid
+/*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼ 
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.Integer id ï¿½ï¿½ï¿½ï¿½id
 */
   public  int del_info(java.lang.Integer id){
      try{
          TUI=TUIHome.findByPrimaryKey(id);
          if (TUI.getId() ==null)
-         {  System.out.println("Ã»ÓÐÊý¾Ý£¡");
+         {  System.out.println("Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½");
             return 1;
          }else{
            TUI.remove() ;
            return 0;
          } 
      }catch(Exception ex){
-         ex.printStackTrace();//´òÓ¡³ö´íµãµÄ¶ÑÕ»ÐÅÏ¢
+         ex.printStackTrace();//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Õ»ï¿½ï¿½Ï¢
          return -1;
      }
   }
-/*¹¦ÄÜËµÃ÷£ºÐÞ¸ÄÒ»Ìõ¼ÇÂ¼ 
-* @²ÎÊý£ºjava.lang.Integer id Ö÷¼üid
-* @²ÎÊý£ºjava.lang.String name ÓÃ»§Ãû
-* @²ÎÊý£ºjava.lang.String phone ÁªÏµµç»°
-* @²ÎÊý£ºjava.lang.String home ¼ÒÍ¥×¡Ö·
-* @²ÎÊý£ºjava.sql.Date brithday ³öÉúÈÕÆÚ
+/*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼ 
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.Integer id ï¿½ï¿½ï¿½ï¿½id
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String name ï¿½Ã»ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String phone ï¿½ï¿½Ïµï¿½ç»°
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.String home ï¿½ï¿½Í¥×¡Ö·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.sql.Date brithday ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
   public  int up_info(java.lang.Integer id, java.lang.String name, java.lang.String phone, java.lang.String home, java.sql.Date brithday){
      try{
          TUI=TUIHome.findByPrimaryKey(id);
          if (TUI.getId() ==null)
-         {  System.out.println("Ã»ÓÐÊý¾Ý£¡");
+         {  System.out.println("Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½");
             return 1;
          }else{
            TUI.setName(name) ;
@@ -89,19 +88,19 @@ public class userinfoBean implements SessionBean {
            return 0;
          }
      }catch(Exception ex){
-         ex.printStackTrace();//´òÓ¡³ö´íµãµÄ¶ÑÕ»ÐÅÏ¢
+         ex.printStackTrace();//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Õ»ï¿½ï¿½Ï¢
          return -1;
      }
    }
-/*¹¦ÄÜËµÃ÷£ºÍ¨¹ý£é£äºÅ²éÑ¯Êý¾ÝÐÅÏ¢
-* @²ÎÊý£ºjava.lang.Integer id Ö÷¼üid
-* @·µ»Ø£ºVector ÓÃ»§ÐÅÏ¢½á¹û¼¯
+/*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½java.lang.Integer id ï¿½ï¿½ï¿½ï¿½id
+* @ï¿½ï¿½ï¿½Ø£ï¿½Vector ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½
 */
   public  java.util.Vector find_id(java.lang.Integer id){
      try{
          TUI=TUIHome.findByPrimaryKey(id);
          if (TUI.getId() ==null)
-         {  System.out.println("Ã»ÓÐÊý¾Ý£¡");
+         {  System.out.println("Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½");
             return null;
          }else{
            java.util.Vector vRst = new java.util.Vector();
@@ -113,7 +112,7 @@ public class userinfoBean implements SessionBean {
            return vRst;
          }
      }catch(Exception ex){
-         ex.printStackTrace();//´òÓ¡³ö´íµãµÄ¶ÑÕ»ÐÅÏ¢
+         ex.printStackTrace();//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Õ»ï¿½ï¿½Ï¢
          return null;
      }
   }
@@ -129,7 +128,7 @@ public class userinfoBean implements SessionBean {
          return TUI.getId().intValue();
 
      }catch(Exception ex){
-         ex.printStackTrace();//´òÓ¡³ö´íµãµÄ¶ÑÕ»ÐÅÏ¢
+         ex.printStackTrace();//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Õ»ï¿½ï¿½Ï¢
          return -1;
      }
   }

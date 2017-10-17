@@ -1,8 +1,5 @@
 package flight2;
 
-import java.rmi.*;
-import javax.naming.*;
-
 public class SimpleClient{
   public static void main(String[] args){
     String url="rmi://localhost/";
@@ -21,8 +18,8 @@ public class SimpleClient{
       System.out.println("Flight "+flight2.getFlightNumber()+":");
       System.out.println("From "+flight2.getOrigin()+" to "+
                                         flight2.getDestination());
-      System.out.println("flight1ÊÇ"+flight1.getClass().getName()+"µÄÊµÀý");
-      System.out.println("flight2ÊÇ"+flight2.getClass().getName()+"µÄÊµÀý");
+      System.out.println("flight1ï¿½ï¿½"+flight1.getClass().getName()+"ï¿½ï¿½Êµï¿½ï¿½");
+      System.out.println("flight2ï¿½ï¿½"+flight2.getClass().getName()+"ï¿½ï¿½Êµï¿½ï¿½");
       System.out.println("flight1==flight2:"+(flight1==flight2));
       System.out.println("flight1.equals(flight2):"+(flight1.equals(flight2)));
     }catch(Exception e){
@@ -33,7 +30,7 @@ public class SimpleClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,7 +1,5 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
-import java.util.*;
 
 public class MailClientFullURL extends MailClient {
   private Folder folder;
@@ -10,14 +8,14 @@ public class MailClientFullURL extends MailClient {
     //init(new URLName("pop3://java_mail:123456@pop.citiz.net/inbox"));
   }
   public void init(URLName urlName)throws Exception{
-    //ÉèÖÃÊôÐÔ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Properties props = new Properties();
      
-    // ´´½¨Session¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Sessionï¿½ï¿½ï¿½ï¿½
     session = Session.getDefaultInstance(props);
     folder=session.getFolder(urlName);
     if(folder==null){ 
-      System.out.println(urlName.getFile()+"ÓÊ¼þ¼Ð²»´æÔÚ");
+      System.out.println(urlName.getFile()+"ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½");
       System.exit(0);
     }
    }
@@ -31,7 +29,7 @@ public class MailClientFullURL extends MailClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

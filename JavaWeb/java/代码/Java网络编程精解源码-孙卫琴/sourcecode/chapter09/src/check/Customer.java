@@ -1,11 +1,10 @@
 package check;
-import java.io.*;
 public class Customer implements Serializable {
   private int age;
   public Customer(int age) {
-    //ºÏ·¨ÐÔ¼ì²é
+    //ï¿½Ï·ï¿½ï¿½Ô¼ï¿½ï¿½
     if(age<0)
-      throw new IllegalArgumentException("ÄêÁä²»ÄÜÐ¡ÓÚÁã");
+      throw new IllegalArgumentException("ï¿½ï¿½ï¿½ä²»ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½");
     this.age=age;
   }
   public String toString() {
@@ -14,10 +13,10 @@ public class Customer implements Serializable {
   
   private void readObject(ObjectInputStream stream)
           throws IOException, ClassNotFoundException {
-    stream.defaultReadObject();  //ÏÈ°´Ä¬ÈÏ·½Ê½·´ÐòÁÐ»¯
-       //ºÏ·¨ÐÔ¼ì²é
+    stream.defaultReadObject();  //ï¿½È°ï¿½Ä¬ï¿½Ï·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½
+       //ï¿½Ï·ï¿½ï¿½Ô¼ï¿½ï¿½
     if(age<0)
-      throw new IllegalArgumentException("ÄêÁä²»ÄÜÐ¡ÓÚÁã");
+      throw new IllegalArgumentException("ï¿½ï¿½ï¿½ä²»ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½");
   }
   
   public static void main(String[] args) throws Exception{
@@ -25,7 +24,7 @@ public class Customer implements Serializable {
     System.out.println("Before Serialization:" + customer);
     ByteArrayOutputStream buf = new ByteArrayOutputStream();
    
-    //°ÑCustomer¶ÔÏóÐòÁÐ»¯µ½Ò»¸ö×Ö½Ú»º´æÖÐ
+    //ï¿½ï¿½Customerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½
     ObjectOutputStream o =new ObjectOutputStream(buf);
     o.writeObject(customer);
     
@@ -37,13 +36,13 @@ public class Customer implements Serializable {
     }
     
     
-    //´Û¸ÄÐòÁÐ»¯Êý¾Ý
+    //ï¿½Û¸ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
     byteArray[byteArray.length-4]=-1;
     byteArray[byteArray.length-3]=-1;
     byteArray[byteArray.length-2]=-1;
     byteArray[byteArray.length-1]=-10;
    
-    //´Ó×Ö½Ú»º´æÖÐ·´ÐòÁÐ»¯Customer¶ÔÏó
+    //ï¿½ï¿½ï¿½Ö½Ú»ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Customerï¿½ï¿½ï¿½ï¿½
     ObjectInputStream in =new ObjectInputStream(
           new ByteArrayInputStream(byteArray));
     customer= (Customer)in.readObject();
@@ -53,7 +52,7 @@ public class Customer implements Serializable {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

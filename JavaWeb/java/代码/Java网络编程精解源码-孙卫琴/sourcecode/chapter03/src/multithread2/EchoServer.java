@@ -1,21 +1,19 @@
 package multithread2;
-import java.io.*;
-import java.net.*;
 public class EchoServer {
   private int port=8000;
   private ServerSocket serverSocket;
-  private ThreadPool threadPool;  //Ïß³Ì³Ø
-  private final int POOL_SIZE=4;  //µ¥¸öCPUÊ±Ïß³Ì³ØÖÐ¹¤×÷Ïß³ÌµÄÊýÄ¿
+  private ThreadPool threadPool;  //ï¿½ß³Ì³ï¿½
+  private final int POOL_SIZE=4;  //ï¿½ï¿½ï¿½ï¿½CPUÊ±ï¿½ß³Ì³ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½Ä¿
 
   public EchoServer() throws IOException {
     serverSocket = new ServerSocket(port);
-    //´´½¨Ïß³Ì³Ø
-    //RuntimeµÄavailableProcessors()·½·¨·µ»Øµ±Ç°ÏµÍ³µÄCPUµÄÊýÄ¿
-    //ÏµÍ³µÄCPUÔ½¶à£¬Ïß³Ì³ØÖÐ¹¤×÷Ïß³ÌµÄÊýÄ¿Ò²Ô½¶à 
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì³ï¿½
+    //Runtimeï¿½ï¿½availableProcessors()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Ç°ÏµÍ³ï¿½ï¿½CPUï¿½ï¿½ï¿½ï¿½Ä¿
+    //ÏµÍ³ï¿½ï¿½CPUÔ½ï¿½à£¬ï¿½ß³Ì³ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ß³Ìµï¿½ï¿½ï¿½Ä¿Ò²Ô½ï¿½ï¿½ 
     threadPool= new ThreadPool( 
             Runtime.getRuntime().availableProcessors() * POOL_SIZE);
 
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() {
@@ -23,7 +21,7 @@ public class EchoServer {
       Socket socket=null;
       try {
         socket = serverSocket.accept();
-        threadPool.execute(new Handler(socket)); //°ÑÓë¿Í»§Í¨ÐÅµÄÈÎÎñ½»¸øÏß³Ì³Ø
+        threadPool.execute(new Handler(socket)); //ï¿½ï¿½ï¿½ï¿½Í»ï¿½Í¨ï¿½Åµï¿½ï¿½ï¿½ï¿½ñ½»¸ï¿½ï¿½ß³Ì³ï¿½
       }catch (IOException e) {
          e.printStackTrace();
       }
@@ -77,7 +75,7 @@ class Handler implements Runnable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

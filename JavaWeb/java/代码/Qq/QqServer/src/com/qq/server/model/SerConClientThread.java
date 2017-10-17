@@ -1,24 +1,21 @@
 /*
- * ¹¦ÄÜ£ºÊÇ·şÎñÆ÷ºÍÄ³¸ö¿Í»§¶ËµÄÍ¨ĞÅÏß³Ì
+ * ï¿½ï¿½ï¿½Ü£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½Í¨ï¿½ï¿½ï¿½ß³ï¿½
  */
 package com.qq.server.model;
 
-import java.net.*;
-import java.util.*;
-import java.io.*;
 import com.qq.common.*;
 public class SerConClientThread extends Thread{
 	
 	Socket s;
 	
 	public SerConClientThread(Socket s){
-		//°Ñ·şÎñÆ÷ºÍ¸Ã¿Í»§¶ËµÄÁ¬½Ó¸³¸øs
+		//ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸Ã¿Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½s
 		this.s=s;
 	}
 	
-	//ÈÃ¸ÃÏß³ÌÍ¨ÖªÆäËûÓÃ»§
+	//ï¿½Ã¸ï¿½ï¿½ß³ï¿½Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public void notifyOther(String iam){
-		//µÃµ½ËùÓĞÔÚÏßÈËµÄÏß³Ì
+		//ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ß³ï¿½
 		HashMap hm=ManageClientThread.hm;
 		Iterator it=hm.keySet().iterator();
 		
@@ -26,7 +23,7 @@ public class SerConClientThread extends Thread{
 			Message m=new Message();
 			m.setCon(iam);
 			m.setMesType(MessageType.message_ret_onLineFriend);
-			//È¡³öÔÚÏßÈËµÄid
+			//È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½id
 			String onLineUserId=it.next().toString();
 			try {
 				ObjectOutputStream oos=new ObjectOutputStream(ManageClientThread.gerClientThread(onLineUserId).s.getOutputStream());
@@ -40,22 +37,22 @@ public class SerConClientThread extends Thread{
 	
 	public void run(){
 		while(true){
-			//ÕâÀï¸ÃÏß³Ì¾Í¿ÉÒÔ½ÓÊÜ¿Í»§¶ËµÄĞÅÏ¢
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì¾Í¿ï¿½ï¿½Ô½ï¿½ï¿½Ü¿Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ï¢
 			try{
 				ObjectInputStream ois=new ObjectInputStream(s.getInputStream());
 				Message m=(Message)ois.readObject();
 				
-				//System.out.println(m.getSender()+"¸ø"+m.getGetter()+"Ëµ£º"+m.getCon());
+				//System.out.println(m.getSender()+"ï¿½ï¿½"+m.getGetter()+"Ëµï¿½ï¿½"+m.getCon());
 				
-				//¶Ô´Ó¿Í»§¶ËÈ¡µÃµÄÏûÏ¢½øĞĞÀàĞÍÅĞ¶Ï£¬È»ºó×ö³öÏàÓ¦µÄ´¦Àí
+				//ï¿½Ô´Ó¿Í»ï¿½ï¿½ï¿½È¡ï¿½Ãµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶Ï£ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä´ï¿½ï¿½ï¿½
 				if(m.getMesType().equals(MessageType.message_comm_mes)){
-				//Ò»»áÍê³É×ª·¢ 
-				//È¡µÃ½ÓÊÕÈËµÄÍ¨ĞÅÏß³Ì
+				//Ò»ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ 
+				//È¡ï¿½Ã½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Í¨ï¿½ï¿½ï¿½ß³ï¿½
 				SerConClientThread sc=ManageClientThread.gerClientThread(m.getGetter());
 				ObjectOutputStream oos=new ObjectOutputStream(sc.s.getOutputStream());
 				oos.writeObject(m);
 				}else if(m.getMesType().equals(MessageType.message_get_onLineFriend)){
-					//°Ñ·şÎñÆ÷µÄºÃÓÑ·µ»Ø¸ø¿Í»§¶Ë
+					//ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½Ñ·ï¿½ï¿½Ø¸ï¿½ï¿½Í»ï¿½ï¿½ï¿½
 					String res=ManageClientThread.getAllOnlineUserId();
 					Message m2=new Message();
 					m2.setMesType(MessageType.message_ret_onLineFriend);

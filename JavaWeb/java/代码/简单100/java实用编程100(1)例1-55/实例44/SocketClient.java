@@ -1,10 +1,8 @@
-//ÎÄ¼þÃû£ºSocketClient.java
-import java.io.*;
-import java.net.*; 
+//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½SocketClient.java
 class SocketThreadClient extends Thread
 {
  public static int count = 0;
-//¹¹ÔìÆ÷£¬ÊµÏÖ·þÎñ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
  public SocketThreadClient (InetAddress addr)
  {
   count++;
@@ -12,17 +10,17 @@ class SocketThreadClient extends Thread
   PrintWriter out = null;
   Socket sk = null;
   try{
-  //Ê¹ÓÃ8000¶Ë¿Ú
+  //Ê¹ï¿½ï¿½8000ï¿½Ë¿ï¿½
    sk = new Socket (addr, 8000);
    InputStreamReader isr;
    isr = new InputStreamReader (sk.getInputStream ());
    in = new BufferedReader (isr);
-   //½¨Á¢Êä³ö
+   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    out = new PrintWriter (
           new BufferedWriter(
            new OutputStreamWriter(
              sk.getOutputStream ())), true);
-   //Ïò·þÎñÆ÷·¢ËÍÇëÇó
+   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    System.out.println("count:"+count);
    out.println ("Hello");
    System.out.println (in.readLine ());
@@ -37,7 +35,7 @@ class SocketThreadClient extends Thread
   finally
   {
    out.println("END");
-   //ÊÍ·Å×ÊÔ´
+   //ï¿½Í·ï¿½ï¿½ï¿½Ô´
    try
    {
     if (in != null)
@@ -53,7 +51,7 @@ class SocketThreadClient extends Thread
   }
  }
 }
-//¿Í»§¶Ë
+//ï¿½Í»ï¿½ï¿½ï¿½
 public class SocketClient{
   public static void main(String[] args) throws IOException,InterruptedException
   {

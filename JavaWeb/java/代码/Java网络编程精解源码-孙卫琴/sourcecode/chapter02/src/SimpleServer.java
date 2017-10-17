@@ -1,15 +1,13 @@
-import java.io.*;
-import java.net.*;
 public class SimpleServer {
   public static void main(String args[])throws Exception {
-    ServerSocket serverSocket = new ServerSocket(8000,2);  //Á¬½ÓÇëÇó¶ÓÁÐµÄ³¤¶ÈÎª2
-    Thread.sleep(360000);   //Ë¯Ãß6·ÖÖÓ
+    ServerSocket serverSocket = new ServerSocket(8000,2);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½Îª2
+    Thread.sleep(360000);   //Ë¯ï¿½ï¿½6ï¿½ï¿½ï¿½ï¿½
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

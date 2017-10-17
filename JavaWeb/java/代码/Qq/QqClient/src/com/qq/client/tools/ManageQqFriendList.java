@@ -1,10 +1,8 @@
 /*
- * ¹ÜÀíºÃÓÑ¡¢ºÚÃûµ¥¡¢½çÃæÀà
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 package com.qq.client.tools;
 
-import java.util.*;
-import java.io.*;
 import com.qq.client.view.*;
 public class ManageQqFriendList {
 	

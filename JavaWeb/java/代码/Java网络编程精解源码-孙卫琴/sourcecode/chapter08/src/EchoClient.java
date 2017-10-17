@@ -1,12 +1,10 @@
-import java.net.*;
-import java.io.*;
 public class EchoClient {
   private String remoteHost="localhost";
   private int remotePort=8000;
   private DatagramSocket socket;
 
   public EchoClient()throws IOException{
-     socket=new DatagramSocket(); //Óë±¾µØµÄÈÎÒâÒ»¸öUDP¶Ë¿Ú°ó¶¨
+     socket=new DatagramSocket(); //ï¿½ë±¾ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½UDPï¿½Ë¿Ú°ï¿½
   }
   public static void main(String args[])throws IOException{
     new EchoClient().talk();
@@ -21,7 +19,7 @@ public class EchoClient {
         byte[] outputData=msg.getBytes();
         DatagramPacket outputPacket=new DatagramPacket(outputData,
                                     outputData.length,remoteIP,remotePort);
-        socket.send(outputPacket);  //¸øEchoServer·¢ËÍÊý¾Ý±¨
+        socket.send(outputPacket);  //ï¿½ï¿½EchoServerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½
         
         DatagramPacket inputPacket=new DatagramPacket(new byte[512],512);
         socket.receive(inputPacket);
@@ -40,7 +38,7 @@ public class EchoClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,65 +1,63 @@
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
- * <p>Title: °´Å¥ÑÝÊ¾</p>
- * <p>Description: Ìá¹©Ò»¸ö°´Å¥µÄÑÝÊ¾¡£ÈçºÎÊµÏÖ°´Å¥ºÍÊÇÒ»¸ö°´Å¥Ê§Ð§</p>
+ * <p>Title: ï¿½ï¿½Å¥ï¿½ï¿½Ê¾</p>
+ * <p>Description: ï¿½á¹©Ò»ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Å¥Ê§Ð§</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ButtonDemo extends JPanel
                         implements ActionListener {
     protected JButton b1, b2, b3;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬³õÊ¼Í¼ÐÎ½çÃæ¹¹½¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Í¼ï¿½Î½ï¿½ï¿½æ¹¹ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public ButtonDemo() {
         ImageIcon leftButtonIcon = createImageIcon("images/right.gif");
         ImageIcon middleButtonIcon = createImageIcon("images/middle.gif");
         ImageIcon rightButtonIcon = createImageIcon("images/left.gif");
 
-        b1 = new JButton("Ê§Ð§ÖÐ¼ä°´Å¥(D)", leftButtonIcon);
-        b1.setVerticalTextPosition(AbstractButton.CENTER);//Ë®Æ½ÖÐ¼ä¶ÔÆë
-        b1.setHorizontalTextPosition(AbstractButton.LEADING);//Ïàµ±ÓÚLEFT
-        b1.setMnemonic(KeyEvent.VK_D);//½«b1°î¶¨alt+D¼ü
+        b1 = new JButton("Ê§Ð§ï¿½Ð¼ä°´Å¥(D)", leftButtonIcon);
+        b1.setVerticalTextPosition(AbstractButton.CENTER);//Ë®Æ½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½
+        b1.setHorizontalTextPosition(AbstractButton.LEADING);//ï¿½àµ±ï¿½ï¿½LEFT
+        b1.setMnemonic(KeyEvent.VK_D);//ï¿½ï¿½b1ï¿½î¶¨alt+Dï¿½ï¿½
         b1.setActionCommand("disable");
 
-        b2 = new JButton("MÖÐ¼ä°´Å¥", middleButtonIcon);
+        b2 = new JButton("Mï¿½Ð¼ä°´Å¥", middleButtonIcon);
         b2.setVerticalTextPosition(AbstractButton.BOTTOM);
         b2.setHorizontalTextPosition(AbstractButton.CENTER);
-        b2.setMnemonic(KeyEvent.VK_M);//½«b2°î¶¨alt+M¼ü
+        b2.setMnemonic(KeyEvent.VK_M);//ï¿½ï¿½b2ï¿½î¶¨alt+Mï¿½ï¿½
 
-        b3 = new JButton("E¼¤»îÖÐ¼ä°´Å¥", rightButtonIcon);
-        b3.setMnemonic(KeyEvent.VK_E);//½«b3°î¶¨alt+E¼ü
+        b3 = new JButton("Eï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ä°´Å¥", rightButtonIcon);
+        b3.setMnemonic(KeyEvent.VK_E);//ï¿½ï¿½b3ï¿½î¶¨alt+Eï¿½ï¿½
         b3.setActionCommand("enable");
         b3.setEnabled(false);
 
-        //¸ø1ºÍ3Ìí¼ÓÊÂ¼þ¼àÌý
+        //ï¿½ï¿½1ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
         b1.addActionListener(this);
         b3.addActionListener(this);
-        //ÉèÖÃ°´Å¥ÌáÊ¾ÎÄ±¾
-        b1.setToolTipText("µã»÷Õâ¸ö°´Å¥£¬½«Ê¹ÖÐ¼äµÄ°´Å¥Ê§Ð§£¡");
-        b2.setToolTipText("µã»÷Õâ¸ö°´Å¥£¬Ã»ÓÐÈÎºÎµÄÊÂ¼þ·¢Éú£¡");
-        b3.setToolTipText("µã»÷Õâ¸ö°´Å¥£¬½«Ê¹ÖÐ¼äµÄ°´Å¥ÓÐÐ§");
+        //ï¿½ï¿½ï¿½Ã°ï¿½Å¥ï¿½ï¿½Ê¾ï¿½Ä±ï¿½
+        b1.setToolTipText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ð¼ï¿½Ä°ï¿½Å¥Ê§Ð§ï¿½ï¿½");
+        b2.setToolTipText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ÎºÎµï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        b3.setToolTipText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ð¼ï¿½Ä°ï¿½Å¥ï¿½ï¿½Ð§");
 
-        //½«°´Å¥Ìí¼Óµ½JPanelÖÐ
+        //ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Óµï¿½JPanelï¿½ï¿½
         add(b1);
         add(b2);
         add(b3);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ´¦Àí
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
         if ("disable".equals(e.getActionCommand())) {
@@ -73,9 +71,9 @@ public class ButtonDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º´´½¨Í¼±ê£¬
- *<br>ÊäÈë²ÎÊý£ºString path Í¼±êËùÔÚµÄÂ·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼±ê¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ê£¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼ï¿½ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = ButtonDemo.class.getResource(path);
@@ -87,24 +85,24 @@ public class ButtonDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
-        //ÉèÖÃÊ¹ÓÃÐÂµÄswing½çÃæ
+        //ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Âµï¿½swingï¿½ï¿½ï¿½ï¿½
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨Ò»¸ö´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("ButtonDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ò»¸öÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         ButtonDemo newContentPane = new ButtonDemo();
         newContentPane.setOpaque(true); 
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

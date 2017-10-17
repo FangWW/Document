@@ -1,13 +1,11 @@
 package  com.bean; 
 
-import java.sql.*;
-import java.util.*;
 /**
- * <p>Title: JSP+BeanÁ¬½ÓÊý¾Ý¿â</p>
- * <p>Description: ±¾ÊµÀýÑÝÊ¾JSP+Bean¿ò¼ÜÊµÏÖÊý¾Ý¿â²éÑ¯²Ù×÷¡£</p>
+ * <p>Title: JSP+Beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾JSP+Beanï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDBCConn.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDBCConn{
@@ -15,15 +13,15 @@ public class JDBCConn{
   public static String username="test";
   public static String password="test";
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
-     	//¼ÓÔØJDBCÇý¶¯
+     	//ï¿½ï¿½ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        //´´½¨Êý¾Ý¿âÁ¬½Ó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
         Connection con = DriverManager.getConnection(url, username, password);
         return con;
     }catch(SQLException sqle){
@@ -35,10 +33,10 @@ public class JDBCConn{
      }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²éÑ¯SQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½Ñ¯SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public Vector query( String sql){
   	Connection con = conn();
@@ -49,15 +47,15 @@ public class JDBCConn{
      }
      if(sql==null) throw new Exception("check your parameter: 'sql'! don't input null!");
      
-     //ÉùÃ÷Óï¾ä
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-     //Ö´ÐÐ²éÑ¯
+     //Ö´ï¿½Ð²ï¿½Ñ¯
      ResultSet rs = stmt.executeQuery(sql); 
-     //»ñÈ¡¼ÇÂ¼×ÜÊý  
+     //ï¿½ï¿½È¡ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½  
      rs.last();  
      int intRowCount = rs.getRow(); 
      ResultSetMetaData rmeta = rs.getMetaData();
-     //»ñµÃÊý¾Ý×Ö¶Î¸öÊý
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î¸ï¿½ï¿½ï¿½
      int numColumns = rmeta.getColumnCount();
 
      while(rs.next())
@@ -82,12 +80,12 @@ public class JDBCConn{
     return vResult;
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²éÑ¯SQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºpageNo  Ò³ÂëÊý
- *<br>ÊäÈë²ÎÊý£ºpageSize  ¼ÇÂ¼ÌõÊý
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½Ñ¯SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pageNo  Ò³ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pageSize  ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public Vector query(String sql,int pageNo,int pageSize){
     Vector vResult = new Vector();
@@ -97,26 +95,26 @@ public class JDBCConn{
        throw new Exception("database connection can't use!");
      }
      if(sql==null) throw new Exception("check your parameter: 'sql'! don't input null!");
-     int intRowCount;//¼ÇÂ¼×ÜÊý
-     int intPageCount;//×ÜÒ³Êý
-     //ÉùÃ÷Óï¾ä
+     int intRowCount;//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+     int intPageCount;//ï¿½ï¿½Ò³ï¿½ï¿½
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-     //Ö´ÐÐ²éÑ¯
+     //Ö´ï¿½Ð²ï¿½Ñ¯
      ResultSet rs = stmt.executeQuery(sql); 
      ResultSetMetaData rmeta = rs.getMetaData();
-     //»ñµÃÊý¾Ý×Ö¶Î¸öÊý
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î¸ï¿½ï¿½ï¿½
      int numColumns = rmeta.getColumnCount();
-     //»ñÈ¡¼ÇÂ¼×ÜÊý  
+     //ï¿½ï¿½È¡ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½  
      rs.last();  
      intRowCount = rs.getRow(); 
      vResult.addElement(String.valueOf(intRowCount));
-     //¼ÇËã×ÜÒ³Êý  
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½  
      intPageCount = (intRowCount+pageSize-1) / pageSize;
-	 //µ÷Õû´ýÏÔÊ¾µÄÒ³Âë  
+	 //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò³ï¿½ï¿½  
      if(pageNo>intPageCount) pageNo = intPageCount; 
 
 	 if(intPageCount>0){
-     //½«¼ÇÂ¼Ö¸Õë¶¨Î»µ½´ýÏÔÊ¾Ò³µÄµÚÒ»Ìõ¼ÇÂ¼ÉÏ  
+     //ï¿½ï¿½ï¿½ï¿½Â¼Ö¸ï¿½ë¶¨Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ò³ï¿½Äµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½  
      rs.absolute((pageNo-1) * pageSize + 1); 
      int i = 0;
      while(i<pageSize && !rs.isAfterLast())
@@ -145,10 +143,10 @@ public class JDBCConn{
     return vResult;
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²åÈë¡¢¸üÐÂ¡¢É¾³ýµÈÃ»ÓÐ·µ»Ø½á¹û¼¯µÄSQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½ï¿½ë¡¢ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public int execute( String sql){
     Connection con = conn();

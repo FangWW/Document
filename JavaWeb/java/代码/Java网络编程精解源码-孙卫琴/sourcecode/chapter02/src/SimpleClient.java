@@ -1,19 +1,17 @@
-import java.io.*;
-import java.net.*;
 public class SimpleClient {
   public static void main(String args[])throws Exception {
     Socket s1 = new Socket("localhost",8000);
-    System.out.println("µÚÒ»´ÎÁ¬½Ó³É¹¦");
+    System.out.println("ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½");
     Socket s2 = new Socket("localhost",8000);
-    System.out.println("µÚ¶þ´ÎÁ¬½Ó³É¹¦");
+    System.out.println("ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½");
     Socket s3 = new Socket("localhost",8000);
-    System.out.println("µÚÈý´ÎÁ¬½Ó³É¹¦");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½");
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

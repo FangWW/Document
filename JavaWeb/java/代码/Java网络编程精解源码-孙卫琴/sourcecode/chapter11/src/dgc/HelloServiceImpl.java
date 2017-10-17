@@ -1,29 +1,27 @@
 package dgc;
-import java.util.Date;
-import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.server.Unreferenced;
 public class HelloServiceImpl extends UnicastRemoteObject implements HelloService,Unreferenced{
   private boolean isAccessed=false;
   public HelloServiceImpl()throws RemoteException{}
   public void access()throws RemoteException{
-    System.out.println("HelloServiceImpl:ÎÒ±»Ò»¸ö¿Í»§Ô¶³ÌÒýÓÃ");
+    System.out.println("HelloServiceImpl:ï¿½Ò±ï¿½Ò»ï¿½ï¿½ï¿½Í»ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     isAccessed=true;
   }
   public void bye()throws RemoteException{
-    System.out.println("HelloServiceImpl:Ò»¸ö¿Í»§²»ÔÙÒýÓÃÎÒÁË");
+    System.out.println("HelloServiceImpl:Ò»ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
   public boolean isAccessed()throws RemoteException{
     return isAccessed;
   }
   public void unreferenced(){
-    System.out.println("HelloServiceImpl:ÎÒ²»ÔÙ±»Ô¶³ÌÒýÓÃ");
+    System.out.println("HelloServiceImpl:ï¿½Ò²ï¿½ï¿½Ù±ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 } 
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

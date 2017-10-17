@@ -1,17 +1,15 @@
-import java.io.*;
-import java.util.*;
 public class GlobalConfig implements Serializable{
   private static final GlobalConfig INSTANCE=new GlobalConfig();
   private Properties properties = new Properties();
   private GlobalConfig(){
     try{
-      //¼ÓÔØÅäÖÃÐÅÏ¢
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
       InputStream in=getClass().getResourceAsStream("myapp.properties");
       properties.load(in);
       in.close();
-    }catch(IOException e){throw new RuntimeException("¼ÓÔØÅäÖÃÐÅÏ¢Ê§°Ü");}
+    }catch(IOException e){throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ê§ï¿½ï¿½");}
   }
-  public static GlobalConfig getInstance(){  //¾²Ì¬¹¤³§·½·¨
+  public static GlobalConfig getInstance(){  //ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     return INSTANCE;
   }
   public Properties getProperties() {
@@ -27,11 +25,11 @@ public class GlobalConfig implements Serializable{
 
     ByteArrayOutputStream buf = new ByteArrayOutputStream();
     
-    //°ÑGlobalConfig¶ÔÏóÐòÁÐ»¯µ½Ò»¸ö×Ö½Ú»º´æÖÐ
+    //ï¿½ï¿½GlobalConfigï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½
     ObjectOutputStream o =new ObjectOutputStream(buf);
     o.writeObject(config);
     
-    //´Ó×Ö½Ú»º´æÖÐ·´ÐòÁÐ»¯GlobalConfig¶ÔÏó
+    //ï¿½ï¿½ï¿½Ö½Ú»ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½Ð»ï¿½GlobalConfigï¿½ï¿½ï¿½ï¿½
     ObjectInputStream in =new ObjectInputStream(
        new ByteArrayInputStream(buf.toByteArray()));
     GlobalConfig configNew= (GlobalConfig)in.readObject();
@@ -41,7 +39,7 @@ public class GlobalConfig implements Serializable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

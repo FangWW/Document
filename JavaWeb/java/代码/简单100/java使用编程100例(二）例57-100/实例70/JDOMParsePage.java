@@ -1,70 +1,70 @@
 import org.jdom.*;
 import org.jdom.input.*;
 import org.jdom.output.*;
-import java.io.*;
+
 import java.util.List;
  
 /**
- * <p>Title: Ê¹ÓÃJDOM½âÎöXML</p>
- * <p>Description: Í¨¹ýÊ¹ÓÃJDOM½Ó¿Ú½âÎöbook.xmlÎÄ¼þ</p>
+ * <p>Title: Ê¹ï¿½ï¿½JDOMï¿½ï¿½ï¿½ï¿½XML</p>
+ * <p>Description: Í¨ï¿½ï¿½Ê¹ï¿½ï¿½JDOMï¿½Ó¿Ú½ï¿½ï¿½ï¿½book.xmlï¿½Ä¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDOMParsePage.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDOMParsePage {
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÊµÏÖXMLÎÄ¼þ½âÎö
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½XMLï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public JDOMParsePage() {
     Document docJDOM;
-    //ÀûÓÃSAX½¨Á¢Document
+    //ï¿½ï¿½ï¿½ï¿½SAXï¿½ï¿½ï¿½ï¿½Document
     SAXBuilder bSAX = new SAXBuilder(false);
     try {
-     //Éú³Édocument¶ÔÏó
+     //ï¿½ï¿½ï¿½ï¿½documentï¿½ï¿½ï¿½ï¿½
       docJDOM = bSAX.build(new File("book.xml"));
     }catch (JDOMException e) {
       e.printStackTrace();
       return;
     }
 
-    //µÃµ½DocumentµÄ¸ù£¨½ÚµãÃû£ºbook£©
+    //ï¿½Ãµï¿½Documentï¿½Ä¸ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½bookï¿½ï¿½
       Element root = docJDOM.getRootElement();
-      System.out.println("¸ù½Úµã±ê¼ÇÃû£º" + root.getName());
+      System.out.println("ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + root.getName());
 
-      System.out.println("*****ÏÂÃæ±éÀúXMLÔªËØ*****");
-      //»ñµÃpageÔªËØ¼¯ºÏ
+      System.out.println("*****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XMLÔªï¿½ï¿½*****");
+      //ï¿½ï¿½ï¿½pageÔªï¿½Ø¼ï¿½ï¿½ï¿½
       List list = root.getChildren("page");
-      //±éÀúpageÔªËØ
+      //ï¿½ï¿½ï¿½ï¿½pageÔªï¿½ï¿½
       for (int i=0; i < list.size() ; i++) {
-        //»ñµÃpageµÄÔªËØ
+        //ï¿½ï¿½ï¿½pageï¿½ï¿½Ôªï¿½ï¿½
         Element element = (Element)list.get(i);
-        //»ñµÃIDÊôÐÔ
+        //ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½
         String id = element.getAttributeValue("id");
-        //»ñµÃtitleÔªËØ¼¯ºÏ
+        //ï¿½ï¿½ï¿½titleÔªï¿½Ø¼ï¿½ï¿½ï¿½
         List titleList = element.getChildren("title");
-        //»ñµÃtitleµÚÒ»¸öÔªËØ
+        //ï¿½ï¿½ï¿½titleï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
         Element titleElement = (Element)titleList.get(0);
-        //»ñµÃtitleÔªËØµÄµÚÒ»¸öÖµ
+        //ï¿½ï¿½ï¿½titleÔªï¿½ØµÄµï¿½Ò»ï¿½ï¿½Öµ
         String title = titleElement.getText();
-        //»ñµÃfileÔªËØ¼¯ºÏ
+        //ï¿½ï¿½ï¿½fileÔªï¿½Ø¼ï¿½ï¿½ï¿½
         List fileList = element.getChildren("file");
-        //»ñµÃfileµÚÒ»¸öÔªËØ
+        //ï¿½ï¿½ï¿½fileï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
         Element fileElement = (Element)fileList.get(0);
-        //»ñµÃfileÔªËØµÄµÚÒ»¸öÖµ
+        //ï¿½ï¿½ï¿½fileÔªï¿½ØµÄµï¿½Ò»ï¿½ï¿½Öµ
         String file = fileElement.getText();
 
-        System.out.println("ID£º" + id + "  " +
-                           "±êÌâ£º" + title + "  " +
-                           "ÎÄ¼þ£º" + file);
+        System.out.println("IDï¿½ï¿½" + id + "  " +
+                           "ï¿½ï¿½ï¿½â£º" + title + "  " +
+                           "ï¿½Ä¼ï¿½ï¿½ï¿½" + file);
       }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬Æô¶¯½âÎöÆ÷
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args) {
     JDOMParsePage myReader = new JDOMParsePage();

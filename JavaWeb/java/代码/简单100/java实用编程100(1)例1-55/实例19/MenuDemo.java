@@ -1,25 +1,22 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.JPopupMenu;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
-import javax.swing.JMenuBar;
-import javax.swing.KeyStroke;
 import javax.swing.ImageIcon;
-
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 /**
- * <p>Title: ²Ëµ¥ÑÝÊ¾</p>
- * <p>Description: ÑÝÊ¾²Ëµ¥µÄ½¨Á¢ºÍ¿ì½Ý¼üµÄÊ¹ÓÃ¡£</p>
+ * <p>Title: ï¿½Ëµï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: ï¿½ï¿½Ê¾ï¿½Ëµï¿½ï¿½Ä½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½Ý¼ï¿½ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: MenuDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 
@@ -28,9 +25,9 @@ public class MenuDemo implements ActionListener, ItemListener {
     JScrollPane scrollPane;
     String newline = "\n";
 /**
- *<br>·½·¨ËµÃ÷£º×é½¨²Ëµ¥À¸
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½é½¨ï¿½Ëµï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public JMenuBar createMenuBar() {
         JMenuBar menuBar;
@@ -39,167 +36,167 @@ public class MenuDemo implements ActionListener, ItemListener {
         JRadioButtonMenuItem rbMenuItem;
         JCheckBoxMenuItem cbMenuItem;
 
-        //¶¨Òå²Ëµ¥Ìõ
+        //ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½
         menuBar = new JMenuBar();
 
-        //¶¨ÒåµÚÒ»¸ö²Ëµ¥
-        menu = new JMenu("(A)²Ëµ¥");
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ëµï¿½
+        menu = new JMenu("(A)ï¿½Ëµï¿½");
         menu.setMnemonic(KeyEvent.VK_A);
         menuBar.add(menu);
 
-        //ÏÂÃæ¿ªÊ¼¶¨Òå²Ëµ¥Ïî
+        //ï¿½ï¿½ï¿½æ¿ªÊ¼ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½
         
-        //Ö»ÓÐÎÄ×Ö
-        menuItem = new JMenuItem("(O)Ö»ÓÐÎÄ±¾µÄ²Ëµ¥",
+        //Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        menuItem = new JMenuItem("(O)Ö»ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ä²Ëµï¿½",
                                  KeyEvent.VK_O);
-        //ÉèÖÃ¿ì½Ý¼ü
+        //ï¿½ï¿½ï¿½Ã¿ï¿½Ý¼ï¿½
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_1, ActionEvent.ALT_MASK));
-        //Ìí¼Ó¼àÌý
+        //ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½
         menuItem.addActionListener(this);
         menu.add(menuItem);
-        //ÓÐÍ¼±ê»¹ÓÐÎÄ×Ö
+        //ï¿½ï¿½Í¼ï¿½ê»¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ImageIcon icon = createImageIcon("images/middle.gif");
-        menuItem = new JMenuItem("(B)ÓÐÍ¼±êºÍÎÄ×ÖµÄ²Ëµ¥", icon);
+        menuItem = new JMenuItem("(B)ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÄ²Ëµï¿½", icon);
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addActionListener(this);
         menu.add(menuItem);
-        //Ö»ÓÐÍ¼±ê
+        //Ö»ï¿½ï¿½Í¼ï¿½ï¿½
         menuItem = new JMenuItem(icon);
         menuItem.setMnemonic(KeyEvent.VK_D);
         menuItem.addActionListener(this);
         menu.add(menuItem);
 
-        //¶¨ÒåÒ»×éradio button£¨µ¥Ñ¡°´Å¥£©²Ëµ¥
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½radio buttonï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ëµï¿½
         menu.addSeparator();
         ButtonGroup group = new ButtonGroup();
 
-        rbMenuItem = new JRadioButtonMenuItem("(R)Ê¹ÓÃradioµÄ²Ëµ¥");
+        rbMenuItem = new JRadioButtonMenuItem("(R)Ê¹ï¿½ï¿½radioï¿½Ä²Ëµï¿½");
         rbMenuItem.setSelected(true);
         rbMenuItem.setMnemonic(KeyEvent.VK_R);
         group.add(rbMenuItem);
         rbMenuItem.addActionListener(this);
         menu.add(rbMenuItem);
 
-        rbMenuItem = new JRadioButtonMenuItem("(d)ÁíÍâÒ»¸öradio²Ëµ¥");
+        rbMenuItem = new JRadioButtonMenuItem("(d)ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½radioï¿½Ëµï¿½");
         rbMenuItem.setMnemonic(KeyEvent.VK_D);
         group.add(rbMenuItem);
         rbMenuItem.addActionListener(this);
         menu.add(rbMenuItem);
 
-        //¶¨ÒåÒ»×écheck box£¨¼ì²éºÐ£©²Ëµ¥
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½check boxï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½Ëµï¿½
         menu.addSeparator();
-        cbMenuItem = new JCheckBoxMenuItem("(C)Ê¹ÓÃ¼ì²éºÐµÄ²Ëµ¥");
+        cbMenuItem = new JCheckBoxMenuItem("(C)Ê¹ï¿½Ã¼ï¿½ï¿½ÐµÄ²Ëµï¿½");
         cbMenuItem.setMnemonic(KeyEvent.VK_C);
         cbMenuItem.addItemListener(this);
         menu.add(cbMenuItem);
 
-        cbMenuItem = new JCheckBoxMenuItem("(H)ÁíÍâÒ»¸ö¼ì²éºÐ");
+        cbMenuItem = new JCheckBoxMenuItem("(H)ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         cbMenuItem.setMnemonic(KeyEvent.VK_H);
         cbMenuItem.addItemListener(this);
         menu.add(cbMenuItem);
 
-        //¶¨ÒåÒ»¸ö´ø×Ó²Ëµ¥
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó²Ëµï¿½
         menu.addSeparator();
-        submenu = new JMenu("(S)´øÓÐ×Ó²Ëµ¥");
+        submenu = new JMenu("(S)ï¿½ï¿½ï¿½ï¿½ï¿½Ó²Ëµï¿½");
         submenu.setMnemonic(KeyEvent.VK_S);
-        //¶¨Òå×Ó²Ëµ¥
-        menuItem = new JMenuItem("ÕâÊÇ×Ó²Ëµ¥");
-        //¶¨Òå¿ì½Ý¼ü
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ó²Ëµï¿½
+        menuItem = new JMenuItem("ï¿½ï¿½ï¿½ï¿½ï¿½Ó²Ëµï¿½");
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
                 KeyEvent.VK_2, ActionEvent.ALT_MASK));
         menuItem.addActionListener(this);
         submenu.add(menuItem);
 
-        menuItem = new JMenuItem("×Ó²Ëµ¥Ïî");
+        menuItem = new JMenuItem("ï¿½Ó²Ëµï¿½ï¿½ï¿½");
         menuItem.addActionListener(this);
         submenu.add(menuItem);
         menu.add(submenu);
 
-        //¶¨ÒåµÚ¶þ¸ö²Ëµ¥
-        menu = new JMenu("(N)µÚ¶þ¸ö²Ëµ¥");
+        //ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½Ëµï¿½
+        menu = new JMenu("(N)ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½Ëµï¿½");
         menu.setMnemonic(KeyEvent.VK_N);
         menuBar.add(menu);
 
         return menuBar;
     }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹½¨Ãæ°å
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public Container createContentPane() {
-        //¹¹ÔìÒ»¸öÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         JPanel contentPane = new JPanel(new BorderLayout());
         contentPane.setOpaque(true);
 
-        //¶¨ÒåÒ»¸öÎÄ±¾Óò
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
         output = new JTextArea(5, 30);
         output.setEditable(false);
         scrollPane = new JScrollPane(output);
 
-        //½«ÎÄ±¾ÓòÌí¼Óµ½Ãæ°åÖÐ
+        //ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         contentPane.add(scrollPane, BorderLayout.CENTER);
 
         return contentPane;
     }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹½¨µ¯³ö²Ëµ¥
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void createPopupMenu() {
         JMenuItem menuItem;
 
-        //¹¹¼þµ¯³ö²Ëµ¥
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½
         JPopupMenu popup = new JPopupMenu();
         ImageIcon openicon = createImageIcon("images/Open16.gif");
-        menuItem = new JMenuItem("´ò¿ªÎÄ¼þ",openicon);
+        menuItem = new JMenuItem("ï¿½ï¿½ï¿½Ä¼ï¿½",openicon);
         menuItem.addActionListener(this);
         popup.add(menuItem);
         ImageIcon saveicon = createImageIcon("images/Save16.gif");
-        menuItem = new JMenuItem("±£´æÎÄ¼þ",saveicon);
+        menuItem = new JMenuItem("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½",saveicon);
         menuItem.addActionListener(this);
         popup.add(menuItem);
 
-        //Ìí¼ÓÒ»¸ö¼àÌý¸øÎÄ±¾Óò£¬ÒÔ±ãµã»÷ÓÒ¼üÊ±ÏìÓ¦
+        //ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½Ê±ï¿½ï¿½Ó¦
         MouseListener popupListener = new PopupListener(popup);
         output.addMouseListener(popupListener);
     }
 /**
- *<br>·½·¨ËµÃ÷£º¼àÌýÆÕÍ¨µÄ²Ëµ¥Ñ¡Ôñ
- *<br>ÊäÈë²ÎÊý£ºActionEvent e ÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Ä²Ëµï¿½Ñ¡ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ActionEvent e ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
         JMenuItem source = (JMenuItem)(e.getSource());
-        String s = "¼à²âÊÂ¼þ¡£"
+        String s = "ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½"
                    + newline
-                   + "    ÊÂ¼þÔ´: " + source.getText()
-                   + " (Ñ¡Ôñ¶ÔÏó" + getClassName(source) + ")";
+                   + "    ï¿½Â¼ï¿½Ô´: " + source.getText()
+                   + " (Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½" + getClassName(source) + ")";
         output.append(s + newline);
     }
 /**
- *<br>·½·¨ËµÃ÷£º¼àÌý¼ì²éºÐ²Ëµ¥Ñ¡ÔñÏî
- *<br>ÊäÈë²ÎÊý£ºItemEvent e ¼ì²éºÐ´¥·¢µÄÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²Ëµï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ItemEvent e ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void itemStateChanged(ItemEvent e) {
         JMenuItem source = (JMenuItem)(e.getSource());
-        String s = "²Ëµ¥Ïî¼àÌý"
+        String s = "ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
                    + newline
-                   + "    ÊÂ¼þÔ´: " + source.getText()
-                   + " (Ñ¡Ôñ¶ÔÏó " + getClassName(source) + ")"
+                   + "    ï¿½Â¼ï¿½Ô´: " + source.getText()
+                   + " (Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ " + getClassName(source) + ")"
                    + newline
-                   + "    ÐÂµÄ×´Ì¬: "
+                   + "    ï¿½Âµï¿½×´Ì¬: "
                    + ((e.getStateChange() == ItemEvent.SELECTED) ?
-                     "Ñ¡Ôñ":"²»Ñ¡Ôñ");
+                     "Ñ¡ï¿½ï¿½":"ï¿½ï¿½Ñ¡ï¿½ï¿½");
         output.append(s + newline);
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÀàµÄÃû×Ö
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     protected String getClassName(Object o) {
         String classString = o.getClass().getName();
@@ -207,9 +204,9 @@ public class MenuDemo implements ActionListener, ItemListener {
         return classString.substring(dotIndex+1);
     }
 /**
- *<br>·½·¨ËµÃ÷£º¸ù¾ÝÂ·¾¶²éÕÒÍ¼Æ¬
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬µÄÂ·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼Æ¬¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬ï¿½ï¿½Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = MenuDemo.class.getResource(path);
@@ -224,23 +221,23 @@ public class MenuDemo implements ActionListener, ItemListener {
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨Ò»¸ö´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("MenuDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨²Ëµ¥£¬²¢Ìí¼Óµ½Ãæ°åÖÐ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         MenuDemo demo = new MenuDemo();
         frame.setJMenuBar(demo.createMenuBar());
         frame.setContentPane(demo.createContentPane());
 
-        //Éú³Éµ¯³ö²Ëµ¥
+        //ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½Ëµï¿½
         demo.createPopupMenu();
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.setSize(450, 260);
         frame.setVisible(true);
     }
-//µ¯³ö²Ëµ¥¼àÌýÀà
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     class PopupListener extends MouseAdapter {
         JPopupMenu popup;
 

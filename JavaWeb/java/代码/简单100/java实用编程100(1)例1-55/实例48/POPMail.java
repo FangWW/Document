@@ -1,20 +1,18 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import java.util.*;
-import java.io.*;
 /**
- * <p>Title: Ê¹ÓÃJavaMail½ÓÊÕÓÊ¼ş</p>
- * <p>Description: ÊµÀıJavaMail°ü½ÓÊÕÓÊ¼ş£¬±¾ÊµÀıÃ»ÓĞÊµÏÖ½ÓÊÕÓÊ¼şµÄ¸½¼ş¡£</p>
+ * <p>Title: Ê¹ï¿½ï¿½JavaMailï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½</p>
+ * <p>Description: Êµï¿½ï¿½JavaMailï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ã»ï¿½ï¿½Êµï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: POPMail.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class POPMail{
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬½ÓÊÕÓÃ»§ÊäÈëµÄÓÊÏä·şÎñÆ÷¡¢ÓÃ»§ÃûºÍÃÜÂë
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String args[]){
         try{
@@ -28,29 +26,29 @@ public class POPMail{
         System.exit(0);
     } 
 /**
- *<br>·½·¨ËµÃ÷£º½ÓÊÕÓÊ¼şĞÅÏ¢
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void receive(String popServer, String popUser, String popPassword){
         Store store=null;
         Folder folder=null;
         try{
-            //»ñÈ¡Ä¬ÈÏ»á»°
+            //ï¿½ï¿½È¡Ä¬ï¿½Ï»á»°
             Properties props = System.getProperties();
             Session session = Session.getDefaultInstance(props, null);
-            //Ê¹ÓÃPOP3»á»°»úÖÆ£¬Á¬½Ó·şÎñÆ÷
+            //Ê¹ï¿½ï¿½POP3ï¿½á»°ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½
             store = session.getStore("pop3");
             store.connect(popServer, popUser, popPassword);
-            //»ñÈ¡Ä¬ÈÏÎÄ¼ş¼Ğ
+            //ï¿½ï¿½È¡Ä¬ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
             folder = store.getDefaultFolder();
             if (folder == null) throw new Exception("No default folder");
-            //Èç¹ûÊÇÊÕ¼şÏä
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½
             folder = folder.getFolder("INBOX");
             if (folder == null) throw new Exception("No POP3 INBOX");
-            //Ê¹ÓÃÖ»¶Á·½Ê½´ò¿ªÊÕ¼şÏä
+            //Ê¹ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½
             folder.open(Folder.READ_ONLY);
-            //µÃµ½ÎÄ¼ş¼ĞĞÅÏ¢£¬»ñÈ¡ÓÊ¼şÁĞ±í
+            //ï¿½Ãµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê¼ï¿½ï¿½Ğ±ï¿½
             Message[] msgs = folder.getMessages();
             for (int msgNum = 0; msgNum < msgs.length; msgNum++){
                 printMessage(msgs[msgNum]);
@@ -59,7 +57,7 @@ public class POPMail{
             ex.printStackTrace();
         }
         finally{
-        //ÊÍ·Å×ÊÔ´
+        //ï¿½Í·ï¿½ï¿½ï¿½Ô´
             try{
                 if (folder!=null) folder.close(false);
                 if (store!=null) store.close();
@@ -69,30 +67,30 @@ public class POPMail{
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º´òÓ¡ÓÊ¼şĞÅÏ¢
- *<br>ÊäÈë²ÎÊı£ºMessage message ĞÅÏ¢¶ÔÏó
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½Ê¼ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Message message ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void printMessage(Message message){
         try{
-            //»ñµÃ·¢ËÍÓÊ¼şµØÖ·
+            //ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
             String from=((InternetAddress)message.getFrom()[0]).getPersonal();
             if (from==null) from=((InternetAddress)message.getFrom()[0]).getAddress();
             System.out.println("FROM: "+from);
-            //»ñÈ¡Ö÷Ìâ
+            //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
             String subject=message.getSubject();
             System.out.println("SUBJECT: "+subject);
-            //»ñÈ¡ĞÅÏ¢¶ÔÏó
+            //ï¿½ï¿½È¡ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
             Part messagePart=message;
             Object content=messagePart.getContent();
-            //¸½¼ş
+            //ï¿½ï¿½ï¿½ï¿½
             if (content instanceof Multipart){
                 messagePart=((Multipart)content).getBodyPart(0);
                 System.out.println("[ Multipart Message ]");
             }
-            //»ñÈ¡contentÀàĞÍ
+            //ï¿½ï¿½È¡contentï¿½ï¿½ï¿½ï¿½
             String contentType=messagePart.getContentType();
-            //Èç¹ûÓÊ¼şÄÚÈİÊÇ´¿ÎÄ±¾»òÕßÊÇHTML£¬ÄÇÃ´´òÓ¡³öĞÅÏ¢
+            //ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTMLï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Ï¢
             System.out.println("CONTENT:"+contentType);
             if (contentType.startsWith("text/plain")||
                 contentType.startsWith("text/html")){

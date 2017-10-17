@@ -1,9 +1,7 @@
-import java.sql.*;
-import java.io.*;
 public class SQLExecutor{
   public static void main(String args[])throws Exception{
     if(args.length==0){
-      System.out.println("ÇëÌá¹©SQL½Å±¾ÎÄ¼þÃû");
+      System.out.println("ï¿½ï¿½ï¿½á¹©SQLï¿½Å±ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½");
       return;
     }
     String sqlfile=args[0];
@@ -16,8 +14,8 @@ public class SQLExecutor{
       String data=null;
       String sql="";
       while((data=reader.readLine())!=null){
-        data=data.trim(); //É¾³ý¿ªÍ·Óë½áÎ²µÄ¿Õ¸ñ
-        if(data.length()==0)continue; //ºöÂÔ¿ÕÐÐ
+        data=data.trim(); //É¾ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Î²ï¿½Ä¿Õ¸ï¿½
+        if(data.length()==0)continue; //ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½
         sql=sql+data;
         if(sql.substring(sql.length()-1).equals(";")){
           System.out.println(sql);
@@ -76,7 +74,7 @@ public class SQLExecutor{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,9 +1,8 @@
-import java.lang.reflect.*;
 public class DumpMethods {
   public static void main(String args[]) throws Exception{
-    // 加载并初始化命令行参数指定的类 
+    // 锟斤拷锟截诧拷锟斤拷始锟斤拷锟斤拷锟斤拷锟叫诧拷锟斤拷指锟斤拷锟斤拷锟斤拷 
     Class classType = Class.forName(args[0]);
-    //获得类的所有方法
+    //锟斤拷锟斤拷锟斤拷锟斤拷锟叫凤拷锟斤拷
     Method methods[] = classType.getDeclaredMethods();
     for(int i = 0; i < methods.length; i++)
       System.out.println(methods[i].toString());
@@ -12,7 +11,7 @@ public class DumpMethods {
 
 
 /****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程精解>>                       *
- * 技术支持网址：www.javathinker.org                *
+ * 锟斤拷锟竭ｏ拷锟斤拷锟斤拷锟斤拷                                     *
+ * 锟斤拷源锟斤拷<<Java锟斤拷锟斤拷锟教撅拷锟斤拷>>                       *
+ * 锟斤拷锟斤拷支锟斤拷锟斤拷址锟斤拷www.javathinker.org                *
  ***************************************************/

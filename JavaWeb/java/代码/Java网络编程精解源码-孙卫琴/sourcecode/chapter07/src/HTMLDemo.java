@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 public class HTMLDemo extends JFrame {
   private JLabel jLabel;
   private JButton jButton;
@@ -12,8 +9,8 @@ public class HTMLDemo extends JFrame {
    jButton = new JButton("<html><img src=\""+this.getClass().getResource("/go.jpg")+"\"></html>"); 
    //jButton = new JButton("<html><img src=\""+"http://www.javathinker.org/image/busy.jpg"+"\"></html>");    
    
-   //ÉèÖÃÊó±êÒÆ¶¯µ½¸ÃButtonÊ±µÄÌáÊ¾ÐÅÏ¢
-   jButton.setToolTipText("¿ªÊ¼");
+   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ButtonÊ±ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+   jButton.setToolTipText("ï¿½ï¿½Ê¼");
   
    Container contentPane=getContentPane();
    contentPane.setLayout(new GridLayout(2, 1));
@@ -23,7 +20,7 @@ public class HTMLDemo extends JFrame {
    pack();
    setVisible(true);
 
-   //µ±ÓÃ»§Ñ¡ÔñJFrameµÄ¹Ø±ÕÍ¼±ê£¬½«½áÊø³ÌÐò
+   //ï¿½ï¿½ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½JFrameï¿½Ä¹Ø±ï¿½Í¼ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
@@ -35,7 +32,7 @@ public class HTMLDemo extends JFrame {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

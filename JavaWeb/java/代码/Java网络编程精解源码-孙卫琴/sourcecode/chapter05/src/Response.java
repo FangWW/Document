@@ -1,9 +1,5 @@
-import java.io.*;
-import java.nio.*;
-import java.nio.charset.*;
-
 public class Response implements Sendable {
-  static class Code {  //Ã¶¾ÙÀà£¬±íÊ¾×´Ì¬´úÂë
+  static class Code {  //Ã¶ï¿½ï¿½ï¿½à£¬ï¿½ï¿½Ê¾×´Ì¬ï¿½ï¿½ï¿½ï¿½
     private int number;
     private String reason;
     private Code(int i, String r) { number = i; reason = r; }
@@ -15,10 +11,10 @@ public class Response implements Sendable {
     static Code METHOD_NOT_ALLOWED = new Code(405, "Method Not Allowed");
   }
 
-  private Code code;  //×´Ì¬´úÂë
-  private Content content;  //ÏìÓ¦ÕýÎÄ
-  private boolean headersOnly;  //±íÊ¾HTTPÏìÓ¦ÖÐÊÇ·ñ½ö°üº¬ÏìÓ¦Í·
-  private ByteBuffer headerBuffer = null;  //ÏìÓ¦Í·
+  private Code code;  //×´Ì¬ï¿½ï¿½ï¿½ï¿½
+  private Content content;  //ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+  private boolean headersOnly;  //ï¿½ï¿½Ê¾HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Í·
+  private ByteBuffer headerBuffer = null;  //ï¿½ï¿½Ó¦Í·
 
   public Response(Code rc, Content c) {
     this(rc, c, null);
@@ -33,7 +29,7 @@ public class Response implements Sendable {
   private static String CRLF = "\r\n";
   private static Charset responseCharset = Charset.forName("GBK");
 
-  /* ´´½¨ÏìÓ¦Í·µÄÄÚÈÝ£¬°ÑËü´æ·Åµ½Ò»¸öByteBufferÖÐ */
+  /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Í·ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ò»ï¿½ï¿½ByteBufferï¿½ï¿½ */
   private ByteBuffer headers() {
     CharBuffer cb = CharBuffer.allocate(1024);
     for (;;) {
@@ -52,27 +48,27 @@ public class Response implements Sendable {
         }
     }
     cb.flip();
-    return responseCharset.encode(cb);  //±àÂë
+    return responseCharset.encode(cb);  //ï¿½ï¿½ï¿½ï¿½
   }
 
-  /* ×¼±¸HTTPÏìÓ¦ÖÐµÄÕýÎÄÒÔ¼°ÏìÓ¦Í·µÄÄÚÈÝ */
+  /* ×¼ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ó¦Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public void prepare() throws IOException {
     content.prepare();
     headerBuffer= headers();
   }
 
-  /* ·¢ËÍHTTPÏìÓ¦£¬Èç¹ûÈ«²¿·¢ËÍÍê±Ï£¬·µ»Øfalse£¬·ñÔò·µ»Øtrue */
+  /* ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½true */
   public boolean send(ChannelIO cio) throws IOException {
     if (headerBuffer == null)
         throw new IllegalStateException();
 
-    //·¢ËÍÏìÓ¦Í·
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Í·
     if (headerBuffer.hasRemaining()) {
         if (cio.write(headerBuffer) <= 0)
             return true;
     }
 
-    //·¢ËÍÏìÓ¦ÕýÎÄ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
     if (!headersOnly) {
         if (content.send(cio))
             return true;
@@ -81,7 +77,7 @@ public class Response implements Sendable {
     return false;
   }
 
-  /* ÊÍ·ÅÏìÓ¦ÕýÎÄÕ¼ÓÃµÄ×ÊÔ´ */
+  /* ï¿½Í·ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ãµï¿½ï¿½ï¿½Ô´ */
   public void release() throws IOException {
     content.release();
   }
@@ -89,7 +85,7 @@ public class Response implements Sendable {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

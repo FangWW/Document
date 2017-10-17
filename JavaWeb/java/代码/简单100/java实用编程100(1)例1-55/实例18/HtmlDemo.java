@@ -1,12 +1,9 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 /**
- * <p>Title: ÔÚswingÖÐÊ¹ÓÃhtmlÓïÑÔ</p>
- * <p>Description: ÕâÀïÑÝÊ¾Ê¹ÓÃhtmlÓïÑÔÔÚswingÃæ°åÉÏ¹¹ÔìÏÔÊ¾ÐÅÏ¢</p>
+ * <p>Title: ï¿½ï¿½swingï¿½ï¿½Ê¹ï¿½ï¿½htmlï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½htmlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½swingï¿½ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: HtmlDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 
@@ -15,15 +12,15 @@ public class HtmlDemo extends JPanel
     JLabel theLabel;
     JTextArea htmlTextArea;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÃèÊö´°ÌåÖÐµÄ³ÉÔ±
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½Ô±
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public HtmlDemo() {
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         String initialText = "<html>\n" +
-                "ÑÕÉ«ºÍ×ÖÌå²âÊÔ:\n" +
+                "ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:\n" +
                 "<ul>\n" +
                 "<li><font color=red>red</font>\n" +
                 "<li><font color=blue>blue</font>\n" +
@@ -33,16 +30,16 @@ public class HtmlDemo extends JPanel
                 "<li><i>italic</i>\n" +
                 "<li><b>bold</b>\n" +
                 "</ul>\n";
-        //¶¨ÒåÒ»¸öÎÄ±¾¿ò
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
         htmlTextArea = new JTextArea(10, 20);
         htmlTextArea.setText(initialText);
         JScrollPane scrollPane = new JScrollPane(htmlTextArea);
-        //¶¨Òå°´Å¥
-        JButton changeTheLabel = new JButton("¸Ä±äÏÔÊ¾");
+        //ï¿½ï¿½ï¿½å°´Å¥
+        JButton changeTheLabel = new JButton("ï¿½Ä±ï¿½ï¿½ï¿½Ê¾");
         changeTheLabel.setMnemonic(KeyEvent.VK_C);
         changeTheLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         changeTheLabel.addActionListener(this);
-        //¶¨Òå±êÇ©
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ç©
         theLabel = new JLabel(initialText) {
             public Dimension getPreferredSize() {
                 return new Dimension(200, 200);
@@ -54,24 +51,24 @@ public class HtmlDemo extends JPanel
                 return new Dimension(200, 200);
             }
         };
-        //ÉèÖÃ±êÇ©µÄ¶ÔÆë·½Ê½
+        //ï¿½ï¿½ï¿½Ã±ï¿½Ç©ï¿½Ä¶ï¿½ï¿½ë·½Ê½
         theLabel.setVerticalAlignment(SwingConstants.CENTER);
         theLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        //¹¹ÔìÒ»¸ö´ø±ß¿òµÄ×ó±ßµÄ±à¼­Ãæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ßµÄ±à¼­ï¿½ï¿½ï¿½
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
         leftPanel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createTitledBorder(
-                    "±à¼­HTML£¬µã»÷°´Å¥ÏÔÊ¾½á¹û¡£"),
+                    "ï¿½à¼­HTMLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½"),
                 BorderFactory.createEmptyBorder(10,10,10,10)));
         leftPanel.add(scrollPane);
         leftPanel.add(Box.createRigidArea(new Dimension(0,10)));
         leftPanel.add(changeTheLabel);
-         //¹¹ÔìÒ»¸ö´ø±ß¿òµÄÓÒ±ßÏÔÊ¾µÄÃæ°å
+         //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
         rightPanel.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createTitledBorder("ÕâÀïÊ¹ÓÃ±êÇ©ÏÔÊ¾HTML½á¹û"),
+                        BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã±ï¿½Ç©ï¿½ï¿½Ê¾HTMLï¿½ï¿½ï¿½"),
                         BorderFactory.createEmptyBorder(10,10,10,10)));
         rightPanel.add(theLabel);
         
@@ -81,32 +78,32 @@ public class HtmlDemo extends JPanel
         add(rightPanel);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ¼àÌý£¬µ±ÓÃ»§µã»÷°´Å¥´¥·¢
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
         theLabel.setText(htmlTextArea.getText());
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("HtmlDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ãæ°å
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JComponent newContentPane = new HtmlDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

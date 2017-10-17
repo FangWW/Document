@@ -1,27 +1,21 @@
 /*
- * ¹¦ÄÜ£ºqq¿Í»§¶ËµÇÂ½½çÃæ
+ * ï¿½ï¿½ï¿½Ü£ï¿½qqï¿½Í»ï¿½ï¿½Ëµï¿½Â½ï¿½ï¿½ï¿½ï¿½
  */
 package com.qq.client.view;
-
-import com.qq.common.*;
-import javax.swing.*;
 
 import com.qq.client.model.QqClientUser;
 import com.qq.client.tools.ManageClientConServerThread;
 import com.qq.client.tools.ManageQqFriendList;
+import com.qq.common.*;
 import com.qq.common.User;
-
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
 public class QqClientLogin extends JFrame implements ActionListener{
 
-	//¶¨Òå±±²¿ÐèÒªµÄ×é¼þ
+	//ï¿½ï¿½ï¿½å±±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½
 	
 	JLabel jbl1;
 	
-	//¶¨ÒåÖÐ²¿ÐèÒªµÄ×é¼þ
-	//ÖÐ²¿ÓÅÈý¸öJPanel£¬ÓÐÒ»¸ö½ÐÑ¡Ïî¿¨´°¿Ú¹ÜÀí
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JPanelï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½
 	JTabbedPane jtp;
 	JPanel jp2,jp3,jp4;
 	JLabel jp2_jbl1,jp2_jbl2,jp2_jbl3,jp2_jbl4;
@@ -30,7 +24,7 @@ public class QqClientLogin extends JFrame implements ActionListener{
 	JPasswordField jp2_jpf;
 	JCheckBox jp2_jcb1,jp2_jcb2;
 	
-	//¶¨ÒåÄÏ²¿ÐèÒªµÄ×é¼þ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½
 	JPanel jp1;
 	JButton jp1_jb1,jp1_jb2,jp1_jb3;
 	
@@ -39,24 +33,24 @@ public class QqClientLogin extends JFrame implements ActionListener{
 		QqClientLogin qqClientLogin=new QqClientLogin();
 	}
 	public QqClientLogin(){
-		//´¦Àí±±²¿
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		jbl1=new JLabel(new ImageIcon("image/tou.gif"));
 		
-		//´¦ÀíÖÐ²¿
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½
 		jp2=new JPanel(new GridLayout(3,3));
 		
-		jp2_jbl1=new JLabel("QQºÅÂë",JLabel.CENTER);
-		jp2_jbl2=new JLabel("QQÃÜÂë",JLabel.CENTER);
-		jp2_jbl3=new JLabel("Íü¼ÇÃÜÂë",JLabel.CENTER);
+		jp2_jbl1=new JLabel("QQï¿½ï¿½ï¿½ï¿½",JLabel.CENTER);
+		jp2_jbl2=new JLabel("QQï¿½ï¿½ï¿½ï¿½",JLabel.CENTER);
+		jp2_jbl3=new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",JLabel.CENTER);
 		jp2_jbl3.setForeground(Color.blue);
-		jp2_jbl4=new JLabel("ÉêÇëÃÜÂë±£»¤",JLabel.CENTER);
-		jp2_jbl=new JButton("Çå³ýºÅÂë");
+		jp2_jbl4=new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë±£ï¿½ï¿½",JLabel.CENTER);
+		jp2_jbl=new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		jp2_jtf=new JTextField();
 		jp2_jpf=new JPasswordField();
-		jp2_jcb1=new JCheckBox("ÒþÉíµÇÂ½");
-		jp2_jcb2=new JCheckBox("¼Ç×¡ÃÜÂë");
+		jp2_jcb1=new JCheckBox("ï¿½ï¿½ï¿½ï¿½ï¿½Â½");
+		jp2_jcb2=new JCheckBox("ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½");
 		
-		//°Ñ¿Ø¼þ°´Ë³Ðò¼ÓÈëjp2
+		//ï¿½Ñ¿Ø¼ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½jp2
 		jp2.add(jp2_jbl1);
 		jp2.add(jp2_jtf);
 		jp2.add(jp2_jbl);
@@ -66,31 +60,31 @@ public class QqClientLogin extends JFrame implements ActionListener{
 		jp2.add(jp2_jcb1);
 		jp2.add(jp2_jcb2);
 		jp2.add(jp2_jbl4);
-		//´´½¨Ñ¡Ïî¿¨´°¿Ú
+		//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½ï¿½ï¿½
 		jtp=new JTabbedPane();
-		jtp.add("QQºÅÂë",jp2);
+		jtp.add("QQï¿½ï¿½ï¿½ï¿½",jp2);
 		jp3=new JPanel();
-		jtp.add("ÊÖ»úºÅÂë",jp3);
+		jtp.add("ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½",jp3);
 		jp4=new JPanel();
-		jtp.add("µç×ÓÓÊ¼þ",jp4);
+		jtp.add("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½",jp4);
 		
-		//´¦ÀíÄÏ²¿
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½
 		jp1=new JPanel();
 		jp1_jb1=new JButton(new ImageIcon("image/denglu.gif"));
-		//ÏìÓ¦ÓÃ»§µã»÷µÇÂ¼
+		//ï¿½ï¿½Ó¦ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		jp1_jb1.addActionListener(this);
 		jp1_jb2=new JButton(new ImageIcon("image/xiangdao.gif"));
 		
-		jp1_jb3=new JButton("È¡Ïû");
+		jp1_jb3=new JButton("È¡ï¿½ï¿½");
 
-		//°ÑÈý¸ö°´Å¥·Åµ½jpl
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½Åµï¿½jpl
 		jp1.add(jp1_jb1);
 		jp1.add(jp1_jb2);
 		jp1.add(jp1_jb3);
 		
 		this.add(jbl1,"North");
 		this.add(jtp,"Center");
-		//°Ñjp1·Åµ½ÄÏ²¿
+		//ï¿½ï¿½jp1ï¿½Åµï¿½ï¿½Ï²ï¿½
 		this.add(jp1,"South");
 		this.setTitle("É½Õ¯QQ2010");
 		this.setIconImage((new ImageIcon("image/jie.jpg").getImage()));
@@ -101,7 +95,7 @@ public class QqClientLogin extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		//Èç¹ûÓÃ»§µã»÷µÇÂ¼
+		//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(e.getSource()==jp1_jb1){
 			QqClientUser qqClientUser=new QqClientUser();
 			User u=new User();
@@ -111,27 +105,27 @@ public class QqClientLogin extends JFrame implements ActionListener{
 			if(qqClientUser.checkUser(u)){
 				try {
 					
-					//´´½¨ºÃÓÑÁÐ±í
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 					QqFriendList qqList=new QqFriendList(u.getUserId());
 					ManageQqFriendList.addQqFriendList(u.getUserId(), qqList);
 					
-					//·¢ËÍÒ»¸öÒªÇó·µ»ØÔÚÏßºÃÓÑµÄÇëÇó°ü
+					//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Òªï¿½ó·µ»ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					ObjectOutputStream oos=new  ObjectOutputStream
 					(ManageClientConServerThread.getClientConServerThread(u.getUserId()).getS().getOutputStream());
 					
-					//×öÒ»¸öMessage
+					//ï¿½ï¿½Ò»ï¿½ï¿½Message
 					Message m=new Message();
 					m.setMesType(MessageType.message_get_onLineFriend);
-					//Ö¸Ã÷»ñµÃ¸ÃQQºÅµÄºÃÓÑÔÚÏßÁÐ±í
+					//Ö¸ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½QQï¿½ÅµÄºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 					m.setSender(u.getUserId());
 					oos.writeObject(m);
 				} catch (Exception e2) {}
 				
 			
-				//¹Ø±ÕµÇÂ¼½çÃæ
+				//ï¿½Ø±Õµï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 				this.dispose();
 			}else{
-				JOptionPane.showMessageDialog(this, "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+				JOptionPane.showMessageDialog(this, "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			}
 		}
 	}

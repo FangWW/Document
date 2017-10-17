@@ -1,32 +1,31 @@
-import java.net.*;
 /**
- * <p>Title: »ñÈ¡±¾»úÃû³ÆºÍIPµØÖ·</p>
- * <p>Description: Ê¹ÓÃInetAddressÀ´»ñÈ¡±¾»úÃû³ÆºÍIPµØÖ·ÐÅÏ¢</p>
+ * <p>Title: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½IPï¿½ï¿½Ö·</p>
+ * <p>Description: Ê¹ï¿½ï¿½InetAddressï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½IPï¿½ï¿½Ö·ï¿½ï¿½Ï¢</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: NetInfo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class NetInfo {
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public static void main(String[] args) {
     new NetInfo().say();
     }
 /**
- *<br>·½·¨ËµÃ÷£º²é¿´±¾»úÃû³ÆºÍIPµØÖ·
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½IPï¿½ï¿½Ö·
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public void say() {
    try {
    InetAddress i = InetAddress.getLocalHost();
-   System.out.println(i);                  //¼ÆËã»úÃû³ÆºÍIP
-   System.out.println(i.getHostName());    //Ãû³Æ
-   System.out.println(i.getHostAddress()); //Ö»»ñµÃIP
+   System.out.println(i);                  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½IP
+   System.out.println(i.getHostName());    //ï¿½ï¿½ï¿½ï¿½
+   System.out.println(i.getHostAddress()); //Ö»ï¿½ï¿½ï¿½IP
    }
    catch(Exception e){e.printStackTrace();}
  }

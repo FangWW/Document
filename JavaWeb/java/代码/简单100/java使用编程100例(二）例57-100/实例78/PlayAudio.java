@@ -1,12 +1,9 @@
-import java.applet.*;
-import java.awt.event.*;  
-import java.awt.*;
 /**
- * <p>Title: Applet²¥·ÅÉùÒôÎÄ¼þ</p>
- * <p>Description: Ê¹ÓÃAudioClipÀà¼ÓÔØÉùÒôÎÄ¼þ£¬²¢µ±Êó±êµã»÷ºó¿ªÊ¼²¥·Å</p>
+ * <p>Title: Appletï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½AudioClipï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: PlayAudio.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class PlayAudio extends Applet 
@@ -14,22 +11,22 @@ implements ActionListener{
 AudioClip audio;  
 Button btExit,btOpen,btPlay,btLoop,btStop;
 /**
- *<br>·½·¨ËµÃ÷£º³õÊ¼»¯Applet
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Applet
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void init() {
-//¼ÓÔØÉùÒôÎÄ¼þ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
  audio = getAudioClip(getDocumentBase(),"img/1.mid");
-//¹¹Ôì°´Å¥
- setLayout(new FlowLayout()); //Ê¹ÓÃ²¼¾Ö¹ÜÀíÆ÷
- btPlay=new Button("Play"); //¶¨ÒåPlay°´Å¥                   
- btPlay.addActionListener(this); //¸øPlay°´Å¥Ìí¼ÓÒ»¸ö¼àÌýÊÂ¼þ
- btLoop=new Button("Loop"); //¶¨ÒåPlay°´Å¥
- btLoop.addActionListener(this); //¸øPlay°´Å¥Ìí¼ÓÒ»¸ö¼àÌýÊÂ¼þ
- btStop=new Button("Stop"); //¶¨ÒåPlay°´Å¥
- btStop.addActionListener(this); //¸øPlay°´Å¥Ìí¼ÓÒ»¸ö¼àÌýÊÂ¼þ
-//½«°´Å¥Ìí¼Óµ½AppletÖÐ
+//ï¿½ï¿½ï¿½ì°´Å¥
+ setLayout(new FlowLayout()); //Ê¹ï¿½Ã²ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ btPlay=new Button("Play"); //ï¿½ï¿½ï¿½ï¿½Playï¿½ï¿½Å¥                   
+ btPlay.addActionListener(this); //ï¿½ï¿½Playï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+ btLoop=new Button("Loop"); //ï¿½ï¿½ï¿½ï¿½Playï¿½ï¿½Å¥
+ btLoop.addActionListener(this); //ï¿½ï¿½Playï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+ btStop=new Button("Stop"); //ï¿½ï¿½ï¿½ï¿½Playï¿½ï¿½Å¥
+ btStop.addActionListener(this); //ï¿½ï¿½Playï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+//ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Óµï¿½Appletï¿½ï¿½
  add(btPlay);
  add(btLoop);
  add(btStop);
@@ -38,41 +35,41 @@ public void init() {
 
 public void actionPerformed(ActionEvent e) {
 
-  //Èç¹ûµã»÷µÄÊÇPlay°´Å¥
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Playï¿½ï¿½Å¥
 	if (e.getSource()==btPlay) {
        play();
 	}
-	//Èç¹ûµã»÷µÄÊÇloop°´Å¥
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½loopï¿½ï¿½Å¥
 	if (e.getSource()==btLoop) {
        loop();
 	}
-	//Èç¹ûµã»÷µÄÊÇstop°´Å¥
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½stopï¿½ï¿½Å¥
 	if (e.getSource()==btStop) {
        stop();
 	}
 }
 /**
- *<br>·½·¨ËµÃ÷£º²¥·ÅÉùÒô
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void play(){
   	if (audio!=null) stop();
     audio.play();
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÑ­»·²¥·ÅÉùÒô
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void loop(){
   	if (audio!=null)
     audio.loop();
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÍ£Ö¹²¥·ÅÉùÒô
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void stop(){
   	if (audio!=null)

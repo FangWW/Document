@@ -7,13 +7,15 @@
 
 package org.apache.struts.util;
 
-import java.util.Locale;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.validator.*;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.validator.Resources;
+
+import java.util.Locale;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 // Referenced classes of package org.apache.struts.util:
 //            MessageResources

@@ -1,16 +1,14 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
-import java.util.*;
 
 public class MailClientURLName extends MailClient {
-  private String sendHost="localhost"; //·¢ËÍÓÊ¼þ·þÎñÆ÷
+  private String sendHost="localhost"; //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private String receiveHost;
-  private String receiveProtocol; //½ÓÊÕÓÊ¼þÐ­Òé
+  private String receiveProtocol; //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Ð­ï¿½ï¿½
   private String username;
   private String password;
-  private String fromAddr="admin@mydomain.com";  //·¢ËÍÕßµØÖ·
-  private String toAddr="admin@mydomain.com"; //½ÓÊÕÕßµØÖ·
+  private String fromAddr="admin@mydomain.com";  //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
+  private String toAddr="admin@mydomain.com"; //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·
 
   public void init()throws Exception{
     init(new URLName("imap://admin:1234@localhost/"));
@@ -21,16 +19,16 @@ public class MailClientURLName extends MailClient {
     username=urlName.getUsername();
     password=urlName.getPassword();
    
-    //ÉèÖÃÊôÐÔ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Properties props = new Properties();
     props.put("mail.smtp.host", sendHost);
     
-    // ´´½¨Session¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Sessionï¿½ï¿½ï¿½ï¿½
     session = Session.getDefaultInstance(props);
 
-    // ´´½¨Store¶ÔÏó
+    // ï¿½ï¿½ï¿½ï¿½Storeï¿½ï¿½ï¿½ï¿½
     store = session.getStore(receiveProtocol);
-    //Á¬½Óµ½ÓÊ¼þ·þÎñÆ÷
+    //ï¿½ï¿½ï¿½Óµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     store.connect(receiveHost,username,password);
   }
   
@@ -45,7 +43,7 @@ public class MailClientURLName extends MailClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,20 +1,18 @@
 package store;
-import java.rmi.*;
-
 public interface StoreView extends Remote{
-  /** 注册处理用户动作的监听器，即StoreController */
+  /** 注锟结处锟斤拷锟矫伙拷锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷StoreController */
   public void addUserGestureListener(StoreController ctrl)throws StoreException,RemoteException;
 
-  /** 在图形界面上显示数据， 参数display表示待显示的数据 */
+  /** 锟斤拷图锟轿斤拷锟斤拷锟斤拷锟斤拷示锟斤拷锟捷ｏ拷 锟斤拷锟斤拷display锟斤拷示锟斤拷锟斤拷示锟斤拷锟斤拷锟斤拷 */
   public void showDisplay(Object display)throws StoreException,RemoteException;
 
-  /** 当其他程序修改了数据库中某个客户的信息，同步刷新所有客户程序中的图形界面 */
+  /** 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟睫革拷锟斤拷锟斤拷锟捷匡拷锟斤拷某锟斤拷锟酵伙拷锟斤拷锟斤拷息锟斤拷同锟斤拷刷锟斤拷锟斤拷锟叫客伙拷锟斤拷锟斤拷锟叫碉拷图锟轿斤拷锟斤拷 */
   public void handleCustomerChange(Customer cust)throws StoreException,RemoteException;
 }
 
 
 /****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程精解>>                       *
- * 技术支持网址：www.javathinker.org                *
+ * 锟斤拷锟竭ｏ拷锟斤拷锟斤拷锟斤拷                                     *
+ * 锟斤拷源锟斤拷<<Java锟斤拷锟斤拷锟教撅拷锟斤拷>>                       *
+ * 锟斤拷锟斤拷支锟斤拷锟斤拷址锟斤拷www.javathinker.org                *
  ***************************************************/

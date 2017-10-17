@@ -1,19 +1,18 @@
 /*
- * 这是一个管理用户聊天界面的类
+ * 锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
  */
 package com.qq.client.tools;
 
-import java.util.*;
 import com.qq.client.view.*;
 public class ManageQqChat {
 	
 	private static HashMap hm=new HashMap<String,QqChat>();
 	
-	//加入
+	//锟斤拷锟斤拷
 	public static void addQqChat(String loginIdAnFriendId,QqChat qqChat){
 		hm.put(loginIdAnFriendId, qqChat);
 	}
-	//取出
+	//取锟斤拷
 	public static QqChat getQqChat(String loginIdAnFriendId){
 		return(QqChat)hm.get(loginIdAnFriendId);
 	}

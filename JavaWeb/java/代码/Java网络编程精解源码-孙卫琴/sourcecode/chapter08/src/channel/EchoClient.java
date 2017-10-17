@@ -1,11 +1,4 @@
 package channel;
-import java.net.*;
-import java.nio.channels.*;
-import java.nio.*;
-import java.io.*;
-import java.nio.charset.*;
-import java.util.*;
-
 public class EchoClient{
   private DatagramChannel datagramChannel = null;
   private ByteBuffer sendBuffer=ByteBuffer.allocate(1024);
@@ -20,10 +13,10 @@ public class EchoClient{
     datagramChannel = DatagramChannel.open();
     InetAddress ia = InetAddress.getLocalHost();
     InetSocketAddress isa = new InetSocketAddress(ia,port);
-    datagramChannel.configureBlocking(false); //ÉèÖÃÎª·Ç×èÈûÄ£Ê½
-    datagramChannel.socket().bind(isa); //Óë±¾µØµØÖ·°ó¶¨
+    datagramChannel.configureBlocking(false); //ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    datagramChannel.socket().bind(isa); //ï¿½ë±¾ï¿½Øµï¿½Ö·ï¿½ï¿½
     isa = new InetSocketAddress(ia,8000);
-    datagramChannel.connect(isa); //ÓëÔ¶³ÌµØÖ·Á¬½Ó
+    datagramChannel.connect(isa); //ï¿½ï¿½Ô¶ï¿½Ìµï¿½Ö·ï¿½ï¿½ï¿½ï¿½
     selector=Selector.open();
   }
 
@@ -92,7 +85,7 @@ public class EchoClient{
   public void send(SelectionKey key)throws IOException{
     DatagramChannel datagramChannel=(DatagramChannel)key.channel();
     synchronized(sendBuffer){
-        sendBuffer.flip(); //°Ñ¼«ÏÞÉèÎªÎ»ÖÃ
+        sendBuffer.flip(); //ï¿½Ñ¼ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ»ï¿½ï¿½
         datagramChannel.write(sendBuffer);
         sendBuffer.compact();
      }
@@ -110,7 +103,7 @@ public class EchoClient{
     if(outputData.equals("echo:bye\r\n")){
         key.cancel();
         datagramChannel.close();
-        System.out.println("¹Ø±ÕÓë·þÎñÆ÷µÄÁ¬½Ó");
+        System.out.println("ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         selector.close();
         System.exit(0);
     }
@@ -120,18 +113,18 @@ public class EchoClient{
     receiveBuffer.compact();
   }
 
-  public String decode(ByteBuffer buffer){  //½âÂë
+  public String decode(ByteBuffer buffer){  //ï¿½ï¿½ï¿½ï¿½
     CharBuffer charBuffer= charset.decode(buffer);
     return charBuffer.toString();
   }
-  public ByteBuffer encode(String str){  //±àÂë
+  public ByteBuffer encode(String str){  //ï¿½ï¿½ï¿½ï¿½
     return charset.encode(str);
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

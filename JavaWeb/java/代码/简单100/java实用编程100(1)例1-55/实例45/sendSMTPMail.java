@@ -1,18 +1,16 @@
-import java.net.*;
-import java.io.*;
 /**
- * <p>Title: Ê¹ÓÃSMTP·¢ËÍÓÊ¼ş</p>
- * <p>Description: ±¾ÊµÀıÍ¨¹ıÊ¹ÓÃsocket·½Ê½£¬¸ù¾İSMTPĞ­Òé·¢ËÍÓÊ¼ş</p>
+ * <p>Title: Ê¹ï¿½ï¿½SMTPï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½Í¨ï¿½ï¿½Ê¹ï¿½ï¿½socketï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SMTPĞ­ï¿½é·¢ï¿½ï¿½ï¿½Ê¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: sendSMTPMail.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class sendSMTPMail {
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊı£º1¡£·şÎñÆ÷ip£»2¡£¶Ô·½ÓÊ¼şµØÖ·
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½2ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */	
 public static void main(String[] arges) {
   if(arges.length!=2){
@@ -23,37 +21,37 @@ public static void main(String[] arges) {
    t.sendMail(arges[0], arges[1]);
    }
 /**
- *<br>·½·¨ËµÃ÷£º·¢ËÍÓÊ¼ş
- *<br>ÊäÈë²ÎÊı£ºString mailServer ÓÊ¼ş½ÓÊÕ·şÎñÆ÷
- *<br>ÊäÈë²ÎÊı£ºString recipient ½ÓÊÕÓÊ¼şµÄµØÖ·
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String mailServer ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String recipient ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Äµï¿½Ö·
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void sendMail(String mailServer, String recipient) {
    try {
-   	  //ÓĞSocket´ò¿ª25¶Ë¿Ú
+   	  //ï¿½ï¿½Socketï¿½ï¿½25ï¿½Ë¿ï¿½
       Socket s = new Socket(mailServer, 25);
-      //»º´æÊäÈëºÍÊä³ö
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       BufferedReader in = new BufferedReader
           (new InputStreamReader(s.getInputStream(), "8859_1"));
       BufferedWriter out = new BufferedWriter
           (new OutputStreamWriter(s.getOutputStream(), "8859_1"));
-      //·¢³ö¡°HELO¡±ÃüÁî£¬±íÊ¾¶Ô·şÎñÆ÷µÄÎÊºò
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HELOï¿½ï¿½ï¿½ï¿½ï¿½î£¬ï¿½ï¿½Ê¾ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êºï¿½
       send(in, out, "HELO theWorld");
-      //¸æËß·şÎñÆ÷ÎÒµÄÓÊ¼şµØÖ·£¬ÓĞĞ©·şÎñÆ÷ÒªĞ£ÑéÕâ¸öµØÖ·
+      //ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªĞ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
       send(in, out, "MAIL FROM: <dujiang@mailhost.com>");
-      //Ê¹ÓÃ¡°RCPT TO¡±ÃüÁî¸æËß·şÎñÆ÷½âÊÍÓÊ¼şµÄÓÊ¼şµØÖ·
+      //Ê¹ï¿½Ã¡ï¿½RCPT TOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·
       send(in, out, "RCPT TO: " + recipient);
-      //·¢ËÍÒ»¸ö¡°DATA¡±±íÊ¾ÏÂÃæ½«ÊÇÓÊ¼şÖ÷Ìå
+      //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½DATAï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½æ½«ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
       send(in, out, "DATA");
-      //Ê¹ÓÃSubjectÃüÁî±ê×¢ÓÊ¼şÖ÷Ìâ
-      send(out, "Subject: ÕâÊÇÒ»¸ö²âÊÔ³ÌĞò£¡");
-      //Ê¹ÓÃ¡°From¡±±ê×¢ÓÊ¼şµÄÀ´Ô´
+      //Ê¹ï¿½ï¿½Subjectï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+      send(out, "Subject: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ô³ï¿½ï¿½ï¿½");
+      //Ê¹ï¿½Ã¡ï¿½Fromï¿½ï¿½ï¿½ï¿½×¢ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
       send(out, "From: riverwind <dujiang@mailhost.com>");
       send (out, "\n");
-      //ÓÊ¼şÖ÷Ìå
-      send(out, "ÕâÊÇÒ»¸öÊ¹ÓÃSMTPĞ­Òé·¢ËÍµÄÓÊ¼ş£¡Èç¹û´òÈÅÇëÉ¾³ı£¡");
+      //ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+      send(out, "ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¹ï¿½ï¿½SMTPĞ­ï¿½é·¢ï¿½Íµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½");
       send(out, "\n.\n");
-      //·¢ËÍ¡°QUIT¡±¶Ë¿ÚÓÊ¼şµÄÍ¨Ñ¶
+      //ï¿½ï¿½ï¿½Í¡ï¿½QUITï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Í¨Ñ¶
       send(in, out, "QUIT");
       s.close();
       }
@@ -62,9 +60,9 @@ public void sendMail(String mailServer, String recipient) {
       }
    }
 /**
- *<br>·½·¨ËµÃ÷£º·¢ËÍĞÅÏ¢£¬²¢½ÓÊÕ»ØĞÅ
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public void send(BufferedReader in, BufferedWriter out, String s) {
    try {
@@ -79,10 +77,10 @@ public void sendMail(String mailServer, String recipient) {
       }
    }
 /**
- *<br>·½·¨ËµÃ÷£ºÖØÔØ·½·¨¡£ÏòsocketĞ´ÈëĞÅÏ¢
- *<br>ÊäÈë²ÎÊı£ºBufferedWriter out Êä³ö»º³åÆ÷
- *<br>ÊäÈë²ÎÊı£ºString s Ğ´ÈëµÄĞÅÏ¢
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½socketĞ´ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BufferedWriter out ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String s Ğ´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public void send(BufferedWriter out, String s) {
    try {

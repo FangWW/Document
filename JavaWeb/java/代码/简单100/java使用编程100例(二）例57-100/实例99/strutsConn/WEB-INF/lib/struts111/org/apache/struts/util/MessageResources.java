@@ -7,12 +7,13 @@
 
 package org.apache.struts.util;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Locale;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 // Referenced classes of package org.apache.struts.util:
 //            MessageResourcesFactory

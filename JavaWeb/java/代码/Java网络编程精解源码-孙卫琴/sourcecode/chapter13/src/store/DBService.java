@@ -1,18 +1,16 @@
 package store;
-import java.sql.*;
-
 public interface DBService {
-  /**  »ñµÃStatement¶ÔÏó */
+  /**  ï¿½ï¿½ï¿½Statementï¿½ï¿½ï¿½ï¿½ */
   public Statement getStatement() throws Exception;
-  /** ¹Ø±ÕStatement¶ÔÏó£¬ÒÔ¼°ÓëÖ®¹ØÁªµÄConnection¶ÔÏó */
+  /** ï¿½Ø±ï¿½Statementï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connectionï¿½ï¿½ï¿½ï¿½ */
   public void closeStatement(Statement stmt);
-  /** Ö´ÐÐSQL update¡¢deleteºÍinsertÓï¾ä*/
+  /** Ö´ï¿½ï¿½SQL updateï¿½ï¿½deleteï¿½ï¿½insertï¿½ï¿½ï¿½*/
   public void modifyTable(String sql) throws Exception;
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,11 +1,4 @@
 package nonblock;
-import java.net.*;
-import java.nio.channels.*;
-import java.nio.*;
-import java.io.*;
-import java.nio.charset.*;
-import java.util.*;
-
 public class EchoClient{
   private SocketChannel socketChannel = null;
   private ByteBuffer sendBuffer=ByteBuffer.allocate(1024);
@@ -19,7 +12,7 @@ public class EchoClient{
     InetSocketAddress isa = new InetSocketAddress(ia,8000);
     socketChannel.connect(isa);
     socketChannel.configureBlocking(false);
-    System.out.println("Óë·þÎñÆ÷µÄÁ¬½Ó½¨Á¢³É¹¦");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
     selector=Selector.open();
   }
   public static void main(String args[])throws IOException{
@@ -85,7 +78,7 @@ public class EchoClient{
   public void send(SelectionKey key)throws IOException{
     SocketChannel socketChannel=(SocketChannel)key.channel();
     synchronized(sendBuffer){
-        sendBuffer.flip(); //°Ñ¼«ÏÞÉèÎªÎ»ÖÃ
+        sendBuffer.flip(); //ï¿½Ñ¼ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ»ï¿½ï¿½
         socketChannel.write(sendBuffer);
         sendBuffer.compact();
      }
@@ -103,7 +96,7 @@ public class EchoClient{
     if(outputData.equals("echo:bye\r\n")){
         key.cancel();
         socketChannel.close();
-        System.out.println("¹Ø±ÕÓë·þÎñÆ÷µÄÁ¬½Ó");
+        System.out.println("ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         selector.close();
         System.exit(0);
     }
@@ -113,18 +106,18 @@ public class EchoClient{
     receiveBuffer.compact();
   }
 
-  public String decode(ByteBuffer buffer){  //½âÂë
+  public String decode(ByteBuffer buffer){  //ï¿½ï¿½ï¿½ï¿½
     CharBuffer charBuffer= charset.decode(buffer);
     return charBuffer.toString();
   }
-  public ByteBuffer encode(String str){  //±àÂë
+  public ByteBuffer encode(String str){  //ï¿½ï¿½ï¿½ï¿½
     return charset.encode(str);
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

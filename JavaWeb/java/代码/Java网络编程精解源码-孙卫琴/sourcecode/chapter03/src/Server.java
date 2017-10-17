@@ -1,19 +1,17 @@
-import java.io.*;
-import java.net.*;
 public class Server {
   private int port=8000;
   private ServerSocket serverSocket;
 
   public Server() throws IOException {
-    serverSocket = new ServerSocket(port,3);  //Á¬½ÓÇëÇó¶ÓÁÐµÄ³¤¶ÈÎª3
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    serverSocket = new ServerSocket(port,3);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½Îª3
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() {
     while (true) {
       Socket socket=null;
       try {
-        socket = serverSocket.accept();  //´ÓÁ¬½ÓÇëÇó¶ÓÁÐÖÐÈ¡³öÒ»¸öÁ¬½Ó
+        socket = serverSocket.accept();  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         System.out.println("New connection accepted " +
         socket.getInetAddress() + ":" +socket.getPort());
       }catch (IOException e) {
@@ -28,14 +26,14 @@ public class Server {
 
   public static void main(String args[])throws Exception {
     Server server=new Server();
-    Thread.sleep(60000*10);  //Ë¯ÃßÊ®·ÖÖÓ
+    Thread.sleep(60000*10);  //Ë¯ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½
     //server.service();
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

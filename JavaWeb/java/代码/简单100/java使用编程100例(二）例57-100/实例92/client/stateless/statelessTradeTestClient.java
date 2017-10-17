@@ -1,13 +1,13 @@
 package stateless;
-import javax.naming.*;
 import java.util.Properties;
+
 import javax.rmi.PortableRemoteObject;
 /**
- * <p>Title: ÎÞ»á»°EJB²âÊÔ¿Í»§³ÌÐò</p>
- * <p>Description: ²âÊÔÎÞ×´Ì¬»á»°EJBµÄ¹¦ÄÜÊÇ·ñÓÐÐ§¡£</p>
+ * <p>Title: ï¿½Þ»á»°EJBï¿½ï¿½ï¿½Ô¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½á»°EJBï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ð§ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: statelessTradeTestClient.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class statelessTradeTestClient {
@@ -17,18 +17,18 @@ public class statelessTradeTestClient {
   private statelessTradeHome statelessTradeHomeObject = null;
   private statelessTrade statelessTradeObject = null;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public statelessTradeTestClient() {
     log("Initializing bean access.");
     try {
-      //µÃµ½ÉÏÏÂÎÄ
+      //ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       Context ctx = getInitialContext();
-      //²éÑ¯statelessTrade
+      //ï¿½ï¿½Ñ¯statelessTrade
       Object ref = ctx.lookup("statelessTrade");
-      //´´½¨home¶Ë¿Ú
+      //ï¿½ï¿½ï¿½ï¿½homeï¿½Ë¿ï¿½
       statelessTradeHomeObject = (statelessTradeHome) PortableRemoteObject.narrow(ref, statelessTradeHome.class);
       if (logging) {
         log("Succeeded initializing bean access.");
@@ -43,9 +43,9 @@ public class statelessTradeTestClient {
   }
 
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡³õÊ¼»¯ÉÏÏÂÎÄ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºContext
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Context
  */
   private Context getInitialContext() throws Exception {
     String url = "t3://localhost:7001";
@@ -69,9 +69,9 @@ public class statelessTradeTestClient {
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊ¹ÓÃhome¶Ë¿Ú´´½¨Ô¶³Ì½Ó¿Ú
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½homeï¿½Ë¿Ú´ï¿½ï¿½ï¿½Ô¶ï¿½Ì½Ó¿ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public statelessTrade create() {
     log("Calling create()");
@@ -92,9 +92,9 @@ public class statelessTradeTestClient {
   }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÌí¼ÓÕË»§×Ê½ð
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ê½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void addFunds(double fund) {
     if (statelessTradeObject == null) {
@@ -116,9 +116,9 @@ public class statelessTradeTestClient {
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÌáÈ¡×Ê½ð
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void removeFunds(double fund) {
     if (statelessTradeObject == null) {
@@ -140,9 +140,9 @@ public class statelessTradeTestClient {
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡ÕË»§×Ê½ðÊý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ë»ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public double getBalance() {
     double returnValue = 0f;
@@ -169,9 +169,9 @@ public class statelessTradeTestClient {
     return returnValue;
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÏÔÊ¾ÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   private void log(String message) {
     if (message == null) {
@@ -187,17 +187,17 @@ public class statelessTradeTestClient {
   }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬ÔËÐÐ³ÌÐò
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args) {
     statelessTradeTestClient client = new statelessTradeTestClient();
     client.create();
-    System.out.println("Ä¿Ç°×Ê½ðÊý£º"+client.getBalance());
+    System.out.println("Ä¿Ç°ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½"+client.getBalance());
     client.addFunds(400.0);
-    System.out.println("Ä¿Ç°×Ê½ðÊý£º"+client.getBalance());
+    System.out.println("Ä¿Ç°ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½"+client.getBalance());
     client.removeFunds(200);
-    System.out.println("Ä¿Ç°×Ê½ðÊý£º"+client.getBalance());
+    System.out.println("Ä¿Ç°ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½"+client.getBalance());
   }
 }

@@ -1,19 +1,16 @@
-import java.io.*;
-import java.net.*;
-
 public class TimeoutTester{
   public static void main(String args[])throws IOException{
     ServerSocket serverSocket=new ServerSocket(8000);
-    serverSocket.setSoTimeout(6000); //µÈ´ý¿Í»§Á¬½ÓµÄÊ±¼ä²»³¬¹ý6Ãë
+    serverSocket.setSoTimeout(6000); //ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Óµï¿½Ê±ï¿½ä²»ï¿½ï¿½ï¿½ï¿½6ï¿½ï¿½
     Socket socket=serverSocket.accept(); 
     socket.close();
-    System.out.println("·þÎñÆ÷¹Ø±Õ");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½");
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

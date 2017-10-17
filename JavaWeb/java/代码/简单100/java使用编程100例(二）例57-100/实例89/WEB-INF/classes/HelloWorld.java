@@ -1,17 +1,16 @@
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
 
 /**
- * <p>Title: Ê¹ÓÃservletÊä³öHtmlÒ³Ãæ</p>
- * <p>Description: HelloWorldÊµÀıÊéĞ´htmlÒ³Ãæ£¬³õÊ¼»¯²ÎÊı¶¨ÒåÔÚweb.xmlÎÄ¼şÖĞ</p>
+ * <p>Title: Ê¹ï¿½ï¿½servletï¿½ï¿½ï¿½HtmlÒ³ï¿½ï¿½</p>
+ * <p>Description: HelloWorldÊµï¿½ï¿½ï¿½ï¿½Ğ´htmlÒ³ï¿½æ£¬ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½web.xmlï¿½Ä¼ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: HelloWorld.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
-//±ØĞë¼Ì³ĞHttpServletÀà
+//ï¿½ï¿½ï¿½ï¿½Ì³ï¿½HttpServletï¿½ï¿½
 public class HelloWorld extends HttpServlet {
   
   String defaultGreeting;
@@ -20,11 +19,11 @@ public class HelloWorld extends HttpServlet {
   String ICO2;
   String ICO3;
   String ICO4;
-  //³õÊ¼»¯
+  //ï¿½ï¿½Ê¼ï¿½ï¿½
   public void init(ServletConfig config) throws ServletException
   {
     super.init(config);
-    //»ñÈ¡²ÎÊı
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
     if ((defaultName = getInitParameter("name")) == null)
       defaultName = "Java";
     if ((defaultGreeting = getInitParameter("message")) == null)
@@ -40,19 +39,19 @@ public class HelloWorld extends HttpServlet {
   
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÉú³ÉHTMLÒ³Ãæ
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTMLÒ³ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void service(HttpServletRequest req, HttpServletResponse res)
        throws IOException
   {
-    // Ê×ÏÈÉèÖÃÎÄµµÀàĞÍ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
     res.setContentType("text/html; charset=GB2312");
-    // »ñÈ¡Êä³öÁ÷
+    // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
     PrintWriter out = res.getWriter();
-    //ÊéĞ´Ò³Ãæ
-    out.println("<html><head><title>»¶Ó­½øÈëJavaÊÀ½ç</title></head>");
+    //ï¿½ï¿½Ğ´Ò³ï¿½ï¿½
+    out.println("<html><head><title>ï¿½ï¿½Ó­ï¿½ï¿½ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½</title></head>");
     out.println("<body>");
     out.println("<h1>");
     out.println(defaultName + " " +  defaultGreeting + "!");

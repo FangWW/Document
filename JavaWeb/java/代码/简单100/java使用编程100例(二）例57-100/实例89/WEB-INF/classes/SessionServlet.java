@@ -1,75 +1,72 @@
-import java.io.*;
-import java.util.Enumeration;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 /**
- * <p>Title: Servlet»ñÈ¡»á»°</p>
- * <p>Description: Õâ¸ö¼òµ¥µÄÊµÀýÊ¹ÓÃHttpSessionÀà¸ú×Ù¿Í»§¶Ë·ÃÎÊµÄ´ÎÊý¡£</p>
+ * <p>Title: Servletï¿½ï¿½È¡ï¿½á»°</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½òµ¥µï¿½Êµï¿½ï¿½Ê¹ï¿½ï¿½HttpSessionï¿½ï¿½ï¿½ï¿½Ù¿Í»ï¿½ï¿½Ë·ï¿½ï¿½ÊµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: SessionServlet.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
-//±ØÐë¼Ì³ÐHttpServletÀà
+//ï¿½ï¿½ï¿½ï¿½Ì³ï¿½HttpServletï¿½ï¿½
 public class SessionServlet extends HttpServlet { 
-  //doGet·½·¨
+  //doGetï¿½ï¿½ï¿½ï¿½
   public void doGet (HttpServletRequest req, HttpServletResponse res)
        throws ServletException, IOException
   {
-    //»ñÈ¡»á»°¶ÔÏó£¬true±íÊ¾Èç¹ûÕâ¸ö¶ÔÏó²»´æÔÚ£¬Ôò´´½¨ÐÂµÄ
+    //ï¿½ï¿½È¡ï¿½á»°ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó²»´ï¿½ï¿½Ú£ï¿½ï¿½ò´´½ï¿½ï¿½Âµï¿½
     HttpSession session = req.getSession(true);
     
-    // ÉèÖÃÄÚÈÝÀàÐÍ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     res.setContentType("text/html; charset=GB2312");
     
-    // »ñÈ¡PrintWriter¶ÔÏó
+    // ï¿½ï¿½È¡PrintWriterï¿½ï¿½ï¿½ï¿½
     PrintWriter out = res.getWriter();
     
-    out.println("<HEAD><TITLE> " + "ÔÚServletÖÐÊ¹ÓÃSession " +
+    out.println("<HEAD><TITLE> " + "ï¿½ï¿½Servletï¿½ï¿½Ê¹ï¿½ï¿½Session " +
                 "</TITLE></HEAD><BODY>");
     out.println("<p>");
-    out.println("<h1> ServletÖÐÊ¹ÓÃSessionÊµÀý </h1>");
+    out.println("<h1> Servletï¿½ï¿½Ê¹ï¿½ï¿½SessionÊµï¿½ï¿½ </h1>");
     
-    // »ñÈ¡Session±äÁ¿
+    // ï¿½ï¿½È¡Sessionï¿½ï¿½ï¿½ï¿½
     Integer ival = (Integer) session.getAttribute("counter");
     
     if (ival==null) 
       ival = new Integer(1);
     else 
       ival = new Integer(ival.intValue() + 1);
-    //ÉèÖÃSession±äÁ¿
+    //ï¿½ï¿½ï¿½ï¿½Sessionï¿½ï¿½ï¿½ï¿½
     session.setAttribute("counter", ival);
     
-    out.println("ÄãË¢ÐÂ»òµã»÷ÕâÒ»Ò³ <b>" + ival + "</b> ´Î.<p>");
-    out.println("µã»÷ <a href=" + res.encodeURL("SessionServlet") +
-                ">ÕâÀï</a>");
-    out.println(" Ê¹µÄ¸üÐÂÄãµÄSessionÐÅÏ¢ " );
+    out.println("ï¿½ï¿½Ë¢ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ <b>" + ival + "</b> ï¿½ï¿½.<p>");
+    out.println("ï¿½ï¿½ï¿½ <a href=" + res.encodeURL("SessionServlet") +
+                ">ï¿½ï¿½ï¿½ï¿½</a>");
+    out.println(" Ê¹ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Sessionï¿½ï¿½Ï¢ " );
 
     out.println("<p>");
     
-    out.println("<h3>ÇëÇóºÍ»á»°Êý¾Ý:</h3>");
-    //»ñµÃSessionµÄidºÅ
+    out.println("<h3>ï¿½ï¿½ï¿½ï¿½Í»á»°ï¿½ï¿½ï¿½ï¿½:</h3>");
+    //ï¿½ï¿½ï¿½Sessionï¿½ï¿½idï¿½ï¿½
     out.println("Session ID in Request: " +
                 req.getRequestedSessionId());
-    //ÅÐ¶ÏÊÇ·ñidºÃÊ¹ÓÃÁËcookie
+    //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½idï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½cookie
     out.println("<br>Session ID in Request from Cookie: " +
                 req.isRequestedSessionIdFromCookie());
-    //SessionÊÇ·ñ´Ó±íµ¥Ìá½»µÄ
+    //Sessionï¿½Ç·ï¿½Ó±ï¿½ï¿½á½»ï¿½ï¿½
     out.println("<br>Session ID in Request from URL: " +
                 req.isRequestedSessionIdFromURL());
-    //µ±Ç°SessionÊÇ·ñ¼¤»î
+    //ï¿½ï¿½Ç°Sessionï¿½Ç·ñ¼¤»ï¿½
     out.println("<br>Valid Session ID: " +
                 req.isRequestedSessionIdValid());
-    out.println("<h3>SessionÐÅÏ¢:</h3>");
-    //µ±Ç°µÄSessionÊÇ·ñÊ×´Î½¨Á¢
+    out.println("<h3>Sessionï¿½ï¿½Ï¢:</h3>");
+    //ï¿½ï¿½Ç°ï¿½ï¿½Sessionï¿½Ç·ï¿½ï¿½×´Î½ï¿½ï¿½ï¿½
     out.println("New Session: " + session.isNew());
-    //»ñµÃÕâ¸öSessionµÄIDºÅ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Sessionï¿½ï¿½IDï¿½ï¿½
     out.println("<br>Session ID: " + session.getId());
-    //´´½¨Õâ¸ö»á»°µÄÊ±¼ä
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á»°ï¿½ï¿½Ê±ï¿½ï¿½
     out.println("<br>Creation Time: " + session.getCreationTime());
-    //¿Í»§×îºóÒ»´Î·ÃÎÊµÄÊ±¼ä
+    //ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î·ï¿½ï¿½Êµï¿½Ê±ï¿½ï¿½
     out.println("<br>Last Accessed Time: " +
                 session.getLastAccessedTime());
     

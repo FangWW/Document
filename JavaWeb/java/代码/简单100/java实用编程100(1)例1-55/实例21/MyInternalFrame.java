@@ -1,14 +1,11 @@
 import javax.swing.JInternalFrame;
 import javax.swing.JTextArea;
-
-import java.awt.event.*;
-import java.awt.*;
 /**
- * <p>Title: ÄÚ²¿´°Ìå</p>
- * <p>Description: Éú³ÉÒ»¸öÄÚ²¿´°Ìå£¬Ìá¹©InternalFrameDemoÀàÊ¹ÓÃ</p>
+ * <p>Title: ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½å£¬ï¿½á¹©InternalFrameDemoï¿½ï¿½Ê¹ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: MyInternalFrame.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class MyInternalFrame extends JInternalFrame {
@@ -16,19 +13,19 @@ public class MyInternalFrame extends JInternalFrame {
     static final int xOffset = 30, yOffset = 30;
 
     public MyInternalFrame() {
-        super("ÎÄµµ #" + (++openFrameCount), 
-              true, //¿É±ä³ß´ç
-              true, //ÓÐ¹Ø±Õ°´Å¥
-              true, //ÓÐ×î´ó»¯°´Å¥
-              true);//×îÐ¡»¯°´Å¥
+        super("ï¿½Äµï¿½ #" + (++openFrameCount), 
+              true, //ï¿½É±ï¿½ß´ï¿½
+              true, //ï¿½Ð¹Ø±Õ°ï¿½Å¥
+              true, //ï¿½ï¿½ï¿½ï¿½ó»¯°ï¿½Å¥
+              true);//ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Å¥
 
-        //¸øÄÚ²¿´°ÌåÌí¼ÓÒ»¸öÎÄ±¾Óò
+        //ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
         JTextArea j = new JTextArea(5,20);
         getContentPane().add(j);
-        //ÉèÖÃÄÚ²¿´°ÌåµÄ´óÐ¡
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡
         setSize(300,300);
 
-        //ÉèÖÃÄÚ²¿´°ÌåµÄÏÔÊ¾Î»ÖÃ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Î»ï¿½ï¿½
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
     }
 }

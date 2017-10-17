@@ -1,19 +1,17 @@
-import javax.swing.*;
-import java.awt.*;
 /**
- * <p>Title: Í¼Æ¬µÄ´¦Àí£¬</p>
- * <p>Description: ½«Í¼Æ¬·Å´óºÍ·­×ªÏÔÊ¾</p>
+ * <p>Title: Í¼Æ¬ï¿½Ä´ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Í¼Æ¬ï¿½Å´ï¿½Í·ï¿½×ªï¿½ï¿½Ê¾</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ImgDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 class ImgDemo extends JFrame {
 Image image;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÏÔÊ¾´°Ìå
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 ImgDemo(String filename) {
 setTitle("drawImage Example");
@@ -29,28 +27,28 @@ setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 show();
 }
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆÍ¼Ïñ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void paint(Graphics g) {
   Insets insets = getInsets();
   int x = insets.left, y = insets.top;
-  //»ñÈ¡Í¼Æ¬³ß´ç
+  //ï¿½ï¿½È¡Í¼Æ¬ï¿½ß´ï¿½
   int w = image.getWidth(this);
   int h = image.getHeight(this);
-  //Õý³£ÏÔÊ¾Í¼Æ¬
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼Æ¬
   g.drawImage(image, x, y, this); 
-  //ËõÐ¡Í¼ÐÎ
-  g.drawRect(x, y, w/4+1, h/4+1);//»­Ò»¸ö¿ò
+  //ï¿½ï¿½Ð¡Í¼ï¿½ï¿½
+  g.drawRect(x, y, w/4+1, h/4+1);//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
   g.drawImage(image, x+1, y+1, w/4, h/4, this);
-  //Ë®Æ½·­×ª
+  //Ë®Æ½ï¿½ï¿½×ª
   g.drawImage(image, x+w, y, x+2*w, y+h, w, 0, 0, h, this);
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬½ÓÊÜ²ÎÊý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü²ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public static void main(String[] args) {
  if (args.length == 1) {

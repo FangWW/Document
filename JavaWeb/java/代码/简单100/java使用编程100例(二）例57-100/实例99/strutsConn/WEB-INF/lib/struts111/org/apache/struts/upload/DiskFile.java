@@ -7,8 +7,6 @@
 
 package org.apache.struts.upload;
 
-import java.io.*;
-
 // Referenced classes of package org.apache.struts.upload:
 //            FormFile
 

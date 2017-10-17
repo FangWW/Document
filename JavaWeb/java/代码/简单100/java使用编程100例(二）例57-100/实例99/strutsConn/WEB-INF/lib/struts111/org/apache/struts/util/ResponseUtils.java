@@ -8,6 +8,7 @@
 package org.apache.struts.util;
 
 import java.io.IOException;
+
 import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.BodyContent;
 

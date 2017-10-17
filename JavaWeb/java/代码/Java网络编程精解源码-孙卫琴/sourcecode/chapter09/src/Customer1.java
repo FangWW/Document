@@ -1,19 +1,18 @@
-import java.io.*;
 public class Customer1 implements Serializable {
-  private static int count; //ÓÃÓÚ¼ÆËãCustomer¶ÔÏóµÄÊýÄ¿
+  private static int count; //ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½Customerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
   private static final int MAX_COUNT=1000;
   private String name;
   private transient String password;
   
   static{
-     System.out.println("µ÷ÓÃCustomer1ÀàµÄ¾²Ì¬´úÂë¿é");
+     System.out.println("ï¿½ï¿½ï¿½ï¿½Customer1ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
   public Customer1(){
-    System.out.println("µ÷ÓÃCustomer1ÀàµÄ²»´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer1ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     count++;
   }
   public Customer1(String name, String password) {
-    System.out.println("µ÷ÓÃCustomer1ÀàµÄ´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer1ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     this.name=name;
     this.password=password;
     count++;
@@ -28,7 +27,7 @@ public class Customer1 implements Serializable {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

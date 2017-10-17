@@ -1,4 +1,3 @@
-import java.lang.reflect.*;
 public class InvokeTester {
   public int add(int param1,int param2){
     return param1+param2;
@@ -10,12 +9,12 @@ public class InvokeTester {
     Class classType=InvokeTester.class;
     Object invokeTester=classType.newInstance();
     
-    //µ÷ÓÃInvokeTester¶ÔÏóµÄadd()·½·¨
+    //ï¿½ï¿½ï¿½ï¿½InvokeTesterï¿½ï¿½ï¿½ï¿½ï¿½add()ï¿½ï¿½ï¿½ï¿½
     Method addMethod=classType.getMethod("add",new Class[]{int.class,int.class});
     Object result=addMethod.invoke(invokeTester,new Object[]{new Integer(100),new Integer(200)});
     System.out.println((Integer)result);
 
-    //µ÷ÓÃInvokeTester¶ÔÏóµÄecho()·½·¨
+    //ï¿½ï¿½ï¿½ï¿½InvokeTesterï¿½ï¿½ï¿½ï¿½ï¿½echo()ï¿½ï¿½ï¿½ï¿½
     Method echoMethod=classType.getMethod("echo",new Class[]{String.class});
     result=echoMethod.invoke(invokeTester,new Object[]{"Hello"});
     System.out.println((String)result);
@@ -24,7 +23,7 @@ public class InvokeTester {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

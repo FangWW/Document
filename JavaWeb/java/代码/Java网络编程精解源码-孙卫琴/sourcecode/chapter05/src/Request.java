@@ -1,10 +1,6 @@
-import java.net.*;
-import java.nio.*;
-import java.nio.charset.*;
-import java.util.regex.*;
-/* ´ú±í¿Í»§µÄHTTPÇëÇó */
+/* ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ */
 public class Request {
-  static class Action {  //Ã¶¾ÙÀà£¬±íÊ¾HTTPÇëÇó·½Ê½
+  static class Action {  //Ã¶ï¿½ï¿½ï¿½à£¬ï¿½ï¿½Ê¾HTTPï¿½ï¿½ï¿½ï¿½Ê½
     private String name;
     private Action(String name) { this.name = name; }
     public String toString() { return name; }
@@ -47,8 +43,8 @@ public class Request {
 
   private static Charset requestCharset = Charset.forName("GBK");
 
-  /* ÅÐ¶ÏByteBufferÊÇ·ñ°üº¬ÁËHTTPÇëÇóµÄËùÓÐÊý¾Ý¡£
-   * HTTPÇëÇóÒÔ¡°\r\n\r\n¡±½áÎ²¡£
+  /* ï¿½Ð¶ï¿½ByteBufferï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½
+   * HTTPï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½\r\n\r\nï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½
    */
   public static boolean isComplete(ByteBuffer bb) {
     ByteBuffer temp=bb.asReadOnlyBuffer();
@@ -61,7 +57,7 @@ public class Request {
   }
 
   /*
-   * É¾³ýÇëÇóÕýÎÄ£¬±¾Àý×Ó½öÖ§³ÖGETºÍHEADÇëÇó·½Ê½£¬ºöÂÔHTTPÇëÇóÖÐµÄÕýÎÄ²¿·Ö
+   * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½Ö§ï¿½ï¿½GETï¿½ï¿½HEADï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
    */
   private static ByteBuffer deleteContent(ByteBuffer bb) {
     ByteBuffer temp=bb.asReadOnlyBuffer();
@@ -74,12 +70,12 @@ public class Request {
   }
 
   /*
-   * Éè¶¨ÓÃÓÚ½âÎöHTTPÇëÇóµÄ×Ö·û´®Æ¥ÅäÄ£Ê½¡£¶ÔÓÚÒÔÏÂÐÎÊ½µÄHTTPÇëÇó£º
+   * ï¿½è¶¨ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½
    *
    *     GET /dir/file HTTP/1.1
    *     Host: hostname
    *
-   * ½«±»½âÎö³É:
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:
    *
    *     group[1] = "GET"
    *     group[2] = "/dir/file"
@@ -91,36 +87,36 @@ public class Request {
                         + ".*^Host: ([^ ]+)$.*\r\n\r\n\\z",
                         Pattern.MULTILINE | Pattern.DOTALL);
 
-  /* ½âÎöHTTPÇëÇó£¬´´½¨ÏàÓ¦µÄRequest¶ÔÏó */
+  /* ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ó£¬´ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Requestï¿½ï¿½ï¿½ï¿½ */
   public static Request parse(ByteBuffer bb) throws MalformedRequestException {
-    bb=deleteContent(bb); //É¾³ýÇëÇóÕýÎÄ
-    CharBuffer cb = requestCharset.decode(bb); //½âÂë
-    Matcher m = requestPattern.matcher(cb);  //½øÐÐ×Ö·û´®Æ¥Åä
-    //Èç¹ûHTTPÇëÇóÓëÖ¸¶¨µÄ×Ö·û´®Ä£Ê½²»Æ¥Åä£¬ËµÃ÷ÇëÇóÊý¾Ý²»ÕýÈ·
+    bb=deleteContent(bb); //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    CharBuffer cb = requestCharset.decode(bb); //ï¿½ï¿½ï¿½ï¿½
+    Matcher m = requestPattern.matcher(cb);  //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
+    //ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Æ¥ï¿½ä£¬Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½È·
     if (!m.matches())
         throw new MalformedRequestException();
     Action a;
-    try {  //»ñµÃÇëÇó·½Ê½
+    try {  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
         a = Action.parse(m.group(1));
      } catch (IllegalArgumentException x) {
         throw new MalformedRequestException();
     }
     URI u;
-    try { //»ñµÃURI
+    try { //ï¿½ï¿½ï¿½URI
         u = new URI("http://"
                     + m.group(4)
                     + m.group(2));
     } catch (URISyntaxException x) {
         throw new MalformedRequestException();
     }
-    //´´½¨Ò»¸öRequest¶ÔÏó£¬²¢½«Æä·µ»Ø
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Requestï¿½ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½ï¿½ä·µï¿½ï¿½
     return new Request(a, m.group(3), u);
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

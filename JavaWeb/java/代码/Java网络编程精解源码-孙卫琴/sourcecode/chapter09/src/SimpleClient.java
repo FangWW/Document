@@ -1,6 +1,3 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
 public class SimpleClient {
   public void receive()throws Exception{
     Socket socket = new Socket("localhost",8000);
@@ -10,7 +7,7 @@ public class SimpleClient {
     Object object2=ois.readObject();
     System.out.println(object1);
     System.out.println(object2);
-    System.out.println("object1Óëobject2ÊÇ·ñÎªÍ¬Ò»¸ö¶ÔÏó:"
+    System.out.println("object1ï¿½ï¿½object2ï¿½Ç·ï¿½ÎªÍ¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"
                        +(object1==object2));
   }
   public static void main(String args[])throws Exception {
@@ -20,7 +17,7 @@ public class SimpleClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

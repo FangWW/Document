@@ -1,0 +1,60 @@
+统观spring事务，围绕着两个核心PlatformTransactionManager和TransactionStatus 
+
+spring提供了几个关于事务处理的类： 
+TransactionDefinition //事务属性定义
+TranscationStatus //代表了当前的事务，可以提交，回滚。
+PlatformTransactionManager这个是spring提供的用于管理事务的基础接口，其下有一个实现的抽象类AbstractPlatformTransactionManager,我们使用的事务管理类例如DataSourceTransactionManager等都是这个类的子类。
+
+一般事务定义步骤：
+
+TransactionDefinition td = new TransactionDefinition();
+TransactionStatus ts = transactionManager.getTransaction(td);
+try
+{ //do sth
+  transactionManager.commit(ts);
+}
+catch(Exception e){transactionManager.rollback(ts);}
+ 
+
+spring提供的事务管理可以分为两类：编程式的和声明式的。编程式的，比较灵活，但是代码量大，存在重复的代码比较多；声明式的比编程式的更灵活。
+
+编程式主要使用transactionTemplate。省略了部分的提交，回滚，一系列的事务对象定义，需注入事务管理对象. 
+void add()
+{
+    transactionTemplate.execute( new TransactionCallback(){
+        pulic Object doInTransaction(TransactionStatus ts)
+       { //do sth}
+    }
+}
+
+声明式：
+
+使用TransactionProxyFactoryBean:
+<bean id="userManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+  <property name="transactionManager"><ref bean="transactionManager"/></property>
+  <property name="target"><ref local="userManagerTarget"/></property>
+  <property name="transactionAttributes">
+   <props>
+    <prop key="insert*">PROPAGATION_REQUIRED</prop>
+    <prop key="update*">PROPAGATION_REQUIRED</prop>
+    <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+   </props>
+  </property>
+ </bean>
+
+围绕Poxy的动态代理 能够自动的提交和回滚事务
+org.springframework.transaction.interceptor.TransactionProxyFactoryBean
+
+PROPAGATION_REQUIRED--支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。 
+
+PROPAGATION_SUPPORTS--支持当前事务，如果当前没有事务，就以非事务方式执行。 
+
+PROPAGATION_MANDATORY--支持当前事务，如果当前没有事务，就抛出异常。 
+
+PROPAGATION_REQUIRES_NEW--新建事务，如果当前存在事务，把当前事务挂起。 
+
+PROPAGATION_NOT_SUPPORTED--以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。 
+
+PROPAGATION_NEVER--以非事务方式执行，如果当前存在事务，则抛出异常。 
+
+PROPAGATION_NESTED--如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与PROPAGATION_REQUIRED类似的操作。

@@ -1,4 +1,3 @@
-import java.sql.*;
 public class DBTester3{
   private ConnectionProvider provider;
   private Connection con;
@@ -34,17 +33,17 @@ public class DBTester3{
       findStmt=con.prepareStatement(sql);
     findStmt.setString(1, name); 
     findStmt.setInt(2,age); 
-    //²éÑ¯¼ÇÂ¼
+    //ï¿½ï¿½Ñ¯ï¿½ï¿½Â¼
     ResultSet rs= findStmt.executeQuery();
     try{
-      //Êä³ö²éÑ¯½á¹û
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½
       while (rs.next()){
         long id = rs.getLong(1);
         name = rs.getString(2);
         age = rs.getInt(3);
         String address = rs.getString(4);
         
-        //´òÓ¡ËùÏÔÊ¾µÄÊý¾Ý
+        //ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         System.out.println("id="+id+",name="+name+",age="+age+",address="+address);
       }
     }finally{
@@ -59,12 +58,12 @@ public class DBTester3{
   }
   public static void main(String args[])throws Exception{
     DBTester3 tester=new DBTester3(new ConnectionProvider()); 
-    tester.addCustomer("Ð¡Íõ",20,"ÉÏº£");
-    tester.addCustomer("Ð¡Áá",30,"ÉÏº£"); 
-    tester.findCustomer("Ð¡Íõ",20);
-    tester.findCustomer("Ð¡Áá",30);
-    tester.deleteCustomer("Ð¡Íõ");
-    tester.deleteCustomer("Ð¡Áá");
+    tester.addCustomer("Ð¡ï¿½ï¿½",20,"ï¿½Ïºï¿½");
+    tester.addCustomer("Ð¡ï¿½ï¿½",30,"ï¿½Ïºï¿½"); 
+    tester.findCustomer("Ð¡ï¿½ï¿½",20);
+    tester.findCustomer("Ð¡ï¿½ï¿½",30);
+    tester.deleteCustomer("Ð¡ï¿½ï¿½");
+    tester.deleteCustomer("Ð¡ï¿½ï¿½");
     
     tester.close();
   }
@@ -72,7 +71,7 @@ public class DBTester3{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

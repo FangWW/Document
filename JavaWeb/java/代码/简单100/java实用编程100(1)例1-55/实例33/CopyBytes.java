@@ -1,17 +1,16 @@
-import java.io.*;
 /**
- * <p>Title: ¶ÁÈ¡ºÍÐ´ÈëÎÄ¼þ</p>
- * <p>Description: Ê¹ÓÃ×Ö½ÚÁ÷·½Ê½²Ù×÷ÎÄ¼þ£¬¶ÁÈ¡ºÍÐ´ÈëÎÄ¼þ¡£</p>
+ * <p>Title: ï¿½ï¿½È¡ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: CopyBytes.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class CopyBytes {
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) throws IOException {
         String sFile;
@@ -24,25 +23,25 @@ public class CopyBytes {
           oFile = args[1];
         }
         try{
-          File inputFile = new File(sFile);//¶¨Òå¶ÁÈ¡Ô´ÎÄ¼þ
-          File outputFile = new File(oFile);//¶¨Òå¿½±´Ä¿±êÎÄ¼þ
-          //¶¨ÒåÊäÈëÎÄ¼þÁ÷
+          File inputFile = new File(sFile);//ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ô´ï¿½Ä¼ï¿½
+          File outputFile = new File(oFile);//ï¿½ï¿½ï¿½å¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½
+          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
           FileInputStream in = new FileInputStream(inputFile);
-          //½«ÎÄ¼þÊäÈëÁ÷¹¹Ôìµ½»º´æ
+          //ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìµ½ï¿½ï¿½ï¿½ï¿½
           BufferedInputStream bin = new BufferedInputStream(in);
-          //¶¨ÒåÊä³öÎÄ¼þÁ÷
+          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
           FileOutputStream out = new FileOutputStream(outputFile);
-          //½«Êä³öÎÄ¼þÁ÷¹¹Ôìµ½»º´æ
+          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìµ½ï¿½ï¿½ï¿½ï¿½
           BufferedOutputStream bout = new BufferedOutputStream(out);
           int c;
-          //Ñ­»·¶ÁÈ¡ÎÄ¼þºÍÐ´ÈëÎÄ¼þ
+          //Ñ­ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½
           while ((c = bin.read()) != -1)
              bout.write(c);
-          //¹Ø±ÕÊäÈëÊä³öÁ÷£¬ÊÍ·Å×ÊÔ´
+          //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ô´
           bin.close();
           bout.close();
         }catch(IOException e){
-          //ÎÄ¼þ²Ù×÷£¬²¶»ñIOÒì³£¡£
+          //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IOï¿½ì³£ï¿½ï¿½
           System.err.println(e);
         }
     }

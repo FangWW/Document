@@ -9,6 +9,7 @@ package org.apache.struts.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
 import javax.servlet.ServletContext;
 
 public class ServletContextWriter extends PrintWriter

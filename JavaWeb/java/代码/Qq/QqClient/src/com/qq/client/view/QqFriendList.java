@@ -1,18 +1,13 @@
 /*
- * ÎÒµÄºÃÓÑÁĞ±í£¨°üÀ¨Ä°ÉúÈËÓëºÚÃûµ¥£©
+ * ï¿½ÒµÄºï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 package com.qq.client.view;
 
 import com.qq.client.tools.*;
 import com.qq.common.Message;
-
-import javax.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
 public class QqFriendList extends JFrame implements ActionListener,MouseListener{
 
-	//´¦ÀíµÚÒ»ÕÅ¿¨Æ¬
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Å¿ï¿½Æ¬
 	
 	JPanel jphy1,jphy2,jphy3;
 	JButton jphy_jb1,jphy_jb2,jphy_jb3;
@@ -20,13 +15,13 @@ public class QqFriendList extends JFrame implements ActionListener,MouseListener
 	String owner;
 	JLabel []jbls;
 	
-	//´¦ÀíµÚ¶şÕÅ¿¨Æ¬£¨Ä°ÉúÈË£©
+	//ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Å¿ï¿½Æ¬ï¿½ï¿½Ä°ï¿½ï¿½ï¿½Ë£ï¿½
 	
 	JPanel jpmsr1,jpmsr2,jpmsr3;
 	JButton jpmsr_jb1,jpmsr_jb2,jpmsr_jb3;
 	JScrollPane jsp2;
 	
-	//°ÑÕû¸öJFrameÉèÖÃ³ÉCardLayout
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JFrameï¿½ï¿½ï¿½Ã³ï¿½CardLayout
 	CardLayout cl;
 	
 	public static void main(String[] args) {
@@ -34,7 +29,7 @@ public class QqFriendList extends JFrame implements ActionListener,MouseListener
 	//	QqFriendList qqFriendList=new QqFriendList();
 	}
 	
-	//¸üĞÂÔÚÏßºÃÓÑÁĞ±í
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 	public void upDateFriend(Message m){
 		String onLineFriend[]=m.getCon().split(" ");
 		for(int i=0;i<onLineFriend.length;i++){
@@ -45,20 +40,20 @@ public class QqFriendList extends JFrame implements ActionListener,MouseListener
 	public QqFriendList(String ownerId){
 		
 		this.owner=ownerId;
-		//´¦ÀíµÚÒ»ÕÅ¿¨Æ¬£¨ÏÔÊ¾ºÃÓÑÁĞ±í£©
-		jphy_jb1=new JButton("ÎÒµÄºÃÓÑ");
-		jphy_jb2=new JButton("Ä°ÉúÈË");
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Å¿ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
+		jphy_jb1=new JButton("ï¿½ÒµÄºï¿½ï¿½ï¿½");
+		jphy_jb2=new JButton("Ä°ï¿½ï¿½ï¿½ï¿½");
 		jphy_jb2.addActionListener(this);
-		jphy_jb3=new JButton("ºÚÃûµ¥");
+		jphy_jb3=new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		jphy1=new JPanel(new BorderLayout());
-		//¼ÙÉèÓĞ50ºÃÓÑ
-		jphy2=new JPanel(new GridLayout(50,1,4,4));//ĞĞ¼ä¾àÁĞ¼ä¾à
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½50ï¿½ï¿½ï¿½ï¿½
+		jphy2=new JPanel(new GridLayout(50,1,4,4));//ï¿½Ğ¼ï¿½ï¿½ï¿½Ğ¼ï¿½ï¿½
 		
-		//¸øjphy2³õÊ¼»¯50ºÃÓÑ
+		//ï¿½ï¿½jphy2ï¿½ï¿½Ê¼ï¿½ï¿½50ï¿½ï¿½ï¿½ï¿½
 		jbls=new JLabel[50];
 		
 		for(int i=0;i<jbls.length;i++){
-			jbls[i]=new JLabel(i+1+"",new ImageIcon("image/mm.jpg"),JLabel.LEFT);//²»Ö§³Ö¸ö.gif¡¢.bmp
+			jbls[i]=new JLabel(i+1+"",new ImageIcon("image/mm.jpg"),JLabel.LEFT);//ï¿½ï¿½Ö§ï¿½Ö¸ï¿½.gifï¿½ï¿½.bmp
 			jbls[i].setEnabled(false);
 			if(jbls[i].getText().equals(ownerId)){
 				jbls[i].setEnabled(true);
@@ -68,43 +63,43 @@ public class QqFriendList extends JFrame implements ActionListener,MouseListener
 		}
 		
 		jphy3=new JPanel(new GridLayout(2,1));
-		//°ÑÁ½¸ö°´Å¥¼ÓÈëµ½jphy3
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ëµ½jphy3
 		jphy3.add(jphy_jb2);
 		jphy3.add(jphy_jb3);
 		
 		jspl=new JScrollPane(jphy2);
 		
-		//¶Ôjphy1³õÊ¼»¯
+		//ï¿½ï¿½jphy1ï¿½ï¿½Ê¼ï¿½ï¿½
 		jphy1.add(jphy_jb1,"North");
 		jphy1.add(jspl,"Center");
 		jphy1.add(jphy3,"South");
 		
-		//´¦ÀíµÚ¶şÕÅ¿¨Æ¬
+		//ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Å¿ï¿½Æ¬
 		
-		jpmsr_jb1=new JButton("ÎÒµÄºÃÓÑ");
+		jpmsr_jb1=new JButton("ï¿½ÒµÄºï¿½ï¿½ï¿½");
 		jpmsr_jb1.addActionListener(this);
-		jpmsr_jb2=new JButton("Ä°ÉúÈË");
-		jpmsr_jb3=new JButton("ºÚÃûµ¥");
+		jpmsr_jb2=new JButton("Ä°ï¿½ï¿½ï¿½ï¿½");
+		jpmsr_jb3=new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		jpmsr1=new JPanel(new BorderLayout());
-		//¼ÙÉèÓĞ20Ä°ÉúÈË
-		jpmsr2=new JPanel(new GridLayout(20,1,4,4));//ĞĞ¼ä¾àÁĞ¼ä¾à
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½20Ä°ï¿½ï¿½ï¿½ï¿½
+		jpmsr2=new JPanel(new GridLayout(20,1,4,4));//ï¿½Ğ¼ï¿½ï¿½ï¿½Ğ¼ï¿½ï¿½
 		
-		//¸øjphy2³õÊ¼»¯20Ä°ÉúÈË
+		//ï¿½ï¿½jphy2ï¿½ï¿½Ê¼ï¿½ï¿½20Ä°ï¿½ï¿½ï¿½ï¿½
 		JLabel []jbls2=new JLabel[20];
 		
 		for(int i=0;i<jbls2.length;i++){
-			jbls2[i]=new JLabel(i+1+"",new ImageIcon("image/mm.jpg"),JLabel.LEFT);//²»Ö§³Ö¸ö.gif¡¢.bmp
+			jbls2[i]=new JLabel(i+1+"",new ImageIcon("image/mm.jpg"),JLabel.LEFT);//ï¿½ï¿½Ö§ï¿½Ö¸ï¿½.gifï¿½ï¿½.bmp
 			jpmsr2.add(jbls2[i]);
 		}
 		
 		jpmsr3=new JPanel(new GridLayout(2,1));
-		//°ÑÁ½¸ö°´Å¥¼ÓÈëµ½jphy3
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ëµ½jphy3
 		jpmsr3.add(jpmsr_jb1);
 		jpmsr3.add(jpmsr_jb2);
 		
 		jsp2=new JScrollPane(jpmsr2);
 		
-		//¶Ôjpmsr1³õÊ¼»¯
+		//ï¿½ï¿½jpmsr1ï¿½ï¿½Ê¼ï¿½ï¿½
 		jpmsr1.add(jpmsr3,"North");
 		jpmsr1.add(jsp2,"Center");
 		jpmsr1.add(jpmsr_jb3,"South");
@@ -113,7 +108,7 @@ public class QqFriendList extends JFrame implements ActionListener,MouseListener
 		this.setLayout(cl);
 		this.add(jphy1,"1");
 		this.add(jpmsr1,"2");
-		//ÏÔÊ¾×Ô¼ºµÄ±àºÅ
+		//ï¿½ï¿½Ê¾ï¿½Ô¼ï¿½ï¿½Ä±ï¿½ï¿½
 		this.setTitle(ownerId);
 		this.setTitle("É½Õ¯QQ2010");
 		this.setIconImage((new ImageIcon("image/jie.jpg").getImage()));
@@ -134,14 +129,14 @@ public class QqFriendList extends JFrame implements ActionListener,MouseListener
 	@Override
 	public void mouseClicked(MouseEvent er) {
 		// TODO Auto-generated method stub
-		//ÏìÓ¦ÓÃ»§Ë«»÷ÊÂ¼ş£¬²¢µÃµ½ºÃÓÑµÄ±àºÅ
+		//ï¿½ï¿½Ó¦ï¿½Ã»ï¿½Ë«ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ÑµÄ±ï¿½ï¿½
 		if(er.getClickCount()==2){
-			//µÃµ½ºÃÓÑµÄ±àºÅ
+			//ï¿½Ãµï¿½ï¿½ï¿½ï¿½ÑµÄ±ï¿½ï¿½
 			String friendNo=((JLabel)er.getSource()).getText();
-			//System.out.println("ÄãÏ£ÍûºÍ"+friendNo+"ÁÄÌì");
+			//System.out.println("ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½"+friendNo+"ï¿½ï¿½ï¿½ï¿½");
 			QqChat qqChat=new QqChat(owner,friendNo);
 			
-			//°ÑÁÄÌì½çÃæ¼ÓÈëµ½¹ÜÀíÀà
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			ManageQqChat.addQqChat(this.owner+" "+friendNo, qqChat);
 			//Thread t=new Thread(qqChat);
 			//t.start();

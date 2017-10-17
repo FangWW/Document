@@ -1,11 +1,4 @@
 package nonblock;
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.net.*;
-import java.util.*;
-
 public class EchoServer{
   private Selector selector = null;
   private ServerSocketChannel serverSocketChannel = null;
@@ -18,7 +11,7 @@ public class EchoServer{
     serverSocketChannel.socket().setReuseAddress(true);
     serverSocketChannel.configureBlocking(false);
     serverSocketChannel.socket().bind(new InetSocketAddress(port));
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() throws IOException{
@@ -35,7 +28,7 @@ public class EchoServer{
             if (key.isAcceptable()) {
               ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
               SocketChannel socketChannel = (SocketChannel) ssc.accept();
-              System.out.println("½ÓÊÕµ½¿Í»§Á¬½Ó£¬À´×Ô:" +
+              System.out.println("ï¿½ï¿½ï¿½Õµï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½:" +
                                  socketChannel.socket().getInetAddress() +
                                  ":" + socketChannel.socket().getPort());
               socketChannel.configureBlocking(false);
@@ -66,7 +59,7 @@ public class EchoServer{
   public void send(SelectionKey key)throws IOException{
     ByteBuffer buffer=(ByteBuffer)key.attachment();
     SocketChannel socketChannel=(SocketChannel)key.channel();
-    buffer.flip();  //°Ñ¼«ÏÞÉèÎªÎ»ÖÃ£¬°ÑÎ»ÖÃÉèÎª0
+    buffer.flip();  //ï¿½Ñ¼ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ»ï¿½Ã£ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Îª0
     String data=decode(buffer);
     if(data.indexOf("\r\n")==-1)return;
     String outputData=data.substring(0,data.indexOf("\n")+1);
@@ -82,7 +75,7 @@ public class EchoServer{
     if(outputData.equals("bye\r\n")){
       key.cancel();
       socketChannel.close();
-      System.out.println("¹Ø±ÕÓë¿Í»§µÄÁ¬½Ó");
+      System.out.println("ï¿½Ø±ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
   }
 
@@ -98,11 +91,11 @@ public class EchoServer{
     buffer.put(readBuff);
   }
 
-  public String decode(ByteBuffer buffer){  //½âÂë
+  public String decode(ByteBuffer buffer){  //ï¿½ï¿½ï¿½ï¿½
     CharBuffer charBuffer= charset.decode(buffer);
     return charBuffer.toString();
   }
-  public ByteBuffer encode(String str){  //±àÂë
+  public ByteBuffer encode(String str){  //ï¿½ï¿½ï¿½ï¿½
     return charset.encode(str);
   }
 
@@ -117,7 +110,7 @@ public class EchoServer{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

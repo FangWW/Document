@@ -1,23 +1,19 @@
 package multithread3;
-import java.io.*;
-import java.net.*;
-import java.util.concurrent.*;
-
 public class EchoServer {
   private int port=8000;
   private ServerSocket serverSocket;
-  private ExecutorService executorService;  //线程池
-  private final int POOL_SIZE=4;  //单个CPU时线程池中工作线程的数目
+  private ExecutorService executorService;  //锟竭程筹拷
+  private final int POOL_SIZE=4;  //锟斤拷锟斤拷CPU时锟竭程筹拷锟叫癸拷锟斤拷锟竭程碉拷锟斤拷目
 
   public EchoServer() throws IOException {
     serverSocket = new ServerSocket(port);
-    //创建线程池
-    //Runtime的availableProcessors()方法返回当前系统的CPU的数目
-    //系统的CPU越多，线程池中工作线程的数目也越多 
+    //锟斤拷锟斤拷锟竭程筹拷
+    //Runtime锟斤拷availableProcessors()锟斤拷锟斤拷锟斤拷锟截碉拷前系统锟斤拷CPU锟斤拷锟斤拷目
+    //系统锟斤拷CPU越锟洁，锟竭程筹拷锟叫癸拷锟斤拷锟竭程碉拷锟斤拷目也越锟斤拷 
     executorService= Executors.newFixedThreadPool( 
 	    Runtime.getRuntime().availableProcessors() * POOL_SIZE);
 
-    System.out.println("服务器启动");
+    System.out.println("锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷");
   }
 
   public void service() {
@@ -79,7 +75,7 @@ class Handler implements Runnable{
 
 
 /****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程精解>>                       *
- * 技术支持网址：www.javathinker.org                *
+ * 锟斤拷锟竭ｏ拷锟斤拷锟斤拷锟斤拷                                     *
+ * 锟斤拷源锟斤拷<<Java锟斤拷锟斤拷锟教撅拷锟斤拷>>                       *
+ * 锟斤拷锟斤拷支锟斤拷锟斤拷址锟斤拷www.javathinker.org                *
  ***************************************************/

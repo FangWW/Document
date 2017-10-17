@@ -1,6 +1,3 @@
-import java.net.*;
-import java.io.*;
-
 public class MulticastSender {
   public static void main(String[] args) throws Exception{
     InetAddress group=InetAddress.getByName("224.0.0.1");
@@ -15,7 +12,7 @@ public class MulticastSender {
         byte[] buffer=message.getBytes(); 
         DatagramPacket dp = new DatagramPacket(buffer, buffer.length,group,port);
         ms.send(dp);  
-        System.out.println("·¢ËÍÊý¾Ý±¨¸ø "+group+":"+port);
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ "+group+":"+port);
         Thread.sleep(1000);
       }
     }catch (IOException e) {
@@ -34,7 +31,7 @@ public class MulticastSender {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

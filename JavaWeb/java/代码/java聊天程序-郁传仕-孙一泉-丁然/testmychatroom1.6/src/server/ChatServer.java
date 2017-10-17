@@ -1,26 +1,22 @@
 package server;
 
-import java.net.*;
-import java.util.*;
-import java.io.*;
-
 public class ChatServer
 {
 	static final int DEFAULT_PORT = 6000;
 	static ServerSocket serverSocket;
-	static Vector<Socket> connections;// Á¬½Ó
+	static Vector<Socket> connections;// ï¿½ï¿½ï¿½ï¿½
 	static Vector<ClientProc> clients;
 
 	/**
 	 * 
-	 * ·¢ËÍĞÅÏ¢¸øËùÓĞµÄÈË
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½
 	 */
 	public static void sendAll(String s)
 	{
 		if (connections != null)
 		{
-			for (Enumeration e = connections.elements(); // Enumeration¹ıÊ±µÄ½Ó¿Ú£¬
-															// ¿ÉÒÔÓÃfor eachÑ­»·
+			for (Enumeration e = connections.elements(); // Enumerationï¿½ï¿½Ê±ï¿½Ä½Ó¿Ú£ï¿½
+															// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½for eachÑ­ï¿½ï¿½
 			e.hasMoreElements();)
 			{
 				try
@@ -40,7 +36,7 @@ public class ChatServer
 
 	/**
 	 * 
-	 * ·¢ËÍĞÅÏ¢¸øµ¥¶ÀÒ»¸öÈË
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static boolean sendOne(String name, String msg)
 	{
@@ -57,7 +53,7 @@ public class ChatServer
 								.getOutputStream());
 						pw.println(msg);
 						pw.flush();
-						return true; // ·µ»ØÖµÎªÕæ£¬ÕÒµ½ÁËÕâ¸öÈË¿ÉÒÔ½øĞĞÁÄÌì
+						return true; // ï¿½ï¿½ï¿½ï¿½ÖµÎªï¿½æ£¬ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					} catch (IOException ioe)
 					{
 						ioe.printStackTrace();
@@ -65,7 +61,7 @@ public class ChatServer
 				}
 			}
 		}
-		return false;// Ã»ÓĞÕÒµ½Õâ¸öÈË£¬Ó¦¸ÃÊÇ´ËÈËÒÑ¾­ÍË³öÁËÁÄÌìÊÒ
+		return false;// Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Ó¦ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	public static void addConnection(Socket s, ClientProc cp)
@@ -104,7 +100,7 @@ public class ChatServer
 
 	/**
 	 * 
-	 * ·şÎñÆ÷¶ËÔÚ´ËÆô¶¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static void main(String[] arg)
 	{
@@ -112,21 +108,21 @@ public class ChatServer
 		try
 		{
 			serverSocket = new ServerSocket(port);
-			System.out.println("·şÎñÆ÷ÒÑ¾­Æô¶¯£¬ÕıÔÚ¼àÌı...");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½...");
 		} catch (IOException e)
 		{
-			System.out.println("Òì³£");
+			System.out.println("ï¿½ì³£");
 			System.err.println(e);
 			System.exit(1);
 
 		}
 
 		while (true)
-		{ // ËÀÑ­»·
+		{ // ï¿½ï¿½Ñ­ï¿½ï¿½
 			try
 			{
 				Socket cs = serverSocket.accept();
-				ClientProc cp = new ClientProc(cs); // Æô¶¯Ò»¸öÓÃ»§Ïß³Ì
+				ClientProc cp = new ClientProc(cs); // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ß³ï¿½
 				Thread ct = new Thread(cp);
 				//Thread ar = new Thread(ct.)
 				ct.start();

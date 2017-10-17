@@ -1,12 +1,11 @@
-import java.lang.reflect.*;
 public class ArrayTester1 {
   public static void main(String args[])throws Exception {
     Class classType = Class.forName("java.lang.String");
-    //´´½¨Ò»¸ö³¤¶ÈÎª10µÄ×Ö·û´®Êý×é
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª10ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Object array = Array.newInstance(classType, 10);
-    //°ÑË÷ÒýÎ»ÖÃÎª5µÄÔªËØÉèÎª"hello"
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Îª5ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Îª"hello"
     Array.set(array, 5, "hello");
-    //»ñµÃË÷ÒýÎ»ÖÃÎª5µÄÔªËØµÄÖµ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Îª5ï¿½ï¿½Ôªï¿½Øµï¿½Öµ
     String s = (String) Array.get(array, 5);
     System.out.println(s);
   }
@@ -14,7 +13,7 @@ public class ArrayTester1 {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

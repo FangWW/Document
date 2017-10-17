@@ -1,23 +1,19 @@
 package store;
 
-import java.sql.*;
-import java.util.*;
-import java.io.*;
-
 public class DBServiceImpl implements DBService{
 
-  private ConnectionPool pool; //Á¬½Ó³Ø
+  private ConnectionPool pool; //ï¿½ï¿½ï¿½Ó³ï¿½
 
   public DBServiceImpl() throws Exception{
-    //ConnectionPoolImpl2Á¬½Ó³ØÊµÏÖÌá¹©Connection¶ÔÏóµÄ¶¯Ì¬´úÀí
+    //ConnectionPoolImpl2ï¿½ï¿½ï¿½Ó³ï¿½Êµï¿½ï¿½ï¿½á¹©Connectionï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½
     pool=new ConnectionPoolImpl2(); 
   }
-  /** ´´½¨²¢·µ»ØÒ»¸öStatement¶ÔÏó */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Statementï¿½ï¿½ï¿½ï¿½ */
   public Statement getStatement() throws Exception{
     return pool.getConnection().createStatement();
   }
   
-  /** ¹Ø±ÕStatement¶ÔÏó£¬ÒÔ¼°ÓëÖ®¹ØÁªµÄConnection¶ÔÏó*/
+  /** ï¿½Ø±ï¿½Statementï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connectionï¿½ï¿½ï¿½ï¿½*/
   public void closeStatement(Statement stmt){
     try{
     }finally{
@@ -25,13 +21,13 @@ public class DBServiceImpl implements DBService{
         if(stmt!=null){
           Connection con=stmt.getConnection(); 
           stmt.close();
-          //conÒýÓÃConnection¶ÔÏóµÄ¶¯Ì¬´úÀí¶ÔÏó£¬ËüµÄclose()·½·¨°Ñ×ÔÉí·Å»ØÁ¬½Ó³Ø
+          //conï¿½ï¿½ï¿½ï¿½Connectionï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½close()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½Ó³ï¿½
           con.close(); 
         }  
       }catch(Exception e){e.printStackTrace();}
     }
   }
-  /** Ö´ÐÐSQL update¡¢deleteºÍinsertÓï¾ä */ 
+  /** Ö´ï¿½ï¿½SQL updateï¿½ï¿½deleteï¿½ï¿½insertï¿½ï¿½ï¿½ */ 
   public void modifyTable(String sql) throws Exception{
     Statement stmt=getStatement();
     try {
@@ -43,7 +39,7 @@ public class DBServiceImpl implements DBService{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

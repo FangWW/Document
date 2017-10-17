@@ -1,11 +1,9 @@
-import java.sql.*;
-
 /**
- * <p>Title: JDBCÁ¬½ÓÊý¾Ý¿â</p>
- * <p>Description: ±¾ÊµÀýÑÝÊ¾ÈçºÎÊ¹ÓÃJDBCÁ¬½ÓOracleÊý¾Ý¿â£¬²¢ÑÝÊ¾Ìí¼ÓÊý¾ÝºÍ²éÑ¯Êý¾Ý¡£</p>
+ * <p>Title: JDBCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½Oracleï¿½ï¿½ï¿½Ý¿â£¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝºÍ²ï¿½Ñ¯ï¿½ï¿½ï¿½Ý¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDBCSTMConn.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDBCSTMConn{
@@ -13,15 +11,15 @@ public class JDBCSTMConn{
   private static String username="";
   private static String password="";
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
-     	//¼ÓÔØJDBCÇý¶¯
+     	//ï¿½ï¿½ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        //´´½¨Êý¾Ý¿âÁ¬½Ó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
         Connection con = DriverManager.getConnection(url, username, password);
         return con;
     }catch(ClassNotFoundException cnf){
@@ -36,20 +34,20 @@ public class JDBCSTMConn{
      }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºµ÷ÓÃ´æ´¢¹ý³Ì£¬²ì¿´Êý¾Ý½á¹û
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´æ´¢ï¿½ï¿½ï¿½Ì£ï¿½ï¿½ì¿´ï¿½ï¿½ï¿½Ý½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void execute(Connection con){
     CallableStatement toesUp = null; 
     try { 
       con.setAutoCommit(false); 
-      //µ÷ÓÃ´æ´¢¹ý³Ì
+      //ï¿½ï¿½ï¿½Ã´æ´¢ï¿½ï¿½ï¿½ï¿½
       toesUp = con.prepareCall("{call p_test(?)}"); 
-      //´«µÝ²ÎÊý¸ø´æ´¢¹ý³Ì
+      //ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½
       toesUp.setInt(1, 6);
-      //Ö´ÐÐ´æ´¢¹ý³Ì
+      //Ö´ï¿½Ð´æ´¢ï¿½ï¿½ï¿½ï¿½
       toesUp.executeQuery();
 
       Statement stmt = con.createStatement();
@@ -70,9 +68,9 @@ public class JDBCSTMConn{
   }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÀýÑÝÊ¾
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void demo(){
     try{
@@ -88,9 +86,9 @@ public class JDBCSTMConn{
     
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] arg){
     if(arg.length!=3){

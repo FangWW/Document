@@ -1,12 +1,10 @@
-//ÎÄ¼şÃû£ºChatClient.java
-import java.net.*;
-import java.io.*;
+//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ChatClient.java
 /**
- * <p>Title: ÍøÂçÁÄÌì°É</p>
- * <p>Description: ÕâÊÇÒ»¸öÊ¹ÓÃÊı¾İ±¨Í¨Ñ¶·½Ê½µÄÁÄÌì³ÌĞòµÄ¿Í»§¶Ë</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½İ±ï¿½Í¨Ñ¶ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Í»ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ChatClient.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ChatClient{
@@ -16,34 +14,34 @@ public class ChatClient{
  private DatagramPacket dp = new DatagramPacket(buf,buf.length);
 
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÕâÀïÊµÏÖ½ÓÊÕÓÃ»§ÊäÈëºÍÓë·şÎñÆ÷Í¨Ñ¶
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Ñ¶
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public ChatClient(){
    try{
-       //Ê¹ÓÃ¹¹ÔìÆ÷£¬´´½¨Ê¹ÓÃ±¾»úÈÎºÎ¿ÉÓÃ¶Ë¿ÚµÄÊı¾İ°üSocket
+       //Ê¹ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ÎºÎ¿ï¿½ï¿½Ã¶Ë¿Úµï¿½ï¿½ï¿½ï¿½İ°ï¿½Socket
        s = new DatagramSocket();
-       //»ñÈ¡±¾µØIP
+       //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½IP
        hostAddress = InetAddress.getByName("localhost");
        System.out.println("Client start............");
        while(true){
          String outMessage ="";  
-        //¶ÁÈ¡ÊäÈë
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
          BufferedReader stdin  = new BufferedReader(new InputStreamReader(System.in));
          try{
            outMessage = stdin.readLine();
          }catch(IOException ie){
            System.err.println("IO error!");
          }
-         //Èç¹ûÊäÈë¡°bye¡±Ôò±íÊ¾ÍË³ö³ÌĞò
+         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡°byeï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½
          if(outMessage.equals("bye")) break;
          String outString = "Client say: "+ outMessage;
          byte[] buf = outString.getBytes();
-         //´ò°üÊı¾İ£¬·¢ËÍÊı¾İ
+         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          DatagramPacket out = new DatagramPacket(buf,buf.length,hostAddress,ChatServer.PORT);
          s.send(out);
-         //µÈ´ı·şÎñÆ÷·µ»Ø
+         //ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          s.receive(dp);
          String rcvd = "rcvd from "+ dp.getAddress() + ", " + dp.getPort() + 
          ": "+ new String(dp.getData(),0,dp.getLength());
@@ -69,9 +67,9 @@ public class ChatClient{
      System.out.println("ChatClient over");
  }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public static void main(String[] args){
     new ChatClient();

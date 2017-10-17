@@ -1,31 +1,27 @@
-//¿Í»§¶Ë³ÌÐò
-import java.io.*;
-import java.net.*;
-import java.awt.*;
-import java.awt.event.*;
+//ï¿½Í»ï¿½ï¿½Ë³ï¿½ï¿½ï¿½
 public class SocketClientExample extends Frame implements ActionListener
-{ Label label=new Label("ÊäÈëÁÄÌìÐÅÏ¢");
+{ Label label=new Label("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢");
   TextField tf= new TextField(20);
   TextArea ta=new TextArea( );
-  Panel panel=new Panel( );//´´½¨Ãæ°å¶ÔÏó
+  Panel panel=new Panel( );//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   Socket Client;
   InputStream DataIn;
   OutputStream DataOut;
   public SocketClientExample( )
-  { super("ÕâÀïÊÇ¿Í»§»ú");
+  { super("ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿Í»ï¿½ï¿½ï¿½");
     setSize(300,180);
-    panel.add(label);//ÔÚÃæ°åÉÏÌí¼Ó±êÇ©
-    panel.add(tf);//ÔÚÃæ°åÉÏÌí¼ÓÎÄ±¾¿ò
-    tf.addActionListener(this);//×¢²á
-    add("North",panel);//ÔÚ´°ÌåÉÏÌí¼ÓÃæ°å
-    add("Center",ta);//ÔÚ´°ÌåÉÏÌí¼ÓÎÄ±¾Çø
+    panel.add(label);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½Ç©
+    panel.add(tf);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
+    tf.addActionListener(this);//×¢ï¿½ï¿½
+    add("North",panel);//ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    add("Center",ta);//ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
     addWindowListener(new WindowAdapter( )
     { public void windowClosing(WindowEvent e)
     { System.exit(0);}});
     show( );
     try
     	{  Client=new Socket(InetAddress.getLocalHost( ),5000);
-    	   ta.append("ÒÑ¾­ºÍ·þÎñÆ÷Á¬½Ó:"+Client.getInetAddress( ).getHostName( )+"\n\n");
+    	   ta.append("ï¿½Ñ¾ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"+Client.getInetAddress( ).getHostName( )+"\n\n");
     	   DataIn=Client.getInputStream( );
     	   DataOut=Client.getOutputStream( );	
     }
@@ -33,10 +29,10 @@ public class SocketClientExample extends Frame implements ActionListener
     while(true)
     {
     	try{
-    		byte buff[ ]=new byte[512];//»º³åÊý×é
+    		byte buff[ ]=new byte[512];//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     		DataIn.read(buff);
-    		String str=new String(buff);//½ÓÊÜ¿Í»§¶Ë·¢ËÍµÄÊý¾Ý°ü
-    		ta.append("·þÎñÆ÷Ëµ:"+str+"\n");
+    		String str=new String(buff);//ï¿½ï¿½ï¿½Ü¿Í»ï¿½ï¿½Ë·ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½Ý°ï¿½
+    		ta.append("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµ:"+str+"\n");
     	}
     	catch(IOException ioe){ }
     }
@@ -45,7 +41,7 @@ public class SocketClientExample extends Frame implements ActionListener
     {
     	new SocketClientExample( );
     }
-    public void actionPerformed(ActionEvent e)//ÊÂ¼þ´¦Àí³ÌÐò
+    public void actionPerformed(ActionEvent e)//ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
     	try 
     		{
@@ -53,7 +49,7 @@ public class SocketClientExample extends Frame implements ActionListener
     		byte buf[ ]=str.getBytes( );
     		tf.setText(" ");
     		DataOut.write(buf);
-    		ta.append("¿Í»§»úËµ:"+str+"\n");
+    		ta.append("ï¿½Í»ï¿½ï¿½ï¿½Ëµ:"+str+"\n");
     	}
     		catch(IOException ioe){ }
     }

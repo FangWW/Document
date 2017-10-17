@@ -1,14 +1,9 @@
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.filechooser.*;
 /**
- * <p>Title: ÎÄ¼þ¶Ô»°¿òÑÝÊ¾</p>
- * <p>Description: ÑÝÊ¾´ò¿ªÎÄ¼þ¶Ô»°¿òºÍ±£´æÎÄ¼þ¶Ô»°¿ò£¬Ê¹ÓÃÁËÎÄ¼þ¹ýÂË¡£</p>
+ * <p>Title: ï¿½Ä¼ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ô»ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ô»ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: FileChooserDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 
@@ -27,20 +22,20 @@ public class FileChooserDemo extends JPanel
         log.setEditable(false);
         JScrollPane logScrollPane = new JScrollPane(log);
 
-        //´´½¨Ò»¸öÎÄ¼þ¹ýÂË£¬Ê¹ÓÃµ±Ç°Ä¿Â¼
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Ê¹ï¿½Ãµï¿½Ç°Ä¿Â¼
         fc = new JFileChooser(".");
-        //¹ýÂËÌõ¼þÔÚMyFilterÀàÖÐ¶¨Òå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MyFilterï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
         fc.addChoosableFileFilter(new MyFilter());
 
-        openButton = new JButton("´ò¿ªÎÄ¼þ",
+        openButton = new JButton("ï¿½ï¿½ï¿½Ä¼ï¿½",
                                  createImageIcon("images/Open16.gif"));
         openButton.addActionListener(this);
 
-        saveButton = new JButton("±£´æÎÄ¼þ",
+        saveButton = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½",
                                  createImageIcon("images/Save16.gif"));
         saveButton.addActionListener(this);
 
-        //¹¹½¨Ò»¸öÃæ°å£¬Ìí¼Ó¡°´ò¿ªÎÄ¼þ¡±ºÍ¡°±£´æÎÄ¼þ¡±
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
         JPanel buttonPanel = new JPanel(); 
         buttonPanel.add(openButton);
         buttonPanel.add(saveButton);
@@ -49,40 +44,40 @@ public class FileChooserDemo extends JPanel
         add(logScrollPane, BorderLayout.CENTER);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ´¦Àí
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
 
-        //µ±µã»÷¡°´ò¿ªÎÄ¼þ¡±°´Å¥
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Å¥
         if (e.getSource() == openButton) {
             int returnVal = fc.showOpenDialog(FileChooserDemo.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                //ÔÚÕâÀïÌí¼ÓÒ»Ð©¶ÔÎÄ¼þµÄ´¦Àí
-                log.append("´ò¿ªÎÄ¼þ: " + file.getName() + newline);
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+                log.append("ï¿½ï¿½ï¿½Ä¼ï¿½: " + file.getName() + newline);
             } else {
-                log.append("´ò¿ªÎÄ¼þ±»ÓÃ»§È¡Ïû£¡" + newline);
+                log.append("ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ã»ï¿½È¡ï¿½ï¿½ï¿½ï¿½" + newline);
             }
 
-        //µã»÷¡°±£´æÎÄ¼þ¡±°´Å¥
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Å¥
         } else if (e.getSource() == saveButton) {
             int returnVal = fc.showSaveDialog(FileChooserDemo.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                //ÔÚÕâÀïÌí¼ÓÒ»Ð©¶ÔÎÄ¼þµÄ´¦Àí
-                log.append("±£´æÎÄ¼þ: " + file.getName()  + newline);
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+                log.append("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½: " + file.getName()  + newline);
             } else {
-                log.append("±£´æÎÄ¼þ±»ÓÃ»§È¡Ïû£¡" + newline);
+                log.append("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ã»ï¿½È¡ï¿½ï¿½ï¿½ï¿½" + newline);
             }
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡Í¼Ïñ¶ÔÏó
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬Â·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼Æ¬¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Í¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = FileChooserDemo.class.getResource(path);
@@ -98,16 +93,16 @@ public class FileChooserDemo extends JPanel
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("FileChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ò»¸öÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         JComponent newContentPane = new FileChooserDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

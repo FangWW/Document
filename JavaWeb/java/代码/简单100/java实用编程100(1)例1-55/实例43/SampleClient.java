@@ -1,31 +1,29 @@
-import java.io.*;
-import java.net.*; 
 /**
- * <p>Title: ¼òµ¥·þÎñÆ÷¿Í»§¶Ë</p>
- * <p>Description: ±¾³ÌÐòÊÇÒ»¸ö¼òµ¥µÄ¿Í»§¶Ë£¬ÓÃÀ´ºÍ·þÎñÆ÷Á¬½Ó</p>
+ * <p>Title: ï¿½òµ¥·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½òµ¥µÄ¿Í»ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: SampleClient.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class SampleClient{
   public static void main(String[] arges){
     try{
-      //»ñÈ¡Ò»¸öIP¡£null±íÊ¾±¾»ú
+      //ï¿½ï¿½È¡Ò»ï¿½ï¿½IPï¿½ï¿½nullï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
       InetAddress addr = InetAddress.getByName(null);
-      //´ò¿ª8888¶Ë¿Ú£¬Óë·þÎñÆ÷½¨Á¢Á¬½Ó
+      //ï¿½ï¿½8888ï¿½Ë¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       Socket sk = new Socket (addr, 8888);
-      //»º´æÊäÈë
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       BufferedReader in = new BufferedReader (
                          new InputStreamReader (sk.getInputStream ()));
-      //»º´æÊä³ö
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       PrintWriter out = new PrintWriter (
                          new BufferedWriter(
                           new OutputStreamWriter(
                            sk.getOutputStream ())), true);
-     //Ïò·þÎñÆ÷·¢ËÍÐÅÏ¢
-     out.println ("ÄãºÃ£¡");
-     //½ÓÊÕ·þÎñÆ÷ÐÅÏ¢
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+     out.println ("ï¿½ï¿½Ã£ï¿½");
+     //ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
      System.out.println (in.readLine ());
     }catch(Exception e){
       System.out.println(e);

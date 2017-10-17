@@ -1,16 +1,12 @@
 /*
- * ÕâÊÇÓëºÃÓÑÁÄÌìµÄ½çÃæ
- * ÒòÎª¿Í»§¶ËÒª´¦ÓÚ¶ÁÈ¡µÄ×´Ì¬¡¢Òò´ËÎÒÃÇ°ÑËü×ö³ÉÒ»¸öÏß³Ì
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½Îªï¿½Í»ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ú¶ï¿½È¡ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³ï¿½
  */
 package com.qq.client.view;
 
-import com.qq.client.tools.*;
 import com.qq.client.model.*;
+import com.qq.client.tools.*;
 import com.qq.common.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
 public class QqChat extends JFrame implements ActionListener{
 
 	JTextArea jta;
@@ -30,7 +26,7 @@ public class QqChat extends JFrame implements ActionListener{
 		this.friendId=friend;
 		jta=new JTextArea();
 		jtf=new JTextField(15);
-		jb=new JButton("·¢ËÍ");
+		jb=new JButton("ï¿½ï¿½ï¿½ï¿½");
 		jb.addActionListener(this);
 		jp=new JPanel();
 		jp.add(jtf);
@@ -38,15 +34,15 @@ public class QqChat extends JFrame implements ActionListener{
 		
 		this.add(jta,"Center");
 		this.add(jp,"South");
-		this.setTitle(ownerId+"ÕýÔÚºÍ"+friend+"ÁÄÌì");
+		this.setTitle(ownerId+"ï¿½ï¿½ï¿½Úºï¿½"+friend+"ï¿½ï¿½ï¿½ï¿½");
 		this.setIconImage((new ImageIcon("image/qq.gif").getImage()));
 		this.setSize(300,200);
 		this.setVisible(true);
 	}
 	
-	//Ð´Ò»¸ö·½·¨£¬ÈÃËýÏÔÊ¾ÏûÏ¢
+	//Ð´Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
 	public void showMessage(Message m){
-		String info=m.getSender()+" ¶Ô "+m.getGetter()+" Ëµ£º  "+m.getCon()+"\r\n";
+		String info=m.getSender()+" ï¿½ï¿½ "+m.getGetter()+" Ëµï¿½ï¿½  "+m.getCon()+"\r\n";
 		this.jta.append(info);
 	}
 
@@ -54,14 +50,14 @@ public class QqChat extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==jb){
-			//Èç¹ûÓÃ»§µã»÷ÁË¡°·¢ËÍ¡±°´Å¥
+			//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ï¿½ï¿½Å¥
 			Message m=new Message();
 			m.setMesType(MessageType.message_comm_mes);
 			m.setSender(this.ownerId);
 			m.setGetter(this.friendId);
 			m.setCon(jtf.getText());
 			m.setSendTime(new java.util.Date().toString());
-			//·¢ËÍ¸ø·þÎñÆ÷
+			//ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			try {
 				ObjectOutputStream oos=new ObjectOutputStream
 				(ManageClientConServerThread.getClientConServerThread(ownerId).getS().getOutputStream());
@@ -80,11 +76,11 @@ public class QqChat extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		while(true){
 			try {
-				//¶ÁÈ¡(Èç¹û¶Á²»µ½¾ÍµÈ´ý)
+				//ï¿½ï¿½È¡(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÈ´ï¿½)
 				ObjectInputStream ois=new ObjectInputStream(QqClientCon.s.getInputStream());
 				Message m=(Message)ois.readObject();
-				//ÏÔÊ¾
-				String info=m.getSender()+" ¶Ô "+m.getGetter()+" Ëµ£º  "+m.getCon()+"\r\n";
+				//ï¿½ï¿½Ê¾
+				String info=m.getSender()+" ï¿½ï¿½ "+m.getGetter()+" Ëµï¿½ï¿½  "+m.getCon()+"\r\n";
 				this.jta.append(info);
 				
 			} catch (Exception e) {

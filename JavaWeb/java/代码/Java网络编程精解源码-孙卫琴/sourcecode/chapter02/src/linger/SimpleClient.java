@@ -1,26 +1,24 @@
 package linger;
-import java.io.*;
-import java.net.*;
 public class SimpleClient {
   public static void main(String args[])throws Exception {
     Socket s = new Socket("localhost",8000);
-    //s.setSoLinger(true,0);  //Socket¹Ø±Õºó£¬µ×²ãSocketÁ¢¼´¹Ø±Õ
-    //s.setSoLinger(true,3600);  //Socket¹Ø±Õºó£¬µ×²ãSocketÑÓ³Ù3600ÃëÔÙ¹Ø±Õ
+    //s.setSoLinger(true,0);  //Socketï¿½Ø±Õºó£¬µ×²ï¿½Socketï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½
+    //s.setSoLinger(true,3600);  //Socketï¿½Ø±Õºó£¬µ×²ï¿½Socketï¿½Ó³ï¿½3600ï¿½ï¿½ï¿½Ù¹Ø±ï¿½
     OutputStream out=s.getOutputStream();
     StringBuffer sb=new StringBuffer();
     for(int i=0;i<10000;i++)sb.append(i);
-    out.write(sb.toString().getBytes());  //·¢ËÍÒ»Íò¸ö×Ö·û
-    System.out.println("¿ªÊ¼¹Ø±ÕSocket");
+    out.write(sb.toString().getBytes());  //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+    System.out.println("ï¿½ï¿½Ê¼ï¿½Ø±ï¿½Socket");
     long begin=System.currentTimeMillis();
     s.close();
     long end=System.currentTimeMillis();
-    System.out.println("¹Ø±ÕSocketËùÓÃµÄÊ±¼äÎª:"+(end-begin)+"ms");    
+    System.out.println("ï¿½Ø±ï¿½Socketï¿½ï¿½ï¿½Ãµï¿½Ê±ï¿½ï¿½Îª:"+(end-begin)+"ms");    
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

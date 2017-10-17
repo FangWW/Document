@@ -1,6 +1,3 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
 public class SimpleServer {
   public void send(Object object)throws IOException{
     ServerSocket serverSocket = new ServerSocket(8000);
@@ -41,14 +38,14 @@ public class SimpleServer {
     }else{
       object="Hello";
     }
-    System.out.println("´ý·¢ËÍµÄ¶ÔÏóÐÅÏ¢£º"+object);
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½"+object);
     new SimpleServer().send(object);
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

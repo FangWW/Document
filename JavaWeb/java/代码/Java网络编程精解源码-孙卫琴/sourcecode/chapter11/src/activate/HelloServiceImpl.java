@@ -1,8 +1,5 @@
 package activate;
 import java.util.Date;
-import java.rmi.*;
-import java.rmi.activation.*;
-import java.io.*;
 
 public class HelloServiceImpl extends Activatable implements HelloService{
   private String name;
@@ -11,21 +8,21 @@ public class HelloServiceImpl extends Activatable implements HelloService{
     try{
       this.name=(String)data.get();
     }catch(Exception e){e.printStackTrace();}
-    System.out.println("´´½¨"+name);
+    System.out.println("ï¿½ï¿½ï¿½ï¿½"+name);
   }
   public String echo(String msg)throws RemoteException{
-    System.out.println(name+":µ÷ÓÃecho()·½·¨");
+    System.out.println(name+":ï¿½ï¿½ï¿½ï¿½echo()ï¿½ï¿½ï¿½ï¿½");
     return "echo:"+msg +" from "+name;
   }
   public Date getTime()throws RemoteException{
-    System.out.println(name+":µ÷ÓÃgetTime()·½·¨");
+    System.out.println(name+":ï¿½ï¿½ï¿½ï¿½getTime()ï¿½ï¿½ï¿½ï¿½");
     return new Date();
   }
 } 
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

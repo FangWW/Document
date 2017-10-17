@@ -1,6 +1,4 @@
-import java.sql.*;
 import javax.sql.DataSource;
-import java.io.*;
 public class DataSourceImpl implements DataSource{
   private ConnectionPool pool=new ConnectionPoolImpl2(); 
   public Connection getConnection()throws SQLException{return pool.getConnection();} 
@@ -23,7 +21,7 @@ public class DataSourceImpl implements DataSource{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

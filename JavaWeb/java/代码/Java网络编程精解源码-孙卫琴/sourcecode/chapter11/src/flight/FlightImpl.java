@@ -1,8 +1,5 @@
 package flight;
 
-import java.rmi.*;
-import java.rmi.server.*;
-
 public class FlightImpl extends UnicastRemoteObject implements Flight{
   protected String flightNumber;
   protected String origin;
@@ -20,7 +17,7 @@ public class FlightImpl extends UnicastRemoteObject implements Flight{
     skdArrival = aSkdArrival;
   }
   public String getFlightNumber()throws RemoteException{
-    System.out.println("µ÷ÓÃgetFilghtNumber()£¬·µ»Ø"+flightNumber);
+    System.out.println("ï¿½ï¿½ï¿½ï¿½getFilghtNumber()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+flightNumber);
     return flightNumber;
   }
 
@@ -59,7 +56,7 @@ public class FlightImpl extends UnicastRemoteObject implements Flight{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

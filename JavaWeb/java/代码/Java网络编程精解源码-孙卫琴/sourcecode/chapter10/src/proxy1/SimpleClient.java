@@ -1,16 +1,12 @@
 package proxy1;
-import java.io.*;
-import java.net.*;
-import java.util.*;
-
 public class SimpleClient {
   public static void main(String args[])throws Exception {
-     //´´½¨¾²Ì¬´úÀíÀàÊµÀý
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     HelloService helloService1=new HelloServiceProxy("localhost",8000);
     System.out.println(helloService1.echo("hello"));
     System.out.println(helloService1.getTime());
 
-    //´´½¨¶¯Ì¬´úÀíÀàÊµÀý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     HelloService helloService2=
          (HelloService)ProxyFactory.getProxy(HelloService.class,"localhost",8000);
     System.out.println(helloService2.echo("hello"));
@@ -20,7 +16,7 @@ public class SimpleClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

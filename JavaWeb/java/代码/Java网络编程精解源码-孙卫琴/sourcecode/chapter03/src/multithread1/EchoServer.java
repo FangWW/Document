@@ -1,22 +1,20 @@
 package multithread1;
-import java.io.*;
-import java.net.*;
 public class EchoServer {
   private int port=8000;
   private ServerSocket serverSocket;
 
   public EchoServer() throws IOException {
     serverSocket = new ServerSocket(port);
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() {
     while (true) {
       Socket socket=null;
       try {
-        socket = serverSocket.accept();  //½ÓÊÕ¿Í»§Á¬½Ó
-        Thread workThread=new Thread(new Handler(socket));  //´´½¨Ò»¸ö¹¤×÷Ïß³Ì
-        workThread.start();  //Æô¶¯¹¤×÷Ïß³Ì
+        socket = serverSocket.accept();  //ï¿½ï¿½ï¿½Õ¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½
+        Thread workThread=new Thread(new Handler(socket));  //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+        workThread.start();  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
       }catch (IOException e) {
          e.printStackTrace();
       }
@@ -70,7 +68,7 @@ class Handler implements Runnable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

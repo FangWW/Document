@@ -1,16 +1,14 @@
 package multithread4;
-import java.net.*;
-import java.io.*;
 public class AdminClient{
   public static void main(String args[]){
     Socket socket=null;
     try{
       socket=new Socket("localhost",8001);
-      //·¢ËÍ¹Ø±ÕÃüÁî
+      //ï¿½ï¿½ï¿½Í¹Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
       OutputStream socketOut=socket.getOutputStream();
       socketOut.write("shutdown\r\n".getBytes());
  
-      //½ÓÊÕ·þÎñÆ÷µÄ·´À¡
+      //ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
       BufferedReader br = new BufferedReader(
                                   new InputStreamReader(socket.getInputStream()));
       String msg=null;
@@ -28,7 +26,7 @@ public class AdminClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

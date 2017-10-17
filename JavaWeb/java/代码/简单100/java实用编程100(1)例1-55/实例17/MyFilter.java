@@ -1,12 +1,10 @@
 import java.io.File;
-import javax.swing.*;
-import javax.swing.filechooser.*;
 /**
- * <p>Title: ÎÄ¼þ¹ýÂËÆ÷ÑÝÊ¾</p>
- * <p>Description: FileChooserDemoÎÄ¼þÊ¹ÓÃµÄÎÄ¼þ¹ýÂËÆ÷</p>
+ * <p>Title: ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: FileChooserDemoï¿½Ä¼ï¿½Ê¹ï¿½Ãµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: MyFilter.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 
@@ -20,7 +18,7 @@ public class MyFilter extends FileFilter {
         String extension = getExtension(f);
         if (extension != null) {
             
-            if (extension.equals("java")) {//¶¨Òå¹ýÂËJavaÎÄ¼þ
+            if (extension.equals("java")) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Javaï¿½Ä¼ï¿½
                     return true;
             } else {
                 return false;
@@ -31,14 +29,14 @@ public class MyFilter extends FileFilter {
         return false;
     }
 
-    //¹ýÂËÆ÷ÃèÊö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public String getDescription() {
         return "Java";
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡ÎÄ¼þÀ©Õ¹Ãû
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static String getExtension(File f) {
         String ext = null;

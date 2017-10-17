@@ -1,41 +1,38 @@
-import javax.swing.JOptionPane;
-import javax.swing.JDialog;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.BoxLayout;
-import javax.swing.Box;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
-import javax.swing.JTabbedPane;
-import javax.swing.JPanel;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
-import java.beans.*; 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
+import javax.swing.border.Border;
 
 /**
- * <p>Title: ¶Ô»°¿òÑÝÊ¾</p>
- * <p>Description: È«ÃæµÄÑÝÊ¾¸÷ÖÖÀàÐÍµÄ¶Ô»°¿òµÄÊ¹ÓÃ</p>
+ * <p>Title: ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: È«ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¶Ô»ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: DialogDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class DialogDemo extends JPanel {
     JLabel label;
     ImageIcon icon = createImageIcon("images/middle.gif");
     JFrame frame;
-    String simpleDialogDesc = "¼òµ¥µÄÐÅÏ¢ÌáÊ¾¶Ô»°´°";
-    String iconDesc = "´øÓÐÍ¼±êµÄ¶Ô»°´°";
-    String moreDialogDesc = "¸´ÔÓÐÅÏ¢¶Ô»°´°";
+    String simpleDialogDesc = "ï¿½òµ¥µï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½Ô»ï¿½ï¿½ï¿½";
+    String iconDesc = "ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ä¶Ô»ï¿½ï¿½ï¿½";
+    String moreDialogDesc = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ô»ï¿½ï¿½ï¿½";
     CustomDialog customDialog;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬Éú³ÉÒ»¸öÃæ°åÌí¼Óµ½JFrameÖÐ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½JFrameï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public DialogDemo(JFrame frame) {
         super(new BorderLayout());
@@ -43,28 +40,28 @@ public class DialogDemo extends JPanel {
         customDialog = new CustomDialog(frame, "tom", this);
         customDialog.pack();
 
-        //´´½¨³ÉÔ±
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±
         JPanel frequentPanel = createSimpleDialogBox();
         JPanel featurePanel = createFeatureDialogBox();
         JPanel iconPanel = createIconDialogBox();
-        label = new JLabel("µã»÷\"ÏÔÊ¾\" °´Å¥"
-                           + " ÏÔÊ¾Ò»¸öÑ¡ÔñµÄ¶Ô»°¿ò",
+        label = new JLabel("ï¿½ï¿½ï¿½\"ï¿½ï¿½Ê¾\" ï¿½ï¿½Å¥"
+                           + " ï¿½ï¿½Ê¾Ò»ï¿½ï¿½Ñ¡ï¿½ï¿½Ä¶Ô»ï¿½ï¿½ï¿½",
                            JLabel.CENTER);
 
-        //·ÅÖÃ¶ÔÏó
+        //ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½
         Border padding = BorderFactory.createEmptyBorder(20,20,5,20);
         frequentPanel.setBorder(padding);
         featurePanel.setBorder(padding);
         iconPanel.setBorder(padding);
-        //´´½¨Ñ¡Ïî¿¨
+        //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½î¿¨
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("¼òµ¥¶Ô»°´°", null,
+        tabbedPane.addTab("ï¿½òµ¥¶Ô»ï¿½ï¿½ï¿½", null,
                           frequentPanel,
                           simpleDialogDesc); 
-        tabbedPane.addTab("¸´ÔÓ¶Ô»°´°", null,
+        tabbedPane.addTab("ï¿½ï¿½ï¿½Ó¶Ô»ï¿½ï¿½ï¿½", null,
                           featurePanel,
                           moreDialogDesc);
-        tabbedPane.addTab("Í¼±ê¶Ô»°´°", null,
+        tabbedPane.addTab("Í¼ï¿½ï¿½Ô»ï¿½ï¿½ï¿½", null,
                           iconPanel,
                           iconDesc);
 
@@ -73,17 +70,17 @@ public class DialogDemo extends JPanel {
         label.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃ°´Å¥ÉÏµÄÎÄ×Ö
- *<br>ÊäÈë²ÎÊý£ºString newText Ìí¼ÓµÄÎÄ×Ö
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½Å¥ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String newText ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     void setLabel(String newText) {
         label.setText(newText);
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡Í¼Æ¬
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬ÍêÕûÂ·¾¶ºÍÃû×Ö
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼Æ¬¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Í¼Æ¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = DialogDemo.class.getResource(path);
@@ -95,9 +92,9 @@ public class DialogDemo extends JPanel {
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º´´½¨Ò»¸öJPanel£¬¸øµÚÒ»¸öÑ¡Ïî¿¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½JPanelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ñ¡ï¿½î¿¨
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     private JPanel createSimpleDialogBox() {
         final int numButtons = 4;
@@ -110,93 +107,93 @@ public class DialogDemo extends JPanel {
         final String yesNoCommand = "yesno";
         final String yeahNahCommand = "yeahnah";
         final String yncCommand = "ync";
-        //Ìí¼Óµ¥Ñ¡µ½Êý×Ö
-        radioButtons[0] = new JRadioButton("Ö»ÓÐ¡°OK¡±°´Å¥");
+        //ï¿½ï¿½Óµï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        radioButtons[0] = new JRadioButton("Ö»ï¿½Ð¡ï¿½OKï¿½ï¿½ï¿½ï¿½Å¥");
         radioButtons[0].setActionCommand(defaultMessageCommand);
 
-        radioButtons[1] = new JRadioButton("ÓÐ¡°Yes/No¡±¶þ¸ö°´Å¥");
+        radioButtons[1] = new JRadioButton("ï¿½Ð¡ï¿½Yes/Noï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥");
         radioButtons[1].setActionCommand(yesNoCommand);
 
-        radioButtons[2] = new JRadioButton("ÓÐ¡°Yes/No¡±Á½¸ö°´Å¥ "
-                      + "(³ÌÐòÌí¼ÓÎÄ×Ö)");
+        radioButtons[2] = new JRadioButton("ï¿½Ð¡ï¿½Yes/Noï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ "
+                      + "(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)");
         radioButtons[2].setActionCommand(yeahNahCommand);
 
-        radioButtons[3] = new JRadioButton("ÓÐ¡°Yes/No/Cancel¡±Èý¸ö°´Å¥ "
-                           + "(³ÌÐòÌí¼ÓÎÄ×Ö)");
+        radioButtons[3] = new JRadioButton("ï¿½Ð¡ï¿½Yes/No/Cancelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ "
+                           + "(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)");
         radioButtons[3].setActionCommand(yncCommand);
-        //½«ËÄ¸öµ¥Ñ¡×é³ÉÒ»¸öÈº
+        //ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Èº
         for (int i = 0; i < numButtons; i++) {
             group.add(radioButtons[i]);
         }
-        //ÉèÖÃµÚÒ»¸öÎªÄ¬ÈÏÑ¡Ôñ
+        //ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ÎªÄ¬ï¿½ï¿½Ñ¡ï¿½ï¿½
         radioButtons[0].setSelected(true);
-        //¶¨Òå¡°ÏÔÊ¾¡±°´Å¥
-        showItButton = new JButton("ÏÔÊ¾");
-        //¸ø¡°ÏÔÊ¾¡±°´Å¥Ìí¼Ó¼àÌý
+        //ï¿½ï¿½ï¿½å¡°ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Å¥
+        showItButton = new JButton("ï¿½ï¿½Ê¾");
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½
         showItButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String command = group.getSelection().getActionCommand();
 
-                //ok¶Ô»°´°
+                //okï¿½Ô»ï¿½ï¿½ï¿½
                 if (command == defaultMessageCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                "¼¦µ°²»¿ÉÄÜÊÇÂÌÉ«µÄ£¡");
+                                "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½Ä£ï¿½");
 
-                //yes/no ¶Ô»°´°
+                //yes/no ï¿½Ô»ï¿½ï¿½ï¿½
                 } else if (command == yesNoCommand) {
                     int n = JOptionPane.showConfirmDialog(
-                            frame, "ÄãÏ²»¶³ÔËá²ËÓãÂð?",
-                            "Ò»¸öºÜÎÞÁÄµÄÎÊÌâ£¡£¡",
+                            frame, "ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?",
+                            "Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½â£¡ï¿½ï¿½",
                             JOptionPane.YES_NO_OPTION);
-                    if (n == JOptionPane.YES_OPTION) {//Ñ¡Ôñyes
-                        setLabel("ÍÛ£¡ÎÒÒ²ÊÇ£¡");
-                    } else if (n == JOptionPane.NO_OPTION) {//Ñ¡Ôñno
-                        setLabel("°¦£¡ÎÒÏ²»¶³Ô£¡");
+                    if (n == JOptionPane.YES_OPTION) {//Ñ¡ï¿½ï¿½yes
+                        setLabel("ï¿½Û£ï¿½ï¿½ï¿½Ò²ï¿½Ç£ï¿½");
+                    } else if (n == JOptionPane.NO_OPTION) {//Ñ¡ï¿½ï¿½no
+                        setLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ô£ï¿½");
                     } else {
-                        setLabel("¿ì¸æËßÎÒ°É£¡");
+                        setLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò°É£ï¿½");
                     }
 
-                //yes/no (×Ô¼ºÊäÈëÑ¡Ïî)
+                //yes/no (ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½)
                 } else if (command == yeahNahCommand) {
-                    Object[] options = {"ÊÇµÄ", "²»Ï²»¶"};
+                    Object[] options = {"ï¿½Çµï¿½", "ï¿½ï¿½Ï²ï¿½ï¿½"};
                     int n = JOptionPane.showOptionDialog(frame,
-                                    "ÄãÏ²»¶Ëá²ËÓãÂð?",
-                                    "ÓÖÒ»¸öÎÞÁÄµÄÎÊÌâ£¡",
+                                    "ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?",
+                                    "ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½â£¡",
                                     JOptionPane.YES_NO_OPTION,
                                     JOptionPane.QUESTION_MESSAGE,
                                     null,
                                     options,
                                     options[0]);
                     if (n == JOptionPane.YES_OPTION) {
-                        setLabel("ÄãºåÈËµÄ°É£¬ÎÒÒ²Ï²»¶¡£");
+                        setLabel("ï¿½ï¿½ï¿½ï¿½ËµÄ°É£ï¿½ï¿½ï¿½Ò²Ï²ï¿½ï¿½ï¿½ï¿½");
                     } else if (n == JOptionPane.NO_OPTION) {
-                        setLabel("ÆäÊµÎÒÒ²²»Ï²»¶£¡");
+                        setLabel("ï¿½ï¿½Êµï¿½ï¿½Ò²ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½");
                     } else {
-                        setLabel("Õâ¶¼²»¿Ï¸æËßÎÒ£¬Ð¡Æø¹í£¡");
+                        setLabel("ï¿½â¶¼ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½Ò£ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½");
                     }
 
-                //yes/no/cancel ¶Ô»°¿ò
+                //yes/no/cancel ï¿½Ô»ï¿½ï¿½ï¿½
                 } else if (command == yncCommand) {
-                    Object[] options = {"ÊÇµÄ£¬¸øÎÒÀ´Ò»·Ý¡£",
-                                        "²»£¬Ð»Ð»£¡",
-                                        "²»£¬ÎÒÒªË®ÖóÓã£¡"};
-                    //¹¹Ôì¶Ô»°¿ò
+                    Object[] options = {"ï¿½ÇµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ý¡ï¿½",
+                                        "ï¿½ï¿½ï¿½ï¿½Ð»Ð»ï¿½ï¿½",
+                                        "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªË®ï¿½ï¿½ï¿½ã£¡"};
+                    //ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
                     int n = JOptionPane.showOptionDialog(frame,
-                                    "ÏÈÉú£¡ÎÒÃÇÕâÀïÓÐÏÊÃÀµÄËá²ËÓã£¬ÄúÐèÒªÂð£¿",
-                                    "·þÎñÉúµÄÎÊÌâ¡£",
+                                    "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½",
+                                    "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£",
                                     JOptionPane.YES_NO_CANCEL_OPTION,
                                     JOptionPane.QUESTION_MESSAGE,
                                     null,
                                     options,
                                     options[2]);
                     if (n == JOptionPane.YES_OPTION) {
-                        setLabel("ÄãÒªµÄËá²ËÓãÀ´ÁË£¡");
+                        setLabel("ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½");
                     } else if (n == JOptionPane.NO_OPTION) {
-                        setLabel("ºÃµÄ£¬ÄãÐèÒªÆäËüµÄ¡£");
+                        setLabel("ï¿½ÃµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½");
                     } else if (n == JOptionPane.CANCEL_OPTION) {
-                        setLabel("ºÃµÄ£¬ÎÒÃÇ¸øÄã×öË®ÖóÓã£¡");
+                        setLabel("ï¿½ÃµÄ£ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ã£¡");
                     } else {
-                        setLabel("¶Ô²»Æð£¡Äã»¹Ã»ÓÐµã²ËÄØ£¡");
+                        setLabel("ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ã»¹Ã»ï¿½Ðµï¿½ï¿½ï¿½Ø£ï¿½");
                     }
                 }
                 return;
@@ -208,12 +205,12 @@ public class DialogDemo extends JPanel {
                           showItButton);
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÌá¹©¸øcreateSimpleDialogBoxºÍcreateFeatureDialogBox·½·¨
- *<br>·½·¨ËµÃ÷£º´´½¨´øÌáÊ¾ÐÅÏ¢¡¢Ò»ÁÐµ¥Ñ¡¿òºÍ¡°ÏÔÊ¾¡±°´Å¥
- *<br>ÊäÈë²ÎÊý£ºString description ÌáÊ¾°ïÖúÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£ºJRadioButton[] radioButtons µ¥Ñ¡¿ò×é
- *<br>ÊäÈë²ÎÊý£ºJButton showButton ¡°ÏÔÊ¾¡±°´Å¥
- *<br>·µ»ØÀàÐÍ£ºJPanel Ìí¼ÓºÃµÄÃæ°å
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½createSimpleDialogBoxï¿½ï¿½createFeatureDialogBoxï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½Ò»ï¿½Ðµï¿½Ñ¡ï¿½ï¿½Í¡ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Å¥
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String description ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JRadioButton[] radioButtons ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JButton showButton ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Å¥
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½JPanel ï¿½ï¿½ÓºÃµï¿½ï¿½ï¿½ï¿½
  */
     private JPanel createPane(String description,
                               JRadioButton[] radioButtons,
@@ -225,7 +222,7 @@ public class DialogDemo extends JPanel {
 
         box.setLayout(new BoxLayout(box, BoxLayout.PAGE_AXIS));
         box.add(label);
-        //Ìí¼Óradio
+        //ï¿½ï¿½ï¿½radio
         for (int i = 0; i < numChoices; i++) {
             box.add(radioButtons[i]);
         }
@@ -236,12 +233,12 @@ public class DialogDemo extends JPanel {
         return pane;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÌá¹©¸øcreateSimpleDialogBoxºÍcreateFeatureDialogBox·½·¨
- *<br>·½·¨ËµÃ÷£º´´½¨´øÌáÊ¾ÐÅÏ¢¡¢¶þÁÐµ¥Ñ¡¿òºÍ¡°ÏÔÊ¾¡±°´Å¥
- *<br>ÊäÈë²ÎÊý£ºString description ÌáÊ¾°ïÖúÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£ºJRadioButton[] radioButtons µ¥Ñ¡¿ò×é
- *<br>ÊäÈë²ÎÊý£ºJButton showButton ¡°ÏÔÊ¾¡±°´Å¥
- *<br>·µ»ØÀàÐÍ£ºJPanel Ìí¼ÓºÃµÄÃæ°å
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½createSimpleDialogBoxï¿½ï¿½createFeatureDialogBoxï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ñ¡ï¿½ï¿½Í¡ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Å¥
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String description ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JRadioButton[] radioButtons ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JButton showButton ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Å¥
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½JPanel ï¿½ï¿½ÓºÃµï¿½ï¿½ï¿½ï¿½
  */
      private JPanel create2ColPane(String description,
                                   JRadioButton[] radioButtons,
@@ -268,10 +265,10 @@ public class DialogDemo extends JPanel {
         return pane;
     }
 /**
- *<br>·½·¨ËµÃ÷£º´´½¨µÚÈý¸öÑ¡Ïî¿¨µÄÃæ°å
- *<br>·½·¨ËµÃ÷£ºÕâÀï¶¼ÊÇÊµÏÖshowMessageDialogÀà£¬µ«ÊÇÒ²¿ÉÒÔÖ¸¶¨Í¼±ê
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºJPanel ¹¹ÔìºÃµÄÃæ°å
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¶¼ï¿½ï¿½Êµï¿½ï¿½showMessageDialogï¿½à£¬ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Í¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½JPanel ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½
  */
 
     private JPanel createIconDialogBox() {
@@ -288,22 +285,22 @@ public class DialogDemo extends JPanel {
         final String warningCommand = "warning";
         final String customCommand = "custom";
 
-        radioButtons[0] = new JRadioButton("ÆÕÍ¨£¨Ã»ÓÐÍ¼±ê£©");
+        radioButtons[0] = new JRadioButton("ï¿½ï¿½Í¨ï¿½ï¿½Ã»ï¿½ï¿½Í¼ï¿½ê£©");
         radioButtons[0].setActionCommand(plainCommand);
 
-        radioButtons[1] = new JRadioButton("ÐÅÏ¢Í¼±ê");
+        radioButtons[1] = new JRadioButton("ï¿½ï¿½Ï¢Í¼ï¿½ï¿½");
         radioButtons[1].setActionCommand(infoCommand);
 
-        radioButtons[2] = new JRadioButton("ÎÊÌâÍ¼±ê");
+        radioButtons[2] = new JRadioButton("ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½");
         radioButtons[2].setActionCommand(questionCommand);
 
-        radioButtons[3] = new JRadioButton("´íÎóÍ¼±ê");
+        radioButtons[3] = new JRadioButton("ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½");
         radioButtons[3].setActionCommand(errorCommand);
 
-        radioButtons[4] = new JRadioButton("¾¯¸æÍ¼±ê");
+        radioButtons[4] = new JRadioButton("ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½");
         radioButtons[4].setActionCommand(warningCommand);
 
-        radioButtons[5] = new JRadioButton("×Ô¶¨ÒåÍ¼±ê");
+        radioButtons[5] = new JRadioButton("ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½ï¿½");
         radioButtons[5].setActionCommand(customCommand);
 
         for (int i = 0; i < numButtons; i++) {
@@ -311,47 +308,47 @@ public class DialogDemo extends JPanel {
         }
         radioButtons[0].setSelected(true);
 
-        showItButton = new JButton("ÏÔÊ¾");
+        showItButton = new JButton("ï¿½ï¿½Ê¾");
         showItButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String command = group.getSelection().getActionCommand();
 
-                //Ã»ÓÐÍ¼±ê
+                //Ã»ï¿½ï¿½Í¼ï¿½ï¿½
                 if (command == plainCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                    "Ë®ÖóÓãÀï²»Òª·ÅËá²Ë£¡",
-                                    "ÎÞÍ¼±ê",
+                                    "Ë®ï¿½ï¿½ï¿½ï¿½ï¿½ï²»Òªï¿½ï¿½ï¿½ï¿½Ë£ï¿½",
+                                    "ï¿½ï¿½Í¼ï¿½ï¿½",
                                     JOptionPane.PLAIN_MESSAGE);
-                //ÐÅÏ¢Í¼±ê
+                //ï¿½ï¿½Ï¢Í¼ï¿½ï¿½
                 } else if (command == infoCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                    "Ë®ÖóÓãÀï²»Òª·ÅËá²Ë£¡",
-                                    "ÐÅÏ¢Í¼±ê",
+                                    "Ë®ï¿½ï¿½ï¿½ï¿½ï¿½ï²»Òªï¿½ï¿½ï¿½ï¿½Ë£ï¿½",
+                                    "ï¿½ï¿½Ï¢Í¼ï¿½ï¿½",
                                     JOptionPane.INFORMATION_MESSAGE);
 
-                //ÎÊÌâÍ¼±ê
+                //ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
                 } else if (command == questionCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                    "ÇëÄã³Ô·¹Ç°Ï´ÊÖ£¬ºÃÂð£¿",
-                                    "ÎÊÌâ",
+                                    "ï¿½ï¿½ï¿½ï¿½Ô·ï¿½Ç°Ï´ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½",
+                                    "ï¿½ï¿½ï¿½ï¿½",
                                     JOptionPane.QUESTION_MESSAGE);
-                //´íÎóÍ¼±ê
+                //ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
                 } else if (command == errorCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                    "¶Ô²»Æð£¬ÄãµÄÐÅÓÃ¿¨Ã»ÓÐ×Ê½ðÁË£¡",
-                                    "´íÎóÐÅÏ¢",
+                                    "ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Ã»ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ë£ï¿½",
+                                    "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢",
                                     JOptionPane.ERROR_MESSAGE);
-                //¾¯¸æÍ¼±ê
+                //ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
                 } else if (command == warningCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                    "¾¯¸æ£¡ÄãÑÏÖØÍ¸Ö§ÐÅÓÃ¿¨£¬Çë¾¡¿ì²¹Æë½ð¶î£¡",
-                                    "¾¯¸æÐÅÏ¢",
+                                    "ï¿½ï¿½ï¿½æ£¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸Ö§ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ë¾¡ï¿½ì²¹ï¿½ï¿½ï¿½î£¡",
+                                    "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢",
                                     JOptionPane.WARNING_MESSAGE);
-                //×Ô¶¨ÒåÍ¼±ê
+                //ï¿½Ô¶ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
                 } else if (command == customCommand) {
                     JOptionPane.showMessageDialog(frame,
-                                    "¹þ¹þ¡£ÎÒÏëÓÃÊ²Ã´Í¼±ê¶¼¿ÉÒÔ£¡",
-                                    "×Ô¶¨Òå¶Ô»°´°",
+                                    "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê²Ã´Í¼ï¿½ê¶¼ï¿½ï¿½ï¿½Ô£ï¿½",
+                                    "ï¿½Ô¶ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½",
                                     JOptionPane.INFORMATION_MESSAGE,
                                     icon);
                 }
@@ -363,9 +360,9 @@ public class DialogDemo extends JPanel {
                               showItButton);
     }
 /**
- *<br>·½·¨ËµÃ÷£º´´½¨Ò»¸öJPanel£¬·ÅÔÚµÚ¶þ¸öÑ¡Ïî¿¨ÉÏ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½JPanelï¿½ï¿½ï¿½ï¿½ï¿½ÚµÚ¶ï¿½ï¿½ï¿½Ñ¡ï¿½î¿¨ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     private JPanel createFeatureDialogBox() {
         final int numButtons = 5;
@@ -373,107 +370,107 @@ public class DialogDemo extends JPanel {
         final ButtonGroup group = new ButtonGroup();
 
         JButton showItButton = null;
-        //¶¨Òå²Ù×÷ÃüÁî
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         final String pickOneCommand = "pickone";
         final String textEnteredCommand = "textfield";
         final String nonAutoCommand = "nonautooption";
         final String customOptionCommand = "customoption";
         final String nonModalCommand = "nonmodal";
-        //¶¨ÒåradioÊý×é
-        radioButtons[0] = new JRadioButton("Ñ¡ÔñÒ»¸ö");
+        //ï¿½ï¿½ï¿½ï¿½radioï¿½ï¿½ï¿½ï¿½
+        radioButtons[0] = new JRadioButton("Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½");
         radioButtons[0].setActionCommand(pickOneCommand);
 
-        radioButtons[1] = new JRadioButton("ÊäÈëÐÅÏ¢");
+        radioButtons[1] = new JRadioButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢");
         radioButtons[1].setActionCommand(textEnteredCommand);
 
-        radioButtons[2] = new JRadioButton("¹Ø±Õ°´Å¥ÎÞÐ§");
+        radioButtons[2] = new JRadioButton("ï¿½Ø±Õ°ï¿½Å¥ï¿½ï¿½Ð§");
         radioButtons[2].setActionCommand(nonAutoCommand);
 
-        radioButtons[3] = new JRadioButton("ÊäÈëÐ£Ñé"
-                                           + "(ÓÃ»§ÊäÈëÐÅÏ¢)");
+        radioButtons[3] = new JRadioButton("ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½"
+                                           + "(ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢)");
         radioButtons[3].setActionCommand(customOptionCommand);
 
-        radioButtons[4] = new JRadioButton("Ã»ÓÐÄ£Ê½");
+        radioButtons[4] = new JRadioButton("Ã»ï¿½ï¿½Ä£Ê½");
         radioButtons[4].setActionCommand(nonModalCommand);
-        //ºÏ³ÉÒ»¸ö×éÈº
+        //ï¿½Ï³ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Èº
         for (int i = 0; i < numButtons; i++) {
             group.add(radioButtons[i]);
         }
-        //ÉèÖÃµÚÒ»¸öÎªÄ¬ÈÏÑ¡Ôñ
+        //ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ÎªÄ¬ï¿½ï¿½Ñ¡ï¿½ï¿½
         radioButtons[0].setSelected(true);
 
-        showItButton = new JButton("ÏÔÊ¾");
+        showItButton = new JButton("ï¿½ï¿½Ê¾");
         showItButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String command = group.getSelection().getActionCommand();
 
-                //Ñ¡ÔñÒ»¸ö
+                //Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½
                 if (command == pickOneCommand) {
-                    Object[] possibilities = {"À±½·", "Î÷ºìÊÁ", "Ñó´Ð"};
-                    //ÉèÖÃ¶Ô»°¿ò
+                    Object[] possibilities = {"ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½"};
+                    //ï¿½ï¿½ï¿½Ã¶Ô»ï¿½ï¿½ï¿½
                     String s = (String)JOptionPane.showInputDialog(
-                                        frame,    //ËùÊô´°Ìå
-                                        "ÇëÑ¡ÔñÏîÄ¿£º\n"
-                                        + "\"¼¦µ°³´\"",  //Êä³öÐÅÏ¢
-                                        "¿Í»§Ñ¡Ôñ",
-                                        JOptionPane.PLAIN_MESSAGE,  //¶Ô»°¿òÄ£Ê½
-                                        icon,           //ÏÔÊ¾Í¼±ê
-                                        possibilities,   //Ñ¡ÏîÄÚÈÝ
-                                        "À±½·");    //Ä¬ÈÏÑ¡Ïî
+                                        frame,    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                                        "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½\n"
+                                        + "\"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\"",  //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+                                        "ï¿½Í»ï¿½Ñ¡ï¿½ï¿½",
+                                        JOptionPane.PLAIN_MESSAGE,  //ï¿½Ô»ï¿½ï¿½ï¿½Ä£Ê½
+                                        icon,           //ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
+                                        possibilities,   //Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                                        "ï¿½ï¿½ï¿½ï¿½");    //Ä¬ï¿½ï¿½Ñ¡ï¿½ï¿½
 
-                    //Èç¹ûÓÐÑ¡Ôñ
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
                     if ((s != null) && (s.length() > 0)) {
-                        setLabel("¼¦µ°³´" + s + "!");
+                        setLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + s + "!");
                         return;
                     }
 
-                    //Èç¹û¿Í»§Ã»ÓÐÑ¡Ôñ
-                    setLabel("¿ìµã£¡");
+                    //ï¿½ï¿½ï¿½ï¿½Í»ï¿½Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½
+                    setLabel("ï¿½ï¿½ã£¡");
 
-                //ÎÄ±¾ÊäÈë
+                //ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
                 } else if (command == textEnteredCommand) {
                     String s = (String)JOptionPane.showInputDialog(
                                         frame,
-                                        "Ñ¡ÔñÒ»¸öÅäÁÏ\n"
-                                        + "\"¼¦µ°³´\"",
-                                        "¿Í»§ÊäÈë",
+                                        "Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n"
+                                        + "\"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\"",
+                                        "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½",
                                         JOptionPane.PLAIN_MESSAGE,
                                         icon,
                                         null,
-                                        "À±½·");
+                                        "ï¿½ï¿½ï¿½ï¿½");
 
-                    //Èç¹ûÓÃ»§ÓÐÊäÈë
+                    //ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     if ((s != null) && (s.length() > 0)) {
-                        setLabel("ÄãÒªµÄÊÇ¼¦µ°³´" + s + "£¡");
+                        setLabel("ï¿½ï¿½Òªï¿½ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½" + s + "ï¿½ï¿½");
                         return;
                     }
 
-                    //Èç¹û·µ»ØµÄÊÇ¿Õ»òÕßÊÇnull¡£
-                    setLabel("¿ìÐ©Ñ¡Ôñ£¡");
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½Ç¿Õ»ï¿½ï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½
+                    setLabel("ï¿½ï¿½Ð©Ñ¡ï¿½ï¿½");
 
-                //¹Ø±Õ°´Å¥ÎÞÐ§
+                //ï¿½Ø±Õ°ï¿½Å¥ï¿½ï¿½Ð§
                 } else if (command == nonAutoCommand) {
-                    //¹¹ÔìÒ»¸ö¶Ô»°¿òÃæ°å
+                    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     final JOptionPane optionPane = new JOptionPane(
-                                    "¹Ø±ÕÕâ¸ö¶Ô»°¿ò\n"
-                                    + "Çëµã»÷ÏÂÃæµÄ°´Å¥\n"
-                                    + "Ã÷°×Âð£¿",
+                                    "ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½\n"
+                                    + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½Å¥\n"
+                                    + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",
                                     JOptionPane.QUESTION_MESSAGE,
                                     JOptionPane.YES_NO_OPTION);
 
                     JDialog.setDefaultLookAndFeelDecorated(false);
-                    //¹¹ÔìÒ»¸ö¶Ô»°¿ò
+                    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
                     final JDialog dialog = new JDialog(frame,
-                                                 "µã»÷Ò»¸ö°´Å¥",
+                                                 "ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Å¥",
                                                  true);
-                    //½«¶Ô»°¿òÃæ°åÌí¼Óµ½¶Ô»°¿òÖÐ
+                    //ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
                     dialog.setContentPane(optionPane);
-                    //ÉèÖÃ¶Ô»°¿ò¹Ø±ÕÊ±µÄ²Ù×÷Ä£Ê½
+                    //ï¿½ï¿½ï¿½Ã¶Ô»ï¿½ï¿½ï¿½Ø±ï¿½Ê±ï¿½Ä²ï¿½ï¿½ï¿½Ä£Ê½
                     dialog.setDefaultCloseOperation(
                         JDialog.DO_NOTHING_ON_CLOSE);
                     dialog.addWindowListener(new WindowAdapter() {
-                        public void windowClosing(WindowEvent we) { //µ±µã»÷¹Ø±Õ°´Å¥
-                            setLabel("×è°­ÓÃ»§ÊÓÍ¼¹Ø±Õ´°Ìå£¡");
+                        public void windowClosing(WindowEvent we) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õ°ï¿½Å¥
+                            setLabel("ï¿½è°­ï¿½Ã»ï¿½ï¿½ï¿½Í¼ï¿½Ø±Õ´ï¿½ï¿½å£¡");
                         }
                     });
                     
@@ -487,7 +484,7 @@ public class DialogDemo extends JPanel {
                                 if (dialog.isVisible()
                                  && (e.getSource() == optionPane)
                                  && (JOptionPane.VALUE_PROPERTY.equals(prop))) {
-                                    //Èç¹ûÄãÒª×èÖ¹¹Ø±Õ°´Å¥£¬¿ÉÒÔÔÚÕâÀï½øÐÐ´¦Àí¡£
+                                    //ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ö¹ï¿½Ø±Õ°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½
                                     
                                     dialog.setVisible(false);
                                 }
@@ -499,15 +496,15 @@ public class DialogDemo extends JPanel {
                     
                     int value = ((Integer)optionPane.getValue()).intValue();
                     if (value == JOptionPane.YES_OPTION) {
-                        setLabel("ºÃµÄ");
+                        setLabel("ï¿½Ãµï¿½");
                     } else if (value == JOptionPane.NO_OPTION) {
-                        setLabel("ÊÔÍ¼µã»÷¹Ø±Õ°´Å¥À´¹Ø±ÕÒ»¸ö²»ÄÜ¹Ø±ÕµÄ¶Ô»°¿ò£¡"
-                                 + "Äã²»ÄÜ£¡");
+                        setLabel("ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ø±Õ°ï¿½Å¥ï¿½ï¿½ï¿½Ø±ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ü¹Ø±ÕµÄ¶Ô»ï¿½ï¿½ï¿½"
+                                 + "ï¿½ã²»ï¿½Ü£ï¿½");
                     } else {
-                        setLabel("´°Ìå¿ÉÒÔÊ¹ÓÃESC¼ü¹Ø±Õ¡£");
+                        setLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ESCï¿½ï¿½ï¿½Ø±Õ¡ï¿½");
                     }
 
-                 //×Ô¼º¶¨Òå°æÃæ
+                 //ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 } else if (command == customOptionCommand) {
                     customDialog.setLocationRelativeTo(frame);
                     customDialog.setVisible(true);
@@ -515,29 +512,29 @@ public class DialogDemo extends JPanel {
                     String s = customDialog.getValidatedText();
                     if (s != null) {
                         //The text is valid.
-                        setLabel("»¶Ó­Äã£¡"
-                                 + "ÄãÒÑ¾­½øÈëÁË\""
+                        setLabel("ï¿½ï¿½Ó­ï¿½ã£¡"
+                                 + "ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\""
                                  + s
-                                 + "\"¡£");
+                                 + "\"ï¿½ï¿½");
                     }
 
-                //Ã»ÓÐÄ£Ê½
+                //Ã»ï¿½ï¿½Ä£Ê½
                 } else if (command == nonModalCommand) {
-                    //´´½¨Ò»¸ö¶Ô»°¿ò
+                    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
                     final JDialog dialog = new JDialog(frame,
-                                                       "Ò»¸öÃ»ÓÐÄ£Ê½µÄ¶Ô»°¿ò");
-                    //Ê¹ÓÃhtmlÓïÑÔÀ´ÏÔÊ¾ÐÅÏ¢
+                                                       "Ò»ï¿½ï¿½Ã»ï¿½ï¿½Ä£Ê½ï¿½Ä¶Ô»ï¿½ï¿½ï¿½");
+                    //Ê¹ï¿½ï¿½htmlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
                     JLabel label = new JLabel("<html><p align=center>"
-                        + "ÕâÊÇÒ»¸öÃ»ÓÐÄ£Ê½µÄ¶Ô»°¿ò<br>"
-                        + "Äã¿ÉÒÔÊ¹ÓÃ¸ü¶àµÄ¸ñÊ½<br>"
-                        + "ÉõÖÁ¿ÉÒÔÊ¹ÓÃÖ÷´°Ìå£¡");
+                        + "ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ã»ï¿½ï¿½Ä£Ê½ï¿½Ä¶Ô»ï¿½ï¿½ï¿½<br>"
+                        + "ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¸ï¿½ï¿½ï¿½Ä¸ï¿½Ê½<br>"
+                        + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£¡");
                     label.setHorizontalAlignment(JLabel.CENTER);
                     Font font = label.getFont();
                     
                     label.setFont(label.getFont().deriveFont(font.PLAIN,
                                                              14.0f));
 
-                    JButton closeButton = new JButton("¹Ø±Õ");
+                    JButton closeButton = new JButton("ï¿½Ø±ï¿½");
                     closeButton.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             dialog.setVisible(false);
@@ -558,7 +555,7 @@ public class DialogDemo extends JPanel {
                     contentPane.setOpaque(true);
                     dialog.setContentPane(contentPane);
 
-                    //ÏÔÊ¾´°Ìå
+                    //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
                     dialog.setSize(new Dimension(300, 150));
                     dialog.setLocationRelativeTo(frame);
                     dialog.setVisible(true);
@@ -576,16 +573,16 @@ public class DialogDemo extends JPanel {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨ºÍÉèÖÃÒ»¸ö´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("DialogDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //ÉèÖÃÒ»¸öÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new GridLayout(1,1));
         contentPane.add(new DialogDemo(frame));
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

@@ -1,34 +1,32 @@
 
-import java.io.*;
-import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 /**
- * <p>Title: servlet¶ÁÈ¡cookie</p>
- * <p>Description: Õâ¸öservletÑİÊ¾ÔõÑù´´½¨ºÍ»ñÈ¡cookie²¢ÉèÖÃcookieµÄÆÚÏŞ</p>
+ * <p>Title: servletï¿½ï¿½È¡cookie</p>
+ * <p>Description: ï¿½ï¿½ï¿½servletï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½È¡cookieï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: CookieCounter.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
-//±ØĞë¼Ì³ĞHttpServletÀà
+//ï¿½ï¿½ï¿½ï¿½Ì³ï¿½HttpServletï¿½ï¿½
 public class CookieCounter extends HttpServlet {
   private int pageCount = 0;
 
 /**
- *<br>·½·¨ËµÃ÷£º³õÊ¼»¯
- *<br>ÊäÈë²ÎÊı£ºServletConfig config ·şÎñÆ÷ÅäÖÃ¶ÔÏó
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ServletConfig config ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 
   public void init(ServletConfig config) throws ServletException  {
     super.init(config);
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖservice·½·¨
- *<br>ÊäÈë²ÎÊı£ºHttpServletRequest req ¿Í»§ÇëÇó¶ÔÏó
- *<br>ÊäÈë²ÎÊı£ºHttpServletResponse res ·şÎñÆ÷Ó¦´ğ¶ÔÏó
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½serviceï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HttpServletRequest req ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HttpServletResponse res ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void service(HttpServletRequest req, HttpServletResponse res)
        throws IOException
@@ -36,18 +34,18 @@ public class CookieCounter extends HttpServlet {
     boolean cookieFound = false;
     Cookie thisCookie = null;
     
-    // ÉèÖÃÄÚÈİÀàĞÍ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     res.setContentType("text/html; charset=GB2312");
-    // µ÷ÓÃgetWriter()
+    // ï¿½ï¿½ï¿½ï¿½getWriter()
     PrintWriter out = res.getWriter();
     
-    // ´ÓÇëÇó»ñÈ¡coolies
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡coolies
     Cookie[] cookies = req.getCookies();
     
     if(cookies!=null){
       for(int i=0; i < cookies.length; i++) {
         thisCookie = cookies[i];
-        //¼ì²éÊÇ·ñ´æÔÚCookieCountÊı¾İ
+        //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½CookieCountï¿½ï¿½ï¿½ï¿½
         if (thisCookie.getName().equals("CookieCount")) {
           cookieFound = true;
           break;
@@ -55,37 +53,37 @@ public class CookieCounter extends HttpServlet {
       }
     }
     if (cookieFound == false) {
-      // ´´½¨ĞÂµÄCookie²¢ÉèÖÃËüµÄ´æ»îÆÚ
+      // ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Cookieï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½
       thisCookie = new Cookie("CookieCount", "1");
       thisCookie.setMaxAge(60*1);
-      // ÔÚresponse¶ÔÏóÖĞ¼ÓÈëcookie
+      // ï¿½ï¿½responseï¿½ï¿½ï¿½ï¿½ï¿½Ğ¼ï¿½ï¿½ï¿½cookie
       res.addCookie(thisCookie);
     }
-    //Êä³öÒ³Ãæ
-    out.println("<html><head>\n" + "<title>Cookie¼ÆÊıÆ÷</title></head><body>\n" +
-                "<center><h1>Cookie ¼ÆÊıÆ÷</h1></center></font>");
+    //ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
+    out.println("<html><head>\n" + "<title>Cookieï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</title></head><body>\n" +
+                "<center><h1>Cookie ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</h1></center></font>");
     pageCount++;
     out.println("<p>");
     out.println("<font color=blue size=+1>");
-    out.println("<p><br><br><br>Õâ¸öÒ³ÃæÄúÒÑ¾­°İ·ÃÁË " + pageCount + 
-                " ´Î.\n");
+    out.println("<p><br><br><br>ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½İ·ï¿½ï¿½ï¿½ " + pageCount + 
+                " ï¿½ï¿½.\n");
     
-    // ÏÔÊ¾¿Í»§¶ËÏêÏ¸ĞÅÏ¢,ÊÇ·ñ´æÔÚ¼ÆÊıÆ÷cookie
+    // ï¿½ï¿½Ê¾ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢,ï¿½Ç·ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½cookie
     if (cookieFound) {
       int cookieCount = Integer.parseInt(thisCookie.getValue());
       cookieCount++;
-      // ÉèÖÃcookieµÄĞÂÖµ, ¼Óµ½ÏàÓ¦¶ÔÏóÖĞ
+      // ï¿½ï¿½ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½Öµ, ï¿½Óµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       thisCookie.setValue(String.valueOf(cookieCount));
       thisCookie.setMaxAge(10);
       res.addCookie(thisCookie);
       
-      out.println("<p>ÕâÊÇÄã½ü10ÃëÄÚµÚ " +
+      out.println("<p>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½Úµï¿½ " +
                   thisCookie.getValue() +
-                  " ´Î°İ·ÃÕâÒ»Ò³\n");
+                  " ï¿½Î°İ·ï¿½ï¿½ï¿½Ò»Ò³\n");
       
     } else {
-      out.println("<p>ÄãÔÚ½ü10ÃëÄÚÃ»ÓĞ°İ·Ã¹ı´ËÒ³»òÕßÄãµÄä¯ÀÀÆ÷²»Ö§³Öcookie "+
-                  "Èç¹ûÄãµÄä¯ÀÀÆ÷Ö§³Öcookie£¬ÇëÈ·ÈÏÊÇ·ñ´ò¿ªÁË£¡\n");
+      out.println("<p>ï¿½ï¿½ï¿½Ú½ï¿½10ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ğ°İ·Ã¹ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½cookie "+
+                  "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½cookieï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ë£ï¿½\n");
     }
     out.println("</body></html>");
     

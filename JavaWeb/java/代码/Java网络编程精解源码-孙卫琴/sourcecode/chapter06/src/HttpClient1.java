@@ -1,10 +1,8 @@
-import java.net.*;
-import java.io.*;
 public class HttpClient1 {
   public static void main(String args[])throws IOException{
     URL url=new URL("http://www.javathinker.org/hello.htm");
        
-    //½ÓÊÕÏìÓ¦½á¹û
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
     InputStream in=url.openStream();
     ByteArrayOutputStream buffer=new ByteArrayOutputStream();
     byte[] buff=new byte[1024];  
@@ -14,13 +12,13 @@ public class HttpClient1 {
       buffer.write(buff,0,len);
     }
      
-    System.out.println(new String(buffer.toByteArray()));  //°Ñ×Ö½ÚÊý×é×ª»»Îª×Ö·û´®
+    System.out.println(new String(buffer.toByteArray()));  //ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½
   } 
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

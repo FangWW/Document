@@ -1,25 +1,21 @@
 /*
- * ÕâÊÇqq·þÎñÆ÷£¬ËûÔÚ¼àÌý£¬µÈ´ýÄ³¸öqq¿Í»§¶Ë£¬Î´Á¬½Ó
+ * ï¿½ï¿½ï¿½ï¿½qqï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½Ä³ï¿½ï¿½qqï¿½Í»ï¿½ï¿½Ë£ï¿½Î´ï¿½ï¿½ï¿½ï¿½
  */
 package com.qq.server.model;
-import java.net.*;
-import java.io.*;
-import java.util.*;
-
 import com.qq.common.*;
 public class MyQqServer {
 
 	public MyQqServer(){
 		ServerSocket ss = null;
 		try{
-			//ÔÚ¶Ë¿Ú9999¼àÌý
-			//System.out.println("ÎÒÊÇ·þÎñÆ÷£¬ÔÚ¶Ë¿Ú9999¼àÌý");
+			//ï¿½Ú¶Ë¿ï¿½9999ï¿½ï¿½ï¿½ï¿½
+			//System.out.println("ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶Ë¿ï¿½9999ï¿½ï¿½ï¿½ï¿½");
 			ss=new ServerSocket(9999);
 			
 			while(true){
-				//×èÈû µÈ´ýÁ¬½Ó
+				//ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½
 				Socket s=ss.accept();
-				//½ÓÊÜ¿Í»§¶Ë·¢À´µÄÐÅÏ¢
+				//ï¿½ï¿½ï¿½Ü¿Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	
 				ObjectInputStream ois=new ObjectInputStream(s.getInputStream());
 				User u=(User)ois.readObject();
@@ -27,22 +23,22 @@ public class MyQqServer {
 				Message m=new Message();
 				ObjectOutputStream oos=new ObjectOutputStream(s.getOutputStream());
 				if(u.getPasswd().equals("123456")){
-					//·µ»ØÒ»¸ö³É¹¦µÄµÇÂ¼µÄÐÅÏ¢°ü
+					//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½É¹ï¿½ï¿½Äµï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
 					m.setMesType("1");
 					oos.writeObject(m);
 					
-					//ÕâÀï¾Íµ¥¿ªÒ»¸öÏß³Ì ÈÃ¸ÃÏß³ÌÓë¿Í»§¶Ë±£³ÖÍ¨ÐÅ
+					//ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³ï¿½ ï¿½Ã¸ï¿½ï¿½ß³ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë±ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
 					SerConClientThread scct=new SerConClientThread(s);
 					ManageClientThread.addClientThread(u.getUserId(), scct);
-					//Æô¶¯Óë¸Ã¿Í»§¶ËÍ¨ÐÅµÄÏß³Ì
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½ï¿½Í¨ï¿½Åµï¿½ï¿½ß³ï¿½
 					scct.start();
 					
-					//Í¨ÖªÔÚÏßºÃÓÑ
+					//Í¨Öªï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½
 					scct.notifyOther(u.getUserId());
 				}else{
 					m.setMesType("2");
 					oos.writeObject(m);
-					//¹Ø±ÕÁ¬½Ó
+					//ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
 					s.close();
 				}
 				

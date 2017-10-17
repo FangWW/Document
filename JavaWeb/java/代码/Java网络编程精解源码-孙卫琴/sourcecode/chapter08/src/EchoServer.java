@@ -1,12 +1,10 @@
-import java.io.*;
-import java.net.*;
 public class EchoServer {
   private int port=8000;
   private DatagramSocket socket;
 
   public EchoServer() throws IOException {
-    socket=new DatagramSocket(port); //Óë±¾µØµÄÒ»¸ö¹Ì¶¨¶Ë¿Ú°ó¶¨
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    socket=new DatagramSocket(port); //ï¿½ë±¾ï¿½Øµï¿½Ò»ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½Ë¿Ú°ï¿½
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public String echo(String msg) {
@@ -17,13 +15,13 @@ public class EchoServer {
     while (true) {
       try {
         DatagramPacket packet=new DatagramPacket(new byte[512],512);
-        socket.receive(packet);  //½ÓÊÕÀ´×ÔÈÎÒâÒ»¸öEchoClientµÄÊý¾Ý±¨
+        socket.receive(packet);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½EchoClientï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½
         String msg=new String(packet.getData(),0,packet.getLength());         
         System.out.println(packet.getAddress() + ":" +packet.getPort()
                             +">"+msg);
         
         packet.setData(echo(msg).getBytes());
-        socket.send(packet);  //¸øEchoClient»Ø¸´Ò»¸öÊý¾Ý±¨
+        socket.send(packet);  //ï¿½ï¿½EchoClientï¿½Ø¸ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½
       }catch (IOException e) {
          e.printStackTrace();
       }
@@ -38,7 +36,7 @@ public class EchoServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

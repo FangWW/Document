@@ -1,0 +1,53 @@
+1.Hibernate 的初始化.
+读取Hibernate 的配置信息-〉创建Session Factory
+1)创建Configeration类的实例。
+ 它的构造方法：将配置信息(Hibernate config.xml)读入到内存。
+ 一个Configeration 实例代表Hibernate 所有Java类到Sql数据库映射的集合。
+2)创建SessionFactory实例
+ 把Configeration 对象中的所有配置信息拷贝到SessionFactory的缓存中。
+ SessionFactory的实例代表一个数据库存储员源，创建后不再与Configeration 对象关联。
+缓存(cache):指Java对象的属性(通常是一些集合类型的属性－－占用内存空间。
+     SessionFactory的缓存中：Hibernate 配置信息。O\R映射元数据。
+ 缓存－大：重量级对象 小：轻量级对象
+3)调用SessionFactory创建Session的方法
+ 1】用户自行提供JDBC连接。
+  Connection con=dataSource.getConnection();
+  Session s=sessionFactory.openSession(con);
+ 2】让SessionFactory提供连接
+  Session s=sessionFactory.openSession();
+4)通过Session 接口提供的各种方法来操纵数据库访问。
+Hibernate 的缓存体系
+一级缓存：
+ Session 有一个内置的缓存，其中存放了被当前工作单元加载的对象。
+ 每个Session 都有自己独立的缓存，且只能被当前工作单元访问。
+二级缓存：
+ SessionFactory的外置的可插拔的缓存插件。其中的数据可被多个Session共享访问。
+ SessionFactory的内置缓存：存放了映射元数据，预定义的Sql语句。 
+
+Hibernate 中Java对象的状态
+1.临时状态 (transient)
+ 特征：
+  1】不处于Session 缓存中
+  2】数据库中没有对象记录
+ Java如何进入临时状态
+  1】通过new语句刚创建一个对象时
+  2】当调用Session 的delete()方法，从Session 缓存中删除一个对象时。 
+
+2.持久化状态(persisted)
+ 特征：
+  1】处于Session 缓存中
+  2】持久化对象数据库中设有对象记录
+  3】Session 在特定时刻会保持二者同步
+ Java如何进入持久化状态
+  1】Session 的save()把临时－》持久化状态
+  2】Session 的load(),get()方法返回的对象
+  3】Session 的find()返回的list集合中存放的对象
+  4】Session 的update(),saveOrupdate()使游离－》持久化
+3.游离状态(detached)
+ 特征：
+  1】不再位于Session 缓存中
+  2】游离对象由持久化状态转变而来，数据库中可能还有对应记录。
+ Java如何进入持久化状态－》游离状态
+  1】Session 的close()方法
+  2】Session 的evict()方法，从缓存中删除一个对象。提高性能。少用。
+

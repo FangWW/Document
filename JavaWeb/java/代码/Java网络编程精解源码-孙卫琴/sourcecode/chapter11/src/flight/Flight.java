@@ -1,16 +1,15 @@
 package flight;
 
-import java.rmi.*;
 public interface Flight extends Remote{
-  //¶ÁÈ¡º½°àºÅ
+  //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
   public String getFlightNumber()throws RemoteException;
-  //¶ÁÈ¡Ê¼·¢Õ¾
+  //ï¿½ï¿½È¡Ê¼ï¿½ï¿½Õ¾
   public String getOrigin()throws RemoteException;
-  //¶ÁÈ¡ÖÕµãÕ¾
+  //ï¿½ï¿½È¡ï¿½Õµï¿½Õ¾
   public String getDestination()throws RemoteException;
-  //¶ÁÈ¡¼Æ»®³ö·¢Ê±¼ä
+  //ï¿½ï¿½È¡ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
   public String getSkdDeparture()throws RemoteException;
-  //¶ÁÈ¡¼Æ»®µ½´ïÊ±¼ä
+  //ï¿½ï¿½È¡ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
   public String getSkdArrival()throws RemoteException;
 
   public void setOrigin(String origin)throws RemoteException;
@@ -21,7 +20,7 @@ public interface Flight extends Remote{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

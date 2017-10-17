@@ -1,17 +1,13 @@
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-
 public class AcceptHandler implements Handler {
   public void handle(SelectionKey key) throws IOException {
     ServerSocketChannel serverSocketChannel=(ServerSocketChannel)key.channel();
     SocketChannel socketChannel = serverSocketChannel.accept();
     if (socketChannel== null)return;
-    System.out.println("½ÓÊÕµ½¿Í»§Á¬½Ó£¬À´×Ô:" +
+    System.out.println("ï¿½ï¿½ï¿½Õµï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½:" +
                    socketChannel.socket().getInetAddress() +
                    ":" + socketChannel.socket().getPort());
 
-    ChannelIO cio =new ChannelIO(socketChannel, false/*·Ç×èÈûÄ£Ê½*/);
+    ChannelIO cio =new ChannelIO(socketChannel, false/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½*/);
     RequestHandler rh = new RequestHandler(cio);
     socketChannel.register(key.selector(), SelectionKey.OP_READ, rh);
   }
@@ -19,7 +15,7 @@ public class AcceptHandler implements Handler {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

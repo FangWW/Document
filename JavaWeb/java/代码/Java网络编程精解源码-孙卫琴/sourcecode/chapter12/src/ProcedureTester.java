@@ -1,30 +1,29 @@
-import java.sql.*;
 public class ProcedureTester{
   public static void main(String args[])throws Exception{
     Connection con=new ConnectionProvider().getConnection();
     CallableStatement cStmt = con.prepareCall("{call demoSp(?, ?)}");
-    //ÉèÖÃµÚÒ»¸ö²ÎÊýµÄÖµ
+    //ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
     cStmt.setString(1, "Tom");
     //cStmt.setString("inputParam", "Tom");
     
-    //×¢²áµÚ¶þ¸ö²ÎÊýµÄÀàÐÍ
+    //×¢ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     cStmt.registerOutParameter(2, Types.INTEGER);
     //cStmt.registerOutParameter("inOutParam", Types.INTEGER);
     
-    //ÉèÖÃµÚ¶þ¸ö²ÎÊýµÄÖµ
+    //ï¿½ï¿½ï¿½ÃµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
     cStmt.setInt(2, 1);
     //cStmt.setInt("inOutParam", 1);
    
-    //Ö´ÐÐ´æ´¢¹ý³Ì
+    //Ö´ï¿½Ð´æ´¢ï¿½ï¿½ï¿½ï¿½
     boolean hadResults = cStmt.execute();
-    //·ÃÎÊ½á¹û¼¯
+    //ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
     if(hadResults) {
       ResultSet rs = cStmt.getResultSet();
-      //SQLExecutorÀà²Î¼û12.1½ÚµÄÀý³Ì12-1
+      //SQLExecutorï¿½ï¿½Î¼ï¿½12.1ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½12-1
       SQLExecutor.showResultSet(rs);
     }
     
-    //»ñµÃµÚ¶þ¸ö²ÎÊýµÄÊä³öÖµ
+    //ï¿½ï¿½ÃµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
     int outputValue = cStmt.getInt(2); // index-based
     //int outputValue = cStmt.getInt("inOutParam"); // name-based
    
@@ -34,7 +33,7 @@ public class ProcedureTester{
 
 
 /*************************
-ÒÔÏÂÊÇMySQLÊý¾Ý¿âÖÐ´æ´¢¹ý³ÌµÄ¶¨Òå
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MySQLï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð´æ´¢ï¿½ï¿½ï¿½ÌµÄ¶ï¿½ï¿½ï¿½
 
 CREATE PROCEDURE demoSp(IN inputParam VARCHAR(255), INOUT inOutParam INT)
 BEGIN
@@ -48,7 +47,7 @@ END
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

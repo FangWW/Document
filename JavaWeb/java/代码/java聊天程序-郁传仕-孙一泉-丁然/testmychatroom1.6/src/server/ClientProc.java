@@ -1,13 +1,9 @@
 package server;
 
-import java.net.*;
-import java.util.*;
-import java.io.*;
-
 class ClientProc implements Runnable
 {
 	/**
-	 * ÎªÄ³¸öÓÃ»§·şÎñµÄÒ»¸öÓÃ»§Ïß³Ì
+	 * ÎªÄ³ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ß³ï¿½
 	 */
 	Socket s;
 	BufferedReader in;
@@ -18,8 +14,8 @@ class ClientProc implements Runnable
 	public ClientProc(Socket s) throws IOException
 	{
 		this.s = s;
-		in = new BufferedReader(new InputStreamReader(s.getInputStream()));// µÃµ½ÊäÈëµÄ¶Ë¿ÚÁ÷
-		out = new PrintWriter(s.getOutputStream());// ´Ó¶Ë¿ÚµÃµ½Ò»¸öÊä³öÁ÷
+		in = new BufferedReader(new InputStreamReader(s.getInputStream()));// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ä¶Ë¿ï¿½ï¿½ï¿½
+		out = new PrintWriter(s.getOutputStream());// ï¿½Ó¶Ë¿ÚµÃµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.updateList();
 	}
 
@@ -40,7 +36,7 @@ class ClientProc implements Runnable
 
 	private void updateList()
 	{
-		// ¸üĞÂÓÃ»§ÁĞ±í£¨¼´·¢ËÍµ±Ç°ÔÚÁÄÌìÊÒµÄÓÃ»§µ½ĞÂÀ´µÄÓÃ»§ÁĞ±íÖĞ£©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ğ±ï¿½ï¿½Ğ£ï¿½
 		Vector cs = ChatServer.getClients();
 		if (cs != null)
 		{
@@ -69,7 +65,7 @@ class ClientProc implements Runnable
 			{
 				String inmsg;
 				inmsg = in.readLine();
-				ChatServer.sendAll("new&" + inmsg); // ·¢ËÍĞÅÏ¢¸üĞÂÓÃ»§ÁĞ±í new & zhangsan
+				ChatServer.sendAll("new&" + inmsg); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ğ±ï¿½ new & zhangsan
 				// & boy
 
 				String[] userInfo;
@@ -88,17 +84,17 @@ class ClientProc implements Runnable
 			{
 				String line = in.readLine();
 				System.out.println(line);
-				// ´¦ÀíÍË³öÊÂ¼ş(¶ÁÈ¡ĞÅÏ¢)
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½Â¼ï¿½(ï¿½ï¿½È¡ï¿½ï¿½Ï¢)
 				if (line.equals("quit"))
 				{
-					ChatServer.sendAll("¡¾ÏµÍ³ÏûÏ¢¡¿ " + this.name + " ÍË³öÁËÁÄÌìÊÒ");
+					ChatServer.sendAll("ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ï¢ï¿½ï¿½ " + this.name + " ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					ChatServer.deleteConnection(s, this);
 					return;
-					// ´¦ÀíË¢ĞÂÓÃ»§ÁĞ±íÇëÇó
+					// ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½ï¿½
 				} else if (line.equals("refurbish"))
 				{
 					this.updateList();
-					// Ò»°ãÏûÏ¢,ÓÖ¿ÉÒÔ·ÖÎª¼¸ÖÖ,¶Ô´ó¼ÒËµ, ÓëÄ³¸öÈË½»Ì¸,»òÕßË½ÁÄ
+					// Ò»ï¿½ï¿½ï¿½ï¿½Ï¢,ï¿½Ö¿ï¿½ï¿½Ô·ï¿½Îªï¿½ï¿½ï¿½ï¿½,ï¿½Ô´ï¿½ï¿½Ëµ, ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ë½ï¿½Ì¸,ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½
 				} else
 				{
 					String[] inmsg = line.split("&");
@@ -106,24 +102,24 @@ class ClientProc implements Runnable
 					{
 						ChatServer.sendOne(inmsg[1], "cancelsendfile" + "&"
 								+ this.name);
-					} else if (inmsg[0].compareTo("sendfile") == 0)// ·¢ËÍÎÄ¼şÏûÏ¢
+					} else if (inmsg[0].compareTo("sendfile") == 0)// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢
 					{
 						// String[] sendfile = line.split("&");
 						ChatServer.sendOne(inmsg[1], "sendfile" + "&"
 								+ this.name + "&" + inmsg[2] + "&" + inmsg[3]
 								+ "&" + inmsg[4] + "&" + inmsg[5]);
-					} else if (inmsg[0].compareTo("acceptfile") == 0)// ½ÓÊÕÎÄ¼şÏûÏ¢
+					} else if (inmsg[0].compareTo("acceptfile") == 0)// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢
 					{
 						// String[] acceptfile = line.split("&");
 						ChatServer
 								.sendOne(inmsg[1], inmsg[0] + "&" + this.name);
-					} else if (inmsg[0].compareTo("refusefile") == 0)// ¾Ü¾ø½ÓÊÕÎÄ¼şÏûÏ¢
+					} else if (inmsg[0].compareTo("refusefile") == 0)// ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢
 					{
 						// String[] refusefile = line.split("&");
 						ChatServer
 								.sendOne(inmsg[1], inmsg[0] + "&" + this.name);
 					} else if (!line.startsWith("withWho"))
-					{ // ¶ÔËùÓĞÈËËµ
+					{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµ
 						ChatServer.sendAll(this.name + ": " + line);
 					}
 
@@ -135,18 +131,18 @@ class ClientProc implements Runnable
 						{ // success
 							out.println("privateTalk" + "&" + name + "&"
 									+ inmsg[2] + "&" + inmsg[3]);
-							// ÔÙ·¢¸ø×Ô¼ºÒ»·İ
-							out.flush(); // Ò»¶¨ÒªÓĞ
+							// ï¿½Ù·ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½Ò»ï¿½ï¿½
+							out.flush(); // Ò»ï¿½ï¿½Òªï¿½ï¿½
 						} else
 						{
-							out.println(inmsg[2] + "ÒÑ¾­Àë¿ªÁÄÌìÊÒ");
-							out.flush(); // Ò»¶¨Òª¼Ç×¡Òª
+							out.println(inmsg[2] + "ï¿½Ñ¾ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+							out.flush(); // Ò»ï¿½ï¿½Òªï¿½ï¿½×¡Òª
 						}
 					} else
 					{
 						ChatServer.sendAll("withWho" + "&" + name + "&"
 								+ inmsg[2] + "&" + inmsg[3]);
-					} // ·¢¸øËùÓĞµÄÈË
+					} // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½
 
 				}
 			} catch (IOException e)

@@ -7,15 +7,6 @@
 
 package org.apache.struts.action;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.sql.DataSource;
 import org.apache.commons.beanutils.*;
 import org.apache.commons.beanutils.converters.*;
 import org.apache.commons.collections.FastHashMap;
@@ -28,6 +19,16 @@ import org.apache.struts.config.impl.ModuleConfigImpl;
 import org.apache.struts.util.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.sql.SQLException;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.sql.DataSource;
 
 // Referenced classes of package org.apache.struts.action:
 //            ActionFormBeans, ActionForwards, ActionMappings, RequestProcessor, 

@@ -1,18 +1,16 @@
-import java.util.*;
-import java.io.*;
 /**
- * <p>Title: ±ê×¢ÊäÈëÊä³ö</p>
- * <p>Description: ½ÓÊÕ±ê×¼µÄ¼üÅÌÊäÈë£¬ºÍÊä³öµ½ÆÁÄ»¡£</p>
+ * <p>Title: ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½Õ±ï¿½×¼ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: standerdIO.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class standerdIO{
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public static void main(String[] args){
    Vector vTemp = new Vector();
@@ -20,15 +18,15 @@ public class standerdIO{
    while(flag){
      System.out.print("input>");
      String sTemp ="";  
-     //¶ÁÈ¡ÊäÈë,System.in±íÊ¾½ÓÊÕ¼üÅÌÊäÈëÁ÷
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½,System.inï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      BufferedReader stdin  = new BufferedReader(new InputStreamReader(System.in));
      try{
-     //¶ÁÈ¡Ò»ĞĞÊäÈë
+     //ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       sTemp = stdin.readLine();
      }catch(IOException ie){
        System.err.println("IO error!");
      }
-     //½âÎöÊäÈëÃüÁî
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      String sCMD="";
      String sContext="";
      int point = sTemp.indexOf(":");
@@ -38,19 +36,19 @@ public class standerdIO{
        sCMD = sTemp.substring(0,point);
        sContext = sTemp.substring(point+1);
      }
-     //Ìí¼ÓÊı¾İ
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      if(sCMD.equalsIgnoreCase("in")){
        if(sContext.equals("")){
          System.err.println("this command format is errer!");
        }else{
          vTemp.addElement(sContext);
        }   
-     }//²é¿´½á¹û
+     }//ï¿½é¿´ï¿½ï¿½ï¿½
      else if(sCMD.equalsIgnoreCase("out")){
        for(int i=0;i<vTemp.size();i++){
          System.out.println(i+":"+vTemp.elementAt(i));
        }
-     }//½áÊø
+     }//ï¿½ï¿½ï¿½ï¿½
      else if(sCMD.equalsIgnoreCase("quit")){
        flag=false;
      }

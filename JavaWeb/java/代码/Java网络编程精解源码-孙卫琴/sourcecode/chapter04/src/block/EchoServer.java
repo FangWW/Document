@@ -1,12 +1,4 @@
 package block;
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.net.*;
-import java.util.*;
-import java.util.concurrent.*;
-
 public class EchoServer {
   private int port=8000;
   private ServerSocketChannel serverSocketChannel = null;
@@ -19,7 +11,7 @@ public class EchoServer {
     serverSocketChannel= ServerSocketChannel.open();
     serverSocketChannel.socket().setReuseAddress(true);
     serverSocketChannel.socket().bind(new InetSocketAddress(port));
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() {
@@ -51,7 +43,7 @@ class Handler implements Runnable{
   public void handle(SocketChannel socketChannel){
     try {
         Socket socket=socketChannel.socket();
-        System.out.println("½ÓÊÕµ½¿Í»§Á¬½Ó£¬À´×Ô: " +
+        System.out.println("ï¿½ï¿½ï¿½Õµï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½: " +
         socket.getInetAddress() + ":" +socket.getPort());
 
         BufferedReader br =getReader(socket);
@@ -92,7 +84,7 @@ class Handler implements Runnable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

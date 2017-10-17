@@ -1,11 +1,9 @@
-import java.net.*;
-import java.io.*;
 import echo.*;
 public class EchoClient{
   public static void main(String args[])throws IOException{
-    //ÉèÖÃURLStreamHandlerFactory
+    //ï¿½ï¿½ï¿½ï¿½URLStreamHandlerFactory
     URL.setURLStreamHandlerFactory(new EchoURLStreamHandlerFactory());
-    //ÉèÖÃContentHandlerFactory
+    //ï¿½ï¿½ï¿½ï¿½ContentHandlerFactory
     URLConnection.setContentHandlerFactory(new EchoContentHandlerFactory());
     URL url=new URL("echo://localhost:8000");
     EchoURLConnection connection=(EchoURLConnection)url.openConnection();
@@ -14,11 +12,11 @@ public class EchoClient{
     while(true){
        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
        String msg=br.readLine();
-       pw.println(msg);  //Ïò·þÎñÆ÷·¢ËÍÏûÏ¢
-       String echoMsg=(String)connection.getContent(); //¶ÁÈ¡·þÎñÆ÷·µ»ØµÄÏûÏ¢
+       pw.println(msg);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+       String echoMsg=(String)connection.getContent(); //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
        System.out.println(echoMsg);
        if(echoMsg.equals("echo:bye")){
-         connection.disconnect(); //¶Ï¿ªÁ¬½Ó
+         connection.disconnect(); //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½
          break;
        }
     }
@@ -27,7 +25,7 @@ public class EchoClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

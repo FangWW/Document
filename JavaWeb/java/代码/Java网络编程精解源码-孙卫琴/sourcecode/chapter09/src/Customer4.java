@@ -1,17 +1,14 @@
-import java.io.*;
-import java.util.*;
-
 public class Customer4 implements Externalizable {
   private String name;
   private Set<Order4> orders=new HashSet<Order4>();
   static{
-     System.out.println("µ÷ÓÃCustomer4ÀàµÄ¾²Ì¬´úÂë¿é");
+     System.out.println("ï¿½ï¿½ï¿½ï¿½Customer4ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
   public Customer4(){
-    System.out.println("µ÷ÓÃCustomer4ÀàµÄ²»´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer4ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
   }
   public Customer4(String name) {
-    System.out.println("µ÷ÓÃCustomer4ÀàµÄ´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer4ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     this.name=name;
   }
   
@@ -38,10 +35,10 @@ class Order4 implements Externalizable {
   private String number;
   private Customer4 customer;
   public Order4(){
-    System.out.println("µ÷ÓÃOrder4ÀàµÄ²»´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Order4ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
   }
   public Order4(String number,Customer4 customer){
-    System.out.println("µ÷ÓÃOrder4ÀàµÄ´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Order4ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     this.number=number;
     this.customer=customer; 
   }
@@ -59,7 +56,7 @@ class Order4 implements Externalizable {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

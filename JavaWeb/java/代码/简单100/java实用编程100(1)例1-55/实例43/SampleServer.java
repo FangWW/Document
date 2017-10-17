@@ -1,33 +1,31 @@
-import java.net.*;
-import java.io.*;
 /**
- * <p>Title: ¼òµ¥·þÎñÆ÷·þÎñ¶Ë</p>
- * <p>Description: ÕâÊÇÒ»¸ö¼òµ¥µÄ·þÎñÆ÷¶Ë³ÌÐò</p>
+ * <p>Title: ï¿½òµ¥·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½òµ¥µÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: SampleServer.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class SampleServer{
   public static void main(String[] arges){
     try{
       int port = 8888;
-      //Ê¹ÓÃ8888¶Ë¿Ú´´½¨Ò»¸öServerSocket
+      //Ê¹ï¿½ï¿½8888ï¿½Ë¿Ú´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ServerSocket
       ServerSocket mySocket = new ServerSocket(port);
-      //µÈ´ý¼àÌýÊÇ·ñÓÐ¿Í»§¶ËÁ¬½Ó
+      //ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       Socket sk = mySocket.accept();
-      //ÊäÈë»º´æ
+      //ï¿½ï¿½ï¿½ë»ºï¿½ï¿½
       BufferedReader in = new BufferedReader (
                          new InputStreamReader (sk.getInputStream ()));
-      //Êä³ö»º´æ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       PrintWriter out = new PrintWriter (
                          new BufferedWriter(
                           new OutputStreamWriter(
                            sk.getOutputStream ())), true);
-      //´òÓ¡½ÓÊÕµ½µÄ¿Í»§¶Ë·¢ËÍ¹ýÀ´µÄÐÅÏ¢
-      System.out.println("¿Í»§¶ËÐÅÏ¢:"+in.readLine ());
-      //Ïò¿Í»§¶Ë»ØÐÅÏ¢
-      out.println("ÄãºÃ£¬ÎÒÊÇ·þÎñÆ÷¡£ÎÒÊ¹ÓÃµÄ¶Ë¿ÚºÅ£º "+port); 
+      //ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Õµï¿½ï¿½Ä¿Í»ï¿½ï¿½Ë·ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+      System.out.println("ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢:"+in.readLine ());
+      //ï¿½ï¿½Í»ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ï¢
+      out.println("ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄ¶Ë¿ÚºÅ£ï¿½ "+port); 
     }catch(Exception e){
       System.out.println(e);
     }

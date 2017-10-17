@@ -1,11 +1,9 @@
-import java.sql.*;
-
-public class ShowDB { 
+public class ShowDB {
   public static void main(String[] args)throws SQLException{  
     Connection con=new ConnectionProvider().getConnection();
     DatabaseMetaData metaData=con.getMetaData();
-    System.out.println("ÔÊÐíµÄ×î´óÁ¬½ÓÊýÎª:"+metaData.getMaxConnections());
-    System.out.println("Ò»¸öÁ¬½ÓÔÊÐíÍ¬Ê±´ò¿ªµÄStatement¶ÔÏóµÄÊýÄ¿Îª:"+metaData.getMaxStatements());
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª:"+metaData.getMaxConnections());
+    System.out.println("Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ò¿ªµï¿½Statementï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Îª:"+metaData.getMaxStatements());
   
     ResultSet tables=metaData.getTables(null,null,null,new String[]{"TABLE"});
     SQLExecutor.showResultSet(tables);
@@ -15,7 +13,7 @@ public class ShowDB {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

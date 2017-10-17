@@ -1,50 +1,48 @@
 package com.bean;
-import java.io.*;
-import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 /**
- * <p>Title: ÎÄ¼þÉÏ´«Àà</p>
- * <p>Description: ¼ÈÄÜ¶ÔÎÄ¼þ½øÐÐÉÏ´«,ÓÖÄÜÈ¡µÃÊäÈë¿òµÄÖµ,×î¶à¿ÉÍ¬Ê±ÉÏ´«255¸öÎÄ¼þ</p>
+ * <p>Title: ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½,ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½Ï´ï¿½255ï¿½ï¿½ï¿½Ä¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class MoqUploadBean {
-  private String[] sourceFile = new String[255];     //Ô´ÎÄ¼þÃû
-  private String[] suffix = new String[255];         //ÎÄ¼þºó×ºÃû
-  private String canSuffix = ".gif.jpg.jpeg.png";    //¿ÉÉÏ´«µÄÎÄ¼þºó×ºÃû
-  private String objectPath = "c:/";                 //Ä¿±êÎÄ¼þÄ¿Â¼
-  private String[] objectFileName = new String[255]; //Ä¿±êÎÄ¼þÃû
-  private ServletInputStream sis = null;             //ÊäÈëÁ÷
-  private String[] description = new String[255];    //ÃèÊö×´Ì¬
-  private long size = 100 * 1024;                    //ÏÞÖÆ´óÐ¡
-  private int count = 0;                             //ÒÑ´«ÊäÎÄ¼þÊýÄ¿
-  private byte[] b = new byte[4096];                 //×Ö½ÚÁ÷´æ·ÅÊý×é
+  private String[] sourceFile = new String[255];     //Ô´ï¿½Ä¼ï¿½ï¿½ï¿½
+  private String[] suffix = new String[255];         //ï¿½Ä¼ï¿½ï¿½ï¿½×ºï¿½ï¿½
+  private String canSuffix = ".gif.jpg.jpeg.png";    //ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½×ºï¿½ï¿½
+  private String objectPath = "c:/";                 //Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½Ä¿Â¼
+  private String[] objectFileName = new String[255]; //Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+  private ServletInputStream sis = null;             //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private String[] description = new String[255];    //ï¿½ï¿½ï¿½ï¿½×´Ì¬
+  private long size = 100 * 1024;                    //ï¿½ï¿½ï¿½Æ´ï¿½Ð¡
+  private int count = 0;                             //ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä¿
+  private byte[] b = new byte[4096];                 //ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private boolean successful = true;
   private Hashtable fields = new Hashtable();
   public MoqUploadBean() {
   }
-  //ÉèÖÃÉÏ´«ÎÄ¼þµÄºó×ºÃû
+  //ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½Äºï¿½×ºï¿½ï¿½
   public void setSuffix(String canSuffix) {
     this.canSuffix = canSuffix;
   }
-  //ÉèÖÃÎÄ¼þ±£´æÂ·¾¶
+  //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
   public void setObjectPath(String objectPath) {
     this.objectPath = objectPath;
   }
-  //´ÓÅäÖÃÎÄ¼þ»ñÈ¡ÎÄ¼þ±£´æÂ·¾¶
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
   public void getUpLoadPath() {
     this.objectPath = "F:\\bea\\user_projects\\mydomain\\applications\\jspservlet\\upload\\";
   }
-  //ÉèÖÃÎÄ¼þ±£´æÂ·¾¶
+  //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
   public void setSize(long maxSize) {
     this.size = maxSize;
   }
-  //ÎÄ¼þÉÏ´«´¦Àí³ÌÐò
+  //ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   public void setSourceFile(HttpServletRequest request) throws IOException {
-    //»ñÈ¡ÊäÈëÁ÷
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     sis = request.getInputStream();
     int a = 0;
     int k = 0;
@@ -53,7 +51,7 @@ public class MoqUploadBean {
       s = new String(b, 0, a);
       if ( (k = s.indexOf("filename=\"")) != -1) {
       	
-        // È¡µÃÎÄ¼þÊý¾Ý
+        // È¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
         s = s.substring(k + 10);
         k = s.indexOf("\"");
         s = s.substring(0, k);
@@ -65,7 +63,7 @@ public class MoqUploadBean {
         }
         ++count;
       } else if ( (k = s.indexOf("name=\"")) != -1) {
-        // ÆÕÍ¨±íµ¥ÊäÈëÔªËØ£¬»ñÈ¡ÊäÈëÔªËØÃû×Ö
+        // ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         String fieldName = s.substring(k+6, s.length()-3);
         sis.readLine(b, 0, b.length);
         String fieldValue = new String();
@@ -83,37 +81,37 @@ public class MoqUploadBean {
         break;
     }
   }
-  //È¡µÃ±íµ¥ÔªËØÖµ
+  //È¡ï¿½Ã±ï¿½Ôªï¿½ï¿½Öµ
   public String getFieldValue(String fieldName) {
     if (fields == null || fieldName == null) {
       return null;
     }
     return (String) fields.get(fieldName);
   }
-  //È¡µÃÉÏ´«ÎÄ¼þÊý
+  //È¡ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
   public int getCount() {
     return count;
   }
-  //È¡µÃÄ¿±êÂ·¾¶
+  //È¡ï¿½ï¿½Ä¿ï¿½ï¿½Â·ï¿½ï¿½
   public String getObjectPath() {
     return objectPath;
   }
-  //È¡µÃÔ´ÎÄ¼þÃû
+  //È¡ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½ï¿½
   public String[] getSourceFile() {
     return sourceFile;
   }
-  //È¡µÃÄ¿±êÎÄ¼þÃû
+  //È¡ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
   public String[] getObjectFileName() {
     return objectFileName;
   }
-  //È¡µÃÉÏ´«×´Ì¬ÃèÊö
+  //È¡ï¿½ï¿½ï¿½Ï´ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
   public String[] getDescription() {
     return description;
   }
-  //ÅÐ¶ÏÉÏ´«ÎÄ¼þµÄÀàÐÍ
+  //ï¿½Ð¶ï¿½ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private boolean canTransfer(int i) {
     suffix[i] = suffix[i].toLowerCase();
-    //Õâ¸öÊÇÓÃÀ´´«Í¼Æ¬µÄ£¬¸÷Î»¿ÉÒÔ°Ñºó×ºÃû¸Äµô»òÕß²»ÒªÕâ¸öÌõ¼þ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä£ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ô°Ñºï¿½×ºï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ß²ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if (sourceFile[i].equals("") || (!(canSuffix.indexOf("."+suffix[i])>=0))) {
       description[i] = "ERR: File suffix is wrong.";
       return false;
@@ -122,7 +120,7 @@ public class MoqUploadBean {
       return true;
     }
   }
-  //ÉÏ´«ÎÄ¼þ×ª»»
+  //ï¿½Ï´ï¿½ï¿½Ä¼ï¿½×ªï¿½ï¿½
   private void transferFile(int i) {
     String x = Long.toString(new java.util.Date().getTime());
     try {
@@ -130,7 +128,7 @@ public class MoqUploadBean {
       FileOutputStream out = new FileOutputStream(objectPath + objectFileName[i]);
       int a = 0;
       int k = 0;
-      long hastransfered = 0; //±êÊ¾ÒÑ¾­´«ÊäµÄ×Ö½ÚÊý
+      long hastransfered = 0; //ï¿½ï¿½Ê¾ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
       String s = "";
       while ( (a = sis.readLine(b, 0, b.length)) != -1) {
         s = new String(b, 0, a);

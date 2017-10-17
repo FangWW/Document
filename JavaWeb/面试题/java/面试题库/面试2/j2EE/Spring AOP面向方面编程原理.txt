@@ -1,0 +1,214 @@
+6.3 Spring AOP面向方面编程原理：AOP概念(1)
+
+      介绍完IoC之后，我们来介绍另外一个重要的概念：AOP(Aspect Oriented Programming)，也就是面向方面编程的技术。AOP基于IoC基础，是对OOP的有益补充。
+
+AOP将应用系统分为两部分，核心业务逻辑（Core business concerns）及横向的通用逻辑，也就是所谓的方面Crosscutting enterprise concerns，例如，所有大中型应用都要涉及到的持久化管理（Persistent）、事务管理（Transaction Management）、安全管理（Security）、日志管理（Logging）和调试管理（Debugging）等。
+
+AOP正在成为软件开发的下一个光环。使用AOP，你可以将处理aspect的代码注入主程序，通常主程序的主要目的并不在于处理这些aspect。AOP可以防止代码混乱。
+
+Spring framework是很有前途的AOP技术。作为一种非侵略性的、轻型的AOP framework，你无需使用预编译器或其他的元标签，便可以在Java程序中使用它。这意味着开发团队里只需一人要对付AOP framework，其他人还是像往常一样编程。
+
+6.3.1   AOP概念
+让我们从定义一些重要的AOP概念开始。
+
+— 方面（Aspect）：一个关注点的模块化，这个关注点实现可能另外横切多个对象。事务管理是J2EE应用中一个很好的横切关注点例子。方面用Spring的Advisor或拦截器实现。
+
+— 连接点（Joinpoint）：程序执行过程中明确的点，如方法的调用或特定的异常被抛出。
+
+— 通知（Advice）：在特定的连接点，AOP框架执行的动作。各种类型的通知包括“around”、“before”和“throws”通知。通知类型将在下面讨论。许多AOP框架包括Spring都是以拦截器做通知模型，维护一个“围绕”连接点的拦截器链。
+
+— 切入点（Pointcut）：指定一个通知将被引发的一系列连接点的集合。AOP框架必须允许开发者指定切入点，例如，使用正则表达式。
+
+— 引入（Introduction）：添加方法或字段到被通知的类。Spring允许引入新的接口到任何被通知的对象。例如，你可以使用一个引入使任何对象实现IsModified接口，来简化缓存。
+
+— 目标对象（Target Object）：包含连接点的对象，也被称作被通知或被代理对象。
+
+— AOP代理（AOP Proxy）：AOP框架创建的对象，包含通知。在Spring中，AOP代理可以是JDK动态代理或CGLIB代理。
+
+— 编织（Weaving）：组装方面来创建一个被通知对象。这可以在编译时完成（例如使用AspectJ编译器），也可以在运行时完成。Spring和其他纯Java AOP框架一样，在运行时完成织入。
+
+各种通知类型包括：
+
+—  Around通知：包围一个连接点的通知，如方法调用。这是最强大的通知。Aroud通知在方法调用前后完成自定义的行为，它们负责选择继续执行连接点或通过返回它们自己的返回值或抛出异常来短路执行。
+
+—  Before通知：在一个连接点之前执行的通知，但这个通知不能阻止连接点前的执行（除非它抛出一个异常）。
+
+—  Throws通知：在方法抛出异常时执行的通知。Spring提供强制类型的Throws通知，因此你可以书写代码捕获感兴趣的异常（和它的子类），不需要从Throwable或Exception强制类型转换。
+
+—  After returning通知：在连接点正常完成后执行的通知，例如，一个方法正常返回，没有抛出异常。
+
+Around通知是最通用的通知类型。大部分基于拦截的AOP框架（如Nanning和Jboss 4）只提供Around通知。
+
+如同AspectJ，Spring提供所有类型的通知，我们推荐你使用最为合适的通知类型来实现需要的行为。例如，如果只是需要用一个方法的返回值来更新缓存，你最好实现一个after returning通知，而不是around通知，虽然around通知也能完成同样的事情。使用最合适的通知类型使编程模型变得简单，并能减少潜在错误。例如，你不需要调用在around通知中所需使用的MethodInvocation的proceed()方法，因此就调用失败。
+
+切入点的概念是AOP的关键，它使AOP区别于其他使用拦截的技术。切入点使通知独立于OO的层次选定目标。例如，提供声明式事务管理的around通知可以被应用到跨越多个对象的一组方法上。 因此切入点构成了AOP的结构要素。
+
+下面让我们实现一个Spring AOP的例子。在这个例子中，我们将实现一个before advice，这意味着advice的代码在被调用的public方法开始前被执行。以下是这个before advice的实现代码。
+
+package com.ascenttech.springaop.test;
+
+import java.lang.reflect.Method;
+
+import org.springframework.aop.MethodBeforeAdvice;
+
+public class TestBeforeAdvice implements MethodBeforeAdvice {
+
+public void before(Method m, Object[] args, Object target)
+
+throws Throwable {
+
+   System.out.println("Hello world! (by "
+
+     + this.getClass().getName()
+
+     + ")");
+
+}
+
+}
+
+接口MethodBeforeAdvice只有一个方法before需要实现，它定义了advice的实现。before方法共用3个参数，它们提供了相当丰富的信息。参数Method m是advice开始后执行的方法，方法名称可以用作判断是否执行代码的条件。Object[] args是传给被调用的public方法的参数数组。当需要记日志时，参数args和被执行方法的名称都是非常有用的信息。你也可以改变传给m的参数，但要小心使用这个功能；编写最初主程序的程序员并不知道主程序可能会和传入参数的发生冲突。Object target是执行方法m对象的引用。
+
+在下面的BeanImpl类中，每个public方法调用前，都会执行advice，代码如下。
+
+package com.ascenttech.springaop.test;
+
+public class BeanImpl implements Bean {
+
+public void theMethod() {
+
+   System.out.println(this.getClass().getName()
+
+     + "." + new Exception().getStackTrace()[0].getMethodName()
+
+     + "()"
+
+     + " says HELLO!");
+
+}
+
+}
+
+类BeanImpl实现了下面的接口Bean，代码如下。
+
+package com.ascenttech.springaop.test;
+
+public interface Bean {
+
+public void theMethod(); 
+
+}
+
+虽然不是必须使用接口，但面向接口而不是面向实现编程是良好的编程实践，Spring也鼓励这样做。
+
+pointcut和advice通过配置文件来实现，因此，接下来你只需编写主方法的Java代码，代码如下。
+
+package com.ascenttech.springaop.test;
+
+import org.springframework.context.ApplicationContext;
+
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+public class Main {
+
+public static void main(String[] args) {
+
+   //Read the configuration file
+
+   ApplicationContext ctx 
+
+     = new FileSystemXmlApplicationContext("springconfig.xml");
+
+   //Instantiate an object
+
+   Bean x = (Bean) ctx.getBean("bean");
+
+   //Execute the public method of the bean (the test)
+
+   x.theMethod();
+
+}
+
+}
+
+我们从读入和处理配置文件开始，接下来马上要创建它。这个配置文件将作为粘合程序不同部分的“胶水”。读入和处理配置文件后，我们会得到一个创建工厂ctx，任何一个Spring管理的对象都必须通过这个工厂来创建。对象通过工厂创建后便可正常使用。
+
+仅仅用配置文件便可把程序的每一部分组装起来，代码如下。
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework. org/dtd/spring-beans.dtd">
+
+<beans>
+
+<!--CONFIG-->
+
+<bean id="bean" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+<property name="proxyInterfaces">
+
+    <value>com.ascenttech.springaop.test.Bean</value>
+
+   </property>
+
+   <property name="target">
+
+    <ref local="beanTarget"/>
+
+   </property>
+
+   <property name="interceptorNames">
+
+    <list>
+
+     <value>theAdvisor</value>
+
+    </list>
+
+   </property>
+
+</bean> 
+
+<!--CLASS--> 
+
+<bean id="beanTarget" class="com.ascenttech.springaop.test.BeanImpl"/>
+
+<!--ADVISOR-->
+
+<!--Note: An advisor assembles pointcut and advice-->
+
+<bean id="theAdvisor" class="org.springframework.aop.support.RegexpMethod PointcutAdvisor">
+
+   <property name="advice">
+
+    <ref local="theBeforeAdvice"/>
+
+   </property>
+
+   <property name="pattern">
+
+    <value>com\.ascenttech\.springaop\.test\.Bean\.theMethod</value>
+
+   </property>
+
+</bean>
+
+<!--ADVICE-->
+
+<bean id="theBeforeAdvice" class="com.ascenttech.springaop.test.TestBefore Advice"/>
+
+</beans>
+
+4个bean定义的次序并不重要。我们现在有了一个advice、一个包含了正则表达式pointcut的advisor、一个主程序类和一个配置好的接口，通过工厂ctx，这个接口返回自己本身实现的一个引用。
+
+BeanImpl和TestBeforeAdvice都是直接配置。我们用一个惟一的ID创建一个bean元素，并指定了一个实现类，这就是全部的工作。
+
+advisor通过Spring framework提供的一个RegexMethodPointcutAdvisor类来实现。我们用advisor的第一个属性来指定它所需的advice-bean，第二个属性则用正则表达式定义了pointcut，确保良好的性能和易读性。
+
+最后配置的是bean，它可以通过一个工厂来创建。bean的定义看起来比实际上要复杂。bean是ProxyFactoryBean的一个实现，它是Spring framework的一部分。这个bean的行为通过以下的3个属性来定义。
+
+— 属性proxyInterface定义了接口类。
+
+— 属性target指向本地配置的一个bean，这个bean返回一个接口的实现。
+
+— 属性interceptorNames是惟一允许定义一个值列表的属性，这个列表包含所有需要在beanTarget上执行的advisor。注意，advisor列表的次序是非常重要的。

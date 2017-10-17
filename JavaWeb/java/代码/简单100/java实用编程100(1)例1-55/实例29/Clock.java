@@ -1,15 +1,10 @@
- import java.awt.*; 
- import java.awt.event.*;
- import java.util.*;
- import javax.swing.event.*;
- import javax.swing.*;
  import javax.swing.Timer;
 /**
- * <p>Title: Ê±ÖÓ</p>
- * <p>Description: ±¾ÊµÀýÑÝÊ¾Ê¹ÓÃÍ¼ÐÎ»æÖÆÒ»¸öÍ¼ÐÎÊ±ÖÓ</p>
+ * <p>Title: Ê±ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾Ê¹ï¿½ï¿½Í¼ï¿½Î»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼ï¿½ï¿½Ê±ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Clock.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
  public class Clock extends JFrame implements ActionListener{ 
@@ -23,17 +18,17 @@
     Clock cl = new Clock();
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖActionListenerÀà±ØÐë¹ýÔØµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ActionListenerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */ 
   public void actionPerformed(ActionEvent e) {
             timer.restart();
     }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬ÏÔÊ¾´°Ìå£¬²¢Ìí¼ÓÁËÒ»¸öÃë±í
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */ 
   Clock(){
     super("Clock");
@@ -42,7 +37,7 @@
     setSize(300,300);
     show();
     int delay = 1000;
-    //´°ÌåÌí¼ÓÊÂ¼þ¼àÌý£¬¼àÌýÃë±íµÄ´¥·¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
     ActionListener taskPerformer = new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
          repaint();
@@ -51,9 +46,9 @@
     new Timer(delay, taskPerformer).start();
   }
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆÍ¼ÐÎ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void paint( Graphics g ) { 
   	 Insets insets = getInsets();
@@ -61,7 +56,7 @@
      int hh,mm,ss; 
      String st; 
      h=getSize().height;
-     //»æÖÆÔ²ÐÎ
+     //ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½
      g.setColor(Color.white); 
      g.drawOval(L0+30,T0+30,h-60,h-60);
      g.drawOval(L0+32,T0+32,h-64,h-64);
@@ -76,23 +71,23 @@
         ang-=30;
      } 
      x0=30+r+L0; y0=30+r+T0;
-     //»ñÈ¡Ê±¼ä
+     //ï¿½ï¿½È¡Ê±ï¿½ï¿½
      Calendar now=Calendar.getInstance();
      hh=now.get(Calendar.HOUR_OF_DAY);//Ð¡Ê±
-     mm=now.get(Calendar.MINUTE);//·ÖÖÓ
-     ss=now.get(Calendar.SECOND);// Ãë
+     mm=now.get(Calendar.MINUTE);//ï¿½ï¿½ï¿½ï¿½
+     ss=now.get(Calendar.SECOND);// ï¿½ï¿½
      g.setColor(Color.pink); 
-     g.fillRect(L0,T0,60,28);//Ìî³äµÄ¾ØÐÎ
+     g.fillRect(L0,T0,60,28);//ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
      g.setColor(Color.blue); 
      if (hh < 10) st="0"+hh;     else st=""+hh; 
      if (mm < 10) st=st+":0"+mm; else st=st+":"+mm; 
      if (ss < 10) st=st+":0"+ss; else st=st+":"+ss; 
      g.drawString(st,L0,T0+25);
-     //¼ÆËãÊ±¼äºÍÍ¼ÐÎµÄ¹ØÏµ
+     //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Í¼ï¿½ÎµÄ¹ï¿½Ïµ
      sdo=90-ss*6;
      mdo=90-mm*6;
      hdo=90-hh*30-mm/2;
-     //²Á³ýÃëÕë
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      if (old_X > 0) {
         g.setColor(getBackground());
         g.drawLine(x0,y0,old_X,(h-old_Y));
@@ -100,7 +95,7 @@
         old_M=mdo;
         old_H=hdo;
      } 
-     //»æÖÆÃëÕë
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      g.setColor(Color.yellow); 
      x=(int)((r-8)*Math.cos(RAD*sdo)+x0); 
      y=(int)((r-8)*Math.sin(RAD*sdo)+y0)-2*T0; 
@@ -108,7 +103,7 @@
      
      old_X=x; 
      old_Y=y; 
-     //²Á³ý·ÖÕëºÍÊ±Õë
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
      if (mdo != old_M) {
        line(g,old_M,(int)(r*0.7),getBackground());
        old_M=mdo;
@@ -117,15 +112,15 @@
        line(g,old_H,(int)(r*0.5),getBackground());
        old_H=hdo;
      } 
-     //»æÖÆ·ÖÕë
+     //ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
      line(g,mdo,(int)(r*0.7),Color.green);
-     //»æÖÆÊ±Õë
+     //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
      line(g,hdo,(int)(r*0.5),Color.red);
   } // end paint 
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆÏß£¬ÓÃÓÚ»æÖÆÊ±ÕëºÍ·ÖÕë
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Í·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void line(Graphics g, int t, int n, Color c) { 
       int [] xp = new int[4];

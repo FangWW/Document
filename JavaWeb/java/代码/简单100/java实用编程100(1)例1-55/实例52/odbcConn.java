@@ -1,10 +1,9 @@
-import java.sql.*;
 /**
- * <p>Title: ODBCÁ¬½ÓÊý¾Ý¿â</p>
- * <p>Description: ±¾ÊµÀýÑÝÊ¾ÈçºÎÊ¹ÓÃJDBC-ODBCÇÅ²Ù×÷Êý¾Ý¿â¡£</p>
+ * <p>Title: ODBCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½JDBC-ODBCï¿½Å²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡£</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: odbcConn.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class odbcConn{
@@ -12,9 +11,9 @@ public class odbcConn{
   private String username="";
   private String password="";
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
@@ -30,10 +29,10 @@ public class odbcConn{
      }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²éÑ¯SQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½Ñ¯SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void query(Connection con, String sql){
     try{
@@ -60,10 +59,10 @@ public class odbcConn{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²åÈë¡¢¸üÐÂ¡¢É¾³ýµÈÃ»ÓÐ·µ»Ø½á¹û¼¯µÄSQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½ï¿½ë¡¢ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void execute(Connection con, String sql){
     try{
@@ -80,9 +79,9 @@ public class odbcConn{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] arg){
     if(arg.length!=3){

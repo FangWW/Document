@@ -1,15 +1,14 @@
 package com.bean;
 
 
-import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 /**
- * <p>Title: »ñÈ¡¿Í»§ÐÅÏ¢</p>
- * <p>Description: Í¨¹ý½âÎö¿Í»§·¢ËÍµÄÎÄ¼þÍ·£¬»ñÈ¡¿Í»§ÐÅÏ¢</p>
+ * <p>Title: ï¿½ï¿½È¡ï¿½Í»ï¿½ï¿½ï¿½Ï¢</p>
+ * <p>Description: Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½Í·ï¿½ï¿½ï¿½ï¿½È¡ï¿½Í»ï¿½ï¿½ï¿½Ï¢</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Browser.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class Browser extends HttpServlet
@@ -17,28 +16,28 @@ public class Browser extends HttpServlet
 protected HttpServletRequest request;
 protected HttpSession session;
 protected String userAgent;
-protected String company; // ä¯ÀÀÆ÷³öÆ·¹«Ë¾
-protected String name; // ä¯ÀÀÆ÷Ãû³Æ
-protected String version; // ä¯ÀÀÆ÷°æ±¾
-protected String mainVersion; // ä¯ÀÀÆ÷Ö÷°æ±¾ºÅ
-protected String minorVersion; // ä¯ÀÀÆ÷Ð¡°æ±¾ºÅ
-protected String os; // ¿Í»§Ê¹ÓÃµÄ²Ù×÷ÏµÍ³
-protected String language = "cn"; // ä¯ÀÀÆ÷Ê¹ÓÃµÄÓïÑÔ
-protected Locale locale; // ¿Í»§ËùÔÚÊ±Çø
+protected String company; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Ë¾
+protected String name; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+protected String version; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾
+protected String mainVersion; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½
+protected String minorVersion; // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½æ±¾ï¿½ï¿½
+protected String os; // ï¿½Í»ï¿½Ê¹ï¿½ÃµÄ²ï¿½ï¿½ï¿½ÏµÍ³
+protected String language = "cn"; // ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
+protected Locale locale; // ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
-private Hashtable supportedLanguages; // ¿Í»§ËùÖ§³ÖµÄÓïÑÔ
+private Hashtable supportedLanguages; // ï¿½Í»ï¿½ï¿½ï¿½Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½
 
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬»ñÈ¡ËùÓÐÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public Browser(HttpServletRequest request, HttpSession session)
 {
  this.initialize();
  this.request = request;
  this.session = session;
- //Ö÷Òª½âÎö¶ÔÏó£ºUser-Agent
+ //ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½User-Agent
  this.setUserAgent(this.request.getHeader("User-Agent"));
 
  this.setCompany();
@@ -51,9 +50,9 @@ public Browser(HttpServletRequest request, HttpSession session)
  this.setLocale();
 }
 /**
- *<br>·½·¨ËµÃ÷£º³õÊ¼»¯Ö§³ÖµÄÓïÑÔ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void initialize()
 {
@@ -62,9 +61,9 @@ public void initialize()
  this.supportedLanguages.put("gb", "");
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡ä¯ÀÀÆ÷ÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 
 public void setUserAgent(String httpUserAgent)
@@ -72,9 +71,9 @@ public void setUserAgent(String httpUserAgent)
  this.userAgent = httpUserAgent.toLowerCase();
 }
 /**
- *<br>·½·¨ËµÃ÷£º½âÎöä¯ÀÀÆ÷³öÆ·¹«Ë¾
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Ë¾
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setCompany()
 {
@@ -94,18 +93,18 @@ private void setCompany()
  }
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡¹«Ë¾Ãû³Æ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getCompany()
 {
  return this.company;
 }
 /**
- *<br>·½·¨ËµÃ÷£º½âÎöä¯ÀÀÆ÷Ãû³Æ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setName()
 {
@@ -128,18 +127,18 @@ private void setName()
 }
 
 /**
- *<br>·½·¨ËµÃ÷£º·µ»Øä¯ÀÀÆ÷Ãû³Æ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getName()
 {
  return this.name;
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃä¯ÀÀÆ÷°æ±¾
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setVersion()
 {
@@ -158,54 +157,54 @@ private void setVersion()
  }
 }
 /**
- *<br>·½·¨ËµÃ÷£º·µ»Øä¯ÀÀÆ÷°æ±¾
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getVersion()
 {
  return this.version;
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÖ÷°æ±¾ºÅ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setMainVersion()
 {
  this.mainVersion = this.version.substring(0, this.version.indexOf("."));
 }
 /**
- *<br>·½·¨ËµÃ÷£º·µ»ØÖ÷°æ±¾ºÅ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getMainVersion()
 {
  return this.mainVersion;
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÐ¡°æ±¾ºÅ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½æ±¾ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setMinorVersion()
 {
  this.minorVersion = this.version.substring(this.version.indexOf(".") + 1).trim();
 }
 /**
- *<br>·½·¨ËµÃ÷£º·µ»ØÐ¡°æ±¾ºÅ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½æ±¾ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getMinorVersion()
 {
  return this.minorVersion;
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃ²Ù×÷ÏµÍ³Ãû³Æ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setOs()
 {
@@ -235,18 +234,18 @@ private void setOs()
  }
 }
 /**
- *<br>·½·¨ËµÃ÷£º·µ»Ø²Ù×÷ÏµÍ³Ãû³Æ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getOs()
 {
   return this.os;
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃä¯ÀÀÆ÷½ÓÊÜÓïÑÔ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setLanguage()
 {
@@ -269,9 +268,9 @@ private void setLanguage()
  }
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÓïÑÔÓïÑÔÊ±Çø
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private String parseLocale(String language)
 {
@@ -289,18 +288,18 @@ private String parseLocale(String language)
  }
 }
 /**
- *<br>·½·¨ËµÃ÷£º·µ»ØÓïÑÔ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String getLanguage()
 {
   return this.language;
 }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃ¿Í»§Ê±Çø
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Í»ï¿½Ê±ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 private void setLocale()
 {
@@ -308,9 +307,9 @@ private void setLocale()
 }
 
 /**
- *<br>·½·¨ËµÃ÷£º·µ»ØÊ±Çø
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public Locale getLocale()
 {

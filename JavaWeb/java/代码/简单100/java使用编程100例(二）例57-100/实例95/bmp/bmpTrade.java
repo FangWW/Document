@@ -1,38 +1,39 @@
 package bmp;
 
 import java.rmi.RemoteException;
+
 import javax.ejb.EJBObject;
 
 /**
- * <p>Title: Ô¶³Ì½Ó¿Ú</p>
- * <p>Description: ÕâÊÇAccontBeanµÄÔ¶³Ì½Ó¿Ú¶¨Òå¡£Ô¶³Ì½Ó¿ÚÖÐ¶¨ÒåÁË¿Í»§¶ËÄÜÔ¶³Ìµ÷ÓÃEJBeanµÄ·½·¨¡£ÕâÐ©·½·¨³ýÁË
- *                 ÒªÅ×³öÒì³£java.rmi.RemoteExceptionÖ®Íâ£¬ºÍEJBeanÖÐµÄ¶¨ÒåÊÇÒ»ÖÂµÄ¡£µ«²¢²»ÊÇEJBeanÀ´Êµ
- *                 ÏÖÕâ¸ö½Ó¿Ú£¬¶øÊÇÓÉÈÝÆ÷×Ô¶¯²úÉúµÄÀàAccontBeanEÊµÏÖµÄ¡£</p>
+ * <p>Title: Ô¶ï¿½Ì½Ó¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½AccontBeanï¿½ï¿½Ô¶ï¿½Ì½Ó¿Ú¶ï¿½ï¿½å¡£Ô¶ï¿½Ì½Ó¿ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Ë¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ìµï¿½ï¿½ï¿½EJBeanï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *                 Òªï¿½×³ï¿½ï¿½ì³£java.rmi.RemoteExceptionÖ®ï¿½â£¬ï¿½ï¿½EJBeanï¿½ÐµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ÂµÄ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½EJBeanï¿½ï¿½Êµ
+ *                 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AccontBeanEÊµï¿½ÖµÄ¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: bmpTrade.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public interface bmpTrade extends EJBObject {
 /*
-*·½·¨ËµÃ÷£ºÌí¼Ó×Ê½ð
-* @²ÎÊý£ºfund ×Ê½ðÊý
-* @·µ»Ø£º
-* @Òì³££ºRemoteException µ±ÏµÍ³Í¨ÐÅ·¢Éú¹ÊÕÏÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½fund ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
+* @ï¿½ì³£ï¿½ï¿½RemoteException ï¿½ï¿½ÏµÍ³Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 */
   public void addFunds(double fund) throws Exception, RemoteException;
 /*
-*·½·¨ËµÃ÷£ºÌáÈ¡×Ê½ð
-* @²ÎÊý£ºfund ×Ê½ðÊý
-* @·µ»Ø£º
-* @Òì³££ºRemoteException µ±ÏµÍ³Í¨ÐÅ·¢Éú¹ÊÕÏÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½fund ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
+* @ï¿½ì³£ï¿½ï¿½RemoteException ï¿½ï¿½ÏµÍ³Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 */
   public void removeFunds(double fund) throws Exception, RemoteException;
 /*
-*·½·¨ËµÃ÷£º²ì¿´×Ê½ðÊýÄ¿
-* @²ÎÊý£º
-* @·µ»Ø£ºdouble ×Ê½ðÊý
-* @Òì³££ºRemoteException µ±ÏµÍ³Í¨ÐÅ·¢Éú¹ÊÕÏÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ì¿´ï¿½Ê½ï¿½ï¿½ï¿½Ä¿
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½double ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ì³£ï¿½ï¿½RemoteException ï¿½ï¿½ÏµÍ³Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 */
   public double getBalance() throws RemoteException;
 }

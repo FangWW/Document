@@ -2,11 +2,10 @@ package bmp;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
-import java.util.Properties;
-import java.util.Vector;
 import java.util.Iterator;
+import java.util.Properties;
+
 import javax.ejb.CreateException;
-import javax.ejb.EJBException;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
 import javax.ejb.RemoveException;
@@ -16,104 +15,104 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 /**
- * <p>Title: ¿Í»§¶Ë</p>
- * <p>Description: Õâ¸öÀàÑÝÊ¾ÁËÈçºÎµ÷ÓÃÒ»¸öÊµÌåEJB,²¢½øÐÐÈçÏÂ²Ù×÷</p>
+ * <p>Title: ï¿½Í»ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½EJB,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: bmpClientTest.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class bmpClientTest {
-//ÉùÃ÷±äÁ¿
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private String url;
   private bmpTradeHome home;
-//¹¹Ôì·½·¨
+//ï¿½ï¿½ï¿½ì·½ï¿½ï¿½
   public bmpClientTest(String url)
     throws NamingException
   {
     this.url = url;
-    //²éÕÒÖ÷½Ó¿Ú£¬lookupHomeÊÇ±¾Àý×Ô¶¨Òå·½·¨¡£
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú£ï¿½lookupHomeï¿½Ç±ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½å·½ï¿½ï¿½ï¿½ï¿½
     home = lookupHome();
   }
   /**
-   * ÔÚÃüÁîÐÐÔËÐÐÕâ¸öÊµÀý£º
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
    * java bmp.bmpClientTest "t3://localhost:7001"
-   * ²ÎÊýÊÇ¿ÉÑ¡µÄ
-   * @²ÎÊý url   URL such as "t3://localhost:7001" of Server
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½Ñ¡ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ url   URL such as "t3://localhost:7001" of Server
    */
   public static void main(String[] args) throws NamingException {
     System.out.println("\nBeginning bmp.bmpClientTest...\n");
     String url = "t3://localhost:7001";
-    // ½âÎöÃüÁîÐÐ²ÎÊý,Èç¹ûÃ»ÓÐÔòÊ¹ÓÃÄ¬ÈÏµÄ"t3://localhost:7001"
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½Ïµï¿½"t3://localhost:7001"
      if (args.length == 1) {
       url = args[0];
     }
     System.out.println("URL="+url);
     bmpClientTest bmpClientTest = null;
     try {
-    	//ÊµÀý»¯±¾Àà
+    	//Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       bmpClientTest = new bmpClientTest(url);
     } catch (NamingException ne) {
-    	//Òì³£´¦Àí
+    	//ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("Unable to look up the beans home: " + ne.getMessage());
       System.exit(1);
     }
     try {
-    	//ÔËÐÐÀý³Ì
+    	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       bmpClientTest.example();
 } catch (Exception e) {
-	//Òì³£´¦Àí
+	//ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("There was an exception while creating and using the Accounts.");
       log("This indicates that there was a problem communicating with the server: "+e);
     }
     System.out.println("\nEnd bmp.bmpClientTest...\n");
   }
-//Ö´ÐÐÊµÀý
+//Ö´ï¿½ï¿½Êµï¿½ï¿½
   public void example()
     throws CreateException, RemoteException, FinderException,
            RemoveException
   {
     int numBeans = 10;
-    //ÉùÃ÷²¢´´½¨ÕËºÅÊý×é
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½
     bmpTrade[] bmpTrade = new bmpTrade[numBeans];
-    //´´½¨10¸öÕËºÅ
+    //ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½Ëºï¿½
     for (int i=1; i<numBeans; i++) {
       bmpTrade [i] = findOrCreateAccount(i+"", i * 200);
     }
-    // ´òÓ¡ÕËºÅ½áËã
+    // ï¿½ï¿½Ó¡ï¿½ËºÅ½ï¿½ï¿½ï¿½
     for (int i=1; i<numBeans; i++) {
       log("Account: :"+bmpTrade[i].getPrimaryKey()+" has a balance of "+bmpTrade[i].getBalance());
     }
-    // ²éÕÒËùÓÐ½áËã´óÓÚ500µÄÕËºÅ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½500ï¿½ï¿½ï¿½Ëºï¿½
     findBigAccounts(500.0);
-    // Çå³ýËùÓÐÕËºÅ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
     log("Removing beans...");
     for (int i=1; i<numBeans; i++) {
       bmpTrade[i].remove();
     }
   }
   /**
-    * ÁÐ³öËùÓÐ½áËã´óÓÚ¸ø¶¨ÖµµÄÕËºÅ
-    * Õâ¸öfinder·½·¨ÑÝÊ¾·µ»ØÃ¶¾ÙÕËºÅ
+    * ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ëºï¿½
+    * ï¿½ï¿½ï¿½finderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Ëºï¿½
     */
   private void findBigAccounts(double balanceGreaterThan)
     throws RemoteException, FinderException
   {
     log("\nQuerying for fund with a balance greater than "+balanceGreaterThan + "...");
-    //µ÷ÓÃÖ÷½Ó¿Ú´´½¨ÕËºÅ·½·¨findBigAccounts£¬·µ»ØÕËºÅ¼¯ºÏ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú´ï¿½ï¿½ï¿½ï¿½ËºÅ·ï¿½ï¿½ï¿½findBigAccountsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ËºÅ¼ï¿½ï¿½ï¿½
     Collection col = home.findBigAccounts(balanceGreaterThan);
     if(col.isEmpty()) {
       log("No fund were found with a balance greater that "+balanceGreaterThan);
     }
     Iterator it = col.iterator();
     while (it.hasNext()) {
-     //´´½¨Ô¶³Ì¶ÔÏó
+     //ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ì¶ï¿½ï¿½ï¿½
       bmpTrade accountGT = (bmpTrade) PortableRemoteObject.narrow(it.next(),bmpTrade.class);
-      //ÁÐ³öºÏºõÒªÇóµÄÕË»§
+      //ï¿½Ð³ï¿½ï¿½Ïºï¿½Òªï¿½ï¿½ï¿½ï¿½Ë»ï¿½
       log("Account " + accountGT.getPrimaryKey() + "; fund is $" + accountGT.getBalance());
     }
   }
- //Èç¹û¶ÔÓ¦idµÄÕËºÅÒÔ´æÔÚ£¬Ôò·µ»ØÕâ¸öid,·ñÔò´´½¨Ëü
+ //ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦idï¿½ï¿½ï¿½Ëºï¿½ï¿½Ô´ï¿½ï¿½Ú£ï¿½ï¿½ò·µ»ï¿½ï¿½ï¿½ï¿½id,ï¿½ï¿½ï¿½ò´´½ï¿½ï¿½ï¿½
   private bmpTrade findOrCreateAccount(String id, double balance)
     throws CreateException, RemoteException, FinderException
   {
@@ -121,55 +120,55 @@ public class bmpClientTest {
       log("Trying to find account with id: "+id);
       return (bmpTrade) PortableRemoteObject.narrow(home.findByPrimaryKey(id),bmpTrade.class);
     } catch (ObjectNotFoundException onfe) {
-      // ÕËºÅ²»´æÔÚ£¬´´½¨Ëü
+      // ï¿½ËºÅ²ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       return (bmpTrade) PortableRemoteObject.narrow(home.create(id, balance),bmpTrade.class);
     }
   }
- // ¸ø¶¨idºÍ½áËã´´½¨Ò»¸öÐÂµÄÕËºÅ
+ // ï¿½ï¿½ï¿½ï¿½idï¿½Í½ï¿½ï¿½ã´´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½Ëºï¿½
    private bmpTrade createAccount(String id, double balance)
     throws CreateException, RemoteException
   {
     log("Creating account " + id + " with a balance of " +
       balance + "...");
-      //´´½¨Ô¶³ÌÕËºÅ¶ÔÏó
+      //ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ËºÅ¶ï¿½ï¿½ï¿½
     bmpTrade ac = (bmpTrade) PortableRemoteObject.narrow(home.create(id, balance),bmpTrade.class);
     log("Account " + id + " successfully created");
     return ac;
   }
- //Ê¹ÓÃJNDI²éÕÒbeanµÄÖ÷½Ó¿Ú
+ //Ê¹ï¿½ï¿½JNDIï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½
  private bmpTradeHome lookupHome()
     throws NamingException
   {
     Context ctx = getInitialContext();
     try {
-    	//²éÕÒÖ÷½Ó¿Ú
+    	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½
       Object home = ctx.lookup("bmpbean");
       return (bmpTradeHome) PortableRemoteObject.narrow(home, bmpTradeHome.class);
 	} catch (NamingException ne) {
-	//Òì³£´¦Àí
+	//ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("The bmpClientTest was unable to lookup the EJBHome.  Please make sure " +
       "that you have deployed the ejb with the JNDI name " +
       "bmp on the WebLogic server at "+url);
       throw ne;
     }
   }
-  //»ñÈ¡³õÊ¼»¯ÉÏÏÂÎÄ
+  //ï¿½ï¿½È¡ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    private Context getInitialContext() throws NamingException {
     try {
-      // ÉèÖÃÊôÐÔ¶ÔÏó
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½
       Properties h = new Properties();
       h.put(Context.INITIAL_CONTEXT_FACTORY,
         "weblogic.jndi.WLInitialContextFactory");
       h.put(Context.PROVIDER_URL, url);
       return new InitialContext(h);
     } catch (NamingException ne) {
-    	//Òì³£´¦Àí
+    	//ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("We were unable to get a connection to the WebLogic server at "+url);
       log("Please make sure that the server is running.");
       throw ne;
     }
   }
-//¿ØÖÆÌ¨Êä³ö
+//ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½
   private static void log(String s) {
     System.out.println(s);
   }

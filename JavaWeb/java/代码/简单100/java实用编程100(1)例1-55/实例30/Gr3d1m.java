@@ -1,13 +1,10 @@
 
- import java.awt.*; 
- import java.awt.event.*; 
- import javax.swing.*;
  /**
- * <p>Title: Õý·½Ìå¿òÍ¼</p>
- * <p>Description: »æÖÆÒ»¸ö±ß¿òµÄÕý·½Ìå£¬»ñÈ¡Êó±êÊÂ¼þ¸ù¾ÝÊó±êµÄÎ»ÖÃÐý×ª·½Ìå¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½å¡£</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Gr3d1m.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
  public class Gr3d1m extends JFrame 
@@ -19,17 +16,17 @@
                    Color.red,Color.white,Color.orange, 
                    Color.magenta,Color.pink}; 
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args){
      Gr3d1m G3 = new Gr3d1m();
   }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public  Gr3d1m() {
   	 setTitle("3D cube Frame");
@@ -41,18 +38,18 @@
      show();
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊó±ê°´ÏÂÊÂ¼þ£¬»ñÈ¡Êó±êÎ»ÖÃ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê°´ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void mousePressed(MouseEvent e) {
      doX=e.getX();
      doY=e.getY();
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊó±êÍÐ×§ÊÂ¼þ£¬¸Ä±äÊó±êÎ»ÖÃ£¬ÖØ»­ÆÁÄ»
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½Ø»ï¿½ï¿½ï¿½Ä»
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */  
   public void mouseDragged(MouseEvent e)  {
      angX=angX+e.getY()-doY; 
@@ -60,16 +57,16 @@
      doX=e.getX(); doY=e.getY();
      repaint(); 
   }
-/* ÒÔÏÂÊÇÊµÏÖMouseListenerºÍMouseMotionListener±ØÐëÖØÔØµÄ·½·¨*/
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½MouseListenerï¿½ï¿½MouseMotionListenerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ·ï¿½ï¿½ï¿½*/
   public void mouseReleased(MouseEvent e) { }
   public void mouseClicked(MouseEvent e)  { }
   public void mouseEntered(MouseEvent e)  { }
   public void mouseExited(MouseEvent e)   { }
   public void mouseMoved(MouseEvent e)    { } 
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆÍ¼ÐÎ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void paint( Graphics g ) {
   	 delDeaw(g);
@@ -82,9 +79,9 @@
                   10,getSize().height-30); 
   }
 /**
- *<br>·½·¨ËµÃ÷£º²ÁÊÃÆÁÄ»£¬Ê¹ÓÃ±³¾°É«¸²¸ÇÔ­À´µÄÍ¼ÐÎ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½Ê¹ï¿½Ã±ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void delDeaw(Graphics g){
   	 Insets insets = getInsets();
@@ -93,9 +90,9 @@
     g.fillRect(L0,T0,L0+350,T0+350);
   }
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆ·½Ìå
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void drawPG(Graphics g,double []x,double []y, 
                      double []z,int xp,int yp,Color co) { 
@@ -116,6 +113,6 @@
         yy[i]=yp-(int)Math.rint(y1); 
      } 
      g.setColor(co); 
-     g.drawPolygon(xx,yy,len);//»æÖÆ¶à±ßÐÎ
+     g.drawPolygon(xx,yy,len);//ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½
   }
  }

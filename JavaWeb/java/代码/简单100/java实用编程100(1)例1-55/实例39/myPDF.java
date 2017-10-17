@@ -1,106 +1,105 @@
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
-import java.io.*;
-import java.util.*;
+
 import java.awt.Color;
 
 /**
- * <p>Title: Éú³ÉPDFÎÄ¼þ</p>
- * <p>Description: ±¾ÊµÀýÍ¨¹ýÊ¹ÓÃiText°üÉú³ÉÒ»¸ö±í¸ñµÄPDFÎÄ¼þ</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½PDFï¿½Ä¼ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½Í¨ï¿½ï¿½Ê¹ï¿½ï¿½iTextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PDFï¿½Ä¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: myPDF.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class myPDF{
 /**
- *<br>·½·¨ËµÃ÷£ºÐ´PDFÎÄ¼þ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ð´PDFï¿½Ä¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void write(){
    try{
      Document document=new Document(PageSize.A4, 50, 50, 100, 50);
      Rectangle pageRect=document.getPageSize();
      PdfWriter.getInstance(document, new FileOutputStream("tables.pdf"));
-     //´´½¨ºº×Ö×ÖÌå
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      BaseFont bfSong = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", false);
      Font fontSong = new Font(bfSong, 10, Font.NORMAL);
-     // Ôö¼ÓÒ»¸öË®Ó¡
+     // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ë®Ó¡
      try {
          Watermark watermark = new Watermark(Image.getInstance("test.jpg"), pageRect.left()+50,pageRect.top()-85);
          watermark.scalePercent(50);
          document.add(watermark);
      }catch(Exception e) {
-		  System.err.println("Çë²é¿´ÎÄ¼þ¡°test.jpg¡±ÊÇ·ñÔÚÕýÈ·µÄÎ»ÖÃ?");
+		  System.err.println("ï¿½ï¿½é¿´ï¿½Ä¼ï¿½ï¿½ï¿½test.jpgï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½Î»ï¿½ï¿½?");
      }
      
-      // ÎªÒ³Ôö¼ÓÒ³Í·ÐÅÏ¢
-     HeaderFooter header = new HeaderFooter(new Phrase("JavaÊµÀýÒ»°ÙÀý",fontSong), false);
+      // ÎªÒ³ï¿½ï¿½ï¿½ï¿½Ò³Í·ï¿½ï¿½Ï¢
+     HeaderFooter header = new HeaderFooter(new Phrase("JavaÊµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½",fontSong), false);
      header.setBorder(2);
      header.setAlignment(Element.ALIGN_RIGHT);
      document.setHeader(header);
      
-	  // ÎªÒ³Ôö¼ÓÒ³½ÅÐÅÏ¢
-     HeaderFooter footer = new HeaderFooter(new Phrase("µÚ ",fontSong),new Phrase(" Ò³",fontSong));
+	  // ÎªÒ³ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ï¢
+     HeaderFooter footer = new HeaderFooter(new Phrase("ï¿½ï¿½ ",fontSong),new Phrase(" Ò³",fontSong));
      footer.setAlignment(Element.ALIGN_CENTER);
      footer.setBorder(1);
      document.setFooter(footer);
 
-      // ´ò¿ªÎÄµµ
+      // ï¿½ï¿½ï¿½Äµï¿½
      document.open(); 
-     //¹¹Ôì±í¸ñ
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      Table table = new Table(4);
      table.setDefaultVerticalAlignment(Element.ALIGN_MIDDLE);
      table.setBorder(Rectangle.NO_BORDER);
      int hws[] = {10, 20, 10, 20,};
      table.setWidths(hws);
      table.setWidth(100);
-     //±íÍ·ÐÅÏ¢
-     Cell cellmain = new Cell(new Phrase("ÓÃ»§ÐÅÏ¢",new Font(bfSong, 10, Font.BOLD,new Color(0,0,255))));
+     //ï¿½ï¿½Í·ï¿½ï¿½Ï¢
+     Cell cellmain = new Cell(new Phrase("ï¿½Ã»ï¿½ï¿½ï¿½Ï¢",new Font(bfSong, 10, Font.BOLD,new Color(0,0,255))));
      cellmain.setHorizontalAlignment(Element.ALIGN_CENTER);
      cellmain.setColspan(4);
      cellmain.setBorder(Rectangle.NO_BORDER);
      cellmain.setBackgroundColor(new Color(0xC0, 0xC0, 0xC0));
      table.addCell(cellmain);
-      //·Ö±íÍ·ÐÅÏ¢
-     Cell cellleft= new Cell(new Phrase("ÊÕ»õÈËÐÅÏ¢",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
+      //ï¿½Ö±ï¿½Í·ï¿½ï¿½Ï¢
+     Cell cellleft= new Cell(new Phrase("ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
      cellleft.setColspan(2);
      cellleft.setHorizontalAlignment(Element.ALIGN_CENTER);
      table.addCell(cellleft);
-     Cell cellright= new Cell(new Phrase("¶©»õÈËÐÅÏ¢",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
+     Cell cellright= new Cell(new Phrase("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
      cellright.setColspan(2);
      cellright.setHorizontalAlignment(Element.ALIGN_CENTER);
      table.addCell(cellright);
      
-     //ÊÕ»õºÍ¶©»õÈËÐÅÏ¢£¬±íÌåÄÚÈÝ
-     table.addCell(new Phrase("ÐÕÃû",fontSong));
-     table.addCell(new Phrase("ÕÅÈý",fontSong));
-     table.addCell(new Phrase("ÐÕÃû",fontSong));
-     table.addCell(new Phrase("ÀîËÄ",fontSong));
+     //ï¿½Õ»ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½",fontSong));
 
-     table.addCell(new Phrase("µç»°",fontSong));
+     table.addCell(new Phrase("ï¿½ç»°",fontSong));
      table.addCell(new Phrase("23456789",fontSong));
-     table.addCell(new Phrase("µç»°",fontSong));
+     table.addCell(new Phrase("ï¿½ç»°",fontSong));
      table.addCell(new Phrase("9876543",fontSong));
 
-     table.addCell(new Phrase("ÓÊ±à",fontSong));
+     table.addCell(new Phrase("ï¿½Ê±ï¿½",fontSong));
      table.addCell(new Phrase("100002",fontSong));
-     table.addCell(new Phrase("ÓÊ±à",fontSong));
+     table.addCell(new Phrase("ï¿½Ê±ï¿½",fontSong));
      table.addCell(new Phrase("200001",fontSong));
 
-     table.addCell(new Phrase("µØÖ·",fontSong));
-     table.addCell(new Phrase("±±¾©Î÷³ÇÇøXXÂ·XXºÅ",fontSong));
-     table.addCell(new Phrase("µØÖ·",fontSong));
-     table.addCell(new Phrase("ÉÏº£Â½¼Ò×ìÇøXXÂ·XXºÅ",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½Ö·",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XXÂ·XXï¿½ï¿½",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½Ö·",fontSong));
+     table.addCell(new Phrase("ï¿½Ïºï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XXÂ·XXï¿½ï¿½",fontSong));
 
-     table.addCell(new Phrase("µç×ÓÓÊ¼þ",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½",fontSong));
      table.addCell(new Phrase("zh_san@hotmail.com",fontSong));
-     table.addCell(new Phrase("µç×ÓÓÊ¼þ",fontSong));
+     table.addCell(new Phrase("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½",fontSong));
      table.addCell(new Phrase("li_si@hotmail.com",fontSong));
-     //½«±í¸ñÌí¼Óµ½ÎÄ±¾ÖÐ
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ä±ï¿½ï¿½ï¿½
      document.add(table);
-     //¹Ø±ÕÎÄ±¾£¬ÊÍ·Å×ÊÔ´
+     //ï¿½Ø±ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ô´
      document.close(); 
      
    }catch(Exception e){
@@ -108,9 +107,9 @@ public class myPDF{
    }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] arg){
     myPDF p = new myPDF();

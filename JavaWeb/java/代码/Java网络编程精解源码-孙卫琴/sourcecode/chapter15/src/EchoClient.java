@@ -1,8 +1,3 @@
-import java.net.*;
-import java.io.*;
-import javax.net.ssl.*;
-import java.security.*;
-
 public class EchoClient {
   private String host="localhost";
   private int port=8000;
@@ -13,7 +8,7 @@ public class EchoClient {
     socket=(SSLSocket)factory.createSocket(host,port);
     String[] supported=socket.getSupportedCipherSuites();
     socket.setEnabledCipherSuites(supported);
-    System.out.println(socket.getUseClientMode()? "¿Í»§Ä£Ê½":"·þÎñÆ÷Ä£Ê½");
+    System.out.println(socket.getUseClientMode()? "ï¿½Í»ï¿½Ä£Ê½":"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½");
   }
   public static void main(String args[])throws IOException{
     new EchoClient().talk();
@@ -50,7 +45,7 @@ public class EchoClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

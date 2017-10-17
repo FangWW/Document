@@ -1,5 +1,3 @@
-import java.net.*;
-import java.io.*;
 public class ConnectTester {
   public static void main(String args[]){
     String host="localhost";
@@ -17,9 +15,9 @@ public class ConnectTester {
     try {
         long begin=System.currentTimeMillis();
         socket = new Socket();
-        socket.connect(remoteAddr,1000);  //³¬Ê±Ê±¼äÎª1ÃëÖÓ
+        socket.connect(remoteAddr,1000);  //ï¿½ï¿½Ê±Ê±ï¿½ï¿½Îª1ï¿½ï¿½ï¿½ï¿½
         long end=System.currentTimeMillis();
-        result=(end-begin)+"ms";  //¼ÆËãÁ¬½ÓËù»¨µÄÊ±¼ä
+        result=(end-begin)+"ms";  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
     }catch (BindException e) {
         result="Local address and port can't be binded";
     }catch (UnknownHostException e) {
@@ -43,7 +41,7 @@ public class ConnectTester {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,6 +1,3 @@
-import java.io.*;
-import java.util.*;
-
 public class ObjectSaver{
 
   public static void main(String agrs[]) throws Exception {
@@ -9,14 +6,14 @@ public class ObjectSaver{
     String obj1="hello";
     Date obj2=new Date();
     Customer obj3=new Customer("Tom",20);
-    //ÐòÁÐ»¯¶ÔÏó
+    //ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
     out.writeObject(obj1);
     out.writeObject(obj2);
     out.writeObject(obj3);
     out.writeInt(123);
     out.close();
     
-    //·´ÐòÁÐ»¯¶ÔÏó 
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ 
     ObjectInputStream in=new ObjectInputStream(new FileInputStream("D:\\objectFile.obj"));
     String obj11 = (String)in.readObject();
     System.out.println("obj11:"+obj11);
@@ -51,7 +48,7 @@ class Customer implements Serializable{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

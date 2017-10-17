@@ -1,11 +1,10 @@
 package proxy1;
-import java.io.*;
 public class Call implements Serializable{
-  private String className;  //表示类名
-  private String methodName; //表示方法名
-  private Class[] paramTypes; //表示方法参数类型
-  private Object[] params; //表示方法参数值
-  private Object result;  //表示方法的返回值或者方法抛出的异常
+  private String className;  //锟斤拷示锟斤拷锟斤拷
+  private String methodName; //锟斤拷示锟斤拷锟斤拷锟斤拷
+  private Class[] paramTypes; //锟斤拷示锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+  private Object[] params; //锟斤拷示锟斤拷锟斤拷锟斤拷锟斤拷值
+  private Object result;  //锟斤拷示锟斤拷锟斤拷锟侥凤拷锟斤拷值锟斤拷锟竭凤拷锟斤拷锟阶筹拷锟斤拷锟届常
   
   public Call(){}
   public Call(String className,String methodName,Class[] paramTypes,
@@ -38,7 +37,7 @@ public class Call implements Serializable{
 
 
 /****************************************************
- * 作者：孙卫琴                                     *
- * 来源：<<Java网络编程精解>>                       *
- * 技术支持网址：www.javathinker.org                *
+ * 锟斤拷锟竭ｏ拷锟斤拷锟斤拷锟斤拷                                     *
+ * 锟斤拷源锟斤拷<<Java锟斤拷锟斤拷锟教撅拷锟斤拷>>                       *
+ * 锟斤拷锟斤拷支锟斤拷锟斤拷址锟斤拷www.javathinker.org                *
  ***************************************************/

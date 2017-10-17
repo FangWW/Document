@@ -1,28 +1,26 @@
- import java.applet.Applet; 
- import java.awt.*; 
- import java.awt.event.*; 
+ import java.applet.Applet;
 /**
- * <p>Title: Êó±ê¼ì²â</p>
- * <p>Description: ÔÚappletÊ¹ÓÃÊó±êÊÂ¼ş£¬¼ì²âÊó±êµÄ¶¯×÷¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½appletÊ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: MouseAd.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
  public class MouseAd extends Applet{ 
    int x=0,y=0;
    int width,height;
 /**
- *<br>·½·¨ËµÃ÷£ºApplet³õÊ¼»¯£¬Ìí¼ÓÁËÒ»¸öÊó±ê¼àÌı¶ÔÏó¡£
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void init() {
       addMouseListener(new Mouse()); 
    } //end init 
 /**
- *<br>ÀàËµÃ÷£º¼Ì³ĞMouseAdapterÀà£¬ÊµÏÖÊó±êµã»÷¼àÌı¡£
- *<br>¹¦ÄÜÃèÊö£º»ñÈ¡Êó±êÔÚAppletÉÏµã»÷µÄÎ»ÖÃ
+ *<br>ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½MouseAdapterï¿½à£¬Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Appletï¿½Ïµï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
  */
    class Mouse extends MouseAdapter {
       public void mousePressed(MouseEvent e) {
@@ -34,9 +32,9 @@
       } //end mousePressed 
    } //end Mouse 
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆAppletÆÁÄ»£¬¸ù¾İÊó±êÎ»ÖÃ»æÖÆ×ø±ê
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void paint(Graphics g) { 
       g.drawString("x="+x+" y="+y,10,20);

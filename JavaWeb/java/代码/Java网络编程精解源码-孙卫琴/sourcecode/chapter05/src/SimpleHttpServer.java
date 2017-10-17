@@ -1,11 +1,3 @@
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.net.*;
-import java.util.*;
-import java.util.concurrent.*;
-
 public class SimpleHttpServer {
   private int port=80;
   private ServerSocketChannel serverSocketChannel = null;
@@ -18,7 +10,7 @@ public class SimpleHttpServer {
     serverSocketChannel= ServerSocketChannel.open();
     serverSocketChannel.socket().setReuseAddress(true);
     serverSocketChannel.socket().bind(new InetSocketAddress(port));
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public void service() {
@@ -48,22 +40,22 @@ public class SimpleHttpServer {
   public void handle(SocketChannel socketChannel){
     try {
         Socket socket=socketChannel.socket();
-        System.out.println("½ÓÊÕµ½¿Í»§Á¬½Ó£¬À´×Ô: " +
+        System.out.println("ï¿½ï¿½ï¿½Õµï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½: " +
         socket.getInetAddress() + ":" +socket.getPort());
 
          ByteBuffer buffer=ByteBuffer.allocate(1024);
          socketChannel.read(buffer);
          buffer.flip();
          String request=decode(buffer);
-         System.out.print(request);  //´òÓ¡HTTPÇëÇó
+         System.out.print(request);  //ï¿½ï¿½Ó¡HTTPï¿½ï¿½ï¿½ï¿½
 
-         //Êä³öHTTPÏìÓ¦½á¹û
+         //ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
          StringBuffer sb=new StringBuffer("HTTP/1.1 200 OK\r\n");
          sb.append("Content-Type:text/html\r\n\r\n");
-         socketChannel.write(encode(sb.toString()));//Êä³öÏìÓ¦Í·
+         socketChannel.write(encode(sb.toString()));//ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Í·
 
          FileInputStream in;
-         //»ñµÃHTTPÇëÇóµÄµÚÒ»ÐÐ
+         //ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½Äµï¿½Ò»ï¿½ï¿½
          String firstLineOfRequest=request.substring(0,request.indexOf("\r\n"));
          if(firstLineOfRequest.indexOf("login.htm")!=-1)
             in=new FileInputStream("root/login.htm");
@@ -82,11 +74,11 @@ public class SimpleHttpServer {
       }
   }
   private Charset charset=Charset.forName("GBK");
-  public String decode(ByteBuffer buffer){  //½âÂë
+  public String decode(ByteBuffer buffer){  //ï¿½ï¿½ï¿½ï¿½
     CharBuffer charBuffer= charset.decode(buffer);
     return charBuffer.toString();
   }
-  public ByteBuffer encode(String str){  //±àÂë
+  public ByteBuffer encode(String str){  //ï¿½ï¿½ï¿½ï¿½
     return charset.encode(str);
   }
  }
@@ -100,7 +92,7 @@ public class SimpleHttpServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

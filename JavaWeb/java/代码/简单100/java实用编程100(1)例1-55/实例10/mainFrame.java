@@ -1,42 +1,39 @@
-import javax.swing.*;
-import java.awt.*;
-
 /**
- * <p>Title: ´´½¨×Ô¼ºµÄ´°Ìå</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: mainFrame.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class mainFrame extends JFrame
 {
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬Í¨¹ý´«µÝ²ÎÊýÀ´Íê³É´°ÌåµÄ»æÖÆ¡£
- *<br>ÊäÈë²ÎÊý£ºString sTitle ´°Ìå±êÌâ
- *<br>ÊäÈë²ÎÊý£ºint iWidth ´°ÌåµÄ¿í¶È
- *<br>ÊäÈë²ÎÊý£ºint iHeight ´°ÌåµÄ¸ß¶È 
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É´ï¿½ï¿½ï¿½Ä»ï¿½ï¿½Æ¡ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sTitle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int iWidth ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int iHeight ï¿½ï¿½ï¿½ï¿½Ä¸ß¶ï¿½ 
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public mainFrame(String sTitle,int iWidth,int iHeight)
   {
-    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//»ñÈ¡ÆÁÄ»³ß´ç
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//ï¿½ï¿½È¡ï¿½ï¿½Ä»ï¿½ß´ï¿½
     ImageIcon ii = new ImageIcon("images/middle.gif");
-    setTitle(sTitle);//ÉèÖÃ´°Ìå±êÌâ
-    setIconImage(ii.getImage());//ÉèÖÃ´°ÌåµÄÍ¼±ê
-    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//ÉèÖÃµ«¹Ø±Õ´°ÌåÊ±ÍË³ö³ÌÐò
-    setSize(iWidth,iHeight);//ÉèÖÃ´°Ìå´óÐ¡
-    int w = getSize().width;//»ñÈ¡´°Ìå¿í¶È
-    int h = getSize().height;//»ñÈ¡´°Ìå¸ß¶È
-    System.out.println("´°Ìå¿í£º"+w+" ´°Ìå¸ß£º"+h);
+    setTitle(sTitle);//ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    setIconImage(ii.getImage());//ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ø±Õ´ï¿½ï¿½ï¿½Ê±ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½
+    setSize(iWidth,iHeight);//ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Ð¡
+    int w = getSize().width;//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int h = getSize().height;//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ß¶ï¿½
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½"+w+" ï¿½ï¿½ï¿½ï¿½ß£ï¿½"+h);
     int x = (dim.width-w)/2;
     int y = (dim.height-h)/2;
-    setLocation(x,y);//½«´°ÌåÒÆµ½ÆÁÄ»ÖÐ¼ä
-    setVisible(true);//ÏÔÊ¾´°Ìå
+    setLocation(x,y);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Ä»ï¿½Ð¼ï¿½
+    setVisible(true);//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
   }
   public static void main(String[] args)
   {
-    JFrame.setDefaultLookAndFeelDecorated(true);//Ê¹ÓÃ×îÐÂµÄSWINGÍâ¹Û
+    JFrame.setDefaultLookAndFeelDecorated(true);//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½SWINGï¿½ï¿½ï¿½
     mainFrame mF = new mainFrame("main Frame Demo",400,300);
   }
 }

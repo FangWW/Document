@@ -1,33 +1,31 @@
 package stateful;
 
 import javax.ejb.*;
-import java.util.*;
-import java.rmi.*;
 /*
-*ÕâÊÇStatefulTradeµÄÔ¶³Ì½Ó¿Ú¶¨Òå¡£Ô¶³Ì½Ó¿Ú¶¨ÒåÁË¿Í»§¶ËÄÜÔ¶³Ìµ÷ÓÃµÄEJBµÄ·½·¨¡£
-*ÕâÐ©·½·¨³ýÁËÅ×³öÒì³£java.rmi.RemoteException£¬ºÍEJBÖÐ¶¨ÒåÊÇÒ»ÖÂµÄ¡£
-*µ«²»ÊÇEJBÀ´ÊµÏÖÕâ¸ö½Ó¿Ú£¬¶øÊÇÓÉÈÝÆ÷×Öµä²úÉúµÄÀàStatefulTradeBeanEÊµÏÖ¡£
+*ï¿½ï¿½ï¿½ï¿½StatefulTradeï¿½ï¿½Ô¶ï¿½Ì½Ó¿Ú¶ï¿½ï¿½å¡£Ô¶ï¿½Ì½Ó¿Ú¶ï¿½ï¿½ï¿½ï¿½Ë¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ìµï¿½ï¿½Ãµï¿½EJBï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½
+*ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£java.rmi.RemoteExceptionï¿½ï¿½ï¿½ï¿½EJBï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ÂµÄ¡ï¿½
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½EJBï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½StatefulTradeBeanEÊµï¿½Ö¡ï¿½
 */
 public interface StatefulShop extends javax.ejb.EJBObject {
 /*
-*·½·¨ËµÃ÷£ºÌí¼ÓÉÌÆ·
-* @²ÎÊý£ºvalue ×Ê½ðÊý
-* @·µ»Ø£º
-* @Òì³££ºRemoteException µ±ÏµÍ³Í¨ÐÅ·¢Éú¹ÊÕÏÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½value ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
+* @ï¿½ì³£ï¿½ï¿½RemoteException ï¿½ï¿½ÏµÍ³Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 */
   public void addGoods(int id,String goods,double value) throws Exception, RemoteException;
 /*
-*·½·¨ËµÃ÷£ºÒÆ³ýÉÌÆ·
-* @²ÎÊý£ºfund ×Ê½ðÊý
-* @·µ»Ø£º
-* @Òì³££ºRemoteException µ±ÏµÍ³Í¨ÐÅ·¢Éú¹ÊÕÏÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ï¿½Æ·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½fund ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
+* @ï¿½ì³£ï¿½ï¿½RemoteException ï¿½ï¿½ÏµÍ³Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 */
   public void removeGoods(int id) throws Exception, RemoteException;
 /*
-*·½·¨ËµÃ÷£º²ì¿´ÉÌÆ·
-* @²ÎÊý£º
-* @·µ»Ø£ºHastable ÉÌÆ·
-* @Òì³££ºRemoteException µ±ÏµÍ³Í¨ÐÅ·¢Éú¹ÊÕÏÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ì¿´ï¿½ï¿½Æ·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½Hastable ï¿½ï¿½Æ·
+* @ï¿½ì³£ï¿½ï¿½RemoteException ï¿½ï¿½ÏµÍ³Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 */
   public Vector  seeGoods() throws RemoteException;
 }

@@ -1,11 +1,9 @@
 package linger;
-import java.io.*;
-import java.net.*;
 public class SimpleServer {
   public static void main(String args[])throws Exception {
     ServerSocket serverSocket = new ServerSocket(8000);
     Socket s=serverSocket.accept();
-    Thread.sleep(5000);  //Ë¯Ãë5ÃëºóÔÙ¶ÁÊäÈëÁ÷
+    Thread.sleep(5000);  //Ë¯ï¿½ï¿½5ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     InputStream in=s.getInputStream();
     ByteArrayOutputStream buffer=new ByteArrayOutputStream();
     byte[] buff=new byte[1024];
@@ -14,13 +12,13 @@ public class SimpleServer {
         len=in.read(buff);
         if(len!=-1)buffer.write(buff,0,len);
      }while(len!=-1);
-    System.out.println(new String(buffer.toByteArray()));  //°Ñ×Ö½ÚÊý×é×ª»»Îª×Ö·û´®
+    System.out.println(new String(buffer.toByteArray()));  //ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,8 +1,3 @@
-import java.net.*;
-import java.io.*;
-import javax.net.ssl.*;
-import java.security.*;
-
 public class HTTPSClientWithListener extends HTTPSClient{
   public void createSocket() throws Exception{
     factory=(SSLSocketFactory)SSLSocketFactory.getDefault();
@@ -12,10 +7,10 @@ public class HTTPSClientWithListener extends HTTPSClient{
     
     socket.addHandshakeCompletedListener(new HandshakeCompletedListener(){
       public void handshakeCompleted(HandshakeCompletedEvent event){
-        System.out.println("ÎÕÊÖ½áÊø"); 
-        System.out.println("¼ÓÃÜÌ×¼þÎª£º"+event.getCipherSuite()); 
-        System.out.println("»á»°Îª£º"+event.getSession()); 
-        System.out.println("Í¨ÐÅ¶Ô·½Îª£º"+event.getSession().getPeerHost()); 
+        System.out.println("ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½"); 
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½Îªï¿½ï¿½"+event.getCipherSuite()); 
+        System.out.println("ï¿½á»°Îªï¿½ï¿½"+event.getSession()); 
+        System.out.println("Í¨ï¿½Å¶Ô·ï¿½Îªï¿½ï¿½"+event.getSession().getPeerHost()); 
       }
     });
   }
@@ -29,7 +24,7 @@ public class HTTPSClientWithListener extends HTTPSClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

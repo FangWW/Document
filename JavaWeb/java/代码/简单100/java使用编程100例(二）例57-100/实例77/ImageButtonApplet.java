@@ -1,14 +1,10 @@
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
 /**
- * <p>Title: AppletÊ¹ÓÃjar°ü</p>
- * <p>Description: ½«ÀàÎÄ¼þºÍÍ¼Æ¬µÈ×ÊÔ´ÎÄ¼þ´ò°ü£¬Ò»´ÎÏÂÔØµ½±¾µØ¡£
-                   ±¾ÊµÀýÑÝÊ¾AppletÊ¹ÓÃÕâÐ©×ÊÔ´</p>
+ * <p>Title: AppletÊ¹ï¿½ï¿½jarï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½Ø¡ï¿½
+                   ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾AppletÊ¹ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½Ô´</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ImageButtonApplet.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ImageButtonApplet extends JApplet
@@ -16,9 +12,9 @@ public class ImageButtonApplet extends JApplet
 private String path = "/img/ittoolbox.gif";
 private ImageIcon logoButtonIcon = new ImageIcon(getClass().getResource(path));
 /**
- *<br>·½·¨ËµÃ÷£º³õÊ¼»¯Applet£¬Ìí¼Ó´øÍ¼Æ¬µÄ°´Å¥
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Appletï¿½ï¿½ï¿½ï¿½Ó´ï¿½Í¼Æ¬ï¿½Ä°ï¿½Å¥
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void init()
 {

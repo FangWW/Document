@@ -1,22 +1,23 @@
 package javahello;
-import javax.servlet.http.*;
 import org.apache.struts.action.*;
+
+import javax.servlet.http.*;
 /**
- * ¼Ì³ÐActionÀà
+ * ï¿½Ì³ï¿½Actionï¿½ï¿½
  */
 public final class SendMessageAction extends Action {
   public ActionForward perform(ActionMapping mapping,
                                ActionForm form,
                                HttpServletRequest request,
                                HttpServletResponse response) {
-    //¶¨ÒåBeanÈ¡µÃ±äÁ¿Àà
+    //ï¿½ï¿½ï¿½ï¿½BeanÈ¡ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½
     SendMessageForm sendMessageForm = (SendMessageForm)form;
-    //»ñÈ¡±äÁ¿²ÎÊý
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     String name = sendMessageForm.getName();
     String email = sendMessageForm.getEmail();
     String message = sendMessageForm.getMessage();
-    // µ±´¦ÀíÍêºó£¬¸ù¾Ý"success"±ê¼Ç£¬Ìø´«µ½ÏàÓ¦µÄÒ³Ãæ¡£
-    // (ºÍstruts-config.xmlÎÄ¼þÖÐÏà¶ÔÓ¦µÄ¶¨Òå)
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬¸ï¿½ï¿½ï¿½"success"ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ò³ï¿½æ¡£
+    // (ï¿½ï¿½struts-config.xmlï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä¶ï¿½ï¿½ï¿½)
     return (mapping.findForward("success"));
   }
 }

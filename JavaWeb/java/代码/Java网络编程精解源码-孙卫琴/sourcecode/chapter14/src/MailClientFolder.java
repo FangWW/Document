@@ -1,45 +1,44 @@
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
 public class MailClientFolder extends MailClient {
-  /** ÁÐ³öËùÓÐµÄÓÊ¼þ¼Ð */
+  /** ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ */
   public void listFolders()throws Exception{
     Folder rootFolder=store.getDefaultFolder();
     Folder[] folders=rootFolder.list();
     for(int i=0;i<folders.length;i++){
-      System.out.println(folders[i]+"ÓÊ¼þ¼Ð£º"+folders[i].getMessageCount()+"·âÓÊ¼þ");
+      System.out.println(folders[i]+"ï¿½Ê¼ï¿½ï¿½Ð£ï¿½"+folders[i].getMessageCount()+"ï¿½ï¿½ï¿½Ê¼ï¿½");
     }
   } 
 
-  /** É¾³ýÓÊ¼þ¼Ð */
+  /** É¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ */
   public void deleteFolder(String folderName )throws Exception {
     if(folderName.equalsIgnoreCase("inbox")||
          folderName.equalsIgnoreCase("trash")||
          folderName.equalsIgnoreCase("draft")||
          folderName.equalsIgnoreCase("sendbox")){
-       throw new Exception("²»ÔÊÐíÉ¾³ý±£ÁôÓÊ¼þ¼Ð");
+       throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½");
     }
 
     Folder folder=store.getFolder(folderName);
-    if(!folder.exists())throw new Exception(folderName+"ÓÊ¼þ¼Ð²»´æÔÚ");
+    if(!folder.exists())throw new Exception(folderName+"ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½");
     if(folder.isOpen())folder.close(true);
     folder.delete(true);
   }
   
-  /** ´´½¨ÓÊ¼þ¼Ð */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ */
   public void createFolder(String folderName)throws Exception {
     if(folderName==null || folderName.equals(""))
-      throw new Exception("±ØÐëÖ¸¶¨ÓÊ¼þ¼ÐµÄÃû×Ö");
+      throw new Exception("ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½");
     Folder folder=store.getFolder(folderName);
-    if(folder.exists())throw new Exception(folderName+"ÓÊ¼þ¼ÐÒÑ¾­´æÔÚÁË");
+    if(folder.exists())throw new Exception(folderName+"ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     folder.create(Folder.HOLDS_MESSAGES);
   }
   
-  /** ÐÞ¸ÄÎÄ¼þ¼ÐµÄÃû×Ö*/
+  /** ï¿½Þ¸ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½*/
   public void renameFolder(String fromName,String toName)throws Exception {
     if(toName==null || toName.equals(""))
-       throw new Exception("±ØÐëÖ¸¶¨ÓÊ¼þ¼ÐµÄÐÂÃû×Ö");
+       throw new Exception("ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
  
     if(fromName.equalsIgnoreCase("inbox")||
         fromName.equalsIgnoreCase("trash")||
@@ -50,21 +49,21 @@ public class MailClientFolder extends MailClient {
         toName.equalsIgnoreCase("trash")||
         toName.equalsIgnoreCase("draft")||
         toName.equalsIgnoreCase("sendbox")){
-      throw new Exception("²»ÔÊÐíÐÞ¸Ä±£ÁôµÄÓÊ¼þ¼ÐµÄÃû×Ö");
+      throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½");
     }
 
     Folder folderFrom=store.getFolder(fromName);
     Folder folderTo=store.getFolder(toName);
-    if(!folderFrom.exists())throw new Exception(folderFrom+"¸ÃÓÊ¼þ¼Ð²»´æÔÚ");
+    if(!folderFrom.exists())throw new Exception(folderFrom+"ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½");
     if(folderFrom.isOpen())folderFrom.close(true);
 
     folderFrom.renameTo(folderTo);
   }
 
-  /** É¾³ýÓÊ¼þ */
+  /** É¾ï¿½ï¿½ï¿½Ê¼ï¿½ */
   public void deleteMessage(int arrayOpt[],String folderName)throws Exception {
     Folder folder=store.getFolder(folderName);
-    if(!folder.exists())throw new Exception(folderName+"¸ÃÓÊ¼þ¼Ð²»´æÔÚ");
+    if(!folder.exists())throw new Exception(folderName+"ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½");
     if(!folder.isOpen())folder.open(Folder.READ_WRITE);
 
     for(int i=0;i<arrayOpt.length;i++){
@@ -81,17 +80,17 @@ public class MailClientFolder extends MailClient {
     folder.expunge();
   }
   
-  /** ·¢ËÍÓÊ¼þ */ 
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ */ 
   public void sendMessage(Message msg)throws Exception {
     Transport.send(msg);
  
-    //°ÑÓÊ¼þ±£´æµ½SendBoxÓÊ¼þ¼Ð
+    //ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½æµ½SendBoxï¿½Ê¼ï¿½ï¿½ï¿½
     Folder folder=store.getFolder("sendbox");
     if(!folder.isOpen())folder.open(Folder.READ_WRITE);
     folder.appendMessages(new Message[]{msg});
   }
    
-  /** ´´½¨±£ÁôµÄÓÊ¼þ¼Ð */ 
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ */ 
   public void createReservedFolders()throws Exception{
     String[] folderNames={"trash","draft","sendbox"};
     for(int i=0;i<folderNames.length;i++){
@@ -101,25 +100,25 @@ public class MailClientFolder extends MailClient {
     }
   }
   
-  /** °ÑÓÊ¼þ±£´æµ½draftÓÊ¼þ¼Ð */
+  /** ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½æµ½draftï¿½Ê¼ï¿½ï¿½ï¿½ */
   public void saveMessage(Message msg)throws Exception {
     saveMessage("draft",msg);
   }
 
-    /** °ÑÓÊ¼þ±£´æµ½ÌØ¶¨ÓÊ¼þ¼Ð */
+    /** ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½æµ½ï¿½Ø¶ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ */
   public void saveMessage(String folderName,Message msg)throws Exception {
     Folder folder=store.getFolder(folderName);
-    if(!folder.exists())throw new Exception(folderName+"ÓÊ¼þ¼Ð²»´æÔÚ"); 
+    if(!folder.exists())throw new Exception(folderName+"ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½"); 
     if(!folder.isOpen())folder.open(Folder.READ_WRITE);
     folder.appendMessages(new Message[]{msg});
   }
 
-  /** °ÑÓÊ¼þ´ÓÒ»¸öÓÊ¼þ¼ÐÒÆ¶¯µ½ÁíÒ»¸öÓÊ¼þ¼Ð */
+  /** ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ */
   public void moveMessage(String fromFolderName,String toFolderName,Message msg)throws Exception {
     Folder folderFrom=store.getFolder(fromFolderName);;
     Folder folderTo=store.getFolder(toFolderName);
-    if(!folderFrom.exists())throw new Exception(fromFolderName+"ÓÊ¼þ¼Ð²»´æÔÚ"); 
-    if(!folderTo.exists())throw new Exception(toFolderName+"ÓÊ¼þ¼Ð²»´æÔÚ");
+    if(!folderFrom.exists())throw new Exception(fromFolderName+"ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½"); 
+    if(!folderTo.exists())throw new Exception(toFolderName+"ï¿½Ê¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½");
     folderFrom.copyMessages(new Message[]{msg},folderTo);
     msg.setFlag(Flags.Flag.DELETED, true);
     folderFrom.expunge();
@@ -128,8 +127,8 @@ public class MailClientFolder extends MailClient {
   public static void main(String[] args)throws Exception {
     MailClientFolder client=new MailClientFolder();
     client.init();
-    client.createReservedFolders(); //´´½¨trash¡¢sendboxºÍdraftÓÊ¼þ¼Ð
-    client.createFolder("myfolder"); //´´½¨myfolderÓÊ¼þ¼Ð
+    client.createReservedFolders(); //ï¿½ï¿½ï¿½ï¿½trashï¿½ï¿½sendboxï¿½ï¿½draftï¿½Ê¼ï¿½ï¿½ï¿½
+    client.createFolder("myfolder"); //ï¿½ï¿½ï¿½ï¿½myfolderï¿½Ê¼ï¿½ï¿½ï¿½
     client.renameFolder("myfolder","onefolder");
     Message msg=client.createSimpleMessage("admin@mydomain.com","admin@mydomain.com");
     client.sendMessage(msg);
@@ -145,7 +144,7 @@ public class MailClientFolder extends MailClient {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

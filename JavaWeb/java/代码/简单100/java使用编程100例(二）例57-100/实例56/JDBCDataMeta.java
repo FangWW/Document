@@ -1,10 +1,9 @@
-import java.sql.*;
 /**
- * <p>Title: Êý¾Ý¿âÔªÊý¾Ý</p>
- * <p>Description: Ê¹ÓÃÊý¾Ý¿âÔªÊý¾Ý¶ÔÏó»ñÈ¡Êý¾Ý¿âÐÅÏ¢¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½Ý¿ï¿½Ôªï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ôªï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDBCDataMeta.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDBCDataMeta {
@@ -12,9 +11,9 @@ public class JDBCDataMeta {
  private String username="";
  private String password="";
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public static void main(java.lang.String[] args) {
     if(args.length!=4){
@@ -29,9 +28,9 @@ public class JDBCDataMeta {
 }
 
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
@@ -50,24 +49,24 @@ public class JDBCDataMeta {
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡Êý¾ÝÔªÊý¾ÝÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString table ±íÃû³Æ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String table ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void getMeta(Connection con, String table){
    try {
      DatabaseMetaData dbmd = con.getMetaData();
-     //»ñÈ¡Çý¶¯Ãû
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      String dataName = dbmd.getDriverName();
      String dataURL = dbmd.getURL();
      System.out.println("**************** DATA META Comment  *********************");
      System.out.println("dataName="+dataName);
      System.out.println("dataURL="+dataURL);
-     //»ñÈ¡Êý¾Ý¿â×î´óÖ§³Ö×Ö½ÚÊý
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
      int dataMaxSize = dbmd.getMaxRowSize();
      System.out.println("dataMaxSize="+dataMaxSize);
-     //»ñÈ¡Êý¾Ý¿â±íÐÅÏ¢
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ï¢
      String[] types = new String[1];
      types[0] = "TABLE"; 
      ResultSet results = dbmd.getTables(null, null, "%", types);
@@ -81,7 +80,7 @@ public class JDBCDataMeta {
         System.err.println("TABLE_TYPE  : "+results.getObject(4));
         System.err.println("REMARKS     : "+results.getObject(5));
     }
-     //»ñÈ¡±íÖ÷¼üÐÅÏ¢
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
      ResultSet pkRSet = dbmd.getPrimaryKeys(null, null, table);
      System.out.println("********************PK information********************");
       while(pkRSet.next()){
@@ -94,7 +93,7 @@ public class JDBCDataMeta {
      }
 
     System.out.println("*****************FK information***********************");
-    //»ñÈ¡±íÍâ¼üÐÅÏ¢
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
     results = dbmd.getImportedKeys(null, null, table);
      while (results.next()) 
      {
@@ -114,7 +113,7 @@ public class JDBCDataMeta {
         System.err.println("DEFERRABILITY : "+results.getObject(13));
     }
      }catch (SQLException se) {
-       // Êä³öÊý¾Ý¿âÁ¬½Ó´íÎóÐÅÏ¢
+       // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
        System.out.println("SQL Exception: " + se.getMessage());
        se.printStackTrace(System.out);
     }catch(Exception e){

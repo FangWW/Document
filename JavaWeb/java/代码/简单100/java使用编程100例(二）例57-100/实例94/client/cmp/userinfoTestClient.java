@@ -1,14 +1,14 @@
 package cmp;
-import javax.naming.*;
-import java.util.Properties;
-import javax.rmi.PortableRemoteObject;
 import java.sql.Date;
+import java.util.Properties;
+
+import javax.rmi.PortableRemoteObject;
 /**
- * <p>Title: ¿Í»§¶Ë</p>
- * <p>Description: ²âÊÔCMP£¬Ö±½Óµ÷ÓÃµÄÊÇ»á»°EJB</p>
+ * <p>Title: ï¿½Í»ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½CMPï¿½ï¿½Ö±ï¿½Óµï¿½ï¿½Ãµï¿½ï¿½Ç»á»°EJB</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: userinfoTestClient.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class userinfoTestClient {
@@ -18,7 +18,7 @@ public class userinfoTestClient {
   private userinfoHome userinfoHomeObject = null;
   private userinfo userinfoObject = null;
   private String url = null;
-  //¹¹Ôì EJB ¿Í»§¶Ë
+  //ï¿½ï¿½ï¿½ï¿½ EJB ï¿½Í»ï¿½ï¿½ï¿½
   public userinfoTestClient(String url) {
     long startTime = 0;
     if (logging) {
@@ -27,11 +27,11 @@ public class userinfoTestClient {
     }
     this.url=url;
     try {
-      //´´½¨ÉÏÏÂÎÄ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       Context ctx = getInitialContext();
-      //²éÑ¯userinfo
+      //ï¿½ï¿½Ñ¯userinfo
       Object ref = ctx.lookup("userinfo");
-      //´´½¨Home¶Ë¿Ú
+      //ï¿½ï¿½ï¿½ï¿½Homeï¿½Ë¿ï¿½
       userinfoHomeObject = (userinfoHome) PortableRemoteObject.narrow(ref, userinfoHome.class);
       if (logging) {
         long endTime = System.currentTimeMillis();
@@ -46,7 +46,7 @@ public class userinfoTestClient {
       e.printStackTrace();
     }
   }
-//³õÊ¼»¯ÉÏÏÂÎÄ
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private Context getInitialContext() throws Exception {
     String user = null;
     String password = null;
@@ -68,7 +68,7 @@ public class userinfoTestClient {
     }
   }
 /*
-*·½·¨ËµÃ÷£º´´½¨Ô¶³Ì½Ó¿Ú
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ì½Ó¿ï¿½
 */
   public userinfo create() {
     long startTime = 0;
@@ -96,11 +96,11 @@ public class userinfoTestClient {
     return userinfoObject;
   }
 /*
-*·½·¨ËµÃ÷£ºÌí¼Ó¼ÇÂ¼
-* @²ÎÊý£ºString name ÓÃ»§Ãû
-* @²ÎÊý£ºString phone ÁªÏµµç»°
-* @²ÎÊý£ºString home¼ÒÍ¥×¡Ö·
-* @²ÎÊý£ºDate birthday ÉúÈÕ
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½Â¼
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String name ï¿½Ã»ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String phone ï¿½ï¿½Ïµï¿½ç»°
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String homeï¿½ï¿½Í¥×¡Ö·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Date birthday ï¿½ï¿½ï¿½ï¿½
 */
   public void ist_info(String name, String phone, String home, Date brithday) {
     if (userinfoObject == null) {
@@ -128,9 +128,9 @@ public class userinfoTestClient {
     }
   }
 /*
-*·½·¨ËµÃ÷£ºÉ¾³ý¼ÇÂ¼
-* @²ÎÊý£ºInteger idÖ÷¼üid
-* @·µ»Ø£ºint 0£ºÊ§°Ü 1£º³É¹¦ £­1£º³ö´í
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Â¼
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Integer idï¿½ï¿½ï¿½ï¿½id
+* @ï¿½ï¿½ï¿½Ø£ï¿½int 0ï¿½ï¿½Ê§ï¿½ï¿½ 1ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
   public int del_info(Integer id) {
     int returnValue = 0;
@@ -163,13 +163,13 @@ public class userinfoTestClient {
     return returnValue;
   }
 /*
-*·½·¨ËµÃ÷£ºÐÞ¸Ä¼ÇÂ¼
-* @²ÎÊý£ºInteger id Ö÷¼üid
-* @²ÎÊý£ºString name ÓÃ»§Ãû
-* @²ÎÊý£ºString phone ÁªÏµµç»°
-* @²ÎÊý£ºString home¼ÒÍ¥×¡Ö·
-* @²ÎÊý£ºDate birthday ÉúÈÕ
-* @·µ»Ø£ºint 0£ºÊ§°Ü 1£º³É¹¦ £­1£º³ö´í
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä¼ï¿½Â¼
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Integer id ï¿½ï¿½ï¿½ï¿½id
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String name ï¿½Ã»ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String phone ï¿½ï¿½Ïµï¿½ç»°
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String homeï¿½ï¿½Í¥×¡Ö·
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Date birthday ï¿½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½int 0ï¿½ï¿½Ê§ï¿½ï¿½ 1ï¿½ï¿½ï¿½É¹ï¿½ ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
   public int up_info(Integer id, String name, String phone, String home, Date brithday) {
     int returnValue = 0;
@@ -202,9 +202,9 @@ public class userinfoTestClient {
     return returnValue;
   }
 /*
-*·½·¨ËµÃ÷£º²éÑ¯¼ÇÂ¼
-* @²ÎÊý£ºInteger idÖ÷¼üid
-* @·µ»Ø£ºVector ÓÃ»§ÐÅÏ¢¼¯
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Â¼
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Integer idï¿½ï¿½ï¿½ï¿½id
+* @ï¿½ï¿½ï¿½Ø£ï¿½Vector ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
 */  
 public java.util.Vector find_id(Integer id) {
     java.util.Vector returnValue = new java.util.Vector();
@@ -237,9 +237,9 @@ public java.util.Vector find_id(Integer id) {
     return returnValue;
   }
 /*
-*·½·¨ËµÃ÷£º²éÑ¯¼ÇÂ¼
-* @²ÎÊý£º
-* @·µ»Ø£º
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Â¼
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
 */  
 public int findUser(String username) {
     int returnValue=-1 ;
@@ -271,7 +271,7 @@ public int findUser(String username) {
     }
     return returnValue;
   }
-//ÏÔÊ¾ÐÅÏ¢
+//ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
   private void log(String message) {
     if (message == null) {
       System.out.println("-- null");
@@ -287,7 +287,7 @@ public int findUser(String username) {
   //Main method
   public static void main(String[] args) {
     String url       = "t3://localhost:7001";         
-    // ½âÎöÃüÁîÐÐ²ÎÊý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½
      if (args.length != 1) {
       System.out.println("Usage: java cmp.userinfoTestClient t3://hostname:port");   
       return;
@@ -296,13 +296,13 @@ public int findUser(String username) {
     }
     userinfoTestClient client = new userinfoTestClient(url);
     client.create();
-    //Ìí¼ÓÓÃ»§ÐÅÏ¢
-    client.ist_info("ÕÅÈý","010-88669977","±±¾©ÖÐ¹Ø´å",java.sql.Date.valueOf("1965-09-18")) ;
-    //¶¨Òå¼ÇÂ¼ÌõÊý
-    java.lang.Integer  temp = new Integer(client.findUser("ÕÅÈý")); //Integer.valueOf("1");
+    //ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+    client.ist_info("ï¿½ï¿½ï¿½ï¿½","010-88669977","ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹Ø´ï¿½",java.sql.Date.valueOf("1965-09-18")) ;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+    java.lang.Integer  temp = new Integer(client.findUser("ï¿½ï¿½ï¿½ï¿½")); //Integer.valueOf("1");
     java.util.Vector vTemp  = client.find_id(temp) ;
-    client.up_info(temp,"ÀîËÄ","0316-65845878","ºÓ±±ÀÈ·»",java.sql.Date.valueOf("1965-12-9")) ;
-    //É¾³ýÓÃ»§
+    client.up_info(temp,"ï¿½ï¿½ï¿½ï¿½","0316-65845878","ï¿½Ó±ï¿½ï¿½È·ï¿½",java.sql.Date.valueOf("1965-12-9")) ;
+    //É¾ï¿½ï¿½ï¿½Ã»ï¿½
     client.del_info(temp);
  }
 }

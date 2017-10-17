@@ -1,10 +1,9 @@
-import java.sql.*;
 /**
- * <p>Title: ½á¹û¼¯ÔªÊý¾Ý</p>
- * <p>Description: Ê¹ÓÃ½á¹û¼¯ÔªÊý¾Ý¶ÔÏó»ñÈ¡Êý¾Ý¿âÐÅÏ¢¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: Ê¹ï¿½Ã½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDBCResultMeta.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDBCResultMeta {
@@ -12,9 +11,9 @@ public class JDBCResultMeta {
  private String username="";
  private String password="";
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public static void main(java.lang.String[] args) {
     if(args.length!=4){
@@ -29,9 +28,9 @@ public class JDBCResultMeta {
 }
 
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
@@ -50,10 +49,10 @@ public class JDBCResultMeta {
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡½á¹û¼¯ÔªÊý¾ÝÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString table ±íÃû³Æ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String table ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void getMeta(Connection con, String table){
    try {
@@ -62,10 +61,10 @@ public class JDBCResultMeta {
      ResultSet rs = Stm.executeQuery(sql);
      ResultSetMetaData lineInfo = rs.getMetaData();
      System.out.println("*********************RESULT META Comment************************");
-     //»ñÈ¡Êý¾ÝÁÐÊý
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      int columnCount = lineInfo.getColumnCount();
      System.out.println("Column Count :"+columnCount);
-     //»ñÈ¡Êý¾ÝÁÐÀàÐÍ
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      for(int i=1;i<columnCount+1;i++){
        String columeName = lineInfo.getColumnName(i);
        String columeType = lineInfo.getColumnTypeName(i);
@@ -74,7 +73,7 @@ public class JDBCResultMeta {
      }
 
      }catch (SQLException se) {
-       // Êä³öÊý¾Ý¿âÁ¬½Ó´íÎóÐÅÏ¢
+       // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
        System.out.println("SQL Exception: " + se.getMessage());
        se.printStackTrace(System.out);
     }catch(Exception e){

@@ -1,0 +1,62 @@
+采用标准的架构：描述从低层到高层
+首先是系统分析，找出你需要什么功能，然后按照下面的步骤执行：
+
+数据库层：数据库层就是SQL语句、数据库、表、视图、触发器等等的创建和管理。这一层和JAVA无关，但是却是最重要的一层
+持久层（Hibernate、JPA、JDBC）：这一层的目的很明确，就是ORM，这里还不用你定义接口和类，你只要使用框架就可以了。
+DAO层（Data Access Object）：这一层比较重要点，这里定义的都是对一些最原始的类进行操作的方法
+打个比方：
+
+我们有一个Account类，用来表示账号，那么对应有一个接口
+
+public interface AccountDao 
+{
+Account create( Account account ); //创建一个Account账号
+void update( Account acconut ); //修改账号
+void delete( int id ); //通过ID删除Account
+void find( int id ); //通过ID找到Account
+}
+
+然和我们有具体的实现
+public class AccountDaoImplForHibernate implements AccountDao
+{
+//这里实现AccountDao所有的接口
+}
+
+这里要说明一下，为什么要这个DAO层，我直接操纵Hibernate框架去完成不就可以了么？为什么要用一个AccountDao在从中进行阻拦。
+这就是Java中接口威力所在，定义了一个接口，你就不用管下面的具体实现是用那个框架实现的，总之实现就可以了。因为软件的目的是要重用，而在WEB开发中，每个网站都有自己不同的要求，所以也就让人觉得重用不重用不关我事情：“反正老子就用Hibernate管理数据库了，下次再开发类似的大不了我重写，反正又不难。”很明显，这种思想很实用，似乎马上就能进行开发，但是这明显是错误的思路。
+
+根据我开发B/S系统的经验（容我这么说吧，其实我也没弄过几个），我喜欢利用Dao层把WEB框架和ORM框架隔离开来进行开发。不知道大家在开发WEB站点的时候有么有觉得，每次修改完一个类都得重新部署，每次部署都得重新加载数据源、连接数据库、配置持久化框架稀里哗啦一大堆事情，部署一个项目往往用掉十几甚至几十秒。但是如果我们能利用Dao层进行隔离，那么情景就又是另外一个样子。
+
+我们可以伪造一个数据库，没错，是伪造的，用了HashMap<Integer,Account>对数据库进行简单的模拟。具体来说，就是为测试写一个类去实现AccountDao接口，但是这个类不再连接数据库，而是直接对伪造的数据库，也就是HashMap表进行操作
+
+public class AccountDaoImplForTest
+{
+//具体实现
+}
+
+这样部署起来就快多了。
+
+而对于AccountDaoImplForHibernate的测试，可以通过J2SE应用程序完成，同样也省下了部署WEB到J2EE服务器的时间。效率第一哈~
+
+顺便说说这一层应该抛出的异常。为了屏蔽掉Dao的具体实现，我们很有必要为Dao层自己定义一些异常，用来替代由Hibernate、JDBC他们抛出的异常。这样对于Dao的上一层Service层来说，只看到Dao的东西，其他什么都没看见，也不知道这个Dao具体是Hibernate呢还是JPA呢还是JDBC
+
+
+同样的道理，我们来看Service层
+Service层：在Service层中我们定义这样的接口
+public interface AccountService
+{
+Account register(Account account); //注册
+Account login( String username, String password ); //登录
+void modify( Account account ); //修改
+Account find( int id ); //通过ID获取Account
+Account delete( int id ); //删除Account
+}
+
+乍看之下，似乎Service层和Dao层差不多，无谓就是多几个方法，那我直接定义到Dao层不可以吗？答案肯定是不可以，真是废话，可以我就不写了。但还是要说说理由：很简单，Service层隔离了业务需求变化和数据库之间的关系。也就是说，不管上面的业务逻辑怎么变化，你只用修改Service层的代码就可以了，Service通过调用Dao来实现对数据库的操纵，很显然Dao不知道Service的存在，所以Service怎么变Dao都不用去理会。除非Service提出了Dao没有实现的要求，比如说Service需要获取所有账号的人数，而我们当初在系统分析的时候没有做好，没在Dao层预留一个方法去获取所有账号的数量，那么这个时候就得被迫修改Dao层了，但是，也仅仅只是修改到Dao层而已，由于Dao层的功劳，你还不必去修改数据库。
+
+所以说，开始项目之前对整个项目进行详尽的业务分析对你定接口是有很直接的因果关系的，分析没做好，那么接口就得整天改，这个时候你还不如不用接口呢~~~
+
+在Service层抛出的异常也有讲究：在Service层，我们只能抛出业务逻辑上的异常，像AccountExistedException(账号已存在)异常啦、UsernameNotFoundException(用户名没找到异常)啦等等，这样Service的上一层就不会感觉到Dao层的存在。
+
+终于到了最后一层：VIEW层
+VIEW层：在这一层你不用定接口，你要使用WEB框架的接口、类，至于是STRUTS还是JSF由你定

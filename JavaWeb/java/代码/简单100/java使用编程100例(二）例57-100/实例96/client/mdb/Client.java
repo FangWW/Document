@@ -1,10 +1,9 @@
 package mdb;
-//ÉùÃ÷±¾ÀàÒýÈëµÄÆäËüÀà
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 import java.rmi.RemoteException;
 import java.util.Properties;
 
 import javax.jms.JMSException;
-import javax.jms.Message;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
@@ -12,39 +11,33 @@ import javax.jms.TopicConnection;
 import javax.jms.TopicConnectionFactory;
 import javax.jms.TopicPublisher;
 import javax.jms.TopicSession;
-
-
-
-import javax.ejb.CreateException;
-import javax.ejb.RemoveException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.rmi.PortableRemoteObject;
 
 /**
- * Õâ¸öÀàÑÝÊ¾µ÷ÓÃÒ»¸öÏûÏ¢Çý¶¯µÄbean²¢ÔÚÖ÷ÌâÏûÏ¢ÖÐ·¢²¼±¨¼Û¡£
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¡ï¿½
  *
  */
 
 public class Client {
   static private String TOPIC_NAME = "myQQ";
-  //ÉùÃ÷·þÎñÆ÷url
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½url
   private String m_url;
-  //ÉùÃ÷ÉÏÏÂÎÄ
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private Context m_context;
-  //ÉùÃ÷Ö÷ÌâÁ¬½Ó
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private TopicConnection m_topicConnection;
-  //¹¹Ôì·½·¨
+  //ï¿½ï¿½ï¿½ì·½ï¿½ï¿½
   public Client(String url)
     throws NamingException
   {
     m_url = url;
         
     try {
-      // ´´½¨ÉÏÏÂÎÄ
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       m_context = getInitialContext();
-      // ´´½¨Á¬½Ó²¢Æô¶¯
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½
       TopicConnectionFactory cf =
         (TopicConnectionFactory) m_context.lookup("weblogic.jms.ConnectionFactory");
       m_topicConnection = cf.createTopicConnection();
@@ -58,66 +51,66 @@ public class Client {
 
 
   /**
-   * ÓÃÃüÁîÐÐÔËÐÐ±¾ÊµÀý:
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Êµï¿½ï¿½:
     */
   public static void main(String[] args) throws Exception {
     String url  = "t3://localhost:7001";
     
-    // ½âÎöÃüÁîÐÐ²ÎÊý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½
      if (args.length == 1) {
           url = args[0];
     }
 
     Client client = null;
     try {
-    //±¾ÀàÊµÀý
+    //ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
       client = new Client(url);
     } catch (NamingException ne) {
       System.exit(1);
     }
 
     try {
-    //µ÷ÓÃÀý³Ì
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       client.send();
     }
     catch (Exception e) {
-    //Òì³£´¦Àí
+    //ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       System.out.println(e);
     } 
   }
 
   /**
-   * ·¢ËÍÏûÏ¢
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
    */
   public void send()
     throws RemoteException, JMSException, NamingException
   {
-  //ÉùÃ÷Ö÷Ìâ	
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
     Topic newTopic = null;
-    //ÉùÃ÷Ö÷Ìâ»á»°
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á»°
     TopicSession session = null;
     try {
-    //´´½¨Ö÷Ìâ»á»°	
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á»°	
       session =
         m_topicConnection.createTopicSession(false,   // non transacted
                                              Session.AUTO_ACKNOWLEDGE);
-      //²éÕÒÖ÷Ìâ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       newTopic = (Topic) m_context.lookup(TOPIC_NAME);
     }
     catch(NamingException ex) {
-    //Òì³£´¦Àí
+    //ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       newTopic = session.createTopic(TOPIC_NAME);
       m_context.bind(TOPIC_NAME, newTopic);
     }
-    //´´½¨ÏûÏ¢·¢²¼
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
     TopicPublisher sender = session.createPublisher(newTopic);
-    //´´½¨ÎÄ±¾ÏûÏ¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ï¢
     TextMessage tm = session.createTextMessage();
     String[] quotes = new String[] {
       "CPU AMD $350", "HD IBM $680", "CD-ROM acr52X $220"
     };
     for (int i = 0; i < quotes.length; i++) {
-    //·¢ËÍÏûÏ¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
       tm.setText(quotes[i]);
       sender.publish(tm);
     }
@@ -125,12 +118,12 @@ public class Client {
 
 
   /**
-   * ³õÊ¼»¯ÉÏÏÂÎÄ
+   * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   private Context getInitialContext() throws NamingException {
     
     try {
-      // ÊôÐÔ¶ÔÏó
+      // ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½
       Properties p = new Properties();
       p.put(Context.INITIAL_CONTEXT_FACTORY,
         "weblogic.jndi.WLInitialContextFactory");

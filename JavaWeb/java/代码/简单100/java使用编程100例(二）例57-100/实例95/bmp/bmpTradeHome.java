@@ -1,47 +1,48 @@
 package bmp;
 
+import java.rmi.RemoteException;
+import java.util.Collection;
+
 import javax.ejb.CreateException;
 import javax.ejb.EJBHome;
 import javax.ejb.FinderException;
-import java.rmi.RemoteException;
-import java.util.Collection;
 /**
- * <p>Title: Ö÷½Ó¿Ú</p>
- * <p>Description: ÕâÊÇbmpTradeBeanµÄÖ÷½Ó¿Ú¶¨Òå£¬Õâ¸ö½Ó¿ÚÊÇ±»EJBÈÝÆ÷²úÉúµÄÀàbmpTradeBeanÊµÏÖµÄ
- *                ÔÚÕâÀïÖ»Ðè¶¨ÒåEJB´´½¨µÄ·½·¨£¬ÕâÐ©·½·¨ÒªºÍEJBeanÖÐµÄ"ejbCreate"·½·¨¶ÔÓ¦¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½Ó¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½bmpTradeBeanï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú¶ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½Ç±ï¿½EJBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bmpTradeBeanÊµï¿½Öµï¿½
+ *                ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½è¶¨ï¿½ï¿½EJBï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½EJBeanï¿½Ðµï¿½"ejbCreate"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: bmpTradeHome.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public interface bmpTradeHome extends EJBHome {
    /**
-   * Õâ¸ö·½·¨ºÍ"TblUserInfoBean.java"ÖÐ¶¨ÒåµÄµÄBeanµÄ"ejbCreate"·½·¨Ïà¶ÔÓ¦
-   * ÕâÁ½¸ö·½·¨µÄ²ÎÊýÓ¦¸ÃÏàÍ¬¡£µ±¿Í»§¶Ëµ÷ÓÃ"TblUserInfoHome.create()"·½·¨Ê±£¬EJBÈÝÆ÷
-   * »áÕÒµ½EJBeanµÄÊµÀý£¬²¢µ÷ÓÃËüµÄ"ejbCreate()"·½·¨¡£
-   * @²ÎÊý accountID         String ÕËºÅID
-   * @²ÎÊý initialBalance    double ³õÊ¼»¯½áËãÖµ
-   * @·µ»Ø bmpTrade Ô¶³Ì¶ÔÏó
-   * @Òì³£ javax.ejb.CreateException      ´´½¨bean´íÎóÊ±Å×³öµÄÒì³£
-   * @Òì³£ RemoteException µ±ÏµÍ³Í¨Ñ¶·¢Éú¹ÊÕÏÊ±Å×³ö
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"TblUserInfoBean.java"ï¿½Ð¶ï¿½ï¿½ï¿½Äµï¿½Beanï¿½ï¿½"ejbCreate"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½"TblUserInfoHome.create()"ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½EJBï¿½ï¿½ï¿½ï¿½
+   * ï¿½ï¿½ï¿½Òµï¿½EJBeanï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"ejbCreate()"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ accountID         String ï¿½Ëºï¿½ID
+   * @ï¿½ï¿½ï¿½ï¿½ initialBalance    double ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+   * @ï¿½ï¿½ï¿½ï¿½ bmpTrade Ô¶ï¿½Ì¶ï¿½ï¿½ï¿½
+   * @ï¿½ì³£ javax.ejb.CreateException      ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
+   * @ï¿½ì³£ RemoteException ï¿½ï¿½ÏµÍ³Í¨Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
    */
   public bmpTrade create(String accountId, double initialBalance)
     throws CreateException, RemoteException;
  /**
-   * ¸ù¾ÝÖ÷¼ü¶ÔÏó£¬·µ»ØÕËºÅ¶ÔÏó
-   * @²ÎÊý primaryKey   Ö÷¼ü
-   * @·µ»Ø TblUserInfo ÕËºÅ
-   * @Òì³£ javax.ejb.FinderException   ·ÃÎÊÊý¾Ý¿â´íÎóÅ×³öµÄÒì³£
-   * @Òì³£ RemoteException µ±ÏµÍ³Í¨Ñ¶·¢Éú¹ÊÕÏÊ±Å×³ö
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ï¿½ï¿½ËºÅ¶ï¿½ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ primaryKey   ï¿½ï¿½ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ TblUserInfo ï¿½Ëºï¿½
+   * @ï¿½ì³£ javax.ejb.FinderException   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
+   * @ï¿½ì³£ RemoteException ï¿½ï¿½ÏµÍ³Í¨Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
    */
   public bmpTrade findByPrimaryKey(String primaryKey)
     throws FinderException, RemoteException;
   /**
-   * ÕÒµ½ËùÓÐ½áËãÖµ´óÓÚbalanceGreaterThanµÄÕËºÅ
-   * @·µ»Ø Enumeration ËùÓÐÕËºÅÃ¶¾Ù
-   * @²ÎÊý double balanceGreaterThan,¸ø¶¨µÄ½áËãÖµ
-   * @Òì³£ javax.ejb.FinderException   ·ÃÎÊÊý¾Ý¿â´íÎóÅ×³öµÄÒì³£
-   * @Òì³£ RemoteException µ±ÏµÍ³Í¨Ñ¶·¢Éú¹ÊÕÏÊ±Å×³ö
+   * ï¿½Òµï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½balanceGreaterThanï¿½ï¿½ï¿½Ëºï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ Enumeration ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½Ã¶ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ double balanceGreaterThan,ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½Öµ
+   * @ï¿½ì³£ javax.ejb.FinderException   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
+   * @ï¿½ì³£ RemoteException ï¿½ï¿½ÏµÍ³Í¨Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
    */
   public Collection findBigAccounts(double balanceGreaterThan)
     throws FinderException, RemoteException;

@@ -1,21 +1,19 @@
- import java.applet.Applet; 
- import java.awt.*; 
- import java.awt.event.*; 
+ import java.applet.Applet;
 /**
- * <p>Title: ¼üÅÌ¼ì²â</p>
- * <p>Description: ÔÚappletÊ¹ÓÃ¼üÅÌÊÂ¼þ£¬¼ì²â¼üÅÌµÄ¶¯×÷¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½appletÊ¹ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: KeyAd.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
  public class KeyAd extends Applet{ 
    String text = "";
    int width,height;
 /**
- *<br>·½·¨ËµÃ÷£ºApplet³õÊ¼»¯£¬Ìí¼ÓÁËÒ»¸ö¼üÅÌ¼àÌý¶ÔÏó¡£
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void init() {
       addKeyListener(new KeyAdapter() {
@@ -25,13 +23,13 @@
     }); 
    } //end init 
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡¼üÅÌÊÂ¼þ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    void this_keyPressed(KeyEvent e) {
     String s = "";
-    //Ç¿ÖÆ×ª»»³É×Ö·ûÐÍ
+    //Ç¿ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
     text = s+=e.getKeyChar();
     System.out.println("text="+text);
     width = size().width;
@@ -39,9 +37,9 @@
     repaint();
    }
 /**
- *<br>·½·¨ËµÃ÷£º»æÖÆAppletÆÁÄ»
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½Ä»
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void paint(Graphics g) {
    	  setFont(new Font("Dialog", 1, 80)); 

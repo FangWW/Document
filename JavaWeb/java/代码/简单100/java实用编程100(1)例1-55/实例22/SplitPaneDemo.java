@@ -1,15 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import java.util.*;
-
 /**
- * <p>Title: ·Ö¸îÃæ°å</p>
- * <p>Description: ÑÝÊ¾½«Ãæ°å·Ö¸î³É×óÓÒÁ½²¿·Ö</p>
+ * <p>Title: ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename:SplitPaneDemo.java </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class SplitPaneDemo implements ListSelectionListener {
@@ -18,20 +12,20 @@ public class SplitPaneDemo implements ListSelectionListener {
     private JList list;
     private JSplitPane splitPane;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬¶¨ÒåÁËËùÓÐÒªÊ¹ÓÃµÄ¹¹¼þ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÊ¹ï¿½ÃµÄ¹ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public SplitPaneDemo() {
         
-        //´´½¨Ò»¸öÍ¼ÏñÃû³ÆµÄÁÐ±í£¬ÉèÖÃÎªµ¥Ñ¡·½Ê½
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ñ¡ï¿½ï¿½Ê½
         list = new JList(imageNames);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.addListSelectionListener(this);
         JScrollPane listScrollPane = new JScrollPane(list);
 
-        //»ñÈ¡Ä¬ÈÏµÄÍ¼Æ¬
+        //ï¿½ï¿½È¡Ä¬ï¿½Ïµï¿½Í¼Æ¬
         ImageIcon firstImage = createImageIcon("images/" +
                                      (String)imageNames[0]);
         if (firstImage != null) {
@@ -43,32 +37,32 @@ public class SplitPaneDemo implements ListSelectionListener {
         }
         JScrollPane pictureScrollPane = new JScrollPane(picture);
 
-        //´´½¨Ò»¸öË®Æ½·Ö¸îµÄÃæ°å£¬¶¨ÒåÁËÁ½¸öÃæ°åµÄÃû×Ö¡£
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ë®Æ½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,
                                    listScrollPane, pictureScrollPane);
         splitPane.setOneTouchExpandable(true);
         splitPane.setDividerLocation(150);
 
-        //¶¨ÒåÃæ°åµÄ×îÐ¡³ß´ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ß´ï¿½
         Dimension minimumSize = new Dimension(100, 50);
         listScrollPane.setMinimumSize(minimumSize);
         pictureScrollPane.setMinimumSize(minimumSize);
 
-        //¶¨Òå³õÊ¼³ß´ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ß´ï¿½
         splitPane.setPreferredSize(new Dimension(400, 200));
     }
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÕâ¸ö·Ö¸îµÄÃæ°å
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºJSplitPane ¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½JSplitPane ï¿½ï¿½ï¿½ï¿½
  */
     public JSplitPane getSplitPane() {
         return splitPane;
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÁÐ±í¼àÌýÊÂ¼þ´¦Àí
- *<br>ÊäÈë²ÎÊý£ºListSelectionEvent e ÁÐ±íÑ¡ÔñÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ListSelectionEvent e ï¿½Ð±ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting())
@@ -95,9 +89,9 @@ public class SplitPaneDemo implements ListSelectionListener {
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£º¸ù¾ÝÂ·¾¶»ñÈ¡Í¼ÐÎ¶ÔÏó
- *<br>ÊäÈë²ÎÊý£ºString path Í¼Æ¬Â·¾¶
- *<br>·µ»ØÀàÐÍ£ºImageIcon Í¼Æ¬¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½È¡Í¼ï¿½Î¶ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String path Í¼Æ¬Â·ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ImageIcon Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
  */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = SplitPaneDemo.class.getResource(path);
@@ -109,20 +103,20 @@ public class SplitPaneDemo implements ListSelectionListener {
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //¶¨Òå´°Ìå
+        //ï¿½ï¿½ï¿½å´°ï¿½ï¿½
         JFrame frame = new JFrame("SplitPaneDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         SplitPaneDemo splitPaneDemo = new SplitPaneDemo();
         frame.getContentPane().add(splitPaneDemo.getSplitPane());
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

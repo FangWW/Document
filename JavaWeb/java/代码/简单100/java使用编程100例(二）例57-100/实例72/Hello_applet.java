@@ -1,28 +1,27 @@
-import java.awt.*;
 import java.applet.Applet;
 /**
- * <p>Title: ¼òµ¥µÄApplet</p>
- * <p>Description: ¼ÌÐøAppletÀà£¬ÊµÏÖApplet·½·¨¡£ÔÚÆÁÄ»ËµÊä³öÒ»¾äÎÊºòÓï¡£</p>
+ * <p>Title: ï¿½òµ¥µï¿½Applet</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Appletï¿½à£¬Êµï¿½ï¿½Appletï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Ëµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¡£</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Hello_applet.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class Hello_applet extends Applet{
  String s;
 /**
- *<br>·½·¨ËµÃ÷£º³õÊ¼»¯
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public void init()
  {
   s = "Hello! welcome into Applet world!";
  }
 /**
- *<br>·½·¨ËµÃ÷£ºÊä³öÎÄ×Ö
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public void paint(Graphics g)
  {

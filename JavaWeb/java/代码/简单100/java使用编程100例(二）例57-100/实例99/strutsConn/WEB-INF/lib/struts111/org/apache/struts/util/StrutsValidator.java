@@ -7,13 +7,15 @@
 
 package org.apache.struts.util;
 
-import java.io.Serializable;
-import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.ValidatorAction;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.validator.FieldChecks;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
 
 /* This class has attribute 'Deprecated' */
 

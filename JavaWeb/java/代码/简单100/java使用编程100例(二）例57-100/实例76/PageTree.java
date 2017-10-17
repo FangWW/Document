@@ -1,18 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.tree.*;
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.applet.*;
 /**
- * <p>Title: AppletÖÐÊ¹ÓÃSWING</p>
- * <p>Description: Ê¹ÓÃSWINGµÄJAppletÊµÏÖÊ÷¹¦ÄÜ¡£</p>
+ * <p>Title: Appletï¿½ï¿½Ê¹ï¿½ï¿½SWING</p>
+ * <p>Description: Ê¹ï¿½ï¿½SWINGï¿½ï¿½JAppletÊµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: PageTree.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class PageTree extends JApplet implements TreeSelectionListener {
@@ -21,33 +12,33 @@ public class PageTree extends JApplet implements TreeSelectionListener {
 	Hashtable links = new Hashtable();
 	AppletContext context;
 	public void init() {
-		//»ñÈ¡AppletµÄÄÚÈÝ
+		//ï¿½ï¿½È¡Appletï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		context = getAppletContext();
-		//¶¨Òå¸ù½Úµã
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 		DefaultMutableTreeNode root = null;
 		getContentPane().setLayout(new BorderLayout());
-		//»ñÈ¡²ÎÊý¡£¶¨ÒåµÄÊý¾ÝÅäÖÃÎÄ¼þ¡£
+		//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 		String s = getParameter("file");
 		if (s != null) {
 			try {
-				//Ê¹ÓÃURL·½Ê½´ò¿ªÊý¾ÝÎÄ¼þ£¬ÊµÏÖÔÚÍøÂçÉÏÊ¹ÓÃ¡£
+				//Ê¹ï¿½ï¿½URLï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¡ï¿½
 				URL url = new URL(getDocumentBase(), s);
 				BufferedReader br = new BufferedReader(
 					new InputStreamReader(url.openStream(), "JISAutoDetect"));
-				//¶ÁÈ¡µÚÒ»ÐÐÊý¾Ý£¬Èç¹ûÎª¿ÕÔò²»Ö´ÐÐ
+				//ï¿½ï¿½È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
 				String line = br.readLine();
 				if (line == null) return;
 				root = new DefaultMutableTreeNode(line);
 				nodeAt[0] = root;
 				int level = 0;
 				while ((line = br.readLine()) != null) {
-					//Ê¹ÓÃ¡°|¡±·Ö¿ªÊý¾Ý
+					//Ê¹ï¿½Ã¡ï¿½|ï¿½ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ï¿½ï¿½
 					StringTokenizer st = new StringTokenizer(line, "|");
 					String token = st.nextToken();
 					int n = countSpaces(token);
-					//Ìí¼Ó½ÚµãÃû³Æ
+					//ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½ï¿½ï¿½
 					DefaultMutableTreeNode node = new DefaultMutableTreeNode(token.trim());
-					//¼ÆËã½Úµã¼¶Êý
+					//ï¿½ï¿½ï¿½ï¿½Úµã¼¶ï¿½ï¿½
 					for (int i = level + 1; i < n; i++) {
 						DefaultMutableTreeNode dummy = new DefaultMutableTreeNode("");
 						nodeAt[i].add(dummy);
@@ -56,7 +47,7 @@ public class PageTree extends JApplet implements TreeSelectionListener {
 					level = n;
 					nodeAt[n].add(node);
 					nodeAt[n+1] = node;
-					//¶Ô¡°|¡±·ûºÅºóµÄÊý¾Ý½øÐÐ´¦Àí
+					//ï¿½Ô¡ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½
 					if (st.hasMoreTokens()) {
 						token = st.nextToken();
 						try {
@@ -75,16 +66,16 @@ public class PageTree extends JApplet implements TreeSelectionListener {
 			s = getParameter("target");
 			if (s != null) target = s.trim();
 			JTree tree = new JTree(root);
-			//Ìí¼ÓÊ÷µÄÑ¡Ôñ¼àÌý
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½
 			tree.addTreeSelectionListener(this);
 			JScrollPane jsp = new JScrollPane(tree);
 			getContentPane().add(jsp, BorderLayout.CENTER);
 		}
 	}
 /**
- *<br>·½·¨ËµÃ÷£º¼ÆËã¿Õ¸ñÊý
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */	
 	private int countSpaces(String s) {
 		int n = 0;
@@ -94,9 +85,9 @@ public class PageTree extends JApplet implements TreeSelectionListener {
 		return n;
 	}
 /**
- *<br>·½·¨ËµÃ÷£ºÊ÷Ñ¡Ôñ¼àÌýÊµÏÖ·½·¨
- *<br>ÊäÈë²ÎÊý£ºTreeSelectionEvent e Ñ¡ÔñÊ÷½ÚµãÊÂ¼þ
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TreeSelectionEvent e Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */	
 	public void valueChanged(TreeSelectionEvent e) {
 		TreePath path = e.getPath();
@@ -104,7 +95,7 @@ public class PageTree extends JApplet implements TreeSelectionListener {
 		URL url = (URL)links.get(o);
 		if (url != null) {
 			System.out.println(links.get(o));
-			//´ò¿ªÁ¬½Ó£¬Í¨Öªä¯ÀÀÆ÷¼ÓÔØÍøÒ³£¨Ê¹ÓÃä¯ÀÀÆ÷´ò¿ªAppletµÄÇé¿öÏÂ£©
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Appletï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½
 			context.showDocument(url);
 		}
 	}

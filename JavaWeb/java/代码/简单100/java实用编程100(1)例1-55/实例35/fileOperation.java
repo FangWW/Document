@@ -1,22 +1,20 @@
-import java.io.*;
-import java.util.*;
 /**
- * <p>Title: ÎÄ¼þ²Ù×÷</p>
- * <p>Description: ÑÝÊ¾ÎÄ¼þµÄÉ¾³ýºÍ»ñÈ¡ÎÄ¼þµÄÐÅÏ¢</p>
+ * <p>Title: ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾ï¿½Ä¼ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Í»ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class fileOperation{
 /**
- *<br>·½·¨ËµÃ÷£ºÉ¾³ýÎÄ¼þ
- *<br>ÊäÈë²ÎÊý£ºString fileName ÒªÉ¾³ýµÄÎÄ¼þÃû
- *<br>·µ»ØÀàÐÍ£ºboolean ³É¹¦Îªtrue
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ä¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String fileName ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½boolean ï¿½É¹ï¿½Îªtrue
  */
   public boolean delFile(String fileName){
   	try{
-  	  //É¾³ýÎÄ¼þ
+  	  //É¾ï¿½ï¿½ï¿½Ä¼ï¿½
       boolean success = (new File(fileName)).delete();
       if (!success) {
          System.out.println("delete file error!");
@@ -30,22 +28,22 @@ public class fileOperation{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡ÎÄ¼þÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£ºString Name ÎÄ¼þÃû
- *<br>·µ»ØÀàÐÍ£ºString[] ÎÄ¼þÐÅÏ¢Êý×é
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String Name ï¿½Ä¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String[] ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
  */
   public String[] getFileInfo(String Name){
     try{
       File file = new File(Name);
-      //»ñÈ¡ÎÄ¼þÐÞ¸ÄÈÕÆÚ£¨·µ»ØµÄÊÇ¾ä£©
+      //ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½Ç¾ä£©
       long modifiedTime = file.lastModified();
-      //»ñÈ¡ÎÄ¼þ³¤¶È£¨µ¥Î»£ºBite£©
+      //ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½Î»ï¿½ï¿½Biteï¿½ï¿½
       long filesize = file.length();
-      //²âÊÔÎÄ¼þÊÇ·ñ¿É¶Á
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½É¶ï¿½
       boolean cr = file.canRead();
-      //²âÊÔÎÄ¼þÊÇ·ñ¿ÉÐ´
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½Ð´
       boolean cw = file.canWrite();
-      //²âÊÔÎÄ¼þÊÇ·ñÒþ²Ø
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
       boolean ih = file.isHidden();
       
       String[] sTemp = new String[6];
@@ -63,9 +61,9 @@ public class fileOperation{
   }
 
 /**
- *<br>·½·¨ËµÃ÷£º½«ºÁÃëÊý×Ö×ª»»ÎªÈÕÆÚ
- *<br>ÊäÈë²ÎÊý£ºmill    ºÁÃëÊý
- *<br>·µ»ØÀàÐÍ£ºString ×Ö·û ¸ñÊ½Îª£ºyyyy-mm-dd hh:mm
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mill    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String ï¿½Ö·ï¿½ ï¿½ï¿½Ê½Îªï¿½ï¿½yyyy-mm-dd hh:mm
  */
   public static String getDateString(long mill)
   {
@@ -86,9 +84,9 @@ public class fileOperation{
            + (min <10 ? "0" + min : "" + min);
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] args){
   	try{

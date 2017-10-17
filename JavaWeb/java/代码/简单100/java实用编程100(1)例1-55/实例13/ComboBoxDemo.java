@@ -1,15 +1,10 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import java.util.*;
 import java.text.SimpleDateFormat;
 /**
- * <p>Title: ComboBoxÏÂÀ­ÓòÑÝÊ¾</p>
- * <p>Description: Í¨¹ýÑ¡Ôñ»òÕâÊäÈëÒ»ÖÖÈÕÆÚ¸ñÊ½À´¸ñÊ½»¯½ñÌìµÄÈÕÆÚ</p>
+ * <p>Title: ComboBoxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾</p>
+ * <p>Description: Í¨ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ComboBoxDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 
@@ -19,9 +14,9 @@ public class ComboBoxDemo extends JPanel
     JLabel result;
     String currentPattern;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷¡£³õÊ¼»¯´°Ìå¹¹¼þ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½å¹¹ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public ComboBoxDemo() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -39,17 +34,17 @@ public class ComboBoxDemo extends JPanel
 
         currentPattern = patternExamples[0];
 
-        //ÉèÖÃÒ»¸ö¹æ·¶µÄÓÃ»§½çÃæ
-        JLabel patternLabel1 = new JLabel("ÊäÈëÒ»¸ö×Ö·û¸ñÊ½»òÕß");
-        JLabel patternLabel2 = new JLabel("´ÓÏÂÀ­ÁÐ±íÖÐÑ¡ÔñÒ»ÖÖ£º");
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½æ·¶ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+        JLabel patternLabel1 = new JLabel("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½");
+        JLabel patternLabel2 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»ï¿½Ö£ï¿½");
 
         JComboBox patternList = new JComboBox(patternExamples);
-        patternList.setEditable(true);//±ê×¢ÕâÀïComboBox¿É½øÐÐ±à¼­
+        patternList.setEditable(true);//ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ComboBoxï¿½É½ï¿½ï¿½Ð±à¼­
         patternList.addActionListener(this);
 
-        //´´½¨Ò»¸öÏÔÊ¾½á¹ûÓÃ»§½çÃæ
-        JLabel resultLabel = new JLabel("µ±Ç° ÈÕÆÚ/Ê±¼ä",
-                                        JLabel.LEADING);//Ïàµ±ÓÚLEFT
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+        JLabel resultLabel = new JLabel("ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½/Ê±ï¿½ï¿½",
+                                        JLabel.LEADING);//ï¿½àµ±ï¿½ï¿½LEFT
         result = new JLabel(" ");
         result.setForeground(Color.black);
         result.setBorder(BorderFactory.createCompoundBorder(
@@ -57,7 +52,7 @@ public class ComboBoxDemo extends JPanel
              BorderFactory.createEmptyBorder(5,5,5,5)
         ));
 
-        //²¼ÖÃ¹¹¼þ
+        //ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½
         JPanel patternPanel = new JPanel();
         patternPanel.setLayout(new BoxLayout(patternPanel,
                                BoxLayout.PAGE_AXIS));
@@ -82,9 +77,9 @@ public class ComboBoxDemo extends JPanel
         reformat();
     } 
 /**
- *<br>·½·¨ËµÃ÷£ºÊÂ¼þ´¦Àí
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void actionPerformed(ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
@@ -93,9 +88,9 @@ public class ComboBoxDemo extends JPanel
         reformat();
     }
 /**
- *<br>·½·¨ËµÃ÷£º¸ñÊ½ºÍÏÔÊ¾½ñÌìµÄÈÕÆÚ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void reformat() {
         Date today = new Date();
@@ -111,23 +106,23 @@ public class ComboBoxDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨Ò»¸ö´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         frame = new JFrame("ComboBoxDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ò»¸öÃæ°æÈÝÆ÷
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JComponent newContentPane = new ComboBoxDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

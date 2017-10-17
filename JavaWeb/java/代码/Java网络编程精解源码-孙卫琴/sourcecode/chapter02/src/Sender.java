@@ -1,15 +1,12 @@
-import java.net.*;
-import java.io.*;
-import java.util.*;
 public class Sender {
   private String host="localhost";
   private int port=8000;
   private Socket socket;
-  private static int stopWay=1;  //½áÊøÍ¨ÐÅµÄ·½Ê½
-  private final int NATURAL_STOP=1; //×ÔÈ»½áÊø
-  private final int SUDDEN_STOP=2;  //Í»È»ÖÕÖ¹³ÌÐò
-  private final int SOCKET_STOP=3;  //¹Ø±ÕSocket£¬ÔÙ½áÊø³ÌÐò
-  private final int OUTPUT_STOP=4;  //¹Ø±ÕÊä³öÁ÷£¬ÔÙ½áÊø³ÌÐò
+  private static int stopWay=1;  //ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ÅµÄ·ï¿½Ê½
+  private final int NATURAL_STOP=1; //ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½
+  private final int SUDDEN_STOP=2;  //Í»È»ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½
+  private final int SOCKET_STOP=3;  //ï¿½Ø±ï¿½Socketï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private final int OUTPUT_STOP=4;  //ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
   public Sender()throws IOException{
      socket=new Socket(host,port);
@@ -31,18 +28,18 @@ public class Sender {
       pw.println(msg);
       System.out.println("send:"+msg);
       Thread.sleep(500);  
-      if(i==2){  //ÖÕÖ¹³ÌÐò£¬½áÊøÍ¨ÐÅ
+      if(i==2){  //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ò£¬½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
         if(stopWay==SUDDEN_STOP){
-          System.out.println("Í»È»ÖÕÖ¹³ÌÐò");
+          System.out.println("Í»È»ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           System.exit(0);
         }else if(stopWay==SOCKET_STOP){
-          System.out.println("¹Ø±ÕSocket²¢ÖÕÖ¹³ÌÐò");
+          System.out.println("ï¿½Ø±ï¿½Socketï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           socket.close();
           break;
         }else if(stopWay==OUTPUT_STOP){
           socket.shutdownOutput();
   
-        System.out.println("¹Ø±ÕÊä³öÁ÷²¢ÖÕÖ¹³ÌÐò");
+        System.out.println("ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½");
           break;
         }
       }  
@@ -56,7 +53,7 @@ public class Sender {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,17 +1,14 @@
-import java.io.*;
-import java.util.*;
-
 public class Customer2 implements Serializable {
   private String name;
   private Set<Order2> orders=new HashSet<Order2>();
   static{
-     System.out.println("µ÷ÓÃCustomer2ÀàµÄ¾²Ì¬´úÂë¿é");
+     System.out.println("ï¿½ï¿½ï¿½ï¿½Customer2ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
   public Customer2(){
-    System.out.println("µ÷ÓÃCustomer2ÀàµÄ²»´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer2ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
   }
   public Customer2(String name) {
-    System.out.println("µ÷ÓÃCustomer2ÀàµÄ´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Customer2ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     this.name=name;
   }
   
@@ -30,10 +27,10 @@ class Order2 implements Serializable {
   private String number;
   private Customer2 customer;
   public Order2(){
-    System.out.println("µ÷ÓÃOrder2ÀàµÄ²»´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Order2ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
   }
   public Order2(String number,Customer2 customer){
-    System.out.println("µ÷ÓÃOrder2ÀàµÄ´ø²ÎÊýµÄ¹¹Ôì·½·¨");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½Order2ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½");
     this.number=number;
     this.customer=customer; 
   }
@@ -41,7 +38,7 @@ class Order2 implements Serializable {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

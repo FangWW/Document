@@ -1,18 +1,17 @@
 package bmp;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Vector;
+
 import javax.ejb.CreateException;
 import javax.ejb.DuplicateKeyException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
-import javax.ejb.FinderException;
 import javax.ejb.NoSuchEntityException;
 import javax.ejb.ObjectNotFoundException;
 import javax.naming.InitialContext;
@@ -20,66 +19,66 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * <p>Title: ÊµÏÖÀà</p>
- * <p>Description: EJBean¹ÜÀíµÄJDBC³ÖÐøÐÔ¹ÜÀíºÍÊÂÎñ¹ÜÀí£»ÔÚÕâ¸öÎÄ¼þÖÐµÄ´úÂëÖ±½Ó·ÃÎÊÊý¾Ý¿â£»</p>
+ * <p>Title: Êµï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: EJBeanï¿½ï¿½ï¿½ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ÐµÄ´ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â£»</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: bmpTradeBean.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class bmpTradeBean implements EntityBean {
-//ÉèÖÃÊÇ·ñ´òÓ¡¿ØÖÆÌ¨
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Ì¨
   final static private boolean VERBOSE = true;
-//ÉùÃ÷ÊµÌåÉÏÏÂÎÄ±äÁ¿
+//ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
   private EntityContext ctx;
   private String FundId;
   private double baseFunds;
   /**
-   * ÎªEJBeanÉèÖÃÊµÌåEJBÉÏÏÂÎÄ
-   * @²ÎÊý ctx    EntityContext
+   * ÎªEJBeanï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½EJBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½ ctx    EntityContext
    */
   public void setEntityContext(EntityContext ctx) {
     log("setEntityContext called");
     this.ctx = ctx;
   }
- //È¡ÏûÊµÌåÉÏÏÂÎÄÉèÖÃ
+ //È¡ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  public void unsetEntityContext() {
     log("unsetEntityContext (" + id() + ")");
     this.ctx = null;
   }
-  //ÕâÊÇ±¾Àà±ØÐëÊµÏÖµÄ·½·¨£¬ÔÚ±¾ÀýÖÐÃ»ÓÐÓÃµ½
+  //ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ãµï¿½
    public void ejbActivate() {
     log("ejbActivate (" + id() + ")");
   }
- //ÕâÊÇ±¾Àà±ØÐëÊµÏÖµÄ·½·¨£¬ÔÚ±¾ÀýÖÐÃ»ÓÐÓÃµ½
+ //ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ãµï¿½
   public void ejbPassivate() {
     log("ejbPassivate (" + id() + ")");
   }
    /**
-   * ´ÓÊý¾Ý¿âÖÐ¼ÓÔØEJB
-   * @Òì³£  javax.ejb.NoSuchEntityException Èç¹ûÔÚÊý¾Ý¿âÖÐÃ»ÓÐÕÒµ½Bean
-   * @Òì³£    javax.ejb.EJBException    Í¨Ñ¶»òÏµÍ³´íÎó
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½EJB
+   * @ï¿½ì³£  javax.ejb.NoSuchEntityException ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Òµï¿½Bean
+   * @ï¿½ì³£    javax.ejb.EJBException    Í¨Ñ¶ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
    */
   public void ejbLoad() {
     log("ejbLoad: (" + id() +  ")");
-    //ÉùÃ÷Êý¾Ý¿âÁ¬½Ó¶ÔÏó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
     Connection con = null;
-    //ÉùÃ÷SQLÃüÁîÔ¤´¦Àí¶ÔÏó
+    //ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     PreparedStatement ps = null;
-    //ÕÒµ½ÕËºÅÖ÷¼ü
+    //ï¿½Òµï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½
     FundId = (String) ctx.getPrimaryKey();
     try {
-    	//»ñÈ¡Êý¾Ý¿âÁ¬½Ó
+    	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
       con = getConnection();
-      //ÉèÖÃSQLÃüÁî£¬¶ÁÈ¡¼ÇÂ¼
+      //ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½î£¬ï¿½ï¿½È¡ï¿½ï¿½Â¼
       ps  = con.prepareStatement("select fund from tbl_Funds where id = ?");
       ps.setString(1, FundId);
-      //Ö´ÐÐSQL
+      //Ö´ï¿½ï¿½SQL
       ps.executeQuery();
-      //»ñÈ¡SQL½á¹û
+      //ï¿½ï¿½È¡SQLï¿½ï¿½ï¿½
       ResultSet rs = ps.getResultSet();
       if (rs.next()) {
-      	//È¡µÃÊý¾Ý
+      	//È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         baseFunds = rs.getDouble(1);
       } else {
         String error = "ejbLoad: beansTeadeBean (" + FundId + ") not found !";
@@ -87,7 +86,7 @@ public class bmpTradeBean implements EntityBean {
         throw new NoSuchEntityException (error);
        }
     } catch (SQLException sqe) {
-    	//Êý¾Ý¿âÒì³£´¦Àí
+    	//ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("SQLException:  " + sqe);
       throw new EJBException(sqe);
     } finally {
@@ -95,31 +94,31 @@ public class bmpTradeBean implements EntityBean {
     }
   }
  /**
-   * Êý¾Ý¿âÖÐ´æÈëEJBean
-   * @Òì³£   javax.ejb.NoSuchEntityException     Èç¹ûÔÚÊý¾Ý¿âÖÐÃ»ÓÐÕÒµ½Bean
-   * @Òì³£   javax.ejb.EJBException     Í¨Ñ¶»òÏµÍ³´íÎó
+   * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð´ï¿½ï¿½ï¿½EJBean
+   * @ï¿½ì³£   javax.ejb.NoSuchEntityException     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Òµï¿½Bean
+   * @ï¿½ì³£   javax.ejb.EJBException     Í¨Ñ¶ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
    */
   public void ejbStore() {
     log("ejbStore (" + id() + ")");
-    //ÉùÃ÷Êý¾Ý¿âÁ¬½Ó¶ÔÏó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
     Connection con = null;
-    //ÉùÃ÷SQLÃüÁîÔ¤´¦Àí¶ÔÏó
+    //ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     PreparedStatement ps = null;
     try {
-     //»ñÈ¡Êý¾Ý¿âÁ¬½Ó
+     //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
       con = getConnection();
-      //ÉèÖÃSQLÃüÁî,¸üÐÂÊý¾Ý¿â
+      //ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
       ps = con.prepareStatement("update tbl_Funds set fund = ? where id = ?");
       ps.setDouble(1, baseFunds);
       ps.setString(2, FundId);
-      //Ö´ÐÐSQL
+      //Ö´ï¿½ï¿½SQL
       if (!(ps.executeUpdate() > 0)) {
         String error = "ejbStore: bmpTradeBean (" + FundId + ") not updated !";
         log(error);
         throw new NoSuchEntityException (error);
       }
     } catch(SQLException sqe) {
-    	//Êý¾Ý¿â´Î²Ù×÷Òì³£´¦Àí
+    	//ï¿½ï¿½ï¿½Ý¿ï¿½Î²ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("SQLException:  " + sqe);
       throw new EJBException (sqe);
     } finally {
@@ -127,28 +126,28 @@ public class bmpTradeBean implements EntityBean {
     }
   }
   /**
-   * Õâ¸ö·½·¨ºÍ"TblUserInfoBean.java"ÖÐ¶¨ÒåµÄµÄBeanµÄ"ejbCreate"·½·¨Ïà¶ÔÓ¦
-   * ÕâÁ½¸ö·½·¨µÄ²ÎÊýÓ¦¸ÃÏàÍ¬¡£µ±¿Í»§¶Ëµ÷ÓÃ"TblUserInfoHome.create()"·½·¨Ê±£¬EJBÈÝÆ÷
-   * »áÕÒµ½EJBeanµÄÊµÀý£¬²¢µ÷ÓÃËüµÄ"ejbCreate()"·½·¨¡£
-   * ¶ÔÈÝÆ÷¹ÜÀíµÄejb,ejbCreate·½·¨·µ»ØÎªnull£¬¶øbean¹ÜÀíµÄejb£¬·µ»ØµÄÊÇÖ÷¼üÀà¡£
-   * @²ÎÊý FundId         String ÕËºÅID
-   * @²ÎÊý initialbaseFunds    double ³õÊ¼»¯½áËãÖµ
-   * @Òì³£ javax.ejb.CreateException   ´´½¨bean´íÎóÊ±Å×³öµÄÒì³£
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"TblUserInfoBean.java"ï¿½Ð¶ï¿½ï¿½ï¿½Äµï¿½Beanï¿½ï¿½"ejbCreate"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½"TblUserInfoHome.create()"ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½EJBï¿½ï¿½ï¿½ï¿½
+   * ï¿½ï¿½ï¿½Òµï¿½EJBeanï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"ejbCreate()"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ejb,ejbCreateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªnullï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ejbï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¡£
+   * @ï¿½ï¿½ï¿½ï¿½ FundId         String ï¿½Ëºï¿½ID
+   * @ï¿½ï¿½ï¿½ï¿½ initialbaseFunds    double ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+   * @ï¿½ì³£ javax.ejb.CreateException   ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
    */
   public String ejbCreate(String FundId, double initialbaseFunds)
     throws CreateException
   {
-  	//ÈÕÖ¾ÐÅÏ¢
+  	//ï¿½ï¿½Ö¾ï¿½ï¿½Ï¢
     log("bmpTradeBean.ejbCreate( id = " +FundId+ ", " + "initial baseFunds = $ " + initialbaseFunds + ")");
     this.FundId = FundId;
     this.baseFunds = initialbaseFunds;
-    //ÉùÃ÷Êý¾Ý¿âÁ¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
     Connection con = null;
     PreparedStatement ps = null;
     try {
-      //»ñÈ¡Êý¾Ý¿âÁ¬½Ó
+      //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
       con = getConnection();
-      //Ö´ÐÐsqlÓï¾ä£¬²åÈë¼ÇÂ¼
+      //Ö´ï¿½ï¿½sqlï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
       ps = con.prepareStatement("insert into tbl_Funds (id, fund) values (?, ?)");
       ps.setString(1, FundId);
       ps.setDouble(2, baseFunds);
@@ -160,9 +159,9 @@ public class bmpTradeBean implements EntityBean {
       log("JDBC create one row!");
       return FundId;
     } catch (SQLException sqe) {
-      ///Òì³£´¦Àí
+      ///ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       try {
-      	//²éÕÒÖ÷¼ü
+      	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ejbFindByPrimaryKey(FundId);
       } catch(ObjectNotFoundException onfe) {
         String error = "SQLException: " + sqe;
@@ -176,26 +175,26 @@ public class bmpTradeBean implements EntityBean {
       cleanup(con, ps);
     }
   }
-  //ÕâÊÇ±¾Àà±ØÐëÊµÏÖµÄ·½·¨£¬ÔÚ±¾ÀýÖÐÃ»ÓÐÓÃµ½
+  //ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ãµï¿½
  public void ejbPostCreate(String FundId, double initialbaseFunds) {
     log("ejbPostCreate (" + id() + ")");
   }
   /**
-   * ´ÓÊý¾Ý¿âÖÐÉ¾³ýEJBean
-   * @Òì³£  javax.ejb.NoSuchEntityException   Èç¹ûÊý¾Ý¿âÖÐÃ»ÕÒµ½Õâ¸öejb
-   * @Òì³£  javax.ejb.EJBException     Í¨ÐÅ´íÎóÅ×³öµÄÒì³£
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½É¾ï¿½ï¿½EJBean
+   * @ï¿½ì³£  javax.ejb.NoSuchEntityException   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ã»ï¿½Òµï¿½ï¿½ï¿½ï¿½ejb
+   * @ï¿½ì³£  javax.ejb.EJBException     Í¨ï¿½Å´ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
    */
   public void ejbRemove() {
     log("ejbRemove (" + id() + ")");
-    //ÉùÃ÷Êý¾Ý¿âÁ¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
     Connection con = null;
     PreparedStatement ps = null;
     try {
-    	//»ñÈ¡Á¬½Ó
+    	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
       con = getConnection();
-      //»ñÈ¡Ö÷¼ü
+      //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
       FundId = (String) ctx.getPrimaryKey();
-      //Ö´ÐÐSQLÓï¾ä£¬É¾³ý¼ÇÂ¼
+      //Ö´ï¿½ï¿½SQLï¿½ï¿½ä£¬É¾ï¿½ï¿½ï¿½ï¿½Â¼
       ps = con.prepareStatement("delete from tbl_Funds where id = ?");
       ps.setString(1, FundId);
       if (!(ps.executeUpdate() > 0)) {
@@ -204,73 +203,73 @@ public class bmpTradeBean implements EntityBean {
         throw new NoSuchEntityException (error);
       }
     } catch (SQLException sqe) {
-      //Òì³£´¦Àí
+      //ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("SQLException:  " + sqe);
       throw new EJBException (sqe);
     } finally {
-     //Çå³ý
+     //ï¿½ï¿½ï¿½
       cleanup(con, ps);
     }
   }
   /**
-   * ¸ø¶¨Ö÷¼ü²éÕÒEJBean
-   * @²ÎÊý pk    String Ö÷¼ü
-   * @Òì³£  javax.ejb.ObjectNotFoundException   EJBeanÃ»·¢ÏÖÅ×³öµÄÒì³£
-   * @Òì³£  javax.ejb.EJBException  ÏµÍ³³öÏÖÍ¨Ñ¶¹ÊÕÏÊ±Å×³ö
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½EJBean
+   * @ï¿½ï¿½ï¿½ï¿½ pk    String ï¿½ï¿½ï¿½ï¿½
+   * @ï¿½ì³£  javax.ejb.ObjectNotFoundException   EJBeanÃ»ï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
+   * @ï¿½ì³£  javax.ejb.EJBException  ÏµÍ³ï¿½ï¿½ï¿½ï¿½Í¨Ñ¶ï¿½ï¿½ï¿½ï¿½Ê±ï¿½×³ï¿½
    */
   public String ejbFindByPrimaryKey(String pk)
     throws ObjectNotFoundException
   {
     log("ejbFindByPrimaryKey (" + pk + ")");
-    //ÉùÃ÷Êý¾Ý¿âÁ¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
     Connection con = null;
     PreparedStatement ps = null;
     try {
-    	//»ñÈ¡Á¬½Ó
+    	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
       con = getConnection();
-      //²éÑ¯Ö÷¼ü¶ÔÓ¦µÄ¼ÇÂ¼
+      //ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä¼ï¿½Â¼
       ps  = con.prepareStatement("select fund from tbl_Funds where id = ?");
       ps.setInt(1, Integer.parseInt(pk));
       ps.executeQuery();
-      //»ñÈ¡½á¹û¼¯
+      //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
       ResultSet rs = ps.getResultSet();
       if (rs.next()) {
         baseFunds = rs.getDouble(1);
       } else {
-      	//Ã»ÓÐ·¢ÏÖÕâ¸öÖ÷¼üÖµµÄejb
+      	//Ã»ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ejb
         String error = "ejbFindByPrimaryKey: beansTeadeBean (" + pk + ") not found";
         log(error);
         throw new ObjectNotFoundException (error);
        }
     } catch (SQLException sqe) {
-    	//Òì³£´¦Àí
+    	//ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("SQLException:  " + sqe);
       throw new EJBException (sqe);
     } finally {
-    	//Çå³ý
+    	//ï¿½ï¿½ï¿½
       cleanup(con, ps);
     }
     log("ejbFindByPrimaryKey (" + pk + ") found");
     return pk;
   }
   /**
-   * ²éÕÒËùÓÐ½áËã´óÓÚ¸ø¶¨ÖµµÄEJBeans
-   * @²ÎÊý baseFundsGreaterThan double ÕË»§×Ê½ð
-   * @·µ»Ø  Collection
-   * @Òì³£  javax.ejb.EJBException    Í¨ÐÅ´íÎóÅ×³öµÄÒì³£
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½Öµï¿½ï¿½EJBeans
+   * @ï¿½ï¿½ï¿½ï¿½ baseFundsGreaterThan double ï¿½Ë»ï¿½ï¿½Ê½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½  Collection
+   * @ï¿½ì³£  javax.ejb.EJBException    Í¨ï¿½Å´ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£
    */
   public Collection ejbFindBigAccounts(double baseFundsGreaterThan) {
     log("ejbFindBigAccounts (baseFunds > " + baseFundsGreaterThan + ")");
-    //ÉùÃ÷Êý¾Ý¿âÁ¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
     Connection con = null;
     PreparedStatement ps = null;
     try {
-    	//»ñÈ¡Á¬½Ó
+    	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
       con = getConnection();
       ps = con.prepareStatement("select id from tbl_Funds where fund > ?");
       ps.setDouble(1, baseFundsGreaterThan);
       ps.executeQuery();
-      //»ñÈ¡½á¹û¼¯
+      //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
       ResultSet rs = ps.getResultSet();
       Vector v = new Vector();
       String pk;
@@ -278,22 +277,22 @@ public class bmpTradeBean implements EntityBean {
         pk = rs.getString(1);
         v.addElement(pk);
       }
-      //·µ»Ø¼¯ºÏ
+      //ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
       return v;
     } catch (SQLException sqe) {
-    	//Òì³£´¦Àí
+    	//ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
       log("SQLException: " + sqe);
       throw new EJBException (sqe);
     } finally {
-    	//Çå³ý
+    	//ï¿½ï¿½ï¿½
       cleanup(con, ps);
     }
   }
 /*
-*·½·¨ËµÃ÷£ºÌí¼Ó×Ê½ð
-* @²ÎÊý£ºbaseFunds ×Ê½ðÊý
-* @·µ»Ø£º
-* @Òì³££ºException µ±Ôö¼Ó×Ê½ðÎª¸ºÊýÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½baseFunds ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
+* @ï¿½ì³£ï¿½ï¿½Exception ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ê±
 */
   public void addFunds(double baseFunds) throws Exception {
     if (baseFunds<0)
@@ -301,10 +300,10 @@ public class bmpTradeBean implements EntityBean {
     this.baseFunds+=baseFunds;
   }
 /*
-*·½·¨ËµÃ÷£ºÌáÈ¡×Ê½ð
-* @²ÎÊý£ºbaseFunds ×Ê½ðÊý
-* @·µ»Ø£º
-* @Òì³££ºException µ±Ôö¼Ó×Ê½ðÎª¸ºÊýºÍËùÌáÈ¡×Ê½ð³¬¹ýÕË»§ÉÏ×Ê½ðÊ±
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê½ï¿½
+* @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½baseFunds ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½
+* @ï¿½ì³£ï¿½ï¿½Exception ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê½ð³¬¹ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ê±
 */
   public void removeFunds(double baseFunds) throws Exception {
     if(baseFunds<0)
@@ -314,31 +313,31 @@ public class bmpTradeBean implements EntityBean {
    this.baseFunds-=baseFunds;
   }
 /*
-*·½·¨ËµÃ÷£º²éÑ¯ÕË»§×Ê½ðÊý
-* @·µ»Ø£ºdouble ×Ê½ðÊý
+*ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ë»ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
+* @ï¿½ï¿½ï¿½Ø£ï¿½double ï¿½Ê½ï¿½ï¿½ï¿½
 */
   public double getBalance() {
     return this.baseFunds;
   }
   /**
-   * ´ÓÁ¬½Ó³ØÖÐ»ñÈ¡µ±Ç°Á¬½Ó
-   * @·µ»Ø   Á¬½Ó
-   * @Òì³£  javax.ejb.EJBException   Í¨ÐÅ´íÎó
+   * ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+   * @ï¿½ï¿½ï¿½ï¿½   ï¿½ï¿½ï¿½ï¿½
+   * @ï¿½ì³£  javax.ejb.EJBException   Í¨ï¿½Å´ï¿½ï¿½ï¿½
    */
   private Connection getConnection()
     throws SQLException
   {
-  	//ÉùÃ÷³õÊ¼»¯ÉÏÏÂÎÄ
+  	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     InitialContext initCtx = null;
     try {
       initCtx = new InitialContext();
-      //²éÕÒÊý¾ÝÔ´
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
       DataSource ds = (javax.sql.DataSource)
         initCtx.lookup("java:comp/env/jdbc/myDB");
-        //·µ»ØÊý¾ÝÔ´Á¬½Ó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
       return ds.getConnection();
     } catch(NamingException ne) {
-    	//ÓÐÒì³£
+    	//ï¿½ï¿½ï¿½ì³£
       log("UNABLE to get a connection from myDB!");
       log("Please make sure that you have setup the connection pool properly");
       throw new EJBException(ne);
@@ -351,15 +350,15 @@ public class bmpTradeBean implements EntityBean {
       }
     }
   }
-  // Ò²¿ÉÒÔÊ¹ÓÃWebLogicµÄÈÕÖ¾·þÎñ
+  // Ò²ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½WebLogicï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
   private void log(String s) {
     if (VERBOSE) System.out.println(s);
   }
-  // ·µ»ØÕâ¸öbeansµÄid
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beansï¿½ï¿½id
   private String id() {
     return "PK = " + (String) ctx.getPrimaryKey();
   }
-  //Çå³ýÁ¬½Ó
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private void cleanup(Connection con, PreparedStatement ps) {
     try {
       if (ps != null) ps.close();

@@ -1,14 +1,11 @@
 /*
- * ÕâÊÇ¿Í»§¶ËÓë·şÎñÆ÷±£³ÖÍ¨ĞÅµÄÏß³Ì
+ * ï¿½ï¿½ï¿½Ç¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Åµï¿½ï¿½ß³ï¿½
  */
 package com.qq.client.tools;
 
-import com.qq.common.*;
-import java.io.*;
-import java.net.*;
-
 import com.qq.client.view.QqChat;
 import com.qq.client.view.QqFriendList;
+import com.qq.common.*;
 import com.qq.common.Message;
 public class ClientConServerThread extends Thread{
 
@@ -21,32 +18,32 @@ public class ClientConServerThread extends Thread{
 		this.s = s;
 	}
 
-	//¹¹Ôìº¯Êı
+	//ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
 	public ClientConServerThread(Socket s){
 		this.s=s;
 	}
 	
 	public void run(){
 		while(true){
-			//²»Í£µÄ¶ÁÈ¡´Ó·şÎñÆ÷¶Ë·¢À´µÄÏûÏ¢
+			//ï¿½ï¿½Í£ï¿½Ä¶ï¿½È¡ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			try {
 				ObjectInputStream ois=new ObjectInputStream(s.getInputStream());
 				Message m=(Message)ois.readObject();
-				//System.out.println("¶ÁÈ¡µ½´Ó·şÎñÆ÷·¢À´µÄÏûÏ¢"+m.getSender()+" ¸ø "+m.getGetter()+" ÄÚÈİ "+m.getCon());
+				//System.out.println("ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢"+m.getSender()+" ï¿½ï¿½ "+m.getGetter()+" ï¿½ï¿½ï¿½ï¿½ "+m.getCon());
 				
 				if(m.getMesType().equals(MessageType.message_comm_mes)){
-					//°Ñ´Ó·şÎñÆ÷»ñµÃµÄÏûÏ¢£¬ÏÔÊ¾µ½¸ÃÏÔÊ¾µÄÁÄÌì½çÃæ
+					//ï¿½Ñ´Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					QqChat qqChat=ManageQqChat.getQqChat(m.getGetter()+" "+m.getSender());
-					//ÏÔÊ¾
+					//ï¿½ï¿½Ê¾
 					qqChat.showMessage(m);
 				}else if(m.getMesType().equals(MessageType.message_ret_onLineFriend)){
 					String con=m.getCon();
 					String friend[]=con.split(" ");
 					String getter=m.getGetter();
-					//ĞŞ¸ÄÏàÓ¦µÄºÃÓÑÁĞ±í
+					//ï¿½Ş¸ï¿½ï¿½ï¿½Ó¦ï¿½Äºï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 					QqFriendList qqFriendList=ManageQqFriendList.getQqFriendList(getter);
 					
-					//¸üĞÂÔÚÏßºÃÓÑÁĞ±í
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 					if(qqFriendList!=null){
 						qqFriendList.upDateFriend(m);
 					}

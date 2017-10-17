@@ -1,13 +1,11 @@
-//ÓëµÚ1ÕÂµÄEchoServerÀàÏàÍ¬
-import java.io.*;
-import java.net.*;
+//ï¿½ï¿½ï¿½1ï¿½Âµï¿½EchoServerï¿½ï¿½ï¿½ï¿½Í¬
 public class EchoServer {
   private int port=8000;
   private ServerSocket serverSocket;
 
   public EchoServer() throws IOException {
     serverSocket = new ServerSocket(port);
-    System.out.println("·þÎñÆ÷Æô¶¯");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   }
 
   public String echo(String msg) {
@@ -27,7 +25,7 @@ public class EchoServer {
     while (true) {
       Socket socket=null;
       try {
-        socket = serverSocket.accept();  //µÈ´ý¿Í»§Á¬½Ó
+        socket = serverSocket.accept();  //ï¿½È´ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½
         System.out.println("New connection accepted " 
                         +socket.getInetAddress() + ":" +socket.getPort());
         BufferedReader br =getReader(socket);
@@ -37,14 +35,14 @@ public class EchoServer {
         while ((msg = br.readLine()) != null) {
           System.out.println(msg); 
           pw.println(echo(msg));
-          if (msg.equals("bye")) //Èç¹û¿Í»§·¢ËÍµÄÏûÏ¢Îª¡°bye¡±£¬¾Í½áÊøÍ¨ÐÅ
+          if (msg.equals("bye")) //ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ï¢Îªï¿½ï¿½byeï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
             break;
         }
       }catch (IOException e) {
          e.printStackTrace();
       }finally {
          try{
-           if(socket!=null)socket.close();  //¶Ï¿ªÁ¬½Ó
+           if(socket!=null)socket.close();  //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½
          }catch (IOException e) {e.printStackTrace();}
       }
     }
@@ -57,7 +55,7 @@ public class EchoServer {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -2,85 +2,76 @@ package chat;
 
 //import Client;
 
-import javax.swing.JFileChooser;
-import javax.swing.JProgressBar;
-import java.util.Date;
+import java.net.Socket;
 import java.util.Calendar;
 
-import javax.swing.JTextArea; //import RTFReceiveFrame;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
+import javax.swing.JFileChooser;
+import javax.swing.JProgressBar;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
-
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import java.net.*;
-import java.io.*;
-import java.net.Socket;
 
 public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		Runnable, KeyListener
 {
 
-	sendfilethread sendthread;// ·¢ËÍÎÄ¼þÏß³Ì;
-	acceptfilethread acceptthread;// ½ÓÊÕÎÄ¼þÏß³Ì
-	Socket acceptfilesocket; // ½ÓÊÕÎÄ¼þ´«ÊäÁ¬½Ó
-	Socket sendfilesocket; // ·¢ËÍÎÄ¼þ´«ÊäÁ¬½Ó
-	ServerSocket fileserver; // ´«ÊäÎÄ¼þ·þÎñÆ÷
-	String filemsg = null; // ±£´æÎÄ¼þÊäÈëÁ÷
-	String sendfilename = null;// ±£´æÓû·¢ËÍµÄÎÄ¼þÃû
-	String IP;// ±£´æ±¾»úIP= InetAddress.getLocalHost();//
+	sendfilethread sendthread;// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ß³ï¿½;
+	acceptfilethread acceptthread;// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ß³ï¿½
+	Socket acceptfilesocket; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	Socket sendfilesocket; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ServerSocket fileserver; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	String filemsg = null; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	String sendfilename = null;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+	String IP;// ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½IP= InetAddress.getLocalHost();//
 	Boolean acceptboolean = false;
 	Boolean sendboolean = false;
 	
 	int port = 6200;
-	JProgressBar acceptProgressbar;// ½ÓÊÕ½ø¶ÈÌõ
-	JProgressBar sendProgressbar; // ·¢ËÍ½ø¶ÈÌõ
+	JProgressBar acceptProgressbar;// ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½
+	JProgressBar sendProgressbar; // ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	private Box leftbox = null;
 	private Box rightbox = null;
 	private Box leftrightbox = null;
 	private Box rightleftbox = null;
-	private JButton sendfile; // ·¢ËÍÎÄ¼þ°´Å¥
-	private JButton cancelsendfile; // È¡Ïû·¢ËÍÎÄ¼þ°´Å¥
-	private JButton acceptfile; // ½ÓÊÕÎÄ¼þ°´Å¥
-	private JButton refusefile; // ¾Ü¾ø½ÓÊÕÎÄ¼þ°´Å¥
-	private MyTextArea sendfileArea = null; // ·¢ËÍÎÄ¼þÏÔÊ¾Çø
-	private JTextPane acceptfileArea = null; // ½ÓÊÕÎÄ¼þÏÔÊ¾Çø
+	private JButton sendfile; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Å¥
+	private JButton cancelsendfile; // È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Å¥
+	private JButton acceptfile; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Å¥
+	private JButton refusefile; // ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Å¥
+	private MyTextArea sendfileArea = null; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
+	private JTextPane acceptfileArea = null; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
 
 	private static final long serialVersionUID = 1L;
-	// ***************²Ëµ¥À¸***********************
-	private Box box = null; // ·ÅÊäÈë×é¼þµÄÈÝÆ÷
+	// ***************ï¿½Ëµï¿½ï¿½ï¿½***********************
+	private Box box = null; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private JComboBox fontName = null, fontSize = null, fontStyle = null,
 			fontColor = null;// sendings = null;// fontBackColor = null;
-	// ×ÖÌåÃû³Æ;×ÖºÅ´óÐ¡;ÎÄ×ÖÑùÊ½;ÎÄ×ÖÑÕÉ«;´«ËÍ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;ï¿½ÖºÅ´ï¿½Ð¡;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«;ï¿½ï¿½ï¿½ï¿½
 	private StyledDocument doc = null;
 
-	private JFileChooser jfc;// ÎÄ¼þ±£´æÂ·¾¶Ñ¡ÔñÆ÷
+	private JFileChooser jfc;// ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
 	// private JFrame fr;
 
-	private JTextPane commonArea = null; // ¹«¹²·¢ÑÔÇø
-	private JTextPane myMsgArea = null;// ÎÒµÄÆµµÀ·¢ÑÔÇø
-	public JComboBox perponsComboBox; // ÏÂÀ­²Ëµ¥
-	private JTextArea inMsgField; // ·¢ÑÔÊäÈë¿ò
-	private JCheckBox privateTalk;// Ë½ÁÄcheckbox
-	private boolean privateTalkFlag = false; // ÊÇ·ñÊÇË½ÁÄ,Ä¬ÈÏÖµÎª¼Ù
-	private JButton sentButton; // ·¢ËÍÏûÏ¢°´Å¥
+	private JTextPane commonArea = null; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private JTextPane myMsgArea = null;// ï¿½Òµï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public JComboBox perponsComboBox; // ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½
+	private JTextArea inMsgField; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private JCheckBox privateTalk;// Ë½ï¿½ï¿½checkbox
+	private boolean privateTalkFlag = false; // ï¿½Ç·ï¿½ï¿½ï¿½Ë½ï¿½ï¿½,Ä¬ï¿½ï¿½ÖµÎªï¿½ï¿½
+	private JButton sentButton; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Å¥
 
-	private JButton screenCapture;// ½ØÆÁ°´Å¥
+	private JButton screenCapture;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥
 	private JMenuItem menuItem;
 	private JMenuItem cMenuItem;
 	public BufferedReader in;
 	public PrintWriter out;
 	public String myName;
-	private String withWho = "ËùÓÐÈË";
-	String outmsg;// ·¢ËÍµÄÐÅÏ¢
-	String mywords;// ÒªËµµÄ»°
+	private String withWho = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+	String outmsg;// ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ï¢
+	String mywords;// ÒªËµï¿½Ä»ï¿½
 	JPanel centerPanel;
 	JScrollPane commonAreaScroll;
 	JScrollPane myMsgAreaScroll;
@@ -90,9 +81,9 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 	public ChatFrame(String host)
 	{
-		super(host + "µÄÁÄÌìÊÒ");
+		super(host + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		try
-		{ // Ê¹ÓÃWindowsµÄ½çÃæ·ç¸ñ
+		{ // Ê¹ï¿½ï¿½Windowsï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½
 			UIManager
 					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e)
@@ -106,13 +97,13 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		try
 		{
 			InetAddress addr = InetAddress.getLocalHost();
-			IP = addr.getHostAddress().toString();// »ñµÃ±¾»úIP
+			IP = addr.getHostAddress().toString();// ï¿½ï¿½Ã±ï¿½ï¿½ï¿½IP
 
 		} catch (Exception e)
 		{
-			System.out.print("ÎÞ·¨»ñÈ¡±¾µØÖ÷»ú");
+			System.out.print("ï¿½Þ·ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-		}// System.out.println("±¾»úµÄip=" + inet.getHostAddress());
+		}// System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ip=" + inet.getHostAddress());
 
 		acceptProgressbar = new JProgressBar();
 		acceptProgressbar.setOrientation(JProgressBar.HORIZONTAL);
@@ -128,18 +119,18 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		sendProgressbar.setValue(0);
 		sendProgressbar.setStringPainted(true);
 
-		// *****ÁÄÌìÊÒÓÒ²à************//
+		// *****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½************//
 		//Icon sentIcon = new ImageIcon("1.gif");
 		//sendfile = new JButton(sentIcon); // ??????????????
-		sendfile = new JButton("·¢ËÍÎÄ¼þ"); // ??????????????
-		cancelsendfile = new JButton("È¡Ïû·¢ËÍ"); // ??????????????
-		acceptfile = new JButton("½ÓÊÕÎÄ¼þ"); // ??????????????
-		refusefile = new JButton("¾Ü¾øÎÄ¼þ"); // ¾Ü¾ø½ÓÊÕÎÄ¼þ°´Å¥
-		acceptfileArea = new JTextPane(); // ½ÓÊÕÎÄ¼þÏÔÊ¾Çø
-		acceptfileArea.setEditable(false); // ²»¿É´ÓÍâ²¿Ð´
-		sendfileArea = new MyTextArea(); // ·¢ËÍÎÄ¼þÏÔÊ¾Çø
+		sendfile = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½"); // ??????????????
+		cancelsendfile = new JButton("È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"); // ??????????????
+		acceptfile = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½"); // ??????????????
+		refusefile = new JButton("ï¿½Ü¾ï¿½ï¿½Ä¼ï¿½"); // ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Å¥
+		acceptfileArea = new JTextPane(); // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
+		acceptfileArea.setEditable(false); // ï¿½ï¿½ï¿½É´ï¿½ï¿½â²¿Ð´
+		sendfileArea = new MyTextArea(); // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
 		sendfileArea.setEditable(false);
-		leftrightbox = Box.createHorizontalBox(); // ÐÐ½á¹¹
+		leftrightbox = Box.createHorizontalBox(); // ï¿½Ð½á¹¹
 
 		leftrightbox.add(acceptfile, BorderLayout.WEST);
 		// leftrightbox.add(jpb,BorderLayout.CENTER);
@@ -150,7 +141,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 		// leftrightbox.add(jpb,BorderLayout.CENTER);
 
-		rightbox = Box.createVerticalBox();// Êú½á¹¹
+		rightbox = Box.createVerticalBox();// ï¿½ï¿½ï¿½á¹¹
 		rightbox.add(Box.createVerticalStrut(10));
 		rightbox.add(rightabove);
 		rightbox.add(Box.createVerticalStrut(10));
@@ -159,7 +150,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		inMsgFieldScroll1
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-		inMsgFieldScroll1.setBorder(BorderFactory.createTitledBorder("´ý½ÓÊÕµÄÎÄ¼þ"));
+		inMsgFieldScroll1.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½Ä¼ï¿½"));
 		inMsgFieldScroll1.setBackground(new Color(188, 193, 199));
 		rightbox.add(inMsgFieldScroll1, BorderLayout.CENTER);
 		rightbox.setBackground(new Color(250, 0, 2));// /
@@ -179,7 +170,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		// inMsgFieldScroll2
 		//.setHorizontalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
 		// );
-		inMsgFieldScroll2.setBorder(BorderFactory.createTitledBorder("Óû·¢ËÍµÄÎÄ¼þ"));
+		inMsgFieldScroll2.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½"));
 		inMsgFieldScroll2.setBackground(new Color(188, 193, 199));
 		rightbox.add(inMsgFieldScroll2, BorderLayout.CENTER);
 		rightbox.setBackground(new Color(0, 0, 255));
@@ -187,73 +178,73 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 		// ****************************************************//
 
-		// *****ÁÄÌìÊÒÓÒ²à************//
-		// *********************ÁÄÌìÊÒ¶¥²ã**************//
+		// *****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½************//
+		// *********************ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½**************//
 
 		JPanel upperPanel = new JPanel();
-		String[] str_name = { "ËÎÌå", "ºÚÌå", "Dialog", "Gulim" };
+		String[] str_name = { "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "Dialog", "Gulim" };
 		String[] str_Size = { "12", "14", "18", "22", "30", "40" };
-		String[] str_Style = { "³£¹æ", "Ð±Ìå", "´ÖÌå", "´ÖÐ±Ìå" };
-		String[] str_Color = { "ºÚÉ«", "ºìÉ«", "À¶É«", "»ÆÉ«", "ÂÌÉ«" };
-		// String[] str_BackColor = { "ÎÞÉ«", "»ÒÉ«", "µ­ºì", "µ­À¶", "µ­»Æ", "µ­ÂÌ" };
-		// String[] str_sendings = { "ÎÄ¼þ", "Í¼Æ¬" };
-		fontName = new JComboBox(str_name); // ×ÖÌåÃû³Æ
-		fontSize = new JComboBox(str_Size); // ×ÖºÅ
-		fontStyle = new JComboBox(str_Style); // ÑùÊ½
-		fontColor = new JComboBox(str_Color); // ÑÕÉ«
-		// fontBackColor = new JComboBox(str_BackColor); // ±³¾°ÑÕÉ«
+		String[] str_Style = { "ï¿½ï¿½ï¿½ï¿½", "Ð±ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½Ð±ï¿½ï¿½" };
+		String[] str_Color = { "ï¿½ï¿½É«", "ï¿½ï¿½É«", "ï¿½ï¿½É«", "ï¿½ï¿½É«", "ï¿½ï¿½É«" };
+		// String[] str_BackColor = { "ï¿½ï¿½É«", "ï¿½ï¿½É«", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½" };
+		// String[] str_sendings = { "ï¿½Ä¼ï¿½", "Í¼Æ¬" };
+		fontName = new JComboBox(str_name); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		fontSize = new JComboBox(str_Size); // ï¿½Öºï¿½
+		fontStyle = new JComboBox(str_Style); // ï¿½ï¿½Ê½
+		fontColor = new JComboBox(str_Color); // ï¿½ï¿½É«
+		// fontBackColor = new JComboBox(str_BackColor); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 		// sendings = new JComboBox(str_sendings);
 
-		box = Box.createVerticalBox(); // Êú½á¹¹
-		Box box_1 = Box.createHorizontalBox(); // ºá½á¹¹
-		Box box_2 = Box.createVerticalBox(); // ºá½á¹¹
+		box = Box.createVerticalBox(); // ï¿½ï¿½ï¿½á¹¹
+		Box box_1 = Box.createHorizontalBox(); // ï¿½ï¿½á¹¹
+		Box box_2 = Box.createVerticalBox(); // ï¿½ï¿½á¹¹
 		box.add(box_1);
-		// box.add(Box.createVerticalStrut(8)); // Á½ÐÐµÄ¼ä¾à
+		// box.add(Box.createVerticalStrut(8)); // ï¿½ï¿½ï¿½ÐµÄ¼ï¿½ï¿½
 		// box.add(box_2);
-		box.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8)); // 8¸öµÄ±ß¾à
-		// ¿ªÊ¼½«ËùÐè×é¼þ¼ÓÈëÈÝÆ÷
-		box_1.add(new JLabel("×ÖÌå£º")); // ¼ÓÈë±êÇ©
-		box_1.add(fontName); // ¼ÓÈë×é¼þ
-		box_1.add(Box.createHorizontalStrut(8)); // ¼ä¾à
-		box_1.add(new JLabel("ÑùÊ½£º"));
+		box.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8)); // 8ï¿½ï¿½ï¿½Ä±ß¾ï¿½
+		// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		box_1.add(new JLabel("ï¿½ï¿½ï¿½å£º")); // ï¿½ï¿½ï¿½ï¿½ï¿½Ç©
+		box_1.add(fontName); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		box_1.add(Box.createHorizontalStrut(8)); // ï¿½ï¿½ï¿½
+		box_1.add(new JLabel("ï¿½ï¿½Ê½ï¿½ï¿½"));
 		box_1.add(fontStyle);
 		box_1.add(Box.createHorizontalStrut(8));
-		box_1.add(new JLabel("×ÖºÅ£º"));
+		box_1.add(new JLabel("ï¿½ÖºÅ£ï¿½"));
 		box_1.add(fontSize);
 		box_1.add(Box.createHorizontalStrut(8));
-		box_1.add(new JLabel("ÑÕÉ«£º"));
+		box_1.add(new JLabel("ï¿½ï¿½É«ï¿½ï¿½"));
 		box_1.add(fontColor);
 		box_1.add(Box.createHorizontalStrut(8));
-		// box_1.add(new JLabel("´«ËÍ: "));
+		// box_1.add(new JLabel("ï¿½ï¿½ï¿½ï¿½: "));
 		// box_1.add(sendings);
 		box_1.add(Box.createHorizontalStrut(8));
 
 		upperPanel.add(box, BorderLayout.SOUTH);
 
-		// **************ÖÐ¼äÁÄÌìÊÒÁ½¸ö´°¿Ú***********************//
+		// **************ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½***********************//
 
-		Border brd = BorderFactory.createMatteBorder(// ±ß¿òÐÞÊÎÉ«
+		Border brd = BorderFactory.createMatteBorder(// ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½É«
 				2, 2, 2, 1, new Color(125, 161, 253));
 
 		centerPanel = new JPanel(new BorderLayout());
 
-		commonArea = new JTextPane(); // ¹«¹²ÑÔÂÛÇø
+		commonArea = new JTextPane(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		commonArea.setBorder(brd);
-		commonArea.setEditable(false); // ²»¿É±à¼­
+		commonArea.setEditable(false); // ï¿½ï¿½ï¿½É±à¼­
 		commonArea.getScrollableUnitIncrement(new Rectangle(10, 20),
 				SwingConstants.VERTICAL, -2);
 		// Less than zero to scroll up/left, greater than zero for down/right
 		commonAreaScroll = new JScrollPane(commonArea);
 		commonAreaScroll
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);// ÉèÖÃ¹ö¶¯ÌõÊ²Ã´Ê±ºò³öÏÖ
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);// ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½Ê²Ã´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
 		commonAreaScroll
 				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		commonAreaScroll.setBorder(BorderFactory.createTitledBorder("ÈºÁÄÇø"));
+		commonAreaScroll.setBorder(BorderFactory.createTitledBorder("Èºï¿½ï¿½ï¿½ï¿½"));
 
 		box_2.add(commonAreaScroll);
 		box_2.add(Box.createVerticalStrut(2));
 
-		myMsgArea = new JTextPane(); // ÎÒµÄ·¢ÑÔ
+		myMsgArea = new JTextPane(); // ï¿½ÒµÄ·ï¿½ï¿½ï¿½
 		// myMsgArea.setSize(20, 30);
 		myMsgArea.setBorder(brd);
 		myMsgArea.setEditable(false);
@@ -263,40 +254,40 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		myMsgAreaScroll
 				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		myMsgAreaScroll.setBorder(BorderFactory.createTitledBorder("ÇÄÇÄ»°"));
+		myMsgAreaScroll.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½Ä»ï¿½"));
 		//myMsgAreaScroll.setValue(myMsgAreaScroll.getMaximumSize());
 		//myMsgAreaScroll.s;
 
 		box_2.add(myMsgAreaScroll);
 		centerPanel.add(box_2);
 
-		// ******************ÊäÈë·¢ËÍÇø***********************
+		// ******************ï¿½ï¿½ï¿½ë·¢ï¿½ï¿½ï¿½ï¿½***********************
 		JPanel centerLowerPanel = new JPanel(new BorderLayout());
 		JPanel tempPanel1 = new JPanel(new BorderLayout());
 		JPanel tempPanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-		JLabel withWho = new JLabel("¶Ô");
+		JLabel withWho = new JLabel("ï¿½ï¿½");
 		perponsComboBox = new JComboBox();
-		perponsComboBox.addItem("ËùÓÐÈË");
-		privateTalk = new JCheckBox("Ë½ÁÄ");
+		perponsComboBox.addItem("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		privateTalk = new JCheckBox("Ë½ï¿½ï¿½");
 
 		inMsgField = new JTextArea(3, 2);
 		inMsgField.setBorder(brd);
-		inMsgField.setBackground(new Color(248, 243, 209));// ÉèÖÃÁÄÌì¿òÌåµÄÑÕÉ«
+		inMsgField.setBackground(new Color(248, 243, 209));// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 		inMsgField.addKeyListener(this);
 		 //Icon sentIcon = new ImageIcon("2.gif");
 		// sentButton= new JButton(sentIcon);
-		sentButton = new JButton("·¢ËÍ");
+		sentButton = new JButton("ï¿½ï¿½ï¿½ï¿½");
 
-		// JTextPane acceptfileArea = null; // ½ÓÊÕÎÄ¼þÏÔÊ¾Çø
+		// JTextPane acceptfileArea = null; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
 
-		screenCapture = new JButton("½ØÆÁ");
+		screenCapture = new JButton("ï¿½ï¿½ï¿½ï¿½");
 		// Icon sentIcon = new ImageIcon("ButtonSenddown.gif");
 		// sentButton.setIcon(sentIcon);
 		inMsgFieldScroll = new JScrollPane(inMsgField);
 		inMsgFieldScroll
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		inMsgFieldScroll.setBorder(BorderFactory.createTitledBorder("±à¼­Çø"));
+		inMsgFieldScroll.setBorder(BorderFactory.createTitledBorder("ï¿½à¼­ï¿½ï¿½"));
 		tempPanel1.add(inMsgFieldScroll, BorderLayout.CENTER);
 
 		sentButton.setBackground(Color.WHITE);
@@ -316,19 +307,19 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 		centerPanel.add(centerLowerPanel, BorderLayout.SOUTH);
 
-		// ********************** ×îÏÂÃæµÄÃæ°å(South)*****************//
+		// ********************** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(South)*****************//
 		JLabel BordBottomLabel = new JLabel();
 		Icon BordBottom = new ImageIcon("images\\BordBottom.gif");
 		BordBottomLabel.setIcon(BordBottom);
 
-		// ******************×éºÏÕû¸ö¿ò¼Ü**************************//
+		// ******************ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**************************//
 		//this.myMsgArea.setPreferredSize(new Dimension(50,100));
 		//this.commonArea.setPreferredSize(new Dimension(50,100));
 		//this.inMsgField.setPreferredSize(new Dimension(50,50));
 
 
 
-		leftbox = Box.createVerticalBox();// Êú½á¹¹
+		leftbox = Box.createVerticalBox();// ï¿½ï¿½ï¿½á¹¹
 		// leftbox = Box.createHorizontalStrut(30);
 		leftbox.add(upperPanel, BorderLayout.NORTH);
 		leftbox.add(centerPanel, BorderLayout.CENTER);
@@ -342,28 +333,28 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		this.add(rightbox, BorderLayout.EAST);// //????????????????
 		//this.setResizable(false);
 
-		sentButton.addActionListener(this);// ¼àÌý·¢ËÍ°´Å¥
+		sentButton.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½Å¥
 
-		sendfile.addActionListener(this);// ¼àÌýÎÄ¼þ·¢ËÍ°´Å¥//????????????????????
-		acceptfile.addActionListener(this);// ¼àÌýÎÄ¼þ½ÓÊÕ°´Å¥//?????/////////////////
-		refusefile.addActionListener(this);// ¼àÌýÎÄ¼þ¾Ü¾ø°´Å¥//?????/////////////////
-		cancelsendfile.addActionListener(this);// ¼àÌýÈ¡Ïû·¢ËÍÎÄ¼þ
+		sendfile.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í°ï¿½Å¥//????????????????????
+		acceptfile.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Õ°ï¿½Å¥//?????/////////////////
+		refusefile.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ü¾ï¿½ï¿½ï¿½Å¥//?????/////////////////
+		cancelsendfile.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 
-		screenCapture.addActionListener(this);// ¼àÌý½ØÆÁÃüÁî
+		screenCapture.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		perponsComboBox.addActionListener(this);// ¼àÌýÏÂÀ­²Ëµ¥////rfer
+		perponsComboBox.addActionListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½////rfer
 
 		// sendings.addActionListener(this);
-		privateTalk.addItemListener(this);// ¼àÌý¶àÑ¡¿ò×´Ì¬
+		privateTalk.addItemListener(this);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬
 		this.createPopupMenu();
 		// this.pack();
 		inMsgField.requestFocus();
-		this.setLocation(450, 50); // ¾ÓÖÐ
+		this.setLocation(450, 50); // ï¿½ï¿½ï¿½ï¿½
 		this.setSize(600, 600);
 
 		// when close the windows
 		this.addWindowListener(new WindowAdapter()
-		{ // ÄäÃûÀà ¼àÌý´°¿Ú¹Ø±ÕÊ±¼ä
+		{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹Ø±ï¿½Ê±ï¿½ï¿½
 
 					public void windowClosing(WindowEvent event)
 					{
@@ -378,24 +369,24 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	{
 		// Create the popup menu.
 		JPopupMenu popup = new JPopupMenu();
-		menuItem = new JMenuItem("Çå¿ÕÈºÁÄÇøÐÅÏ¢");
+		menuItem = new JMenuItem("ï¿½ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢");
 		menuItem.addActionListener(this);
-		popup.add(menuItem); // Êó±êÓÒ»÷ÏÔÊ¾
-		cMenuItem = new JMenuItem("Çå¿ÕË½ÁÄÇøÐÅÏ¢");
+		popup.add(menuItem); // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ê¾
+		cMenuItem = new JMenuItem("ï¿½ï¿½ï¿½Ë½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢");
 		cMenuItem.addActionListener(this);
 		popup.add(cMenuItem);
 		// Add listener to the text area so the popup menu can come up.
-		MouseListener popupListener = new PopupListener(popup);// PopupListener¼Ì³ÐMouseAdapter
+		MouseListener popupListener = new PopupListener(popup);// PopupListenerï¿½Ì³ï¿½MouseAdapter
 		commonArea.addMouseListener(popupListener);
 		myMsgArea.addMouseListener(popupListener);
 	}
 
 	public void init(BufferedReader in, PrintWriter out)
 	{
-		// »ñµÃÊäÈë¡¢Êä³öÁ÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡¢ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.in = in;
 		this.out = out;
-		// »ñµÃÎÒ×Ô¼ºµÄÃû×Ö
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		Thread th = new Thread(this);
 		th.start();
@@ -415,51 +406,51 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				if ((inmsg = in.readLine()) != null)
 				{
 
-					// ÒÑ¾­ÔÚÁÄÌìÊÒÀïµÄÈËÏÔÊ¾µ½ÁÐ±íÖÐ
+					// ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
 					if (inmsg.startsWith("old"))
 					{
 						String[] userInfo = inmsg.split("&");
-						plist.listModel.addElement(userInfo[1] + " ¡¼"
-								+ userInfo[2] + "¡½"); // ¸üÐÂÓÃ»§ÁÐ±í
+						plist.listModel.addElement(userInfo[1] + " ï¿½ï¿½"
+								+ userInfo[2] + "ï¿½ï¿½"); // ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ð±ï¿½
 					} else if (inmsg.startsWith("new"))
-					{ // ½ÓÊÕµÚÒ»´Î·þÎñÆ÷·¢ËÍ»¶Ó­ÐÅÏ¢
+					{ // ï¿½ï¿½ï¿½Õµï¿½Ò»ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½Ó­ï¿½ï¿½Ï¢
 						String[] userInfo = inmsg.split("&");
-						plist.listModel.addElement(userInfo[1] + " ¡¼"
-								+ userInfo[2] + "¡½"); // ¸üÐÂÓÃ»§ÁÐ±í new & zhangsan &
+						plist.listModel.addElement(userInfo[1] + " ï¿½ï¿½"
+								+ userInfo[2] + "ï¿½ï¿½"); // ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ð±ï¿½ new & zhangsan &
 						// boy
 
-						insert(commonArea, userInfo[1] + "ÉÏÏßÁË");
+						insert(commonArea, userInfo[1] + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-						insert(myMsgArea, userInfo[1] + "ÉÏÏßÁË");
+						insert(myMsgArea, userInfo[1] + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 						//myMsgArea.setCaretPosition(myMsgArea.getText().length(
 						// ));
 					} else if (inmsg != null)
-					{ // Ò»°ãÏûÏ¢
+					{ // Ò»ï¿½ï¿½ï¿½ï¿½Ï¢
 						String[] sendfile = inmsg.split("&");
 						if (sendfile[0].compareTo("cancelsendfile") == 0)
 						{
-							insert(myMsgArea, sendfile[1] + "È¡ÏûÁËÎÄ¼þ·¢ËÍ");
+							insert(myMsgArea, sendfile[1] + "È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½");
 							acceptboolean = false;
 							
 							this.acceptfile.setEnabled(true);
 							this.acceptfileArea.setText("");
 							// this.acceptfileArea.s
 						} else if (sendfile[0].compareTo("sendfile") == 0)
-						{ // Èç¹ûÊÇ´«ËÍÎÄ¼þÇëÇó
+						{ // ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
 							this.acceptfileArea.setText(sendfile[2]);
-							insert(myMsgArea, sendfile[1] + " ·¢À´ÎÄ¼þ");
+							insert(myMsgArea, sendfile[1] + " ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½");
 							filemsg = inmsg;
 						} else if (sendfile[0].compareTo("acceptfile") == 0)
-						{ // Èç¹ûÊÇ´«ËÍÎÄ¼þÇëÇó
+						{ // ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 							// String[] acceptfile = inmsg.split("&");
 							// acceptfileArea.setText(sendfile[2]);
-							insert(myMsgArea, sendfile[1] + " ½ÓÊÕÁËÄã·¢µÄÎÄ¼þ");
+							insert(myMsgArea, sendfile[1] + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¢ï¿½ï¿½ï¿½Ä¼ï¿½");
 
 						} else if (sendfile[0].compareTo("refusefile") == 0)
-						{ // Èç¹ûÊÇ´«ËÍÎÄ¼þÇëÇó
+						{ // ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
-							insert(myMsgArea, sendfile[1] + " ¾Ü¾øÁËÄã·¢µÄÎÄ¼þ");
+							insert(myMsgArea, sendfile[1] + " ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½ã·¢ï¿½ï¿½ï¿½Ä¼ï¿½");
 							sendboolean = false;
 							this.sendfile.setEnabled(true);
 							this.sendfileArea.setText("");
@@ -467,29 +458,29 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 						} else if (sendfile[0].compareTo("withWho") == 0)
 						{
 							if (sendfile[2].equals(myName))
-							{ // Èç¹ûÊÇ·¢¸ø×Ô¼ºµÄÏûÏ¢
+							{ // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 
-								insert(myMsgArea, sendfile[1] + "¶Ô¡º"
-										+ sendfile[2] + "¡»Ëµ:" + sendfile[3]);
-							} // ÏÔÊ¾µ½ÎÒµÄÆµµÀ
+								insert(myMsgArea, sendfile[1] + "ï¿½Ô¡ï¿½"
+										+ sendfile[2] + "ï¿½ï¿½Ëµ:" + sendfile[3]);
+							} // ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Òµï¿½Æµï¿½ï¿½
 
-							insert(commonArea, sendfile[1] + "¶Ô¡º" + sendfile[2]
-									+ "¡»Ëµ:" + sendfile[3]);
+							insert(commonArea, sendfile[1] + "ï¿½Ô¡ï¿½" + sendfile[2]
+									+ "ï¿½ï¿½Ëµ:" + sendfile[3]);
 
 						} else if (inmsg.startsWith("privateTalk"))
 						{
 							String showmsg[] = inmsg.split("&");
 							if (showmsg[1].equals(myName))
-							{// Èç¹û½ÓÊÕµ½µÄÊÇÎÒ×Ô¼º·¢ËÍµÄÏûÏ¢
+							{// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ï¢
 
-								insert(commonArea, "Äú¶Ô¡º" + showmsg[2] + "¡»Ëµ: "
+								insert(commonArea, "ï¿½ï¿½ï¿½Ô¡ï¿½" + showmsg[2] + "ï¿½ï¿½Ëµ: "
 										+ showmsg[3]);
 								//commonArea.setCaretPosition(commonArea.getText
 								// ().length());
 							} else
-							{ // ½ÓÊÕµ½µÄÊÇ±ðÈË·¢¸øÎÒµÄÏûÏ¢£¨ÇÄÇÄ»°£©
+							{ // ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ç±ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
 
-								insert(myMsgArea, "¡º" + showmsg[1] + "¡»¶ÔÄúËµ: "
+								insert(myMsgArea, "ï¿½ï¿½" + showmsg[1] + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµ: "
 										+ showmsg[3]);
 							}
 							// myMsgArea.setCaretPosition(myMsgArea.getText().
@@ -506,9 +497,9 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 			} catch (Exception ee)
 			{
 				ee.printStackTrace();
-				insert(myMsgArea, "Óë·þÎñÆ÷ÖÐ¶Ï£¬ÇëÖØÐÂµÇÂ¼£¡");
+				insert(myMsgArea, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½");
 				// myMsgArea. setCaretPosition(myMsgArea.getText().length());
-				// ½«Êä³öÁ÷£¬ÊäÈëÁ÷ÉèÖÃÎª null
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª null
 				in = null;
 				out = null;
 				return;
@@ -516,10 +507,10 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		}
 	}
 
-	// //////***********·¢ËÍÎÄ¼þÏß³Ì********************************//
-	class sendfilethread extends Thread// ActionListenerkhhkhÑ¹Óô
+	// //////***********ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ß³ï¿½********************************//
+	class sendfilethread extends Thread// ActionListenerkhhkhÑ¹ï¿½ï¿½
 	{
-		sendfilethread()// ¹¹Ôìº¯Êý
+		sendfilethread()// ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
 		{
 
 		}
@@ -537,7 +528,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				fos = new FileInputStream(file);
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ´ò¿ªÎÄ¼þÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ì³£");
 			}
 			// fos = new FileInputStream(file);
 
@@ -546,13 +537,13 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 					+ (int) file.length() / 1000);
 			out.flush();
 
-			// ´´½¨ÍøÂç·þÎñÆ÷½ÓÊÜ¿Í»§ÇëÇó
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½
 			try
 			{
 				fileserver = new ServerSocket(port);
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ´´½¨·þÎñÆ÷´íÎóÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 
 			// fileserver = new ServerSocket(port);
@@ -562,13 +553,13 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				sendfilesocket = fileserver.accept();
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ¼àÌýÁ¬½ÓÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 			sendProgressbar.setMaximum((int) file.length() / 1000); // :
 			// JProgressBar
 			sendProgressbar.setMinimum(0);
 
-			// ´´½¨ÍøÂçÊä³öÁ÷²¢Ìá¹©Êý¾Ý°ü×°Æ÷
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½Ý°ï¿½×°ï¿½ï¿½
 			int filetemp = 0;
 
 			// OutputStream netOut = sendfilesocket.getOutputStream();
@@ -582,54 +573,54 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				doc = new DataOutputStream(new BufferedOutputStream(netOut));
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ´´½¨ÍøÂçÊä³öÁ÷²¢Ìá¹©Êý¾Ý°ü×°Æ÷Òì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½Ý°ï¿½×°ï¿½ï¿½ï¿½ì³£");
 			}
 
-			// ´´½¨ÎÄ¼þ¶ÁÈ¡»º³åÇø
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			// byte[] buf = new byte[20480];
 			byte[] buf = new byte[8000000];
 			int num = -1;
 			try
 			{
-				num = fos.read(buf);// ¶ÁÎÄ¼þ
+				num = fos.read(buf);// ï¿½ï¿½ï¿½Ä¼ï¿½
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ¶ÁÎÄ¼þÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ì³£");
 			}
 
-			// int num = fos.read(buf);// ¶ÁÎÄ¼þ
+			// int num = fos.read(buf);// ï¿½ï¿½ï¿½Ä¼ï¿½
 
 			while (num != (-1) && sendboolean)
-			{// ÊÇ·ñ¶ÁÍêÎÄ¼þ
+			{// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 				filetemp = filetemp + num / 1000;
 				sendProgressbar.setValue(filetemp);
 
-				// doc.write(buf, 0, num);// °ÑÎÄ¼þÊý¾ÝÐ´³öÍøÂç»º³åÇø
-				// doc.flush();// Ë¢ÐÂ»º³åÇø°ÑÊý¾ÝÐ´Íù¿Í»§¶Ë
+				// doc.write(buf, 0, num);// ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ç»ºï¿½ï¿½ï¿½ï¿½
+				// doc.flush();// Ë¢ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½
 				try
 				{
-					doc.write(buf, 0, num);// ¶ÁÎÄ¼þ
+					doc.write(buf, 0, num);// ï¿½ï¿½ï¿½Ä¼ï¿½
 					doc.flush();
 				} catch (IOException e1)
 				{
-					System.out.print("·¢ËÍÎÄ¼þ°ÑÎÄ¼þÊý¾ÝÐ´³öÍøÂç»º³åÇøÒì³£");
+					System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ç»ºï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 				}
-				// num = fos.read(buf);// ¼ÌÐø´ÓÎÄ¼þÖÐ¶ÁÈ¡Êý¾Ý
+				// num = fos.read(buf);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 				try
 				{
-					num = fos.read(buf);// ¼ÌÐø´ÓÎÄ¼þÖÐ¶ÁÈ¡Êý¾Ý
+					num = fos.read(buf);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 				} catch (IOException e1)
 				{
-					System.out.print("·¢ËÍÎÄ¼þ¼ÌÐø´ÓÎÄ¼þÖÐ¶ÁÈ¡Êý¾ÝÒì³£");
+					System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 				}
 			}
 			if (num == (-1) && sendboolean)
 			{
-				insert(myMsgArea, "ÎÄ¼þ·¢ËÍÍê±Ï");
+				insert(myMsgArea, "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			} else
 			{
-				insert(myMsgArea, "ÎÄ¼þ·¢ËÍÖÐ¶Ï");
+				insert(myMsgArea, "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½");
 			}
 			sendProgressbar.setValue(0);
 			// fos.close();
@@ -640,7 +631,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				doc.close();
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ¹Ø±Õ¶Á»òÐ´Òì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ø±Õ¶ï¿½ï¿½ï¿½Ð´ï¿½ì³£");
 			}
 			// sendfilesocket.close();
 			// fileserver.close();
@@ -650,14 +641,14 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				fileserver.close();
 			} catch (IOException e1)
 			{
-				System.out.print("·¢ËÍÎÄ¼þ¹Ø±ÕÁ¬½Ó»ò·þÎñÆ÷Òì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 			sendfileArea.setText("");
 			sendfile.setEnabled(true);
 
 			// } catch (IOException e1)
 			// {
-			// System.out.print("·¢ËÍÒì³£");
+			// System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			// }
 			return;
 
@@ -666,7 +657,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 	// //*****************************************************//////////////
 
-	// //////////************½ÓÊÕÎÄ¼þÏß³Ì********************////
+	// //////////************ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ß³ï¿½********************////
 	public class acceptfilethread extends Thread
 	{
 		private String ip, filepath;
@@ -687,8 +678,8 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		{
 			// try
 			// {
-			// File file = new File("D:\\b.rar");//¿É¼Óµ¯³ö¿ò
-			File file = new File(filepath);// ¿É¼Óµ¯³ö¿ò
+			// File file = new File("D:\\b.rar");//ï¿½É¼Óµï¿½ï¿½ï¿½ï¿½ï¿½
+			File file = new File(filepath);// ï¿½É¼Óµï¿½ï¿½ï¿½ï¿½ï¿½
 			// file.createNewFile();
 			// RandomAccessFile raf = new RandomAccessFile(file, "rw");
 			RandomAccessFile raf = null;
@@ -698,10 +689,10 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				raf = new RandomAccessFile(file, "rw");
 			} catch (IOException e1)
 			{
-				System.out.print("½ÓÊÕÎÄ¼þÐÂ½¨ÎÄ¼þ²¢´ò¿ªÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Â½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 
-			// Í¨¹ýSocketÁ¬½ÓÎÄ¼þ·þÎñÆ÷
+			// Í¨ï¿½ï¿½Socketï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			// /acceptfilesocket = new Socket(ip, port);
 
@@ -710,7 +701,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				acceptfilesocket = new Socket(ip, port);
 			} catch (IOException e1)
 			{
-				System.out.print("½ÓÊÕÎÄ¼þÍ¨¹ýSocketÁ¬½ÓÎÄ¼þ·þÎñÆ÷Òì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Í¨ï¿½ï¿½Socketï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 
 			String[] tem = filemsg.split("&");
@@ -718,7 +709,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 			// JProgressBar
 			acceptProgressbar.setMinimum(0);
 
-			// ´´½¨ÍøÂç½ÓÊÜÁ÷½ÓÊÜ·þÎñÆ÷ÎÄ¼þÊý¾Ý
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			// InputStream netIn = acceptfilesocket.getInputStream();
 
@@ -734,10 +725,10 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				in = new DataInputStream(new BufferedInputStream(netIn));
 			} catch (IOException e1)
 			{
-				System.out.print("½ÓÊÕÎÄ¼þ´´½¨ÍøÂç½ÓÊÜÁ÷½ÓÊÜ·þÎñÆ÷ÎÄ¼þÊý¾ÝÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 
-			// ´´½¨»º³åÇø»º³åÍøÂçÊý¾Ý
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			byte[] buf = new byte[8000000];
 			// timer.start();
@@ -750,37 +741,37 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				num = in.read(buf);
 			} catch (IOException e1)
 			{
-				System.out.print("½ÓÊÕÎÄ¼þ´´½¨»º³åÇø»º³åÍøÂçÊý¾ÝÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 
 			int temleng = num / 1000;
 
 			while (num != (-1) && acceptboolean)
-			{// ÊÇ·ñ¶ÁÍêËùÓÐÊý¾Ý
+			{// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 				temleng = temleng + num / 1000;
 				acceptProgressbar.setValue(temleng);
 
-				// raf.write(buf, 0, num);// ½«Êý¾ÝÐ´ÍùÎÄ¼þ
-				// raf.skipBytes(num);// Ë³ÐòÐ´ÎÄ¼þ×Ö½Ú
-				// num = in.read(buf);// ¼ÌÐø´ÓÍøÂçÖÐ¶ÁÈ¡ÎÄ¼þ
+				// raf.write(buf, 0, num);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½
+				// raf.skipBytes(num);// Ë³ï¿½ï¿½Ð´ï¿½Ä¼ï¿½ï¿½Ö½ï¿½
+				// num = in.read(buf);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡ï¿½Ä¼ï¿½
 				try
 				{
-					raf.write(buf, 0, num);// ½«Êý¾ÝÐ´ÍùÎÄ¼þ
-					raf.skipBytes(num);// Ë³ÐòÐ´ÎÄ¼þ×Ö½Ú
-					num = in.read(buf);// ¼ÌÐø´ÓÍøÂçÖÐ¶ÁÈ¡ÎÄ¼þ
+					raf.write(buf, 0, num);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½
+					raf.skipBytes(num);// Ë³ï¿½ï¿½Ð´ï¿½Ä¼ï¿½ï¿½Ö½ï¿½
+					num = in.read(buf);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡ï¿½Ä¼ï¿½
 				} catch (IOException e1)
 				{
-					System.out.print("½ÓÊÕÎÄ¼þ½«Êý¾ÝÐ´ÍùÎÄ¼þ»ò¼ÌÐø´ÓÍøÂçÖÐ¶ÁÈ¡ÎÄ¼þÒì³£");
+					System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡ï¿½Ä¼ï¿½ï¿½ì³£");
 				}
 			}
 			// if (num == (-1) && acceptboolean)
 			if (acceptboolean)
 			{
-				insert(myMsgArea, "ÎÄ¼þ½ÓÊÕÍê±Ï");
+				insert(myMsgArea, "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			} else
 			{
-				insert(myMsgArea, "ÎÄ¼þ½ÓÊÕÖÐ¶Ï");
+				insert(myMsgArea, "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½");
 			}
 			acceptProgressbar.setValue(0);
 			// in.close();
@@ -791,7 +782,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				raf.close();
 			} catch (IOException e1)
 			{
-				System.out.print("½ÓÊÕÎÄ¼þ¹Ø±Õ¶ÁÐ´Ê§°ÜÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ø±Õ¶ï¿½Ð´Ê§ï¿½ï¿½ï¿½ì³£");
 			}
 			// acceptfilesocket.close();
 			try
@@ -799,14 +790,14 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 				acceptfilesocket.close();
 			} catch (IOException e1)
 			{
-				System.out.print("½ÓÊÕÎÄ¼þ¹Ø±ÕÁ¬½ÓÒì³£");
+				System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			}
 
 			acceptfileArea.setText("");
 
 			// } catch (IOException q)
 			// {
-			// System.out.println("ÎÄ¼þ½ÓÊÕÒì³£");
+			// System.out.println("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£");
 			// }
 			acceptfile.setEnabled(true);
 
@@ -820,10 +811,10 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	public void actionPerformed(ActionEvent e)
 	{
 		if (e.getSource() == acceptfile)
-		{// ½ÓÊÕÎÄ¼þ´«Êä°´Å¥
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ä°´Å¥
 			if (this.acceptfileArea.getText().length() == 0)
 			{
-				this.insert(myMsgArea, "Ã»ÓÐÎÄ¼þÐèÒª½ÓÊÜ");
+				this.insert(myMsgArea, "Ã»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½");
 			} else
 			{
 				String[] acpfile = filemsg.split("&");
@@ -845,26 +836,26 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 				filepath = file.getPath();
 
-				// ¿É¼Óµ¯³ö¿òÑ¡Ôñ±£´æÂ·¾¶hhhuy
+				// ï¿½É¼Óµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ñ±£´ï¿½Â·ï¿½ï¿½hhhuy
 				acceptthread.ipport(acpfile[3], (Integer.parseInt(acpfile[4])),
 						filepath);
-				acceptfile.setEnabled(false);// ·ÀÖ¹ÖØ¸´µã½ÓÊÕ
+				acceptfile.setEnabled(false);// ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				acceptthread.start();// 
 			}
 
 		}
 		if (e.getSource() == refusefile)
-		{// ¾Ü¾øÎÄ¼þ´«Êä°´Å¥
+		{// ï¿½Ü¾ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ä°´Å¥
 			if (this.acceptfileArea.getText().length() == 0)
 			{
-				this.insert(myMsgArea, "Ã»ÓÐÎÄ¼þÐèÒª½ÓÊÕ£¬¾Ü¾øÎÞÐ§");
+				this.insert(myMsgArea, "Ã»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Õ£ï¿½ï¿½Ü¾ï¿½ï¿½ï¿½Ð§");
 			} else
 			{
 				String[] acpfile = filemsg.split("&");
 				out.println("refusefile" + "&" + acpfile[1]);
 				out.flush();
 
-				this.insert(myMsgArea, "ÄãÈ¡ÏûÁË " + acpfile[1] + " ·¢À´µÄÎÄ¼þ");
+				this.insert(myMsgArea, "ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ " + acpfile[1] + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½");
 				this.acceptfileArea.setText("");
 				acceptboolean = false;
 				acceptfile.setEnabled(true);
@@ -872,10 +863,10 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 		}
 		if (e.getSource() == sendfile)
-		{// ·¢ËÍÎÄ¼þ°´Å¥
-			if (withWho.endsWith("ËùÓÐÈË"))
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Å¥
+			if (withWho.endsWith("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))
 			{
-				this.insert(myMsgArea, "ÇëÑ¡ÔñÒª·¢ËÍµÄÄ¿±ê");
+				this.insert(myMsgArea, "ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½ï¿½ï¿½Íµï¿½Ä¿ï¿½ï¿½");
 			} else
 			{
 				sendfilename = "";
@@ -884,11 +875,11 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 					sendfilename = this.sendfileArea.getText();
 
 				}
-				if (sendfilename.length() == 0)// Ã»ÓÐ»ñµÃÐèÒª·¢ËÍµÄÎÄ¼þ
+				if (sendfilename.length() == 0)// Ã»ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½
 				{
-					this.insert(myMsgArea, "Ã»ÓÐÎÄ¼þ·¢ËÍ£¬ÇëÑ¡ÔñÓû·¢ËÍµÄÎÄ¼þ»ò½«ÆäÍÏÈë´ý·¢ËÍÎÄ¼þ¿ò");
+					this.insert(myMsgArea, "Ã»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½");
 				} else
-				{ // ·¢ËÍÎÄ¼þ
+				{ // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 					sendthread = new sendfilethread();
 					sendboolean = true;
 					sendfile.setEnabled(false);
@@ -899,14 +890,14 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		}
 
 		if (e.getSource() == cancelsendfile)
-		{// È¡ÏûÎÄ¼þ·¢ËÍ°´Å¥
+		{// È¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í°ï¿½Å¥
 			if (this.sendfileArea.getText().length() == 0)
 			{
-				this.insert(myMsgArea, "Ã»ÓÐÎÄ¼þ·¢ËÍ£¬²»ÐèÒªÈ¡Ïû");
+				this.insert(myMsgArea, "Ã»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÈ¡ï¿½ï¿½");
 			} else
 			{
 				
-				this.insert(myMsgArea, "ÄãÈ¡ÏûÁËÎÄ¼þ·¢ËÍ");
+				this.insert(myMsgArea, "ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½");
 				this.sendfileArea.setText("");
 
 				if (this.sendboolean)
@@ -924,46 +915,46 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		// /////////////////////////////////////
 
 		if (e.getSource() == sentButton)
-		{// Èç¹û¼àÌýµ½·¢ËÍÐÅÏ¢°´Å¥±»µã»÷
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½
 			try
 			{
 				mywords = inMsgField.getText();
 				if ((mywords.trim()).length() != 0)
-				{ // ²»ÄÜ·¢ËÍ¿ÕÏûÏ¢Ò²²»ÄÜ¶¼·¢¿Õ¸ñ
-					if (withWho.equals("ËùÓÐÈË"))
+				{ // ï¿½ï¿½ï¿½Ü·ï¿½ï¿½Í¿ï¿½ï¿½ï¿½Ï¢Ò²ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½
+					if (withWho.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))
 					{
 						outmsg = mywords;
-						// ·¢ËÍµ½·þÎñÆ÷
+						// ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						out.println(outmsg);
 						out.flush();
 
-						// ÏÔÊ¾µ½ÎÒµÄÆµµÀÀïÃæ
-						insert(myMsgArea, myName + "£º" + mywords);
+						// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Òµï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						insert(myMsgArea, myName + "ï¿½ï¿½" + mywords);
 
 						//myMsgArea.setCaretPosition(myMsgArea.getText().length(
 						// ));
 					} else
-					{ // ¶ÔÄ³¸öÈË½»Ì¸
+					{ // ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ë½ï¿½Ì¸
 						outmsg = "withWho" + "&" + "privateFalse" + "&"
 								+ withWho + "&" + mywords;
 						if (privateTalkFlag)
 						{
 							outmsg = "withWho" + "&" + "privateTure" + "&"
 									+ withWho + "&" + mywords;
-							insert(myMsgArea, "Äú¶Ô¡º" + withWho + "¡»Ëµ: "
+							insert(myMsgArea, "ï¿½ï¿½ï¿½Ô¡ï¿½" + withWho + "ï¿½ï¿½Ëµ: "
 									+ mywords);
 
 							// myMsgArea.setCaretPosition(myMsgArea.getText().
 							// length());
 						} else
 						{
-							insert(myMsgArea, myName + " ¶Ô¡º" + withWho + "¡»Ëµ: "
+							insert(myMsgArea, myName + " ï¿½Ô¡ï¿½" + withWho + "ï¿½ï¿½Ëµ: "
 									+ mywords);
 
 						}
 						//myMsgArea.setCaretPosition(myMsgArea.getText().length(
 						// ));
-						// ·¢ËÍµ½·þÎñÆ÷
+						// ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						out.println(outmsg);
 						out.flush();
 					}
@@ -971,26 +962,26 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 			} catch (Exception ee)
 			{
 				ee.printStackTrace();
-				insert(myMsgArea, "Óë·þÎñÆ÷Á¬½ÓÖÐ¶Ï£¬ÇëÖØÐÂµÇÂ¼£¡");
+				insert(myMsgArea, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½");
 				// myMsgArea.setCaretPosition(myMsgArea.getText().length());
 			} finally
 			{
-				inMsgField.setText(""); // Çå¿ÕÊäÈë¿ò
+				inMsgField.setText(""); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			}
 		}
 
 		if (e.getSource() == perponsComboBox)
-		{// Èç¹û¼àÌýµ½ÏÂÀ­²Ëµ¥ÐÅÏ¢
-			withWho = (String) perponsComboBox.getSelectedItem(); // »ñµÃÑ¡ÔñµÄÃû³Æ
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ï¢
+			withWho = (String) perponsComboBox.getSelectedItem(); // ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		}
 
 		if (e.getSource() == menuItem)
-		{// Èç¹û¼àÌýµ½ÓÒ»÷Çå¿ÕÖ÷ÁÄÌìÆµµÀ±»Ñ¡ÖÐ
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
 			commonArea.setText("");
 		}
 		if (e.getSource() == cMenuItem)
-		{// Èç¹û¼àÌýµ½ÓÒ»÷Çå¿ÕË½ÁÄÌìÆµµÀ±»Ñ¡ÖÐ
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
 			myMsgArea.setText("");
 		}
 
@@ -1005,7 +996,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		if (e.getSource() == privateTalk)
 		{
 			if (e.getStateChange() == ItemEvent.SELECTED)
-			{ // Èç¹ûÑ¡ÖÐ
+			{ // ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
 				privateTalkFlag = true;
 			} else
 			{
@@ -1022,7 +1013,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 			out.flush();
 		} catch (Exception ee)
 		{
-			// JOptionPane.showMessageDialog(this, ee, "´íÎó",
+			// JOptionPane.showMessageDialog(this, ee, "ï¿½ï¿½ï¿½ï¿½",
 			// JOptionPane.ERROR_MESSAGE);
 		} finally
 		{
@@ -1034,47 +1025,47 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	public void keyPressed(KeyEvent e)
 	{
 		if (e.getKeyCode() == 10)
-		{ // ¼àÌýµ½»Ø³µ¼üÔòÊä³öÐÅÏ¢
+		{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			try
 			{
 				mywords = inMsgField.getText();
 				if ((mywords.trim()).length() != 0)
-				{ // ²»ÄÜ·¢ËÍ¿ÕÏûÏ¢Ò²²»ÄÜ¶¼·¢¿Õ¸ñ
-					if (withWho.equals("ËùÓÐÈË"))
+				{ // ï¿½ï¿½ï¿½Ü·ï¿½ï¿½Í¿ï¿½ï¿½ï¿½Ï¢Ò²ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½
+					if (withWho.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))
 					{
 						outmsg = mywords;
-						// ·¢ËÍµ½·þÎñÆ÷
+						// ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						out.println(outmsg);
 						out.flush();
-						// ÏÔÊ¾µ½ÎÒµÄÆµµÀÀïÃæ
-						insert(myMsgArea, myName + "£º" + mywords);
-						// myMsgArea.append(myName+"£º"+mywords+"\n");
+						// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Òµï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						insert(myMsgArea, myName + "ï¿½ï¿½" + mywords);
+						// myMsgArea.append(myName+"ï¿½ï¿½"+mywords+"\n");
 						//myMsgArea.setCaretPosition(myMsgArea.getText().length(
 						// ));
 					} else
-					{ // ¶ÔÄ³¸öÈË½»Ì¸
+					{ // ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ë½ï¿½Ì¸
 						outmsg = "withWho" + "&" + "privateFalse" + "&"
 								+ withWho + "&" + mywords;
 						if (privateTalkFlag)
 						{
 							outmsg = "withWho" + "&" + "privateTure" + "&"
 									+ withWho + "&" + mywords;
-							insert(myMsgArea, "Äú¶Ô¡º" + withWho + "¡»Ëµ: "
+							insert(myMsgArea, "ï¿½ï¿½ï¿½Ô¡ï¿½" + withWho + "ï¿½ï¿½Ëµ: "
 									+ mywords);
-							//myMsgArea.append("Äú¶Ô¡º"+withWho+"¡»Ëµ: "+mywords+"\n"
+							//myMsgArea.append("ï¿½ï¿½ï¿½Ô¡ï¿½"+withWho+"ï¿½ï¿½Ëµ: "+mywords+"\n"
 							// );
 							// myMsgArea.setCaretPosition(myMsgArea.getText().
 							// length());
 						} else
 						{
-							insert(myMsgArea, myName + " ¶Ô¡º" + withWho + "¡»Ëµ: "
+							insert(myMsgArea, myName + " ï¿½Ô¡ï¿½" + withWho + "ï¿½ï¿½Ëµ: "
 									+ mywords);
-							// myMsgArea.append(myName+" ¶Ô¡º"+withWho+"¡»Ëµ: "+
+							// myMsgArea.append(myName+" ï¿½Ô¡ï¿½"+withWho+"ï¿½ï¿½Ëµ: "+
 							// mywords+"\n");
 						}
 						//myMsgArea.setCaretPosition(myMsgArea.getText().length(
 						// ));
-						// ·¢ËÍµ½·þÎñÆ÷
+						// ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						out.println(outmsg);
 						out.flush();
 					}
@@ -1082,18 +1073,18 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 			} catch (Exception ee)
 			{
 				System.out.println(ee);
-				// myMsgArea.append("Óë·þÎñÆ÷Á¬½ÓÖÐ¶Ï,ÇëÖØÐÂµÇÂ¼£¡\n");
-				insert(myMsgArea, "Óë·þÎñÆ÷Á¬½ÓÖÐ¶Ï,ÇëÖØÐÂµÇÂ¼£¡");
+				// myMsgArea.append("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½\n");
+				insert(myMsgArea, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½");
 
 				// myMsgArea.setCaretPosition(myMsgArea.getText().length());
 			} finally
 			{
-				inMsgField.setText("");// Çå¿ÕÊäÈë¿ò
+				inMsgField.setText("");// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			}
 		}
 	}
 
-	// ×÷Îª·Ç³éÏóÀà£¬±ØÐë¡°ÖØÐ´¡±ÏÂÃæÕâÐ©³éÏó·½·¨
+	// ï¿½ï¿½Îªï¿½Ç³ï¿½ï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ë¡°ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ó·½·ï¿½
 	public void keyReleased(KeyEvent e)
 	{
 	}
@@ -1102,10 +1093,10 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	{
 	}
 
-	// *********************ÉèÖÃ½×¶Î**************************//
+	// *********************ï¿½ï¿½ï¿½Ã½×¶ï¿½**************************//
 
 	/**
-	 * ½«ÎÄ±¾²åÈëJTextPane
+	 * ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½JTextPane
 	 * 
 	 * @param attrib
 	 */
@@ -1124,7 +1115,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 
 		doc = j.getStyledDocument();
 		try
-		{ // ²åÈëÎÄ±¾
+		{ // ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 			doc.insertString(doc.getLength(), h + ":" + m + ":" + s + " "
 					+ words + "\n", getFontAttrib().getAttrSet());
 			this.inMsgField.setText("");
@@ -1136,7 +1127,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	}
 
 	/**
-	 * »ñÈ¡ËùÐèÒªµÄÎÄ×ÖÉèÖÃ
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return FontAttrib
 	 */
@@ -1147,33 +1138,33 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		att.setName((String) fontName.getSelectedItem());
 		att.setSize(Integer.parseInt((String) fontSize.getSelectedItem()));
 		String temp_style = (String) fontStyle.getSelectedItem();
-		if (temp_style.equals("³£¹æ"))
+		if (temp_style.equals("ï¿½ï¿½ï¿½ï¿½"))
 		{
 			att.setStyle(FontAttrib.GENERAL);
-		} else if (temp_style.equals("´ÖÌå"))
+		} else if (temp_style.equals("ï¿½ï¿½ï¿½ï¿½"))
 		{
 			att.setStyle(FontAttrib.BOLD);
-		} else if (temp_style.equals("Ð±Ìå"))
+		} else if (temp_style.equals("Ð±ï¿½ï¿½"))
 		{
 			att.setStyle(FontAttrib.ITALIC);
-		} else if (temp_style.equals("´ÖÐ±Ìå"))
+		} else if (temp_style.equals("ï¿½ï¿½Ð±ï¿½ï¿½"))
 		{
 			att.setStyle(FontAttrib.BOLD_ITALIC);
 		}
 		String temp_color = (String) fontColor.getSelectedItem();
-		if (temp_color.equals("ºÚÉ«"))
+		if (temp_color.equals("ï¿½ï¿½É«"))
 		{
 			att.setColor(new Color(0, 0, 0));
-		} else if (temp_color.equals("ºìÉ«"))
+		} else if (temp_color.equals("ï¿½ï¿½É«"))
 		{
 			att.setColor(new Color(255, 0, 0));
-		} else if (temp_color.equals("À¶É«"))
+		} else if (temp_color.equals("ï¿½ï¿½É«"))
 		{
 			att.setColor(new Color(0, 0, 255));
-		} else if (temp_color.equals("»ÆÉ«"))
+		} else if (temp_color.equals("ï¿½ï¿½É«"))
 		{
 			att.setColor(new Color(255, 255, 0));
-		} else if (temp_color.equals("ÂÌÉ«"))
+		} else if (temp_color.equals("ï¿½ï¿½É«"))
 		{
 			att.setColor(new Color(0, 255, 0));
 		}
@@ -1182,35 +1173,35 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	}
 
 	/**
-	 * ×ÖÌåµÄÊôÐÔÀà
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private class FontAttrib
 	{
-		public static final int GENERAL = 0; // ³£¹æ
+		public static final int GENERAL = 0; // ï¿½ï¿½ï¿½ï¿½
 
-		public static final int BOLD = 1; // ´ÖÌå
+		public static final int BOLD = 1; // ï¿½ï¿½ï¿½ï¿½
 
-		public static final int ITALIC = 2; // Ð±Ìå
+		public static final int ITALIC = 2; // Ð±ï¿½ï¿½
 
-		public static final int BOLD_ITALIC = 3; // ´ÖÐ±Ìå
+		public static final int BOLD_ITALIC = 3; // ï¿½ï¿½Ð±ï¿½ï¿½
 
-		private SimpleAttributeSet attrSet = null; // ÊôÐÔ¼¯
+		private SimpleAttributeSet attrSet = null; // ï¿½ï¿½ï¿½Ô¼ï¿½
 
-		private String text = null, name = null; // ÒªÊäÈëµÄÎÄ±¾ºÍ×ÖÌåÃû³Æ
+		private String text = null, name = null; // Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		private int style = 0, size = 0; // ÑùÊ½ºÍ×ÖºÅ
+		private int style = 0, size = 0; // ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Öºï¿½
 
-		private Color color = null, backColor = null; // ÎÄ×ÖÑÕÉ«ºÍ±³¾°ÑÕÉ«
+		private Color color = null, backColor = null; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½É«
 
 		/**
-		 * Ò»¸ö¿ÕµÄ¹¹Ôì£¨¿Éµ±×ö»»ÐÐÊ¹ÓÃ£©
+		 * Ò»ï¿½ï¿½ï¿½ÕµÄ¹ï¿½ï¿½ì£¨ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½
 		 */
 		public FontAttrib()
 		{
 		}
 
 		/**
-		 * ·µ»ØÊôÐÔ¼¯
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½
 		 * 
 		 * @return
 		 */
@@ -1245,7 +1236,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 		}
 
 		/**
-		 * ÉèÖÃÊôÐÔ¼¯
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½
 		 * 
 		 * @param attrSet
 		 */
@@ -1319,7 +1310,7 @@ public class ChatFrame extends JFrame implements ActionListener, ItemListener,
 	{
 		// new sendfilethread();
 		// ChatFrame a =
-		new ChatFrame("¼Æ¿Æ0704");
+		new ChatFrame("ï¿½Æ¿ï¿½0704");
 	}
 
 }

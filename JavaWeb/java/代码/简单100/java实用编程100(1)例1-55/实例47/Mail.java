@@ -1,39 +1,36 @@
-import java.util.*;
-import java.io.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
 /**
- * <p>Title: Ê¹ÓÃjavamail·¢ËÍÓÊ¼ş</p>
- * <p>Description: ÑİÊ¾ÈçºÎÊ¹ÓÃjavamail°ü·¢ËÍµç×ÓÓÊ¼ş¡£Õâ¸öÊµÀı¿É·¢ËÍ¶à¸½¼ş</p>
+ * <p>Title: Ê¹ï¿½ï¿½javamailï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½</p>
+ * <p>Description: ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½javamailï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½É·ï¿½ï¿½Í¶à¸½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Mail.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class Mail {
 
-String to = "";//ÊÕ¼şÈË
-String from = "";//·¢¼şÈË
-String host = "";//smtpÖ÷»ú
+String to = "";//ï¿½Õ¼ï¿½ï¿½ï¿½
+String from = "";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+String host = "";//smtpï¿½ï¿½ï¿½ï¿½
 String username = "" ;
 String password = "" ;
-String filename = "";//¸½¼şÎÄ¼şÃû
-String subject = "";//ÓÊ¼şÖ÷Ìâ
-String content = "";//ÓÊ¼şÕıÎÄ
-Vector file = new Vector();//¸½¼şÎÄ¼ş¼¯ºÏ
+String filename = "";//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+String subject = "";//ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+String content = "";//ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+Vector file = new Vector();//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 /**
- *<br>·½·¨ËµÃ÷£ºÄ¬ÈÏ¹¹ÔìÆ÷
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public Mail(){
 }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬Ìá¹©Ö±½ÓµÄ²ÎÊı´«Èë
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©Ö±ï¿½ÓµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public Mail(String to,String from,String smtpServer,String username,String password,String subject,String content){
   this.to = to;
@@ -45,65 +42,65 @@ public Mail(String to,String from,String smtpServer,String username,String passw
   this.content = content;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃÓÊ¼ş·şÎñÆ÷µØÖ·
- *<br>ÊäÈë²ÎÊı£ºString host ÓÊ¼ş·şÎñÆ÷µØÖ·Ãû³Æ
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String host ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setHost(String host){
   this.host = host;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃµÇÂ¼·şÎñÆ÷Ğ£ÑéÃÜÂë
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setPassWord(String pwd){
   this.password = pwd;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃµÇÂ¼·şÎñÆ÷Ğ£ÑéÓÃ»§
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½ï¿½ï¿½Ã»ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setUserName(String usn){
   this.username = usn;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃÓÊ¼ş·¢ËÍÄ¿µÄÓÊÏä
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setTo(String to){
   this.to = to;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃÓÊ¼ş·¢ËÍÔ´ÓÊÏä
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setFrom(String from){
   this.from = from;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃÓÊ¼şÖ÷Ìâ
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setSubject(String subject){
   this.subject = subject;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÉèÖÃÓÊ¼şÄÚÈİ
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void setContent(String content){
   this.content = content;
 }
 /**
- *<br>·½·¨ËµÃ÷£º°ÑÖ÷Ìâ×ª»»ÎªÖĞÎÄ
- *<br>ÊäÈë²ÎÊı£ºString strText 
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String strText 
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public String transferChinese(String strText){
   try{
@@ -114,21 +111,21 @@ public String transferChinese(String strText){
   return strText;
 }
 /**
- *<br>·½·¨ËµÃ÷£ºÍù¸½¼ş×éºÏÖĞÌí¼Ó¸½¼ş
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
 public void attachfile(String fname){
   file.addElement(fname);
 }
 /**
- *<br>·½·¨ËµÃ÷£º·¢ËÍÓÊ¼ş
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£ºboolean ³É¹¦Îªtrue£¬·´Ö®Îªfalse
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½boolean ï¿½É¹ï¿½Îªtrueï¿½ï¿½ï¿½ï¿½Ö®Îªfalse
  */
 public boolean sendMail(){
 
-  //¹¹Ôìmail session
+  //ï¿½ï¿½ï¿½ï¿½mail session
   Properties props = System.getProperties();
   props.put("mail.smtp.host",host);
   props.put("mail.smtp.auth","true");
@@ -139,7 +136,7 @@ public boolean sendMail(){
   });
   
   try {
-    //¹¹ÔìMimeMessage ²¢Éè¶¨»ù±¾µÄÖµ
+    //ï¿½ï¿½ï¿½ï¿½MimeMessage ï¿½ï¿½ï¿½è¶¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
     MimeMessage msg = new MimeMessage(session);
     msg.setFrom(new InternetAddress(from));
     InternetAddress[] address={new InternetAddress(to)};
@@ -147,16 +144,16 @@ public boolean sendMail(){
     subject = transferChinese(subject);
     msg.setSubject(subject);
     
-    //¹¹ÔìMultipart
+    //ï¿½ï¿½ï¿½ï¿½Multipart
     Multipart mp = new MimeMultipart();
     
-    //ÏòMultipartÌí¼ÓÕıÎÄ
+    //ï¿½ï¿½Multipartï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     MimeBodyPart mbpContent = new MimeBodyPart();
     mbpContent.setText(content);
-    //ÏòMimeMessageÌí¼Ó£¨Multipart´ú±íÕıÎÄ£©
+    //ï¿½ï¿½MimeMessageï¿½ï¿½Ó£ï¿½Multipartï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½
     mp.addBodyPart(mbpContent);
     
-    //ÏòMultipartÌí¼Ó¸½¼ş
+    //ï¿½ï¿½Multipartï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
     Enumeration efile=file.elements();
     while(efile.hasMoreElements()){
     
@@ -165,16 +162,16 @@ public boolean sendMail(){
       FileDataSource fds = new FileDataSource(filename);
       mbpFile.setDataHandler(new DataHandler(fds));
       mbpFile.setFileName(fds.getName());
-      //ÏòMimeMessageÌí¼Ó£¨Multipart´ú±í¸½¼ş£©
+      //ï¿½ï¿½MimeMessageï¿½ï¿½Ó£ï¿½Multipartï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       mp.addBodyPart(mbpFile);
 
     }
     
     file.removeAllElements();
-    //ÏòMultipartÌí¼ÓMimeMessage
+    //ï¿½ï¿½Multipartï¿½ï¿½ï¿½MimeMessage
     msg.setContent(mp);
     msg.setSentDate(new Date());
-    //·¢ËÍÓÊ¼ş
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
     Transport.send(msg);
   
   } catch (MessagingException mex) {
@@ -188,9 +185,9 @@ public boolean sendMail(){
   return true;
  }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨£¬ÓÃÓÚ²âÊÔ
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public static void main(String[] args){
   Mail sendmail = new Mail();
@@ -199,9 +196,9 @@ public boolean sendMail(){
   sendmail.setPassWord("31415926");
   sendmail.setTo("dujiang@sricnet.com");
   sendmail.setFrom("du_jiang@sohu.com");
-  sendmail.setSubject("ÄãºÃ£¬ÕâÊÇ²âÊÔ£¡");
-  sendmail.setContent("ÄãºÃÕâÊÇÒ»¸ö´ø¶à¸½¼şµÄ²âÊÔ£¡");	
-  //Mail sendmail = new Mail("dujiang@sricnet.com","du_jiang@sohu.com","smtp.sohu.com","du_jiang","31415926","ÄãºÃ","Î¸£¬ÄãºÃÂğ£¿");
+  sendmail.setSubject("ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½Ô£ï¿½");
+  sendmail.setContent("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½à¸½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Ô£ï¿½");	
+  //Mail sendmail = new Mail("dujiang@sricnet.com","du_jiang@sohu.com","smtp.sohu.com","du_jiang","31415926","ï¿½ï¿½ï¿½","Î¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
   sendmail.attachfile("c:\\test.txt");
   sendmail.attachfile("DND.jar");
   sendmail.sendMail();

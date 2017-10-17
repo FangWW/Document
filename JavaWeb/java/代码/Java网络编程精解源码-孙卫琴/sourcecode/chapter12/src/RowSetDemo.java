@@ -1,14 +1,6 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.sql.*;
-import javax.sql.*;
-import javax.sql.rowset.*;
-import java.io.*;
-
 public class RowSetDemo extends JFrame implements ActionListener{
-  private CachedRowSet rowset;  //ÓÃÓÚ¸üÐÂºÍÉ¾³ýÊý¾Ý
-  private CachedRowSet rowsetI;  //ÓÃÓÚ²åÈëÊý¾Ý
+  private CachedRowSet rowset;  //ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½Âºï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private CachedRowSet rowsetI;  //ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private String sql="select ID,NAME,AGE,ADDRESS from CUSTOMERS";
   private String sqlI="select NAME,AGE,ADDRESS from CUSTOMERS";
   private ConnectionProvider provider;
@@ -39,13 +31,13 @@ public class RowSetDemo extends JFrame implements ActionListener{
   public RowSetDemo(String title)throws SQLException{
    super(title); 
    provider=new ConnectionProvider();
-   load(DATA_FOR_DISPLAY_AND_UPDATE); //ÏòrowsetÖÐ¼ÓÔØÊý¾Ý£¬ÓÃÓÚ¸üÐÂºÍÉ¾³ý
+   load(DATA_FOR_DISPLAY_AND_UPDATE); //ï¿½ï¿½rowsetï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½Âºï¿½É¾ï¿½ï¿½
 
    if(rowset.next())refresh();
    buildDisplay();
   }
   
-  private void buildDisplay(){  //´´½¨GUI½çÃæ      
+  private void buildDisplay(){  //ï¿½ï¿½ï¿½ï¿½GUIï¿½ï¿½ï¿½ï¿½      
     firstBt.addActionListener(this);
     previousBt.addActionListener(this);
     nextBt.addActionListener(this);
@@ -87,31 +79,31 @@ public class RowSetDemo extends JFrame implements ActionListener{
     JButton b=(JButton)e.getSource();
     try{
       if(b.getText().equals("first")){
-        rowset.first(); //°ÑÓÎ±êÒÆ¶¯µ½µÚÒ»Ìõ¼ÇÂ¼
+        rowset.first(); //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("last")){
-        rowset.last(); //°ÑÓÎ±êÒÆ¶¯µ½µÚ×îºóÒ»Ìõ¼ÇÂ¼
+        rowset.last(); //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("next")){
         if(rowset.isLast())return;
-        rowset.next(); //°ÑÓÎ±êÒÆ¶¯µ½ÏÂÒ»Ìõ¼ÇÂ¼
+        rowset.next(); //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("previous")){
         if(rowset.isFirst())return;
-        rowset.previous();  //°ÑÓÎ±êÒÆ¶¯µ½Ç°Ò»Ìõ¼ÇÂ¼
+        rowset.previous();  //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("update")){
         int row=rowset.getRow(); 
         rowset.updateString("NAME",nameTxtFid.getText());
         rowset.updateInt("AGE",Integer.parseInt(ageTxtFid.getText()));
         rowset.updateString("ADDRESS",addressTxtFid.getText());
-        rowset.updateRow();  //¸üÐÂ¼ÇÂ¼
+        rowset.updateRow();  //ï¿½ï¿½ï¿½Â¼ï¿½Â¼
         save();
         rowset.absolute(row);  
       }else if(b.getText().equals("delete")){
-        rowset.deleteRow();  //É¾³ý¼ÇÂ¼
+        rowset.deleteRow();  //É¾ï¿½ï¿½ï¿½ï¿½Â¼
         save();
-        rowset.first();  //°ÑÓÎ±êÒÆ¶¯µ½µÚÒ»Ìõ¼ÇÂ¼
+        rowset.first();  //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("insert")){
         insert();
       }
-      refresh();  //Ë¢ÐÂ½çÃæÉÏµÄÊý¾Ý
+      refresh();  //Ë¢ï¿½Â½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
     }catch(SQLException ex){ex.printStackTrace();}
   }
   
@@ -150,9 +142,9 @@ public class RowSetDemo extends JFrame implements ActionListener{
      load(DATA_FOR_DISPLAY_AND_UPDATE);
      rowset.next();
   }
-  private void refresh()throws SQLException{  //Ë¢ÐÂ½çÃæÉÏµÄÊý¾Ý
-    int row=rowset.getRow();  //·µ»ØÓÎ±êµ±Ç°ËùÔÚµÄÎ»ÖÃ
-    rowLabel.setText("ÏÔÊ¾µÚ"+row+"Ìõ¼ÇÂ¼");
+  private void refresh()throws SQLException{  //Ë¢ï¿½Â½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
+    int row=rowset.getRow();  //ï¿½ï¿½ï¿½ï¿½ï¿½Î±êµ±Ç°ï¿½ï¿½ï¿½Úµï¿½Î»ï¿½ï¿½
+    rowLabel.setText("ï¿½ï¿½Ê¾ï¿½ï¿½"+row+"ï¿½ï¿½ï¿½ï¿½Â¼");
     if(row==0){
       rowset.beforeFirst();
       idTxtFid.setText("");
@@ -168,13 +160,13 @@ public class RowSetDemo extends JFrame implements ActionListener{
   }
 
   public static void main(String[] args)throws SQLException {
-    new RowSetDemo("ÑÝÊ¾RowSetµÄÓÃ·¨");
+    new RowSetDemo("ï¿½ï¿½Ê¾RowSetï¿½ï¿½ï¿½Ã·ï¿½");
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

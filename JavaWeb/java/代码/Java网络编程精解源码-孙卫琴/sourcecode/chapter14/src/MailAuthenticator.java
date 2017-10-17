@@ -1,14 +1,11 @@
 import javax.mail.*;
-import java.awt.event.*;
-import java.awt.*;
-import javax.swing.*;
 
 public class MailAuthenticator extends Authenticator {
 
   private JDialog passwordDg=new JDialog(new JFrame(),true);
-  private JLabel mainLb=new JLabel("ÇëÊäÈëÓÃ»§ÃûºÍ¿ÚÁî£º");
-  private JLabel userLb=new JLabel("ÓÃ»§Ãû£º") ;
-  private JLabel passwordLb=new JLabel("¿ÚÁî£º");
+  private JLabel mainLb=new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½î£º");
+  private JLabel userLb=new JLabel("ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½") ;
+  private JLabel passwordLb=new JLabel("ï¿½ï¿½ï¿½î£º");
   private JTextField userTfd=new JTextField(20);
   private JPasswordField passwordPfd=new JPasswordField(20);
   private JButton okBt=new JButton("ok");
@@ -60,7 +57,7 @@ public class MailAuthenticator extends Authenticator {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

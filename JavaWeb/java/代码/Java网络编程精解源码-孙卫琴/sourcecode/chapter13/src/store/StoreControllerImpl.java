@@ -1,5 +1,4 @@
 package store;
-import java.util.*;
 public class StoreControllerImpl implements StoreController{
   private StoreModel storeModel;
   private StoreView storeView;
@@ -7,13 +6,13 @@ public class StoreControllerImpl implements StoreController{
     try{
       storeModel=model;
       storeView=view;
-      view.addUserGestureListener(this); //ÏòÊÓÍ¼×¢²á¿ØÖÆÆ÷×ÔÉí
+      view.addUserGestureListener(this); //ï¿½ï¿½ï¿½ï¿½Í¼×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }catch(Exception e){
       reportException(e);
     }
   }
   
-  /** ±¨¸æÒì³£ÐÅÏ¢ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Ï¢ */
   private void reportException(Object o){
     try{
       storeView.showDisplay(o);
@@ -22,7 +21,7 @@ public class StoreControllerImpl implements StoreController{
     }
   }
   
-  /** ´¦Àí¸ù¾ÝID²éÑ¯¿Í»§µÄ¶¯×÷ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½Ñ¯ï¿½Í»ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ */
   public void handleGetCustomerGesture(long id){
     Customer cust=null;
     try{
@@ -39,7 +38,7 @@ public class StoreControllerImpl implements StoreController{
      }
   }
   
-  /** ´¦ÀíÌí¼Ó¿Í»§µÄ¶¯×÷ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Í»ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ */
   public void handleAddCustomerGesture(Customer c){
     try{
       storeModel.addCustomer(c);
@@ -48,7 +47,7 @@ public class StoreControllerImpl implements StoreController{
     }
   }
   
-  /** ´¦ÀíÉ¾³ý¿Í»§µÄ¶¯×÷ */
+  /** ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ */
   public void handleDeleteCustomerGesture(Customer c){
     try{
       storeModel.deleteCustomer(c);
@@ -57,7 +56,7 @@ public class StoreControllerImpl implements StoreController{
     }
   }
   
-  /** ´¦Àí¸üÐÂ¿Í»§µÄ¶¯×÷ */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿Í»ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ */
   public void handleUpdateCustomerGesture(Customer c){
     try{
       storeModel.updateCustomer(c);
@@ -66,7 +65,7 @@ public class StoreControllerImpl implements StoreController{
     }
   }
   
-  /** ´¦ÀíÁÐ³öËùÓÐ¿Í»§Çåµ¥µÄ¶¯×÷ */ 
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½åµ¥ï¿½Ä¶ï¿½ï¿½ï¿½ */ 
   public void handleGetAllCustomersGesture(){
     Set<Customer> custs;
     try{
@@ -80,7 +79,7 @@ public class StoreControllerImpl implements StoreController{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

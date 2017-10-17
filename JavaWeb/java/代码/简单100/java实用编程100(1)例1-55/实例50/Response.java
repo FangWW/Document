@@ -1,41 +1,39 @@
-import java.io.*;
-import java.net.*;
 /**
- * <p>Title: ·¢ÏÖHTTPÄÚÈÝºÍÎÄ¼þÄÚÈÝ</p>
- * <p>Description: »ñµÃÓÃ»§ÇëÇóºó½«ÓÃ»§ÐèÒªµÄÎÄ¼þ¶Á³ö£¬Ìí¼ÓÉÏHTTPÓ¦´ðÍ·¡£·¢ËÍ¸ø¿Í»§¶Ë¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½Ýºï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTTPÓ¦ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½Í»ï¿½ï¿½Ë¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Response.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class Response{
   OutputStream out = null;
 /**
- *<br>·½·¨ËµÃ÷£º·¢ËÍÐÅÏ¢
- *<br>ÊäÈë²ÎÊý£ºString ref ÇëÇóµÄÎÄ¼þÃû
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String ref ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void Send(String ref) throws IOException {
     byte[] bytes = new byte[2048];
     FileInputStream fis = null;
     try {
-        //¹¹ÔìÎÄ¼þ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
         File file  = new File(WebServer.WEBROOT, ref);
         if (file.exists()) {
-            //¹¹ÔìÊäÈëÎÄ¼þÁ÷
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
             fis = new FileInputStream(file);
             int ch = fis.read(bytes, 0, 2048);
-            //¶ÁÈ¡ÎÄ¼þ
+            //ï¿½ï¿½È¡ï¿½Ä¼ï¿½
             String sBody = new String(bytes,0);
-            //¹¹ÔìÊä³öÐÅÏ¢
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
             String sendMessage = "HTTP/1.1 200 OK\r\n" +
                 "Content-Type: text/html\r\n" +
                 "Content-Length: "+ch+"\r\n" +
                 "\r\n" +sBody;
-            //Êä³öÎÄ¼þ
+            //ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
             out.write(sendMessage.getBytes());
         }else {
-            // ÕÒ²»µ½ÎÄ¼þ
+            // ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
             String errorMessage = "HTTP/1.1 404 File Not Found\r\n" +
                 "Content-Type: text/html\r\n" +
                 "Content-Length: 23\r\n" +
@@ -46,7 +44,7 @@ public class Response{
        
     }
     catch (Exception e) {
-        // Èç²»ÄÜÊµÀý»¯File¶ÔÏó£¬Å×³öÒì³£¡£
+        // ï¿½ç²»ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Fileï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½
         System.out.println(e.toString() );
     }
     finally {
@@ -55,9 +53,9 @@ public class Response{
     }
  }
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬»ñÈ¡Êä³öÁ÷
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public Response(OutputStream output) {
     this.out = output;

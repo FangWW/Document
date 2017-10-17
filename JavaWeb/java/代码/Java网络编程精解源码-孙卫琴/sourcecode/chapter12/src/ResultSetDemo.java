@@ -1,8 +1,3 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.sql.*;
-
 public class ResultSetDemo extends JFrame implements ActionListener{
   private final Connection con;
   private Statement stmt;
@@ -42,7 +37,7 @@ public class ResultSetDemo extends JFrame implements ActionListener{
    buildDisplay();
   }
   
-  private void buildDisplay(){  //´´½¨GUI½çÃæ      
+  private void buildDisplay(){  //ï¿½ï¿½ï¿½ï¿½GUIï¿½ï¿½ï¿½ï¿½      
     firstBt.addActionListener(this);
     previousBt.addActionListener(this);
     nextBt.addActionListener(this);
@@ -92,38 +87,38 @@ public class ResultSetDemo extends JFrame implements ActionListener{
     JButton b=(JButton)e.getSource();
     try{
       if(b.getText().equals("first")){
-        resultSet.first(); //°ÑÓÎ±êÒÆ¶¯µ½µÚÒ»Ìõ¼ÇÂ¼
+        resultSet.first(); //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("last")){
-        resultSet.last(); //°ÑÓÎ±êÒÆ¶¯µ½µÚ×îºóÒ»Ìõ¼ÇÂ¼
+        resultSet.last(); //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("next")){
         if(resultSet.isLast())return;
-        resultSet.next(); //°ÑÓÎ±êÒÆ¶¯µ½ÏÂÒ»Ìõ¼ÇÂ¼
+        resultSet.next(); //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("previous")){
         if(resultSet.isFirst())return;
-        resultSet.previous();  //°ÑÓÎ±êÒÆ¶¯µ½Ç°Ò»Ìõ¼ÇÂ¼
+        resultSet.previous();  //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("update")){
         resultSet.updateString("NAME",nameTxtFid.getText());
         resultSet.updateInt("AGE",Integer.parseInt(ageTxtFid.getText()));
         resultSet.updateString("ADDRESS",addressTxtFid.getText());
-        resultSet.updateRow();  //¸üÐÂ¼ÇÂ¼
+        resultSet.updateRow();  //ï¿½ï¿½ï¿½Â¼ï¿½Â¼
       }else if(b.getText().equals("delete")){
-        resultSet.deleteRow();  //É¾³ý¼ÇÂ¼
-        resultSet.first(); //ÏÔÊ¾µÚÒ»Ìõ¼ÇÂ¼
+        resultSet.deleteRow();  //É¾ï¿½ï¿½ï¿½ï¿½Â¼
+        resultSet.first(); //ï¿½ï¿½Ê¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
       }else if(b.getText().equals("insert")){
         resultSet.moveToInsertRow();
         resultSet.updateString("NAME",nameTxtFid.getText());
         resultSet.updateInt("AGE",Integer.parseInt(ageTxtFid.getText()));
         resultSet.updateString("ADDRESS",addressTxtFid.getText());
-        resultSet.insertRow();  //²åÈëÒ»Ìõ¼ÇÂ¼
-        resultSet.moveToCurrentRow();  //°ÑÓÎ±êÒÆ¶¯µ½²åÈëÇ°µÄÎ»ÖÃ
+        resultSet.insertRow();  //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
+        resultSet.moveToCurrentRow();  //ï¿½ï¿½ï¿½Î±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Î»ï¿½ï¿½
       }
-      refresh();  //Ë¢ÐÂ½çÃæÉÏµÄÊý¾Ý
+      refresh();  //Ë¢ï¿½Â½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
     }catch(SQLException ex){ex.printStackTrace();}
   }
   
-  private void refresh()throws SQLException{  //Ë¢ÐÂ½çÃæÉÏµÄÊý¾Ý
-    int row=resultSet.getRow();  //·µ»ØÓÎ±êµ±Ç°ËùÔÚµÄÎ»ÖÃ
-    rowLabel.setText("ÏÔÊ¾µÚ"+row+"Ìõ¼ÇÂ¼");
+  private void refresh()throws SQLException{  //Ë¢ï¿½Â½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
+    int row=resultSet.getRow();  //ï¿½ï¿½ï¿½ï¿½ï¿½Î±êµ±Ç°ï¿½ï¿½ï¿½Úµï¿½Î»ï¿½ï¿½
+    rowLabel.setText("ï¿½ï¿½Ê¾ï¿½ï¿½"+row+"ï¿½ï¿½ï¿½ï¿½Â¼");
     if(row==0){
       idTxtFid.setText(""); 
       nameTxtFid.setText("");
@@ -138,13 +133,13 @@ public class ResultSetDemo extends JFrame implements ActionListener{
   }
 
   public static void main(String[] args)throws SQLException {
-    new ResultSetDemo("ÑÝÊ¾ResultSetµÄÓÃ·¨");
+    new ResultSetDemo("ï¿½ï¿½Ê¾ResultSetï¿½ï¿½ï¿½Ã·ï¿½");
   }
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,61 +1,55 @@
-//ÉùÃ÷±¾Àà¶¨ÒåÔÚ°üexamples.ejb20.messageÖĞ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¶¨ï¿½ï¿½ï¿½Ú°ï¿½examples.ejb20.messageï¿½ï¿½
 package mdb;
-//ÉùÃ÷±¾ÀàÒıÈëµÄÆäËüÀà
-import java.rmi.RemoteException;
-
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 import javax.ejb.CreateException;
 import javax.ejb.MessageDrivenBean;
 import javax.ejb.MessageDrivenContext;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 /**
- * ÏûÏ¢Çı¶¯µÄEJB
+ * ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½EJB
  */
 public class myMDBean implements MessageDrivenBean, MessageListener {
 
   private static final boolean DEBUG = true;
-  //ÉùÃ÷ÏûÏ¢Çı¶¯ÉÏÏÂÎÄ
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   private MessageDrivenContext m_context;
-  //¶¨ÒåbeanÊôĞÔ
+  //ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½
   private int m_tradeLimit;
 
-  // Ò²¿ÉÒÔÊ¹ÓÃWebLogicµÄÈÕÖ¾·şÎñ
+  // Ò²ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½WebLogicï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
   private void log(String s) {
     if (DEBUG) System.out.println(s);
   } 
   
   /**
-   * EJB¹æ·¶ÒªÇóµÄ·½·¨£¬ÔÚÕâÃ»ÓĞÊ¹ÓÃ
+   * EJBï¿½æ·¶Òªï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½ï¿½
    */
   public void ejbActivate() {
     log("ejbActivate called");
   }
 
   /**
-   * EJB¹æ·¶ÒªÇóµÄ·½·¨£¬ÔÚÕâÃ»ÓĞÊ¹ÓÃ
+   * EJBï¿½æ·¶Òªï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½ï¿½
    */
   public void ejbRemove() {
     log("ejbRemove called");
   }
 
   /**
-   * EJB¹æ·¶ÒªÇóµÄ·½·¨£¬ÔÚÕâÃ»ÓĞÊ¹ÓÃ
+   * EJBï¿½æ·¶Òªï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½ï¿½
    */
   public void ejbPassivate() {
     log("ejbPassivate called");
   }
 
   /**
-   * ÉèÖÃ»á»°ÉÏÏÂÎÄ
+   * ï¿½ï¿½ï¿½Ã»á»°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    *
-   * @²ÎÊı ctx   MessageDrivenContext »á»°ÉÏÏÂÎÄ
+   * @ï¿½ï¿½ï¿½ï¿½ ctx   MessageDrivenContext ï¿½á»°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    */
   public void setMessageDrivenContext(MessageDrivenContext ctx) {
     log("setMessageDrivenContext called");
@@ -63,11 +57,11 @@ public class myMDBean implements MessageDrivenBean, MessageListener {
   }
 
   /**
-   * Õâ¸ö·½·¨Óë"TraderHome.java"ÖĞµÄcreate·½·¨¶ÔÓ¦
-   * Á½¸ö·½·¨µÄ²ÎÊıÊÇÒ»ÖÂµÄ¡£µ±¿Í»§¶Ëµ÷ÓÃTraderHome.create()·½·¨£¬ÈİÆ÷·ÖÅäÒ»¸ö
-   * EJBeanÊµÀı²¢µ÷ÓÃejbCreate()·½·¨¡£
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"TraderHome.java"ï¿½Ğµï¿½createï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+   * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ÂµÄ¡ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½TraderHome.create()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+   * EJBeanÊµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ejbCreate()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    *
-   * @Òì³£               javax.ejb.CreateException if there is
+   * @ï¿½ì³£               javax.ejb.CreateException if there is
    *                          a communications or systems failure
    */
   public void ejbCreate () throws CreateException {
@@ -75,10 +69,10 @@ public class myMDBean implements MessageDrivenBean, MessageListener {
 
   }
 
-  // ½Ó¿ÚMessageListener¶¨ÒåµÄ·½·¨
+  // ï¿½Ó¿ï¿½MessageListenerï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 
   /**
-   * ÏûÏ¢ÏìÓ¦·½·¨
+   * ï¿½ï¿½Ï¢ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
    */
   public void onMessage(Message msg) {
     TextMessage tm = (TextMessage) msg;

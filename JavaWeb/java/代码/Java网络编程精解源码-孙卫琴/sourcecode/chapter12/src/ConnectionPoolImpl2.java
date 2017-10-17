@@ -1,7 +1,3 @@
-import java.sql.*;
-import java.util.*;
-import java.lang.reflect.*;
-
 public class ConnectionPoolImpl2 implements ConnectionPool{
   private ConnectionProvider provider=new ConnectionProvider();
   private final ArrayList<Connection> pool = new ArrayList<Connection>();
@@ -12,7 +8,7 @@ public class ConnectionPoolImpl2 implements ConnectionPool{
     this.poolSize=poolSize;
   }
   
-  /** ´ÓÁ¬½Ó³ØÖÐÈ¡³öÁ¬½Ó */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public Connection getConnection() throws SQLException {
     synchronized (pool) {
       if ( !pool.isEmpty()){
@@ -26,7 +22,7 @@ public class ConnectionPoolImpl2 implements ConnectionPool{
     return getProxy(con,this);
   }
   
-  /** °ÑÁ¬½Ó·µ»ØÁ¬½Ó³Ø */	
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ */	
   public void releaseConnection(Connection con) throws SQLException {
     synchronized (pool) {
       int currentSize = pool.size();
@@ -50,7 +46,7 @@ public class ConnectionPoolImpl2 implements ConnectionPool{
   }
   
   
-  /** ¹Ø±ÕÁ¬½Ó³Ø*/	
+  /** ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ó³ï¿½*/	
   public void close() {
     Iterator<Connection> iter = pool.iterator();
     while ( iter.hasNext()) {
@@ -96,7 +92,7 @@ public class ConnectionPoolImpl2 implements ConnectionPool{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

@@ -1,10 +1,4 @@
 package block;
-import java.net.*;
-import java.nio.channels.*;
-import java.nio.*;
-import java.io.*;
-import java.nio.charset.*;
-
 public class EchoClient{
   private SocketChannel socketChannel = null;
 
@@ -13,7 +7,7 @@ public class EchoClient{
     InetAddress ia = InetAddress.getLocalHost();
     InetSocketAddress isa = new InetSocketAddress(ia,8000);
     socketChannel.connect(isa);
-    System.out.println("Óë·þÎñÆ÷µÄÁ¬½Ó½¨Á¢³É¹¦");
+    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
   }
   public static void main(String args[])throws IOException{
      new EchoClient().talk();
@@ -49,7 +43,7 @@ public class EchoClient{
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

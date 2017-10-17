@@ -1,13 +1,10 @@
-// ÎÄ¼þÃû£ºmoreServer.java
-import java.io.*;
-import java.net.*;
-import java.util.*;
+// ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½moreServer.java
 /**
- * <p>Title: ¶àÏß³Ì·þÎñÆ÷</p>
- * <p>Description: ±¾ÊµÀýÊ¹ÓÃ¶àÏß³ÌÊµÏÖ¶à·þÎñ¹¦ÄÜ¡£</p>
+ * <p>Title: ï¿½ï¿½ï¿½ß³Ì·ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½Ê¹ï¿½Ã¶ï¿½ï¿½ß³ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 class moreServer
@@ -15,19 +12,19 @@ class moreServer
  public static void main (String [] args) throws IOException
  {
    System.out.println ("Server starting...\n"); 
-   //Ê¹ÓÃ8000¶Ë¿ÚÌá¹©·þÎñ
+   //Ê¹ï¿½ï¿½8000ï¿½Ë¿ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½
    ServerSocket server = new ServerSocket (8000);
    while (true)
    {
-    //×èÈû£¬Ö±µ½ÓÐ¿Í»§Á¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½
      Socket sk = server.accept ();
      System.out.println ("Accepting Connection...\n");
-     //Æô¶¯·þÎñÏß³Ì
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
      new ServerThread (sk).start ();
    }
  }
 }
-//Ê¹ÓÃÏß³Ì£¬Îª¶à¸ö¿Í»§¶Ë·þÎñ
+//Ê¹ï¿½ï¿½ï¿½ß³Ì£ï¿½Îªï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½
 class ServerThread extends Thread
 {
  private Socket sk;
@@ -36,7 +33,7 @@ class ServerThread extends Thread
  {
   this.sk = sk;
  }
-//Ïß³ÌÔËÐÐÊµÌå
+//ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
  public void run ()
  {
   BufferedReader in = null;
@@ -51,7 +48,7 @@ class ServerThread extends Thread
               sk.getOutputStream ())), true);
 
     while(true){
-      //½ÓÊÕÀ´×Ô¿Í»§¶ËµÄÇëÇó£¬¸ù¾Ý²»Í¬µÄÃüÁî·µ»Ø²»Í¬µÄÐÅÏ¢¡£
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ó£¬¸ï¿½ï¿½Ý²ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½î·µï¿½Ø²ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
       String cmd = in.readLine ();
       System.out.println(cmd);
       if (cmd == null)
@@ -61,7 +58,7 @@ class ServerThread extends Thread
       	 out.println ("BYE");
          break;
       }else{
-        out.println ("ÄãºÃ£¬ÎÒÊÇ·þÎñÆ÷£¡");
+        out.println ("ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
       }
     }
     }catch (IOException e)
@@ -71,7 +68,7 @@ class ServerThread extends Thread
     finally
     {
       System.out.println ("Closing Connection...\n");
-      //×îºóÊÍ·Å×ÊÔ´
+      //ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ô´
       try{
        if (in != null)
          in.close ();

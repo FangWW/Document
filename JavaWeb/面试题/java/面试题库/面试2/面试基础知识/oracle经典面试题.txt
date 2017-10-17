@@ -1,0 +1,119 @@
+这也许是你一直期待的文章，在关注这部分技术问题的同时，请务必阅读有关面试中有关个人的问题和解答。这里的回答并不是十分全面，这些问题可以通过多个角度来进行解释，也许你不必在面试过程中给出完全详尽的答案，只需要通过你的解答使面试考官了解你对ORACLE概念的熟悉程度。
+
+　　1.解释冷备份和热备份的不同点以及各自的优点
+
+　　解答:热备份针对归档模式的数据库，在数据库仍旧处于工作状态时进行备份。而冷
+
+　　备份指在数据库关闭后，进行备份，适用于所有模式的数据库。热备份的优点在于当备份
+
+　　时，数据库仍旧可以被使用并且可以将数据库恢复到任意一个时间点。冷备份的优点在于
+
+　　它的备份和恢复操作相当简单，并且由于冷备份的数据库可以工作在非归档模式下,数据库
+
+　　性能会比归档模式稍好。(因为不必将archive log写入硬盘)
+
+　　2.你必须利用备份恢复数据库，但是你没有控制文件，该如何解决问题呢?
+
+　　解答:重建控制文件，用带backup control file 子句的recover 命令恢复数据库。
+
+　　3.如何转换init.ora到spfile?
+
+　　解答:使用create spfile from pfile 命令.
+
+　　4.解释data block , extent 和 segment的区别(这里建议用英文术语)
+
+　　解答:data block是数据库中最小的逻辑存储单元。当数据库的对象需要更多的物理
+
+　　存储空间时，连续的data block就组成了extent . 一个数据库对象拥有的所有extents被
+
+　　称为该对象的segment.
+
+　　5.给出两个检查表结构的方法
+
+　　解答:1.DESCRIBE命令
+
+　　2.DBMS_METADATA.GET_DDL 包
+
+　　6.怎样查看数据库引擎的报错
+
+　　解答:alert log.
+
+　　7.比较truncate和delete 命令
+
+　　解答:两者都可以用来删除表中所有的记录。区别在于:truncate是DDL操作，它移动
+
+　　HWK，不需要rollback segment .而Delete是DML操作, 需要rollback segment 且花费较长
+
+　　时间.
+
+　　8.使用索引的理由
+
+　　解答:快速访问表中的data block
+
+　　9.给出在STAR SCHEMA中的两种表及它们分别含有的数据
+
+　　解答:Fact tables 和dimension tables. fact table包含大量的主要的信息而dime
+
+　　nsion tables 存放对fact table 某些属性描述的信息
+
+　　10.FACT Table上需要建立何种索引?
+
+　　解答:位图索引 (bitmap index)
+
+　　11. 给出两种相关约束?
+
+　　解答:主键和外键
+
+　　12. 如何在不影响子表的前提下，重建一个母表
+
+　　解答:子表的外键强制实效，重建母表，激活外键
+
+　　13. 解释归档和非归档模式之间的不同和它们各自的优缺点
+
+　　解答:归档模式是指你可以备份所有的数据库 transactions并恢复到任意一个时间点
+
+　　。非归档模式则相反，不能恢复到任意一个时间点。但是非归档模式可以带来数据库性能
+
+　　上的少许提高.
+
+　　14. 如何建立一个备份控制文件?
+
+　　解答:Alter database backup control file to trace.
+
+　　15. 给出数据库正常启动所经历的几种状态 ?
+
+　　解答:STARTUP NOMOUNT ?C 数据库实例启动
+
+　　STARTUP MOUNT - 数据库装载
+
+　　STARTUP OPEN ?C 数据库打开
+
+　　16. 哪个column可以用来区别V$视图和GV$视图?
+
+　　解答:INST_ID 指明集群环境中具体的 某个instance 。
+
+　　17. 如何生成explain plan?
+
+　　解答:运行utlxplan.sql. 建立plan 表
+
+　　针对特定SQL语句，使用 explain plan set statement_id = 'tst1' into pl
+
+　　an_table
+
+　　运行utlxplp.sql 或 utlxpls.sql察看explain plan
+
+　　18. 如何增加buffer cache的命中率?
+
+　　解答:在数据库较繁忙时，适用buffer cache advisory 工具，查询v$db_cache_adv
+
+　　ice.如果有必要更改，可以使用 alter system set db_cache_size 命令
+
+　　19. ORA-01555的应对方法?
+
+　　解答:具体的出错信息是snapshot too old within rollback seg , 通常可以通过增
+
+　　大rollback seg来解决问题。当然也需要察看一下具体造成错误的SQL文本
+
+　　20. 解释$ORACLE_HOME和$ORACLE_BASE的区别?
+
+　　解答:ORACLE_BASE是oracle的根目录，ORACLE_HOME是oracle产品的目录。

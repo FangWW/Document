@@ -1,20 +1,17 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
 /**
- * <p>Title: WEB·þÎñÆ÷</p>
- * <p>Description: Ê¹ÓÃSocket´´½¨Ò»¸öWEB·þÎñÆ÷£¬±¾³ÌÐòÊÇ¶àÏß³ÌÏµÍ³ÒÔÌá¸ß·´Ó¦ËÙ¶È¡£</p>
+ * <p>Title: WEBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½Socketï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½WEBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ß³ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ß·ï¿½Ó¦ï¿½Ù¶È¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: WebServer.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 class WebServer
 {
- public static String WEBROOT = "";//Ä¬ÈÏÄ¿Â¼
- public static String defaultPage = "index.htm";//Ä¬ÈÏÎÄ¼þ
+ public static String WEBROOT = "";//Ä¬ï¿½ï¿½Ä¿Â¼
+ public static String defaultPage = "index.htm";//Ä¬ï¿½ï¿½ï¿½Ä¼ï¿½
  public static void main (String [] args) throws IOException
- {//Ê¹ÓÃÊäÈëµÄ·½Ê½Í¨Öª·þÎñÄ¬ÈÏÄ¿Â¼Î»ÖÃ£¬¿ÉÓÃ./root±íÊ¾¡£
+ {//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½Ê½Í¨Öªï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Ä¿Â¼Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½./rootï¿½ï¿½Ê¾ï¿½ï¿½
    if(args.length!=1){
      System.out.println("USE: java WebServer ./rootdir");
      return;
@@ -22,25 +19,25 @@ class WebServer
      WEBROOT = args[0];
    }
    System.out.println ("Server starting...\n"); 
-   //Ê¹ÓÃ8000¶Ë¿ÚÌá¹©·þÎñ
+   //Ê¹ï¿½ï¿½8000ï¿½Ë¿ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½
    ServerSocket server = new ServerSocket (8000);
    while (true)
    {
-    //×èÈû£¬Ö±µ½ÓÐ¿Í»§Á¬½Ó
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½
      Socket sk = server.accept ();
      System.out.println ("Accepting Connection...\n");
-     //Æô¶¯·þÎñÏß³Ì
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
      new WebThread (sk).start ();
    }
  }
 }
 
 /**
- * <p>Title: ·þÎñ×ÓÏß³Ì</p>
- * <p>Description: Ê¹ÓÃÏß³Ì£¬Îª¶à¸ö¿Í»§¶Ë·þÎñ</p>
+ * <p>Title: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½</p>
+ * <p>Description: Ê¹ï¿½ï¿½ï¿½ß³Ì£ï¿½Îªï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: </p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 class WebThread extends Thread
@@ -51,9 +48,9 @@ class WebThread extends Thread
   this.sk = sk;
  }
 /**
- *<br>·½·¨ËµÃ÷£ºÏß³ÌÌå
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
  public void run ()
  {
@@ -62,9 +59,9 @@ class WebThread extends Thread
   try{
     in = sk.getInputStream();
     out = sk.getOutputStream();
-      //½ÓÊÕÀ´×Ô¿Í»§¶ËµÄÇëÇó¡£
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
       Request rq = new Request(in);
-      //½âÎö¿Í»§ÇëÇó
+      //ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½
       String sURL = rq.parse();
       System.out.println("sURL="+sURL);
       if(sURL.equals("/")) sURL = WebServer.defaultPage;
@@ -77,7 +74,7 @@ class WebThread extends Thread
     finally
     {
       System.out.println ("Closing Connection...\n");
-      //×îºóÊÍ·Å×ÊÔ´
+      //ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ô´
       try{
        if (in != null)
          in.close ();

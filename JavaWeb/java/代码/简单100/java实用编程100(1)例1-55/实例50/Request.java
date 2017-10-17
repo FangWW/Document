@@ -1,30 +1,28 @@
-import java.io.*;
-import java.net.*;
 /**
- * <p>Title: ¿Í»§ÇëÇó·ÖÎö</p>
- * <p>Description: »ñÈ¡¿Í»§µÄHTTPÇëÇó£¬·ÖÎö¿Í»§ËùÐèÒªµÄÎÄ¼þ</p>
+ * <p>Title: ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description: ï¿½ï¿½È¡ï¿½Í»ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ä¼ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: Request.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class Request{
   InputStream in = null;
 /**
- *<br>·½·¨ËµÃ÷£º¹¹ÔìÆ÷£¬»ñµÃÊäÈëÁ÷¡£ÕâÊ±¿Í»§µÄÇëÇóÊý¾Ý¡£
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public Request(InputStream input){
     this.in = input;
   }
 /**
- *<br>·½·¨ËµÃ÷£º½âÎö¿Í»§µÄÇëÇó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºString ÇëÇóÎÄ¼þ×Ö·û
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ö·ï¿½
  */
   public String parse() {
-    //´ÓSocket¶ÁÈ¡Ò»×éÊý¾Ý
+    //ï¿½ï¿½Socketï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     StringBuffer requestStr = new StringBuffer(2048);
     int i;
     byte[] buffer = new byte[2048];
@@ -42,9 +40,9 @@ public class Request{
     return getUri(requestStr.toString());
   }
 /**
- *<br>·½·¨ËµÃ÷£º»ñÈ¡URI×Ö·û
- *<br>ÊäÈë²ÎÊý£ºString requestString ÇëÇó×Ö·û
- *<br>·µ»ØÀàÐÍ£ºString URIÐÅÏ¢×Ö·û
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡URIï¿½Ö·ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String requestString ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½String URIï¿½ï¿½Ï¢ï¿½Ö·ï¿½
  */
   private String getUri(String requestString) {
     int index1, index2;

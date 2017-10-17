@@ -1,7 +1,3 @@
-import java.io.*;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
 public class ReceiveChannel {
   public static void main(String args[])throws Exception {
     final int ENOUGH_SIZE=1024;
@@ -28,13 +24,13 @@ public class ReceiveChannel {
     socket.bind(localAddr);
     
     while(true){
-      System.out.println("¿ªÊ¼½ÓÊÕÊý¾Ý±¨");
+      System.out.println("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½");
       SocketAddress remoteAddr=channel.receive(buffer);
       if(remoteAddr==null){
-        System.out.println("Ã»ÓÐ½ÓÊÕµ½Êý¾Ý±¨");
+        System.out.println("Ã»ï¿½Ð½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ý±ï¿½");
       }else{
         buffer.flip();
-        System.out.println("½ÓÊÕµ½µÄÊý¾Ý±¨µÄ´óÐ¡Îª"+buffer.remaining());
+        System.out.println("ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½Ä´ï¿½Ð¡Îª"+buffer.remaining());
       } 
       Thread.sleep(500);
     }
@@ -44,7 +40,7 @@ public class ReceiveChannel {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

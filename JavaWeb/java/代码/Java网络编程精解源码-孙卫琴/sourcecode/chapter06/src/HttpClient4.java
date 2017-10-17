@@ -1,12 +1,10 @@
-/** ÑÝÊ¾ÈçºÎ´¦ÀíÏìÓ¦ÕýÎÄ£¬²Î¼û6.3.3½Ú*/
-import java.net.*;
-import java.io.*;
+/** ï¿½ï¿½Ê¾ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Î¼ï¿½6.3.3ï¿½ï¿½*/
 public class HttpClient4{
   public static void main(String args[])throws IOException{
     URL url=new URL("http://www.javathinker.org/hello.htm");
     URLConnection connection=url.openConnection();
-    //½ÓÊÕÏìÓ¦½á¹û
-    InputStream in=connection.getInputStream(); //¶ÁÈ¡ÏìÓ¦ÕýÎÄ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½
+    InputStream in=connection.getInputStream(); //ï¿½ï¿½È¡ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
     Class[] types={String.class,InputStream.class};
     Object obj=connection.getContent(types);
     if(obj instanceof String){
@@ -21,16 +19,16 @@ public class HttpClient4{
         file.write(buff,0,len);
       }
      
-      System.out.println("ÕýÎÄ±£´æÍê±Ï");    
+      System.out.println("ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");    
     }else{
-      System.out.println("Î´ÖªµÄÏìÓ¦ÕýÎÄÀàÐÍ");
+      System.out.println("Î´Öªï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
   } 
 }
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

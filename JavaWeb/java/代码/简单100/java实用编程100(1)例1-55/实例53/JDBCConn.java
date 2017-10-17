@@ -1,10 +1,9 @@
-import java.sql.*;
 /**
- * <p>Title: JDBCÁ¬½ÓÊý¾Ý¿â</p>
- * <p>Description: ±¾ÊµÀýÑÝÊ¾ÈçºÎÊ¹ÓÃJDBCÁ¬½ÓOracleÊý¾Ý¿â£¬²¢ÑÝÊ¾Ìí¼ÓÊý¾ÝºÍ²éÑ¯Êý¾Ý¡£</p>
+ * <p>Title: JDBCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½</p>
+ * <p>Description: ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½Oracleï¿½ï¿½ï¿½Ý¿â£¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝºÍ²ï¿½Ñ¯ï¿½ï¿½ï¿½Ý¡ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: JDBCConn.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class JDBCConn{
@@ -12,15 +11,15 @@ public class JDBCConn{
   private  String username="";
   private  String password="";
 /**
- *<br>·½·¨ËµÃ÷£º»ñµÃÊý¾ÝÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£ºConnection Á¬½Ó¶ÔÏó
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Connection ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
  */  
   public Connection conn(){
      try {
-     	//¼ÓÔØJDBCÇý¶¯
+     	//ï¿½ï¿½ï¿½ï¿½JDBCï¿½ï¿½ï¿½ï¿½
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        //´´½¨Êý¾Ý¿âÁ¬½Ó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:ORCL", "test", "test");
         return con;
     }catch(ClassNotFoundException cnf){
@@ -35,10 +34,10 @@ public class JDBCConn{
      }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²éÑ¯SQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½Ñ¯SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void query(Connection con, String sql){
     try{
@@ -46,12 +45,12 @@ public class JDBCConn{
        throw new Exception("database connection can't use!");
      }
      if(sql==null) throw new Exception("check your parameter: 'sql'! don't input null!");
-     //ÉùÃ÷Óï¾ä
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      Statement stmt = con.createStatement();
-     //Ö´ÐÐ²éÑ¯
+     //Ö´ï¿½Ð²ï¿½Ñ¯
      ResultSet rs = stmt.executeQuery(sql); 
      ResultSetMetaData rmeta = rs.getMetaData();
-     //»ñµÃÊý¾Ý×Ö¶Î¸öÊý
+     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î¸ï¿½ï¿½ï¿½
      int numColumns = rmeta.getColumnCount();
      while(rs.next())
 	 {
@@ -67,10 +66,10 @@ public class JDBCConn{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ´ÐÐ²åÈë¡¢¸üÐÂ¡¢É¾³ýµÈÃ»ÓÐ·µ»Ø½á¹û¼¯µÄSQLÓï¾ä
- *<br>ÊäÈë²ÎÊý£ºConnection con Êý¾Ý¿âÁ¬½Ó
- *<br>ÊäÈë²ÎÊý£ºString sql ÒªÖ´ÐÐµÄSQLÓï¾ä
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²ï¿½ï¿½ë¡¢ï¿½ï¿½ï¿½Â¡ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð·ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Connection con ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String sql ÒªÖ´ï¿½Ðµï¿½SQLï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
    public void execute(Connection con, String sql){
     try{
@@ -84,9 +83,9 @@ public class JDBCConn{
     }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÀýÑÝÊ¾
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¾
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public void demo(){
     try{
@@ -105,9 +104,9 @@ public class JDBCConn{
     
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
   public static void main(String[] arg){
     if(arg.length!=3){

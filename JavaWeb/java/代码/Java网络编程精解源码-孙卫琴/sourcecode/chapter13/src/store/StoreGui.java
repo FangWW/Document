@@ -1,59 +1,53 @@
 package store;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.table.*;
-import java.util.*;
-
 public class StoreGui {
 
-  //½çÃæµÄÖ÷Òª´°Ìå×é¼þ
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   protected JFrame frame;
   protected Container contentPane;
   protected CardLayout card=new CardLayout();
   protected JPanel cardPan=new JPanel();
 
-  //°üº¬¸÷ÖÖ°´Å¥µÄÑ¡ÔñÃæ°åÉÏµÄ×é¼þ
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½Å¥ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½
   protected JPanel selPan=new JPanel();
-  protected JButton custBt=new JButton("¿Í»§ÏêÏ¸ÐÅÏ¢");
-  protected JButton allCustBt=new JButton("ËùÓÐ¿Í»§Çåµ¥");
+  protected JButton custBt=new JButton("ï¿½Í»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢");
+  protected JButton allCustBt=new JButton("ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½åµ¥");
 
-  //ÏÔÊ¾µ¥¸ö¿Í»§µÄÃæ°åÉÏµÄ×é¼þ
+  //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½
   protected JPanel custPan=new JPanel();
-  protected JLabel nameLb=new JLabel("¿Í»§ÐÕÃû");
+  protected JLabel nameLb=new JLabel("ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½");
   protected JLabel idLb=new JLabel("ID");
-  protected JLabel addrLb=new JLabel("µØÖ·");
-  protected JLabel ageLb=new JLabel("ÄêÁä");
+  protected JLabel addrLb=new JLabel("ï¿½ï¿½Ö·");
+  protected JLabel ageLb=new JLabel("ï¿½ï¿½ï¿½ï¿½");
 
   protected JTextField nameTf=new JTextField(25);
   protected JTextField idTf=new JTextField(25);
   protected JTextField addrTf=new JTextField(25);
   protected JTextField ageTf=new JTextField(25);
-  protected JButton getBt=new JButton("²éÑ¯¿Í»§");
-  protected JButton updBt=new JButton("¸üÐÂ¿Í»§");
-  protected JButton addBt=new JButton("Ìí¼Ó¿Í»§");
-  protected JButton delBt=new JButton("É¾³ý¿Í»§");
+  protected JButton getBt=new JButton("ï¿½ï¿½Ñ¯ï¿½Í»ï¿½");
+  protected JButton updBt=new JButton("ï¿½ï¿½ï¿½Â¿Í»ï¿½");
+  protected JButton addBt=new JButton("ï¿½ï¿½Ó¿Í»ï¿½");
+  protected JButton delBt=new JButton("É¾ï¿½ï¿½ï¿½Í»ï¿½");
 
-  //ÁÐ¾ÙËùÓÐ¿Í»§µÄÃæ°åÉÏµÄ×é¼þ
+  //ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½
   protected JPanel allCustPan=new JPanel();
-  protected JLabel allCustLb=new JLabel("ËùÓÐ¿Í»§Çåµ¥",SwingConstants.CENTER);
+  protected JLabel allCustLb=new JLabel("ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½åµ¥",SwingConstants.CENTER);
   protected JTextArea allCustTa=new JTextArea();
   protected JScrollPane allCustSp=new JScrollPane(allCustTa);
 
-  String[] tableHeaders={"ID","ÐÕÃû","µØÖ·","ÄêÁä"};
+  String[] tableHeaders={"ID","ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½Ö·","ï¿½ï¿½ï¿½ï¿½"};
   JTable table;
   JScrollPane tablePane;
   DefaultTableModel tableModel;
 
-  //ÈÕÖ¾Ãæ°åÉÏµÄ×é¼þ
+  //ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½
   protected JPanel logPan=new JPanel();
-  protected JLabel logLb=new JLabel("²Ù×÷ÈÕÖ¾",SwingConstants.CENTER);
+  protected JLabel logLb=new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾",SwingConstants.CENTER);
 
   protected JTextArea logTa=new JTextArea(9,50);
   protected JScrollPane logSp=new JScrollPane(logTa);
   
-  /** ÏÔÊ¾²¢Ë¢ÐÂµ¥¸ö¿Í»§Ãæ°å custPan */
+  /** ï¿½ï¿½Ê¾ï¿½ï¿½Ë¢ï¿½Âµï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ custPan */
   public void refreshCustPane(Customer cust){
     showCard("customer");
 
@@ -70,7 +64,7 @@ public class StoreGui {
     ageTf.setText(new Integer(cust.getAge()).toString());
   }
   
-  /** ÏÔÊ¾²¢Ë¢ÐÂËùÓÐ¿Í»§Ãæ°å allCustPan */
+  /** ï¿½ï¿½Ê¾ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½ allCustPan */
   public void refreshAllCustPan(Set<Customer> custs){
     showCard("allcustomers");
     String newData[][];
@@ -89,12 +83,12 @@ public class StoreGui {
     tableModel.setDataVector(newData,tableHeaders);
   }
   
-  /** ÔÚÈÕÖ¾Ãæ°ålogPanÖÐÌí¼ÓÈÕÖ¾ÐÅÏ¢ */
+  /** ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½logPanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½Ï¢ */
   public void updateLog(String msg){
     logTa.append(msg+"\n");
   }
 
-  /** »ñµÃ¿Í»§Ãæ°åcustPanÉÏÓÃ»§ÊäÈëµÄID */
+  /** ï¿½ï¿½Ã¿Í»ï¿½ï¿½ï¿½ï¿½custPanï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID */
   public long getCustIdOnCustPan(){
      try{
        return Long.parseLong(idTf.getText().trim());
@@ -104,7 +98,7 @@ public class StoreGui {
      }
   }
   
-  /** »ñµÃµ¥¸ö¿Í»§Ãæ°åcustPanÉÏÓÃ»§ÊäÈëµÄ¿Í»§ÐÅÏ¢ */
+  /** ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½custPanï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Í»ï¿½ï¿½ï¿½Ï¢ */
   public Customer getCustomerOnCustPan(){
     try{
       return new Customer(Long.parseLong(idTf.getText().trim()),
@@ -116,30 +110,30 @@ public class StoreGui {
     }
   }
   
-  /** ÏÔÊ¾µ¥¸ö¿Í»§Ãæ°åcustPan»òÕßËùÓÐ¿Í»§Ãæ°åallCustPan */
+  /** ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½custPanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿Í»ï¿½ï¿½ï¿½ï¿½allCustPan */
   private void showCard(String cardStr){
     card.show(cardPan,cardStr);
   }
   
-  /** ¹¹Ôì·½·¨ */
+  /** ï¿½ï¿½ï¿½ì·½ï¿½ï¿½ */
   public StoreGui(){
     buildDisplay();
   }
   
-  /** ´´½¨Í¼ÐÎ½çÃæ */
+  /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Î½ï¿½ï¿½ï¿½ */
   private void buildDisplay(){
-   frame=new JFrame("ÉÌµêµÄ¿Í»§¹ÜÀíÏµÍ³");
+   frame=new JFrame("ï¿½Ìµï¿½Ä¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³");
    buildSelectionPanel();
    buildCustPanel();
    buildAllCustPanel();
    buildLogPanel();
    
-   /** carPan²ÉÓÃCardLayout²¼¾Ö¹ÜÀíÆ÷£¬°üÀ¨custPanºÍallCustPanÁ½ÕÅ¿¨Æ¬ */
+   /** carPanï¿½ï¿½ï¿½ï¿½CardLayoutï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½custPanï¿½ï¿½allCustPanï¿½ï¿½ï¿½Å¿ï¿½Æ¬ */
    cardPan.setLayout(card);
    cardPan.add(custPan,"customer");
    cardPan.add(allCustPan,"allcustomers");
 
-   //ÏòÖ÷´°ÌåÖÐ¼ÓÈë¸÷ÖÖÃæ°å
+   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    contentPane=frame.getContentPane();
    contentPane.setLayout(new BorderLayout());
    contentPane.add(cardPan,BorderLayout.CENTER);
@@ -152,14 +146,14 @@ public class StoreGui {
 
   }
  
-  /** ´´½¨Ñ¡ÔñÃæ°åselPan */ 
+  /** ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½selPan */ 
   private void buildSelectionPanel(){
     selPan.setLayout(new GridLayout(1,2));
     selPan.add(custBt);
     selPan.add(allCustBt);
   }
 
-  /** ÎªÑ¡ÔñÃæ°åselPanÖÐµÄ2¸ö°´Å¥×¢²á¼àÌýÆ÷ */
+  /** ÎªÑ¡ï¿½ï¿½ï¿½ï¿½ï¿½selPanï¿½Ðµï¿½2ï¿½ï¿½ï¿½ï¿½Å¥×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public void addSelectionPanelListeners(ActionListener a[]){
    int len=a.length;
    if(len!=2){ return;}
@@ -168,7 +162,7 @@ public class StoreGui {
    allCustBt.addActionListener(a[1]);
  }
   
-  /**¡¡´´½¨µ¥¸ö¿Í»§custPanÃæ°å */
+  /**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½custPanï¿½ï¿½ï¿½ */
   private void buildCustPanel(){
    custPan.setLayout(new GridLayout(6,2));
    custPan.add(idLb);
@@ -187,7 +181,7 @@ public class StoreGui {
 
   }
   
-  /** Îªµ¥¸ö¿Í»§Ãæ°åcustPanÖÐµÄ4¸ö°´Å¥×¢²á¼àÌýÆ÷ */
+  /** Îªï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½custPanï¿½Ðµï¿½4ï¿½ï¿½ï¿½ï¿½Å¥×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public void addCustPanelListeners(ActionListener a[]){
     int len=a.length;
     if(len!=4){ return;}
@@ -198,7 +192,7 @@ public class StoreGui {
    updBt.addActionListener(a[3]);
   }
   
-  /** ´´½¨ËùÓÐ¿Í»§allCustPanÃæ°å */
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿Í»ï¿½allCustPanï¿½ï¿½ï¿½ */
   private void buildAllCustPanel(){
     allCustPan.setLayout(new BorderLayout());
     allCustPan.add(allCustLb,BorderLayout.NORTH);
@@ -214,7 +208,7 @@ public class StoreGui {
     table.setPreferredScrollableViewportSize(dim);
   }
   
-  /** ´´½¨ÈÕÖ¾Ãæ°å*/
+  /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½*/
   private void buildLogPanel(){
    logPan.setLayout(new BorderLayout());
    logPan.add(logLb,BorderLayout.NORTH);
@@ -224,7 +218,7 @@ public class StoreGui {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/

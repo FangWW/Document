@@ -1,13 +1,9 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
 /**
- * <p>Title: ÁÐ±í¿ò</p>
- * <p>Description: Í¨¹ýÊäÈë¿òÌí¼ÓÔªËØºÍµã»÷¡°É¾³ý¡±°´Å¥É¾³ýÁÐ±íÔªËØ</p>
+ * <p>Title: ï¿½Ð±ï¿½ï¿½</p>
+ * <p>Description: Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ØºÍµï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥É¾ï¿½ï¿½ï¿½Ð±ï¿½Ôªï¿½ï¿½</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: ListDemo.java</p>
- * @author ¶Å½­
+ * @author ï¿½Å½ï¿½
  * @version 1.0
  */
 public class ListDemo extends JPanel
@@ -15,14 +11,14 @@ public class ListDemo extends JPanel
     private JList list;
     private DefaultListModel listModel;
 
-    private static final String hireString = "Ìí¼Ó";
-    private static final String fireString = "É¾³ý";
+    private static final String hireString = "ï¿½ï¿½ï¿½";
+    private static final String fireString = "É¾ï¿½ï¿½";
     private JButton fireButton;
     private JTextField employeeName;
 
     public ListDemo() {
         super(new BorderLayout());
-        //¹¹½¨ListµÄÁÐ±íÔªËØ
+        //ï¿½ï¿½ï¿½ï¿½Listï¿½ï¿½ï¿½Ð±ï¿½Ôªï¿½ï¿½
         listModel = new DefaultListModel();
         listModel.addElement("Alan Sommerer");
         listModel.addElement("Alison Huml");
@@ -31,16 +27,16 @@ public class ListDemo extends JPanel
         listModel.addElement("Mary Campione");
         listModel.addElement("Sharon Zakhour");
 
-        //´´½¨Ò»¸öList¹¹¼þ,²¢½«ÁÐ±íÔªËØÌí¼Óµ½ÁÐ±íÖÐ
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Listï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ôªï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ð±ï¿½ï¿½ï¿½
         list = new JList(listModel);
-        //ÉèÖÃÑ¡ÔñÄ£Ê½Îªµ¥Ñ¡
+        //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ä£Ê½Îªï¿½ï¿½Ñ¡
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //³õÊ¼»¯Ñ¡ÔñË÷ÒýÔÚ0µÄÎ»ÖÃ£¬¼´µÚÒ»¸öÔªËØ
+        //ï¿½ï¿½Ê¼ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
         list.setSelectedIndex(0);
         list.addListSelectionListener(this);
-        //ÉèÖÃÁÐ±í¿ÉÒÔÍ¬Ê±¿´5¸öÔªËØ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½5ï¿½ï¿½Ôªï¿½ï¿½
         list.setVisibleRowCount(5);
-        //¸øÁÐ±íÌí¼ÓÒ»¸ö»¬¶¯¿é
+        //ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JScrollPane listScrollPane = new JScrollPane(list);
 
         JButton hireButton = new JButton(hireString);
@@ -59,7 +55,7 @@ public class ListDemo extends JPanel
         String name = listModel.getElementAt(
                               list.getSelectedIndex()).toString();
 
-        //´´½¨Ò»¸öÃæ°å
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new BoxLayout(buttonPane,
                                            BoxLayout.LINE_AXIS));
@@ -75,8 +71,8 @@ public class ListDemo extends JPanel
         add(buttonPane, BorderLayout.PAGE_END);
     }
 /**
- *<br>ÀàËµÃ÷£º¡°Ìí¼Ó¡±°´Å¥¼àÌý
- *<br>ÀàÃèÊö£ºµ±µã»÷¡°Ìí¼Ó¡±°´Å¥ºó£¬ÊµÏÖ½«ÔªËØÌí¼Óµ½ÁÐ±í¿òÖÐ
+ *<br>ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Êµï¿½Ö½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½
  */
     class FireListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -86,12 +82,12 @@ public class ListDemo extends JPanel
 
             int size = listModel.getSize();
 
-            if (size == 0) { //Èç¹ûÃ»ÓÐÁËÑ¡ÔñÏî£¬ÔòÊÇ¡°É¾³ý¡±°´Å¥ÊµÐ§
+            if (size == 0) { //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½Ç¡ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ÊµÐ§
                 fireButton.setEnabled(false);
 
-            } else { //Ñ¡ÔñÁËÒ»¸ö
+            } else { //Ñ¡ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
                 if (index == listModel.getSize()) {
-                    //ÒÆ³ýÑ¡Ïî
+                    //ï¿½Æ³ï¿½Ñ¡ï¿½ï¿½
                     index--;
                 }
 
@@ -102,8 +98,8 @@ public class ListDemo extends JPanel
     }
 
 /**
- *<br>ÀàËµÃ÷£º¡°É¾³ý¡±°´Å¥¼àÌýÊÂ¼þ
- *<br>ÀàÃèÊö£ºÊµÏÖÉ¾³ýÁÐ±íÔªËØ
+ *<br>ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½É¾ï¿½ï¿½ï¿½Ð±ï¿½Ôªï¿½ï¿½
  */
     class HireListener implements ActionListener, DocumentListener {
         private boolean alreadyEnabled = false;
@@ -113,11 +109,11 @@ public class ListDemo extends JPanel
             this.button = button;
         }
 
-        //±ØÐëÊµÏÖ ActionListener.
+        //ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ ActionListener.
         public void actionPerformed(ActionEvent e) {
             String name = employeeName.getText();
 
-            //Èç¹ûÊäÈë¿Õ»òÓÐÍ¬Ãû
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½Í¬ï¿½ï¿½
             if (name.equals("") || alreadyInList(name)) {
                 Toolkit.getDefaultToolkit().beep();
                 employeeName.requestFocusInWindow();
@@ -125,27 +121,27 @@ public class ListDemo extends JPanel
                 return;
             }
 
-            int index = list.getSelectedIndex(); //»ñÈ¡Ñ¡ÔñÏî
-            if (index == -1) { //Èç¹ûÃ»ÓÐÑ¡Ôñ£¬¾Í²åÈëµ½µÚÒ»¸ö
+            int index = list.getSelectedIndex(); //ï¿½ï¿½È¡Ñ¡ï¿½ï¿½ï¿½ï¿½
+            if (index == -1) { //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¡ï¿½ñ£¬¾Í²ï¿½ï¿½ëµ½ï¿½ï¿½Ò»ï¿½ï¿½
                 index = 0;
-            } else {           //Èç¹ûÓÐÑ¡Ôñ£¬ÄÇÃ´²åÈëµ½Ñ¡ÔñÏîµÄºóÃæ
+            } else {           //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ëµ½Ñ¡ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½
                 index++;
             }
 
             listModel.insertElementAt(employeeName.getText(), index);
  
-            //ÖØÐÂÉèÖÃÎÄ±¾
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
             employeeName.requestFocusInWindow();
             employeeName.setText("");
 
-            //Ñ¡ÔñÐÂµÄÔªËØ£¬²¢ÏÔÊ¾³öÀ´
+            //Ñ¡ï¿½ï¿½ï¿½Âµï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
             list.setSelectedIndex(index);
             list.ensureIndexIsVisible(index);
         }
 /**
- *<br>·½·¨ËµÃ÷£º¼ì²âÊÇ·ñÔÚLISTÖÐÓÐÖØÃûÔªËØ
- *<br>ÊäÈë²ÎÊý£ºString name ¼ì²âµÄÃû×Ö
- *<br>·µ»ØÀàÐÍ£ºboolean ²¼¶ûÖµ£¬Èç¹û´æÔÚ·µ»Øtrue
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½LISTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½String name ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½boolean ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½true
  */
 
         protected boolean alreadyInList(String name) {
@@ -153,27 +149,27 @@ public class ListDemo extends JPanel
         }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖDocumentListener½Ó¿Ú£¬±ØÐèÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½DocumentListenerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         public void insertUpdate(DocumentEvent e) {
             enableButton();
         }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖDocumentListener½Ó¿Ú£¬±ØÐèÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½DocumentListenerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         public void removeUpdate(DocumentEvent e) {
             handleEmptyTextField(e);
         }
 
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖDocumentListener½Ó¿Ú£¬±ØÐèÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½DocumentListenerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         public void changedUpdate(DocumentEvent e) {
             if (!handleEmptyTextField(e)) {
@@ -181,9 +177,9 @@ public class ListDemo extends JPanel
             }
         }
 /**
- *<br>·½·¨ËµÃ÷£º°´Å¥Ê¹ÄÜ
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥Ê¹ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         private void enableButton() {
             if (!alreadyEnabled) {
@@ -191,9 +187,9 @@ public class ListDemo extends JPanel
             }
         }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖDocumentListener½Ó¿Ú£¬±ØÐèÊµÏÖµÄ·½·¨£¬ÐÞ¸Ä°´Å¥µÄ×´Ì¬
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½DocumentListenerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä°ï¿½Å¥ï¿½ï¿½×´Ì¬
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
         private boolean handleEmptyTextField(DocumentEvent e) {
             if (e.getDocument().getLength() <= 0) {
@@ -205,9 +201,9 @@ public class ListDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÊµÏÖListSelectionListener½Ó¿Ú£¬±ØÐèÊµÏÖµÄ·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ListSelectionListenerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ·ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
@@ -221,24 +217,24 @@ public class ListDemo extends JPanel
         }
     }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊý£º
- *<br>·µ»ØÀàÐÍ£º
+ *<br>ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *<br>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  */
     public static void main(String[] args) {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        //´´½¨Ò»¸ö´°Ìå
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         JFrame frame = new JFrame("ListDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //´´½¨Ò»¸öÃæ°æ
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
         JComponent newContentPane = new ListDemo();
         newContentPane.setOpaque(true);
         frame.setContentPane(newContentPane);
 
-        //ÏÔÊ¾´°Ìå
+        //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
         frame.pack();
         frame.setVisible(true);
     }

@@ -1,55 +1,56 @@
 package javahello;
-import javax.servlet.http.*;
 import org.apache.struts.action.*;
+
+import javax.servlet.http.*;
 /**
- * ¼Ì³ÐActionFormÀà
+ * ï¿½Ì³ï¿½ActionFormï¿½ï¿½
  */
 public final class SendMessageForm extends ActionForm {
   private String name;
   private String email;
   private String message;
   /*
-  *·½·¨ËµÃ÷£ºÉèÖÃÃû³Æ
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   */
   public void setName(String name) {
     this.name = toSJIS(name);
   }
   /*
-  *·½·¨ËµÃ÷£º»ñÈ¡Ãû³Æ
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
   */
   public String getName() {
     return name;
   }
   /*
-  *·½·¨ËµÃ÷£ºÉèÖÃÓÊ¼þ
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
   */
   public void setEmail(String email) {
     this.email = toSJIS(email);
   }
   /*
-  *·½·¨ËµÃ÷£º»ñÈ¡ÓÊ¼þ
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê¼ï¿½
   */
   public String getEmail() {
     return email;
   }
   /*
-  *·½·¨ËµÃ÷£ºÉèÖÃÐÅÏ¢
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
   */
   public void setMessage(String message) {
     this.message = toSJIS(message);
   }
   /*
-  *·½·¨ËµÃ÷£º»ñÈ¡ÐÅÏ¢
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ï¢
   */
   public String getMessage() {
     return message;
   }
   /*
-  *·½·¨ËµÃ÷£ºÌá½»Êý¾ÝÇ°Ð£Ñé
+  *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½ï¿½Ç°Ð£ï¿½ï¿½
   */
   public ActionErrors validate(ActionMapping mapping,
                                HttpServletRequest request) {
-    //ÊµÀý»¯Ò»¸öActionErrors£¬ÓÃÓÚ´¢´æ´íÎó
+    //Êµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ActionErrorsï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     ActionErrors errors = new ActionErrors();
     if (name == null || name.equals("")) {
       errors.add("name" , new ActionError("error.name.required"));
@@ -64,7 +65,7 @@ public final class SendMessageForm extends ActionForm {
   }
 
   /**
-   *·½·¨ËµÃ÷£º iso-8859-1×ª»»³ÉGB2312
+   *ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ iso-8859-1×ªï¿½ï¿½ï¿½ï¿½GB2312
    */
   private String toSJIS(String str) {
     try {

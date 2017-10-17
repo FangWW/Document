@@ -1,11 +1,6 @@
-import java.io.*;
-import java.net.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-
-/*ÎÄ¼þÐÎÊ½µÄÏìÓ¦ÕýÎÄ*/
+/*ï¿½Ä¼ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½*/
 public class FileContent implements Content {
-  //¼Ù¶¨ÎÄ¼þµÄ¸ùÄ¿Â¼Îª"root"
+  //ï¿½Ù¶ï¿½ï¿½Ä¼ï¿½ï¿½Ä¸ï¿½Ä¿Â¼Îª"root"
   private static File ROOT = new File("root");
   private File file;
 
@@ -17,28 +12,28 @@ public class FileContent implements Content {
 
   private String type = null;
 
-  /* È·¶¨ÎÄ¼þÀàÐÍ */
+  /* È·ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
   public String type() {
     if (type != null) return type;
     String nm = file.getName();
     if (nm.endsWith(".html")|| nm.endsWith(".htm"))
-        type = "text/html; charset=GBK";  //HTMLÍøÒ³
+        type = "text/html; charset=GBK";  //HTMLï¿½ï¿½Ò³
     else if ((nm.indexOf('.') < 0) || nm.endsWith(".txt"))
-        type = "text/plain; charset=GBK";  //ÎÄ±¾ÎÄ¼þ
+        type = "text/plain; charset=GBK";  //ï¿½Ä±ï¿½ï¿½Ä¼ï¿½
     else
-        type = "application/octet-stream";  //Ó¦ÓÃ³ÌÐò
+        type = "application/octet-stream";  //Ó¦ï¿½Ã³ï¿½ï¿½ï¿½
     return type;
   }
 
   private FileChannel fileChannel = null;
-  private long length = -1;  //ÎÄ¼þ³¤¶È
-  private long position = -1; //ÎÄ¼þµÄµ±Ç°Î»ÖÃ
+  private long length = -1;  //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  private long position = -1; //ï¿½Ä¼ï¿½ï¿½Äµï¿½Ç°Î»ï¿½ï¿½
 
   public long length() {
       return length;
   }
 
-  /* ´´½¨FileChannel¶ÔÏó*/
+  /* ï¿½ï¿½ï¿½ï¿½FileChannelï¿½ï¿½ï¿½ï¿½*/
   public void prepare() throws IOException {
     if (fileChannel == null)
         fileChannel = new RandomAccessFile(file, "r").getChannel();
@@ -46,7 +41,7 @@ public class FileContent implements Content {
     position = 0;
   }
 
-  /* ·¢ËÍÕýÎÄ£¬Èç¹û·¢ËÍÍê±Ï£¬¾Í·µ»Øfalse£¬·ñÔò·µ»Øtrue */
+  /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Í·ï¿½ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½true */
   public boolean send(ChannelIO channelIO) throws IOException {
     if (fileChannel == null)
         throw new IllegalStateException();
@@ -54,7 +49,7 @@ public class FileContent implements Content {
         throw new IllegalStateException();
 
     if (position >= length) {
-        return false;  //Èç¹û·¢ËÍÍê±Ï£¬¾Í·µ»Øfalse
+        return false;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Í·ï¿½ï¿½ï¿½false
     }
 
     position += channelIO.transferTo(fileChannel, position, length - position);
@@ -63,7 +58,7 @@ public class FileContent implements Content {
 
   public void release() throws IOException {
     if (fileChannel != null){
-        fileChannel.close();  //¹Ø±ÕfileChannel
+        fileChannel.close();  //ï¿½Ø±ï¿½fileChannel
         fileChannel = null;
     }
   }
@@ -71,7 +66,7 @@ public class FileContent implements Content {
 
 
 /****************************************************
- * ×÷Õß£ºËïÎÀÇÙ                                     *
- * À´Ô´£º<<JavaÍøÂç±à³Ì¾«½â>>                       *
- * ¼¼ÊõÖ§³ÖÍøÖ·£ºwww.javathinker.org                *
+ * ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                                     *
+ * ï¿½ï¿½Ô´ï¿½ï¿½<<Javaï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½>>                       *
+ * ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½www.javathinker.org                *
  ***************************************************/
