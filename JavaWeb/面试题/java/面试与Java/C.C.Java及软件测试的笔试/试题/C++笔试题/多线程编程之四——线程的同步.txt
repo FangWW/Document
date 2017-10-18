@@ -1,0 +1,358 @@
+    
+::首页 >> 文档中心 >> 在线杂志 >> 多任务(多进程、多线程) [ 在线杂志 第49期 ]  
+
+
+
+ 
+ [ 原创文档 本文适合中级读者 已阅读12507次 ]   文档 代码 工具   
+
+多线程编程之四——线程的同步
+
+作者：韩耀旭
+
+下载源代码
+
+八、线程的同步
+
+　　虽然多线程能给我们带来好处，但是也有不少问题需要解决。例如，对于像磁盘驱动器这样独占性系统资源，由于线程可以执行进程的任何代码段，且线程的运行是由系统调度自动完成的，具有一定的不确定性，因此就有可能出现两个线程同时对磁盘驱动器进行操作，从而出现操作错误；又例如，对于银行系统的计算机来说，可能使用一个线程来更新其用户数据库，而用另外一个线程来读取数据库以响应储户的需要，极有可能读数据库的线程读取的是未完全更新的数据库，因为可能在读的时候只有一部分数据被更新过。
+
+　　使隶属于同一进程的各线程协调一致地工作称为线程的同步。MFC提供了多种同步对象，下面我们只介绍最常用的四种：
+
+临界区（CCriticalSection） 
+事件（CEvent） 
+互斥量（CMutex） 
+信号量（CSemaphore）
+　 
+通过这些类，我们可以比较容易地做到线程同步。
+
+A、使用 CCriticalSection 类
+
+　　当多个线程访问一个独占性共享资源时,可以使用“临界区”对象。任一时刻只有一个线程可以拥有临界区对象，拥有临界区的线程可以访问被保护起来的资源或代码段，其他希望进入临界区的线程将被挂起等待，直到拥有临界区的线程放弃临界区时为止，这样就保证了不会在同一时刻出现多个线程访问共享资源。
+
+CCriticalSection类的用法非常简单，步骤如下：
+　
+
+定义CCriticalSection类的一个全局对象（以使各个线程均能访问），如CCriticalSection critical_section； 
+在访问需要保护的资源或代码之前，调用CCriticalSection类的成员Lock（）获得临界区对象： critical_section.Lock();
+
+在线程中调用该函数来使线程获得它所请求的临界区。如果此时没有其它线程占有临界区对象，则调用Lock()的线程获得临界区；否则，线程将被挂起，并放入到一个系统队列中等待，直到当前拥有临界区的线程释放了临界区时为止。 
+访问临界区完毕后，使用CCriticalSection的成员函数Unlock()来释放临界区：critical_section.Unlock();
+
+再通俗一点讲，就是线程A执行到critical_section.Lock();语句时，如果其它线程(B)正在执行critical_section.Lock();语句后且critical_section. Unlock();语句前的语句时，线程A就会等待，直到线程B执行完critical_section. Unlock();语句，线程A才会继续执行。 
+下面再通过一个实例进行演示说明。
+
+
+例程8 MultiThread8
+
+建立一个基于对话框的工程MultiThread8，在对话框IDD_MULTITHREAD8_DIALOG中加入两个按钮和两个编辑框控件，两个按钮的ID分别为IDC_WRITEW和IDC_WRITED，标题分别为“写‘W’”和“写‘D’”；两个编辑框的ID分别为IDC_W和IDC_D，属性都选中Read-only； 
+在MultiThread8Dlg.h文件中声明两个线程函数： UINT WriteW(LPVOID pParam);
+UINT WriteD(LPVOID pParam);
+
+使用ClassWizard分别给IDC_W和IDC_D添加CEdit类变量m_ctrlW和m_ctrlD； 
+在MultiThread8Dlg.cpp文件中添加如下内容：
+
+为了文件中能够正确使用同步类，在文件开头添加：#include "afxmt.h"
+
+定义临界区和一个字符数组，为了能够在不同线程间使用，定义为全局变量：CCriticalSection critical_section;
+char g_Array[10];
+
+添加线程函数：UINT WriteW(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	critical_section.Lock();
+	//锁定临界区，其它线程遇到critical_section.Lock();语句时要等待
+	//直至执行critical_section.Unlock();语句
+	for(int i=0;i<10;i++)
+	{
+		g_Array[i]=''W'';
+	    pEdit->SetWindowText(g_Array);
+		Sleep(1000);
+	}
+	critical_section.Unlock();
+	return 0;
+
+}
+
+UINT WriteD(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	critical_section.Lock();
+	//锁定临界区，其它线程遇到critical_section.Lock();语句时要等待
+	//直至执行critical_section.Unlock();语句
+	for(int i=0;i<10;i++)
+	{
+		g_Array[i]=''D'';
+	    pEdit->SetWindowText(g_Array);
+		Sleep(1000);
+	}
+	critical_section.Unlock();
+	return 0;
+
+}
+分别双击按钮IDC_WRITEW和IDC_WRITED，添加其响应函数： void CMultiThread8Dlg::OnWritew() 
+{
+	CWinThread *pWriteW=AfxBeginThread(WriteW,
+		&m_ctrlW,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteW->ResumeThread();
+}
+
+void CMultiThread8Dlg::OnWrited() 
+{
+	CWinThread *pWriteD=AfxBeginThread(WriteD,
+		&m_ctrlD,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteD->ResumeThread();
+	
+}
+由于代码较简单，不再详述。编译、运行该例程，您可以连续点击两个按钮，观察体会临界类的作用。 
+B、使用 CEvent 类 
+
+　　CEvent 类提供了对事件的支持。事件是一个允许一个线程在某种情况发生时，唤醒另外一个线程的同步对象。例如在某些网络应用程序中，一个线程（记为A）负责监听通讯端口，另外一个线程（记为B）负责更新用户数据。通过使用CEvent 类，线程A可以通知线程B何时更新用户数据。每一个CEvent 对象可以有两种状态：有信号状态和无信号状态。线程监视位于其中的CEvent 类对象的状态，并在相应的时候采取相应的操作。
+　　在MFC中，CEvent 类对象有两种类型：人工事件和自动事件。一个自动CEvent 对象在被至少一个线程释放后会自动返回到无信号状态；而人工事件对象获得信号后，释放可利用线程，但直到调用成员函数ReSetEvent()才将其设置为无信号状态。在创建CEvent 类的对象时，默认创建的是自动事件。 CEvent 类的各成员函数的原型和参数说明如下：
+
+1、CEvent(BOOL bInitiallyOwn=FALSE,
+          BOOL bManualReset=FALSE,
+          LPCTSTR lpszName=NULL,
+          LPSECURITY_ATTRIBUTES lpsaAttribute=NULL);
+
+
+bInitiallyOwn:指定事件对象初始化状态，TRUE为有信号，FALSE为无信号； 
+bManualReset：指定要创建的事件是属于人工事件还是自动事件。TRUE为人工事件，FALSE为自动事件； 
+后两个参数一般设为NULL，在此不作过多说明。 
+2、BOOL CEvent：：SetEvent();
+
+　　将 CEvent 类对象的状态设置为有信号状态。如果事件是人工事件，则 CEvent 类对象保持为有信号状态，直到调用成员函数ResetEvent()将 其重新设为无信号状态时为止。如果CEvent 类对象为自动事件，则在SetEvent()将事件设置为有信号状态后，CEvent 类对象由系统自动重置为无信号状态。
+
+如果该函数执行成功，则返回非零值，否则返回零。 3、BOOL CEvent：：ResetEvent();
+　　该函数将事件的状态设置为无信号状态，并保持该状态直至SetEvent()被调用时为止。由于自动事件是由系统自动重置，故自动事件不需要调用该函数。如果该函数执行成功，返回非零值，否则返回零。我们一般通过调用WaitForSingleObject函数来监视事件状态。前面我们已经介绍了该函数。由于语言描述的原因，CEvent 类的理解确实有些难度，但您只要通过仔细玩味下面例程，多看几遍就可理解。 
+例程9 MultiThread9
+
+建立一个基于对话框的工程MultiThread9，在对话框IDD_MULTITHREAD9_DIALOG中加入一个按钮和两个编辑框控件，按钮的ID为IDC_WRITEW，标题为“写‘W’”；两个编辑框的ID分别为IDC_W和IDC_D，属性都选中Read-only; 
+在MultiThread9Dlg.h文件中声明两个线程函数： UINT WriteW(LPVOID pParam);
+UINT WriteD(LPVOID pParam);
+
+使用ClassWizard分别给IDC_W和IDC_D添加CEdit类变量m_ctrlW和m_ctrlD； 
+在MultiThread9Dlg.cpp文件中添加如下内容：
+为了文件中能够正确使用同步类，在文件开头添加 
+
+#include "afxmt.h"
+
+定义事件对象和一个字符数组，为了能够在不同线程间使用，定义为全局变量。 CEvent eventWriteD;
+char g_Array[10];
+
+添加线程函数： UINT WriteW(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	for(int i=0;i<10;i++)
+	{
+		g_Array[i]=''W'';
+	    pEdit->SetWindowText(g_Array);
+		Sleep(1000);
+	}
+	eventWriteD.SetEvent();
+	return 0;
+
+}
+UINT WriteD(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	WaitForSingleObject(eventWriteD.m_hObject,INFINITE);
+	for(int i=0;i<10;i++)
+	{
+		g_Array[i]=''D'';
+	    pEdit->SetWindowText(g_Array);
+		Sleep(1000);
+	}
+	return 0;
+
+}
+
+　　仔细分析这两个线程函数, 您就会正确理解CEvent 类。线程WriteD执行到 WaitForSingleObject(eventWriteD.m_hObject,INFINITE);处等待，直到事件eventWriteD为有信号该线程才往下执行，因为eventWriteD对象是自动事件，则当WaitForSingleObject()返回时，系统自动把eventWriteD对象重置为无信号状态。 
+双击按钮IDC_WRITEW，添加其响应函数： void CMultiThread9Dlg::OnWritew() 
+{
+	CWinThread *pWriteW=AfxBeginThread(WriteW,
+		&m_ctrlW,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteW->ResumeThread();
+
+	CWinThread *pWriteD=AfxBeginThread(WriteD,
+		&m_ctrlD,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteD->ResumeThread();
+	
+}
+编译并运行程序，单击“写‘W’”按钮，体会事件对象的作用。 
+C、使用CMutex 类
+
+　　互斥对象与临界区对象很像.互斥对象与临界区对象的不同在于:互斥对象可以在进程间使用,而临界区对象只能在同一进程的各线程间使用。当然，互斥对象也可以用于同一进程的各个线程间，但是在这种情况下，使用临界区会更节省系统资源，更有效率。
+
+D、使用CSemaphore 类
+
+　　当需要一个计数器来限制可以使用某个线程的数目时，可以使用“信号量”对象。CSemaphore 类的对象保存了对当前访问某一指定资源的线程的计数值，该计数值是当前还可以使用该资源的线程的数目。如果这个计数达到了零，则所有对这个CSemaphore 类对象所控制的资源的访问尝试都被放入到一个队列中等待，直到超时或计数值不为零时为止。一个线程被释放已访问了被保护的资源时，计数值减1；一个线程完成了对被控共享资源的访问时，计数值增1。这个被CSemaphore 类对象所控制的资源可以同时接受访问的最大线程数在该对象的构建函数中指定。
+
+CSemaphore 类的构造函数原型及参数说明如下： 
+
+CSemaphore (LONG lInitialCount=1,
+            LONG lMaxCount=1,
+            LPCTSTR pstrName=NULL,
+            LPSECURITY_ATTRIBUTES lpsaAttributes=NULL);
+
+lInitialCount:信号量对象的初始计数值，即可访问线程数目的初始值； 
+lMaxCount：信号量对象计数值的最大值，该参数决定了同一时刻可访问由信号量保护的资源的线程最大数目； 
+后两个参数在同一进程中使用一般为NULL，不作过多讨论； 
+　　在用CSemaphore 类的构造函数创建信号量对象时要同时指出允许的最大资源计数和当前可用资源计数。一般是将当前可用资源计数设置为最大资源计数，每增加一个线程对共享资源的访问，当前可用资源计数就会减1，只要当前可用资源计数是大于0的，就可以发出信号量信号。但是当前可用计数减小到0时，则说明当前占用资源的线程数已经达到了所允许的最大数目，不能再允许其它线程的进入，此时的信号量信号将无法发出。线程在处理完共享资源后，应在离开的同时通过ReleaseSemaphore()函数将当前可用资源数加1。
+
+下面给出一个简单实例来说明 CSemaphore 类的用法。
+
+例程10 MultiThread10
+
+建立一个基于对话框的工程MultiThread10，在对话框IDD_MULTITHREAD10_DIALOG中加入一个按钮和三个编辑框控件，按钮的ID为IDC_START，标题为“同时写‘A’、‘B’、‘C’”；三个编辑框的ID分别为IDC_A、IDC_B和IDC_C，属性都选中Read-only； 
+在MultiThread10Dlg.h文件中声明两个线程函数： UINT WriteA(LPVOID pParam);
+UINT WriteB(LPVOID pParam);
+UINT WriteC(LPVOID pParam); 
+使用ClassWizard分别给IDC_A、IDC_B和IDC_C添加CEdit类变量m_ctrlA、m_ctrlB和m_ctrlC； 
+在MultiThread10Dlg.cpp文件中添加如下内容：
+为了文件中能够正确使用同步类，在文件开头添加：
+
+#include "afxmt.h"
+
+定义信号量对象和一个字符数组，为了能够在不同线程间使用，定义为全局变量：CSemaphore semaphoreWrite(2,2); //资源最多访问线程2个，当前可访问线程数2个 
+char g_Array[10]; 
+添加三个线程函数： 
+
+UINT WriteA(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	WaitForSingleObject(semaphoreWrite.m_hObject,INFINITE);
+	CString str;
+	for(int i=0;i<10;i++)
+	{
+        pEdit->GetWindowText(str);
+		g_Array[i]=''A'';
+		str=str+g_Array[i];
+	    pEdit->SetWindowText(str);
+		Sleep(1000);
+	}
+	ReleaseSemaphore(semaphoreWrite.m_hObject,1,NULL);
+	return 0;
+
+}
+UINT WriteB(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	WaitForSingleObject(semaphoreWrite.m_hObject,INFINITE);
+	CString str;
+	for(int i=0;i<10;i++)
+	{
+
+        pEdit->GetWindowText(str);
+		g_Array[i]=''B'';
+		str=str+g_Array[i];
+	    pEdit->SetWindowText(str);
+		Sleep(1000);
+	}
+	ReleaseSemaphore(semaphoreWrite.m_hObject,1,NULL);
+	return 0;
+
+}
+UINT WriteC(LPVOID pParam)
+{
+	CEdit *pEdit=(CEdit*)pParam;
+	pEdit->SetWindowText("");
+	WaitForSingleObject(semaphoreWrite.m_hObject,INFINITE);
+	for(int i=0;i<10;i++)
+	{
+		g_Array[i]=''C'';
+	    pEdit->SetWindowText(g_Array);
+		Sleep(1000);
+	}
+	ReleaseSemaphore(semaphoreWrite.m_hObject,1,NULL);
+	return 0;
+
+}
+
+这三个线程函数不再多说。在信号量对象有信号的状态下，线程执行到WaitForSingleObject语句处继续执行，同时可用线程数减1；若线程执行到WaitForSingleObject语句时信号量对象无信号，线程就在这里等待，直到信号量对象有信号线程才往下执行。 
+双击按钮IDC_START，添加其响应函数： void CMultiThread10Dlg::OnStart() 
+{
+	CWinThread *pWriteA=AfxBeginThread(WriteA,
+		&m_ctrlA,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteA->ResumeThread();
+
+	CWinThread *pWriteB=AfxBeginThread(WriteB,
+		&m_ctrlB,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteB->ResumeThread();
+
+	CWinThread *pWriteC=AfxBeginThread(WriteC,
+		&m_ctrlC,
+		THREAD_PRIORITY_NORMAL,
+		0,
+		CREATE_SUSPENDED);
+	pWriteC->ResumeThread();
+
+	
+}
+
+好吧，多线程编程就介绍到这里，希望本文能对您有所帮助。
+
+（全文完）
+
+本文关联的其它文章
+
+多线程编程之一——问题提出 
+多线程编程之二——MFC中的多线程开发 
+多线程编程之三——线程间通讯
+　 
+ 
+ 
+
+
+
+
+最新评论 [发表评论] [文章投稿]  查看所有评论  推荐给好友  打印 
+
+ 我是认真的体会了一遍里面的例子都很经典，不过在VS2005里面有的不能编译但是做一些小的改动就可以了达到学习的目的。不过"例程2""例程3"理解起来有点费解。为什么历程2不会发生死锁呢？我的理解是主线程没有与子线程通信的原因，理解错误了请大家指导！
+( chotqy 发表于 2007-6-13 16:23:00)
+ 
+ 刚全看了一遍
+虽然还没怎么消化，但也学到不少东西
+谢谢作者 ( 4609rain 发表于 2007-4-4 22:23:00)
+ 
+ 很容易理解！写的很好，谢过了！ ( 潇逸 发表于 2007-4-3 11:37:00)
+ 
+ 谢谢 讲得很清楚 对小生帮助很大 再次感谢 ( lolita 发表于 2007-2-1 11:52:00)
+ 
+ 就看了最后一页，语言简洁，几个线程方法间的不同之处一目了然，又体会了一把，TKS ( annasummer 发表于 2007-1-11 10:51:00)
+ 
+ 文章写的不错，全看了一遍，获益匪浅！！TKS ( hugo-cat 发表于 2006-12-21 17:11:00)
+ 
+ 好文章。。太感谢了 ( 梦龙 发表于 2006-11-15 19:49:00)
+ 
+.......................................................
+More...  
+
+
+
+
+版权所有 ? 2006 VC知识库  
+

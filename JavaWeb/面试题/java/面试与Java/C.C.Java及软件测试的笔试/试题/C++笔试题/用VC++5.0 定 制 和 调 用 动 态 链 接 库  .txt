@@ -1,0 +1,139 @@
+用VC++5.0 定 制 和 调 用 动 态 链 接 库  
+  
+ 
+---- 动 态 链 接 库(dll) 是 包 含 共 享 函 数 库 的 二 进 制 文 件, 可 
+以 被 多 个 应 用 程 序 同 时 使 用。 建 立 应 用 程 序 的 可 执 行 文
+ 件 时, 不 必 将DLL 连 接 到 应 用 程 序 中, 而 是 在 运 行 时 动 态 
+装 载DLL, 装 载 时DLL 被 映 射 到 调 用 进 程 的 地 址 空 间 中。 通 常
+ 我 们 在 调 用DLL 时 所 需 的DLL 文 件 必 须 位 于 以 下 三 个 目 录 
+之 一: 
+
+---- (1)Windows 的 系 统 目 录:\windows\system; 
+
+---- (2)DOS 中path 所 指 出 的 任 何 目 录; 
+
+---- (3) 程 序 所 在 的 目 录; 
+
+一. 动 态 链 接 库(DLL) 结 构
+---- DLL 中 定 义 有 两 种 函 数: 导 出 函 数(export function) 和 内 
+部 函 数(internal function), 导 出 函 数 可 以 被 其 他 模 块 调 用,
+ 内 部 函 数 只 能 在DLL 内 部 使 用。 我 们 在 用C++ 定 制DLL 文 件 时
+, 需 要 编 写 的 就 是 包 含 导 出 函 数 表 的 模 块 定 义 文 件(.DEF) 
+和 实 现 导 出 函 数 功 能 的C++ 文 件。 下 面 以Sample.dll 为 例 介
+ 绍DEF 文 件 和 实 现 文 件 的 结 构: 
+
+---- 1. 模 块 定 义 文 件(.DEF) 是 由 一 个 或 者 多 个 用 于 描 述
+DLL 属 性 的 模 块 语 句 组 成 的 文 本 文 件, 每 个.DEF 文 件 至 少
+ 必 须 包 含 以 下 模 块 定 义 语 句: 
+
+第 一 个 语 句 必 须 是LIBRARY 语 句, 指 出DLL 的 名 字。 
+
+EXPORTS 语 句 列 出 被 导 出 函 数 的 名 字。 
+
+可 以 使 用DESCRIPTION 语 句 描 述DLL 的 用 途( 此 句 可 选)。 
+
+";" 对 一 行 进 行 注 释( 可 选) 
+---- 2. 实 现 文 件(.cpp 文 件 为 例) 
+
+---- 实 现 入 口 表 函 数 的.cpp 文 件 中, 包 含DLL 入 口 点 处 理
+ 的API 函 数 和 导 出 函 数 的 代 码。 
+
+二. 创 建Sample.dll 
+---- 1. 首 先 创 建Sample.dll 的 工 程, 启 动VC++5.0 按 以 下 步 骤 
+生 成DLL 工 程: 
+
+在 菜 单 中 选 择File\New\Project 
+
+在 工 程 列 表 中 选 择Win32 Dynamic-Link Library 
+
+在Project Name 中 输 入 工 程 名:Sample 
+
+单 击Location 右 边 按 钮, 选 择c:\sample 目 录 
+
+单 击OK 完 成, 至 此 已 创 建 了Sample.dll 的 工 程 文 件 
+---- 2. 创 建Sample.def 文 件 
+
+在 菜 单 中 选 择File\New\Text File 
+
+输 入 以 下 完 代 码 后 保 存 文 件 名"Sample.def" 
+;Sample.def 
+     ;指出DLL的名字Sample,链接器将这个名 
+字放到DLL导入库中
+     LIBRARY Sample
+     ;定义导出函数ShowMe()为例
+     EXPORTS
+       ShowMe
+     ;def文件结束
+
+---- 3. 创 建Sample.cpp 
+
+.在菜单中选择File\New\C++ Source File项
+     .输入以下代码后保存文件名"Sample.cpp"
+     //Sample.cpp  
+     #include 
+     int ShowMe(void);
+     //DllEntryPoint为DLL入口点函数, 
+负责初试化并终止DLL
+     BOOL WINAPI DllEntryPoint(HINSTANCE 
+hDLL,DWORD dwReason,LPVOID Reserved)
+     {
+        switch(dwReason)
+        {
+        case DLL_PROCESS_ATTACH:
+                {
+                        break;
+                }
+        case DLL_PROCESS_DETACH:
+                {
+                        break;
+                }
+        }
+        return TRUE;
+     }
+   int ShowMe(void)
+   {
+        //蜂鸣器响一下
+        MessageBeep((WORD)-1);
+        MessageBox("你好!");
+        return 1;
+   }
+
+---- 4. 编 译DLL 文 件 ---- 从Build 菜 单 中 选 择Build Sample.DLL, 产
+ 生Sample.DLL 文 件, 以 后 就 可 以 随 时 调 用 了。 
+
+三. 在 应 用 程 序 中 调 用DLL 文 件
+---- 在 应 用 程 序 中 要 首 先 装 入DLL 后 才 能 调 用 导 出 表 中 的
+ 函 数, 例 如 用MFC 创 建 基 于 对 话 框 的 工 程Test, 并 在 对 话 框 
+上 放 置"Load" 按 钮, 你 就 必 须 添 加 装 载 代 码。 ---- 1. 首 先 在
+TestDlg.cpp 的 首 部 添 加 变 量 设 置 代 码: 
+
+//设置全局变量gLibSample用于存储DLL句柄
+    HINSTANCE gLibSample=NULL;
+//第二个变量ShowMe是指向DLL
+库中ShowMe()函数的指针
+    typedef int(* SHOWME)(void);
+    SHOWME ShowMe;
+
+    2.利用ClassWizard为"Load"按钮添加装载DLL的代码
+    Void CTestDlg::OnLoadButton()
+    {
+     //要添加的代码如下
+       if(gLibMyDLL!=NULL)
+         {
+          MessageBox("The Sample.DLL has already been load.");
+          return;
+         }
+       //装载Sample.dll,未加路径,将在 
+三个默认路径中寻找
+       gLibSample=LoadLibrary("SAMPLE.DLL"); 
+       //返回DLL中ShowMe()函数的地址
+       ShowMe=(SHOWME)
+GetProcAddress(gLibSample,"ShowMe");
+    //代码添加完毕
+    }
+
+---- 3. 只 要DLL 装 载 成 功, 在 应 用 程 序 中 就 可 以 直 接 调 用
+ShowMe() 函 数, 此 时 已 完 成 了 定 制 和 调 用DLL 的 全 部 过 程。 
+---- 本 程 序 在Windows95,VC++5.0 中 运 行 通 过。 
+ 
+    

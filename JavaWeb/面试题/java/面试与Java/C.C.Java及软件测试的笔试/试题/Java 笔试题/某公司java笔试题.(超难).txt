@@ -1,0 +1,68 @@
+某公司java笔试题.(超难)
+
+JAVA 招聘远程笔试题
+
+
+请完成以下题目
+
+1)现有Mysql数据库，写Spring + Hibernate的配置文件
+数据库IP url: 127.0.0.1 
+
+DataBase: db1
+用户名/密码 username/password
+表table1结构：
+id int (主键)
+name varchar
+请编写以下文件
+Spring的xml配置文件
+Hbm文件
+
+2)写一个webservice
+接口定义：
+String sayHello(String name,String age)
+
+请编写以下文件：
+WSDL文件：
+
+3)根据xml schema生成xml
+Schema文件定义如下：
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://mydomain.com/myApp" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mydomain.com/myApp" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:element name="e1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="e11" type="xs:int"/>
+<xs:element name="e12">
+<xs:complexType>
+<xs:attribute name="e121" type="xs:string" use="required"/>
+<xs:attribute name="e122" type="xs:long"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+
+请写用xmlBean生成jar包，并编写一个程序生成一个xml文件，其中e11=11 e121=”e121”，只需要给出这个程序。
+
+4)请写程序实现自动注册gmail的邮箱
+界面输入内容：
+用户名 / 密码 / 图片识别码 
+自动注册一个邮箱，如果能实现自动识别图片更佳
+
+5)写程序用模拟登录gmail，并设置转发
+界面输入内容：
+用户名 / 密码 / 转发邮箱
+登录gmail，设置邮件转发至 输入的转发邮箱地址
+
+6)写程序用pop3收取gmail的邮件
+界面输入内容
+用户名 / 密码
+收取邮箱的邮件，并解码后将标题显示出来
+
+注：
+?可使用各种开源的程序，
+?Gmail使用SSL，可用HttpClient 
+?javax.mail包支持用SSL连接POP3服务器并收取邮件
+?只要求在windows下运行，可使用JNI调开源的图片验证码识别模块
+?4、5、6三题在面试时需要现场运行

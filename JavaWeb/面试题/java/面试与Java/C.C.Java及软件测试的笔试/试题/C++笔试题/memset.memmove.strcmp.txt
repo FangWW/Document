@@ -1,0 +1,74 @@
+//memmove()功能将指针src指向的前n个字节拷贝到dest指向的前n个内存区域中
+//可能出现dest和scr内存重叠的情况，都进行了很好的处理，这也是和mencpy()的区别之处
+vord *memmove(void *dest,const void *src,size_t count)
+{
+    void *ret=dest;
+    if(dest<=src||dest>=src+count)
+    {
+        while(count--)
+            *dest++=*src++
+    }
+    else
+    {
+        dest+=count-1;
+        src+=count-1;
+        while(count--)
+            *dest--=*src--
+    }
+    return ret;
+}
+ 
+//void *memset(void *s,int c,int n)
+//用c填充由指针s指向的内存区域的前n个字节.返回指向该内存区域的指针s.s并不一定是指向字符的指针,
+//以是指向任何类型的指针,甚至可以是指向结构的指针.
+ 
+int memcmp (const void * buf1,const void * buf2, size_t count)
+{
+        if (!count)
+                return(0); 
+        while ( --count && *(char *)buf1 == *(char *)buf2 ) {
+                buf1 = (char *)buf1 + 1;
+                buf2 = (char *)buf2 + 1;
+        }
+        return( *((unsigned char *)buf1) - *((unsigned char *)buf2) );
+}
+ 
+char * strcat (char * dst, const char * src )
+{
+        char * cp = dst;
+        while( *cp )
+                cp++;                   /* find end of dst */
+        while( *cp++ = *src++ ) ;       /* Copy src to end of dst */
+        return( dst );                  /* return dst */ 
+}
+
+
+int strcmp (const char * src, const char * dst)
+{
+        int ret = 0 ;
+        while( ! (ret = *(unsigned char *)src - *(unsigned char *)dst) && *dst)
+                ++src, ++dst;
+        if ( ret < 0 )
+                ret = -1 ;
+        else if ( ret > 0 )
+                ret = 1 ;
+        return( ret );
+}
+
+void *memcpy(void *pvTo, const void *pvFrom, size_t size)
+
+{
+
+assert((pvTo != NULL) && (pvFrom != NULL)); // 使用断言
+
+byte *pbTo = (byte *) pvTo; // 防止改变pvTo的地址
+
+byte *pbFrom = (byte *) pvFrom; // 防止改变pvFrom的地址
+
+while(size -- > 0 )
+
+*pbTo ++ = *pbFrom ++ ;
+
+return pvTo;
+
+}

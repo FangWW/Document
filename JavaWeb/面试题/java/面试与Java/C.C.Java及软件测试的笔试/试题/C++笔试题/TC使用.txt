@@ -1,0 +1,292 @@
+二、 Turbo C 2.0集成开发环境的使用 
+
+进入Turbo C 2.0集成开发环境中后, 屏幕上显示: 
+──────────────────────────────
+　File Edit Run Compile Project Options Debug Break/watch
+┌────────────Ed i t──────────────┐
+│ Line 1 Col 1 Insert Indent Tab File Unindent c:NONAME.C │
+│ │
+│ │
+│ │
+│ │
+│ │
+│ │
+│ │
+│─────────Message─────────────── │
+│ │
+│ │
+└────────────────────────────┘
+F1-Help F5-Zoom F6-Switch F7-Trace F8-Step F9-Make F10-Menu
+───────────────────────────────
+其中顶上一行为Turbo C 2.0 主菜单, 中间窗口为编辑区, 接下来是信息窗口, 最底下一行为参考行。这四个窗口构成了Turbo C 2.0的主屏幕, 以后的编程、编译、调试以及运行都将在这个主屏幕中进行。下面详细介绍主菜单的内容。 
+
+1.主菜单
+
+　　主菜单在Turbo C 2.0主屏幕顶上一行, 显示下列内容:File Edit Run Compile Project Options Debug Break/watch
+
+　　除Edit外, 其它各项均有子菜单, 只要用Alt加上某项中第一个字母(即大写字母), 就可进入该项的子菜单中。 
+
+File (文件)菜单 ----按Alt+F可进入File菜单, 该菜单包括以下内容: 
+
+.Load (加载)
+装入一个文件, 可用类似DOS的通配符(如*.C)来进行列表选择。也可装入其它扩展名的文件, 只要给出文件名(或只给路径)即可。该项的热键为F3, 即只要在主菜单中按F3即可进入该项, 而不需要先进入File菜单再选此项。 
+
+.Pick (选择) 
+将最近装入编辑窗口的8个文件列成一个表让用户选择, 选择后将该程序装入编辑区, 并将光标置在上次修改过的地方。其热健为Alt-F3。 
+
+.New (新文件) 
+说明文件是新的, 缺省文件名为NONAME.C, 存盘时可改名。 
+
+.Save (存盘) 
+将编辑区中的文件存盘, 若文件名是NONAME.C时, 将询问是否更改文件名, 其热键为F2。 
+
+.Write to (存盘) 
+可由用户给出文件名将编辑区中的文件存盘, 若该文件已存在, 则询问要不要覆盖。 
+
+.Directory (目录) 
+显示目录及目录中的文件, 并可由用户选择。 
+
+.Change dir (改变目录) 
+显示当前目录, 用户可以改变显示的目录。 
+
+.Os shell (暂时退出) 
+暂时退出Turbo C 2.0到DOS提示符下, 此时可以运行DOS 命令, 若想回到Turbo C 2.0中, 只要在DOS状态下键入EXIT即可。 
+
+.Quit (退出) 
+退出Turbo C 2.0, 返回到DOS操作系统中, 其热键为Alt+X。 
+
+说明: 以上各项可用光标键移动色棒进行选择, 回车则执行。也可用每一项的第一个大写字母直接选择。若要退到主菜单或从它的下一级菜单列表框退回均可用Esc键,Turbo C 2.0所有菜单均采用这种方法进行操作, 以下不再说明。 
+
+Edit (编辑)菜单---按Alt+E可进入编辑菜单, 若再回车, 则光标出现在编辑窗口, 此时用户可以进行文本编辑。编辑方法基本与wordstar相同, 
+
+可用F1键获得有关编辑方法的帮助信息。与编辑有关的功能键如下: 
+F1 获得Turbo C 2.0编辑命令的帮助信息 
+F5 扩大编辑窗口到整个屏幕 
+F6 在编辑窗口与信息窗口之间进行切换 
+F10 从编辑窗口转到主菜单 
+
+编辑命令简介: 
+PageUp 向前翻页 
+PageDn 向后翻页 
+Home 将光标移到所在行的开始 
+End 将光标移到所在行的结尾 
+Ctrl+Y 删除光标所在的一行 
+Ctrl+T 删除光标所在处的一个词 
+Ctrl+KB 设置块开始 
+Ctrl+KK 设置块结尾 
+Ctrl+KV 块移动 
+Ctrl+KC 块拷贝 
+Ctrl+KY 块删除 
+Ctrl+KR 读文件 
+Ctrl+KW 存文件 
+Ctrl+KP 块文件打印 
+Ctrl+F1 如果光标所在处为Turbo C 2.0库函数, 则获得有关该函数的帮助信息 
+Ctrl+Q[ 查找Turbo C 2.0双界符的后匹配符 
+Ctrl+Q] 查找Turbo C 2.0双界符的前匹配符 
+说明: 
+a. Turbo C 2.0的双界符包括以下几种符号: 
+花括符 { } 
+尖括符 < > 
+圆括符 ( ) 
+方括符 [ ] 
+注释符 /* */ 
+双引号 " 
+单引号 '' 
+Turbo C 2.0在编辑文件时还有一种功能, 就是能够自动缩进, 即光标定位和上一个非空字符对齐。在编辑窗口中, Ctrl+OL为自动缩进开关的控制键。
+
+Run (运行)菜单---按Alt+R可进入Run菜单, 该菜单有以下各项: 
+
+.Run (运行程序) 
+运行由Project/Project name项指定的文件名或当前编辑区的文件。如果对上次编译后的源代码未做过修改, 则直接运行到下一个断点(没有断点则运行到结束)。否则先进行编译、连接后才运行, 其热键为Ctrl+F9。 
+
+.Program reset (程序重启) 
+中止当前的调试, 释放分给程序的空间, 其热键为Ctrl+F2。 
+
+.Go to cursor (运行到光标处) 
+调试程序时使用, 选择该项可使程序运行到光标所在行。光标所在行必须为一条可执行语句, 否则提示错误。其热键为F4。 
+
+.Trace into (跟踪进入) 
+在执行一条调用其它用户定义的子函数时, 若用Trace into项, 则执行长条将跟踪到该子函数内部去执行, 其热键为F7。 
+
+.Step over (单步执行) 
+执行当前函数的下一条语句, 即使用户函数调用, 执行长条也不会跟踪进函数内部, 其热键为F8。 
+
+.User screen (用户屏幕) 
+显示程序运行时在屏幕上显示的结果。其热键为Alt+F5。 
+
+Compile (编译)菜单---按Alt+C可进入Compile菜单, 该菜单有以下几个内容: 
+
+.Compile to OBJ (编译生成目标码) 
+将一个C源文件编译生成.OBJ目标文件, 同时显示生成的文件名。其热键为Alt+F9。 
+
+.Make EXE file (生成执行文件) 
+此命令生成一个.EXE的文件, 并显示生成的.EXE文件名。其中.EXE文件名是下面几项之一。 
+a. 由Project/Project name说明的项目文件名。 
+b. 若没有项目文件名, 则由Primary C file说明的源文件。 
+c. 若以上两项都没有文件名, 则为当前窗口的文件名。 
+
+.Link EXE file (连接生成执行文件) 
+把当前.OBJ文件及库文件连接在一起生成.EXE文件。 
+
+.Build all (建立所有文件) 
+重新编译项目里的所有文件, 并进行装配生成.EXE文件。该命令不作过时检查(上面的几条命令要作过时检查, 即如果目前项目里源文件的日期和时间与目标文件相同或更早, 则拒绝对源文件进行编译)。 
+
+.Primary C file (主C文件) 
+当在该项中指定了主文件后, 在以后的编译中, 如没有项目文件名则编译此项中规定的主C文件, 如果编译中有错误, 则将此文件调入编辑窗口, 不管目前窗口中是不是主C文件。 
+
+.Get info 
+获得有关当前路径、源文件名、源文件字节大小、编译中的错误数目、可用空间等信息。 
+
+Project (项目)菜单---按Alt+P可进入Project菜单, 该菜单包括以下内容: 
+
+.Project name (项目名) 
+项目名具有.PRJ的扩展名, 其中包括将要编译、连接的文件名。例如有一个程序由file1.c, file2.c, file3.c组成, 要将这3个文件编译装配成一个file.exe的执行文件, 可以先建立一个file.prj的项目文件, 其内容如下: 
+file1.c file2.c file3.c 
+此时将file.prj放入Project name项中, 以后进行编译时将自动对项目文件中规定的三个源文件分别进行编译。然后连接成file.exe文件。如果其中有些文件已经编译成.OBJ文件, 而又没有修改过, 可直接写上.OBJ扩 展名。此时将不再编译而只进行连接。例如: file1.obj file2.c file3.c 将不对file1.c进行编译, 而直接连接。 说明: 当项目文件中的每个文件无扩展名时, 均按源文件对待, 另外, 其中的文件也可以是库文件, 但必须写上扩展名.LIB。 
+
+.Break make on (中止编译) 
+由用户选择是否在有Warining(警告)、Errors(错误)、Fatal Errors( 致命错误)时或Link(连接)之前退出Make编译。 
+
+.Auto dependencies (自动依赖) 
+当开关置为on, 编译时将检查源文件与对应的.OBJ文件日期和时间, 否则不进行检查。 
+
+.Clear project (清除项目文件) 
+清除Project/Project name中的项目文件名。 
+
+.Remove messages (删除信息) 
+把错误信息从信息窗口中清除掉。 
+
+Options (选择菜单) ---按Alt+O可进入Options菜单, 该菜单对初学者来说要谨慎使用。 
+
+.Compiler (编译器) 
+本项选择又有许多子菜单, 可以让用户选择硬件配置、存储模型、调试技术、代码优化、对话信息控制和宏定义。这些子菜单如下: Model 共有Tiny, small, medium, compact, large, huge 六种不同模式可由同户选择。 
+Define 打开一个宏定义框, 同户可输入宏定义。多重定义可同分号, 赋值可用等号。 
+Code generation 它又有许多任选项, 这些任选项告诉编译器产生什么样的目标代码。 
+Calling convention 可选择C或Pascal方式传递参数。 
+Instruction set 可选择8088/8086或80186/80286指令系列。 
+Floating point 可选择仿真浮点、数学协处理器浮点或无浮点运算。 
+Default char type 规定char的类型。 
+Alignonent 规定地址对准原则。 
+Merge duplicate strings 作优化用, 将重复的字符串合并在一起。 
+Standard stack frame 产生一个标准的栈结构。 
+Test stack overflow 产生一段程序运行时检测堆栈溢出的代码。 
+Line number 在.OBJ文件中放进行号以供调试时用。 
+OBJ debug information 在.OBJ文件中产生调试信息。 
+Optimization
+Optimize for 选择是对程序小型化还是对程序速度进行优化处理。 
+Use register variable 用来选择是否允许使用寄存器变量。 
+Register optimization 尽可能使用寄存器变量以减少过多的取数操作。 
+Jump optimization 　　通过去除多余的跳转和调整循环与开关语句的办法, 压缩代码。 
+Source 
+Indentifier length 说明标识符有效字符的个数, 默认为32个。 
+Nested comments 是否允许嵌套注释。 
+ANSI keywords only 　是只允许ANSI关键字还是也允许Turbo C 2.0关键字 
+Error 
+Error stop after 多少个错误时停止编译, 默认为25个。 
+Warning stop after　　　 多少个警告错误时停止编译, 默认为100个。 
+Display warning 
+Portability warning 移植性警告错误。 
+ANSI Violations 侵犯了ANSI关键字的警告错误。 
+Common error 常见的警告错误。 
+Less common error 少见的警告错误。 
+Names 用于改变段(segment)、 组( group) 和类(class)的名字, 默认值为CODE,DATA,BSS。 
+
+.Linker (连接器) 
+本菜单设置有关连接的选择项, 它有以下内容: 
+Map file menu 选择是否产生.MAP文件。 
+Initialize segments 是否在连接时初始化没有初始化的段。 
+Devault libraries 是否在连接其它编译程序产生的目标文件时去寻找其缺省库。 
+Graphics library 是否连接graphics库中的函数。 
+Warn duplicate symbols 当有重复符号时产生警告信息。 
+Stack warinig 是否让连接程序产生No stack的警告信息。 
+Case-sensitive link 是否区分大、小写字。 
+
+.Environment (环境) 
+本菜单规定是否对某些文件自动存盘及制表键和屏幕大小的设置
+Message tracking 
+
+Current file 跟踪在编辑窗口中的文件错误。 
+
+All files 跟踪所有文件错误。 
+
+Off 不跟踪。 
+
+Keep message 编译前是否清除Message窗口中的信息。 
+
+Config auto save 选on时, 在Run, Shell或退出集成开发环境之前,如果Turbo C 2.0的配置被改过, 则所做 的改动将存入配置文件中。选off时不存。 
+
+Edit auto save 是否在Run或Shell之前, 自动存储编辑的源文件。 
+
+Backup file 是否在源文件存盘时产生后备文件(.BAK文件)。 
+
+Tab size 设置制表键大小, 默认为8。 
+
+Zoomed windows 将现行活动窗口放大到整个屏幕, 其热键为F5。 
+
+Screen size 设置屏幕文本大小。 
+
+.Directories (路径) 
+规定编译、连接所需文件的路径, 有下列各项: 
+Include directories 包含文件的路径, 多个子目录用";"分开。 
+Library directories 库文件路径, 多个子目录用";"分开。 
+Output directoried 输出文件(.OBJ, .EXE, .MAP文件)的目录。 
+Turbo C directoried Turbo C 所在的目录。 
+Pick file name 定义加载的pick文件名, 如不定义则从current pick file中取。 
+
+.Arguments (命令行参数) 
+允许用户使用命令行参数。 
+
+.Save options (存储配置) 
+保存所有选择的编译、连接、调试和项目到配置文件中, 缺省的配置文件为TCCONFIG.TC。 
+
+.Retrive options 装入一个配置文件到TC中, TC将使用该文件的选择项。 
+
+Debug (调试)菜单
+
+---按Alt+D可选择Debug菜单, 该菜单主要用于查错, 它包括以下内容: 
+
+.Evaluate 
+
+.Expression 要计算结果的表达式。 
+
+.Result 显示表达式的计算结果。 
+
+.New value 赋给新值。 
+
+.Call stack 该项不可接触。而在Turbo C debuger 时用于检查堆栈情况。 
+
+.Find function 在运行Turbo C debugger时用于显示规定的函数。 
+
+.Refresh display 如果编辑窗口偶然被用户窗口重写了可用此恢复编辑窗口的内容。 
+
+Break/watch (断点及监视表达式)
+
+---按Alt+B可进入Break/watch菜单, 该菜单有以下内容: 
+
+. Add watch 向监视窗口插入一监视表达式。 
+
+.Delete watch 从监视窗口中删除当前的监视表达式。 
+
+.Edit watch 在监视窗口中编辑一个监视表达式。 
+
+.Remove all watches 从监视窗口中删除所有的监视表达式。 
+
+.Toggle breakpoint 对光标所在的行设置或清除断点。 
+
+. Clear all breakpoints 清除所有断点。 
+
+. View next breakpoint 将光标移动到下一个断点处。 
+
+三、Turbo C 2.0的配置文件
+
+
+所谓配置文件是包含Turbo C 2.0有关信息的文件, 其中存有编译、连接的选择和路径等信息。可以用下述方法建立Turbo C 2.0的配置: 
+
+1. 建立用户自命名的配置文件 
+可以从Options菜单中选择Options/Save options命令, 将当前集成开发环境的所有配置存入一个由用户命名的配置文件中。下次启动TC时只要在DOS下键入: tc/c <用户命名的配置文件就会按这个配置文件中的内容作为Turbo C 2.0的选择。 
+
+2. 若设置Options/Environment/Config auto save 为on, 则退出集成开发环境时, 当前的设置会自动存放到Turbo C 2.0配置文件TCCONFIG.TC中。Turbo C 在启动时会自动寻找这个配置文件。 
+
+3. 用TCINST设置Turbo C的有关配置, 并将结果存入TC.EXE中。Turbo C 在启动时, 若没有找到配置文件, 则取TC.EXE中的缺省值。 
+
+

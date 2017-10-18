@@ -1,0 +1,283 @@
+    
+::首页 >> 文档中心 >> 在线杂志 >> 多任务(多进程、多线程) [ 在线杂志 第49期 ]  
+
+
+
+ 
+ [ 原创文档 本文适合中级读者 已阅读14578次 ]   文档 代码 工具   
+
+多线程编程之二——MFC中的多线程开发
+
+作者：韩耀旭
+
+下载源代码
+
+五、MFC对多线程编程的支持
+
+　　MFC中有两类线程，分别称之为工作者线程和用户界面线程。二者的主要区别在于工作者线程没有消息循环，而用户界面线程有自己的消息队列和消息循环。
+　　工作者线程没有消息机制，通常用来执行后台计算和维护任务，如冗长的计算过程，打印机的后台打印等。用户界面线程一般用于处理独立于其他线程执行之外的用户输入，响应用户及系统所产生的事件和消息等。但对于Win32的API编程而言，这两种线程是没有区别的，它们都只需线程的启动地址即可启动线程来执行任务。
+　　在MFC中，一般用全局函数AfxBeginThread()来创建并初始化一个线程的运行，该函数有两种重载形式，分别用于创建工作者线程和用户界面线程。两种重载函数原型和参数分别说明如下： 
+
+(1) CWinThread* AfxBeginThread(AFX_THREADPROC pfnThreadProc,
+                      LPVOID pParam,
+                      nPriority=THREAD_PRIORITY_NORMAL,
+                      UINT nStackSize=0,
+                      DWORD dwCreateFlags=0,
+                      LPSECURITY_ATTRIBUTES lpSecurityAttrs=NULL);
+
+PfnThreadProc:指向工作者线程的执行函数的指针，线程函数原型必须声明如下： UINT ExecutingFunction(LPVOID pParam);
+
+请注意，ExecutingFunction()应返回一个UINT类型的值，用以指明该函数结束的原因。一般情况下，返回0表明执行成功。
+pParam：传递给线程函数的一个32位参数，执行函数将用某种方式解释该值。它可以是数值，或是指向一个结构的指针，甚至可以被忽略； 
+nPriority：线程的优先级。如果为0，则线程与其父线程具有相同的优先级； 
+nStackSize:线程为自己分配堆栈的大小，其单位为字节。如果nStackSize被设为0，则线程的堆栈被设置成与父线程堆栈相同大小； 
+dwCreateFlags：如果为0，则线程在创建后立刻开始执行。如果为CREATE_SUSPEND，则线程在创建后立刻被挂起； 
+lpSecurityAttrs：线程的安全属性指针，一般为NULL； 
+ (2) CWinThread* AfxBeginThread(CRuntimeClass* pThreadClass,
+                      int nPriority=THREAD_PRIORITY_NORMAL,
+                      UINT nStackSize=0,
+                      DWORD dwCreateFlags=0,
+                      LPSECURITY_ATTRIBUTES lpSecurityAttrs=NULL);
+
+
+　　pThreadClass 是指向 CWinThread 的一个导出类的运行时类对象的指针，该导出类定义了被创建的用户界面线程的启动、退出等；其它参数的意义同形式1。使用函数的这个原型生成的线程也有消息机制，在以后的例子中我们将发现同主线程的机制几乎一样。
+
+下面我们对CWinThread类的数据成员及常用函数进行简要说明。
+
+m_hThread：当前线程的句柄； 
+m_nThreadID:当前线程的ID； 
+m_pMainWnd：指向应用程序主窗口的指针 
+BOOL CWinThread::CreateThread(DWORD dwCreateFlags=0,
+UINT nStackSize=0,
+LPSECURITY_ATTRIBUTES lpSecurityAttrs=NULL);
+
+　　该函数中的dwCreateFlags、nStackSize、lpSecurityAttrs参数和API函数CreateThread中的对应参数有相同含义，该函数执行成功，返回非0值，否则返回0。
+　　一般情况下，调用AfxBeginThread()来一次性地创建并启动一个线程，但是也可以通过两步法来创建线程：首先创建CWinThread类的一个对象，然后调用该对象的成员函数CreateThread()来启动该线程。 
+
+virtual BOOL CWinThread::InitInstance();
+
+　　重载该函数以控制用户界面线程实例的初始化。初始化成功则返回非0值，否则返回0。用户界面线程经常重载该函数，工作者线程一般不使用InitInstance()。 virtual int CWinThread::ExitInstance();
+
+　　在线程终结前重载该函数进行一些必要的清理工作。该函数返回线程的退出码，0表示执行成功，非0值用来标识各种错误。同InitInstance()成员函数一样，该函数也只适用于用户界面线程。 
+六、MFC多线程编程实例
+
+　　在Visual C++ 6.0编程环境中，我们既可以编写C风格的32位Win32应用程序，也可以利用MFC类库编写C++风格的应用程序，二者各有其优缺点。基于Win32的应用程序执行代码小巧，运行效率高，但要求程序员编写的代码较多，且需要管理系统提供给程序的所有资源；而基于MFC类库的应用程序可以快速建立起应用程序，类库为程序员提供了大量的封装类，而且Developer Studio为程序员提供了一些工具来管理用户源程序，其缺点是类库代码很庞大。由于使用类库所带来的快速、简捷和功能强大等优越性，因此除非有特殊的需要，否则Visual C++推荐使用MFC类库进行程序开发。
+
+我们知道，MFC中的线程分为两种：用户界面线程和工作者线程。我们将分别举例说明。
+
+用 MFC 类库编程实现工作者线程
+
+例程5 MultiThread5
+
+为了与Win32 API对照，我们使用MFC 类库编程实现例程3 MultiThread3。
+
+建立一个基于对话框的工程MultiThread5，在对话框IDD_MULTITHREAD5_DIALOG中加入一个编辑框IDC_MILLISECOND，一个按钮IDC_START，标题为“开始” ，一个进度条IDC_PROGRESS1； 
+打开ClassWizard，为编辑框IDC_MILLISECOND添加int型变量m_nMilliSecond，为进度条IDC_PROGRESS1添加CProgressCtrl型变量m_ctrlProgress； 
+在MultiThread5Dlg.h文件中添加一个结构的定义： struct threadInfo
+{
+	UINT nMilliSecond;
+	CProgressCtrl* pctrlProgress;
+};
+
+线程函数的声明：UINT ThreadFunc(LPVOID lpParam); 
+注意，二者应在类CMultiThread5Dlg的外部。
+
+在类CMultiThread5Dlg内部添加protected型变量：
+
+CWinThread* pThread; 
+在MultiThread5Dlg.cpp文件中进行如下操作：定义公共变量：threadInfo Info; 
+双击按钮IDC_START，添加相应消息处理函数：
+
+void CMultiThread5Dlg::OnStart() 
+{
+	// TODO: Add your control notification handler code here
+
+	UpdateData(TRUE);
+	Info.nMilliSecond=m_nMilliSecond;
+	Info.pctrlProgress=&m_ctrlProgress;
+
+	pThread=AfxBeginThread(ThreadFunc,
+		&Info);
+}
+
+在函数BOOL CMultiThread3Dlg::OnInitDialog()中添加语句： {
+	……
+	
+	// TODO: Add extra initialization here
+	m_ctrlProgress.SetRange(0,99);
+	m_nMilliSecond=10;
+	UpdateData(FALSE);
+	return TRUE;  // return TRUE  unless you set the focus to a control
+}
+
+添加线程处理函数： UINT ThreadFunc(LPVOID lpParam)
+{
+	threadInfo* pInfo=(threadInfo*)lpParam;
+	for(int i=0;i<100;i++)
+	{
+		int nTemp=pInfo->nMilliSecond;
+
+		pInfo->pctrlProgress->SetPos(i);
+
+		Sleep(nTemp);
+	}
+	return 0;
+}
+用 MFC 类库编程实现用户界面线程
+
+创建用户界面线程的步骤：
+
+使用ClassWizard创建类CWinThread的派生类（以CUIThread类为例） class CUIThread : public CWinThread
+{
+	DECLARE_DYNCREATE(CUIThread)
+protected:
+	CUIThread();           // protected constructor used by dynamic creation
+
+// Attributes
+public:
+
+// Operations
+public:
+
+// Overrides
+	// ClassWizard generated virtual function overrides
+	//{{AFX_VIRTUAL(CUIThread)
+	public:
+	virtual BOOL InitInstance();
+	virtual int ExitInstance();
+	//}}AFX_VIRTUAL
+
+// Implementation
+protected:
+	virtual ~CUIThread();
+
+	// Generated message map functions
+	//{{AFX_MSG(CUIThread)
+		// NOTE - the ClassWizard will add and remove member functions here.
+	//}}AFX_MSG
+
+	DECLARE_MESSAGE_MAP()
+};
+
+重载函数InitInstance()和ExitInstance()。 BOOL CUIThread::InitInstance()
+{
+	CFrameWnd* wnd=new CFrameWnd;
+	wnd->Create(NULL,"UI Thread Window");
+	wnd->ShowWindow(SW_SHOW);
+	wnd->UpdateWindow();
+	m_pMainWnd=wnd;
+	return TRUE;
+}
+
+创建新的用户界面线程 void CUIThreadDlg::OnButton1() 
+{
+	CUIThread* pThread=new CUIThread();
+	pThread->CreateThread();
+}
+
+请注意以下两点：
+
+A、在UIThreadDlg.cpp的开头加入语句： #include "UIThread.h"
+B、把UIThread.h中类CUIThread()的构造函数的特性由 protected 改为 public。
+　　用户界面线程的执行次序与应用程序主线程相同，首先调用用户界面线程类的InitInstance()函数，如果返回TRUE，继续调用线程的Run()函数，该函数的作用是运行一个标准的消息循环，并且当收到WM_QUIT消息后中断，在消息循环过程中，Run()函数检测到线程空闲时（没有消息），也将调用OnIdle()函数，最后Run()函数返回，MFC调用ExitInstance()函数清理资源。
+　　你可以创建一个没有界面而有消息循环的线程，例如：你可以从CWinThread派生一个新类，在InitInstance函数中完成某项任务并返回FALSE，这表示仅执行InitInstance函数中的任务而不执行消息循环，你可以通过这种方法，完成一个工作者线程的功能。 
+
+例程6 MultiThread6
+
+建立一个基于对话框的工程MultiThread6，在对话框IDD_MULTITHREAD6_DIALOG中加入一个按钮IDC_UI_THREAD，标题为“用户界面线程” 
+右击工程并选中“New Class…”为工程添加基类为CWinThread派生线程类CUIThread。 
+给工程添加新对话框IDD_UITHREADDLG，标题为“线程对话框”。 
+为对话框IDD_UITHREADDLG创建一个基于CDialog的类CUIThreadDlg。使用ClassWizard为CUIThreadDlg类添加WM_LBUTTONDOWN消息的处理函数OnLButtonDown，如下： void CUIThreadDlg::OnLButtonDown(UINT nFlags, CPoint point) 
+{
+	AfxMessageBox("You Clicked The Left Button!");
+	CDialog::OnLButtonDown(nFlags, point);
+}
+在UIThread.h中添加 #include "UIThreadDlg.h"
+并在CUIThread类中添加protected变量CUIThread m_dlg： class CUIThread : public CWinThread
+{
+	DECLARE_DYNCREATE(CUIThread)
+protected:
+	CUIThread();           // protected constructor used by dynamic creation
+
+// Attributes
+public:
+
+// Operations
+public:
+
+// Overrides
+	// ClassWizard generated virtual function overrides
+	//{{AFX_VIRTUAL(CUIThread)
+	public:
+	virtual BOOL InitInstance();
+	virtual int ExitInstance();
+	//}}AFX_VIRTUAL
+
+// Implementation
+protected:
+	CUIThreadDlg m_dlg;
+	virtual ~CUIThread();
+
+	// Generated message map functions
+	//{{AFX_MSG(CUIThread)
+		// NOTE - the ClassWizard will add and remove member functions here.
+	//}}AFX_MSG
+
+	DECLARE_MESSAGE_MAP()
+};
+
+分别重载InitInstance()函数和ExitInstance()函数： BOOL CUIThread::InitInstance()
+{
+	m_dlg.Create(IDD_UITHREADDLG);
+	m_dlg.ShowWindow(SW_SHOW);
+	m_pMainWnd=&m_dlg;
+	return TRUE;
+}
+
+int CUIThread::ExitInstance()
+{
+	m_dlg.DestroyWindow();
+	return CWinThread::ExitInstance();
+}
+
+双击按钮IDC_UI_THREAD，添加消息响应函数： void CMultiThread6Dlg::OnUiThread() 
+{
+	CWinThread *pThread=AfxBeginThread(RUNTIME_CLASS(CUIThread));
+}
+
+并在MultiThread6Dlg.cpp的开头添加： #include "UIThread.h"
+
+　　好了，编译并运行程序吧。每单击一次“用户界面线程”按钮，都会弹出一个线程对话框，在任何一个线程对话框内按下鼠标左键，都会弹出一个消息框。
+
+（未完待续） 
+
+本文关联的其它文章
+
+多线程编程之一——问题提出 
+多线程编程之三——线程间通讯 　 
+多线程编程之四——线程的同步 　 
+ 
+ 
+
+
+
+
+最新评论 [发表评论] [文章投稿]  查看所有评论  推荐给好友  打印 
+
+ 各位大哥，在MultiThread6中如何处理在进程没退出之前，终止线程的执行（用户界面线程窗口已关闭，但是线程还存活 spy++可查看）。 ( fengminggao 发表于 2006-12-6 22:08:00)
+ 
+ 的确非常不错。完整的看过文章，并且按照例子做下来，就基本上掌握了多线程！ ( 梦龙 发表于 2006-11-15 21:18:00)
+ 
+ 写的非常好，这真是菜鸟们的福音，例子也非常好，简单易懂！非常感谢作者，希望能写出更多的好文章！
+
+这里，我找一个很小的缺陷：在MFC工作线程函数中，int nTemp=pInfo->nMilliSecond; 放到 for 语句前更合适。
+ ---- 杭州 至尊宝 zaodt_ms@hotmail.com ( zaodt 发表于 2006-11-15 10:23:00)
+ 
+.......................................................
+More...  
+
+
+
+
+版权所有 ? 2006 VC知识库  
+

@@ -1,0 +1,488 @@
+1.new delete malloc free
+delete会调用对象的析构函数,和new对应free只会释放内存，
+new调用构造函数。
+malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。它们都可用于申请动态内存和释放内存。  
+  对于非内部数据类型的对象而言，光用maloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以及一个能完成清理与释放内存工作的运算符delete。注意new/delete不是库函数。
+
+2.delete与 delete []区别：
+delete只会调用一次析构函数，而delete[]会调用每一个成员的析构函数。 
+在MoreEffectiveC++中有更为详细的解释：   
+“当delete操作符用于数组时，它为每个数组元素调用析构函数，然后调用operator   delete来释放内存。”  
+delete与New配套，delete []与new []配套
+  MemTest   *mTest1   =   new   MemTest[10];   
+  MemTest   *mTest2   =   new   MemTest;   
+  int   *pInt1   =   new   int[10];   
+  int   *pInt2   =   new   int;   
+    
+  delete   []pInt1;     //-1-   
+  delete   []pInt2;     //-2-   
+  delete   []mTest1;   //-3-   
+  delete   []mTest2;   //-4-   
+  在-4-处报错。   
+   这就说明：对于内建简单数据类型，delete和delete[]功能是相同的。对于自定义的复杂数据类型，delete和delete[]不能互用。   
+delete[]   删除一个数组，delete删除一个指针   
+  简单来说，用new   分配的内存用delete删除   
+  用new[]分配的内存用delete[]删除   
+delete   []会调用数组元素的析构函数。   内部数据类型没有析构函数，所以问题不大。
+如果你在用delete时没用括号，delete就会认为指向的是单个对象，否则，它就会认为指向的是一个数组
+
+3.C C++ JAVA共同点，不同之处
+
+4.继承优缺点。
+类继承是在编译时刻静态定义的，且可直接使用，类继承可以较方便地改变父类的实现。但是类继承也有一些不足之处。首先，因为继承在编译时刻就定义了，所以无法在运行时刻改变从父类继承的实现。更糟的是，父类通常至少定义了子类的部分行为，父类的任何改变都可能影响子类的行为。如果继承下来的实现不适合解决新的问题，则父类必须重写或被其他更适合的类替换。这种依赖关系限制了灵活性并最终限制了复用性。
+（待补充）
+
+5.C++有哪些性质（面向对象特点）
+
+6.子类析构时要调用父类的析构函数吗？
+析构函数调用的次序是先派生类的析构后基类的析构，也就是说在基类的的析构调用的时候,派生类的信息已经全部销毁了
+定义一个对象时先调用基类的构造函数、然后调用派生类的构造函数；   
+  析构的时候恰好相反：先调用派生类的析构函数、然后调用基类的析构函数
+JAVA无析构函数
+深拷贝和浅拷贝 
+
+7.多态，虚函数，纯虚函数
+
+4面笔试题
+1阅读理解：某函数的使用方法；对象的使用过程，对象声明，创建实例用NEW；找语意上下文不符的一句
+2KMP算法填空
+3程序改错：参数顺序，if（值），---
+4图行矩阵：乘以一个矩阵后图形X轴、Y轴、Z轴对称，放大或平移
+5设计：代码行统计，字数统计的过滤条件
+
+应聘java:OSI七层协议，排序算法，数据结构，二叉树，链表，算法效率和优劣
+JAVA类的是Java基础和kjava的合卷，我只做了前面的 
+一共是7个题目，4个选择题，一个问答题，一个读程题，一个编程题 
+第一个题目是考String的用法: 
+选出用法错误的:  
+a: Stirng a ="Gone With Wind"; 
+   String t= "Wind"; 
+   String m; 
+   m=a-t; 
+B: Stirng a ="Gone With Wind"; 
+   String m ; 
+   m=a[3]+"one"; 
+C: Stirng a ="Gone With Wind"; 
+   Sting m; 
+   m=a.toUpperCase(); 
+D: 不记得了 
+第2题考的是变量赋值用法: 
+选出能正确赋值的: 
+ public class A { 
+ private int a; 
+  public void change(int m) { 
+    return m;   
+  }  
+   
+} 
+public class B extend A{ 
+  public int b;  
+ public static void main() { 
+   A  aa = new A(); 
+   B  bb = new B(); 
+   int k;  
+  //px 
+  } 
+} 
+在px处可以正确赋值的有: 
+  A k= m; B k=b; C k=aa.a; D k=bb.change(30);  E k=bb.a 
+第3题是考位运算的 
+第4题考的是垃圾回收的 
+具体的选项不记得了 
+5.问答题: 实现线程有两种用法,分别为: ____________和____________ 
+他们之间有什么区别 
+6.读程题: 
+ class testA { 
+   public testA(){ 
+    a1(); 
+  } 
+   public void a1() { 
+     System.out.println("A-a1"); 
+   } 
+    
+ } 
+  
+ public class testB extends testA{ 
+   int bb=0; 
+   public testB() { 
+    bb=1000; 
+   } 
+   public void a1() { 
+    System.out.println("bb is"+bb); 
+     System.out.println("B-a1"); 
+   } 
+   public static void main(String[] args) { 
+     new testB(); 
+   } 
+  
+ } 
+  c:>java testB 的结果是: 
+ 7.编程题 
+  一个short型数组, 另有一个byte型数组,存储了若干short型的数,存放时short型数的低 
+位在前, 那么写一段程序,将byte数组转换为short数组 
+  (原题的标准表述不记得了,大致就是这个意思,我觉得这个有点意思,我觉得转换时应该 
+考虑当byte为负数的时候) 
+    
+  public short[] ConvertToShort(byte[] inputData) { 
+  //补全代码 
+  } 
+ JAVA手机的题目没有作， 
+ 上面是笔试的题目 
+
+
+词霸的研发工程师。词霸的笔试题目对编程要求比较高。
+
+第一题是一段英文阅读题，主要内容是关于COM的，后面有三道判断题，题目也是英文的，我想应该是考察应聘者的专业英文水平。我英文不是太好，虽然基本每句话能大概了解意思，题目仍然做不出。我想应该在大学学习中学习一些课外的知识会比较好，不要求会用，只要能了解其大概，基本工作原理，特性什么的就行，这题应该就很容易答出来。
+
+第二题～第四题是算法编程题，应该是考察应聘者的基本专业素质
+
+第二题的内容是：输入自然数n，打印1～n的所有质数。写出算法思路、函数实现、如何优化时间复杂度。
+个人感觉这道题是比较简单的。最为比较常见的算法，应该掌握。
+
+第三题的内容是：高精度乘法，输入不大于256位的正整数，计算其结果，并显示计算过程（乘法竖式），写出算法思路、函数实现
+比如11×11＝121，应显示为：
+11
+× 11
+——————
+11
+11
+——————
+121
+这道题跟我以前的数据结构实验的一道题类似，当时要求使用链表，我没有选这道题，所以见到这道题我不太会做，只写了一下算法思路。
+
+第四题是：已存在一组数据，若数据个数小于两个则程序结束，若不是，则选择一个中间点，将数据分成两组，比中间点小的放在一组，其余的放在一组。并对并对两组数据排序。
+这道题应该是测试评聘者的基本素质，对经典排序算法的掌握程度。我对这些算法却仅仅是了解，建议大家一点要练到熟练写出的程度，可以节省很多时间。
+
+第五题是VC++改错题，由于前边时间耽误的太多，没时间做了。应该考察的是应聘者对C++语言的语法熟悉程度。
+
+第六题是操作系统的题目，是关于死锁的。不知做得对不对，但感觉上不是很难。
+
+第七题是汇编题，本题有两道题，后一题是选做题。
+前一题好象是说子程序的调用又要有汇编语句的支持，不同的编译器、操作系统等都有不同的隐式约定，简述你了解的一种。我对汇编不熟，而且学校学的是16位汇编，且好像没叫过题目说的东西，所以此题放弃。
+后一题是现有一段英文简述64位汇编，之后问64汇编按英文简述的那样有什么优势？
+
+今天去笔试金山了，出的题不算难，很基本，但是答好也根本就不容易
+c语言中我们常用的memcpy(),memset(),memmove()等这些函数的实现细节平时有几个人能去把他弄明白哩……
+反正我是没弄清楚，呵呵，今天晚上就出了memmove()的实现
+
+第一个题目关键是运用模块化 ， 我当时就是不知道 ，一看比较简单，就直接写了下去，结果后来发现重复写的太多，已经写满了卷上的空白，没办法改了，结果就郁闷了 ，就是按照规则打印一些东西，看上去在main里边就能搞定，谁知道........ 哎  不提了 
+第二个题目是一个编写函数题 ， 就是考的是数组和指针的互用
+第三个题目是一个考C++构造函数和继承 比较简单，不说了
+剩下三个汇编题目  都是WIN32汇编，只记得有一个是写了一个函数，然后问是哪种调用方式 
+stdcall  ，c，还是pasical  ，就是根据参数进栈次序和清栈方式来进行判断
+忘说了 ，最前面还有一个选择题，是英文的， 考的是C++
+
+ 1.第一题英文阅读理解，好像是从msdn中，复制了一段关于COblist的，让你选择3个答案   
+  2.编程题；有a,b,c,d四个整数，从这四个数中，取一个数，2个数，3个数，4个   
+  数，不能重复，问多少中情况，每一种得到数的和有多少不同的，列出分布情况   
+  3。考你虚函数和重载的，   
+  4.   改错题，关于动态分配，赋值操作这方面的东西   
+  5.   论述题，谈谈你怎么开始一个新程序，具体机不起来的   
+  ：）   只要你c++基础知识扎实，这些题还是很简单
+
+class   Value   
+{   
+public:   
+    Value(int   nVal)     {m_nVal=nVal;printf("Call   Value::Value(int   nValue)\n");}   
+    ~Value()   {printf("Call   Value::~Value()\n");}   
+    Value&   operator=(int   nVal)   
+    {   
+       m_nVal=nVal;   
+       printf("Call   Value::operator=\n");   
+       return   *this;   
+    }   
+    void   Dump()     {printf("Value::m_nVal=%d\n",m_nVal);}   
+protected:   
+    int   m_nVal;   
+};   
+ 
+class   Base   
+{   
+public:   Base()   {Init();}   
+        virtual   ~Base()   {Release();}   
+        virtual   void   Init()       {printf("Call   Base::Init()\n");}   
+        virtual   void   Release()     {printf("Call   Base::Release()\n");}   
+        virtual   void   Dump()     {printf("Call   Base::Dump()\n");}   
+};   
+ 
+class   Derive:public   Base   
+{   
+public:Derive()     {printf("Call   Derive::Derive()\n");}   
+       ~Derive()         {printf("Call   Derive::~Derive()\n");}   
+       virtual   void   Init()       {m_Val=2;printf("Call   Derive::Init()\n");}   
+       virtual   void   Release()     {printf("Call   Derive::Release()\n");}   
+       virtual   void   Dump()     {m_Val.Dump();}   
+protected:   
+    static   Value   m_Val;   
+};   
+ 
+Value   Derive::m_Val=0;   
+ 
+void   DestroyObj(Base*   pOb)   
+{   
+    pOb->Dump();   
+    delete   pOb;   
+}   
+ 
+void   main()   
+{   
+    Derive   *pOb=new   Derive;   
+    DestroyObj(pOb);   
+} 
+写出输出结果
+Call   Value::Value(int   nValue)//static
+Call   Base::Init()
+Call   Derive::Derive()
+Value::m_nVal=0
+Call   Derive::~Derive()
+Call   Base::Release()
+Call   Value::~Value()//static
+ 
+设计一函数，求整数区间[a,b]和[c,d]的交集
+二题:   
+ /////////////////////////////////////////   
+ #define     BOOL   int   
+ #define     TRUE   1   
+ #define     FALSE   0   
+    
+ BOOL   jiba(int   *p1,   int   *p2,   int**pt)   
+ {   
+ if   ((p1   ==   NULL)   ||   (p2   ==   NULL)   ||   
+          (p1[0]   >   p1[1])   ||   (p2[0]   >   p2[1]))   
+ {   
+ printf("输入有误\n");   
+ return   FALSE;   
+ }   
+    
+ if   (p2[0]   <=   p1[0])   
+ {   
+ if   (p2[1]   <   p1[0])   
+ return   FALSE;   
+ else   
+ {   
+ *pt   =   new   int[2];   
+ (*pt)[0]   =   p1[0];   
+ (*pt)[1]   =   (p2[1]<=p1[1]   ?   p2[1]:p1[1]);   
+ return   TRUE;   
+ }   
+ }   
+ else   
+ {   
+ if   (p2[0]   >   p1[1])   
+ return   FALSE;   
+ else   
+ {   
+ *pt   =   new   int[2];   
+ (*pt)[0]   =   (p1[0]   >=   p2[0]   ?   p1[0]:p2[0]);   
+ (*pt)[1]   =   p1[1];   
+ return   TRUE;   
+ }   
+ }   
+ return   TRUE;   
+ }   
+    
+ //test!   
+ int   rt[2]   ={1,5};   
+ int   rt1[2]={3,9};   
+ int   main()   
+ {   
+ int   *p   =   NULL;   
+ BOOL   b   =   jiba(rt,rt1,&p);   
+ if   (b)   
+ {   
+ printf("[%d,%d]与[%d,%d]的交集为[%d,%d]\n",rt[0],rt[1],rt1[0],rt1[1],   p[0],p[1]);   
+ delete   p;   
+ }   
+ else   
+ {   
+ printf("[%d,%d]与[%d,%d]的交集为空\n",rt[0],rt[1],rt1[0],rt1[1]);   
+ }   
+ getchar();   
+ return   0;   
+ }
+
+
+第一道:
+
+两个数 int a, int b,不用中间变量交换两个值的C++代码.
+
+第二道,分析程序输出.代码如下:
+
+#include <iostream.h>
+
+class B {
+public:
+           int i, j;
+
+ B(int x = 999) :j(x), i(j)
+ {
+               cout << "B::B() invoked\n" << endl;
+ }
+
+ ~B()
+ {
+                cout << "B::~B() invoked\n" << endl;
+ }
+};
+
+
+class D : public B {
+public:
+ D() 
+ {
+               cout << "D::D() invoked\n" <<endl;
+ }
+ ~D()
+ {
+                cout << "D::~D() invoked\n" << endl;
+ }
+
+};
+
+void main()
+{
+ D d;
+ cout << "d.i" << d.i << endl;
+ cout << "d.j=" << d.j << endl;
+}
+
+结果：
+B::B() invoked
+
+D::D() invoked
+
+d.i-858993460
+d.j=999
+D::~D() invoked
+
+B::~B() invoked
+
+
+_cdecl     
+    
+  按从右至左的顺序压参数入栈，由调用者把参数弹出栈。对于“C”函数或者变量，修饰名是在函数名前加下划线。对于“C++”函数，有所不同。     
+    
+  如函数void   test(void)的修饰名是_test；对于不属于一个类的“C++”全局函数，修饰名是?test@@ZAXXZ。     
+    
+  这是缺省调用约定。由于是调用者负责把参数弹出栈，所以可以给函数定义个数不定的参数，如printf函数。     
+    
+    
+  _stdcall     
+    
+  按从右至左的顺序压参数入栈，由被调用者把参数弹出栈。对于“C”函数或者变量，修饰名以下划线为前缀，然后是函数名，然后是符号“@”及参数的字节数，如函数int   func(int   a,   double   b)的修饰名是_func@12。对于“C++”函数，则有所不同。     
+    
+  所有的Win32   API函数都遵循该约定。    
+
+  _pascal  
+
+   按从左至右的顺序压参数入栈 ...其它的与_stdcall相同; 
+    
+    
+  _fastcall     
+    
+  头两个DWORD类型或者占更少字节的参数被放入ECX和EDX寄存器，其他剩下的参数按从右到左的顺序压入栈。 由被调用者把参数弹出栈，对于“C”函数或者变量，修饰名以“@”为前缀，然后是函数名，接着是符号“@”及参数的字节数，如函数int   func(int   a,   double   b)的修饰名是@func@12。对于“C++”函数，有所不同。     
+    
+  未来的编译器可能使用不同的寄存器来存放参数。     
+    
+    
+  thiscall     
+    
+  仅仅应用于“C++”成员函数。this指针存放于CX寄存器，参数从右到左压栈。thiscall不是关键词，因此不能被程序员指定。     
+    
+    
+  naked   call     
+    
+  采用1-4的调用约定时，如果必要的话，进入函数时编译器会产生代码来保存ESI，EDI，EBX，EBP寄存器，退出函数时则产生代码恢复这些寄存器的内容。naked   call不产生这样的代码。     
+    
+  naked   call不是类型修饰符，故必须和_declspec共同使用，如下：     
+    
+  __declspec(   naked   )   int   func(   formal_parameters   )     
+    
+  {     
+    
+  //   Function   body     
+    
+  }     
+    
+        
+   
+
+ 
+
+ 便于更好理解, 看下面例子（函数调用的过程以汇编代码表示）：      
+    
+  void   cdecl       fun1(int   x,int   y);   
+  void   stdcall     fun2(int   x,int   y);   
+  void   pascal     fun3(int   x,int   y);   
+    
+
+    
+  ****************************************   
+    
+  void   cdecl       fun1(int   x,int   y);   
+    
+  fun1(x,y);     
+    
+  调用   fun1   的汇编代码   
+    
+  push   y   
+  push   x   
+  call   fun1   
+  add     sp,sizeof(x)+sizeof(y)   ；跳过参数区（x，y）   
+    
+  fun1   的汇编代码：   
+    
+  fun1   proc     
+      push   bp   
+      mov     bp,sp   
+      ……   
+      …   
+      pop     bp   
+      ret ；返回，但不跳过参数区   
+  fun1   endp   
+    
+  ****************************************   
+    
+  void   stdcall   fun2(int   x,int   y);   
+    
+  fun2(x,y);     
+    
+  调用   fun2   的汇编代码   
+    
+  push   y   
+  push   x   
+  call   fun2   
+    
+  fun2   的汇编代码：   
+    
+  fun2   proc     
+      push   bp   
+      mov     bp,sp   
+      ……   
+      …   
+      pop     bp   
+      ret   sizeof(x)+sizeof(y)   ；返回并跳过参数区（x，y）       
+  fun2   endp   
+    
+  *****************************************   
+    
+  void   pascal     fun3(int   x,int   y);   
+    
+  fun3(x,y);     
+    
+  调用   fun3   的汇编代码   
+    
+  push   x   
+  push   y   
+  call   fun3   
+    
+  fun3   的汇编代码：   
+    
+  fun3   proc     
+      push   bp   
+      mov     bp,sp   
+      ……   
+      …   
+      pop     bp   
+      ret   sizeof(x)+sizeof(y)   ；返回并跳过参数区（x，y）       
+  fun3   endp 

@@ -1,0 +1,572 @@
+转]C,C++经典问题，及面试笔试题 
+1       编程基础
+1.1    基本概念
+1.         的理解：const char*, char const*, char*const的区别问题几乎是C++面试中每次    都会有的题目。 事实上这个概念谁都有只是三种声明方式非常相似很容易记混。 Bjarne在他的The C++ Programming Language里面给出过一个助记的方法： 把一个声明从右向左读。 const
+char  * const cp; ( * 读成 pointer to ) 
+cp is a const pointer to char 
+const char * p; 
+p is a pointer to const char; 
+char const * p; 
+同上因为C++里面没有const*的运算符，所以const只能属于前面的类型。
+2.         指针c
+int *p[n];-----指针数组，每个元素均为指向整型数据的指针。
+int (*)p[n];------p为指向一维数组的指针，这个一维数组有n个整型数据。
+int *p();----------函数带回指针，指针指向返回的值。
+int (*)p();------p为指向函数的指针。
+3.         数组越界问题
+下面这个程序执行后会有什么错误或者效果:
+ #define MAX 255
+int main()
+{
+    unsigned char A[MAX],i;
+    for (i=0;i<=MAX;i++)
+        A[i]=i;
+}
+解答：MAX=255,数组A的下标范围为:0..MAX-1,这是其一,其二 当i循环到255时,循环内执行: A[255]=255;这句本身没有问题，但是返回for (i=0;i<=MAX;i++)语句时,由于unsigned char的取值范围在(0..255),i++以后i又为0了..无限循环下去.
+注：char类型为一个字节，取值范围是[-128，127]，unsigned char [0 ,255]
+4.         和strcpy 的根本区别？  C++:memset ,memcpy 
+#include "memory.h"
+memset用来对一段内存空间全部设置为某个字符，一般用在对定义的字符串进行初始化为‘ '或‘\0'；例:char a[100];memset(a, '\0', sizeof(a)); 
+memcpy用来做内存拷贝，你可以拿它拷贝任何数据类型的对象，可以指定拷贝的数据长度；例：char a[100],b[50]; memcpy(b, a, sizeof(b));注意如用sizeof(a)，会造成b的内存地址溢出。 
+strcpy就只能拷贝字符串了，它遇到'\0'就结束拷贝；例：char a[100],b[50];strcpy(a,b);如用strcpy(b,a)，要注意a中的字符串长度（第一个‘\0'之前）是否超过50位，如超过，则会造成b的内存地址溢出。
+strcpy 
+原型：extern char *strcpy(char *dest,char *src); 
+用法：#include 
+功能：把src所指由NULL结束的字符串复制到dest所指的数组中。
+说明：src和dest所指内存区域不可以重叠且dest必须有足够的空间来容纳src的字符串。
+返回指向dest的指针。
+memcpy 
+原型：extern void *memcpy(void *dest, void *src, unsigned int count);
+用法：#include 
+功能：由src所指内存区域复制count个字节到dest所指内存区域。
+说明：src和dest所指内存区域不能重叠，函数返回指向dest的指针。
+Memset
+原型：extern void *memset(void *buffer, char c, int count);
+用法：#include 
+功能：把buffer所指内存区域的前count个字节设置成字符c。
+说明：返回指向buffer的指针。
+5.         是干什么用的ASSERT()
+ASSERT()是一个调试程序时经常使用的宏，在程序运行时它计算括号内的表达式，如果表达式为FALSE (0), 程序将报告错误，并终止执行。如果表达式不为0，则继续执行后面的语句。这个宏通常原来判断程序中是否出现了明显非法的数据，如果出现了终止程序以免导致严重后果，同时也便于查找错误。例如，变量n在程序中不应该为0，如果为0可能导致错误，你可以这样写程序： 
+...... 
+ASSERT( n != 0); 
+k = 10/ n; 
+...... 
+ASSERT只有在Debug版本中才有效，如果编译为Release版本则被忽略。 
+assert()的功能类似，它是ANSI C标准中规定的函数，它与ASSERT的一个重要区别是可以用在Release版本中。 
+6.         （"pause");系统的暂停程序，按任意键继续，屏幕会打印，"按任意键继续。。。。。" 省去了使用getchar（）；system
+7.         请问C++的类和C里面的struct有什么区别？
+c++中的类具有成员保护功能，并且具有继承，多态这类oo特点，而c里的struct没有 
+8.         请讲一讲析构函数和虚函数的用法和作用？
+析构函数也是特殊的类成员函数，它没有返回类型，没有参数，不能随意调用，也没有重载。知识在类对象生命期结束的时候，由系统自动调用释放在构造函数中分配的资源。这种在运行时，能依据其类型确认调用那个函数的能力称为多态性，或称迟后联编。另：析构函数一般在对象撤消前做收尾工作，比如回收内存等工作，虚拟函数的功能是使子类可以用同名的函数对父类函数进行重载，并且在调用时自动调用子类重载函数，如果是纯虚函数，则纯粹是为了在子类重载时有个统一的命名而已。
+9.         全局变量和局部变量有什么区别？实怎么实现的？操作系统和编译器是怎么知道的？
+全局变量的生命周期是整个程序运行的时间，而局部变量的生命周期则是局部函数或过程调用的时间段。其实现是由编译器在编译时采用不同内存分配方法。全局变量在main函数调用后，就开始分配，如果是静态变量则是在main函数前就已经初始化了。而局部变量则是在用户栈中动态分配的（还是建议看编译原理中的活动记录这一块）
+10.     是多少尉的系统？在数据总线上是怎么实现的？8086
+8086系统是16位系统，其数据总线是20位。
+1.2    程序设计
+1.         编写用C语言实现的求n阶阶乘问题的递归算法：
+long int fact(int n)
+{
+    int x;
+    long int y;
+    if(n<0)   
+    {
+       printf("error!");
+    }
+    if(n==0)
+       return 1;
+    x=n-1;
+    y=fact(x);
+    return (n*y);
+}
+2.         二分查找算法：
+1)        递归方法实现：
+int BSearch(elemtype a[],elemtype x,int low,int high)
+/*在下届为low，上界为high的数组a中折半查找数据元素x*/
+{
+  int mid;
+  if(low>high) return -1;
+  mid=(low+high)/2;
+  if(x==a[mid]) return mid;
+  if(x<a[mid]) return(BSearch(a,x,low,mid-1));
+  else return(BSearch(a,x,mid+1,high));
+}
+2)        非递归方法实现：
+int BSearch(elemtype a[],keytype key,int n)
+{
+  int low,high,mid;
+  low=0;high=n-1;
+  while(low<=high)  
+   {
+      mid=(low+high)/2;
+      if(a[mid].key==key) return mid;
+      else if(a[mid].key<key) low=mid+1;
+      else high=mid-1;
+   }
+  return -1;
+}
+3.         递归计算如下递归函数的值（斐波拉契）：
+f(1)=1
+f(2)=1
+f(n)=f(n-1)+f(n-2) n>2
+解：
+int f(int n)
+{
+        int i,s,s1,s2;
+        s1=1;/*s1用于保存f(n-1)的值*/
+        s2=1;/*s2用于保存f(n-2)的值*/
+        s=1;
+        for(i=3;i<=n;i++)
+{
+       s=s1+s2;
+       s2=s1;
+       s1=s;
+    }
+return(s);
+}
+4.         交换两个数，不用第三块儿内存：
+int a = ……;
+int b = ……;
+a = a + b;
+b = a - b;
+a = a - b;
+5.         冒泡排序：
+void BubbleSort(elemtype x[],int n)
+{
+        int i,j;
+        elemtype temp;
+        for(i=1;i<n;i++)  
+        for(j=0;j<n-i;j++)
+{
+                if(x[j].key>x[j+1].key)  
+                {
+                    temp=x[j];
+                    x[j]=x[j+1];
+                    x[j+1]=temp;
+                }
+}
+}
+6.         语言 文件读写c
+#include "stdio.h"
+main()
+{
+        FILE *fp;
+        char ch,filename[10];
+        scanf("%s",filename);
+        if((fp=fopen(filename,"w")==NULL)
+        {
+printf("cann't open file\n");
+exit(0);
+  }
+  ch=getchar();
+  while(ch!='#')
+  {
+       fputc(ch,fp);
+       putchar(ch);
+       ch=getchar();
+  }
+  fclose(fp);
+}
+7.         编程winsocket
+#include <Winsock2.h>
+#include <stdio.h>
+void main()
+{
+       WORDwVersionRequested;
+       WSADATA wsaData;
+       int err; 
+       wVersionRequested = MAKEWORD(1,1);
+       err = WSAStartup(wVersionRequested,&wsaData);
+       if( err != 0)
+{
+           return;  
+       }
+       if(LOBYTE( wsaData.wVersion ) != 1||
+           HIBYTE( wsaData.wVersion) != 1)
+{
+            WSACleanup();
+            return;
+        }
+       SOCKET sockSrv=socket(AF_INET,SOCK_STREAM,0);
+       SOCKADDR_IN addrSrv;
+       addrSrv.sin_addr.S_un.S_addr=htonl(INADDR_ANY);
+       addrSrv.sin_family=AF_INET;
+       addrSrv.sin_port=htons(6000);
+       bind(sockSrv,(SOCKADDR*)&addrSrv,sizeof(SOCKADDR));
+       listen(sockSrv,5);
+       SOCKADDR_IN addrClient;
+       int len=sizeof(SOCKADDR);
+       while(1)
+       {
+            SOCKET sockConn=accept(sockSrv,(SOCKADDR*)&addrClient,&len);
+            char sendBuf[100];
+            sprint(sendBuf,"Welcome %s to http://www.sunxin.org",
+           inet_ntoa(addrClient.sin_addr));
+            send(sockConn,sendBuf,strlen(sendBuf)+1,0);
+            char recvBuf[100];
+           recv(sockConn,recvBuf);
+            printf("%s\n",recvBuf);
+            closesocket(sockConn);
+            WSACleanup();
+       }  
+}
+注：这是Server端；File->New->Win32 Console Application，工程名：TcpSrv；然后，File->New->C++ Source File，文件名：TcpSrv；在该工程的Setting的Link的Object/library modules项要加入ws2_32.lib
+#include <Winsock2.h>
+#include <stdio.h>
+void main()
+{
+        WORDwVersionRequested;
+        WSADATA wsaData;
+        int err; 
+        wVersionRequested = MAKEWORD(1,1);
+        err = WSAStartup(wVersionRequested,&wsaData);
+        if( err != 0)
+{
+            return;  
+        }
+        if(LOBYTE( wsaData.wVersion ) != 1||
+            HIBYTE( wsaData.wVersion) != 1)
+{
+            WSACleanup();
+            return;
+        }
+        SOCKET sockClient=socket(AF_INET,SOCK_STREAM,0);
+        SOCKADDR_IN addrSrv;
+        addrSrv.sin_addr.S_un.S_addr=inet_addr("127.0.0.1"); 
+        addrSrv.sin_family=AF_INET;
+        addrSrv.sin_porthtons(6000);
+        connect(sockClient,(SOCKADDR*)&addrSrv,sizeof(SOCKADDR));
+char recvBuf[100];
+recv(sockClient,recvBuf,100,0);
+printf("%s\n",recvBuf);
+send(sockClient,"This is zhangsan",strlen("This is zhangsan")+1,0);  
+        closesocket(sockClient);
+        WSACleanup();
+}
+注：这是Client端；File->New->Win32 Console Application，工程名：TcpClient；然后，File->New->C++ Source File，文件名：TcpClient；同理，在该工程的Setting的Link的Object/library modules项要加入ws2_32.lib
+8.         类的知识
+C＋＋
+#include <iostream.h>
+class human
+{
+public:
+human(){ human_num++;};
+static int human_num;
+~human()
+{
+human_num--;
+print();
+}
+void print()
+{
+cout<<"human num is: "<<human_num<<endl;
+}
+protected:
+private:
+};
+int human::human_num = 0;
+human f1(human x)
+{
+x.print();
+return x;
+}
+int main(int argc, char* argv[])
+{
+human h1;
+h1.print();
+human h2  = f1(h1);
+h2.print();
+return 0;
+}
+输出：
+1
+1
+0
+0
+－1
+－2
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+分析：
+human h1;       //调用构造函数,---hum_num = 1;
+h1.print();     //输出:"human is 1"
+human h2  = f1(h1); //再调用f1(h1)的过程中,由于函数参数是按值传递对象,调用默认的复制构造函数,它并没有对hum_num++,所以hum_num 仍= 1,所以x.print()输出:"human is 1";   在推出f1函数时,要销毁X,调用析构函数(human_num--),输出:"human is 0"(,由于该函数返回一个human 对象,所以又调用默认构造函数,创建一个临时对象(human_num = 0;),把临时对象赋给h2,又调用默认构造函数(  human_num = 0);   h2.print();   //输出: human is 0;
+//在退出main()函数是,先销毁h2,调用析构函数(human_num--),输出"human_num is -1" 然后销毁h1,调用析构函数(--),输出"human_num is -2"
+1.3    Windows的消息机制
+1.         的消息机制1Windows
+       Windows是一个消息（Message）驱动系统。Windows的消息提供了应用程序之间、应用程序与Windows系统之间进行通信的手段。应用程序想要实现的功能由消息来触发，并且靠对消息的响应和处理来完成。
+       Windows系统中有两种消息队列：系统消息队列和应用程序消息队列。计算机的所有输入设备由Windows监控。当一个事件发生时，Windows先将输入的消息放入系统消息队列中，再将消息拷贝到相应的应用程序消息队列中。应用程序的消息处理程序将反复检测消息队列，并把检测到的每个消息发送到相应的窗口函数中。这便是一个事件从发生至到达窗口函数必须经历的过程。
+       必须注意的是，消息并非是抢占性的，无论事件的缓急，总是按照到达的先后派对，依次处理（一些系统消息除外），这样可能使一些实时外部事件得不到及时处理。
+2.         的消息机制2Windows
+       Windows中的消息是放在对应的进程的消息队列里的。可以通过GetMessage取得，并且对于一般的消息，此函数返回非零值，但是对于WM_QUIT消息，返回零。可以通过这个特征，结束程序。当取得消息之后，应该先转换消息，再分发消息。所谓转换，就是把键盘码的转换，所谓分发，就是把消息分发给对应的窗口，由对应的窗口处理消息，这样对应窗体的消息处理函数就会被调用。两个函数可以实现这两个功能：TranslateMessage和DispatchMessage。
+       另外，需要注意，当我们点击窗口的关闭按钮关闭窗口时，程序并没有自动退出，而是向程序发送了一个WM_DESTROY消息（其实过程是这样的，首先向程序发送WM_CLOSE消息，默认的处理程序是调用DestroyWindow销毁窗体，从而引发WM_DESTROY消息），此时在窗体中我们要响应这个消息，如果需要退出程序，那么就要向程序发送WM_QUIT消息(通过PostQuitMessage实现)。一个窗体如果想要调用自己的消息处理函数，可以使用SendMessage向自己发消息。
+       如上所述，大部分（注意是大部分）的消息是这样传递的：首先放到进程的消息队列中，之后由GetMessage取出，转换后，分发给对应的窗口。这种消息成为存储式消息。存储式消息基本上是使用者输入的结果，以击键（如WM_KEYDOWN和WM_KEYUP讯息）、击键产生的字符（WM_CHAR）、鼠标移动（WM_MOUSEMOVE）和鼠标按钮（WM_LBUTTONDOWN）的形式给出。存储式消息还包含时钟消息（WM_TIMER）、更新消息（WM_PAINT）和退出消息（WM_QUIT）。但是也有的消息是直接发送给窗口的，它们被称为非存储式消息。例如，当WinMain调用CreateWindow时，Windows将建立窗口并在处理中给窗口消息处理函数发送一个WM_CREATE消息。当WinMain调用ShowWindow时，Windows将给窗口消息处理函数发送WM_SIZE和WM_SHOWWINDOW消息。当WinMain调用UpdateWindow时，Windows将给窗口消息处理函数发送WM_PAINT消息。
+
+
+2       网络知识
+2.1    OSI和TCP/IP
+1.         的七层网络结构图（功能及特点）OSI
+1)   物理层：为数据链路层提供物理连接，在其上串行传送比特流，即所传送数据的单位是比特。此外，该层中还具有确定连接设备的电气特性和物理特性等功能。
+2)   数据链路层：负责在网络节点间的线路上通过检测、流量控制和重发等手段，无差错地传送以帧为单位的数据。为做到这一点，在每一帧中必须同时带有同步、地址、差错控制及流量控制等控制信息。
+3)   网络层：为了将数据分组从源（源端系统）送到目的地（目标端系统），网络层的任务就是选择合适的路由和交换节点，使源的传输层传下来的分组信息能够正确无误地按照地址找到目的地，并交付给相应的传输层，即完成网络的寻址功能。
+4)   传输层：传输层是高低层之间衔接的接口层。数据传输的单位是报文，当报文较长时将它分割成若干分组,然后交给网络层进行传输。传输层是计算机网络协议分层中的最关键一层，该层以上各层将不再管理信息传输问题。
+5)   会话层：该层对传输的报文提供同步管理服务。在两个不同系统的互相通信的应用进程之间建立、组织和协调交互。例如，确定是双工还是半双工工作。
+6)   表示层：该层的主要任务是把所传送的数据的抽象语法变换为传送语法，即把不同计算机内部的不同表示形式转换成网络通信中的标准表示形式。此外，对传送的数据加密（或解密）、正文压缩（或还原）也是表示层的任务。
+7)   应用层：该层直接面向用户，是OSI中的最高层。它的主要任务是为用户提供应用的接口，即提供不同计算机间的文件传送、访问与管理，电子邮件的内容处理，不同计算机通过网络交互访问的虚拟终端功能等。
+2.         （功能及特点）TCP/IP
+1)   网络接口层：这是TCP/IP协议的最低一层，包括有多种逻辑链路控制和媒体访问协议。网络接口层的功能是接收IP数据报并通过特定的网络进行传输，或从网络上接收物理帧，抽取出IP数据报并转交给网际层。
+2)   网际网层（IP层）：该层包括以下协议：IP（网际协议）、ICMP（Internet Control Message Protocol,因特网控制报文协议）、ARP（Address Resolution Protocol，地址解析协议）、RARP（Reverse Address Resolution Protocol，反向地址解析协议）。该层负责相同或不同网络中计算机之间的通信,主要处理数据报和路由。在IP层中，ARP协议用于将IP地址转换成物理地址,RARP协议用于将物理地址转换成IP地址，ICMP协议用于报告差错和传送控制信息。IP协议在TCP/IP协议组中处于核心地位。
+3)   传输层：该层提供TCP（传输控制协议）和UDP（User Datagram Protocol，用户数据报协议）两个协议，它们都建立在IP协议的基础上，其中TCP提供可靠的面向连接服务，UDP提供简单的无连接服务。传输层提供端到端，即应用程序之间的通信，主要功能是数据格式化、数据确认和丢失重传等。
+4)   应用层：TCP/IP协议的应用层相当于OSI模型的会话层、表示层和应用层，它向用户提供一组常用的应用层协议,其中包括：Telnet、SMTP、DNS等。此外，在应用层中还包含有用户应用程序，它们均是建立在TCP/IP协议组之上的专用程序。
+3.         参考模型和TCP/IP参考模型的区别：OSI
+1)   OSI模型有7层，TCP/IP只有4层；
+2)   OSI先于协议出现，因此不会偏向于任何一组特定的协议，通用性更强，但有些功能不知该放哪一层上，因此不得不加入一些子层；TCP/IP后于协议出现，仅是将已有协议的一个描述，因此两者配合的非常好；但他不适合其他的协议栈，不容易描述其他非TCP/IP的网络；
+3)   OSI中网络层同时支持无连接和面向连接的通信，但在传输层上只支持面向连接的通信；TCP/IP中网络层只支持无连接通信，传输层同时支持两种通信；
+4)   在技术发生变化时，OSI模型比TCP/IP模型中的协议更容易被替换。
+4.         请你详细的解释一下IP协议的定义，在哪个层上面，主要有什么作用？ TCP与UDP呢？　
+解：与IP协议配套使用的还有三个协议:
+ARP-地址解析协议
+RARP－逆地址解析协议
+ICMP－因特网控制报文协议ICMP
+IP协议－网际协议
+IP地址、IP包头
+2.2    交换机和路由器
+1.         请问交换机和路由器分别的实现原理是什么？分别在哪个层次上面实现的？
+将网络互相连接起来要使用一些中间设备（或中间系统），ＩＳＯ的术语称之为中继（relay）系统。根据中继系统所在的层次，可以有以下五种中继系统：
+1)       物理层（即常说的第一层、层Ｌ1）中继系统，即转发器（repeater）。
+2)       数据链路层（即第二层，层Ｌ2），即网桥或桥接器（bridge）。
+3)       网络层（第三层，层Ｌ3）中继系统，即路由器（router）。
+4)       网桥和路由器的混合物桥路器（brouter）兼有网桥和路由器的功能。
+5)       在网络层以上的中继系统，即网关（gateway）.
+当中继系统是转发器时，一般不称之为网络互联，因为这仅仅是把一个网络扩大了，而这仍然是一个网络。高层网关由于比较复杂，目前使用得较少。因此一般讨论网络互连时都是指用交换机和路由器进行互联的网络。本文主要阐述交换机和路由器及其区别。   
+2.         第二层交换机和路由器的区别：
+传统交换机从网桥发展而来，属于ＯＳＩ第二层即数据链路层设备。它根据ＭＡＣ地址寻址，通过站表选择路由，站表的建立和维护由交换机自动进行。路由器属于ＯＳＩ第三层即网络层设备，它根据ＩＰ地址进行寻址，通过路由表路由协议产生。因特网的路由选择协议：内部网关协议IGP和外部网关协议EGP
+3.         第三层交换机和路由器的区别：
+在第三层交换技术出现之前，几乎没有必要将路由功能器件和路由器区别开来，他们完全是相同的：提供路由功能正在路由器的工作，然而，现在第三层交换机完全能够执行传统路由器的大多数功能。
+综上所述，交换机一般用于ＬＡＮ－ＷＡＮ的连接，交换机归于网桥，是数据链路层的设备，有些交换机也可实现第三层的交换。路由器用于ＷＡＮ－ＷＡＮ之间的连接，可以解决异性网络之间转发分组，作用于网络层。他们只是从一条线路上接受输入分组，然后向另一条线路转发。这两条线路可能分属于不同的网络，并采用不同协议。相比较而言，路由器的功能较交换机要强大，但速度相对也慢，价格昂贵，第三层交换机既有交换机线速转发报文能力，又有路由器良好的控制功能，因此得以广播应用。 
+
+
+3       高质量编程C/C++
+一、请填写BOOL , float, 指针变量与“零值”比较的 if 语句。（10 分）
+请写出 BOOL flag 与“零值”比较的 if 语句。（3 分）
+标准答案：
+if ( flag )
+if ( !flag )
+如下写法均属不良风格，不得分。
+if (flag == TRUE)
+if (flag == 1 )
+if (flag == FALSE)
+if (flag == 0)
+
+请写出 float x 与“零值”比较的 if 语句。（4 分）
+标准答案示例：
+const float EPSINON = 0.000001;
+if ((x >= - EPSINON) && (x <= EPSINON)
+不可将浮点变量用“==”或“！=”与数字
+比较，应该设法转化成“>=”或“<=”此
+类形式。
+如下是错误的写法，不得分。
+if (x == 0.0)
+if (x != 0.0)
+
+请写出 char *p 与“零值”比较的 if 语句。（3 分）
+标准答案：
+if (p == NULL)
+if (p != NULL)
+如下写法均属不良风格，不得分。
+if (p == 0)
+if (p != 0)
+if (p)
+if (!)
+二、以下为Windows NT 下的32 位C++程序，请计算sizeof 的值（10 分）
+void Func ( char str[100])
+{
+    请计算
+    sizeof( str ) = 4 （2 分）
+}
+char str[] = “Hello” ;
+char *p = str ;
+int n = 10;
+请计算
+sizeof (str ) = 6 （2 分）
+sizeof ( p ) = 4 （2 分）
+sizeof ( n ) = 4 （2 分）
+void *p = malloc( 100 );
+请计算
+sizeof ( p ) = 4 （2 分）
+三、简答题（25 分）
+1、头文件中的 ifndef/define/endif 干什么用？（5 分）
+答：防止该头文件被重复引用。
+
+2、#include <filename.h> 和 #include “filename.h” 有什么区别？（5 分）
+答：对于#include <filename.h> ，编译器从标准库路径开始搜索 filename.h
+对于#include “filename.h” ，编译器从用户的工作路径开始搜索 filename.h
+
+3、const 有什么用途？（请至少说明两种）（5 分）
+答：（1）可以定义 const 常量，（2）const 可以修饰函数的参数、返回值，甚至函数的定义体。被const 修饰的东西都受到强制保护，可以预防意外的变动，能提高程序的健壮性。
+4、在C++ 程序中调用被 C 编译器编译后的函数，为什么要加 extern “C”？ （5 分）
+答：C++语言支持函数重载，C 语言不支持函数重载。函数被C++编译后在库中的名字
+与C 语言的不同。假设某个函数的原型为： void foo(int x, int y);该函数被C 编译器编译后在库中的名字为_foo ， 而C++编译器则会产生像_foo_int_int 之类的名字。C++提供了C 连接交换指定符号extern“C”来解决名字匹配问题。
+5、请简述以下两个for 循环的优缺点（5 分）
+for (i=0; i<N; i++)
+{
+    if (condition)
+        DoSomething();
+    else
+        DoOtherthing();
+}
+if (condition)
+{
+    for (i=0; i<N; i++)
+        DoSomething();
+}
+else
+{
+    for (i=0; i<N; i++)
+    DoOtherthing();
+}
+优点：程序简洁
+缺点：多执行了N-1 次逻辑判断，并且
+打断了循环“流水线”作业，使得编译
+器不能对循环进行优化处理，降低了效
+率。
+优点：循环的效率高
+缺点：程序不简洁
+四、有关内存的思考题（每小题5 分，共20 分）
+void GetMemory(char *p)
+{
+   p = (char *)malloc(100);
+}
+void Test(void)
+{
+    char *str = NULL;
+    GetMemory(str);
+    strcpy(str, "hello world");
+    printf(str);
+}
+请问运行Test 函数会有什么样的结果？
+答：程序崩溃。
+因为GetMemory 并不能传递动态内存，
+Test 函数中的 str 一直都是 NULL。
+strcpy(str, "hello world");将使程序崩
+溃。
+char *GetMemory(void)
+{
+    char p[] = "hello world";
+    return p;
+}
+void Test(void)
+{
+    char *str = NULL;
+    str = GetMemory();
+    printf(str);
+}
+请问运行Test 函数会有什么样的结果？
+答：可能是乱码。
+因为GetMemory 返回的是指向“栈内存”
+的指针，该指针的地址不是 NULL，但其原
+现的内容已经被清除，新内容不可知。
+void GetMemory2(char **p, int num)
+{
+    *p = (char *)malloc(num);
+}
+void Test(void)
+{
+    char *str = NULL;
+    GetMemory(&str, 100);
+    strcpy(str, "hello");
+    printf(str);
+}
+请问运行Test 函数会有什么样的结果？
+答：（1）能够输出hello；（2）内存泄漏
+
+void Test(void)
+{
+    char *str = (char *) malloc(100);
+    strcpy(str, “hello”);
+    free(str);
+    if(str != NULL)
+    {
+        strcpy(str, “world”);
+        printf(str);
+    }
+}
+请问运行Test 函数会有什么样的结果？
+答：篡改动态内存区的内容，后果难以预
+料，非常危险。
+因为free(str);之后，str 成为野指针，
+if(str != NULL)语句不起作用。
+五、编写strcpy 函数（10 分）
+已知strcpy 函数的原型是
+char *strcpy(char *strDest, const char *strSrc);
+其中strDest 是目的字符串，strSrc 是源字符串。
+（1）不调用C++/C 的字符串库函数，请编写函数 strcpy
+char *strcpy(char *strDest, const char *strSrc);
+{
+    assert((strDest!=NULL) && (strSrc !=NULL)); // 2分
+    char *address = strDest; // 2分
+    while( (*strDest++ = * strSrc++) != ‘\0’ ) // 2分
+    NULL ;
+    return address ; // 2分
+}
+（2）strcpy 能把strSrc 的内容复制到strDest，为什么还要char * 类型的返回值？
+答：为了实现链式表达式。 // 2 分
+例如 int length = strlen( strcpy( strDest, “hello world”) );
+六、编写类String 的构造函数、析构函数和赋值函数（25 分）
+已知类String 的原型为：
+class String
+{
+    public:
+    String(const char *str = NULL); // 普通构造函数
+    String(const String &other); // 拷贝构造函数
+    ~ String(void); // 析构函数
+    String & operate =(const String &other); // 赋值函数
+    private:
+    char *m_data; // 用于保存字符串
+};
+请编写String 的上述4 个函数。
+标准答案：
+// String 的析构函数
+String::~String(void) // 3 分
+{
+    delete [] m_data;
+    // 由于m_data 是内部数据类型，也可以写成 delete m_data;
+}
+
+// String 的普通构造函数
+String::String(const char *str) // 6 分
+{
+    if(str==NULL)
+    {
+        m_data = new char[1]; // 若能加 NULL 判断则更好
+        *m_data = ‘\0’;
+    }
+    else
+    {
+        int length = strlen(str);
+        m_data = new char[length+1]; // 若能加 NULL 判断则更好
+        strcpy(m_data, str);
+     }
+}
+
+// 拷贝构造函数
+String::String(const String &other) // 3 分
+{
+    int length = strlen(other.m_data);
+    m_data = new char[length+1]; // 若能加 NULL 判断则更好
+    strcpy(m_data, other.m_data);
+}
+
+// 赋值函数
+String & String::operate =(const String &other) // 13 分
+{
+    // (1) 检查自赋值 // 4 分
+    if(this == &other)
+    return *this;
+    // (2) 释放原有的内存资源 // 3 分
+    delete [] m_data;
+    // （3）分配新的内存资源，并复制内容 // 3 分
+    int length = strlen(other.m_data);
+    m_data = new char[length+1]; // 若能加 NULL 判断则更好
+    strcpy(m_data, other.m_data);
+    // （4）返回本对象的引用 // 3 分
+    return *this;
+} 

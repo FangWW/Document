@@ -1,0 +1,213 @@
+
+
+对象（Object）是类（Class）的一个实例（Instance）。如果将对象比作房子，那么类就是房子的设计图纸。所以面向对象设计的重点是类的设计，而不是对象的设计。 
+对于C++程序而言，设计孤立的类是比较容易的，难的是正确设计基类及其派生类。本章仅仅论述“继承”（Inheritance）和“组合”（Composition）的概念。
+
+注意，当前面向对象技术的应用热点是COM和CORBA，这些内容超出了C++教材的范畴，请阅读COM和CORBA相关论著。
+
+10.1 继承
+如果A是基类，B是A的派生类，那么B将继承A的数据和函数。例如：
+
+class A
+
+{
+
+public:
+
+void Func1(void);
+
+void Func2(void);
+
+};
+
+
+class B : public A
+
+{
+
+public:
+
+void Func3(void);
+
+void Func4(void);
+
+};
+
+
+main()
+
+{
+
+B b; 
+
+b.Func1(); // B从A继承了函数Func1
+
+b.Func2(); // B从A继承了函数Func2
+
+b.Func3();
+
+b.Func4();
+
+}
+
+
+这个简单的示例程序说明了一个事实：C++的“继承”特性可以提高程序的可复用性。正因为“继承”太有用、太容易用，才要防止乱用“继承”。我们应当给“继承”立一些使用规则。
+
+
+l 【规则10-1-1】如果类A和类B毫不相关，不可以为了使B的功能更多些而让B继承A的功能和属性。不要觉得“白吃白不吃”，让一个好端端的健壮青年无缘无故地吃人参补身体。
+
+l 【规则10-1-2】若在逻辑上B是A的“一种”（a kind of ），则允许B继承A的功能和属性。例如男人（Man）是人（Human）的一种，男孩（Boy）是男人的一种。那么类Man可以从类Human派生，类Boy可以从类Man派生。
+
+class Human
+
+{
+
+…
+
+};
+
+class Man : public Human
+
+{
+
+…
+
+};
+
+class Boy : public Man
+
+{
+
+…
+
+};
+
+
+u 注意事项
+
+【规则10-1-2】看起来很简单，但是实际应用时可能会有意外，继承的概念在程序世界与现实世界并不完全相同。
+
+例如从生物学角度讲，鸵鸟（Ostrich）是鸟（Bird）的一种，按理说类Ostrich应该可以从类Bird派生。但是鸵鸟不能飞，那么Ostrich::Fly是什么东西？
+
+class Bird
+
+{
+
+public: 
+
+virtual void Fly(void);
+
+…
+
+};
+
+
+class Ostrich : public Bird
+
+{
+
+…
+
+};
+
+
+例如从数学角度讲，圆（Circle）是一种特殊的椭圆（Ellipse），按理说类Circle应该可以从类Ellipse派生。但是椭圆有长轴和短轴，如果圆继承了椭圆的长轴和短轴，岂非画蛇添足？
+
+所以更加严格的继承规则应当是：若在逻辑上B是A的“一种”，并且A的所有功能和属性对B而言都有意义，则允许B继承A的功能和属性。
+
+10.2 组合
+l 【规则10-2-1】若在逻辑上A是B的“一部分”（a part of），则不允许B从A派生，而是要用A和其它东西组合出B。
+
+例如眼（Eye）、鼻（Nose）、口（Mouth）、耳（Ear）是头（Head）的一部分，所以类Head应该由类Eye、Nose、Mouth、Ear组合而成，不是派生而成。如示例10-2-1所示。
+
+
+class Eye
+
+{
+public:
+
+void Look(void); 
+
+};
+class Nose
+
+{
+public:
+
+void Smell(void); 
+
+};
+
+class Mouth
+
+{
+public:
+
+void Eat(void); 
+
+};
+class Ear
+
+{
+public:
+
+void Listen(void); 
+
+};
+
+// 正确的设计，虽然代码冗长。 
+
+class Head
+
+{
+
+public:
+
+void Look(void) { m_eye.Look(); }
+
+void Smell(void) { m_nose.Smell(); }
+
+void Eat(void) { m_mouth.Eat(); }
+
+void Listen(void) { m_ear.Listen(); }
+
+private:
+
+Eye m_eye;
+
+Nose m_nose;
+
+Mouth m_mouth;
+
+Ear m_ear;
+
+};
+
+
+示例10-2-1 Head由Eye、Nose、Mouth、Ear组合而成
+
+
+如果允许Head从Eye、Nose、Mouth、Ear派生而成，那么Head将自动具有Look、 Smell、Eat、Listen这些功能。示例10-2-2十分简短并且运行正确，但是这种设计方法却是不对的。
+
+
+// 功能正确并且代码简洁，但是设计方法不对。
+
+class Head : public Eye, public Nose, public Mouth, public Ear
+
+{
+
+};
+
+
+示例10-2-2 Head从Eye、Nose、Mouth、Ear派生而成
+
+
+一只公鸡使劲地追打一只刚下了蛋的母鸡，你知道为什么吗？
+
+因为母鸡下了鸭蛋。
+
+很多程序员经不起“继承”的诱惑而犯下设计错误。“运行正确”的程序不见得是高质量的程序，此处就是一个例证。
+
+
+
+

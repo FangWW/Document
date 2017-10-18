@@ -1,0 +1,618 @@
+
+C++/C试题的答案与评分标准
+一、请填写BOOL , float, 指针变量 与“零值”比较的 if 语句。（10分）
+
+请写出 BOOL  flag 与“零值”比较的 if 语句。（3分）
+ 
+标准答案：
+
+    if ( flag )
+
+    if ( !flag )
+ 如下写法均属不良风格，不得分。
+
+    if (flag == TRUE)   
+
+    if (flag == 1 )     
+
+    if (flag == FALSE)  
+
+        if (flag == 0)      
+ 
+请写出 float  x 与“零值”比较的 if 语句。（4分）
+ 
+标准答案示例：
+
+const float EPSINON = 0.00001;
+
+if ((x >= - EPSINON) && (x <= EPSINON)
+
+不可将浮点变量用“==”或“！=”与数字比较，应该设法转化成“>=”或“<=”此类形式。
+
+   
+ 
+如下是错误的写法，不得分。
+
+    if (x == 0.0)   
+
+    if (x != 0.0)       
+
+    
+ 
+请写出 char  *p 与“零值”比较的 if 语句。（3分）
+ 
+标准答案：
+
+    if (p == NULL)
+
+    if (p != NULL)
+ 如下写法均属不良风格，不得分。
+
+    if (p == 0) 
+
+    if (p != 0)     
+
+    if (p)  
+
+        if (!)      
+ 
+
+
+
+二、以下为Windows NT下的32位C++程序，请计算sizeof的值（10分）
+
+       char  str[] = “Hello” ;
+
+       char   *p = str ;
+
+int     n = 10;
+
+请计算
+
+sizeof (str ) =  6   （2分） 
+
+         
+
+sizeof ( p ) =   4   （2分）
+
+          
+
+sizeof ( n ) =   4   （2分）
+ void Func ( char str[100])
+
+{
+
+请计算
+
+sizeof( str ) =   4     （2分）
+
+}
+
+ 
+void *p = malloc( 100 );
+
+请计算
+
+sizeof ( p ) =  4      （2分）
+
+ 
+
+
+
+三、简答题（25分）
+
+
+1、头文件中的 ifndef/define/endif 干什么用？（5分）
+
+答：防止该头文件被重复引用。
+
+
+2、#include  <filename.h>   和  #include  “filename.h” 有什么区别？（5分）
+
+答：对于#include  <filename.h> ，编译器从标准库路径开始搜索 filename.h
+
+    对于#include  “filename.h” ，编译器从用户的工作路径开始搜索 filename.h
+
+
+3、const 有什么用途？（请至少说明两种）（5分）
+
+答：（1）可以定义 const 常量
+
+（2）const可以修饰函数的参数、返回值，甚至函数的定义体。被const修饰的东西都受到强制保护，可以预防意外的变动，能提高程序的健壮性。
+
+
+4、在C++ 程序中调用被 C编译器编译后的函数，为什么要加 extern “C”？ （5分）
+
+答：C++语言支持函数重载，C语言不支持函数重载。函数被C++编译后在库中的名字与C语言的不同。假设某个函数的原型为： void foo(int x, int y);
+
+该函数被C编译器编译后在库中的名字为_foo，而C++编译器则会产生像_foo_int_int之类的名字。
+
+C++提供了C连接交换指定符号extern“C”来解决名字匹配问题。
+
+
+5、请简述以下两个for循环的优缺点（5分）
+
+for (i=0; i<N; i++)
+
+{
+
+if (condition)
+
+    DoSomething();
+
+else
+
+    DoOtherthing();
+
+}
+ if (condition)
+
+{
+
+for (i=0; i<N; i++)
+
+    DoSomething();
+
+}
+
+else
+
+{
+
+    for (i=0; i<N; i++)
+
+    DoOtherthing();
+
+}
+ 
+优点：程序简洁
+
+
+缺点：多执行了N-1次逻辑判断，并且打断了循环“流水线”作业，使得编译器不能对循环进行优化处理，降低了效率。
+ 优点：循环的效率高
+
+
+缺点：程序不简洁
+
+
+ 
+
+
+
+四、有关内存的思考题（每小题5分，共20分）
+
+
+void GetMemory(char *p)
+
+{
+
+p = (char *)malloc(100);
+
+}
+
+void Test(void) 
+
+{
+
+char *str = NULL;
+
+GetMemory(str);   
+
+strcpy(str, "hello world");
+
+printf(str);
+
+}
+
+
+请问运行Test函数会有什么样的结果？
+
+答：程序崩溃。
+
+因为GetMemory并不能传递动态内存，
+
+Test函数中的 str一直都是 NULL。
+
+strcpy(str, "hello world");将使程序崩溃。
+
+ char *GetMemory(void)
+
+{   
+
+char p[] = "hello world";
+
+return p;
+
+}
+
+void Test(void)
+
+{
+
+char *str = NULL;
+
+str = GetMemory();    
+
+printf(str);
+
+}
+
+
+请问运行Test函数会有什么样的结果？
+
+答：可能是乱码。
+
+因为GetMemory返回的是指向“栈内存”的指针，该指针的地址不是 NULL，但其原现的内容已经被清除，新内容不可知。
+ 
+void GetMemory2(char **p, int num)
+
+{
+
+*p = (char *)malloc(num);
+
+}
+
+void Test(void)
+
+{
+
+char *str = NULL;
+
+GetMemory(&str, 100);
+
+strcpy(str, "hello");   
+
+printf(str);    
+
+}
+
+请问运行Test函数会有什么样的结果？
+
+答：
+
+（1）能够输出hello
+
+（2）内存泄漏
+
+
+ void Test(void)
+
+{
+
+char *str = (char *) malloc(100);
+
+    strcpy(str, “hello”);
+
+    free(str);      
+
+    if(str != NULL)
+
+    {
+
+      strcpy(str, “world”); 
+
+printf(str);
+
+}
+
+}
+
+请问运行Test函数会有什么样的结果？
+
+答：篡改动态内存区的内容，后果难以预料，非常危险。
+
+因为free(str);之后，str成为野指针，
+
+if(str != NULL)语句不起作用。
+
+
+ 
+
+
+五、编写strcpy函数（10分）
+
+已知strcpy函数的原型是
+
+       char *strcpy(char *strDest, const char *strSrc);
+
+       其中strDest是目的字符串，strSrc是源字符串。
+
+（1）不调用C++/C的字符串库函数，请编写函数 strcpy
+
+char *strcpy(char *strDest, const char *strSrc);
+
+{
+
+    assert((strDest!=NULL) && (strSrc !=NULL)); // 2分
+
+    char *address = strDest;                   // 2分
+
+    while( (*strDest++ = * strSrc++) != ‘\0’ )    // 2分
+
+       NULL ; 
+
+    return address ;                          // 2分
+
+}
+
+
+（2）strcpy能把strSrc的内容复制到strDest，为什么还要char * 类型的返回值？
+
+答：为了实现链式表达式。                                              // 2分
+
+例如       int length = strlen( strcpy( strDest, “hello world”) );
+
+
+六、编写类String的构造函数、析构函数和赋值函数（25分）
+
+已知类String的原型为：
+
+    class String
+
+    {
+
+      public:
+
+        String(const char *str = NULL); // 普通构造函数
+
+        String(const String &other);        // 拷贝构造函数
+
+        ~ String(void);                     // 析构函数
+
+        String & operate =(const String &other);    // 赋值函数
+
+      private:
+
+        char    *m_data;                // 用于保存字符串
+
+    };
+
+       请编写String的上述4个函数。
+
+标准答案：
+
+
+// String的析构函数
+
+       String::~String(void)               // 3分
+
+{
+
+    delete [] m_data;                      
+
+// 由于m_data是内部数据类型，也可以写成 delete m_data;
+
+       }
+
+
+       // String的普通构造函数             
+
+       String::String(const char *str)      // 6分
+
+{
+
+    if(str==NULL)                          
+
+    {
+
+       m_data = new char[1];    // 若能加 NULL 判断则更好
+
+       *m_data = ‘\0’;                      
+
+    }                                          
+
+    else
+
+    {
+
+       int length = strlen(str);           
+
+       m_data = new char[length+1];  // 若能加 NULL 判断则更好      
+
+       strcpy(m_data, str);                
+
+    }
+
+}   
+
+// 拷贝构造函数
+
+    String::String(const String &other)   // 3分
+
+    {   
+
+    int length = strlen(other.m_data); 
+
+    m_data = new char[length+1];      // 若能加 NULL 判断则更好    
+
+    strcpy(m_data, other.m_data);         
+
+}
+
+// 赋值函数
+
+    String & String::operate =(const String &other)    // 13分
+
+    {   
+
+       // (1) 检查自赋值                     // 4分
+
+       if(this == &other)
+
+           return *this;
+
+    
+
+// (2) 释放原有的内存资源            // 3分
+
+       delete [] m_data;
+
+       
+
+       // （3）分配新的内存资源，并复制内容 // 3分
+
+    int length = strlen(other.m_data); 
+
+    m_data = new char[length+1];         // 若能加 NULL 判断则更好
+
+        strcpy(m_data, other.m_data);
+
+       
+
+       // （4）返回本对象的引用            // 3分
+
+       return *this;
+
+}   
+
+ 
+ 
+
+评论:
+林锐受VC毒害太深 
+
+请写出 BOOL flag 与“零值”比较的 if 语句 
+林锐标准答案：if(flag), if(!flag) 
+俺的标准答案：if(FALSE!=flag), if(FALSE==flag) 
+
+请写出 float x 与“零值”比较的 if 语句 
+林锐标准答案：if( (x>=-EPSINON) && (x<=EPSINON) ) 
+俺的标准答案：if( 0.0f == x ) 
+
+请写出 char *p 与“零值”比较的 if 语句 
+林锐标准答案：if(p == NULL), if(p != NULL) 
+俺的标准答案：if( 0 == p ), if( 0 != p ) 
+
+周星星发表于@ 2005-03-28 1:00 PM  删除
+1. 
+BOOL不是C++中的关键字bool，而是int； 
+C++对整型转bool的规定是：非零为true，零为false 
+所以答案是if(FALSE!=flag), if(FALSE==flag) 
+
+2.题意是与“零值”比较，而不是判断是否接近零，0.0是一个特殊的值，无法（有些编译器会作特殊的规定）通过任何加减乘除得到浮点数的零值（有些编译器会将极小值： 一号正极小值、二号正极小值、一号负极小值、二号负极小值 四个数作为零值）。 
+所以林锐是会错题意，自作多情了。 
+
+3.Bjarne Stroustrup已经讲过为什么是0而不是NULL，我就不多说了，《C++程序设计语言》中好像（记不清楚了）有提到过这个问题，而Bjarne Stroustrup也写过可以代替0的null模板，可以从他的主页看到，不过使用0来代表空指针仍然是最好的方法。 
+提示：对于0，C语言和C++语言对它的定义有所不同。比如 
+C：#define NULL ((void*)0) 
+C++：#define NULL (0)
+周星星发表于@ 2005-03-28 1:24 PM  删除
+仔细考虑了周兄的评论。 
+1. 
+//林锐标准答案：if(flag), if(!flag) 
+//俺的标准答案：if(FALSE!=flag), if(FALSE==flag) 
+既然0为false,而且在判断语句中条件也是非零既是满足，如 
+if(-1)也是可以执行。 
+那么您的答案和林锐的不是一样的吗? 
+2.完全同意，因为学过计算机原理的正规CS人都懂这一点。 
+不过我没试过，不知道实际实现中编译器是如何处理的。 
+3.你说的很对，Bjarne Stroustrup已经讲过为什么是0而不是NULL。 
+BS的原话为:"由于c++收紧的类型检查规则，采用普通的0而不是一些人建议的NULL宏，带来的问题会更少一些" 
+
+谢谢周兄指教！ 
+
+
+
+
+Trackback: http://tb.blog.csdn.net/TrackBack.aspx?PostId=331371
+
+
+
+[收藏到我的网摘]   redsheep发表于 2005年03月26日 21:39:00 
+
+
+相关文章：
+高质量C++/C编程指南(附录C ：C++/C试题的答案与评分标准) 2002-02-11 icemanpro
+C++/C程序员面试的一份试题(附标答) 2006-05-04 liumangxiong
+《高质量C++编程指南》附录 2006-06-06 wfwd
+高质量C++/C 编程指南--林锐博士--我所认为对程序员非常不错的编程经典！ 2006-03-17 lingyuxin127
+答案 2005-07-04 islq
+更多内容...
+
+
+
+
+特别推荐：想在这里投放广告？点击查看详情 
+中科院IT领域工程硕士GCT考前辅导公告
+辅导6.23日开始,考生可以在资格审查时确认报考科 掌握GCT考试要领、把握考试方向与出题思路 c
+程序员学C/C++的n个理由
+C++近期招聘热点。c/c++是程序员必须的语言? c
+《C++编程艺术》在线阅读
+本书揭示了C++程序员创建世界级软件的奥秘 CSDN读书频道独家奉献 c
+贝尔实验室教师上课用的C语言教材
+涵盖C语言各个方面的难点并附代码实例 找技术图书，就上CSDN读书频道 c
+荣耀：C程序设计之四书五经
+学习C语言的经典著作 CSDN读书频道独家奉献 c
+ 
+上一篇: Reflections of a Human Translator on Machine Translation | 下一篇: 第十三章 Perl的面向对象编程
+
+
+#   周星星 发表于2005-03-28 13:24:00  IP: 218.2.111.*
+1. 
+BOOL不是C++中的关键字bool，而是int； 
+C++对整型转bool的规定是：非零为true，零为false 
+所以答案是if(FALSE!=flag), if(FALSE==flag) 
+
+2.题意是与“零值”比较，而不是判断是否接近零，0.0是一个特殊的值，无法（有些编译器会作特殊的规定）通过任何加减乘除得到浮点数的零值（有些编译器会将极小值： 一号正极小值、二号正极小值、一号负极小值、二号负极小值 四个数作为零值）。 
+所以林锐是会错题意，自作多情了。 
+
+3.Bjarne Stroustrup已经讲过为什么是0而不是NULL，我就不多说了，《C++程序设计语言》中好像（记不清楚了）有提到过这个问题，而Bjarne Stroustrup也写过可以代替0的null模板，可以从他的主页看到，不过使用0来代表空指针仍然是最好的方法。 
+提示：对于0，C语言和C++语言对它的定义有所不同。比如 
+C：#define NULL ((void*)0) 
+C++：#define NULL (0) 
+
+
+
+#   jiangredsheep 发表于2005-03-28 14:48:00  IP: 222.171.7.*
+仔细考虑了周兄的评论。 
+1. 
+//林锐标准答案：if(flag), if(!flag) 
+//俺的标准答案：if(FALSE!=flag), if(FALSE==flag) 
+既然0为false,而且在判断语句中条件也是非零既是满足，如 
+if(-1)也是可以执行。 
+那么您的答案和林锐的不是一样的吗? 
+2.完全同意，因为学过计算机原理的正规CS人都懂这一点。 
+不过我没试过，不知道实际实现中编译器是如何处理的。 
+3.你说的很对，Bjarne Stroustrup已经讲过为什么是0而不是NULL。 
+BS的原话为:"由于c++收紧的类型检查规则，采用普通的0而不是一些人建议的NULL宏，带来的问题会更少一些" 
+
+谢谢周兄指教！ 
+ 
+
+
+
+#   周星星 发表于2005-03-28 13:00:00  IP: 218.2.111.*
+林锐受VC毒害太深 
+
+请写出 BOOL flag 与“零值”比较的 if 语句 
+林锐标准答案：if(flag), if(!flag) 
+俺的标准答案：if(FALSE!=flag), if(FALSE==flag) 
+
+请写出 float x 与“零值”比较的 if 语句 
+林锐标准答案：if( (x>=-EPSINON) && (x<=EPSINON) ) 
+俺的标准答案：if( 0.0f == x ) 
+
+请写出 char *p 与“零值”比较的 if 语句 
+林锐标准答案：if(p == NULL), if(p != NULL) 
+俺的标准答案：if( 0 == p ), if( 0 != p ) 
+ 
+
+
+
+ 
+发表评论 
+  
+大名：  
+请输入尊姓大名  
+网址：   
+评论  
+请输入评论 
+  
+     
+当前用户设置只有注册用户才能发表评论。如果你没有登录，请点击登录  
+
+Powered by: 
+  
+Copyright ? redsheep 
+
+  

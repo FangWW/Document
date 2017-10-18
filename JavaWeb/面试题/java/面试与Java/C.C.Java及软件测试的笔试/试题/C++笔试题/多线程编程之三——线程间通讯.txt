@@ -1,0 +1,152 @@
+    
+::首页 >> 文档中心 >> 在线杂志 >> 多任务(多进程、多线程) [ 在线杂志 第49期 ]  
+
+
+
+ 
+ [ 原创文档 本文适合中级读者 已阅读12208次 ]   文档 代码 工具   
+
+多线程编程之三——线程间通讯
+
+作者：韩耀旭
+
+下载源代码
+
+七、线程间通讯
+
+　　一般而言,应用程序中的一个次要线程总是为主线程执行特定的任务,这样,主线程和次要线程间必定有一个信息传递的渠道,也就是主线程和次要线程间要进行通信。这种线程间的通信不但是难以避免的，而且在多线程编程中也是复杂和频繁的，下面将进行说明。
+
+使用全局变量进行通信
+
+由于属于同一个进程的各个线程共享操作系统分配该进程的资源，故解决线程间通信最简单的一种方法是使用全局变量。对于标准类型的全局变量，我们建议使用volatile 修饰符，它告诉编译器无需对该变量作任何的优化，即无需将它放到一个寄存器中，并且该值可被外部改变。如果线程间所需传递的信息较复杂，我们可以定义一个结构，通过传递指向该结构的指针进行传递信息。
+　 
+使用自定义消息
+
+我们可以在一个线程的执行函数中向另一个线程发送自定义的消息来达到通信的目的。一个线程向另外一个线程发送消息是通过操作系统实现的。利用Windows操作系统的消息驱动机制，当一个线程发出一条消息时，操作系统首先接收到该消息，然后把该消息转发给目标线程，接收消息的线程必须已经建立了消息循环。 
+例程7 MultiThread7
+
+　　该例程演示了如何使用自定义消息进行线程间通信。首先，主线程向CCalculateThread线程发送消息WM_CALCULATE，CCalculateThread线程收到消息后进行计算，再向主线程发送WM_DISPLAY消息，主线程收到该消息后显示计算结果。
+
+建立一个基于对话框的工程MultiThread7，在对话框IDD_MULTITHREAD7_DIALOG中加入三个单选按钮IDC_RADIO1，IDC_RADIO2，IDC_RADIO3，标题分别为1+2+3+4+......+10，1+2+3+4+......+50，1+2+3+4+......+100。加入按钮IDC_SUM，标题为“求和”。加入标签框IDC_STATUS，属性选中“边框”； 
+在MultiThread7Dlg.h中定义如下变量： protected:
+	int nAddend;
+
+代表加数的大小。
+
+分别双击三个单选按钮，添加消息响应函数：void CMultiThread7Dlg::OnRadio1() 
+{
+	nAddend=10;
+}
+
+void CMultiThread7Dlg::OnRadio2() 
+{
+	nAddend=50;
+	
+}
+
+void CMultiThread7Dlg::OnRadio3() 
+{
+	nAddend=100;
+	
+}
+并在OnInitDialog函数中完成相应的初始化工作： BOOL CMultiThread7Dlg::OnInitDialog()
+{
+……
+	((CButton*)GetDlgItem(IDC_RADIO1))->SetCheck(TRUE);
+	nAddend=10;
+……
+
+在MultiThread7Dlg.h中添加： #include "CalculateThread.h"
+#define WM_DISPLAY WM_USER+2
+class CMultiThread7Dlg : public CDialog
+{
+// Construction
+public:
+	CMultiThread7Dlg(CWnd* pParent = NULL);	// standard constructor
+	CCalculateThread* m_pCalculateThread;
+……
+protected:
+	int nAddend;
+	LRESULT OnDisplay(WPARAM wParam,LPARAM lParam);
+……
+
+在MultiThread7Dlg.cpp中添加： BEGIN_MESSAGE_MAP(CMultiThread7Dlg, CDialog)
+……
+	ON_MESSAGE(WM_DISPLAY,OnDisplay)
+END_MESSAGE_MAP()
+
+LRESULT CMultiThread7Dlg::OnDisplay(WPARAM wParam,LPARAM lParam)
+{
+	int nTemp=(int)wParam;
+	SetDlgItemInt(IDC_STATUS,nTemp,FALSE);
+
+  return 0;
+
+}
+以上代码使得主线程类CMultiThread7Dlg可以处理WM_DISPLAY消息，即在IDC_STATUS标签框中显示计算结果。 
+双击按钮IDC_SUM，添加消息响应函数： void CMultiThread7Dlg::OnSum() 
+{
+	m_pCalculateThread=
+		(CCalculateThread*)AfxBeginThread(RUNTIME_CLASS(CCalculateThread));
+
+	Sleep(500);
+
+	m_pCalculateThread->PostThreadMessage(WM_CALCULATE,nAddend,NULL);
+}
+OnSum()函数的作用是建立CalculateThread线程，延时给该线程发送WM_CALCULATE消息。 
+右击工程并选中“New Class…”为工程添加基类为 CWinThread 派生线程类 CCalculateThread。
+
+在文件CalculateThread.h 中添加 #define WM_CALCULATE WM_USER+1 
+class CCalculateThread : public CWinThread
+{
+……
+protected:
+	afx_msg LONG OnCalculate(UINT wParam,LONG lParam);
+……
+
+在文件CalculateThread.cpp中添加 LONG CCalculateThread::OnCalculate(UINT wParam,LONG lParam)
+{
+	int nTmpt=0;
+	for(int i=0;i<=(int)wParam;i++)
+	{
+		nTmpt=nTmpt+i;
+	}
+
+	Sleep(500);
+    ::PostMessage((HWND)(GetMainWnd()->GetSafeHwnd()),WM_DISPLAY,nTmpt,NULL);
+
+	return 0;
+}
+BEGIN_MESSAGE_MAP(CCalculateThread, CWinThread)
+	//{{AFX_MSG_MAP(CCalculateThread)
+		// NOTE - the ClassWizard will add and remove mapping macros here.
+	//}}AFX_MSG_MAP
+	ON_THREAD_MESSAGE(WM_CALCULATE,OnCalculate)
+//和主线程对比，注意它们的区别
+END_MESSAGE_MAP()
+
+在CalculateThread.cpp文件的开头添加一条： #include "MultiThread7Dlg.h"
+
+　　以上代码为　CCalculateThread　类添加了 WM_CALCULATE 消息，消息的响应函数是 OnCalculate，其功能是根据参数 wParam 的值，进行累加，累加结果在临时变量nTmpt中，延时0.5秒，向主线程发送WM_DISPLAY消息进行显示，nTmpt作为参数传递。 
+编译并运行该例程,体会如何在线程间传递消息。
+（未完待续） 
+
+本文关联的其它文章
+
+多线程编程之一——问题提出 
+多线程编程之二——MFC中的多线程开发 
+多线程编程之四——线程的同步
+　 
+ 
+ 
+
+
+
+
+最新评论 [发表评论] [文章投稿]  查看所有评论  推荐给好友  打印 
+
+
+
+
+版权所有 ? 2006 VC知识库  
+
