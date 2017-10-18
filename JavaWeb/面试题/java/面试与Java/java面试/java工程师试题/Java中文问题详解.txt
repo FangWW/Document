@@ -1,0 +1,144 @@
+作者：weljava
+email: weljava@263.net
+日期：2000-12-14 16:03:40
+发信人: aweiwei (还是学习的好), 信区: JAVA 
+标  题: Java中文问题详解 
+发信站: 碧海青天 (Wed Nov 29 09:50:42 2000), 转信 
+  
+  
+  
+Java中文问题详解 
+    2000-11-25 10:09 
+  
+------------------------------------------------------------------------ 
+-------- 
+  
+  
+  
+作者：转载自Java联盟论坛 
+Java中文问题详解 发言者：congling 时 间：2000/10/16 22:51:22 来 自： 
+www.javaunion.org 
+  
+  
+------------------------------------------------------------------------ 
+-------- 
+  
+我来说一下tomcat如何实现JSP的你就明白了。 预备知识： 　1.字节和unicode 
+　　Java内核是unicode的，就连class文件也是，但是很多媒体，包括文件/流的 
+保存方式 　　是使用字节流的。 因此Java要对这些字节流经行转化。char是 
+unicode的，而byte是字节. 　　Java中byte/char互转的函数在sun.io的包中间有 
+。其中ByteToCharConverter类是中调度， 　　可以用来告诉你，你用的 
+Convertor。其中两个很常用的静态函数是 　　 public static 
+ByteToCharConverter getDefault() ; 　　 public static 
+ByteToCharConverter getConverter(String encoding); 　　如果你不指定 
+converter，则系统会自动使用当前的Encoding,GB平台上用GBK,EN平台上用 　　 
+8859_1 　　 　　我们来就一个简单的例子： 　　　　　“你“的gb码是： 
+0xC4E3 ,unicode是0x4F60 　　　　　你用: 　　　　　--encoding=“gb2312“; 
+ 　　　　　--byte b[]={(byte)‘u00c4‘,(byte)‘u00E3‘}; 　　　　　 
+--convertor=ByteToCharConverter.getConverter(encoding); 　　　　　--char 
+ [] c=converter.convertAll(b); 　　　　　--for(int i=0;i0xC4, 
+0x00E3->0xE3，因此0xC4,0xE3被放进了 　--文件 ---- 1.对于JSP正文的解释： 
+ --Tomcat首先看一下你的叶面中有没有“ 
+  
+http://localhost/test/test.jsp?value=你 
+  
+结果:你好你 
+  
+但这种方法局限性较大，比如对上传的文章分段，这样的做法是死定的，最好的 
+解决方案是用这种方案： 你好 
+  
+  
+必读好文,但解决方案不敢恭维 发言者：小熊 时 间：2000/10/17 17:21:31 来 
+自：www.javaunion.org 
+  
+  
+------------------------------------------------------------------------ 
+-------- 
+  
+1.网页传参数不提倡用get方法,而且用户可以调整是否用utf-8发送 2.建议jsp中 
+最好不要用,实际上加不加这句都有实现中文正常显示的方案,我认为不加方便些, 
+至少不用写这些代码,如下的配置我认为可以使中文正常显示: a.所有的javabean 
+用iso8859-1编译 b.jsp文件中不要写以上charset=gb2312的语句(写了反而错) 
+  
+在tomcat情况下注意以上2点就行---了,等等,对于其他有可能不行的jsp服务器,加 
+上以下 c.服务器上的操作系统语言设为英文(像没有装类似bluepoint中文系统的 
+linux一般本来就是英文) 就行---了 
+  
+谁要是还不对,请报告.... 
+  
+  
+Re：必读好文,但解决方案不敢恭维 发言者：congling 时 间：2000/10/17 21: 
+06:23 来 自：www.javaunion.org 
+  
+  
+------------------------------------------------------------------------ 
+-------- 
+  
+Tomcat的参数问题无论是GET或是POST方式都是用8859_1编码的。这个可以看 
+Tomcat Servlet实现的源代码: a) 对于POST方法 　javax.servlet.http. 
+HttpUtils的parsePostData方法： (对于POST的Form数据) 　String 
+postedBody = new String(postedBytes, 0, len, “8859_1“);)这里是没有问题 
+的因为中文都会用%来说明。但是parseName这个函数，却没有把是中文的东西整合 
+起来，他只是简单的拼凑，因此可以认定他是使用8859_1的编码规则 　 sb. 
+append((char) Integer.parseInt(s.substring(i+1, i+3), 16)); ----　　i += 
+ 2; -- b) 对于GET方法 　org.apache.tomcat.service.http. 
+HttpRequestAdapter 　　　--　line=new String(buf, 0, count, 　　　　　　 
+ Constants.CharacterEncoding.Default); ----Constants.CharacterEncoding. 
+Default=8859_1 　这段代码不好跟踪，千万不要被一些假象迷惑住。 
+HttpRequestAdapter是从RequestImpl中派生的。但是，实际上用8080端口的 
+Server并没有直接用到RequestImpl，而是用了HttpRequestAdapter来获得 
+queryString 
+  
+对于加不加encoding，我保留我的意见，因为如果要解决上传文件分页问题，必须 
+要用他来编码。而且编码能保证在一些Beans当中的传递性。 
+  
+看来我要在这里说明一下了 发言者：小熊 时 间：1970/01/01 07:59:59 来 自： 
+www.javaunion.org 
+  
+  
+------------------------------------------------------------------------ 
+-------- 
+  
+Tomcat仅仅是一个对jsp1.1,servlet2.2的一个标准的实现,我们不应该要求这个免 
+费软件在细致末节上和性能上都面面俱到,它主要考虑的英文用户,这也是为什么不 
+作特殊转换我们的汉字用url方法传递有问题的原因,我们大部分浏览器ie其高级设 
+置中始终以utf-8发送url的选项缺省是选上的,如果说这是tomcat的bug也是可以的 
+,另外Tomcat不管当前的操作系统是什么语言,好像都按iso8859去编译jsp,我觉得 
+也有点欠妥,但是不管怎么说,新标准的实现和热门的软件在语言的支持方面永远都 
+是先考虑英文 
+  
+我的方案什么说要好一些呢 1.还是那句话,英文国家的软件永远都是先考虑英文, 
+java虚拟机的规范中要求虚拟机内部必须实现iso8859,unicode,UTF-8三种,其他的 
+不作要求,我们用的jdk中的虚拟机就是这样,嵌入式的就更不用说了,也就是说其他 
+的ENCODE都很可能不是java虚拟机内部直接支持的,我们的中文自然也不在其列,需 
+要外部的包支持转换,sun jdk应该在i18n.jar中,用iso8859速度最快,不需要其它 
+调用和交换什么的,更没有读包的io操作 2.至少少写了代码,没有额外操作,简洁的 
+风格谁不喜欢 3.所写的jsp页面国际性化好,我才写了一个jsp+javabeans的聊天室 
+软件(没有用到servlet,jsp真的确实很好),同样的程序美国人用他们的浏览器进入 
+就是英文界面,中文进入就是中文界面,如果加上charset=gb2312至少很麻烦 4.限 
+定了gb2312,如果用户要用GBK,怎么办,不加更好,不管什么的字符集,只要我当前浏 
+览器设定的是,我就能显示出来 
+  
+总结:无论从速度上,开发效率上,和可扩展性上考虑,我的方案都比你的好,另外,我 
+找不到你的方案比我的好的地方. 
+  
+  
+  
+  
+  
+  
+  
+广告服务 | 隐私保护 | 版权所有 | 联系我们 
+版权所有 深圳盛亚电脑技术有限公司 & 深圳天萧工作室 
+Copyright (C) 2000 Shenzhen Superasia Computer Technology Co., Ltd. 
+All Rights Reserved 
+  
+
+-- 
+  
+  
+  
+  
+  吾本楚狂人，疯歌笑孔丘 
+  
+

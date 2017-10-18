@@ -1,0 +1,125 @@
+华为Java笔试题： 
+
+一、 单项选择题
+　　1．Java是从（ ）语言改进重新设计。
+　　A．Ada B．C++ C．Pasacal D．BASIC
+　　答案：B
+　　
+　　2．下列语句哪一个正确（ ）
+　　A． Java程序经编译后会产生machine code
+　　B． Java程序经编译后会产生byte code
+　　C． Java程序经编译后会产生DLL
+　　D． 以上都不正确
+　　答案：B
+　　
+　　3．下列说法正确的有（ ）
+　　A． class中的constructor不可省略
+　　B． constructor必须与class同名，但方法不能与class同名
+　　C． constructor在一个对象被new时执行
+　　D． 一个class只能定义一个constructor
+　　答案：C
+　　
+　　4．提供Java存取数据库能力的包是（ ）
+　　A．java.sql B．java.awt C．java.lang D．java.swing
+　　答案：A
+　　
+　　5．下列运算符合法的是（ ）
+　　A．&& B．<> C．if D．:=
+　　答案：A
+　　
+　　6．执行如下程序代码
+　　a=0;c=0;
+　　do{
+　　--c;
+　　a=a-1;
+　　}while(a>0);
+　　后，C的值是（ ）
+　　A．0 B．1 C．-1 D．死循环
+　　答案：C
+　　
+　　7．下列哪一种叙述是正确的（ ）
+　　A． abstract修饰符可修饰字段、方法和类
+　　B． 抽象方法的body部分必须用一对大括号{ }包住
+　　C． 声明抽象方法，大括号可有可无
+　　D． 声明抽象方法不可写出大括号
+　　答案：D
+　　
+　　8．下列语句正确的是（ ）
+　　A． 形式参数可被视为local variable
+　　B． 形式参数可被字段修饰符修饰
+　　C． 形式参数为方法被调用时，真正被传递的参数
+　　D． 形式参数不可以是对象
+　　答案：A
+　　
+　　9．下列哪种说法是正确的（ ）
+　　A． 实例方法可直接调用超类的实例方法
+　　B． 实例方法可直接调用超类的类方法
+　　C． 实例方法可直接调用其他类的实例方法
+　　D． 实例方法可直接调用本类的类方法
+　　答案：D
+　　
+　　二、 多项选择题
+　　1．Java程序的种类有（ ）
+　　A．类（Class） B．Applet C．Application D．Servlet
+　　2．下列说法正确的有（ ）
+　　A． 环境变量可在编译source code时指定
+　　B． 在编译程序时，所能指定的环境变量不包括class path
+　　C． javac一次可同时编译数个Java源文件
+　　D． javac.exe能指定编译结果要置于哪个目录（directory）
+　　答案：BCD
+　　
+　　3．下列标识符不合法的有（ ）
+　　A．new B．$Usdollars C．1234 D．car.taxi
+　　答案：ACD
+　　
+　　4．下列说法错误的有（ ）
+　　A． 数组是一种对象
+　　B． 数组属于一种原生类
+　　C． int number=[]={31,23,33,43,35,63}
+　　D． 数组的大小可以任意改变
+　　答案：BCD
+　　
+　　5．不能用来修饰interface的有（ ）
+　　A．private B．public C．protected D．static 
+　　答案：ACD
+　　
+　　6．下列正确的有（ ）
+　　A． call by value不会改变实际参数的数值
+　　B． call by reference能改变实际参数的参考地址
+　　C． call by reference不能改变实际参数的参考地址
+　　D． call by reference能改变实际参数的内容
+　　答案：ACD
+　　
+　　7．下列说法错误的有（ ）
+　　A． 在类方法中可用this来调用本类的类方法
+　　B． 在类方法中调用本类的类方法时可直接调用
+　　C． 在类方法中只能调用本类中的类方法
+　　D． 在类方法中绝对不能调用实例方法
+　　答案：ACD
+　　
+　　8．下列说法错误的有（ ）
+　　A． Java面向对象语言容许单独的过程与函数存在
+　　B． Java面向对象语言容许单独的方法存在
+　　C． Java语言中的方法属于类中的成员（member）
+　　D． Java语言中的方法必定隶属于某一类（对象），调用方法与过程或函数相同
+　　答案：ABC
+　　
+　　9．下列说法错误的有（ ）
+　　A． 能被java.exe成功运行的java class文件必须有main()方法
+　　B． J2SDK就是Java API
+　　C． Appletviewer.exe可利用jar选项运行.jar文件
+　　D． 能被Appletviewer成功运行的java class文件必须有main()方法
+　　答案：BCD
+　　
+　　三、 判断题
+　　1．Java程序中的起始类名称必须与存放该类的文件名相同。（ ）
+　　答案：正确
+　　
+　　2．Unicode是用16位来表示一个字的。（ ）
+　　答案：正确
+　　
+　　3．原生类中的数据类型均可任意转换。（ ）
+　　答案：错误
+
+
+ 
