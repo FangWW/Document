@@ -4,11 +4,10 @@
 package com.lsy.user.actions;
 
 
-import java.io.FileOutputStream;
-import java.util.Random;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.lsy.userinfo_actionform.UserActionForm;
+import com.lsy.util.IPTimeStamp;
+import com.lsy.vo.User;
+import com.sly.user.business.UserManager;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.Action;
@@ -17,13 +16,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 
-import com.lsy.userinfo_actionform.UserActionForm;
-import com.lsy.util.IPTimeStamp;
-import com.lsy.vo.User;
-import com.sly.user.business.UserManager;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author ÀµÉùÔ¨
+ * @author ï¿½ï¿½ï¿½ï¿½Ô¨
  *
  */
 public class UserRegiterAction extends Action {
@@ -42,32 +41,32 @@ public class UserRegiterAction extends Action {
 		String photoName = "";
 		String qq="";
 		
-		IPTimeStamp its = new IPTimeStamp(request.getRemoteAddr()); // ²úÉúÓÉIP¡¢Ê±¼ä£¬3Î»Ëæ»úÊý×é³ÉµÄÒ»¸öÊµÀý
-		FormFile photo = (FormFile) uaf.getPhoto();// »ñÈ¡µ½Í¼Æ¬
+		IPTimeStamp its = new IPTimeStamp(request.getRemoteAddr()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ê±ï¿½ä£¬3Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½
+		FormFile photo = (FormFile) uaf.getPhoto();// ï¿½ï¿½È¡ï¿½ï¿½Í¼Æ¬
 		photoName=photo.getFileName();
-		//ÈôÓÃ»§Ã»ÓÐÑ¡ÔñÍ·Ïñ£¬ÔòÉèÎªÄ¬ÈÏÍ·Ïñ
+		//ï¿½ï¿½ï¿½Ã»ï¿½Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÄ¬ï¿½ï¿½Í·ï¿½ï¿½
 		if (photoName.equals("")){
 			
 			photoName = "default_photo.jpg ";
 			
 		}
 		
-        String ph_last = photoName.split("\\.")[1];// »ñµÃÕÕÆ¬µÄºó×ºÃû
-			// System.out.println("Í¼Æ¬ºó×ºÃû: "+ph_last );
-		photoName = its.getIPTimeStampRand() + "." + ph_last;// ¸øÍ¼Æ¬×Ô¶¯ÖØÐÂÃüÃû
-			//System.out.println("Í¼Æ¬×Ô¶¯ÖØÐÂÃüÃû: " + photoName);
+        String ph_last = photoName.split("\\.")[1];// ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½Äºï¿½×ºï¿½ï¿½
+			// System.out.println("Í¼Æ¬ï¿½ï¿½×ºï¿½ï¿½: "+ph_last );
+		photoName = its.getIPTimeStampRand() + "." + ph_last;// ï¿½ï¿½Í¼Æ¬ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//System.out.println("Í¼Æ¬ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + photoName);
 		
 		
-		//×Ô¶¯²úÉúÒ»¸öqqÕÊºÅ
+		//ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½qqï¿½Êºï¿½
 		 int number=new Random().nextInt(100000);
 		 qq= "66".concat(String.valueOf(number));
-		//½«formbeanÖÐµÄÊý¾Ý¸³Öµ¸øuser
+		//ï¿½ï¿½formbeanï¿½Ðµï¿½ï¿½ï¿½ï¿½Ý¸ï¿½Öµï¿½ï¿½user
 		BeanUtils.copyProperties(user, uaf);
 		user.setPhoto(photoName);
 		user.setQq(qq);
 		flag = UserManager.getInstance().userReg(user);
 		
-		//ÔÚÖ¸¶¨µÄÄ¿Â¼ÏÂ´´½¨photoÎÄ¼þ¼Ð
+		//ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½Â´ï¿½ï¿½ï¿½photoï¿½Ä¼ï¿½ï¿½ï¿½
 		java.io.File   myFilePath   =   new   java.io.File( request.getSession().getServletContext().getRealPath("/photo/")); 
 	    if(!myFilePath.exists()) {
 	          myFilePath.mkdir();
@@ -75,13 +74,13 @@ public class UserRegiterAction extends Action {
 	    
 		if (!photoName.equals("")) {
 
-			//½«Í¼Æ¬±£´æµ½Ö¸¶¨µÄÎÄ¼þ¼ÐÖÐ
+			//ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½æµ½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 			//FileOutputStream fos = new FileOutputStream (myFilePath+"/"+ photoName);
 			// System.out.println("myFilePath: " + myFilePath);
 			//fos.write(photo.getFileData());
 			//fos.flush();
 			//fos.close();
-			//System.out.println("Í¼Æ¬ÒÑÉÏ´«Íê±Ï£¡£¡£¡");
+			//System.out.println("Í¼Æ¬ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 		request.setAttribute("qq", qq);
 		request.setAttribute("flag", new Boolean(flag));

@@ -1,11 +1,9 @@
 package com.lsy.user.actions;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.lsy.userinfo_actionform.UserActionForm;
+import com.lsy.util.IPTimeStamp;
+import com.lsy.vo.User;
+import com.sly.user.business.UserManager;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.Action;
@@ -14,14 +12,16 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 
-import com.lsy.userinfo_actionform.UserActionForm;
-import com.lsy.util.IPTimeStamp;
-import com.lsy.vo.User;
-import com.sly.user.business.UserManager;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class UpdataAction extends Action {
 
-	/* ÐÞ¸Ä¸üÐÂÓÃ»§µÄÐÅÏ¢
+	/* ï¿½Þ¸Ä¸ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
@@ -32,26 +32,26 @@ public class UpdataAction extends Action {
 		 UserActionForm saf = (UserActionForm) form;
 		 User user = new User();
 		 IPTimeStamp its = new IPTimeStamp(request.getRemoteAddr()); //
-		// ²úÉúÓÉIP¡¢Ê±¼ä£¬3Î»Ëæ»úÊý×é³ÉµÄÒ»¸öÊµÀý
-		 String ph_oldName = (String) request.getParameter("ph_oldName");// »ñµÃ¾ÉÕÕÆ¬µÄÃû×Ö
-		 // System.out.println("¾ÉÕÕÆ¬µÄÃû×Ö: "+ph_oldName );
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ê±ï¿½ä£¬3Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½
+		 String ph_oldName = (String) request.getParameter("ph_oldName");// ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 // System.out.println("ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+ph_oldName );
 		
-		 FormFile photo = (FormFile) saf.getPhoto();// ´Ó±íµ¥ÖÐ»ñÈ¡ÕÕÆ¬µÄÐÅÏ¢
-		 BeanUtils.copyProperties(user, saf);// ½«ÊÕ¼¯µÄÊý¾ÝÉèµ½±íµ¥BeanÖÐ
+		 FormFile photo = (FormFile) saf.getPhoto();// ï¿½Ó±ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½Ï¢
+		 BeanUtils.copyProperties(user, saf);// ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èµ½ï¿½ï¿½Beanï¿½ï¿½
 		
 		 if (!photo.getFileName().equals("")) {
-		 String ph_last = photo.getFileName().split("\\.")[1];// »ñµÃÕÕÆ¬µÄºó×ºÃû
-		 String photoName = its.getIPTimeStampRand() + "." + ph_last;// ¸øÍ¼Æ¬×Ô¶¯ÖØÐÂÃüÃû
-		 user.setPhoto(photoName);// ÈôÕÕÆ¬¸Ä¶¯ÁË£¬½«ÐÂÕÕÆ¬µÄÃû×ÖÉèµ½±íµ¥ÖÐ£¬´æµ½Êý¾Ý¿âÖÐ
-		 /* ²¢ÇÒÉ¾³ý¾ÉÕÕÆ¬ */
+		 String ph_last = photo.getFileName().split("\\.")[1];// ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½Äºï¿½×ºï¿½ï¿½
+		 String photoName = its.getIPTimeStampRand() + "." + ph_last;// ï¿½ï¿½Í¼Æ¬ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 user.setPhoto(photoName);// ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½Ä¶ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èµ½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½æµ½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
+		 /* ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ */
 		 java.io.File f = new java.io.File(request.getSession()
 		 .getServletContext().getRealPath("/photo/")+ ph_oldName);
 		 if (f.exists()) {
-		 f.delete();// É¾³ýfÂ·¾¶ÏÂµÄ¾ÉÕÕÆ¬
-		// System.out.println("¾ÉÍ¼Æ¬ÒÑÉ¾³ýÍê±Ï£¡£¡£¡");
+		 f.delete();// É¾ï¿½ï¿½fÂ·ï¿½ï¿½ï¿½ÂµÄ¾ï¿½ï¿½ï¿½Æ¬
+		// System.out.println("ï¿½ï¿½Í¼Æ¬ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½");
 		 }
 		
-		 /* ½«¸ü¸ÄµÄÐÂÕÕÆ¬±£´æµ½Ö¸¶¨µÄÄ¿Â¼ÏÂ */
+		 /* ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½æµ½Ö¸ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ */
 		 FileOutputStream fos = new FileOutputStream(request.getSession()
 		 .getServletContext().getRealPath("/photo/") + photoName);
 		 fos.write(photo.getFileData());
@@ -59,7 +59,7 @@ public class UpdataAction extends Action {
 		 fos.close();
 		
 		 } else {
-		 user.setPhoto(ph_oldName);// ÈôÍ¼Æ¬Ã»ÓÐ±»¸Ä¶¯£¬½«Ô­À´µÄÍ¼Æ¬Ãû³ÆÔÙ±£´æµ½Êý¾Ý¿âÖÐ£¬
+		 user.setPhoto(ph_oldName);// ï¿½ï¿½Í¼Æ¬Ã»ï¿½Ð±ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½Ù±ï¿½ï¿½æµ½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð£ï¿½
 		 }
 		
 		 flag = UserManager.getInstance().updataUser(user);
@@ -74,7 +74,7 @@ public class UpdataAction extends Action {
 				try {
 					out = response.getWriter();
 					out
-							.println("<script language='javascript'>alert('·þÎñÆ÷·±Ã¦£¬×ÊÁÏ¸üÐÂÊ§°Ü£¬ÇëÉÔºò....');window.location.href='updataUserInfo.jsp';</script>");
+							.println("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¦ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½Ôºï¿½....');window.location.href='updataUserInfo.jsp';</script>");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

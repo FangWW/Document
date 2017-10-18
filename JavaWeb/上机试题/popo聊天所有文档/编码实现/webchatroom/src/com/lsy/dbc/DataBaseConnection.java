@@ -1,14 +1,13 @@
 package com.lsy.dbc ;
 
-import java.sql.* ;
 public class DataBaseConnection
 {
 	
 	public static  Connection getConn() {
 		Connection conn = null;
-		// ´´½¨DBConnManager DM¶ÔÏó......ÓëÊý¾ÝÁ¬½Ó³ØÁ¬½Ó
+		// ï¿½ï¿½ï¿½ï¿½DBConnManager DMï¿½ï¿½ï¿½ï¿½......ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ï¿½
 		DBConnManager connManager = new DBConnManager();
-		//System.out.println("^^^^^´´½¨DBConnManager DM¶ÔÏó......ÓëÊý¾ÝÁ¬½Ó³ØÁ¬½Ó^^^^^^^^");
+		//System.out.println("^^^^^ï¿½ï¿½ï¿½ï¿½DBConnManager DMï¿½ï¿½ï¿½ï¿½......ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ï¿½^^^^^^^^");
 		conn = connManager.getConnection("mysql");
 		return conn;
 	}

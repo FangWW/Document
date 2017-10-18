@@ -1,39 +1,39 @@
 package com.lsy.user.daoImp;
 
+import com.lsy.dbc.DataBaseConnection;
+import com.lsy.user.dao.UserDao;
+import com.lsy.vo.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.lsy.dbc.DataBaseConnection;
-import com.lsy.user.dao.UserDao;
-import com.lsy.vo.User;
-
 public  class UserDaoImp implements UserDao  {
 	
-	//µÇÂ¼ÑéÖ¤
+	//ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
 	public User userLogin(Connection conn,String qq, String password)throws Exception {
 		
 		User user =null ;
 		PreparedStatement pstmt	= null ;
-		// ÉùÃ÷Ò»¸ö½á¹û¼¯¶ÔÏó
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ResultSet rs			= null ;
-		// ÉùÃ÷Ò»¸öSQL±äÁ¿£¬ÓÃÓÚ±£´æSQLÓï¾ä
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½
 		String sql				= null ;
 		sql = "SELECT qq,nickname,sign,photo FROM user_info WHERE qq=? and password=?" ;
 		try
 		{			
-			// ÊµÀý»¯Êý¾Ý¿â²Ù×÷¶ÔÏó
+			// Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			pstmt = conn.prepareStatement(sql) ;
-			// ÉèÖÃpstmtµÄÄÚÈÝ£¬ÊÇ°´IDºÍÃÜÂëÑéÖ¤
+			// ï¿½ï¿½ï¿½ï¿½pstmtï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Ç°ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
 			pstmt.setString(1,qq) ;
 			pstmt.setString(2,password) ;
-			// ²éÑ¯¼ÇÂ¼
+			// ï¿½ï¿½Ñ¯ï¿½ï¿½Â¼
 			rs = pstmt.executeQuery() ;
 			
 			if(rs.next())
 			{
-				// Èç¹ûÓÐ¼ÇÂ¼£¬ÓÃ»§ÊÇºÏ·¨µÄ£¬¿ÉÒÔµÇÂ½
+				// ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ÇºÏ·ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ôµï¿½Â½
 				user=new User();
 				user.setQq(rs.getString("qq"));
 				user.setNickname(rs.getString("nickname"));
@@ -42,7 +42,7 @@ public  class UserDaoImp implements UserDao  {
 				
 				
 			}
-			// ÒÀ´Î¹Ø±Õ
+			// ï¿½ï¿½ï¿½Î¹Ø±ï¿½
 			
 		}
 		catch(Exception e)
@@ -69,7 +69,7 @@ public  class UserDaoImp implements UserDao  {
 	}
 
 
-	// ÓÃ»§×¢²á
+	// ï¿½Ã»ï¿½×¢ï¿½ï¿½
 	public boolean userRge(Connection conn,User user)throws Exception {
         boolean flag=false;
         int count=0;
@@ -102,7 +102,7 @@ public  class UserDaoImp implements UserDao  {
 	}
 
 	
-	// Í¨¹ýQQÕËºÅ²éÕÒÓÃ»§ÐÅÏ¢
+	// Í¨ï¿½ï¿½QQï¿½ËºÅ²ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public User findById(Connection conn, String qq) throws Exception{
 
 		String sql = "select qq,nickname,age,sex,birthday,sign,photo  from user_info  where qq=?";
@@ -138,7 +138,7 @@ public  class UserDaoImp implements UserDao  {
 
 	}
 	
-	// ¸üÐÂ ÓÃ»§ÐÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public boolean updataUser(Connection conn, User user)throws Exception {
 		boolean flag=false;
 		int count=0;

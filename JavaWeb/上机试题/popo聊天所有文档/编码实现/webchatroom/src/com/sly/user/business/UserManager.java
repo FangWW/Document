@@ -3,20 +3,21 @@
  */
 package com.sly.user.business;
 
-import java.sql.Connection;
 import com.lsy.dbc.DataBaseConnection;
 import com.lsy.user.dao.UserDao;
 import com.lsy.user.factory.UserDaoFactory;
 import com.lsy.vo.User;
 
+import java.sql.Connection;
+
 /**
- * @author ÀµÉùÔ¨
+ * @author ï¿½ï¿½ï¿½ï¿½Ô¨
  * 
  */
 
 public class UserManager {
 
-	// Í¨¹ýµ¥ÀýÄ£Ê½È¡µÃÀàµÄÊµÏÖ UserDaoImp
+	// Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ UserDaoImp
 	private static UserManager instance = new UserManager();
 	private UserDao userDao = null;
 
@@ -29,7 +30,7 @@ public class UserManager {
 	}
 
 	/**
-	 * µÇÂ¼ÑéÖ¤
+	 * ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
 	 * 
 	 * @param
 	 * @return
@@ -50,7 +51,7 @@ public class UserManager {
 	}
 
 	/**
-	 * ÓÃ»§×¢²á
+	 * ï¿½Ã»ï¿½×¢ï¿½ï¿½
 	 * 
 	 * @param User
 	 *            user
@@ -71,7 +72,7 @@ public class UserManager {
 	}
 
 	/**
-	 * QQÕËºÅ²éÕÒ
+	 * QQï¿½ËºÅ²ï¿½ï¿½ï¿½
 	 * 
 	 * @param
 	 * @return
