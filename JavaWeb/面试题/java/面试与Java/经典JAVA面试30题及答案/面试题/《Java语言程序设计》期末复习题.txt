@@ -1,0 +1,540 @@
+《Java语言程序设计》期末复习题
+ 
+
+--------------------------------------------------------------------------------
+ 
+2003-10-17 10:14:00      阅读596次 
+   
+2000计算机专业（普专、远程）
+《Java语言程序设计》期末复习题
+2002-12 
+一、 判断题
+1．Java程序里,创建新的类对象用关键字new，回收无用的类对象使用关键字free。
+2．对象可以赋值，只要使用赋值号（等号）即可，相当于生成了一个各属性与赋值对象相同的新对象。
+3．有的类定义时可以不定义构造函数，所以构造函数不是必需的。
+4．类及其属性、方法可以同时有一个以上的修饰符来修饰。
+5．Java的屏幕坐标是以像素为单位，容器的左下角被确定为坐标的起点.
+6．抽象方法必须在抽象类中，所以抽象类中的方法都必须是抽象方法。
+7．final类中的属性和方法都必须被final修饰符修饰。
+8．最终类不能派生子类，最终方法不能被覆盖。
+9．子类要调用父类的方法，必须使用super关键字。
+10．一个Java类可以有多个父类。
+11．如果p是父类Parent的对象，而c是子类Child的对象，则语句c = p是正确的。
+12．一个类如果实现了某个接口，那么它必须覆盖该接口中的所有方法。
+13．当一个方法在运行过程中产生一个异常，则这个方法会终止，但是整个程序不一定终止运行。
+14．接口是特殊的类，所以接口也可以继承，子接口将继承父接口的所有常量和抽象方法。
+15．用“+”可以实现字符串的拼接，用- 可以从一个字符串中去除一个字符子串。
+16．使用方法length( )可以获得字符串或数组的长度。
+17．设String对象s="Hello "，运行语句System.out.println(s.concat("World!"));后String对象s的内容为"Hello world!"，所以语句输出为
+Hello world!
+18．创建Vector对象时构造函数给定的是其中可以包容的元素个数，使用中应注意不能超越这个数值。
+19．所有的鼠标事件都由MouseListener监听接口的监听者来处理。
+20．一个容器中可以混合使用多种布局策略。 
+21．Java中，并非每个事件类都只对应一个事件。
+22．一个线程对象的具体操作是由run()方法的内容确定的，但是Thread类的run()方法是空的,其中没有内容;所以用户程序要么派生一个Thread的子类并在子类里重新定义run()方法,要么使一个类实现Runnable接口并书写其中run()方法的方法体。
+23．Java的源代码中定义几个类，编译结果就生成几个以.class为后缀的字节码文件。
+24．Java Applet是由独立的解释器程序来运行的。
+25．Java Applet只能在图形界面下工作。
+26．Java的字符类型采用的是ASCII编码。
+27．Java的各种数据类型占用固定长度，与具体的软硬件平台环境无关 
+28．Applet是一种特殊的Panel，它是Java Applet程序的最外层容器。
+29．子类的域和方法的数目一定大于等于父类的域和方法的数目。
+30．System类不能实例化，即不能创建System类的对象。
+31．用户自定义的图形界面元素也可以响应用户的动作，具有交互功能
+32．Java中数组的元素可以是简单数据类型的量，也可以是某一类的对象。
+33．Vector类中的对象不能是简单数据类型。
+34．Java中的String类的对象既可以是字符串常量，也可以是字符串变量。
+35．容器是用来组织其他界面成分和元素的单元，它不能嵌套其他容器。
+
+二、 选择题 
+1、关于被私有保护访问控制符private protected修饰的成员变量，以下说法正确的是（ ）
+A． 可以被三种类所引用：该类自身、与它在同一个包中的其他类、在其他包中的该类的子类
+B． 可以被两种类访问和引用：该类本身、该类的所有子类
+C． 只能被该类自身所访问和修改
+D． 只能被同一个包中的类访问 
+2、以下代码段将创建（ ）个对象。
+String s1="bc";
+String s2="bc";
+A． 0 B、1 C、2 D、3
+3、编译并运行以下程序，以下描述哪个选项是正确的（ ）
+1. class X{
+2. protected String toString(){
+3. return super.toString();}
+4. }
+A、编译通过运行无异常 B、编译通过但运行时出错 、
+C、行2出错，不能成功编译 D、不能成功编译，行3出错
+4、下列关于修饰符混用的说法，错误的是（ ）
+A． abstract不能与final并列修饰同一个类
+B． abstract类中不可以有private的成员
+C． abstract方法必须在abstract类中
+D． static方法中能处理非static的属性
+5、容器Panel和Applet缺省使用的布局编辑策略是（ ）
+A、BorderLayout B、FlowLayout C、GridLayout D、CardLayout
+6、以下标识符中哪项是不合法的( )
+A、 BigMeaninglessName B、$int
+C、1 st D、$1
+7、main方法是Java Application程序执行的入口点，关于main方法的方法头以下哪项是合法的（ ）
+A、 public static void main（） B、public static void main（String[ ] args）
+C、 public static int main（String[ ] arg）D、public void main（String arg[ ]）
+8、执行完以下代码int [ ] x = new int[25]；后，以下哪项说明是正确的（ ）
+A、x[24]为0 B、x[24]未定义 C、x[25]为0 D、x[0]为空
+9、以下代码段执行后的输出结果为（ ）
+int x=3； int y=10；
+System.out.println(y%x);
+A、0 B、1 C、2 D、3
+10、以下哪个表达式是不合法的（ ）
+A、String x="Hello"; int y=9; x+=y;
+B、String x="Hello"; int y=9; if(x= =y) { }
+C、String x="Hello"; int y=9; x=x+y;
+D、String x=null; int y=(x!=null)&&(x.length()>0) ? x.length : 0
+11、编译运行以下程序后，关于输出结果的说明正确的是 （ ）
+public class Conditional{
+public static void main(String args[ ]){
+int x=4;
+System.out.println("value is "+ ((x>4) ? 99.9 :9));
+}
+}
+A、输出结果为：value is 99.99 B、输出结果为：value is 9
+C、输出结果为：value is 9.0 D、编译错误
+12、以下声明合法的是（ ）
+A、default String s； B、public final static native int w( )
+C、abstract double d； D、abstract final double hyperbolicCosine( )
+13、关于以下application的说明，正确的是（ ）
+1． class StaticStuff
+2． { 
+3． static int x=10；
+4． static { x+=5；}
+5． public static void main（String args[ ]）
+6． {
+7． System.out.println("x=" + x);
+8． }
+9． static { x/=3;}
+10. }
+A、 4行与9行不能通过编译，因为缺少方法名和返回类型 
+B、 9行不能通过编译，因为只能有一个静态初始化器
+C、 编译通过，执行结果为：x=5
+D、 编译通过，执行结果为：x=3
+14、关于以下程序代码的说明正确的是（ ）
+1． class HasStatic{
+2． private static int x=100；
+3． public static void main(String args[ ]){
+4． HasStatic hs1=new HasStatic( );
+5． hs1.x++;
+6． HasStatic hs2=new HasStatic( );
+7． hs2.x++;
+8． hs1=new HasStatic( );
+9． hs1.x++;
+10． HasStatic.x- -;
+11． System.out.println("x="+x);
+12． }
+13． }
+A、 5行不能通过编译，因为引用了私有静态变量
+B、 10行不能通过编译，因为x是私有静态变量
+C、 程序通过编译，输出结果为：x=103
+D、 程序通过编译，输出结果为：x=102
+15、以下选项中循环结构合法的是（ ）
+A、 while (int i<7)
+{ i++;
+System.out.println("i is "+i);
+}
+B、 int j=3;
+while(j)
+{ System.out.println(" j is "+j);
+}
+C、 int j=0;
+for(int k=0; j + k !=10; j++,k++)
+{ System.out.println(" j is "+ j + "k is"+ k);
+}
+D、 int j=0;
+do{
+System.out.println( "j is "+j++);
+if (j = = 3) {continue loop;}
+}while (j<10);
+16、类Test1定义如下：
+1．public class Test1{
+2． public float aMethod（float a，float b）{ }
+3． 
+4．} 
+将以下哪种方法插入行3是不合法的。（ ）
+A、 public float aMethod（float a， float b，float c）{ }
+B、 public float aMethod（float c，float d）{ }
+C、 public int aMethod（int a， int b）{ }
+D、 private float aMethod（int a，int b，int c）{ }
+17、类Test1、Test2定义如下：
+1． public class Test1
+2．{ public float aMethod（float a，float b） throws
+3． IOException { }
+4． }
+5． public class Test2 extends Test1{
+6．
+7．}
+将以下哪种方法插入行6是不合法的。（ ）
+A、 float aMethod（float a，float b）{ }
+B、 public int aMethod（int a，int b）throws Exception{ }
+C、 public float aMethod（float p，float q）{ }
+D、 public int aMethod（int a，int b）throws IOException{ }
+18、关于以下程序段，正确的说法是（ ）
+1． String s1="abc"+"def";
+2． String s2=new String（s1）；
+3． if（s1= =s2）
+4． System.out.println("= = succeeded");
+5． if (s1.equals(s2))
+6． System.out.println(".equals() succeeded");
+A、行4与行6都将执行 B、行4执行，行6不执行
+C、行6执行，行4不执行 C、行4、行6都不执行
+19、以下说法哪项是正确的（ ）
+1．class MyListener
+2．extends MouseAdapter implements MouseListener{
+3． public void mouseEntered（MouseEvent mev）
+4． { System.out.println("Mouse entered."); }
+5． }
+A、 以上代码可通过编译
+B、 不能通过编译，因为没有实现MouseListener接口中的所有方法
+C、 不能通过编译，因为类头定义不能分行
+D、 能通过编译，若组件用该类作为Mouse的监听者并且接收了mouse-exited事件，则在执行过程中会抛出异常
+20、关于以下程序段的说法，正确的是（ ）
+1．class MyListener implements
+2． ActionListener，ItemListener{
+3． public void actionPerformed（ActionEvent ae）{
+4． System.out.println("Action");}
+5． public void itemStateChanged(ItemEvent ie){
+6． System.out.println("Item");
+7． }
+8．}
+A、 可通过编译
+B、 第2行产生编译错误
+C、 第3行产生编译错误
+D、 第5行产生编译错误
+21、通过调用 new List（10，false）创建一个列表，关于该列表的几个说法哪项是错误的。（ ）
+A、该列表不支持复选 B、该列表有10个选项
+C、根据需要该列表可能有垂直滚动条 D、该列表支持10个可见选项
+22、以下哪项可能包含菜单条（ ）
+A、Panel B、Frame C、Applet D、Dialog
+23、以下代码完成画线功能，指出所画线的颜色（ ）
+1．g.setColor(Color.red.green.yello.cyan);
+2．g.drawLine(0,0,100,100);
+A、red B、green C、yello D、cyan
+24、关于以下代码所画图形的说明，正确的是（ ）
+1．g.setColor(Color.black);
+2．g.drawLine(10,10,10,50);
+3．g.setColor(Color.red);
+4．g.drawRect(100,100,150,150);
+A、 一条40像素长的垂直红线，一个边长为150像素的红色四方形
+B、 一条40像素长的垂直黑线，一个边长为150像素的红色四方形
+C、 一条50像素长的垂直黑线，一个边长为150像素的红色四方形
+D、 一条50像素长的垂直红线，一个边长为150像素的红色四方形
+25、编译并运行以下程序（命令：java AB 1），关于运行结果的描述以下哪个选项是正确的（ ）
+class AB{
+public static void main(String [ ] args){
+long i=0;
+try{
+i=Integer.parseInt(args[0]);
+}catch(Exception e){ }
+
+switch(i)
+{case 0: System.out.println("0");
+case 1: System.out.println("1");
+default : System.out.println("default"); }
+}
+}
+A、 编译出错 B、打印出“0” C、打印出“1” D、打印出“default”
+
+三、 改错题
+判断下面的程序片断是否正确。若有错，指出错在哪里并改正；若正确，打“√”。
+1、 (max为整型变量)
+if (max<>1)
+g.drawString("不等于1", 20,20);
+2、 for(float i=0.0;i>-10.0; i -=1.0)
+System.out.println(i);
+3、 void test(int x)
+{ 
+System.out.println(x);
+return x;
+}
+4、abstract final class OurClasses { }
+5、final MAX_NUMBER;
+MAX_NUMBER++；
+6、class MyClass
+{ int var=100；
+static int getVar()
+{
+return var;
+}
+}
+7、public class MyClass
+{
+int data；
+void MyClass（int d）
+{ data=d；}
+}
+8、public class MyMain
+{
+public static void main（String args[ ]）
+{ System.out.println(MyClass1.data);}
+}
+class MyClass1
+{
+int data=10;
+}
+9、class IamAbstract
+{
+final int f;
+double d;
+abstract void method();
+}
+10、class parent
+{
+private int mine;
+}
+class child extends parent
+{
+int getMine()
+{ return mine; }
+}
+11、class parent 
+{
+private int mine;
+int getMine( )
+{
+return mine;
+}
+}
+class child extends parent
+{
+int mine;
+int getMine( )
+{ return super.getMine; }
+}
+12、class Parent
+{ int field; }
+class Child extends Parent
+{ int field; }
+class UseChild
+{ static int getField(Child c)
+{ return (c.field); }
+}
+public class MainClass 
+{
+public static void main(String args[ ])
+{ Parent p=new Parent();
+System.out.println(UseChild.getField(p));
+}
+}
+13、class AmIRight
+{
+int field1=10;
+abstract void method1( );
+}
+14、class AmIWrong
+{
+int data1,data2;
+AmIWrong()
+{ data1=-1; }
+AmIWrong(int d)
+{ data2=d;
+this();
+}
+}
+15、interface MyInterface
+{
+void method1();
+}
+abstract class Parent implements MyInterface
+{ }
+class Child extends Parent
+{ }
+16、interface MyInterface
+{
+void method1();
+}
+abstract class Parent implements MyInterface
+{
+}
+class Child extends Parent 
+{
+void method1()
+{
+System.out.println("I am implemented now!");
+}
+}
+17、public static void main(String args[ ])
+{
+try{
+char ch=(char)System.in.read();
+. . .//其他语句
+}
+catch(Exception e)
+{
+return;
+}
+catch(IOException e)
+{
+System.out.println(e.toString());
+}
+}
+18、public class AmIWrong implements Runnable
+{
+Thread mt=Thread(this);
+mt.start();
+void run()
+{
+System.out.println("I am alive now");
+}
+}
+19、class MyClass1
+{
+final void method1()
+{ }
+void method1(int i)
+{ }
+}
+20、说明以下程序是否有误，错在哪里，应如何改正。
+public class MyApplet extends Applet
+{
+Label MyLabel；
+public void init(String args[ ])
+{
+MyLabel=new Label("Can you see me?");
+add(MyLabel); 
+}
+}
+21、说明下面程序是否有误，错在哪里，应如何改正。
+import java.applet.*;
+import java.awt.*;
+public class AmIWrong extends Applet implements ActionListener
+{
+Button btn;
+public void init()
+{
+btn=new Button("Push Me");
+add(btn);
+}
+public void actionPerformed(ActionEvent e)
+{
+(Button)e.getSource().setLabel("Pushed!");
+}
+}
+22、int array[10];
+for(int j=0; j<array.length; j++)
+array[j]=j+1;
+23、说明下面程序是否有误，错在哪里，应如何改正。
+public class UseVector
+{
+public static void main(String args[ ])
+{ Vector myv;
+for(int j=0; j<10; j++)
+myv.addElement(j);
+}
+}
+四、程序阅读 
+1、阅读以下程序，输出结果为 。
+class Q1{
+public static void main（String args[ ]）{
+double d=1.23;
+Dec dec=new Dec( );
+dec.decrement(d);
+System.out.println(d);
+}
+classs Dec{
+public void decrement(double decMe){
+decMe = decMe － 0.1;
+}
+}
+2、以下程序的输出结果为 。
+public class Short{
+public static void main(String args[ ]) {
+StringBuffer s = new StringBuffer("Hello");
+if((s.length( )>5)&& (s.append("there") . equals("False")))
+;
+System.out.println("value is"+s);
+}
+}
+3、以下程序段的输出结果为 。
+int x=0,y=4, z=5;
+if ( x>2){
+if (y<5){
+System.out.println("Message one");
+}
+else {
+System.out.println("Message two");
+}
+}
+else if(z>5){
+System.out.println("Message three");
+}
+else {
+System.out.println("Message four");
+}
+4、以下程序段的输出结果为 。
+int j=2;
+switch ( j ) {
+case 2:
+System.out.print("Value is two.");
+case 2+1 :
+System.out.println("Value is three.");
+break; 
+default:
+System.out.println("value is "+j);
+break;
+}
+5、 阅读以下程序段:
+class Parent
+{
+void printMe()
+{
+System.out.println("parent");
+}
+}
+class Child extends Parent
+{
+void printMe()
+{
+System.out.println("child");
+}
+void printAll()
+{
+super.printMe();
+this.printMe();
+printMe();
+}
+}
+public class Test_this
+{
+public static void main(String args[ ])
+{
+Child myC=new Child();
+myC.printAll();}
+}
+输出结果为:
+五、 综合填空
+（1）语句填空
+1、设x=1，y=2，z=3，u=false，写出表达式x>y ? x>z ? x : y : y>z ? y : z>x ? z : x运算后的结果 。
+2、书写一个语句完成以下要求：先将整型变量a的值加1,再把它加入到变量sum中。
+。
+3、书写一个语句完成以下要求：若输入数据input是合法的秒数（在0到60之间），则赋给变量second，否则将-1赋给second。 
+4、声明并创建一个含有10个数据的整型数组，且每个数组元素的初值等于其数组下标。
+5、创建一个Vector对象mvr，初始包含10个元素。
+6、mvr是Vectot对象，要求将mvr中所有等于obj的元素删除。
+7、Applet要响应鼠标的点击，应该在init()方法中加入什么语句(设鼠标事件监听者就是Applet自身)。
+8、创建线程对象mt，它的run()方法来自一个实现了Runnable接口的类RunnableClass。
+9、定义一个无形参无返回值的方法method，使得使用类名作前缀就可以引用它。
+10、为HTML文件书写一个语句，嵌入一个名为MyApplet.class的Applet字节码文件，其宽度为300，高度为200。
+（2）编程题（略）
+部分答案：
+一、×××√×　　××√××　　××√√×　　××××√　　√√√×√
+×√√×√　　×√√××
+二、BBCDB CBABB CBCDC BACAA BBDBA
+三、参考配套习题集（改错）
+四、(1) 1.23 (2) value is Hello (3)Message Four
+(4) parent
+child
+child
+五、参考配套习题集（书写语句）
+
+1
+
+
+13
+
+ 
+ 

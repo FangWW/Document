@@ -1,0 +1,1909 @@
+Java 认证模考试题 
+ 
+Java 2 TEST
+
+
+Question: 1
+
+
+Given the following code:
+
+class Test{
+
+private int m;
+
+public static void fun() {
+
+// some code...
+
+}
+
+}
+
+How can the member variable m be accessible directly in the method fun()?
+
+
+A. change private int m to protected int m
+
+B. change private int m to public int m
+
+C. change private int m to static int m
+
+D. change private int m to int m 
+
+Explanation: 
+
+
+If the variable m is changed to be a static variable it can be accessible in the method fun() for this method is a static member method. 
+
+Correct Answer: C 1 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 2
+
+
+Which methods are correct overloading methods of the following method: 
+
+public void example(){...}
+
+
+A. public void example( int m){...}
+
+B. public int example(){...}
+
+C. public void example2(){...}
+
+D. public int example ( int m, float f){...} 
+
+Explanation: 
+
+
+The overloading methods must have the same names. If only the return type of the methods are different it is sufficient tell the methods from each other. The arguments of the methods must be different enough to determine which method to call. 
+
+Correct Answer: A,D 2 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 3
+
+中国公务网 2004-5-27 22:14:08
+Given the following fragment of code:
+
+public class Base{
+
+int w, x, y ,z;
+
+public Base(int a,int b){
+
+x=a; y=b;
+
+}
+
+public Base(int a, int b, int c, int d){
+
+// assignment x=a, y=b
+
+w=d;
+
+z=c;
+
+}
+
+}
+
+Which expressions can be used at the point of // assignment x=a, y=b?
+
+
+A. Base(a,b);
+
+B. x=a, y=b;
+
+C. x=a; y=b;
+
+D. this(a,b); 
+
+Explanation: 
+
+
+In the second constructor, the call this(a,b) passes control the version of the constructor that takes two int arguments. 
+
+Correct Answer: C,D 3 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 4 
+
+
+Given the following definition:
+
+String s = story;
+
+Which of the following expressions are legal?
+
+
+A. s += books;
+
+B. char c = s[1];
+
+C. int len = s.length;
+
+D. String t = s.toLowerCase(); 
+
+Explanation: 
+
+
+Answer B is not correct for String is a class and can'T be treated as an array of char. Answer C is not correct for s.length() should be used, not s.length. 
+
+Correct Answer: A,D 4 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 5
+
+
+What is the return value of the main() method in Java?
+
+
+A. String
+
+B. int
+
+C. char
+
+D. void 
+
+Explanation: 
+
+
+The main() method in Java returns void. 
+
+Correct Answer: D 5 of 60 
+
+ 
+
+ 
+
+Question: 6
+
+
+Which are the valid identifiers in Java?
+
+
+A. fieldname
+
+B. super
+
+C. 3number
+
+D. #number
+
+E. $number 
+
+
+Explanation: 
+
+Valid identifiers in Java can start with a letter, underscore (_), or dollar sign ($), but not with digits or other signs. And identifiers can not be keywords.
+
+
+　
+
+Correct Answer: A,E 6 of 60 
+
+ 
+
+ 
+
+Question: 7
+
+
+Which are valid Java keywords?
+
+
+A. const
+
+B. NULL
+
+C. false
+
+D. this
+
+E. native 
+
+Explanation: 
+
+
+All the keywords in Java are lowercase. goto and const are keywords that are not used in Java programming language. 
+
+Correct Answer: A,C,D,E 7 of 60 
+
+ 
+
+ 
+
+Question: 8
+
+WWW.GONGWU.COM.CN 2005-8-13 2:23:21
+Which are valid integral expressions in Java?
+
+
+A. 22
+
+B. 0x22
+
+C. 022
+
+D. 22H 
+
+Explanation: 
+
+
+In Java integral has three forms: decimal, octal and hexadecimal. Octal values start with a zero and hexadecimal values start with 0x. 
+
+Correct Answer: A,B,C 8 of 60 
+
+ 
+
+ 
+
+Question: 9
+
+
+Which one of the following ranges of short is correct?
+
+
+　
+
+　
+
+Explanation: 
+
+
+The length of the short data is 16 bits. The range of short is 
+
+
+The length of the short data is 16 bits. The range of short is 
+
+
+Correct Answer: D 9 of 60 
+
+ 
+
+
+Question: 10
+
+ Which one of the following ranges of byte is correct?
+
+
+　
+
+　
+
+　
+
+　
+
+Correct Answer: B 10 of 60 
+
+ 
+
+Question: 11
+
+WWW.GONGWU.COM.CN 2004-5-27 22:14:08
+Given the following fragment of code, what are results of i and j after execution?
+
+int i = 1;
+
+int j;
+
+j = i++;
+
+
+A. 1, 1
+
+B. 1, 2
+
+C. 2, 1
+
+D. 2, 2 
+
+Explanation: 
+
+
+Pay attention to the position of the operator ++. In this question, first j is assigned to 1, then the value of i is added to 2. 
+
+Correct Answer: C 11 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 12
+
+
+Which of the following statements are true?
+
+
+A. >> is the arithmetic right shift operator.
+
+B. >> is the logical right shift operator.
+
+C. >>> is the arithmetic right shift operator.
+
+D. >>> is the logical right shift operator. 
+
+Explanation: 
+
+
+There are two right shift operators in Java. They are >> and >>>. >> is the arithmetic(signed) right shift operator and >>> is the logical(unsigned) right shift operator. 
+
+Correct Answer: A,D 12 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 13
+
+
+Which of the following assignments are legal?
+
+
+A. float a = 2.0
+
+B. double b = 2.0
+
+C. int c = 2
+
+D. long d = 2 
+
+Explanation: 
+
+
+In Java the default data type of floating point is double, not float. The assignment from double to float requires an explicit cast. 
+
+Correct Answer: B,C,D 13 of 60 
+
+ 
+
+　
+
+ 
+
+Question: 14
+
+
+Which one of the following arguments is the correct argument of the main() method?
+
+
+A. char args[]
+
+B. char args[][]
+
+C. String arg[]
+
+D. String args 
+
+Explanation: 
+
+
+The argument of the main() method is an array of String. Then only answer C is an array of String. 
+
+Correct Answer: C 14 of 60 
+
+ 
+
+　
+
+　
+
+ 
+
+Question: 15
+
+
+Which one of the following is correct to create an array?
+
+
+A. float f[][] = new float[6][6];
+
+B. float []f[] = new float[6][6];
+
+C. float f[][] = new float[][6];
+
+D. float [][]f = new float[6][6];
+
+E. float [][]f = new float[6][]; 
+
+Explanation: 
+
+
+In Java the declaration format allows the square brackets to be at the left or right of the variable name. But the new float[][6] is illegal. 
+
+Correct Answer: A,B,D,E 15 of 60 
+
+ 
+
+　
+
+　
+
+ 
+
+ 
+
+Question: 16
+
+
+Given the following expression: int m[] = {0, 1, 2, 3, 4, 5, 6 };
+
+Which result of the following expressions equals to the number of the array elements?
+
+
+A. m.length()
+
+B. m.length
+
+C. m.length()+1
+
+D. m.length+1 
+
+Explanation: 
+
+
+The number of elements in an array is stored in the length attribute in the array object. 
+
+Correct Answer: B 16 of 60 
+
+ 
+
+
+Question: 17
+
+
+Given the following command to run a correct class: java MyTest a b c
+
+Which statements are true?
+
+
+A. args[0] = MyTest a b c
+
+B. args[0] = MyTest
+
+C. args[0] = a
+
+D. args[1]= 'b' 
+
+Explanation: 
+
+
+The three arguments a b c are stored in the args[] array of the main() method. Then args[0]= a, args[1]= b, args[2]= c. 
+
+Correct Answer: C 17 of 60 
+
+ 
+
+
+Question: 18
+
+
+Given the following code:
+
+public class Test{
+
+long a[] = new long[10];
+
+public static void main ( String arg[] ) {
+
+System.out.println ( a[6] );
+
+}
+
+}
+
+Which statement is true?
+
+
+A. Output is null.
+
+B. Output is 0.
+
+C. When compile, some error will occur.
+
+D. When running, some error will occur. 
+
+Explanation: 
+
+
+When an array is created the members of the array is initialized. In this case all the elements are initialized to be 0. 
+
+Correct Answer: B 18 of 60 
+
+ 
+
+
+Question: 19
+
+
+Given the following fragment of code:
+
+boolean m = true;
+
+if ( m = false )
+
+System.out.println(False);
+
+else
+
+System.out.println(True);
+
+What is the result of the execution?
+
+
+A. False
+
+B. True
+
+C. None
+
+D. An error will occur when running. 
+
+Explanation: 
+
+
+= is the assignment operator. == is the compare operator. In this question the value of false is assigned to the variable m. 
+
+Correct Answer: A 19 of 60 
+
+ 
+
+
+Question: 20
+
+
+Given the following code:
+
+public class Test{
+
+public static void main(String arg[]){
+
+int i = 5;
+
+do {
+
+System.out.println(i);
+
+} while (--i>5)
+
+System.out.println(“finished”);
+
+}
+
+}
+
+What will be output after execution?
+
+
+A. 5
+
+B. 4
+
+C. 6
+
+D. Finished
+
+E. None 
+
+Explanation: 
+
+
+The expressions in the block of do/while loop will be executed at least once. If the condition of this loop is not met the loop will stop after once execution, otherwise, it will continue to loop until the condition is no met. 
+
+Correct Answer: A,D 20 of 60 
+
+ 
+
+
+Question: 21
+
+
+What will be output after execution of the following code:
+
+outer: for(int i=0;i<3; i++)
+
+inner: for(int j=0;j<2;j++)
+
+{
+
+if(j==1) continue outer;
+
+System.out.println(j+ ?and ?+i);
+
+}
+
+
+A. 0 and 0
+
+B. 0 and 1
+
+C. 0 and 2
+
+D. 1 and 0
+
+E. 1 and 1
+
+F. 1 and 2
+
+G. 2 and 0
+
+H. 2 and 1
+
+I. 2 and 2 
+
+Explanation: 
+
+
+The continue statement is used to skip over and jump to the end of the loop body. Then if j equals to 1 it will jump to the end of the inner loop body. 
+
+Correct Answer: A,B,C 21 of 60 
+
+ 
+
+
+Question: 22
+
+
+Given the following code:
+
+switch (m)
+
+{
+
+case 0: System.out.println(Condition 0);
+
+case 1: System.out.println(Condition 1); 
+
+case 2: System.out.println(Condition 2);
+
+case 3: System.out.println(Condition 3);break;
+
+default: System.out.println(Other Condition);
+
+
+}
+
+Which values of m will cause Condition 2 is output?
+
+
+A. 0
+
+B. 1
+
+C. 2
+
+D. 3
+
+E. 4
+
+F. None 
+
+Explanation: 
+
+
+In the block of switch, if there is no break sentence in one case the following sentences will be executed. 
+
+Correct Answer: A,B,C 22 of 60 
+
+ 
+
+
+Question: 23
+
+
+Which method is called when the browser returns to the page containing the applet after moving to another URL?
+
+
+A. init()
+
+B. start()
+
+C. stop()
+
+D. destroy() 
+
+Explanation: 
+
+
+The start() runs whenever the applet becomes visible, such as when the browser returns to the page containing the applet after moving to another URL or the browser is restored after being iconized. 
+
+Correct Answer: B 23 of 60 
+
+ 
+
+
+Question: 24
+
+
+If a thread calls the wait() method, which methods can make it continue to run?
+
+
+A. join()
+
+B. resume()
+
+C. notify()
+
+D. notifyAll()
+
+E. high priority thread is ready 
+
+Explanation: 
+
+
+If a thread issues a wait() call it will pause execution until another thread issues a notify() or notifyAll() call. The pair of the methods are provided for thread communication. 
+
+Correct Answer: C,D 24 of 60 
+
+ 
+
+
+Question: 25
+
+
+Which method is used to define the execution body of a thread?
+
+
+A. start()
+
+B. init()
+
+C. run()
+
+D. main()
+
+E. synchronized() 
+
+Explanation: 
+
+
+The threads will always begin executing at the run() method, which contains the definition of the execution body. 
+
+Correct Answer: C 25 of 60 
+
+ 
+
+
+Question: 26
+
+
+Which keyword is used to allow interaction with the lock flag?
+
+
+A. native
+
+B. static 
+
+C. synchronized
+
+D. abstract 
+
+Explanation: 
+
+
+Every object has a lock flag. The synchronized keyword enables interaction with the flag, which allow exclusive access to that object. 
+
+Correct Answer: C 26 of 60 
+
+ 
+
+
+Question: 27
+
+
+Which modifiers are legal in Java?
+
+
+A. private
+
+B. public
+
+C. protected
+
+D. protect
+
+E. friend 
+
+Explanation: 
+
+
+The public, private, protected and no modifier are legal modifiers. The friend and protect are illegal in Java. 
+
+Correct Answer: A,B,C 27 of 60 
+
+ 
+
+
+Question: 28
+
+
+If a member variable of a class can be accessible only by the same package, which modifier should be used?
+
+
+A. private
+
+B. public
+
+C. protected
+
+D. no modifier
+
+E. final 
+
+Explanation: 
+
+
+No modifier is the default access level. The default modifier means to be accessible by the classes in the same package. 
+
+Correct Answer: D 28 of 60 
+
+ 
+
+
+Question: 29
+
+
+Which modifier should be used to define a constant member variable?
+
+
+A. static
+
+B. final
+
+C. abstract
+
+D. No modifier can be used 
+
+Explanation: 
+
+
+If a member variable is marked as final, it is a constant. 
+
+Correct Answer: B 29 of 60 
+
+ 
+
+
+Question: 30
+
+
+Which one of the following is correct to declare a native method?
+
+
+A. public native void test();
+
+B. public native void test(){}
+
+C. public void native test();
+
+D. public native test(){} 
+
+Explanation: 
+
+
+A native method can not have a method body. And the keyword native can't be put in front of the return value of the method. 
+
+Correct Answer: A 30 of 60 
+
+ 
+
+
+Question: 31
+
+
+Given the following definition of a class:
+
+public class Test {
+
+private float f = 1.0;
+
+int m = 12;
+
+static int n=1;
+
+public static void main(String arg[]) {
+
+Test t = new Test();
+
+// some code...
+
+} 
+
+}
+
+Which of the following usage are legal?
+
+
+A. t.f
+
+B. this.n
+
+C. Test.m
+
+D. Test.n 
+
+Explanation: 
+
+
+The f and m are instance variables. They should be accessed through an object. The n is a class variable and it should be accessed through the class name. 
+
+Correct Answer: A,D 31 of 60 
+
+ 
+
+
+Question: 32
+
+
+Given the following code:
+
+1) class Example{
+
+2) String str;
+
+3) public Example(){
+
+4) str= example;
+
+5) }
+
+6) public Example(String s){
+
+7) str=s;
+
+8) }
+
+9) }
+
+10) class Demo extends Example{
+
+11) }
+
+12) public class Test{
+
+13) public void f () {
+
+14) Example ex = new Example(Good);
+
+15) Demo d = new Demo(Good);
+
+16) }
+
+Which line will cause an error?
+
+
+A. line 3
+
+B. line 6
+
+C. line 10
+
+D. line 14
+
+E. line 15 
+
+Explanation: 
+
+
+The Demo class doesn't have a constructor that takes one String argument. The call on line 15 will cause an error. 
+
+Correct Answer: E 32 of 60 
+
+ 
+
+
+Question: 33
+
+
+Given the following class definition in one source file:
+
+class Base {
+
+public Base (){ //... }
+
+public Base ( int m ){ //... }
+
+protected void fun( int n ){ //... }
+
+}
+
+public class Child extends Base{
+
+// member methods
+
+}
+
+Which methods can be added into the Child class correctly?
+
+
+A. private void fun( int n ){ //...}
+
+B. void fun ( int n ){ //... }
+
+C. protected void fun ( int n ) { //... }
+
+D. public void fun ( int n ) { //... }
+
+E. public m(){ //... } 
+
+Explanation: 
+
+
+In the subclass Child the overriding methods cannot be less accessible than the method they overrides in the super class Base. 
+
+Correct Answer: C,D 33 of 60 
+
+ 
+
+
+Question: 34
+
+
+Which statements are correct?
+
+
+A. In Java single inheritance is allowed, which makes code more reliable.
+
+B. A subclass inherits all methods ( including the constructor ) from the superclass.
+
+C. A class can implement as many interfaces as needed.
+
+D. When a class implements an interface, it can define as many methods of the interface as needed. 
+
+Explanation: 
+
+
+A subclass inherits all methods except the constructor from the superclass. When a class implements an interface, it can define all the methods of the interface. 
+
+Correct Answer: A,C 34 of 60 
+
+ 
+
+
+Question: 35
+
+
+In the Test.java source file, which are correct class definitions?
+
+
+A. public class test {
+
+public int x = 0;
+
+public test(int x) 
+
+{
+
+this.x = x;
+
+}
+
+}
+
+B. public class Test{
+
+public int x=0;
+
+public Test(int x) {
+
+this.x = x;
+
+}
+
+}
+
+C. public class Test extends T1, T2 {
+
+public int x = 0;
+
+public Test (int x) {
+
+this.x = x;
+
+}
+
+}
+
+D. public class Test extends T1{
+
+public int x=0;
+
+public Test(int x){
+
+this.x = x;
+
+}
+
+} 
+
+E. protected class Test extends T2{
+
+public int x=0;
+
+public Test(int x){
+
+this.x=x;
+
+}
+
+} 
+
+Explanation: 
+
+
+In the Test.java source file the class name should be Test, not test, for it is case-sensitive in Java. One class should have not more than one superclass. The protected modifier can not be put in front of the class. 
+
+Correct Answer: B,D 35 of 60 
+
+ 
+
+
+Question: 36
+
+
+The Person, Student and Teacher are class names. These classes have the following inheritance relation as shown below:
+
+Person
+
+|
+
+---------------
+
+| |
+
+Student Teacher
+
+There is the following expression in a Java source file:
+
+Person p = new Student();
+
+Which one of the following statements are true?
+
+
+A. The expression is legal.
+
+B. The expression is illegal.
+
+C. Some errors will occur when compile.
+
+D. Compile is correct but it will be wrong when running. 
+
+Explanation: 
+
+
+The objects cast up the class hierarchy are always permitted. A reference of superclass can refer to an object of subclass. 
+
+Correct Answer: A 36 of 60 
+
+ 
+
+
+Question: 37
+
+
+The Person, Student and Teacher are class names. These classes have the following inheritance relation as shown below:
+
+Person
+
+|
+
+---------------
+
+| |
+
+Student Teacher
+
+In Java source file a specific method has an argument. In order to handle all these classes in this method which type of argument of this method should be used?
+
+
+A. Person
+
+B. Student
+
+C. Teacher
+
+D. Object
+
+E. None of them can be used. 
+
+Explanation: 
+
+
+The objects of subclasses can pass around using references to their parent classes. The Person and Object are superclasses of the Teacher and Student classes. The type of the argument of the method should be Person or Object. 
+
+Correct Answer: A,D 37 of 60 
+
+ 
+
+
+Question: 38
+
+
+The Person, Student and Teacher are class names. These classes have the following inheritance relation as shown below:
+
+Person
+
+|
+
+---------------
+
+| |
+
+Student Teacher
+
+There is the following expression in a Java source file:
+
+Person p = new Teacher();
+
+Which of the following expressions return true?
+
+
+A. p instanceof Teacher
+
+B. p instanceof Student
+
+C. p instanceof Person
+
+D. None of them returns true 
+
+Explanation: 
+
+
+The instanceof operator is used to test the type of an object. Because the reference p refers to a Teacher object and the Teacher is a subclass of the Person class the expressions in answer A and C will return true. 
+
+Correct Answer: A,C 38 of 60 
+
+ 
+
+
+Question: 39
+
+
+Given the following code:
+
+public class Test{
+
+public static void main(String args[])
+
+{
+
+String str=new String(World);
+
+char ch[]={'H','e','l','l','o'};
+
+change(str,ch);
+
+System.out.println(str + and + ch);
+
+}
+
+public static void change(String str, char ch[])
+
+{
+
+str=Changed; ch[0]='C';
+
+}
+
+}
+
+What is the result after execution?
+
+
+A. World and Hello
+
+B. World and Cello
+
+C. Changed and Hello
+
+D. Changed and Cello 
+
+Explanation: 
+
+
+Java passes arguments only by value. When an object instance is passed as an argument to a method, the value of the argument is a reference to the object. The contents of the object can be changed in the called method, but the object reference is never changed. 
+
+Correct Answer: B 39 of 60 
+
+ 
+
+
+Question: 40
+
+
+Given the following fragment of code:
+
+Double d1 = new Double(1.0);
+
+Double d2 = new Double(1.0);
+
+Float f = new Float(1.0F);
+
+Which results of the following expressions are true?
+
+
+A. d1 == d2
+
+B. d1.equals(d2)
+
+C. d1 = f
+
+D. f.equals(d1) 
+
+Explanation: 
+
+
+The == operator determine if reference values refer to the dame object. The equals() method is overridden in the Double, Float, String etc. class to compare the content of the objects. 
+
+Correct Answer: B 40 of 60 
+
+ 
+
+
+Question: 41
+
+
+Given the following code:
+
+public void fun ()
+
+{
+
+int i;
+
+try
+
+{
+
+i=System.in.read ();
+
+System.out.println(Location 1);
+
+} catch (IOException e) {
+
+System.out.println(Location 2);
+
+} finally {
+
+System.out.println(Location 3);
+
+}
+
+System.out.println(Location 4);
+
+}
+
+If an IOException occurs, what will be printed?
+
+
+A. Location 1
+
+B. Location 2
+
+C. Location 3
+
+D. Location 4 
+
+Explanation: 
+
+
+When an IOException occurs the Location 1 is skipped. Fist the exception is caught and the Location 2 is printed. Then the Location 3 in the block of finally is printed. Finally, the Location 4 is printed. 
+
+Correct Answer: B,C,D 41 of 60 
+
+ 
+
+
+Question: 42
+
+
+If the method func() is allowed to throw out the IOException, which declaration of this method can used?
+
+
+A. public int func(int i)
+
+B. public int func(int i) throw IOException
+
+C. public int func(int i) throw Exception
+
+D. public int func(int i) throws IOException
+
+E. public int func(int i) throws Exception 
+
+Explanation: 
+
+
+The throws keyword should be used when declaration of a method. In the declaration IOException and its superclass Exception can be used. 
+
+Correct Answer: D,E 42 of 60 
+
+ 
+
+
+Question: 43
+
+
+Given the following expression:
+
+String f = null;
+
+Which of the following expressions will throw an exception?
+
+
+A. f == null | f.length()>10
+
+B. f != null | f.length()>10
+
+C. f == null || f.length()>10
+
+D. f != null || f.length()>10 
+
+Explanation: 
+
+
+The operator || perform short-circuit logical expressions. If the first subexpression is true the second subexpression is skipped, for the entire expression is true when the first subexpression is true. The operator | doesn't perform short-circuit logical expressions. Both of the two subexpressions are performed. Because the f is null the expression f.length() will cause an exception is thrown. 
+
+Correct Answer: A,B,D 43 of 60 
+
+ 
+
+
+Question: 44
+
+
+Which of the following can be parts of the Java source file Calculation1.java?
+
+
+A. public class Calculation1{//...}
+
+B. import java.io.*;
+
+C. package myPackage;
+
+D. import java.awt.*;
+
+E. static class Arg{//...}
+
+F. class Calcu{//...}
+
+G. public class Calculation2{//...} 
+
+Explanation: 
+
+
+The static can not be a modifier before the keyword class. A Java source file can have only one public class. 
+
+Correct Answer: A,B,C,D,F 44 of 60 
+
+ 
+
+
+Question: 45
+
+
+Which one of the following containers must be added to another container?
+
+
+A. Window
+
+B. Frame
+
+C. Dialog
+
+D. Panel 
+
+Explanation: 
+
+
+The Window, Frame and Dialog are free-standing windows. But the Panel is contained within another container, or inside a Web browser's window. 
+
+Correct Answer: D 45 of 60 
+
+ 
+
+
+Question: 46
+
+
+Which of the following classes are layout managers in Java?
+
+
+A. CardLayout
+
+B. BorderLayout
+
+C. PanelLayout
+
+D. GridLayout
+
+E. BagLayout 
+
+Explanation: 
+
+
+There are five layout managers in Java. They are FlowLayout, BorderLayout, CardLayout, GridLayout and GridBaglayout. 
+
+Correct Answer: A,B,D 46 of 60 
+
+ 
+
+
+Question: 47
+
+
+A Button is positioned in a Frame. Only height of the Button is affected by the Frame while the width is not. Which layout manager should be used?
+
+
+A. FlowLayout
+
+B. CardLayout
+
+C. North and South of BorderLayout
+
+D. East and West of BorderLayout
+
+E. GridLayout 
+
+Explanation: 
+
+
+In the East and West of BorderLayout only the height of the component is affected when the Frame is resized. 
+
+Correct Answer: D 47 of 60 
+
+ 
+
+
+Question: 48
+
+
+A Button is positioned in a Frame. Its size is not affected when the Frame is resized. Which layout manager should be used?
+
+
+A. FlowLayout
+
+B. CardLayout
+
+C. North and South of BorderLayout
+
+D. East and West of BorderLayout
+
+E. GridLayout 
+
+Explanation: 
+
+
+The size of the components is not constrained by the FlowLayout manager. When the area is resized the size of these components is not changed. 
+
+Correct Answer: A 48 of 60 
+
+ 
+
+
+Question: 49
+
+
+Which methods can get the event source in the WindowEvent?
+
+
+A. getFrame()
+
+B. getID()
+
+C. getSource()
+
+D. getWindow() 
+
+Explanation: 
+
+
+The methods getSource() and getWindow() can be used to get the event sources of the window events. 
+
+Correct Answer: C,D 49 of 60 
+
+ 
+
+
+Question: 50
+
+
+Which statements of the event listener are true?
+
+
+A. Multiple listeners can be attached to one component.
+
+B. Only one listener can be attached to one component.
+
+C. One listener can receive and process the events from multiple components.
+
+D. One listener can receive and process the events from only one component. 
+
+Explanation: 
+
+
+One component can registers one or more listeners. One listener can be registered by multiple components. After being registered the listener can receive and process the events from these components. 
+
+Correct Answer: A,C 50 of 60 
+
+ 
+
+
+Question: 51
+
+
+What is the return value of the method in the event listener interface?
+
+
+A. int
+
+B. String
+
+C. void
+
+D. Object
+
+E. AWTEvent 
+
+Explanation: 
+
+
+All the methods in the event listener interfaces return void. 
+
+Correct Answer: C 51 of 60 
+
+ 
+
+
+Question: 52
+
+
+Which of the following event listeners have event adapters defined in Java?
+
+
+A. MouseListener
+
+B. KeyListener
+
+C. ActionListener
+
+D. ItemListener
+
+E. WindowListener 
+
+Explanation: 
+
+
+Four listeners don't have their corresponding event adapters. They are ActionListener, ItemListener, AdjustmentListener and TextListener. 
+
+Correct Answer: A,B,E 52 of 60 
+
+ 
+
+
+Question: 53
+
+
+Which one of the following methods is not related to the display of the applets?
+
+
+A. update()
+
+B. draw()
+
+C. repaint()
+
+D. paint() 
+
+Explanation: 
+
+
+The paint(), update() and repaint() are predefined methods in Java. They are related to the display of the applets. 
+
+Correct Answer: B 53 of 60 
+
+ 
+
+
+Question: 54
+
+
+Given the following definition:
+
+TextArea ta = new TextArea (Hello, 5, 5);
+
+Which statements are true?
+
+
+A. The maximum number of characters in a line is 5.
+
+B. The displayed height is 5 lines otherwise constrain.
+
+C. The displayed string can use multiple fonts.
+
+D. The displayed strings are editable. 
+
+Explanation: 
+
+
+The TextArea is constructed to a 5 row * 5 character text area. It cannot display multiple fonts. The strings are editable by default. The displayed width of a line is 5 characters, but the maximum number in a line is more than 5. 
+
+Correct Answer: B,D 54 of 60 
+
+ 
+
+
+Question: 55
+
+
+Which method can be used to add MenuBar to a Frame?
+
+
+A. setMenu()
+
+B. setMenuBar()
+
+C. add()
+
+D. addMenuBar() 
+
+Explanation: 
+
+
+MenuBar is added to a Frame by using the setMenuBar() method. The add() method is used to add components to containers. 
+
+Correct Answer: B 55 of 60 
+
+ 
+
+
+Question: 56
+
+
+Which are not containers in Java?
+
+
+A. ScrollPane
+
+B. Canvas
+
+C. Scrollbar
+
+D. Applet
+
+E. Dialog 
+
+Explanation: 
+
+
+Scrollbar and Canvas are not containers. The following classes are containers in Java: Panel, Window, ScrollPane, Dialog, Frame, Applet. 
+
+Correct Answer: B,C 56 of 60 
+
+ 
+
+
+Question: 57
+
+
+Which of the following method can be used to define a new thread class?
+
+
+A. implement the Runnable interface
+
+B. add a run() method in the class
+
+C. create an instance of Thread
+
+D. extend the Thread class 
+
+Explanation: 
+
+
+Two methods can define a new thread class: to implement the Runnable interface or to extend the Thread class. 
+
+Correct Answer: A,D 57 of 60 
+
+ 
+
+
+Question: 58
+
+
+Which of the following I/O stream are node streams?
+
+
+A. FileInputStream
+
+B. BufferedInputStream
+
+C. PushbackInputStream
+
+D. ByteArrayInputStream 
+
+Explanation: 
+
+
+The FileInputStream and ByteArrayInputStream are node streams. The BufferedInputStream and PushbackInputStream are filter streams. 
+
+Correct Answer: A,D 58 of 60 
+
+ 
+
+
+Question: 59
+
+
+Which of the following classes can handle the Unicode?
+
+
+A. InputStreamReader
+
+B. BufferedReader
+
+C. Writer
+
+D. PipedInputStream 
+
+Explanation: 
+
+
+Java uses Unicode to represent strings and characters and Java provides 16 bit versions of streams to allow characters to be treated similarly. They are Reader, Writer and their subclasses. 
+
+Correct Answer: A,B,C 59 of 60 
+
+ 
+
+
+Question: 60
+
+
+Which classes are used to implement TCP/IP client and servers?
+
+
+A. ServerSocket
+
+B. Server
+
+C. Socket
+
+D. DatagramPacket
+
+E. DatagramSocket 
+
+Explanation: 
+
+
+Use ServerSocket and Socket classes to implement the TCP/IP clients and servers. The DatagramPacket and DatagramSocket are used in the UDP-based network communication. 
+
+Correct Answer: A,C 60 of 60 
+
+ 

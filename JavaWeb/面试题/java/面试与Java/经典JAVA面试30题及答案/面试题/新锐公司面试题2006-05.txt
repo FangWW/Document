@@ -1,0 +1,66 @@
+1、作用域public、private、protected以及不写时的区别？
+
+2、定义float f = 3.4，是否正确，如果错误，怎么修改？
+
+3、
+
+父类： 
+package test; 
+public class FatherClass  { 
+	public FatherClass() { 
+		System.out.println("FatherClass Create"); 
+	} 
+} 
+
+子类: 
+package test; 
+import test.FatherClass; 
+public class ChildClass extends FatherClass { 
+	public ChildClass() { 
+		System.out.println("ChildClass Create"); 
+	}
+
+	public static void main(String[] args) { 
+		FatherClass fc = new FatherClass(); 
+		ChildClass cc = new ChildClass(); 
+	}
+}
+
+输出结果：
+FatherClass Create
+FatherClass Create
+ChildClass Create
+
+4、JSP有哪些内置对象？作用分别是什么？
+
+5、谈一谈Servlet的生命周期？
+
+6、写一段JDBC连ORACLE的程序，并实现数据查询。
+
+7、描述ORACLE中的锁定机制和读取机制。
+
+8、请描述Struts - Oracle中大数据量下的分页解决方案。
+
+9、你在项目中用到了XML的哪些方面？如何实现的？
+
+10、EJB2.0有哪些内容？分别用在什么场合？EJB2.0和EJB1.1的区别？
+
+11、MVC的各个部分都能用哪些技术来实现？如何实现？请详细描述Struts架构，Struts怎样在各个子模块中进行切换？
+
+12、你在项目中用到了哪些设计模式？分别用在什么场合？
+
+
+
+
+
+面试问题
+
+你觉得自己的J2EE水平怎样？
+
+你的技术在以前的公司里处于一个怎样的水平呢？
+
+通过以前做过的项目，你都学到了些什么？
+
+以后的职业规划是什么？
+
+你还有什么要问的吗？

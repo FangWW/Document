@@ -1,0 +1,296 @@
+JAVA面试题集（4） 
+作者：unknown 更新时间：2005-04-07    
+  
+6、用JAVA实现一种排序，JAVA类实现序列化的方法(二种)？ 如在COLLECTION框架中，实现比较要实现什么样的接口？ 
+
+答:用插入法进行排序代码如下 
+
+package test; 
+
+import java.util.*; 
+
+class InsertSort 
+
+{ 
+
+ArrayList al; 
+
+public InsertSort(int num,int mod) 
+
+{ 
+
+al = new ArrayList(num); 
+
+Random rand = new Random(); 
+
+System.out.println("The ArrayList Sort Before:"); 
+
+for (int i=0;i<num ;i++ ) 
+
+{ 
+
+al.add(new Integer(Math.abs(rand.nextInt()) % mod + 1)); 
+
+System.out.println("al["+i+"]="+al.get(i)); 
+
+} 
+
+} 
+
+public void SortIt() 
+
+{ 
+
+Integer tempInt; 
+
+int MaxSize=1; 
+
+for(int i=1;i<al.size();i++) 
+
+{ 
+
+tempInt = (Integer)al.remove(i); 
+
+if(tempInt.intValue()>=((Integer)al.get(MaxSize-1)).intValue()) 
+
+{ 
+
+al.add(MaxSize,tempInt); 
+
+MaxSize++; 
+
+System.out.println(al.toString()); 
+
+} else { 
+
+for (int j=0;j<MaxSize ;j++ ) 
+
+{ 
+
+if 
+
+
+
+(((Integer)al.get(j)).intValue()>=tempInt.intValue()) 
+
+{ 
+
+al.add(j,tempInt); 
+
+MaxSize++; 
+
+System.out.println(al.toString()); 
+
+break; 
+
+} 
+
+} 
+
+} 
+
+} 
+
+System.out.println("The ArrayList Sort After:"); 
+
+for(int i=0;i<al.size();i++) 
+
+{ 
+
+System.out.println("al["+i+"]="+al.get(i)); 
+
+} 
+
+} 
+
+public static void main(String[] args) 
+
+{ 
+
+InsertSort is = new InsertSort(10,100); 
+
+is.SortIt(); 
+
+} 
+
+} 
+
+JAVA类实现序例化的方法是实现java.io.Serializable接口 
+
+Collection框架中实现比较要实现Comparable 接口和 Comparator 接口 
+
+7、编程：编写一个截取字符串的函数，输入为一个字符串和字节数，输出为按字节截取的字符串。 但是要保证汉字不被截半个，如“我ABC”4，应该截为“我AB”，输入“我ABC汉DEF”，6，应该输出为“我ABC”而不是“我ABC+汉的半个”。 
+
+答：代码如下： 
+
+package test; 
+
+
+
+class SplitString 
+
+{ 
+
+String SplitStr; 
+
+int SplitByte; 
+
+public SplitString(String str,int bytes) 
+
+{ 
+
+SplitStr=str; 
+
+SplitByte=bytes; 
+
+System.out.println("The String is:′"+SplitStr+"′;SplitBytes="+SplitByte); 
+
+} 
+
+public void SplitIt() 
+
+{ 
+
+int loopCount; 
+
+loopCount=(SplitStr.length()%SplitByte==0)?(SplitStr.length()/SplitByte):(SplitStr.length()/Split 
+
+Byte+1); 
+
+System.out.println("Will Split into "+loopCount); 
+
+for (int i=1;i<=loopCount ;i++ ) 
+
+{ 
+
+if (i==loopCount){ 
+
+System.out.println(SplitStr.substring((i-1)*SplitByte,SplitStr.length())); 
+
+} else { 
+
+System.out.println(SplitStr.substring((i-1)*SplitByte,(i*SplitByte))); 
+
+} 
+
+} 
+
+} 
+
+public static void main(String[] args) 
+
+{ 
+
+SplitString ss = new SplitString("test中dd文dsaf中男大3443n中国43中国人 
+
+
+
+0ewldfls=103",4); 
+
+ss.SplitIt(); 
+
+} 
+
+} 
+
+8、JAVA多线程编程。 用JAVA写一个多线程程序，如写四个线程，二个加1，二个对一个变量减一，输出。 
+
+希望大家补上，谢谢 
+
+9、STRING与STRINGBUFFER的区别。 
+
+答：STRING的长度是不可变的，STRINGBUFFER的长度是可变的。如果你对字符串中的内容经常进行操作，特别是内容要修改时，那么使用StringBuffer，如果最后需要String，那么使用StringBuffer的toString()方法 
+
+Jsp方面 
+
+1、jsp有哪些内置对象?作用分别是什么? 
+
+答:JSP共有以下9种基本内置组件（可与ASP的6种内部组件相对应）： 
+
+　request 用户端请求，此请求会包含来自GET/POST请求的参数 
+
+response 网页传回用户端的回应 
+
+pageContext 网页的属性是在这里管理 
+
+session 与请求有关的会话期 
+
+application servlet 正在执行的内容 
+
+out 用来传送回应的输出 
+
+config servlet的构架部件 
+
+page JSP网页本身 
+
+exception 针对错误网页，未捕捉的例外 
+
+2、jsp有哪些动作?作用分别是什么? 
+
+答:JSP共有以下6种基本动作 
+
+jsp:include：在页面被请求的时候引入一个文件。 
+
+jsp:useBean：寻找或者实例化一个JavaBean。 
+
+jsp:setProperty：设置JavaBean的属性。 
+
+jsp:getProperty：输出某个JavaBean的属性。 
+
+jsp:forward：把请求转到一个新的页面。 
+
+jsp:plugin：根据浏览器类型为Java插件生成OBJECT或EMBED标记 
+
+3、JSP中动态INCLUDE与静态INCLUDE的区别？ 
+
+答：动态INCLUDE用jsp:include动作实现 
+
+<jsp:include page="included.jsp" flush="true" />它总是会检查所含文件中的变化，适合用于包含动态页面，并且可以带参数 
+
+静态INCLUDE用include伪码实现,定不会检查所含文件的变化，适用于包含静态页面 
+
+<%@ include file="included.htm" %> 
+
+4、两种跳转方式分别是什么?有什么区别? 
+
+答：有两种，分别为： 
+
+<jsp:include page="included.jsp" flush="true"> 
+
+<jsp:forward page= "nextpage.jsp"/> 
+
+前者页面不会转向include所指的页面，只是显示该页的结果，主页面还是原来的页面。执行完后还会回来，相当于函数调用。并且可以带参数.后者完全转向新页面，不会再回来。相当于go to 语句。 
+
+Servlet方面 
+
+1、说一说Servlet的生命周期? 
+
+答:servlet有良好的生存期的定义，包括加载和实例化、初始化、处理请求以及服务结束。这个生存期由javax.servlet.Servlet接口的init,service和destroy方法表达。 
+
+2、Servlet版本间(忘了问的是哪两个版本了)的不同? 
+
+希望大家补上，谢谢 
+
+3、JAVA SERVLET API中forward() 与redirect()的区别？ 
+
+答:前者仅是容器中控制权的转向，在客户端浏览器地址栏中不会显示出转向后的地址；后者则是完全的跳转，浏览器将会得到跳转的地址，并重新发送请求链接。这样，从浏览器的地址栏中可以看到跳转后的链接地址。所以，前者更加高效，在前者可以满足需要时，尽量使用forward()方法，并且，这样也有助于隐藏实际的链接。在有些情况下，比如，需要跳转到一个其它服务器上的资源，则必须使用sendRedirect()方法。 
+
+4、Servlet的基本架构 
+
+public class ServletName extends HttpServlet { 
+
+public void doPost(HttpServletRequest request, HttpServletResponse response) throws 
+
+ServletException, IOException { 
+
+} 
+
+public void doGet(HttpServletRequest request, HttpServletResponse response) throws 
+
+ServletException, IOException { 
+
+} 
+
+} 
+ 
+  

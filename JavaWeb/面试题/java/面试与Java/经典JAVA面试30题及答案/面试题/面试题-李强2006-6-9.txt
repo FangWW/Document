@@ -1,0 +1,65 @@
+1  表Worker大致如下：
+code         varchar(2) not null,  //编号
+name         varchar(20) not null, //姓名
+department   varchar(30) varchar(20) not null,//部门
+payday       datetime,//发薪日期
+payment      number//薪水
+
+1.取出2003年4月发薪水最多的部门。
+2.取出所有曾1个月发薪水1次以上的人员的编码，姓名，发薪日期，发薪次数，发薪总数1
+
+
+有表UserInfo:
+UserName varchar(20) ;
+Indate   datetime;
+这是一张员工上班打卡记录表，每打一次卡便产生一条记录，记录下该员工的姓名和打卡时间，如：
+AAA   2006-2-14  16:06:25
+BBB   2006-2-14  16:24:25
+CCC   2006-2-14  16:16:58
+AAA   2006-2-15  16:16:25
+BBB   2006-2-15  16:36:05
+CCC   2006-2-15  16:12:48
+.........................
+.........................
+写出标准SQL语句查询打卡记录次数大于20次的员工信息，并按照从多到少排列！
+
+
+1.B/S和C/S相比有什么优缺点
+2.画一个J2EE的N-tier结构图(什么是N-tier结构图)，并解释一下每一部分主要的作用
+3.HTTP响应码中4××和5××各表示什么意思
+4.描述一下Servlet协作链和过滤器
+5.父表和子表一般通过什么联系，描述一下两者的数据一致性问题
+6.描述一下连接池技术，J2EE中还有那些使用“池”的优化技术
+7.知道O/R Mapping吗？说说你了解的几种O/R Mapping技术
+8.你了解哪些应用服务器？比较熟悉的有哪些
+9.给我一个你最常见到的runtime exception。 
+
+二、Java编程与程序运行结果
+
+　　1.Java编程,打印昨天的当前时刻
+    2. 指出下面程序的运行结果:
+
+class A{
+    static{
+        System.out.print("1");
+    }
+    public A(){
+        System.out.print("2");
+    }
+}
+class B extends A{
+    static{
+        System.out.print("a");
+    }
+    public B(){
+        System.out.print("b");
+    }   
+}
+public class Hello{
+    public static void main(String[] ars){
+        A ab = new B(); //执行到此处,结果: 1a2b
+ ab = new B(); //执行到此处,结果: 1a2bab
+    }
+}
+
+  3.写一个Singleton模式的例子

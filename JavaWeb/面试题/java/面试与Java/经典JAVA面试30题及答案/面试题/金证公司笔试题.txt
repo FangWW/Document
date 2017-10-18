@@ -1,0 +1,30 @@
+主要内容：JS、5道Orecle(大部分)
+
+1.假如一个页面index.htm需要弹出小窗口win.htm，如何使弹出的小窗口不会重复打开,以及如何关闭这个小窗口。
+2.JSP在服务器端的转发方式
+3.在两个JSP页面上同时用一个变量，不能用URL参数加FORM进行传递，怎样实现
+4.读程序，写出执行结果
+
+public class Test{
+String para1;
+StringBuffer para2;
+
+public void method1(String param){
+	para1 = param.replace('j','l');
+}
+
+public void method2(StringBuffer param){
+	para2 = param.append('c');
+}
+
+public static void main(String[] args){
+	Test obj = new Test();
+	obj.method1(new String("java"));
+	obj.method2(new StringBuffer("java"));
+	System.out.println(obj.para1);
+	System.out.println(obj.para2.toString());
+}
+
+}
+
+5.有两张表A、B，A是主表，B是丛表，删除A表记录在B表中不存在的。

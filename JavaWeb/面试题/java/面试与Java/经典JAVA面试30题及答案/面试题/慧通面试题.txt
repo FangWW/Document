@@ -1,0 +1,85 @@
+面试题 
+ 
+[ 2005-12-2 14:36:00 | By: 俊豪 ] 
+  
+  //华为面试题：  有1,2,....一直到n的无序数组,求排序算法,
+//并且要求时间复杂度为O(n),空间复杂度O(1),使用交换,而且一次只能交换两个数.
+//评论：要使时间复杂度为O(n)，那一定是特殊数组，否则不可能实现，
+//题目给出数组为1,2,....n,那么可以在这上面做文章，把数组的值和数组的下标联系起来，把a[i]的值给a[a[i]-1],比如a[3]=5,则把5赋给a[5-1]也就是a[4]=5，则符合要求了。
+
+＃i nclude <stdio.h>
+void main()
+{ int a[10]={3,6,8,4,2,9,7,1,5,10};//{6,3,4,8,2,9,7,1,5,10}; 这个数例不行
+  int b,i;
+  for(i=0;i<10;i++)
+  {
+   b=a[a[i]-1];
+    a[a[i]-1]=a[i];
+    a[i]=b;
+  }
+  for(i=0;i<10;i++)
+   printf("%d ",a[i]);
+}
+
+＃i nclude<stdio.h>
+＃i nclude<stdlib.h>
+
+int print( int*, int );
+int swap( int&, int& );
+int main()
+{
+int *a, n, i;
+scanf( "%d", &n );
+a = ( int* ) malloc ( ( n + 1 ) * sizeof( int ) );
+for( i = 1; i <= n; i++ )
+a[i] = i;
+for( i = 1; i <= n; i++ )
+swap( a[i], a[rand()%n+1] );
+print( a, n );
+for( i = 1; i <= n; i++ )
+{
+while( a[i] != i )
+swap( a[i], a[a[i]] );
+}
+print( a, n );
+return 0;
+}
+int swap( int &i, int &j )
+{
+int temp = i;
+i = j;
+j = temp;
+return 0;
+}
+int print( int a[], int n )
+{
+int i;
+for( i = 1; i <= n; i++ )
+printf( "%4d", a[i] );
+printf( "\n" );
+return 0;
+}
+
+//惠通面试题：两个字符串，s,t;把t字符串插入到s字符串中，s字符串有足够的空间存放t字符串
+
+void insert(char *s, char *t, int i);
+
+void insert(char *s, char *t, int i)
+{
+char *q = t;
+char *p = s;
+if(q == NULL)return;//子串为空
+while(*p!='\0')
+{
+p++;
+}  //移到目标串串尾
+while(*q!='\0')
+{
+*p = *q;
+p++;
+q++;
+}//插入
+*p = '\0';
+}
+ 
+  

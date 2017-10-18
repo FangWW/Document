@@ -1,0 +1,256 @@
+java程序设计模拟题四
+ 
+
+--------------------------------------------------------------------------------
+ 
+2003-12-8 11:50:00      阅读569次 
+   
+ 《Java语言程序设计》期末模拟卷四
+2003-12
+一、 判断题（每题1分，共15分）
+1． Java的字符类型采用的是ASCII编码。            （   ）
+2． 子类的域和方法的数目一定大于等于父类的域和方法的数目。                （   ）
+3． Java程序里,创建新的类对象用关键字new，回收无用的类对象使用关键字free。 （   ）
+4． 抽象类没有具体对象，所以抽象类没有构造函数。          （   ）
+5． 子类要调用父类的方法，必须使用super关键字。       （   ）
+6． 一个类如果实现了某个接口，那么它必须重载该接口中的所有方法。      （   ）
+7． 如果希望程序能够处理所有的异常，包括未知的异常，可以在所有的catch块后面加一个catch(Exception e){  }。            （   ）
+8． 用“+”可以实现字符串的拼接，用“-” 可以从一个字符串中去除一个字符子串。  （   ）
+9． 创建Vector对象时构造函数给定的是其中可以包容的元素个数，使用中应注意不能超越这个数值。                  （   ）
+10． Applet的两个方法getCodeBase（）和getDocumentBase（）的返回值都是URL类的对象，且二者返回的都是相同的URL地址。                             （   ）
+11． Java的屏幕坐标是以像素为单位，容器的左上角被确定为坐标的起点。  （   ）
+12． 用户自定义的图形界面元素也可以响应用户的动作，具有交互功能。   （   ）
+13． 如果p是父类Parent的对象，而c是子类Child的对象，则语句c=p是正确的。（    ）
+14． Java系统的标准输入对象是System.in，标准输出对象有两个，分别是标准输出System.out和标准错误输出System.err。         （   ）
+15． 一个线程对象的具体操作是由run()方法的内容确定的，但是Thread类的run()方法是空的,其中没有内容;所以用户程序要么派生一个Thread的子类并在子类里重新定义run()方法,要么使一个类实现Runnable接口并书写其中run()方法的方法体。  （   ）
+
+二、 选择题（每题2分，共20分）
+1．以下标识符中哪项是不合法的(         )
+A、 BigOlLongStringWithMeaninglessName   B、$int
+C、_jksk$1          D、const
+2．为AB类的一个无形式参数无返回值的方法method书写方法头，使得使用类名AB作为前缀就可以调用它，该方法头的形式为(      )。
+A.  static  void  method( )                    B. public  void  method( )    
+C. final  void  method( )                      D. abstract  void  method( )
+3．容器Panel和Applet缺省使用的布局编辑策略是（         ）
+A、BorderLayout  B、FlowLayout C、GridLayout D、CardLayout
+4．main方法是Java  Application程序执行的入口点，关于main方法的方法头以下哪项是合法的（          ）
+A、 public  static  void  main（）   B、public  static  void   main（String[ ]  args）
+C、 public static int  main（String[ ]  arg）D、public  void  main（String  arg[ ]）
+5．执行完以下代码int [ ]  x = new int[25]；后，以下哪项说明是正确的（         ）
+A、x[24]为0  B、x[24]未定义  C、x[25]为0  D、x[0]为空
+6．以下代码段将创建（         ）个对象。
+ String   s1="abc";
+ String   s2=s1;
+ String   s3="abc";
+A． 0   B、1    C、2    D、3
+7．类Test1定义如下：
+1．public  class  Test1{
+2．  public  float  aMethod（float  a，float  b）{   }
+3．  
+4．} 
+将以下哪种方法插入行3是不合法的。（           ）
+A、 public  float  aMethod（float  a， float  b，float  c）{  }
+B、 public  float  aMethod（float  c，float d）{  }
+C、 public  int  aMethod（int  a， int b）{  }
+D、 private float aMethod（int a，int b，int c）{  }
+8．创建字符串s：s=new  String（“xyzy”）；以下哪条语句将改变s（            ）
+A、s.append（”aaa”）;  B、s.concat(s); C、s.substring(3)  D、以上语句都不会
+9．编译并运行以下程序（命令：java  Switcheroo  1），关于运行结果的描述以下哪个选项是正确的（          ）
+ class  Switcheroo{
+  public  static  void  main(String [ ]  args){
+   long   i=0;
+   try{
+    i=Integer.parseInt(args[0]);
+   }catch(Exception  e){   }
+   
+   switch(i)
+   {case  0:  System.out.println("zero");
+    case  1:   System.out.println("one");
+    default :   System.out.println("default");  }
+  }
+ }
+A、 编译出错  B、打印出“zero” C、打印出“one” D、打印出“defaule”
+10．编译并运行以下程序，以下描述哪个选项是正确的（          ）
+1. class  X{
+ 2. protected  String  toString(){
+ 3.  return  super.toString();}
+ 4. }
+A、编译通过运行无异常   B、编译通过但运行时出错 、
+C、行2出错，不能成功编译  D、不能成功编译，行3出错
+三、 改错题（每题3分，共15分）
+1、 判断下面的程序片断是否正确。若有错，说明错在哪里并改正；若正确，打“√”。
+①class  A
+ {
+  final  int  f;
+  double  d;
+  void  A(double  c)
+{  d=c ;    }
+ }
+
+ 
+
+ 
+
+
+   ②class  M
+   {  char  ch=’c’；
+  static  char  getMChar()
+  {
+   return  ch;
+  }
+ }
+
+ 
+
+ 
+
+
+  ③class  AmIWrong
+ {
+  int  data1,data2;
+  AmIWrong()
+  {  data1=-1;   }
+  AmIWrong(int  d)
+  { data2=d;
+   this();
+  }
+ }
+
+ 
+
+ 
+
+ 
+
+④public  class  MThread  implements  Runnable
+ {
+  Thread  t=new  Thread(this);
+  t.start();
+  void  run()
+  {
+   System.out.println(“I am alive now”);
+  }
+ }
+
+ 
+
+ 
+
+ 
+
+⑤ public  class  BtnEvent  extends  Applet   implements  ActionListener
+ {
+  Button  btn;
+  public  void  init()
+  {
+   btn=new  Button(“Push”);
+   add(btn);
+    btn.addActionListener(this);
+  }
+  public  void  actionPerformed(ActionEvent  e)
+  {
+   (Button)e.getSource().setLabel(“Pushed!”);
+  }
+ }
+
+ 
+
+ 
+
+ 
+
+四、程序阅读（每题5分，共20分）
+1、阅读以下程序，输出结果为                   。
+class   Q{
+  public  static  void  main（String   args[  ]）{
+   String  s1=”abc”;
+String  s2=”abc”;
+if(s1= =s2)
+  System.out.println(“yes”);
+else 
+System.out.println(“NO”);
+ }
+ }
+2、阅读以下程序，输出结果为                   。
+class   StaticStuff
+ { 
+static  int  x=10；
+static  { x+=5；}
+public  static  void  main（String  args[ ]）
+{
+     System.out.println(“x=” + x);
+}
+static  { x%=2;}
+}
+
+3、以下程序段的输出结果为                                       。
+  class  Cruncher{
+     void  crunch( int  i ){
+        System.out.print(“int”);
+      }
+      void  crunch(String  s){
+          System.out.print(“String”);
+      }
+
+       public  static  void main(String  args[ ]){
+           Cruncher crun=new  Cruncher ( );
+            char    ch=’p’;
+    int   i=10;
+crun.crunch(ch);
+System.out.print(“,”);
+crun.crunch(i)
+              }
+}
+4、以下程序段的输出结果为                                       。
+import    java.io.* ;
+    public   class  abc
+    {
+          public   static   void    main(String  args[ ])
+          {    int   i , s = 0 ;
+               int  a[ ] = { 10 , 20 , 30 , 40 , 50 , 60 , 70 , 80 , 90 };
+               for  ( i = 0 ; i < a.length ; i ++ )
+                     if ( a[i]%3 = = 0 )  s += a[i] ; 
+               System.out.println("s="+s);
+           }
+     }
+
+
+五、综合题（共30分）
+1． 按要求书写语句。（每题3分，共15分）
+① 创建线程对象mt，它的run()方法来自一个实现了Runnable接口的类RunnableClass。
+
+                                                         
+
+② 声明并创建一个3行4列的二维int数组A。
+
+                                                          
+
+③ Applet要响应键盘的操作，应该在init()方法中加入什么语句(设键盘事件监听者就是Applet自身)。
+
+                                                         
+
+④ 为HTML文件书写一个语句，向Applet传送一个名为“param1”，数值为“25”的Applet参数。
+
+                                                         
+⑤为HTML文件书写一个语句，嵌入一个名为MyApplet.class的Applet字节码文件，其宽度为300，高度为200。
+
+                                                         
+
+2．编程(15分)
+编写一个Applet或Application，要求接受用户输入的10个整数，统计10个数的最大值、最小值并输出10个数的升序排列。
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+<注： 此套题为往年期末试题〉
+
+ 
+ 

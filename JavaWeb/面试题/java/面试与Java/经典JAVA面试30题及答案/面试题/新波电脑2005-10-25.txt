@@ -1,0 +1,8 @@
+新波科技
+1、what is this oop and bean?why use oop and bean?                                          
+2、string str = "hello"; string str =new string ("hello")区别是什么？                             
+3、用JAVA写回文                                  
+4、JAVA基础                                       
+5、改错  .....                                          
+6、什么是XML，JSP/Servlet                           
+7、为什么使用XML，JSP/Servlet？

@@ -1,0 +1,570 @@
+JAVA模拟试题
+
+
+多项选择题(在每小题的五个备选答案中选出正确答案，并将正确答案的序号填入题干后面的括号内，错选多选，漏选均不得分。)
+1、给出如下代码:
+class Test{
+　　private int m;
+　　public static void fun() {
+　　　　// some code...
+　　}
+}
+如何使成员变量m 被函数fun()直接访问?
+ A、将private int m 改为protected int m
+ B、将private int m 改为 public int m
+ C、将private int m 改为 static int m
+ D、将private int m 改为 int m
+答: C
+
+
+
+2、下面哪几个函数是public void example(){...}的重载函数？
+ A、 public void example( int m){...}
+ B、public int example(){...}
+ C、public void example2(){...}
+ D、 public int example ( int m, float f){...}
+答: A，D
+
+
+
+3、给出下面的代码段:
+public class Base{
+int w, x, y ,z;
+public Base(int a,int b)
+{
+x=a; y=b;
+}
+public Base(int a, int b, int c, int d)
+{
+// assignment x=a, y=b
+w=d;
+z=c;
+}
+}
+在代码说明// assignment x=a, y=b处写入如下哪几个代码是正确的？
+ A、 Base(a,b);
+ B、x=a, y=b;
+ C、x=a; y=b;
+ D、this(a,b);
+答: C，D
+
+
+
+4、已知如下定义：String s = "story";
+下面哪个表达式是合法的？
+ A、 s += "books";
+ B、char c = s[1];
+ C、int len = s.length;
+ D、String t = s.toLowerCase();
+答: A，D
+
+
+
+5、Java中main()函数的值是什么?
+ A、 String
+ B、int
+ C、char
+ D、void
+答:D
+
+
+
+6、如下哪些字串是Java中的标识符？ 
+ A、 fieldname
+ B、super
+ C、3number
+ D、#number
+ E、$number
+答： A,E
+
+
+
+7、如下哪些是Java中有效的关键字？ 
+ A、 const
+ B、NULL
+ C、false
+ D、this
+ E、 native
+答：A,C,D,E
+
+
+
+8、如下哪些是Java中正确的整数表示?
+ A、22
+ B、0x22
+ C、022
+ D、22H
+答: A,B,C
+
+
+
+9、下面的代码段中，执行之后i 和j 的值是什么?
+int i = 1;
+int j;
+j = i++; 
+ A、 1, 1
+ B、1, 2
+ C、2, 1
+ D、2, 2
+答: C
+
+
+
+10、下面句话是正确的?
+ A、 >> 是算术右移操作符.
+ B、>> 是逻辑右移操作符.
+ C、>>> 是算术右移操作符
+ D、>>> 是逻辑右移操作符
+答：A,D
+
+
+
+11、下面哪个赋值语句是合法的？
+ A、float a = 2.0
+ B、double b = 2.0
+ C、int c = 2
+ D、long d = 2
+答：B,C,D
+
+
+
+12、下面哪个是main()函数的合法参数?
+ A、char args[]
+ B、char args[][]
+ C、String arg要[]
+ D、String args
+答：  C
+
+
+
+13、下面哪个语句是创建数组的正确语句？
+ A、 float f[][] = new float[6][6];
+ B、float []f[] = new float[6][6];
+ C、float f[][] = new float[][6];
+ D、float [][]f = new float[6][6];
+ E、float [][]f = new float[6][];
+答：A,B,C,D
+
+
+
+14、已知表达式int m[] = {0, 1, 2, 3, 4, 5, 6 };
+下面哪个表达式的值与数组下标量总数相等？
+ A、 m.length()
+ B、m.length
+ C、m.length()+1
+ D、m.length+1
+答：B
+
+
+
+15、已知如下的命令执行 java MyTest a b c
+请问哪个语句是正确的？
+ A、 args[0] = "MyTest a b c"
+ B、args[0] = "MyTest"
+ C、args[0] = "a"
+ D、args[1]= 'b'
+答：C, D
+
+ 
+
+16、已知如下代码：
+public class Test
+{
+long a[] = new long[10];
+public static void main ( String arg[] ) {
+System.out.println ( a[6] );
+}
+}
+请问哪个语句是正确的？ 
+ A、Output is null.
+ B、Output is 0.
+ C、When compile, some error will occur.
+ D、When running, some error will occur.
+答：B 
+
+
+
+17、已知如下代码：
+boolean m = true;
+if ( m == false )
+System.out.println("False");
+else
+System.out.println("True");
+执行结果是什么？
+ A、False
+ B、True
+ C、None
+ D、An error will occur when running.
+答： B
+
+ 
+
+18、已知如下代码：
+public class Test
+{
+public static void main(String arg[])
+{
+int i = 5;
+do {
+System.out.println(i);
+} while (--i>5)
+System.out.println("finished");
+}
+}
+执行后的输出是什么？
+ A、 5
+ B、4
+ C、6
+ D、Finished
+ E、None
+答：A,D
+
+
+
+19、下面代码执行后的输出是什么？
+outer: for(int i=0;i<3; i++)
+inner: for(int j=0;j<2;j++)
+{
+if(j==1) continue outer;
+System.out.println(j+ "and "+i);
+} 
+ A、 0 and 0
+ B、0 and 1
+ C、0 and 2
+ D、1 and 0
+ E、1 and 1
+ F、1 and 2
+ G、2 and 0
+ H、 2 and 1
+ I、 2 and 2
+答： A,B,C
+
+
+
+20、已知如下代码：
+switch (m)
+{
+case 0: System.out.println("Condition 0");
+case 1: System.out.println("Condition 1"); 
+case 2: System.out.println("Condition 2");
+case 3: System.out.println("Condition 3");break;
+default: System.out.println("Other Condition"); 
+}
+当m 的值为什么时输出"Condition 2"?
+ A、 0
+ B、1
+ C、2
+ D、3
+ E、4
+ F、None 
+答：A,B,C
+
+
+
+21、当浏览器返回到新URL的包含applet 的页面时调用以下哪个函数？
+ A、 init()
+ B、start()
+ C、stop()
+ D、destroy() 
+答：B
+
+
+
+22、以下哪个方法用于定义线程的执行体？ 
+ A、 start()
+ B、init()
+ C、run()
+ D、main()
+ E、synchronized() 
+答：C
+
+
+
+23、Java中如下哪个约束符是正确的?
+ A、 private
+ B、public
+ C、protected
+ D、protect
+ E、friend 
+答：A,B,C
+
+
+
+24如果类中的成员变量可以被同一包访问，则使用如下哪个约束符?
+ A、 private
+ B、public
+ C、protected
+ D、no modifier
+ E、final 
+答：D
+
+
+
+25、以下哪个约束符可用于定义成员常量？ 
+ A、 static
+ B、final
+ C、abstract
+ D、No modifier can be used 
+答：B
+
+
+
+26、如下哪个语句正确说明了native方法?
+ A、 public native void test();
+ B、public native void test(){}
+ C、public void native test();
+ D、public native test(){} 
+答：A
+
+
+
+27、已知如下类说明：
+public class Test {
+private float f = 1.0;
+int m = 12;
+static int n=1;
+public static void main(String arg[]) {
+Test t = new Test();
+// some code...
+} 
+}
+如下哪个使用是正确的？
+ A、 t.f
+ B、this.n
+ C、Test.m
+ D、Test.n 
+答：A,D
+
+
+
+28、已知如下代码：
+1: class Example{
+2: String str;
+3: public Example(){
+4: str= "example";
+5: }
+6: public Example(String s){
+7: str=s;
+8: }
+9:} }
+10: class Demo extends Example{
+11: }
+12: public class Test{
+13:public void f () {
+14:Example ex = new Example("Good");
+15:Demo d = new Demo("Good");
+16:} }
+哪句语句会导致错误？
+ A、 line 3
+ B、line 6
+ C、line 10
+ D、line 14
+ E、line 15 
+答：E
+
+
+
+29、已知如下类定义：
+class Base {
+public Base (){ //... }
+public Base ( int m ){ //... }
+protected void fun( int n ){ //... }
+}
+public class Child extends Base{
+// member methods
+}
+如下哪句可以正确地加入子类中？
+ A、 private void fun( int n ){ //...}
+ B、void fun ( int n ){ //... }
+ C、protected void fun ( int n ) { //... }
+ D、public void fun ( int n ) { //... } 
+答：C,D
+
+
+
+30、如下哪个语句是正确的？
+ A、 In Java single inheritance is allowed, which makes code more reliable.
+ B、A subclass inherits all methods ( including the constructor ) from the superclass.
+ C、 A class can implement as many interfaces as needed.
+ D、When a class implements an interface, it can define as many methods of the interface as needed.
+答：A,C
+
+
+
+31、在如下源代码文件Test.java中, 哪个是正确的类定义？
+ A、 public class test {
+public int x = 0;
+public test(int x) 
+{
+this.x = x;
+}
+}
+ B、public class Test{
+public int x=0;
+public Test(int x) {
+this.x = x;
+}
+}
+ C、public class Test extends T1, T2 {
+public int x = 0;
+public Test (int x) {
+this.x = x;
+}
+}
+ D、 public class Test extends T1{
+public int x=0;
+public Test(int x){
+this.x = x;
+}
+} 
+ E、protected class Test extends T2{
+public int x=0;
+public Test(int x){
+this.x=x;
+}
+}
+答：B,D
+
+
+
+32、Person, Student 和Teacher 都是类名。这些类有以下继承关系。
+Person
+|
+---------------
+| |
+Student Teacher
+并且在Java源代码中有如下表达式：
+Person p = new Student();
+如下哪个语句是正确的？ 
+ A、 The expression is legal.
+ B、The expression is illegal.
+ C、Some errors will occur when compile.
+ D、Compile is correct but it will be wrong when running. 
+答：A
+
+
+
+33、当Frame改变大小时，放在其中的按钮大小不变，则使用如下哪个layout?
+ A、 FlowLayout
+ B、CardLayout
+ C、North and South of BorderLayout
+ D、East and West of BorderLayout
+ E、GridLayout
+答：D
+
+
+
+34、当Frame改变大小时，放在其中的按钮大小不变，则使用如下哪个layout?
+ A、 FlowLayout
+ B、CardLayout
+ C、North and South of BorderLayout
+ D、East and West of BorderLayout
+ E、GridLayout
+答：A
+
+
+
+35、如下哪个方法可以从WindowEvent获取事件源?
+ A、 getFrame()
+ B、getID()
+ C、getSource()
+ D、getWindow() 
+答：C,D
+
+
+
+36、以下哪个有关事件监听器的语句是正确的？
+ A、 Multiple listeners can be attached to one component.
+ B、Only one listener can be attached to one component.
+ C、One listener can receive and process the events from multiple components.
+ D、One listener can receive and process the events from only one component.
+答：A,C
+
+
+
+37、监听器接口的方法返回值是什么？ 
+ A、 int
+ B、String
+ C、void
+ D、Object
+ E、AWTEvent 
+答：C
+
+
+
+38、下面哪个事件监听器在Java中有事件适配器?
+ A、 MouseListener
+ B、KeyListener
+ C、ActionListener
+ D、ItemListener
+ E、WindowListener 
+答：A,B,E
+
+
+
+39、下面哪个方法与applet的显示无关?
+ A、 update()
+ B、draw()
+ C、repaint()
+ D、paint() 
+答：B
+
+
+
+40、已知如下说明：
+TextArea ta = new TextArea ("Hello", 5, 5);
+请问哪个语句是正确的？ 
+ A、 The maximum number of characters in a line is 5.
+ B、The displayed height is 5 lines otherwise constrain.
+ C、The displayed string can use multiple fonts.
+ D、The displayed strings are editable. 
+答：B,D
+
+
+
+41、请问如下哪个方法可以将MenuBar加入Frame中?
+ A、 setMenu()
+ B、setMenuBar()
+ C、add()
+ D、addMenuBar() 
+答：B
+
+
+
+42、下面哪个不是Java中的容器?
+ A、 ScrollPane
+ B、Canvas
+ C、Scrollbar
+ D、Applet
+ E、Dialog 
+答：B,C
+
+
+
+43、下面哪个方法可用于定义新线程类？
+ A、 implement the Runnable interface
+ B、add a run() method in the class
+ C、create an instance of Thread
+ D、extend the Thread class 
+答：A,D
+
+
+
+44、下面哪个stream是node流?
+ A、 FileInputStream
+ B、BufferedInputStream
+ C、PushbackInputStream
+ D、ByteArrayInputStream 
+答：A,D
+
+
+
+45、哪个类可用于处理Unicode?
+ A、 InputStreamReader
+ B、BufferedReader
+ C、Writer
+ D、PipedInputStream 
+答：A,B
+
+ 
+

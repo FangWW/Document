@@ -1,0 +1,35 @@
+1、public、protected、private和不写限定符有什么区别？
+
+2、ArrayList和Vector的区别？HashMap和HashTable的区别？
+
+3、多线程有几种表示方法，都是什么？同步有几种实现方法，都是什么？
+
+4、JSP有哪些内置对象？作用分别是什么？
+
+5、WEB应用中，提交表单时，method分别设为GET、POST有什么区别？
+
+6、说一说Servlet的生命周期？
+
+7、写一段JDBC连MS SQL SERVER的程序，执行存储过程sp_getdata，参数varchar(20)，返回一记录集。
+
+8、Class.forName的作用？为什么使用？
+
+9、开发中都用到了哪些设计模式？用在什么场合？
+
+10、谈谈final、finally、finalize的区别。
+
+11、sleep()和wait()有什么区别？
+
+12、数组有没有length()这个方法？String有没有length()这个方法？
+
+13、列出几个常见的runtime exception。
+
+14、abstract class和interface有什么区别？
+
+15、启动一个线程是用run()还是用start()？
+
+16、try{}里有一个return 语句，那么紧跟在这个try后的finally{}里的code会不会执行？
+
+17、WEB应用中，你都使用哪些技术或方法来改善系统的性能？
+
+18、在以往的java项目中，你是否经常使用一些开源项目，如有，请举例说明。

@@ -1,0 +1,210 @@
+JAVA面试题集（2） 
+作者：unknown 更新时间：2005-04-07    
+  
+27，给我一个你最常见到的runtime exception。 
+
+ArithmeticException, ArrayStoreException, BufferOverflowException, BufferUnderflowException, CannotRedoException, CannotUndoException, ClassCastException, CMMException, ConcurrentModificationException, DOMException, EmptyStackException, IllegalArgumentException, IllegalMonitorStateException, IllegalPathStateException, IllegalStateException, 
+
+ImagingOpException, IndexOutOfBoundsException, MissingResourceException, NegativeArraySizeException, NoSuchElementException, NullPointerException, ProfileDataException, ProviderException, RasterFORMatException, SecurityException, SystemException, UndeclaredThrowableException, UnmodifiableSetException, UnsupportedOperationException 
+
+28，error和exception有什么区别? 
+
+　　error 表示恢复不是不可能但很困难的情况下的一种严重问题。比如说内存溢出。不可能指望程序能处理这样的情况。 
+
+　　exception 表示一种设计或实现问题。也就是说，它表示如果程序运行正常，从不会发生的情况。 
+
+29，List, Set, Map是否继承自Collection接口? 
+
+List，Set是 
+
+Map不是 
+
+30，abstract class和interface有什么区别? 
+
+　　声明方法的存在而不去实现它的类被叫做抽象类（abstract class），它用于要创建一个体现某些基本行为的类，并为该类声明方法，但不能在该类中实现该类的情况。不能创建abstract 类的实例。然而可以创建一个变量，其类型是一个抽象类，并让它指向具体子类的一个实例。不能有抽象构造函数或抽象静态方法。Abstract 类的子类为它们父类中的所有抽象方法提供实现，否则它们也是抽象类为。取而代之，在子类中实现该方法。知道其行为的其它类可以在类中实现这些方法。 
+
+　　接口（interface）是抽象类的变体。在接口中，所有方法都是抽象的。多继承性可通过实现这样的接口而获得。接口中的所有方法都是抽象的，没有一个有程序体。接口只可以定义static final成员变量。接口的实现与子类相似，除了该实现类不能从接口定义中继承行为。当类实现特殊接口时，它定义（即将程序体给予）所有这种接口的方法。然后，它可以在实现了该接口的类的任何对象上调用接口的方法。由于有抽象类，它允许使用接口名作为引用变量的类型。通常的动态联编将生效。引用可以转换到接口类型或从接口类型转换，instanceof 运算符可以用来决定某对象的类是否实现了接口。 
+
+
+
+
+
+31，abstract的method是否可同时是static,是否可同时是native，是否可同时是synchronized? 
+
+　　都不能 
+
+32，接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)? 
+
+　　接口可以继承接口。抽象类可以实现(implements)接口，抽象类是否可继承实体类，但前提是实体类必须有明确的构造函数。 
+
+33，启动一个线程是用run()还是start()? 
+
+　　启动一个线程是调用start()方法，使线程所代表的虚拟处理机处于可运行状态，这意味着它可以由JVM调度并执行。这并不意味着线程就会立即运行。run()方法可以产生必须退出的标志来停止一个线程。 
+
+34，构造器Constructor是否可被override? 
+
+　　构造器Constructor不能被继承，因此不能重写Overriding，但可以被重载Overloading。 
+
+35，是否可以继承String类? 
+
+　　String类是final类故不可以继承。 
+
+36，当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法? 
+
+　　不能，一个对象的一个synchronized方法只能由一个线程访问。 
+
+37，try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行，什么时候被执行，在return前还是后? 
+
+　　会执行，在return前执行。 
+
+38，编程题: 用最有效率的方法算出2乘以8等於几? 
+
+　　有C背景的程序员特别喜欢问这种问题。 
+
+　　2 << 3 
+
+39，两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对? 
+
+　　不对，有相同的hash code。 
+
+40，当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递? 
+
+　　是值传递。Java 编程语言只由值传递参数。当一个对象实例作为一个参数被传递到方法中时，参数的值就是对该对象的引用。对象的内容可以在被调用的方法中改变，但对象的引用是永远不会改变的。 
+
+41，swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上? 
+
+　　switch（expr1）中，expr1是一个整数表达式。因此传递给 switch 和 case 语句的参数应该是 int、 short、 char 或者 byte。long,string 都不能作用于swtich。 
+
+42，编程题: 写一个Singleton出来。 
+
+　　Singleton模式主要作用是保证在Java应用程序中，一个类Class只有一个实例存在。 
+
+　　一般Singleton模式通常有几种种形式： 
+
+　　第一种形式：定义一个类，它的构造函数为private的，它有一个static的private的该类变量，在类初始化时实例话，通过一个public的getInstance方法获取对它的引用,继而调用其中的方法。 
+
+public class Singleton { 
+
+　　private Singleton(){} 
+
+　　//在自己内部定义自己一个实例，是不是很奇怪？ 
+
+　　//注意这是private 只供内部调用 
+
+　　private static Singleton instance = new Singleton(); 
+
+　　//这里提供了一个供外部访问本class的静态方法，可以直接访问　　 
+
+　　public static Singleton getInstance() { 
+
+　　　　return instance; 　　 
+
+　　 } 
+
+} 
+
+
+
+　　第二种形式： 
+
+public class Singleton { 
+
+　　private static Singleton instance = null; 
+
+　　public static synchronized Singleton getInstance() { 
+
+　　//这个方法比上面有所改进，不用每次都进行生成对象，只是第一次　　　 　 
+
+　　//使用时生成实例，提高了效率！ 
+
+　　if (instance==null) 
+
+　　　　instance＝new Singleton(); 
+
+return instance; 　　} 
+
+} 
+
+其他形式： 
+
+　　定义一个类，它的构造函数为private的，所有方法为static的。 
+
+　　一般认为第一种形式要更加安全些 
+
+　　Hashtable和HashMap 
+
+　　Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现 
+
+　　HashMap允许将null作为一个entry的key或者value，而Hashtable不允许 
+
+　　还有就是，HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。因为contains方法容易让人引起误解。 
+
+　　最大的不同是，Hashtable的方法是Synchronize的，而HashMap不是，在 
+
+多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 
+
+就必须为之提供外同步。 
+
+Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异。 
+
+43.描述一下JVM加载class文件的原理机制? 
+	JVM中类的装载是由ClassLoader和它的子类来实现的,Java ClassLoader 是一个重要的Java运行时系统组件。它负责在运行时查找和装入类文件的类。
+
+44.试举例说明一个典型的垃圾回收算法？ 
+Java语言规范没有明确地说明JVM使用哪种垃圾回收算法，但是任何一种垃圾收集算法一般要做2件基本的事情：（1）发现无用信息对象；（2）回收被无用对象占用的内存空间，使该空间可被程序再次使用。
+大多数垃圾回收算法使用了根集(root set)这个概念；所谓根集就量正在执行的Java程序可以访问的引用变量的集合(包括局部变量、参数、类变量)，程序可以使用引用变量访问对象的属性和调用对象的方法。垃圾收集首选需要确定从根开始哪些是可达的和哪些是不可达的，从根集可达的对象都是活动对象，它们不能作为垃圾被回收，这也包括从根集间接可达的对象。而根集通过任意路径不可达的对象符合垃圾收集的条件，应该被回收。下面介绍几个常用的算法。
+引用计数法(Reference Counting Collector)
+引用计数法是唯一没有使用根集的垃圾回收算法，该算法使用引用计数器来区分存活对象和不再使用的对象。一般来说，堆中的每个对象对应一个引用计数器。当每一次创建一个对象并赋给一个变量时，引用计数器置为1。当对象被赋给任意变量时，引用计数器每次加1。当对象出了作用域后(该对象丢弃不再使用)，引用计数器减1，一旦引用计数器为0，对象就满足了垃圾收集的条件。
+基于引用计数器的垃圾收集器运行较快，不会长时间中断程序执行，适宜地必须 实时运行的程序。但引用计数器增加了程序执行的开销，因为每次对象赋给新的变量 ，计数器加1，而每次现有对象出了作用域生，计数器减1。
+
+45.请用java写二叉树算法，实现添加数据形成二叉树功能，并以先序的方式打印出来. 
+
+46.请写一个java程序实现线程连接池功能？ 
+
+47.给定一个C语言函数，要求实现在java类中进行调用。 
+
+48、编一段代码，实现在控制台输入一组数字后，排序后在控制台输出； 
+
+49、列出某文件夹下的所有文件； 
+public static void displayFile(String path){
+		File file = new File(path);
+		if(file.isFile()){
+			System.out.println(file.getName());
+		}
+		else{
+			System.out.println("<DIR> "+file.getName());
+			String [] fileList = file.list();
+			String pathName = file.getAbsolutePath();
+			for(int i = 0;i<fileList.length;i++){
+				displayFile(pathName+File.separator+fileList[i]);
+			}
+		}
+		
+	}
+50、调用系统命令实现删除文件的操作； 
+public static void deleteFile(String path){
+		File file = new File(path);
+		file.delete();
+	}
+51、实现从文件中一次读出一个字符的操作； 
+
+52、列出一些控制流程的方法； 
+
+53、多线程有哪些状态？ 
+新建、就绪(start方法调用后)、运行、睡眠(sleep方法)、等待(wait方法)、挂起、恢复、阻塞、死亡
+
+54、编写了一个服务器端的程序实现在客户端输入字符然后在控制台上显示，直到输入"END"为止，让你写出客户端的程序； 
+
+55、作用域public,private,protected,以及不写时的区别 
+答：区别如下： 
+
+作用域 当前类 同一package 子孙类 其他package 
+
+public √ √ √ √ 
+
+protected √ √ √ × 
+
+friendly √ √ × × 
+
+private √ × × × 
+

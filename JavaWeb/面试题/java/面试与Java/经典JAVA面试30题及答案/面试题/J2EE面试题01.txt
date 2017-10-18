@@ -1,0 +1,159 @@
+J2EE 面试题综合
+/**
+ * By metaphy 2005-11-12
+ * Version: 0.01
+ * 注:题目答案来源于metaphy过去的知识或网络,metaphy不能保证其正确或完整性,仅供参考
+*/
+[基础问答]
+1.下面哪些类可以被继承?
+java.lang.Thread (T)
+java.lang.Number (T)
+java.lang.Double (F)
+java.lang.Math  (F)
+java.lang.Void  (F)
+java.lang.Class  (F)
+java.lang.ClassLoader (T)
+
+2.抽象类和接口的区别
+(1)接口可以被多重implements,抽象类只能被单一extends
+(2)接口只有定义,抽象类可以有定义和实现
+(3)接口的字段定义默认为:public static final, 抽象类字段默认是"friendly"(本包可见)
+
+3.Hashtable的原理,并说出HashMap与Hashtable的区别
+HashTable的原理:通过节点的关键码确定节点的存储位置,即给定节点的关键码k,通过一定的函数关系H(散列函数),得到函数值H(k),将此值解释为该节点的存储地址.
+HashMap 与Hashtable很相似,但HashMap 是非同步(unsynchronizded)和可以以null为关键码的.
+
+4.forward和redirect的区别
+forward: an internal transfer in servlet
+redirect: 重定向,有2次request,第2次request将丢失第一次的attributs/parameters等
+
+5.什么是Web容器?
+实现J2EE规范中web协议的应用.该协议定义了web程序的运行时环境,包括:并发性,安全性,生命周期管理等等.
+
+6.解释下面关于J2EE的名词
+(1)JNDI:Java Naming & Directory Interface,JAVA命名目录服务.主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能.
+(2)JMS：Java Message Service,JAVA消息服务.主要实现各个应用程序之间的通讯.包括点对点和广播.
+(3)JTA：Java Transaction API,JAVA事务服务.提供各种分布式事务服务.应用程序只需调用其提供的接口即可.
+(4)JAF: Java Action FrameWork,JAVA安全认证框架.提供一些安全控制方面的框架.让开发者通过各种部署和自定义实现自己的个性安全控制策略.
+(5)RMI:Remote Method Interface,远程方法调用
+
+7.EJB是基于哪些技术实现的？并说 出SessionBean和EntityBean的区别，StatefulBean和StatelessBean的区别.
+EJB包括Session Bean、Entity Bean、Message Driven Bean，基于JNDI、RMI、JAT等技术实现.
+SessionBean在J2EE应用程序中被用来完成一些服务器端的业务操作，例如访问数据库、调用其他EJB组件.EntityBean被用来代表应用系统中用到的数据.对于客户机，SessionBean是一种非持久性对象，它实现某些在服务器上运行的业务逻辑;EntityBean是一种持久性对象，它代表一个存储在持久性存储器中的实体的对象视图，或是一个由现有企业应用程序实现的实体.
+Session Bean 还可以再细分为 Stateful Session Bean 与 Stateless Session Bean .这两种的 Session Bean都可以将系统逻辑放在 method之中执行，不同的是 Stateful Session Bean 可以记录呼叫者的状态，因此通常来说，一个使用者会有一个相对应的 Stateful Session Bean 的实体.Stateless Session Bean 虽然也是逻辑组件，但是他却不负责记录使用者状态，也就是说当使用者呼叫 Stateless Session Bean 的时候，EJB Container 并不会找寻特定的 Stateless Session Bean 的实体来执行这个 method.换言之，很可能数个使用者在执行某个 Stateless Session Bean 的 methods 时，会是同一个 Bean 的 Instance 在执行.从内存方面来看， Stateful Session Bean 与 Stateless Session Bean 比较， Stateful Session Bean 会消耗 J2EE Server 较多的内存，然而 Stateful Session Bean 的优势却在于他可以维持使用者的状态.
+
+8.XML的解析方法
+Sax,DOM,JDOM
+
+9.什么是Web Service?
+Web Service就是为了使原来各孤立的站点之间的信息能够相互通信、共享而提出的一种接口。
+Web Service所使用的是Internet上统一、开放的标准，如HTTP、XML、SOAP（简单对象访问协议）、WSDL等，所以Web Service可以在任何支持这些标准的环境（Windows,Linux）中使用。
+注：SOAP协议（Simple Object Access Protocal,简单对象访问协议）,它是一个用于分散和分布式环境下网络信息交换的基于XML的通讯协议。在此协议下，软件组件或应用程序能够通过标准的HTTP协议进行通讯。它的设计目标就是简单性和扩展性，这有助于大量异构程序和平台之间的互操作性，从而使存在的应用程序能够被广泛的用户访问。
+
+优势：
+(1).跨平台；
+(2).SOAP协议是基于XML和HTTP这些业界的标准的，得到了所有的重要公司的支持。
+(3).由于使用了SOAP，数据是以ASCII文本的方式而非二进制传输，调试很方便；并且由于这样，它的数据容易通过防火墙，不需要防火墙为了程序而单独开一个“漏洞”。
+(4).此外，WebService实现的技术难度要比CORBA和DCOM小得多。
+(5).要实现B2B集成，EDI比较完善与比较复杂；而用WebService则可以低成本的实现，小公司也可以用上。
+(6).在C/S的程序中，WebService可以实现网页无整体刷新的与服务器打交道并取数。
+缺点：
+(1).WebService使用了XML对数据封装，会造成大量的数据要在网络中传输。
+(2).WebService规范没有规定任何与实现相关的细节，包括对象模型、编程语言，这一点，它不如CORBA。
+
+10.多线程有几种实现方法,都是什么?同步有几种实现方法,都是什么?
+答：多线程有两种实现方法，分别是继承Thread类与实现Runnable接口
+同步的实现方面有两种，分别是synchronized,wait与notify
+
+11.JSP中动态INCLUDE与静态INCLUDE的区别？ 
+动态INCLUDE用jsp:include动作实现
+<jsp:include page="included.jsp" flush="true"/>
+它总是会检查所含文件中的变化，适合用于包含动态页面，并且可以带参数
+静态INCLUDE用include伪码实现,定不会检查所含文件的变化，适用于包含静态页面
+<%@ include file="included.htm" %>
+ 
+
+
+[Java编程与程序运行结果]
+1.Java编程,打印昨天的当前时刻
+public class YesterdayCurrent{
+  public void main(String[] args){
+    Calendar cal = Calendar.getInstance();
+    cal.add(Calendar.DATE, -1);
+    System.out.println(cal.getTime());
+  }
+}
+
+2.文件读写,实现一个计数器
+  public int getNum(){
+        int i = -1;
+        try{
+            String stri="";
+            BufferedReader in = new BufferedReader(new FileReader(f));
+            while((stri=in.readLine())!=null){
+                i = Integer.parseInt(stri.trim());
+            }
+            in.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return i;
+    }
+    public void setNum(){
+        int i = getNum();
+        i++;        
+        try{
+            PrintWriter out=new PrintWriter(new BufferedWriter(new FileWriter(f,false)));  
+            out.write(String.valueOf(i));            //可能是编码的原因，如果直接写入int的话，将出现java编码和windows编码的混乱，因此此处写入的是String
+            out.close() ;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+3. 指出下面程序的运行结果:
+class A{
+    static{
+        System.out.print("1");
+    }
+    public A(){
+        System.out.print("2");
+    }
+}
+class B extends A{
+    static{
+        System.out.print("a");
+    }
+    public B(){
+        System.out.print("b");
+    }   
+}
+public class Hello{
+    public static void main(String[] ars){
+        A ab = new B(); //执行到此处,结果: 1a2b
+ ab = new B(); //执行到此处,结果: 1a2bab
+    }
+}
+注:类的static 代码段,可以看作是类首次加载(被虚拟机加载)执行的代码,而对于类的加载,首先要执行其基类的构造,再执行其本身的构造
+4.写一个Singleton模式的例子
+public class Singleton{
+ private static Singleton single = new Singleton();
+ private Singleton(){}
+ public Singleton getInstance(){
+  return single;
+ }
+}
+
+[数据库]
+1.删除表的重复记录
+如果记录完全相同才算重复记录,那么:  (sql server2000下测试通过)
+select distinct * into #tmpp from tid
+delete from tid     
+insert into tid select * from #tmpp
+drop table #tmpp
+如果有id主键(数字,自增1的那种),那么:(sql server2000下测试通过)
+delete from tableA where id not in
+(select id = min(id) from tableA group by name)
+
+2.delete from tablea ＆ truncate table tablea的区别
+truncate 语句执行速度快,占资源少,并且只记录页删除的日志；
+delete 对每条记录的删除均需要记录日志

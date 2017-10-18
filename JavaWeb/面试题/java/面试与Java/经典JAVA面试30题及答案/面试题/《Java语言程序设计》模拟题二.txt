@@ -1,0 +1,493 @@
+《Java语言程序设计》模拟题二
+2003-12
+
+一、             判断题（每题1分，共15分）
+
+1．  对象可以赋值，只要使用赋值号即可，相当于生成一个各属性与赋值对象相同的新对象。                                                                        （   ）
+
+2．Java的字符类型采用的是Unicode编码，每个Unicode码占16个比特。      （   ）
+
+3．有的类定义时可以不定义构造函数，所以构造函数不是必需的。             （   ）
+
+4．类及其属性、方法可以同时只能有一个修饰符来修饰。                     （   ）
+
+5．接口是特殊的类，所以接口也可以继承，子接口将继承父接口的所有常量和抽象方法。
+
+                                                                        （   ）
+
+6.       如果p是父类Parent的对象，而c是子类Child的对象，则语句c=p是正确的。（   ）
+
+7.       最终类不能派生子类，最终方法不能被覆盖。                             （   ）
+
+8.       如果希望程序能够处理所有的异常，包括未知的异常，可以在所有的catch块后面加一个catch(Exception e){  }。                                              （   ） 
+
+9.       Java中的String类的对象既可以是字符串常量，也可以是字符串变量。        （   ）
+
+10．Java中数组的元素可以是简单数据类型的量，也可以是某一类的对象。        （   ）
+
+11．Java的屏幕坐标是以像素为单位，容器的左下角被确定为坐标的起点。        （   ）
+
+12．所有的键盘事件都由KeyEvent类的对象表示。                            （   ）
+
+13．Java系统的标准输入对象是System.in，标准输出对象有两个，分别是标准输出System.out和标准错误输出System.err。                                                （   ）
+
+14．创建Vector对象时构造函数给定的是其中可以包容的元素个数，使用中应注意不能超越这个数值。                                                                                                             （   ）
+
+15．用户自定义的图形界面元素也可以响应用户的动作，具有交互功能。          （   ）
+
+二、选择题（每题2分，共20分）
+
+1．在Java  Applet程序用户自定义的Applet子类中，一般需要重载父类的(      )方法来完成一些画图操作。
+
+ A、start( )       B、 stop( )       C、 init( )      D、paint( )
+
+2．容器Panel和Applet缺省使用的布局编辑策略是（         ）
+
+A、BorderLayout       B、FlowLayout       C、GridLayout       D、CardLayout
+
+3．以下哪个表达式是不合法的（         ）
+
+A、String   x=”Hello”;   int  y=9;   x+=y;
+
+B、String  x=”Hello”;   int  y=9;  if(x= =y)  { }
+
+C、String   x=”Hello”;  int  y=9;  x=x+y;
+
+D、String   x=null;  int  y=(x!=null)&&(x.length()>0) ? x.length : 0
+
+4．以下代码段执行后的输出结果为（          ）
+
+       int  x=-3； int  y=-10；
+
+       System.out.println(y%x);
+
+A、 -1                         B、  2                     C、1                            D、3
+
+5．main方法是Java  Application程序执行的入口点，关于main方法的方法头以下哪项是合法的（          ）
+
+A、 public  static  void  main（）         B、public  static  void   main（String[ ]  args）
+
+C、 public static int  main（String[ ]  arg）D、public  void  main（String  arg[ ]）
+
+6．类Test1、Test2定义如下：
+
+1．  public class  Test1
+
+2．{ public  float  aMethod（float a，float b） throws
+
+3．  IOException {      }
+
+4．    }
+
+5．    public  class  Test2  extends  Test1{
+
+6．
+
+       7．}
+
+       将以下哪种方法插入行6是不合法的。（           ）
+
+A、float  aMethod（float  a，float  b）{ }
+
+B、 public  int  aMethod（int a，int b）throws  Exception{ }
+
+C、public  float  aMethod（float  p，float q）{ }
+
+D、  public  int  aMethod（int a，int  b）throws IOException{ }
+
+7．通过调用 new  List（10，false）创建一个列表，关于该列表的几个说法哪项是错误的。（             ）
+
+A、该列表不支持复选                                B、该列表有10个选项
+
+C、根据需要该列表可能有垂直滚动条       D、该列表支持10个可见选项
+
+8．关于以下代码所画图形的说明，正确的是（           ）
+
+       1．g.setColor(Color.black);
+
+       2．g.drawLine(10,10,10,50);
+
+       3．g.setColor(Color.red);
+
+       4．g.drawRect(100,100,150,150);
+
+A、一条40像素长的垂直红线，一个边长为150像素的红色四方形
+
+B、 一条40像素长的垂直黑线，一个边长为150像素的红色四方形
+
+C、一条50像素长的垂直黑线，一个边长为150像素的红色四方形
+
+D、  一条50像素长的垂直红线，一个边长为150像素的红色四方形
+
+9．关于以下程序代码的说明正确的是（          ）
+
+1．class  HasStatic{
+
+2．    private  static  int  x=100；
+
+3．    public  static  void  main(String  args[  ]){
+
+4．        HasStatic  hs1=new  HasStatic(  );
+
+5．        hs1.x++;
+
+6．        HasStatic  hs2=new  HasStatic(  );
+
+7．        hs2.x++;
+
+8．        hs1=new  HasStatic( );
+
+9．        hs1.x++;
+
+10．                      HasStatic.x++;
+
+11．                  System.out.println(“x=”+x);
+
+12．              }
+
+13．                  }
+
+A、 5行不能通过编译，因为引用了私有静态变量
+
+B、 10行不能通过编译，因为x是私有静态变量
+
+C、  程序通过编译，输出结果为：x=103
+
+D、程序通过编译，输出结果为：x=104
+
+10．编译Java  Application 源程序文件将产生相应的字节码文件，这些字节码文件的扩展名为(      )。
+
+A.    .java     B.    .class       C.    .html        D.    .exe
+
+ 
+
+三、             改错题（每题3分，共15分）
+
+1、判断下面的程序片断是否正确。若有错，说明错在哪里并改正；若正确，打“√”。
+
+①（3分）
+
+class  M
+
+   {              char  ch=’c’；
+
+              static  char  getMChar()
+
+              {
+
+                     return  ch;
+
+              }
+
+       }
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+②（3分）
+
+public class MyClass
+
+    {
+
+              int  data；
+
+              void  MyClass（int  d）
+
+              {       data=d；}
+
+       }
+
+ 
+
+ 
+
+ 
+
+ 
+
+ ③（3分）
+
+       int  array[6];
+
+for(int  i=0; i<array.length; i++)
+
+       array[i]=i+1;
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+④（3分）
+
+public  class  AmIWrong  implements  Runnable
+
+       {
+
+              Thread  mt= new  Thread(this);  
+ mt.start();
+
+              void  run()
+
+              {
+
+                     System.out.println(“I am alive now”);
+
+              }
+
+       }
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+⑤（3分）
+
+public class  MyApplet  extends  Applet
+
+       {
+
+              Label  MyLabel；
+
+              public  void  init(String  args[ ])
+
+              {
+
+                     MyLabel=new  Label(“Can  you  see  me?”);
+
+                     add(MyLabel);     }
+
+       }
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+四、程序阅读（每题5分，共20分）
+
+1．以下程序段的输出结果为                      。
+
+class         Q6{
+
+              public  static      void  main（String   args[  ]）{
+
+                     double  d=12.3;
+
+                     Decrementer    dec=new  Decrementer(  );
+
+                     dec.decrement(d);
+
+                     System.out.println(d);}
+
+       }
+
+       classs   Decrementer{
+
+              public void  decrement(double   decMe){
+
+                            decMe = decMe － 1.0;}
+
+       }
+
+ 
+
+ 
+
+2．  阅读以下程序段:
+
+class  Parent
+
+{
+
+              void  printMe()
+
+              {
+
+                     System.out.println(“parent”);
+
+              }
+
+}
+
+class  Child  extends Parent
+
+{
+
+              void  printMe()
+
+              {
+
+                     System.out.println(“child”);
+
+              }
+
+              void  printAll()
+
+              {
+
+                     super.printMe();
+
+              this.printMe();
+
+              printMe();
+
+       }
+
+}
+
+public class Test_this
+
+{
+
+       public static void main(String  args[ ])
+
+       {
+
+       Child  myC=new  Child();
+
+              myC.printAll();
+
+       }
+
+}
+
+输出结果为:
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3．阅读以下程序，写出输出结果                   。
+
+class   StaticStuff
+
+ { 
+
+static  int  x=10；
+
+static  { x+=5；}
+
+public  static  void  main（String  args[ ]）
+
+{
+
+     System.out.println(“x=” + x);
+
+}
+
+static  { x/=5;}
+
+}
+
+4、以下程序的运行结果是                           。
+
+       public  class  Conditional
+
+       {
+
+              public static  void  main(String  args[ ])
+
+              {   int  x=4;
+
+                     System.out.println(“value is”+((x>4) ? 99.99 : 9) );}
+
+}
+
+五、综合题（共30分）
+
+1．按要求书写语句。（每题3分，共15分）
+
+①创建线程对象mt，它的run()方法来自一个实现了Runnable接口的类RunnableClass。
+
+ 
+
+                                                         
+
+ 
+
+②HTML文件书写一个语句，嵌入一个名为MyApplet.class的Applet字节码文件，其宽度为300，高度为200。(设该字节码文件与HTML文件位于同一路径)
+
+ 
+
+                                           
+
+ 
+
+③若输入数据input是合法的秒数（在0到60之间），则赋给变量second，否则将-1赋给second。
+
+ 
+
+                                           
+
+④Applet要响应鼠标的点击，应该在init()方法中加入什么语句(设鼠标事件监听者就是Applet自身)。
+
+ 
+
+                                           
+
+⑤声明并创建一个4行5列的二维int数组B。
+
+ 
+
+                                           
+
+2．(15分)编写一个Applet程序测试用户是否掌握了基本的四则运算，每次用户点击按钮“出题”，都会生成一道两位数的四则运算题（提示：从1到100中随机生成两个随机数作为两个操作数，从加减乘除四个运算符中随机生成一个作为操作符），并请用户回答，判断是否正确并通知用户。
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+<注： 此套题为往年期末试题〉
+ 
+

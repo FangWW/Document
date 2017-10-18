@@ -1,0 +1,41 @@
+一。存储过程题目
+1.查询某个数据库表,要求获得某个字段 同值，而另个字段最大的记录信息。
+2.建立一个存储过程要求：更新或插入NorthWind的Orders表,2个输入参数@OrderId,@CustomerId，1个输出参数@result。
+如果OrderId存在该@OrderId,则更新数据库，将该记录的CustomerId更新为@CustomerId,@result值为0
+否则插入新的记录，@result值为1
+
+二。.Net 2005环境中C#，WINDOWS界面题(某个网站的编程竞赛题目)：
+要求读懂一段英文要求，要求编写以下的功能：
+编写一个函数如下：
+输入参数：
+string[] street和int distance
+输出参数：
+int num;
+
+
+string[] street街区信息，可以有多个街区信息，所有街区信息按水平排列，所有街区信息的长度必须一致，并且只能包括字符B . X三种字符，字符B表示公共汽车的站牌,字符.表示路,X表示你当前的位置，所有街区信息中有且只有一个X。
+int distance表示从你当前的位置(X)，从任何方向上走distance的长度，int num表示经过公共汽车的站牌(B)数目
+
+例如1:
+参数string[] street
+...B..
+.X....
+B...B.
+
+int distance
+3
+则
+num=2
+
+例如2:
+参数string[] street
+B.BB..
+.X.B..
+B...B.
+
+int distance
+1
+则
+num=0
+
+三。.Net 2005环境中Asp.Net建立网页，使用TreeView,要求从某个数据库表中读取某个字段将它们填充到TreeView中

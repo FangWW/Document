@@ -1,0 +1,56 @@
+1.int和Integer的区别
+2.String 和 StringBuffer的区别
+3.运行时异常和一般异常的区别
+4.例举5个常用的包、类、接口
+5.ArrayList、Aector和linkList的存储性能和特性
+6.设计4个线程，其中两个线程每次对j+1，其它两个线程是j-1
+[参考答案]
+public class Thread3 implements Runnable{
+    static int j;
+    static int index;
+    Thread thread = null;
+    int i;
+    
+    public Thread3(int intI) {
+    	thread = new Thread(this,"T" + index++);
+    	i = intI;
+    	thread.start();
+    }
+    
+    public void run(){
+    
+            j = j + i;
+            System.out.println(Thread.currentThread().getName() + "为：" + j);
+            try{
+                Thread.sleep(50);
+            } catch(InterruptedException e) {
+
+       	}
+    }
+    
+    public static void main(String[] args){
+        Thread3 a = new Thread3(1);
+        Thread3 b = new Thread3(1);
+        Thread3 c = new Thread3(-1);
+        Thread3 d = new Thread3(-1);
+    }
+}
+
+7.jsp的内置对象和方法
+8.用套接字编程，写客户端和服务器编程，要求客户端发出信息，能够回显相同数据
+9.说出Servlet的生命周期，Servlet和CGI的区别
+10.EJB是基于哪些技术实现的，会话Bean和实体BEAN的区别，无状态和有状态会话BEAN的区别
+11.EJB的生命周期，会话和实体BEAN，如何管理事务
+12.连接池的工作机制
+13.应用服务器有哪些
+14.集合有哪些,集合的方法有哪些？
+15.写一段JDBC代码，驱动是A，数据源是B，用户名C，密码D,表是T，查询所有数据
+16. JSP如何分页
+17.MVC各部分有哪些技术实现，是如何实现
+18.Struts的配置文件有哪些，解释globalForwards、ActionMapping、MessageResource
+19.简述ActionForm和Action在Struts中扮演的角色
+20.在Weblogic中部署EJB需要哪些配置文件
+21.如何设定Weblogic的热启动模式（开发模式）与产品发布模式
+22.你常用的J2EE设计模式,谈谈对设计模式的看法
+
+

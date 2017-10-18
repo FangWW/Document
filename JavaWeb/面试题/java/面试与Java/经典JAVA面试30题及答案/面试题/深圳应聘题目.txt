@@ -1,0 +1,26 @@
+现给出以下XML文档：
+<?xml version=“1.0”  encoding=“GB2312”?>
+<CDCA-WFS-WORK-CALENDAR  YEAR=“2002” WORKHOURSPERDAY=“8”>
+	<MONTH-FREE-DAYS>
+		<Jan>5,6</Jan>
+		<Feb></Feb>
+		<Mar></Mar>
+		<Apr></Apr>
+		<May></May>
+		<Jun></Jun>
+		<Jul></Jul>
+		<Aug></Aug>
+		<Sept></Sept>
+		<Oct>1,2,3,4,5,6,7</Oct>
+		<Nov></Nov>
+		<Dec></Dec>
+	</MONTH-FREE-DAYS>
+	<SPECIAL-WORKHOURS-DAYS>
+	   <DAY MONTH=“3”  DAY=“8” WORKHOURS=“4”></DAY>
+	</SPECIAL-WORKHOURS-DAYS>
+</CDCA-WFS-WORK-CALENDAR>
+要求：
+1.    根据您对这个XML文档的理解，为这个XML文档编写Schema,即xsd文件。
+2.    使用JAVA并选用合适的DOM包（或者J2SE1.4.X内置）写一个可以装入并编辑此文档的程序。
+3.    定义一个能够等价描述此XML文档内容的关系型数据库的SCHEMA，并建好库，建议选用MS-Access2000数据库。
+4.    使用合适的JDBC Driver包，可以将此XML文档与与数据库内容同步。

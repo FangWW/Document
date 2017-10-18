@@ -1,0 +1,967 @@
+Java程序员认证模拟题及详细分析
+ 
+
+--------------------------------------------------------------------------------
+ 
+2005-7-19 18:08:47      阅读45次 
+
+程序员认证模拟题及详细分析     -|宇风－Studio 发表于 2005-3-10 16:43:30  
+ 
+Java程序员认证模拟题及详细分析 
+--------------------------------------------------------------------------------
+
+一.说明:(真实考试) 
+1.考试形式:网络计算机 
+2.考题形式:多选,单选,简答 
+3.题量:60 
+4.考试时间:120分钟 
+
+二.模拟题 
+
+1.Which statement about the garbage collection mechanism are true? 
+A. Garbage collection require additional programe code in cases where multiple threads are running. 
+B. The programmer can indicate that a reference through a local variable is no longer of interest. 
+C. The programmer has a mechanism that explicity and immediately frees the memory used by Java objects. 
+D. The garbage collection mechanism can free the memory used by Java Object at explection time. 
+E. The garbage collection system never reclaims memory from objects while are still accessible to running user threads. 
+
+2. Give the following method: 
+1) public void method( ){ 
+2) String a,b; 
+3) a=new String(“hello world”); 
+4) b=new String(“game over”); 
+5) System.out.println(a+b+”ok”); 
+6) a=null; 
+7) a=b; 
+8) System.out.println(a); 
+9) } 
+In the absence of compiler optimization, which is the earliest point the object a refered is definitely elibile to be garbage collection. 
+A. before line 3 
+B.before line 5 
+C. before line 6 
+D.before line 7 
+E. Before line 9 
+
+3. In the class java.awt.AWTEvent,which is the parent class upon which jdk1.1 awt events are based there is a method called getID which phrase accurately describes the return value of this method? 
+A. It is a reference to the object directly affected by the cause of the event. 
+B. It is an indication of the nature of the cause of the event. 
+C. It is an indication of the position of the mouse when it caused the event. 
+D. In the case of a mouse click, it is an indication of the text under the mouse at the time of the event. 
+E. It tells the state of certain keys on the keybord at the time of the event. 
+F. It is an indication of the time at which the event occurred. 
+
+4. Which statement about listener is true? 
+A. Most component allow multiple listeners to be added. 
+B. If multiple listener be add to a single component, the event only affected one listener. 
+C. Component don?t allow multiple listeners to be add. 
+D. The listener mechanism allows you to call an addXxxxListener method as many times as is needed, specifying as many different listeners as your design require. 
+
+5.Give the following code: 
+public class Example{ 
+public static void main(String args[] ){ 
+int l=0; 
+do{ 
+System.out.println(“Doing it for l is:”+l); 
+}while(--l>0) 
+System.out.println(“Finish”); 
+} 
+} 
+Which well be output: 
+A. Doing it for l is 3 
+B. Doing it for l is 1 
+C. Doing it for l is 2 
+D. Doing it for l is 0 
+E. Doing it for l is ?C1 
+F. Finish 
+
+6. Give the code fragment: 
+1) switch(x){ 
+2) case 1:System.out.println(“Test 1”);break; 
+3) case 2: 
+4) case 3:System.out.println(“Test 2”);break; 
+5) default:System.out.println(“end”); 
+6) } 
+which value of x would cause “Test 2” to the output: 
+A. 1 
+B. 2 
+C. 3 
+D. default 
+
+7. Give incompleted method: 
+1) 
+2) { if(unsafe()){//do something…} 
+3) else if(safe()){//do the other…} 
+4) } 
+The method unsafe() well throe an IOException, which completes the method of declaration when added at line one? 
+A. public IOException methodName() 
+B. public void methodName() 
+C. public void methodName() throw IOException 
+D. public void methodName() throws IOException 
+E. public void methodName() throws Exception 
+
+8. Give the code fragment: 
+if(x>4){ 
+System.out.println(“Test 1”);} 
+else if (x>9){ 
+System.out.println(“Test 2”);} 
+else { 
+System.out.println(“Test 3”);} 
+Which range of value x would produce of output “Test 2”? 
+A. x<4 
+B. x>4 
+C. x>9 
+D. None 
+
+9. Give the following method: 
+public void example(){ 
+try{ 
+unsafe(); 
+System.out.println(“Test1”); 
+}catch(SafeException e){System.out.println(“Test 2”); 
+}finally{System.out.println(“Test 3”);} 
+System.out.println(“Test 4”); 
+Which will display if method unsafe () run normally? 
+A. Test 1 
+B. Test 2 
+C. Test 3 
+D. Test 4 
+
+10. Which method you define as the starting point of new thread in a class from which new the thread can be excution? 
+A. public void start() 
+B. public void run() 
+C. public void int() 
+D. public static void main(String args[]) 
+E. public void runnable() 
+
+11.Given the following class definition: 
+class A{ 
+protected int i; 
+A(int i){ 
+this.i=i; 
+} 
+} 
+which of the following would be a valid inner class for this class? 
+Select all valid answers: 
+A. class B{ 
+} 
+B. class B extends A{ 
+} 
+C. class B extends A{ 
+B(){System.out.println(“i=”+i);} 
+} 
+D. class B{ 
+class A{} 
+} 
+E. class A{} 
+
+12. Which modifier should be applied to a method for the lock of object this to be obtained prior to excution any of the method body? 
+A. synchronized 
+B. abstract 
+C. final 
+D. static 
+E. public 
+
+13. The following code is entire contents of a file called Example.java,causes precisely one error during compilation: 
+1) class SubClass extends BaseClass{ 
+2) } 
+3) class BaseClass(){ 
+4) String str; 
+5) public BaseClass(){ 
+6) System.out.println(“ok”);} 
+7) public BaseClass(String s){ 
+8) str=s;}} 
+9) public class Example{ 
+10) public void method(){ 
+11) SubClass s=new SubClass(“hello”); 
+12) BaseClass b=new BaseClass(“world”); 
+13) } 
+14) } 
+
+Which line would be cause the error? 
+A. 9 B. 10 C. 11 D.12 
+
+14. Which statement is correctly declare a variable a which is suitable for refering to an array of 50 string empty object? 
+A. String [] a 
+B. String a[] 
+C. char a[][] 
+D. String a[50] 
+F. Object a[50] 
+
+15. Give the following java source fragement: 
+//point x 
+public class Interesting{ 
+//do something 
+} 
+Which statement is correctly Java syntax at point x? 
+A. import java.awt.*; 
+B.package mypackage 
+C. static int PI=3.14 
+D. public class MyClass{//do other thing…} E. class MyClass{//do something…} 
+
+16. Give this class outline: 
+class Example{ 
+private int x; 
+//rest of class body… 
+} 
+Assuming that x invoked by the code java Example, which statement can made x be directly accessible in main() method of Example.java? 
+A. Change private int x to public int x 
+B. change private int x to static int x 
+C. Change private int x to protected int x 
+D. change private int x to final int x 
+
+17. the piece of preliminary analsis work describes a class that will be used frequently in many unrelated parts of a project 
+“The polygon object is a drawable, A polygon has vertex information stored in a vector, a color, length and width.” 
+Which Data type would be used? 
+A. Vector 
+B. int 
+C. String 
+D. Color 
+E. Date 
+
+18. A class design requires that a member variable should be accessible only by same package, which modifer word should be used? 
+A. protected 
+B. public 
+C. no modifer 
+D. private 
+
+19.Which declares for native method in a java class corrected? 
+A. public native void method(){} 
+B. public native void method(); 
+C. public native method(); 
+D. public void method(){native;} 
+E. public void native method(); 
+
+20. Which modifer should be applied to a declaration of a class member variable for the value of variable to remain constant after the creation of the object? 
+
+21. Which is the main() method return of a application? 
+A. String 
+B. byte 
+C. char 
+D. void 
+
+22. Which is corrected argument of main() method of application? 
+A. String args 
+B. String ar[] 
+C. Char args[][] 
+D. StringBuffer arg[] 
+
+23. “The Employee object is a person, An Employee has appointment store in a vector, a hire date and a number of dependent” 
+short answer: use shortest statement declare a class of Employee. 
+
+24. Give the following class defination inseparate source files: 
+public class Example{ 
+public Example(){//do something} 
+protected Example(int i){//do something} 
+protected void method(){//do something} 
+} 
+public class Hello extends Example{//member method and member variable} 
+Which methods are corrected added to the class Hello? 
+A. public void Example(){} 
+B. public void method(){} 
+C. protected void method(){} 
+D. private void method(){} 
+
+25. Float s=new Float(0.9F); 
+Float t=new Float(0.9F); 
+Double u=new Double(0.9); 
+Which expression?s result is true? 
+A. s==t 
+B. s.equals(t) 
+C. s==u 
+D. t.equals(u) 
+
+26. Give following class: 
+class AClass{ 
+private long val; 
+public AClass(long v){val=v;} 
+public static void main(String args[]){ 
+AClass x=new AClass(10L); 
+AClass y=new AClass(10L); 
+AClass z=y; 
+long a=10L; 
+int b=10; 
+} 
+} 
+Which expression result is true? 
+A. a==b; 
+B. a==x; 
+C. y==z; 
+D. x==y; 
+E. a==10.0; 
+
+27. A socket object has been created and connected to a standard internet service on a remote network server. Which construction give the most suitable means for reading ASCII data online at a time from the socket? 
+A. InputStream in=s.getInputStream(); 
+B. DataInputStream in=new DataInputstream(s.getInputStream()); 
+C. ByteArrayInputStream in=new ByteArrayInputStream(s.getInputStream()); 
+D. BufferedReader in=new BufferedReader(new InputStreamReader(s.getInputStream())); 
+E. BufferedReader in=new BufferedReader(new InputStreamReader(s.getInputStream()),”8859-1”); 
+
+28. String s=”Example String”; 
+Which operation is legal? 
+A. s>>>=3; 
+B. int i=s.length(); 
+C. s[3]=”x”; 
+D. String short_s=s.trim(); 
+E. String t=”root”+s; 
+
+29. What happens when you try to compile and run the following program? 
+class Mystery{ 
+String s; 
+public static void main(String[] args){ 
+Mystery m=new Mystery(); 
+m.go(); 
+} 
+void Mystery(){ 
+s=”constructor”; 
+} 
+void go(){ 
+System.out.println(s); 
+} 
+} 
+A. this code will not compile 
+B. this code compliles but throws an exception at runtime 
+C. this code runs but nothing appears in the standard output 
+D. this code runs and “constructor” in the standard output 
+E. this code runs and writes ”null” in the standard output 
+
+30. What use to position a Button in a Frame ,only width of Button is affected by the Frame size, which Layout Button well be set ? 
+A. FlowLayout; 
+B. GridLayout; 
+C. North of BorderLayout 
+D. South of BorderLayout 
+E. East or West of BorderLayout 
+
+31. What use to position a Button in a Frame, size of Button is not affected by the Frame size, which Layout Button will be set? 
+A. FlowLayout; 
+B. GridLayout; 
+C. North of BorderLayout 
+D. South of BorderLayout 
+E. East or West of BorderLayout 
+
+32. An AWT GUI under exposure condition, which one or more method well be invoke when it redraw? 
+A. paint(); 
+B. update(); 
+C. repaint(); 
+D. drawing(); 
+
+33. Select valid identifier of Java: 
+A. userName 
+B. %passwd 
+C. 3d_game 
+D. $charge E. this 
+
+34. Which are Java keyword? 
+A. goto 
+B. null 
+C. FALSE 
+D. native 
+E. const 
+
+35. Run a corrected class: java ?Ccs AClass a b c <enter> 
+Which statement is true? 
+A. args[0]=”-cs”; 
+B. args[1]=”a b c”; 
+C. args[0]=”java”; 
+D. args[0]=”a”; E. args[1]=?b? 
+
+36. Give the following java class: 
+public class Example{ 
+static int x[]=new int[15]; 
+public static void main(String args[]){ 
+System.out.println(x[5]); 
+} 
+} 
+Which statement is corrected? 
+A. When compile, some error will occur. 
+B. When run, some error will occur. 
+C. Output is zero. 
+D. Output is null. 
+
+37. Give the following java class: 
+public class Example{ 
+public static void main(String args[]){ 
+static int x[] = new int[15]; 
+System.out.println(x[5]); 
+} 
+} 
+Which statement is corrected? 
+A. When compile, some error will occur. 
+B. When run, some error will occur. 
+C. Output is zero. 
+D. Output is null. 
+
+38. Short answer: 
+The decimal value of i is 12, the octal i value is: 
+
+39. Short answer: 
+The decimal value of i is 7, the hexadecimal i value is: 
+
+40. Which is the range of char? 
+A. 27~27-1 
+B. 0~216-1 
+C. 0~216 
+D. 0~28 
+
+41. Which is the range of int type? 
+A. -216~216-1 
+B.- 231~231-1 
+C. -232~232-1 
+D. -264~264-1 
+
+42. Give the following class: 
+public class Example{ 
+String str=new String(“good”); 
+char ch[]={ 
+public static void main(String args[]){ 
+Example ex=new Example(); 
+ex.change(ex.str,ex.ch); 
+System.out.println(ex.str+”and”+ex.ch); 
+} 
+public void change(String str,char ch[]){ 
+str=”test ok”;ch[0]=?g? 
+} 
+} 
+Which is the output: 
+A. good and abc 
+B. good and gbc 
+C. test ok and abc 
+D. test ok and gbc 
+
+43. Which code fragments would correctly identify the number of arguments passed via command line to a Java application, exclude the name of the class that is being invoke. 
+A. int count = args.length; 
+B. int count = args.length-1; 
+C. int count=0; while(args[count]!=null) 
+count++; 
+D. int count=0;while 
+(!(args[count].equals(“”))) count++; 
+
+44. FilterOutputStream is the parent class for BufferedOutputStream, DataOutputStream and PrintStream. Which classes are valid argument for the constructor of a FilterOutputStream? 
+A. InputStream 
+B. OutputStream 
+C. File 
+D. RandomAccessFile 
+E. StreamTokenizer 
+
+45. Given a TextArea using a proportional pitch font and constructed like this: 
+TextArea t=new TextArea(“12345”,5,5); 
+Which statement is true? 
+A. The displayed width shows exactly five characters one each line unless otherwise constrained 
+B. The displayed height is five lines unless otherwise constrained 
+C. The maximum number of characters in a line will be five 
+D. The user will be able to edit the character string 
+E. The displayed string can use multiple fonts 
+
+46. Given a List using a proportional pitch font and constructed like this: 
+List l=new List(5,true); 
+Which statement is true? 
+A. The displayed item exactly five lines unless otherwise constrained 
+B. The displayed item is five lines init, but can displayed more than five Item by scroll 
+C. The maximum number of item in a list will be five. 
+D. The list is multiple mode 
+
+47. Given this skeleton of a class currently under construction: 
+public class Example{ 
+int x,y,z; 
+
+public Example (int a, int b) { 
+//lots of complex computation 
+x=a; y=b; 
+} 
+public Example(int a, int b, int c){ 
+// do everything the same as single argument 
+// version of constructor 
+// including assignment x=a, y=b, z=c 
+z=c; 
+} 
+} 
+What is the most concise way to code the “do everything…” part of the constructor taking two arguments? 
+Short answer: 
+
+48. Which correctly create a two dimensional array of integers? 
+A. int a[][] = new int[][]; 
+B. int a[10][10] = new int[][]; 
+C. int a[][] = new int[10][10]; 
+D. int [][]a = new int[10][10]; 
+E. int []a[] = new int[10][10]; 
+
+49. Which are correct class declarations? Assume in each case that the text constitutes the entire contents of a file called Fred.java? 
+A. public class Fred{ 
+public int x = 0; 
+public Fred (int x){ 
+this.x=x; 
+} 
+} 
+B. public class fred{ 
+public int x = 0; 
+public Fred (int x){ 
+this.x=x; 
+} 
+} 
+C. public class Fred extends MyBaseClass, MyOtherBaseClass{ 
+public int x = 0; 
+public Fred(int xval){ 
+x=xval; 
+} 
+} 
+D. protected class Fred{ 
+private int x = 0; 
+private Fred (int xval){ 
+x=xval; 
+} 
+} 
+E. import java.awt.*; 
+public class Fred extends Object{ 
+int x; 
+private Fred(int xval){ 
+x = xval; 
+} 
+} 
+
+50. A class design requires that a particular member variable must be accessible for direct access by any subclasses of this class. but otherwise not by classes which are not members of the same package. What should be done to achieve this? 
+A. The variable should be marked public 
+B. The variable should be marked private 
+C. The variable should be marked protected 
+D. The variable should have no special access modifier 
+E. The variable should be marked private and an accessor method provided 
+
+51. Which correctly create an array of five empty Strings? 
+A. String a[] = new String[5]; 
+for (int i=0;i<5;a[i++]=””); 
+B. String a []={“”,””,””,””,””}; 
+C. String a[5]; 
+D. String [5] a; 
+E. String [] a = new String[5]; 
+for (int i = 0 ;i<5;a[i++] = null); 
+
+52. Which cannot be added to a Container? 
+A. an Applet 
+B. a Component 
+C. a Container 
+D. a MenuComponent 
+E. a panel 
+
+53. Which is the return value of Event listener?s method? 
+A. String B. AWTEvent C. void D. int 
+
+54. If we implements MouseListener, which is corrected argument of its method? (short answer) 
+
+55. Use the operator “>>” and “>>>”. Which statement is true? 
+A. 1010 0000 0000 0000 0000 0000 0000 0000 >> 4 give 
+0000 1010 0000 0000 0000 0000 0000 0000 
+B. 1010 0000 0000 0000 0000 0000 0000 0000 >> 4 give 
+1111 1010 0000 0000 0000 0000 0000 0000 
+C. 1010 0000 0000 0000 0000 0000 0000 0000 >>> 4 give 
+0000 1010 0000 0000 0000 0000 0000 0000 
+D. 1010 0000 0000 0000 0000 0000 0000 0000 >>> 4 give 
+1111 1010 0000 0000 0000 0000 0000 0000 
+
+56. Give following fragment. 
+Outer: for(int i=0; i<3; i++) 
+inner:for(int j=0;j<3;j++){ 
+If(j>1)break outer; 
+System.out.println(j+”and”+i); 
+} 
+Which will be output? 
+A. 0 and 0 B. 0 and 1 C. 0 and 2 D. 0 and 3 
+E. 1 and 0 F. 1 and 1 G. 1 and 2 H. 1 and 3 
+I. 2 and 0 J. 2 and 1 K. 2 and 2 L. 2 and 3 
+
+57. Examine the following code which includes an inner class: 
+public final class Test4 implements A{ 
+class Inner{ 
+void test(){ 
+if (Test4.this.flag);{ 
+sample(); 
+} 
+} 
+private boolean flag=false; 
+} 
+public void sample(){ 
+System.out.println(“Sample”); 
+} 
+public Test4(){ 
+(new Inner()).test(); 
+} 
+public static void main(String args[]){ 
+new Test4(); 
+} 
+} 
+What is the result: 
+A.Print out “Sample” 
+B.Program produces no output but termiantes correctly. 
+C. Program does not terminate. 
+D.The program will not compile 
+
+58. What is written to the standard output given the following statement: 
+System.out.println(4|7); 
+Select the right answer: 
+A.4 
+B.5 
+C.6 
+D.7 
+E.0 
+
+59. Look the inheritance relation: 
+person 
+| 
+---------------- 
+| | 
+man woman 
+In a source of java have the following line: 
+person p=new man(); 
+What statement are corrected? 
+A. The expression is illegal. 
+B. Compile corrected but running wrong. 
+C. The expression is legal. 
+D. Will construct a person?s object. 
+
+60. Look the inheritance relation: 
+person 
+| 
+---------------- 
+| | 
+man woman 
+In a source of java have the following line: 
+woman w=new man(): 
+
+What statement are corrected? 
+A. The expression is illegal. 
+B. Compile corrected but running wrong. 
+C. The expression is legal. 
+D. Will construct a woman object. 
+
+61． Which can NOT be used in declaring or declaring and initializing an automatic (method local) variable? 
+A. final 
+B. static 
+C. expressions 
+D. Constants of non-primitive type 
+E. initialized arrays (such as “ {“Hello”,”Good bye”}”). 
+
+62． Given the following incomplete method: 
+1) public void method(){ 
+2) 
+3) if (someTestFails()){ 
+4) 
+5) } 
+6) 
+7) } 
+You want to make this method throw an IOException if,and only if,the method someTestFails() returns a value of true. 
+Which changes achieve this? 
+A. Add at line 2:IOException e; 
+B. Add at line 4:throw e; 
+C. Add at line 4:throw new IOException(); 
+D. Add at line 6:throw new IOException(); 
+E. Modify the method declaration to indicate that an object of type Exception might be thrown. 
+
+63． Given the following definition: 
+String s = null; 
+Which code fragments cause an object of type NullPointerException to be thrown? 
+A. if((s!=null)&(s.length()>0)) 
+B. if((s!=null)&&(s.length()>0)) 
+C. if((s==null)|(s.length()==0)) 
+D. if((s==null)||(s.length()==0)) 
+
+64． The following is a program 
+1) class Exsuper{ 
+2) String name; 
+3) String nick_name; 
+4) 
+5) public ExSuper(String s,String t){ 
+6) name = s; 
+7) nick_name = t; 
+8) } 
+9) 
+10) public string toString(){ 
+11) return name; 
+12) } 
+13) } 
+14) 
+15) public class Example extends ExSuper{ 
+16) 
+17) public Example(String s,String t){ 
+18) super(s,t); 
+19) } 
+20) 
+21) public String to String(){ 
+22) return name +”a.k.a”+nick_name; 
+23) } 
+24) 
+25) public static void main(String args[]){ 
+26) ExSuper a = new ExSuper(“First”,”1st”); 
+27) ExSuper b = new Example(“Second”,”2nd”); 
+28) 
+29) System.out.println(“a is”+a.toString()); 
+30) System.out.println(“b is”+b.toString()); 
+31) } 
+32) } 
+What happens when the user attempts to compile and run this program? 
+` A. A Compiler error occurs at line 21 
+B. An object of type ClassCastException is thrown at line 27 
+C.The following output: 
+a is First 
+b is second 
+D. The following output: 
+a is First 
+b is Secong a.k.a 2nd 
+F. The following output: 
+a is First a.k.a 1st 
+b is Second a.k.a 2nd 
+
+65． Which statements are true about Listeners? 
+A. At most one listener can be added to any simple Component. 
+B. The return value from a listener is used to control the invocation of other listener 
+C. If multiple listeners are added to a single component, they must all be made friends to each other 
+D. If multiple listeners are added to single component, the order of invocation of the listener is not specified. 
+E. In the AWT, listener methods generally take an argument, which is an instance of some subclass of java.awt.AWTEvent class. 
+
+66． Given the following class outline: 
+class Example{ 
+private int x; 
+// rest of class body 
+public static void main(String args[]){ 
+//implementation of main mehtod} 
+} 
+Which statement is true? 
+A. x=2 is a valid assignment in the main() method of class Example. 
+B. Changing private int x to int x would make x=2 a valid assignment in the main() method of class Example. 
+C. Changing private int x to public int x would make x=2 a valid assignment in the main() method of class Example. 
+D. Changing private int x to static int x would make x=2 a valid assignment in the main() method of class Example. 
+E. Changing class Example to public class Example would make x=2 a valid assignment in the main() method of class Example. 
+
+67． Which statement is true about an inner class? 
+A. It must be anonymous 
+B. It can not implement an interface 
+C. It is only accessible in the enclosing class 
+D. It can access any final variables in any enclosing scope. 
+
+68． Which statement is true about the grid bag layout manager? 
+A. The number of rows and columns is fixed when the container is created. 
+B. The number of rows and columns is fixed when the GridBagLayout object is created. 
+C. If a component has a fill value of BOTH, then as the container change size, the component is resized. 
+D. Every component must carry a non-zero weightx and weighty value when it is added to the container 
+E. If a row has a weighty value that is non-zero, then as the container changes height, the row changes height. 
+
+69． Which statement are true about writing a class that is to handle the events issued by a user interface component. 
+A. Subclassing an adapter is inappropriate in this case. 
+B. The class should implement some listener interface 
+C. A class can implement multiple listener interfaces if desired. 
+D. A subclass of an AWT component cannot listen to its own events. 
+E. When implements listener interface, a class need only provide those handler methods that it chooses. 
+
+70．The argument for a class?s main() method is called args, and the class is invoked as follows. 
+java Example cat 
+What would be the effect of trying to access args[0] in the main method? 
+A. The value produced is cat 
+B. The value produced is java 
+C. The value produced is Example 
+D. An object of type NullPointerException is thrown. 
+E. An object of type ArrayIndexOutofBoundsException is thrown. 
+
+71． Which best describes the requirements of a fully encapsulated class? 
+A. Mehtods must not be private. 
+B. Variables must not be public. 
+C. The class must be marked final 
+D. Public methods are all marked final. 
+E. Modification of the objects state is only possible using method calls. 
+
+72．Which contains objects without ordering, duplication, or any particular lookup/retrieval mechanism? 
+A. Map 
+B. Set 
+C. List 
+D. Collection 
+E. Enumeration 
+
+73．What might cause the current thread to stop executing? 
+A. An interrupted exception is thrown. 
+B. The thread execute a sleep() call. 
+C. The thread constructs a new thread 
+D. A thread of higher priority becomes ready 
+E. The thread executes a read() call on InputStream 
+
+74．Which statements are true about threads? 
+A. Threads created from the same class all finish together. 
+B. A thread can be created only by subclassing java.lang.Thread. 
+C. Invoking the suspend() method stops a thread so that it cannot be restarted. 
+D. The Java interpreter?s natural exit occurs when no non-daemon threads remain alive. 
+E. Uncoordinated changes to shared data by multiple threads may result in the data being read, or left, in an inconsistent state. 
+
+75．What might form part of a correct inner class declaration or combined declaration and instantiation? 
+A. private class C 
+B. new SimpleInterface(){ 
+C. new ComplexInterface(x){ 
+D. private final abstract class( 
+E. new ComplexClass() implements SimpleInterface 
+
+76． Which statements are true about the garbage collection mechanisms? 
+A. The garbage collection mechanism release memory at pridictable times. 
+B. A correct program must not depend upon the timing or order of garbage collection 
+C. Garbage collection ensures that a program will NOT run out of memory during execution 
+D. The programmer can indicate that a reference through a local variable is no longer going to be used. 
+E. The programmer has a mechanism that explicitly and immediately frees the memory used by Java objects. 
+
+==================================================== 
+答案及详细分析： 
+1。B、E 
+JAVA的垃圾回收机制是通过一个后台系统级线程对内存分配情况进行跟踪实现的，对程序员来说是透明的，程序员没有任何方式使无用内存显示的、立即的被释放。而且它是在程序运行期间发生的。 
+答案B告诉我们程序员可以使一个本地变量失去任何意义，例如给本地变量赋值为“null”；答案E告诉我们在程序运行期间不可能完全释放内存。 
+2。D 
+第6行将null赋值给a以后，a以前保存的引用所指向的内存空间就失去了作用，它可能被释放。所以对象a可能最早被垃圾回收是在第7行以前，故选择D选项。 
+3。B 
+请查阅JAVA类库。getID方法的返回值是“event type”。在认证考试中，总会有类似的书本以外的知识，这只能靠多实践来增长知识了。 
+4。A、D 
+控件可以同时使用多个“addXxxxListener”方法加入多个监听器。并且当多个监听器加入到同一控件中时，事件可以响应多个监听器，响应是没有固定顺序的。 
+5。D、F 
+本题主要考察考生对流程控制的掌握情况。这是当型循环，条件为真执行，条件为假则退出。循环体至少执行一次，故会输出D。循环体以外的语句总会被执行，故输出F。 
+6。B.C 
+在开关语句中，标号总是不被当做语句的一部分，标号的作用就是做为条件判断而已，一旦匹配成功，就执行其后的语句，一直遭遇break语句为止。（包括default语句在内） 
+7。D、F 
+IOException异常类是Exception的子类。根据多态性的定义，IOException对象也可以被认为是Exception类型。还要注意在方法声明中抛出异常应用关键字“throws”。 
+8。D 
+只有两种情况：大于4时输出“Test1”，小于等于4时输出“Test3”。 
+9。A、C、D 
+在正常情况下，打印Test1、Test3、Test4；在产生可捕获异常时打印Test2、Test3、Test4；在产生不可捕获异常时，打印Test3，然后终止程序。注意finally后面的语句总是被执行。 
+10。B 
+线程的执行是从方法“run( )”开始的，该方法是由系统调用的。程序员手工调用方法start()，使线程变为可运行状态。 
+11。A 
+此题考查内部类及关键字“super”的用法。内部类不能与外部类同名。另外，当Ｂ继承Ａ时，Ａ中的构造函数是带参数的，Ｂ中缺省构造函数的函数体为空；而ＪＡＶＡ编译器会为空构造函数体自动添加语句“super();”调用父类构造函数，更进一步是调用父类的参数为空的构造函数。而父类中没有参数为空的构造函数。 
+12。A 
+此关键字可以在两个线程同时试图访问某一数据时避免数据毁损。 
+13。C 
+当一个类中未显式定义构造函数时，缺省的构造函数是以类名为函数名，参数为空，函数体为空。虽然父类中的某一构造函数有字符串参数s，但是子类继承父类时并不继承构造函数，所以它只能使用缺省构造函数。故在第11行出错。 
+14。A、B 
+注意，题中问的是如何正确声明一个一维数组，并非实例化或者初始化数组 
+15。A、E 
+X处可以是一个输入，包的定义，类的定义。由于常量或变量的声明只能在类中或方法中，故不能选择C；由于在一个文件中只能有一个public类，故不能选择D。 
+16。B 
+静态方法除了自己的参数外只能直接访问静态成员。访问非静态成员，必须先实例化本类的一个实例，再用实例名点取。 
+17。A、B、D 
+polygon的顶点信息存放在Vector类型的对象内部，color定义为Color，length和width定义为int。 
+注意，这是考试中常见的题型。 
+18。C 
+此题考点是高级访问控制。请考生查阅高级访问控制说明表格。 
+19。B 
+native关键字指明是对本地方法的调用，在JAVA中是只能访问但不能写的方法，它的位置在访问权限修饰语的后面及返回值的前面。 
+20。final 
+定义常量的方法是在变量定义前加final关键字。 
+21。D 
+main()方法没有返回值，所以必须用void修饰。main()方法的返回值不能任意修改。 
+22。B 
+main()方法的参数是字符串数组，参数名可以任意定义。 
+23。public class Employee extends Person 
+这也是真实考试中常见的一种题型。要注意题目叙述中“is a”表示 “extends”的含义。 
+24。A、B、C 
+考察的知识点是方法覆盖，其中要注意的是方法覆盖时，子类方法的访问权限不能小于父类方法的访问权限。另外，选项A并不是父类构造函数，它是子类中的新方法。 
+25。A、B 
+考察“==”及方法“equals()”的用法。注意以下几点区别： 
+1） 引用类型比较引用；基本类型比较值。 
+2） equals()方法只能比较引用类型，“==”可比较引用及基本类型。 
+3） 当用equals()方法进行比较时，对类File、String、Date及封装类（Wrapper Class）来说，是比较类型及内容。 
+4） 用“==”进行比较时，符号两边的数据类型必须一致（可相互转换的基本类型除外），否则编译出错。 
+26。A、C、E 
+考察的知识点是比较基本类型与对象类型的不同之处，基本类型进行的是值比较，而对象类型进行的是地址比较，也就是对指向它们内存地址的指针进行比较。 
+27。E 
+在程序中实现字节与字符转换时，采用规范“ISO8859-1”是最适宜的方式。 
+28。B、D、E 
+移位操作只对整型有效，故不能选A；String类型并非数组，故不能用C所示方法取其中的某一位；B中的length方法返回字符串长度；D中trim方法返回字符串去掉其前后的空格后的新字符串；字符串可以用“+”进行合并。 
+29。E 
+回答本题时要细心阅读程序，注意“void Mistery(){}”并非构造函数，因为构造函数是没有返回值时，它只是与类名一致的方法名而已。注意到这一点，此题就没有什么难度了。 
+30。C、D 
+考察对布局管理器知识的掌握情况。BorderLayout的特性是当容器的尺寸改变时，North、South、West、East位置控件的较窄边长度不变，较长边长度变化。但控件的相对位置不变。 
+31。A 
+FlowLayout的特性是其中的控件大小不随着容器尺寸的变化而变化，但控件的相对位置会有所改变。 
+32。A(多选) 
+请注意，此题虽然是多选题，但正确答案只有一个。不管在什么情况下，图形要进行重绘，最终总会调用paint()方法，而且也只有paint()方法总会被调用。 
+33。A、D 
+Java中的标识符是以字符开头，字符包括字母、下划线“_”、美圆符“$”。不能以数字开头，也不能是Java关键字。 
+34。A、B、D、E 
+注意：goto、const是Java关键字，但是不使用。 
+35。D 
+cs是运行时可选择的java命令的参数，类名后才是由用户指定的传入程序中的实参，并且参数是字符串类型，故E也是不正确的。 
+36。C 
+数组是引用类型，它的元素相当于类的成员变量，而成员变量是可以被隐式初始化的，所以数组的元素也可以被隐式初始化，int类型被隐式初始化为0，所以选择C。 
+37。A 
+自动变量不能被static修饰，如果将static关键字去掉，答案选择C。 
+38。014 
+将十进制化成八进制后在数字前加“0”。 
+39。0x7 
+十六进制数用在数字前加“0x”表示。 
+40。B 
+字符类型是用16位UniCode表示的。 
+41。B 
+整型数的取值范围是- 2n~2n-1，n表示各种类型的表示位数。 
+42。B 
+JAVA中的参数传递全是值传递，所不同的是，对于引用类型来说，变量内部存放的是对象内存空间的引用，所以引用类型在进行参数传递时，是将引用拷贝给形式参数。所以在方法中绝不可能改变主调方法中引用变量的引用，但是可能改变主调方法中引用变量的某一属性（就象对ch[0]的改变一样）。 
+43。A 
+注意main()方法的参数数组是在程序运行时由系统创建的，大小已经固定了。选项C、D引用args[count]可能会导致数组指针越界异常。 
+44。B 
+请查阅类结构，并注意他们的继承关系。这主要考查流链知识点。 
+45。B 
+控件TextArea如题中的构造方法的后两个参数分别表示行、列。注意题中的关键词语“prorortional pitch”，所以不一定是5列字，但一定是5行。 
+46。B 
+“5”表示可以选择的项目数显示为5行，但可以拖动滑块观察其它选项。“true”表示可以多选。 
+47。this(a,b); 
+注意教材中提到使用this方法可以简化构造函数的编写。此时它必须放在构造函数的第一句。 
+48。C、D、E 
+JAVA语言中声明数组时，方括号与变量的位置关系非常灵活。 
+49。A、E 
+Java中大小写敏感，注意文件名是Fred.java，故B错误；Java中不支持多继承，故C错误；Java中与文件名相同的类名的访问权限一定是public，故D错误。 
+50。C 
+请查阅关于访问权限的表格说明。 
+51。A、B 
+注意，每个对象变量在未初始化前都为“null”，并不为“空”。当为“空”时，它已经被分配具体内存空间了，与“null”有本质的区别。 
+52。D 
+菜单控件只能添加到叫做菜单容器的特殊对象中，而且布局管理器对菜单控件不起任何作用。 
+53。C 
+事件监听器方法就是句柄方法，所有句柄方法的访问权限都是public，返回值类型都是void。 
+54。MouseEvent 
+此题是考试中常见的题型。一般来说，句柄方法的参数类型与监听器类型是匹配的，只有监听器MouseMotionListener的句柄方法的参数类型是MouseEvent，与相应监听器类型名称不匹配。 
+55。B、C 
+“>>” 是带符号右移，高位是“1”则补“1”，否则补“0”；“>>>”是无符号右移，又叫补零右移，不论高位是什么，都是补“0”。 
+56。A、E 
+注意标号的使用。另外，break表示跳出本语句块的执行，continue继续本块的执行。 
+57。A 
+回答此题时，要仔细阅读程序，注意到语句“if(Test4.this.flag);”有一分号，这是没有执行语句的条件语句，所以“sample()”方法总是被调用。 
+58。D 
+“|”是按位或运算符，先将4和7转为二进制数。转换后就是计算“100|111”，所以得到结果是“111”，转为十进制整形数是7。此题提醒考生注意，要熟悉各种运算符号的含义。 
+59。C 
+这是多态性的定义方式，p是父类引用指向子类对象。此时，编译器认为p是一个person，而不是man ，所以p只能实现父类的功能。但是当p调用被覆盖方法时，是指向子类中的该方法。 
+60．A 
+多态性的定义允许父类引用指向子类对象，但是不允许两个平等的子类有这样的操作。所以该表达式是不合法的。 
+61．B 
+自动变量前不能用“static”修饰。 
+以下定义都是允许的： 
+final Date d = new Date(); 
+String [] s = {“Hello”,”abc”}; 
+int i = x+4; 
+所以只有B选项是正确。 
+62．C、E 
+所有自定义异常，在方法体中抛出了，就必须在方法声明中抛出。所以除了C选项外，E也必须入选。 
+63．A、C 
+逻辑运算符“&&”、“||”，在运算中有“短路”行为：例如 A&&B,如果A的值为false，则直接将整个表达式的值置为false，对B的值不加考察。而运算符“&”、“|”就没有这种行为。所以在选项A、C中，“s.length()”会导致抛出空指针异常。 
+64．D 
+源程序的第27行，是多态性的定义。对象b调用被覆盖方法时是调用子类中的该方法。 
+65．D、E 
+一个控件可以注册多个监听器，并且事件的响应没有特定的顺序。句柄方法的参数是类AWTEvent类的子类。 
+66．D 
+main()方法是静态方法，静态方法不能直接访问非静态成员。 
+67．D 
+此题考察学生对内部类属性的掌握情况。内部类可以实现接口；匿名类是内部类的一种；内部类通过各种方式可以在包含它的类的外部被访问到；内部类被定义在块中时，只能访问包含它的块的final类型变量。故选择D。 
+68．C 
+此题考察考生对类GridBagLayout、及类GridBagConstraints的掌握情况，请考生查阅API文档。 
+69．B、C 
+此题考察考生对事件处理的理解。D选项是错的，因为控件可以监听自己的事件。另外，当实现一个接口时，必须实现它内部的所有的方法，所以E选项也是错的。 
+70．A 
+命令行参数是紧跟在类名后面的。所以本题中参数由“cat”提供。 
+71．E 
+在完全封装类中，一般的定义方式是将所有的成员变量定义为“private”，而将访问这些变量的方法定义为非“private”类型，这样可以在类的外部间接地访问这些变量。所以E选项是最符合这个意思的。 
+72．B 
+此题考察“Collection API”的一些知识。实现接口“Set”的类内部所存储的对象是没有顺序，但是允许重复的。另请注意其它几个接口的特征。 
+73．A、B、D、E 
+当新线程被创建时，只是使它变为可运行状态而已，并不能使当前线程停止执行。当调用read()方法时，它与输入输出打交道，可能造成线程的暂停执行。 
+74．D、E 
+程序的执行完毕是以用户线程（user threads）的结束而标志结束的，与超级线程（daemon threads）无关。所以D选项是对的。E选项说明的是当不同线程对相同数据进行访问时，可能造成数据毁损。 
+75．A、B 
+76．B、D 
+程序的代码是无法对垃圾回收进行精确控制的，程序代码与垃圾回收是相互独立的系统，并不互相影响。答案D告诉我们程序员可以使一个本地变量失去任何意义，例如给本地变量赋值为“null”；
+ 
+ 

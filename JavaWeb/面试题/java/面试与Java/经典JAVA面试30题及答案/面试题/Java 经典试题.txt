@@ -1,0 +1,1065 @@
+Java ¾­µäÊÔÌâ£¨1£©
+
+Simulated Test of SCJP for JAVA2 PlatFORM (only for training) 
+
+
+1. 
+ 1)  public class ReturnIt{ 
+ 2)  returnType methodA(byte x, double y){ 
+ 3)  return (short)x/y*2; 
+ 4)  } 
+ 5)  } 
+ what is valid returnType for methodA in line 2? 
+Answer:double 
+
+2. 
+ 1)  class Super{ 
+ 2)  public float getNum(){return 3.0f;} 
+ 3)  } 
+ 4) 
+ 5)  public class Sub extends Super{ 
+ 6) 
+ 7)  } 
+which method, placed at line 6, will cause a compiler error? 
+A. public float getNum(){return 4.0f;} 
+B. public void getNum(){} 
+C. public void getNum(double d){} 
+D. public double getNum(float d){return 4.0d;} 
+Answer:B 
+
+3. public class IfTest{ 
+ public static void main(String args[]){ 
+        int x=3; 
+ int y=1; 
+ if(x=y) 
+ System.out.println("Not equal"); 
+ else 
+ System.out.println("Equal"); 
+ } 
+ } 
+ what is the result? 
+Answer:compile error 
+
+4. public class Foo{ 
+  public static void main(String args[]){ 
+  try{return;} 
+   finally{ System.out.println("Finally");} 
+   } 
+    } 
+ what is the result? 
+ A. print out nothing 
+ B. print out "Finally" 
+ C. compile error 
+Answer:B 
+
+5. public class Test{ 
+  public static String output=""; 
+   public static void foo(int i){ 
+    try { 
+if(i==1){ 
+throw new Exception(); 
+} 
+output +="1"; 
+ } 
+ catch(Exception e){ 
+ output+="2"; 
+ return; 
+ } 
+ finally{ 
+ output+="3"; 
+  } 
+ output+="4"; 
+ } 
+ public static void main(String args[]){ 
+ foo(0); 
+ foo(1); 
+ 24)   
+    } 
+    } 
+ what is the value of output at line 24? 
+
+Answer:13423 
+
+6. public class IfElse{ 
+ public static void main(String args[]){ 
+ if(odd(5)) 
+ System.out.println("odd"); 
+ else 
+ System.out.println("even"); 
+ } 
+  public static int odd(int x){return x%2;}   
+  } 
+  what is output? 
+
+
+Answer:Compile Error 
+
+
+7. class ExceptionTest{ 
+  public static void main(String args[]){ 
+  try{ 
+methodA(); 
+} 
+  catch(IOException e){ 
+System.out.println("caught IOException"); 
+  } 
+  catch(Exception e){ 
+  System.out.println("caught Exception"); 
+   } 
+  } 
+  } 
+ If methodA() throws a IOException, what is the result? 
+Answer:caught IOException 
+exception can catch once only 
+if change the sequence of catch 
+  catch(IOException e) can't execute  and compiler will report rongyu error 
+
+
+8. int i=1,j=10; 
+ do{ 
+ if(i++>--j) continue; 
+ }while(i<5); 
+After Execution, what are the value for i and j? 
+A. i=6 j=5 
+B. B.i=5 j=5 
+C. i=6 j=4 
+D. i=5 j=6 
+E. i=6 j=6 
+Answer:D 
+
+
+9. 1)public class X{ 
+ 2) public Object m(){ 
+ 3) Object o=new Float(3.14F); 
+ 4) Object[] oa=new Object[1]; 
+ 5) oa[0]=o; 
+ 6) o=null; 
+ 7) oa[0]=null; 
+ System.out.println(oa[0]); 
+ 9) } 
+ 10) } 
+ which line is the earliest point the object a refered is definitely elibile 
+ to be garbage collectioned? 
+ A.After line 4   B. After line 5  C.After line 6   
+ D.After line 7   E.After line 9(that is,as the method returns) 
+Answer:D 
+
+
+10.    1)  interface Foo{ 
+     2)int k=0; 
+     3) } 
+     4) public class Test implements Foo{ 
+     5) public static void main(String args[]){ 
+     6)int i; 
+     7)Test test =new Test(); 
+     8)i=test.k; 
+     9)i=Test.k; 
+    10)i=Foo.k; 
+    11)     } 
+    12) } 
+   what is the result? 
+Answer:compile successed and i=0 
+
+11. what is reserved words in java? 
+  A. run 
+  B. default 
+  C. implement 
+  D. import 
+Answer:B,D 
+
+12. public class Test{ 
+   public static void main(String[] args){ 
+   String foo=args[1]; 
+   Sring bar=args[2]; 
+   String baz=args[3]; 
+    } 
+    } 
+   java Test Red Green Blue 
+  what is the value of baz? 
+  A. baz has value of "" 
+  B. baz has value of null 
+  C. baz has value of "Red" 
+  D. baz has value of "Blue" 
+  E. baz has value of "Green" 
+  F. the code does not compile 
+  G. the program throw an exception 
+Answer:G 
+
+13. int index=1; 
+  int foo[]=new int[3]; 
+  int bar=foo[index]; 
+  int baz=bar+index; 
+  what is the result? 
+  A. baz has a value of 0 
+  B. baz has value of 1 
+  C. baz has value of 2 
+  D. an exception is thrown 
+  E. the code will not compile 
+Answer:B 
+
+14. which three are valid declaraction of a float? 
+   A. float foo=-1; 
+   B. float foo=1.0; 
+   C. float foo=42e1; 
+   D. float foo=2.02f; 
+   E. float foo=3.03d; 
+   F. float foo=0x0123; 
+Answer:A,D,F 
+
+15. public class Foo{ 
+   public static void main(String args[]){ 
+   String s; 
+   System.out.println("s="+s); 
+    } 
+   } 
+   what is the result? 
+Answer:compile error 
+
+16.   1) public class Test{ 
+    2) public static void main(String args[]){ 
+    3) int i=oxFFFFFFF1; 
+    4) int j=~i; 
+    5) 
+    6) } 
+    7) } 
+  which is decimal value of j at line 5? 
+  A. 0      B.1    C.14    D.-15    E. compile error at line 3     
+  F. compile error at line 4 
+Answer:C 
+
+17. float f=4.2F; 
+  Float g=new Float(4.2F); 
+  Double d=new Double(4.2); 
+  Which are true? 
+  A. f==g   B. g==g   C. d==f   D. d.equals(f)  E d.equals(g)  F. g.equals(4.2); 
+Answer:B,E 
+
+18.  public class Test{ 
+   public static void add3(Integer i){ 
+ 3) int val=i.intvalue(); 
+    val+=3; 
+    i=new Integer(val); 
+    } 
+    public static void main(String args[]){ 
+     Integer i=new Integer(0); 
+        add3(i); 
+     System.out.println(i.intvalue()); 
+     } 
+       } 
+    what is the  result? 
+    A. compile fail       B.print out "0"      C.print out "3"   
+    D.compile succeded but exception at line 3 
+Answer:B 
+
+19. public class Test{ 
+    public static void main(String[] args){ 
+     System.out.println(6^3); 
+     } 
+       } 
+   what is output? 
+Answer:5     
+^ is yi huo 
+
+20. public class Test{ 
+   public static void stringReplace(String text){ 
+     text=text.replace('j','l'); 
+    } 
+    public static void bufferReplace(StringBuffer text){ 
+      text=text.append("c"); 
+     } 
+   public static void main(String args[]){   
+     String textString=new String("java"); 
+     StringBuffer textBuffer=new StringBuffer("java"); 
+      StringReplace(textString); 
+      bufferReplace(textBuffer); 
+    System.out.println(textString+textBuffer); 
+      } 
+      } 
+   what is the output? 
+Answer:javajavac 
+
+21. public class ConstOver{ 
+   public ConstOver(int x, int y, int z){} 
+    } 
+   which two overload the ConstOver constructor? 
+   A.ConstOver(){} 
+   B.protected int ConstOver(){}   //not overload ,but no a error 
+   C.private ConstOver(int z, int y, byte x){} 
+   D.public void ConstOver(byte x, byte y, byte z){} 
+   E.public Object ConstOver(int x, int y, int z){} 
+Answer:A,C 
+
+22. public class MethodOver{ 
+    public void setVar(int a, int b, float c){} 
+    } 
+   which overload the setVar? 
+   A.private void setVar(int a, float c, int b){} 
+   B.protected void setVar(int a, int b, float c){} 
+   C.public int setVar(int a, float c, int b){return a;} 
+   D.public int setVar(int a, float c){return a;} 
+Answer:A,C,D 
+
+23. class EnclosingOne{ 
+  public class InsideOne{} 
+    } 
+  public class InnerTest{ 
+   public static void main(String args[]){ 
+   EnclosingOne eo=new EnclosingOne(); 
+   //insert code here 
+   } 
+  } 
+  A.InsideOne ei=eo.new InsideOne(); 
+  B.eo.InsideOne ei=eo.new InsideOne(); 
+  C.InsideOne ei=EnclosingOne.new InsideOne(); 
+  D.InsideOne ei=eo.new InsideOne(); 
+  E.EnclosingOne.InsideOne ei=eo.new InsideOne(); 
+Answer:E 
+
+24. What is "is a" relation? 
+  A.public interface Color{} 
+    public class Shape{private Color color;} 
+  B.interface Component{} 
+    class Container implements Component{ 
+     private Component[] children; 
+      } 
+  C.public class Species{} 
+     public class Animal{private Species species;}   
+  D.interface A{} 
+interface B{} 
+interface C implements A,B{}   //syntex error 
+Answer:B 
+keyword implements,entends 
+
+25. 1)package foo; 
+  2) 
+  3)public class Outer{ 
+  4)public static class Inner{ 
+  5)} 
+  6)} 
+  which is true to instantiated Inner class inside Outer? 
+  A. new Outer.Inner() 
+  B. new Inner() 
+Answer:B 
+if out of outerclass A is correct 
+
+26. class BaseClass{ 
+   private float x=1.0f; 
+   private float getVar(){return x;} 
+     } 
+  class SubClass extends BaseClass{ 
+   private float x=2.0f; 
+   //insert code 
+   } 
+  what are true to override getVar()? 
+  A.float getVar(){ 
+  B.public float getVar(){ 
+  C.public double getVar(){ 
+  D.protected float getVar(){ 
+  E.public float getVar(float f){ 
+Answer:A,B,D 
+
+27. public class SychTest{ 
+   private int x; 
+   private int y; 
+   public void setX(int i){ x=i;} 
+   public void setY(int i){y=i;} 
+   public Synchronized void setXY(int i){ 
+     setX(i); 
+     setY(i); 
+   } 
+   public Synchronized boolean check(){ 
+        return x!=y;   
+   } 
+   } 
+    Under which conditions will  check() return true when called from a different class? 
+   A.check() can never return true. 
+   B.check() can return true when setXY is callled by multiple threads. 
+   C.check() can return true when multiple threads call setX and setY separately. 
+   D.check() can only return true if SychTest is changed allow x and y to be set separately. 
+Answer:C 
+
+28. 1)public class X implements Runnable{ 
+  2)private int x; 
+  3)private int y; 
+  4)public static void main(String[] args){ 
+  5)   X that =new X(); 
+  6) (new Thread(that)).start(); 
+  7) (new Thread(that)).start(); 
+   } 
+  9) public synchronized void run(){ 
+  10)  for(;;){ 
+  11)      x++; 
+  12)      Y++; 
+  13) System.out.println("x="+x+",y="+y); 
+  14)    } 
+  15)   } 
+  16)  }   
+    what is the result? 
+  A.compile error at line 6 
+  B.the program prints pairs of values for x and y that are 
+    always the same on the same time 
+Answer:B 
+
+29. class A implements Runnable{ 
+  int i; 
+  public void run(){ 
+   try{ 
+       Thread.sleep(5000); 
+        i=10; 
+       }catch(InterruptException e){} 
+       } 
+       } 
+   public static void main(String[] args){ 
+      try{ 
+         A a=new A(); 
+         Thread t=new Thread(a); 
+         t.start(); 
+  17) 
+      int j=a.i; 
+  19) 
+      }catch(Exception e){} 
+      } 
+      } 
+  what be added at line line 17, ensure j=10 at line 19? 
+  A. a.wait();   B.  t.wait();   C. t.join();   D.t.yield();   
+  E.t.notify();  F.  a.notify(); G.t.interrupt(); 
+Answer:C 
+
+30. Given an ActionEvent, how to indentify the affected component? 
+    A.getTarget(); 
+    B.getClass(); 
+    C.getSource();   //public object 
+    D.getActionCommand(); 
+Answer:C 
+
+31. import java.awt.*; 
+  public class X extends Frame{ 
+   public static void main(String[] args){ 
+    X x=new X(); 
+    x.pack(); 
+    x.setVisible(true);} 
+    public X(){ 
+     setLayout(new GridLayout(2,2)); 
+     Panel p1=new Panel(); 
+    add(p1); 
+  Button b1=new Button("One"); 
+  p1.add(b1); 
+  Panel p2=new Panel(); 
+  add(p2); 
+  Button b2=new Button("Two"); 
+   p2.add(b2); 
+  Button b3=new Button("Three"); 
+   p2.add(b3); 
+  Button b4=new Button("Four"); 
+   add(b4); 
+   } 
+    } 
+ when the frame is resized, 
+ A.all change height    B.all change width   C.Button "One" change height 
+ D.Button "Two" change height  E.Button "Three" change width 
+ F.Button "Four" change height and width 
+Answer:F 
+
+32. 1)public class X{ 
+  2)    public static void main(String[] args){ 
+  3)     String foo="ABCDE"; 
+  4)     foo.substring(3); 
+  5)     foo.concat("XYZ"); 
+  6)    } 
+  7)   } 
+  what is the value of foo at line 6? 
+Answer:ABCDE 
+
+33. How to calculate cosine 42 degree? 
+  A.double d=Math.cos(42); 
+  B.double d=Math.cosine(42); 
+  C.double d=Math.cos(Math.toRadians(42)); 
+  D.double d=Math.cos(Math.toDegrees(42)); 
+  E.double d=Math.toRadious(42); 
+Answer:C 
+
+34. public class Test{ 
+   public static void main(String[] args){ 
+   StringBuffer a=new StringBuffer("A"); 
+   StringBuffer b=new StringBuffer("B"); 
+   operate(a,b); 
+   System.out.pintln(a+","+b); 
+    } 
+   public static void operate(StringBuffer x, StringBuffer y){ 
+    x.append(y); 
+    y=x; 
+   } 
+   } 
+   what is the output? 
+Answer:A,B 
+
+35.  1)public class Test{ 
+   2)public static void main(String[] args){ 
+   3) class Foo{ 
+   4) public int i=3; 
+   5) } 
+   6)Object o=(Object)new Foo(); 
+   7) Foo foo=(Foo)o; 
+   System.out.println(foo.i); 
+   9) } 
+   10) } 
+  what is result? 
+  A.compile error at line 6 
+  B.compile error at line 7 
+  C.print out 3 
+Answer:C 
+
+36. public class FooBar{ 
+   public static void main(String[] args){ 
+    int i=0,j=5; 
+  4) tp:  for(;;i++){ 
+         for(;;--j) 
+        if(i>j)break tp; 
+       } 
+   System.out.println("i="+i+",j="+j); 
+   } 
+   } 
+  what is the result? 
+  A.i=1,j=-1    B. i=0,j=-1  C.i=1,j=4    D.i=0,j=4   
+  E.compile error at line 4 
+Answer:B 
+
+37. public class Foo{ 
+     public static void main(String[] args){ 
+     try{System.exit(0);} 
+     finally{System.out.println("Finally");} 
+   } 
+   } 
+   what is the result? 
+   A.print out nothing 
+   B.print out "Finally" 
+Answer:A 
+system.exit(0) has exit 
+
+
+38. which four types of objects can be thrown use "throws"? 
+  A.Error 
+  B.Event 
+  C.Object 
+  D.Excption 
+  E.Throwable 
+  F.RuntimeException 
+Answer:A,D,E,F 
+
+39. 1)public class Test{ 
+  2) public static void main(String[] args){ 
+  3) unsigned byte b=0; 
+  4) b--; 
+  5) 
+  6) } 
+  7) } 
+  what is the value of b at line 5? 
+  A.-1   B.255  C.127  D.compile fail  E.compile succeeded but run error 
+Answer:D 
+
+40. public class ExceptionTest{ 
+   class TestException extends Exception{} 
+    public void runTest() throws TestException{} 
+     public void test() /* point x */ { 
+      runTest(); 
+      } 
+      } 
+   At point x, which code can be add on to make the code compile? 
+    A.throws Exception   B.catch (Exception e) 
+Answer:A 
+
+41. String foo="blue"; 
+  boolean[] bar=new boolean[1]; 
+   if(bar[0]){ 
+      foo="green"; 
+    } 
+  what is the value of foo? 
+   A.""  B.null  C.blue   D.green 
+Answer:C 
+
+42. public class X{ 
+   public static void main(String args[]){ 
+    Object o1=new Object(); 
+    Object o2=o1; 
+    if(o1.equals(o2)){ 
+     System.out.prinln("Equal"); 
+      } 
+      } 
+      } 
+   what is result? 
+Answer:Equal 
+
+43. which two are equivalent? 
+  A.  3/2 
+  B.  3<2 
+  C.  3*4 
+  D.  3<<2 
+  E.  3*2^2 
+  F.  3<<<2 
+Answer:C,D 
+
+44. int index=1; 
+  String[] test=new String[3]; 
+  String foo=test[index]; 
+  what is the result of foo? 
+   A. ""   B.null    C.throw a Exception   D.not compile 
+Answer:B 
+
+45. public class Test{ 
+   static void leftshift(int i, int j){ 
+      i<<=j; 
+     } 
+   public static void main(String args[]){ 
+      int i=4, j=2; 
+     leftshift(i,j); 
+    System.out.println(i); 
+     } 
+     } 
+   what is the result? 
+Answer:4 
+
+46. public class X{ 
+    private static int a; 
+    public static void main(String[] args){ 
+     modify(a); 
+     System.out.println(a); 
+     } 
+    public static void modify(int a){ 
+      a++; 
+     } 
+     } 
+   what is the result? 
+Answer:0 
+
+47. public class Test{ 
+   private static int j=0; 
+   public static boolean methodB(int k){ 
+     j+=k; 
+    return true; 
+   } 
+   public static void methodA(int i){ 
+    boolean b; 
+    b=i>10&methodB(1); 
+    b=i>10&&methodB(2); 
+     } 
+    public static void main(String args){ 
+     methodA(0); 
+  17) 
+     } 
+     } 
+   what is the value of j at line 17? 
+Answer:1 
+
+48. class A{ 
+    public String toString(){         
+    return "4"; 
+    } 
+    } 
+  class B extends A{ 
+    public String toString(){ 
+      return super.toString()+"3"; 
+     } 
+     } 
+   public class Test{ 
+      public static void main(String args){ 
+       B b=new B(); 
+   System.out.println(b.toString()); 
+   } 
+   } 
+   what is the result? 
+Answer:43 
+
+49. class A implements Runnable{ 
+   public int i=1; 
+   public void run(){ 
+    this.i=10; 
+    } 
+    } 
+   public class Test{ 
+    public static void main(String args){ 
+     A a=new A(); 
+   11)  new Thread(a).start(); 
+        int j=a.i; 
+   13) 
+    } 
+    } 
+   what is the value of j at line 13? 
+    A. 1 
+    B. 10 
+    C. the value of j cannot be determined 
+    D. An error at line 11 cause compilation to fail 
+Answer:C 
+
+50.  public class SyncTest{ 
+    public static void main(String[] args){ 
+    final StringBuffer s1=new StirngBuffer(); 
+    final StringBuffer s2=new StirngBuffer();               
+    new Thread(){ 
+     public void run(){ 
+     Synchronized(s1){ 
+       s1.append("A"); 
+     Synchronized(s2){ 
+       s2.append("B"); 
+     System.out.print(s1); 
+     System.out.print(s2); 
+      } 
+      } 
+      } 
+      }.start(); 
+    new Thread(){ 
+     public void run(){ 
+     Synchronized(s2){ 
+       s2.append("C"); 
+     Synchronized(s1){ 
+       s1.append("D"); 
+     System.out.print(s2); 
+     System.out.print(s1); 
+      } 
+      } 
+      } 
+      }.start();           
+      } 
+      } 
+    what is the result? 
+    A.the result depends on different system and different thread model 
+    B.the result cannot be determined 
+Answer:A,B 
+
+51. public class Test{ 
+   public static void main(String[] args){ 
+   String foo="blue"; 
+   String bar=foo; 
+   foo="green"; 
+   System.out.println(bar); 
+   } 
+   } 
+   what is the result? 
+Answer:blue 
+
+52. which interface Hashtable implements? 
+  A. java.util.Map 
+  B. java.util.List 
+  C. java.util.Hashable 
+  D. java.util.Collection 
+Answer:A 
+
+53. which two are true? 
+  A. static inner class requires a static initializer 
+  B. A static inner class requires an instance of the enclosing class 
+  C. A static inner class has no reference to an instance of the enclosing class 
+  D. A static inner class has accesss to the non-static member of the other class 
+  E. static members of a static inner class can be referenced using the class 
+     name of the static inner class 
+Answer:C,E 
+
+54. which two are true? 
+  A. An anonymous inner class can be declared inside of a method 
+  B. An anonymous inner class constructor can take arguments in some situations 
+  C. An anonymous inner class that is a direct subclass of Object can implements 
+     multiple interface 
+  D. Even if a class Super does not implement any interfaces, it is still possible 
+     to define an anonymous inner class that is an immediate subclass of Super that 
+     implements a single interface 
+  E. Even if a class Super does not implement any interfaces, it is still possible 
+     to define an anonymous inner class that is an immediate subclass of Super that 
+     implements multipe interface 
+Answer:A,D 
+
+55. class A{ 
+   public int getNumber(int a){ 
+    return a+1; 
+    } 
+    } 
+     class B extends A{ 
+  public int getNumber(int a, char c){ 
+       return a+2; 
+      } 
+      public static void main(String[] args){ 
+      B b=new B(); 
+  14)  System.out.println(b.getNumber(0)); 
+      } 
+      }       
+   what is the result? 
+  A. compilation succeeds and 1 is printed 
+  B. compilation succeeds and 2 is printed 
+  C. An error at line 8 cause compilation to fail 
+  D. An error at line 14 cause compilation to fail 
+Answer:A 
+
+56.  import java.awt.*; 
+   public class X extends Frame{ 
+    public static void main(String[] args){ 
+     X x=new X(); 
+     x.pack(); 
+     x.setVisible(true); 
+     } 
+   public X(){ 
+   setLayout(new BorderLayout()); 
+   Panel p=new Panel(); 
+   add(p,BorderLayout.NORTH); 
+   Button b=new Button("North"); 
+   p.add(b); 
+   Button b1=new Button("South"); 
+   add(b1,BorderLayout.SOUTH); 
+    } 
+     which two are true? 
+   A. The button labeled "North" and "South" will have the same width 
+   B. The button labeled "North" and "South" will have the same height 
+   C. The height of the button labeled "North" can vary if the Frame is resized 
+   D. The height of the button labeled "South" can vary if the Frame is resized 
+   E. The width of the button labeled "North" is constant even if the Frame is resized 
+   F. The width of the button labeled "South" is constant even if the Frame is resized 
+Answer:B,E 
+
+57. which two interfaces provide the capability to store objects using a key-value pair? 
+  A. java.util.Map 
+  B. java.util.Set 
+  C. java.util.List 
+  D. java.util.SortedSet 
+  E. java.util.SortedMap 
+  F. java.util.Collection 
+Answer:A,E 
+
+58. which two declaretions prevent the overriding of a method? 
+  A. final void methoda(){} 
+  B. void final methoda(){} 
+  C. static void methoda(){} 
+  D. static final void methoda(){} 
+  E. final abstract void methoda(){} 
+Answer:A,D 
+
+59. which two are true? 
+  public class OuterClass{ 
+   private double d1=1.0; 
+   //inser code here 
+  } 
+  A. static class InnerOne{ 
+      public double methoda(){return d1;} 
+  B. static class InnerOne{ 
+       static double methoda(){return d1;} 
+  C. private class InnerOne{ 
+      public double methoda(){return d1;} 
+  D. protected class InnerOne{ 
+       static double methoda(){return d1;} 
+  E. public abstract class InnerOne{ 
+     public abstract double methoda(); 
+Answer:C,E 
+
+60. You want a class to have access to members of another class in the same 
+  package which is the most restrictive access modifier that will accomplish 
+  this objective? 
+  A. public 
+  B. private 
+  C. protected 
+  D. transient 
+  E. No acess modifier is required 
+Answer:E 
+
+61. which two statements declare an array capable of 10 ints? 
+  A. int[] foo; 
+  B. int foo[]; 
+  C. int foo[10]; 
+  D. Object[] foo; 
+  E. Object foo[10]; 
+Answer:A,B 
+
+62. public class SwitchTest{ 
+    public static void main(String[] args){ 
+  3)  System.out.println("value="+switchIt(4)); 
+   } 
+  public static int switchIt(int x){ 
+     int j=1; 
+  switch(x){ 
+   case 1: j++; 
+   case 2: j++; 
+   case 3: j++; 
+   case 4: j++; 
+   case 5: j++; 
+   default: j++; 
+    } 
+   return j+x; 
+   } 
+   } 
+   what is the output from line 3? 
+   A. value=3  B. value=4  C. value=5  D. value=6  E. value=7  F. value=8 
+Answer:F 
+
+63. which will declare a method that is available to all members of the same 
+  package and can be referenced without an instance of the class? 
+  A. abstract public void methoda(); 
+  B. public abstract double methoda(); 
+  C. static void methoda(double d1){} 
+  D. public native double methoda(){} 
+  E. protected void methoda(double d1){} 
+Answer:C 
+
+64. 1)public class SuperClass{ 
+  2)  class SubClassA extends SuperClass{} 
+  3)  class SubClassB extends SuperClass{} 
+  4)  public void test(SubClassA foo){ 
+  5)    SuperClass bar=foo; 
+  6)    } 
+  7)    } 
+  which statement is true about the assignment in line 5? 
+  A. The assignment in line 5 is illegal 
+  B. The assignment in line 5 is legal, but throw a ClassCastException 
+  C. legal and will always executes without throw an Exception       
+Answer:C 
+
+65. which two are true to describe an entire encapsulation class? 
+   A. member data have no access modifiers 
+   B. member data can be modified directly 
+   C. the access modifier for methods is protected 
+   D. the access modifier to member data is private 
+   E. methods provide for access and modification of data 
+Answer:D,E 
+
+66. public class X implements Runnable{ 
+    public static void main(String[] args){ 
+  3)    //insert code 
+     } 
+    public void run(){ 
+       int x=0,y=0; 
+       for(;;){ 
+        x++; 
+        Y++; 
+     System.out.println("x="+x+",y="+y); 
+        } 
+       } 
+    }     
+  which codes are added to line 3 to cause run() to be executed? 
+  A. X x=new X(); 
+     x.run(); 
+  B. X x=new X(); 
+     new Thread(x).run(); 
+  C. X x=new X(); 
+     new Thread(x).start(); 
+  D. Thread t=new Thread(x).run(); 
+  E. Thread t=new Thread(x).start(); 
+Answer:C(A) because run is not static 
+
+67. which gets the name of the parent directory of file "file.txt"? 
+   A. String name=File.getParentName("file.txt"); 
+   B. String name=(new File("file.txt")).getParent(); 
+   C. String name=(new File("file.txt")).getParentName(); 
+   D. String name=(new File("file.txt")).getParentFile(); 
+   E. Diretory dir=(new File("file.txt")).getParentDir(); 
+      String name=dir.getName(); 
+Answer:B 
+
+68. The file "file.txt" exists on the file system and contains ASCII text. 
+   try{ 
+     File f=new File("file.txt"); 
+     OutputStream out=new FileOutputStream(f); 
+     }catch (IOException e){} 
+   A. the code does not compile 
+   B. the code runs and no change is made to the file 
+   C. the code runs and sets the length of the file to 0 
+   D. An exception is thrown because the file is not closed 
+   E. the code runs and deletes the file from the file system 
+Answer:C 
+
+69.  class Super{ 
+    public int i=0; 
+    public Super(String text){ 
+    i=1; 
+    } 
+    } 
+    public class Sub extends Super{ 
+      public Sub(String text){ 
+       i=2; 
+      } 
+    public static void main(String args[]){ 
+     Sub sub=new Sub("Hello"); 
+     System.out.println(sub.i); 
+     } 
+     } 
+    what is the result?     
+     A. compile will fail 
+     B. compile success and print "0" 
+     C. compile success and print "1" 
+     D. compile success and print "2" 
+Answer:A 
+public class sub extends super{ 
+public sub(string text){ 
+super(), this must be the first line. 
+}; 
+
+70.   import java.io.IOException; 
+     public class ExceptionTest{ 
+     public static void main(String args[]){ 
+      try{ 
+          methodA(); 
+         }catch(IOException e){ 
+         System.out.println("Caught Exception"); 
+         } 
+         } 
+      public void methodA(){ 
+       throw new IOException(); 
+       } 
+       } 
+      what is the result? 
+      A.The code will not compile 
+      B.The output is Caught Exception 
+      C.The output is Caught IOException 
+      D.The program executes normally without printing a message 
+Answer:A 
+
+71.   You are assigned the task of building a Panel containing a TextArea at 
+    the top, a Labbel directly bellow it, and a Button directly bellow the 
+    Label. If the three components added directly to the Panel. which layout 
+    manager can the Panel use to ensure that the TextArea absorbs all of the 
+    free vertical space when the Panel is resized? 
+     A.GridLayout 
+     B.CardLayout 
+     C.FlowLayout 
+     D.BorderLayout 
+     E.GridbagLayout 
+Answer:E 
+
+72.  You need to store elements in a collection that guarantees that no duplicates 
+   are stored and all elements can be access in nature order, which interace 
+   provides that capability? 
+   A. java.uil.Map 
+   B.java.util.Set 
+   C.java.util.List 
+   D.java.util.SortedSet 
+   E.java.util.SortedMap 
+   F.java.util.Collection 
+Answer:B 
+
+73. which two cannot directly cause a thread to stop executing? 
+  A.calling the yield method 
+  B.calling the wait method on an object 
+  C.calling the notify method on an object 
+  D.calling the notifyAll method on an object   
+  E.calling the start method on another thread object 
+Answer:A,E 
+
+74. 1)public class Foo implements Runnable{ 
+  2)  public void run(Thread t){ 
+     System.out.println("Running"); 
+      } 
+    public static void main(String[] args){ 
+     new Thread(new Foo()).start(); 
+     } 
+     } 
+   what is the result? 
+   A.An Exception is thrown 
+   B.The program exits without printing anything 
+   C.An error at line 1 causes complication to fail 
+   D.An error at line 2 causes complication to fail 
+   E."Running" is pinted and the program exits 
+Answer:D 
+
+75. which method in the Thread class is used to create and launch a new thread of execution? 
+  A.run()    B.start()   C. begin()   D.run(Runnable r)  E.execute(Thread t) 
+Answer:B 
+
+76. which is true? 
+  A.If only one thread is blocked in the wait method of an object, and another 
+    thread executes the notify method on that same object,then the first thread 
+    immediately resumes executes. 
+  B. If a thread is blocked in the wait method of an object, and another thread 
+  &nb 
+ 

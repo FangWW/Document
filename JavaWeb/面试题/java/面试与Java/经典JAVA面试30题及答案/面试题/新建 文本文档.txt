@@ -1,0 +1,550 @@
+百度首页 | 百度空间 | 登录 孤独思考者与君共舞SE,SOA,SW,SG技术天地,兼职教育技术 主页博客相册|个人档案 |好友   查看文章    
+java面试题专辑（1）2007年04月04日 星期三 13:27一、编程题   
+(1)设计一个能随机产生100个大写英文字母的方法，在该方法中统计产生了多少元音字母，并输出这个数字。（选做）Math.random()方法可以
+
+随机产生0~1之间的double类型的小数。
+(2)JAVA多线程编程。用JAVA写一个多线程程序 (一般掌握) 
+(3)Java 的通信编程，编程题(或问答)，用JAVA SOCKET编程，读服务器几个字符，再写入本地显示（一般掌握）       　
+
+(4)用JAVA实现数据库查询，这是一道编程题。（重点掌握） 
+(5)输入一串字符，输出时倒转过来。
+   
+    输入: Hello ! This is a test text .
+    输出:. text test a is This ! Hello
+
+二、问答题
+
+(1)Java中异常处理机制       　
+使用try，catch和finally。把有可能产生违例的代码放到try的语句块中，一旦这些代码产生了违例，就会执行相应的catch语句块中的语句，finally语句块的代码，不管有产生违例都会执行的。
+
+(2)事件机制
+事件监听器接口，定义了事件的处理方法。
+事件源：产生事件的组件
+事件源对自己感兴趣的事件进行注册（注册监听器），然后事件源一旦产生事件，就会调用相应的事件处理方法，执行相应的代码。
+
+
+(3)JAVA中的多形与继承，可出编程，选择题。
+抽象类与接口，接口的好处是将实现与表现分离。
+
+声明方法的存在而不去实现它的类被叫做抽象类（abstract class），它用于要创建一个体现某些基本行为的类，声明方法。不能创建abstract 类的实例。接口（interface）是抽象类的变体。在接口中，所有方法都是抽象的。没有一个有程序体。接口只可以定义static final成员变量。一个类实现接口要实现接口的所有方法。
+
+
+(4)STRING与STRINGBUFFER的区别。 
+
+STRING的长度是不可变的，STRINGBUFFER的长度是可变的。如果你对字符串中的内容经常进行操作，特别是内容要修改时，那么使用StringBuffer，如果最后需要String，那么使用StringBuffer的toString()方法。
+
+(5)谈谈final, finally的区别。
+
+final—（关键字）如果一个类被声明为final，意味着它不能再派生出新的子类，不能作为父类被继承。将变量或方法声明为final，可以保证它们在使用中不被改变。被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。被声明为final的方法也同样只能使用，不能重载。
+
+finally—异常处理时提供 finally块来执行任何清除操作。如果抛出一个异常，那么相匹配的 catch 子句就会执行，然后控制就会进入finally块（如果有的话）。
+
+
+(6)Collection 和 Collections的区别。你千万别说一个是单数一个是复数。
+
+Collections是个java.util下的类，它包含有各种有关集合操作的静态方法。
+Collection是个java.util下的接口，它是各种集合结构的父接口。
+
+
+(7)GC是什么? 为什么要有GC? 
+Garbage Collection
+GC是垃圾收集器。Java程序员不用担心内存管理，因为垃圾收集器会自动进行管理。
+
+(8)Math.round(11.5)等於多少? Math.round(-11.5)等於多少?
+Math.round(11.5)返回12，Math.round(-11.5)返回-11;
+
+
+(9)Java有没有goto?Goto—java中的保留字，现在没有在java中使用。
+
+数组有没有length()这个方法? String有没有length()这个方法?
+
+数组没有length()这个方法，有length的属性。
+String有有length()这个方法。
+
+
+(10)Overload和Override的区别。Overload的方法是否可以改变返回值的类型?
+
+如果在子类中定义某方法与其父类有相同的名称和参数，我们说该方法被重写(Overriding)。子类的对象使用这个方法时，将调用子类中的定义，对它而言，父类中的定义如同被“屏蔽”了。如果在一个类中定义了多个同名的方法，它们或有不同的参数个数或有不同的参数类型，则称为方法的重载(Overloading)。Overloaded的方法是可以改变返回值的类型。
+
+
+(11)给我一个你最常见到的runtime exception。如果你这个答不出来，面试的人会认为你没有实际编程经验。
+IndexOutOfBoundsException
+ClassCastException
+
+(12)error和exception有什么区别?
+
+error表示一种严重问题。比如说内存溢出。不可能指望程序能处理这样的情况。
+exception 表示可以处理的问题。
+
+
+(13)接口是否可继承接口?
+可以
+
+(14)启动一个线程是用run()还是start()?
+Start（）
+
+(15)构造器Constructor是否可被override?
+构造器Constructor不能被继承，因此不能重写Override，但可以被重载Overload
+
+(16)是否可以继承String类?
+String类是final类故不可以继承。
+
+(17)swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上?
+
+switch（expr1）中，expr1是一个整数表达式。因此传递给 switch 和 case语句的参数应该是 int、 short、 char 或者 byte。long,string都不能作用于swtich。
+
+(18)数组和vector的区别
+数组不可以随时改变大小，可以保存引用类型的数据和基本类型的数据。
+Vector 可以随时改变大小，只可以保存引用类型的数据。
+
+_(19)JAVA类实现序例化的方法是实现java.io.Serializable接口
+
+(20)作用域public,private,protected,以及不写时的区别
+答：区别如下： 
+作用域     当前类 同一package 子孙类 其他package 
+public       √       √          √         √ 
+protected    √       √          √         × 
+friendly     √       √          ×         × 
+private      √       ×          ×         × 
+不写时默认为friendly 
+
+_(21)ArrayList和Vector的区别
+
+答：就ArrayList与Vector主要从二方面来说. 
+一.同步性:Vector是线程安全的，也就是说是同步的，而ArrayList是线程序不安全的，不是同步的 
+二.数据增长:当需要增长时,Vector默认增长为原来一培，而ArrayList却是原来的一半 
+
+(22)char型变量中能不能存贮一个中文汉字?为什么? 
+答：是能够定义成为一个中文的，因为java中以unicode编码，一个char占16个字节，所以放一个中文是没问题的 
+
+(23)多线程有几种实现方法,都是什么?同步实现方法,都是什么? 
+答：多线程有两种实现方法，分别是继承Thread类与实现Runnable接口 
+同步的实现方面synchronized
+
+(24)继承时候类的执行顺序问题,一般都是选择题,问你将会打印出什么? 
+答:父类： 
+package test; 
+public class FatherClass 
+{ 
+   public FatherClass() 
+{ 
+   System.out.println("FatherClass Create"); 
+} 
+} 
+子类: 
+package test; 
+import test.FatherClass; 
+public class ChildClass extends FatherClass 
+{ 
+   public ChildClass() 
+{ 
+   System.out.println("ChildClass Create"); 
+} 
+public static void main(String[] args) 
+{ 
+   FatherClass fc = new FatherClass(); 
+   ChildClass cc = new ChildClass(); 
+} 
+} 
+输出结果： 
+C:\>java test.ChildClass 
+FatherClass Create 
+FatherClass Create 
+ChildClass Create
+
+(25)内部类的实现方式? 
+答：示例代码如下： 
+package test; 
+public class OuterClass 
+{ 
+   private class InterClass 
+{ 
+public InterClass() 
+{ 
+   System.out.println("InterClass Create"); 
+} 
+} 
+public OuterClass() 
+{ 
+   InterClass ic = new InterClass(); 
+   System.out.println("OuterClass Create"); 
+} 
+public static void main(String[] args) 
+{ 
+   OuterClass oc = new OuterClass(); 
+} 
+} 
+输出结果: 
+C:\>java test/OuterClass 
+InterClass Create 
+OuterClass Create 
+
+(26)float型float f=3.4是否正确? 
+
+答:不正确。精度不准确,应该用强制类型转换，如下所示：float f=(float)3.4 
+
+_(27)介绍JAVA中的Collection FrameWork(包括如何写自己的数据结构)? 
+
+答：Collection FrameWork如下： 
+Collection 
+├List 
+│├LinkedList 
+│├ArrayList 
+│└Vector 
+│　└Stack 
+└Set 
+Map 
+├Hashtable 
+├HashMap 
+└WeakHashMap 
+Collection是最基本的集合接口，一个Collection代表一组Object，即Collection的元素（Elements） 
+Map提供key到value的映射 
+
+(28)从性能上看，下面的代码有何不妥，为什么？
+
+class A
+{
+        public static void main(String[] args) 
+
+        {
+               String str="";
+               for(int i=0;i<100;i++)
+               {
+                      str+=(char)i;
+               }
+               System.out.println(str);
+        }
+}
+
+三、Java基础知识
+1.Java有那些基本数据类型，String是不是基本数据类型，他们有何区别。
+2.字符串的操作：
+   写一个方法，实现字符串的反转，如：输入abc，输出cba
+   写一个方法，实现字符串的替换，如：输入bbbwlirbbb，输出bbbhhtccc。
+3.数据类型之间的转换
+   如何将数值型字符转换为数字（Integer，Double）
+   如何将数字转换为字符
+   如何取小数点前两位，并四舍五入。
+4.日期和时间
+   如何取得年月日，小时分秒
+   如何取得从1970年到现在的毫秒数
+   如何获取某个日期是当月的最后一天
+   如何格式化日期
+5.数组和集合
+6.文件和目录（I/O）操作
+   如何列出某个目录下的所有文件
+   如何列出某个目录下的所有子目录
+   判断一个文件或目录是否存在
+   如何读写文件
+7.Java多态的实现（继承、重载、覆盖）
+8.编码转换，怎样实现将GB2312编码的字符串转换为ISO-8859-1编码的字符串。
+9.Java中访问数据库的步骤，Statement和PreparedStatement之间的区别。
+10.找出下列代码可能存在的错误，并说明原因：
+
+四、JSP&Servlet技术
+1.描述JSP和Servlet的区别、共同点、各自应用的范围
+2.在Web开发中需要处理HTML标记时，应做什么样的处理，要筛选那些字符（< > 
+& “”）
+3.在JSP中如何读取客户端的请求，如何访问CGI变量，如何确定某个Jsp文件的真实路径。
+4.描述Cookie和Session的作用，区别和各自的应用范围，Session工作原理。
+5.列出Jsp中包含外部文件的方式，两者有何区别。
+6.说明Jsp中errorPage的作用，应用范围。
+7.介绍在Jsp中如何使用JavaBeans。
+8.简单介绍JSP的标记库
+9.Jsp和Servlet中的请求转发分别如何实现。
+
+五、J2EE相关知识
+1.介绍J2EE、J2SE、J2SE的区别。
+2.J2EE是一种技术还是一种平台，他提供了那些技术。
+3.什么是Application Server，它有什么功能和优点。
+4.简单介绍连接池的优点和原理。
+5.Web.xml的作用
+
+
+六、其他
+1.Web安全性的考虑（表单验证、浏览器Basic方式的验证，应用程序的安全性，SSL，代码考虑）
+2.简单介绍您所了解的MVC。
+3.简单介绍所了解的XML。
+4.文档和编码规范
+5.Java中的分页、效率考虑。
+6.简单介绍您所了解的structs。
+
+1.xml在项目中的作用
+2.s-EJB 与 e-EJB的区别
+3.会话面的作用
+4.cmp与bmp的优缺点
+5.j2me程序的必需的几个部分
+6.c/s与b/s的区别
+7.构建一个connect pool,然后再调用它，
+8.j2ee平台与dotnet平台的区别
+
+9.ejb的life cycle
+10.session bean 和 entity bean的区别
+11.ejb中的transaction机制
+12.synchronized (生产者和消费）
+13.String 和 StringBuffer
+14.Serializable
+15.MVC （Struts的工作流程）
+16.什么是MDA
+
+17.tcp与udp的区别
+18.链表与散列表和数组的区别
+19.堆和栈的区别
+20.ejb的分类及区别
+21.你对现在软件业以及国内软件业的看法
+22.谈谈java多线程
+23.谈谈文件加密技术
+24.软件开发生命周期
+25.路由协议种类及特点
+26.java的awt和swing组件的GUI设计的关键
+27.对于java流的认识
+
+28.简单描述一下awt与swing区别。
+29.简述java编程中事件处理模式。
+30.你编写过applet吗？applet的安全权限如何？试列举java 
+application或者applet中与servlet/jsp通信可以采用的方式。
+
+31.简述逻辑操作(如&,|)与条件操作(如&&,||)的区别。
+32.简述 Java Server Page 和 Servlet 的联系和区别。
+33.简述synchronized和java.util.concurrent.locks.Lock的异同 ？
+34.EJB规范规定EJB中禁止的操作有哪些？
+35.java除了8种基本类型外，在虚拟机里还有哪一种，有什么作用?
+36.除了使用new关键字创建对象意外，试列举另外三种以上创建实例的方式?
+37.classloader中，JDK的API、Classpath中的同web-inf中的class加载方式有什么区别？
+38.列举三种以上垃圾回收算法，并比较其优缺点？
+39.编写代码实现一个线程池
+
+40.描述一下JVM加载class文件的原理机制?
+41.试举例说明一个典型的垃圾回收算法？ 
+42.请用java写二叉树算法，实现添加数据形成二叉树功能，并以先序的方式打印出来. 
+43.请写一个java程序实现线程连接池功能？ 
+44.给定一个C语言函数，要求实现在java类中进行调用。
+
+45.如何获得数组的长度？
+46.访问修饰符“public/private/protected/缺省的修饰符”的使用
+47.用关键字final修饰一个类或者方法时，有何意义？
+48.掌握类和对象的概念，掌握面向对象编程的本质
+49.静态变量和静态方法的意义，如何引用一个类的静态变量或者静态方法？
+50.JAVA语言如何进行异常处理，关键字：thorws,throw,try,catch,finally
+51.Object类(或者其子类)的finalize()方法在什么情况下被调用？
+52.一个“.java”原文件中是否可以包括多个类（不是内部类）？
+53.掌握内部类和接口的概念
+54.StringTokenizer类的使用
+55.数据结构，如何遍历List中的元素？
+    如果要按照键值保存或者访问数据，使用什么数据结构？
+    要掌握Collection相关的接口和类的使用
+56.使用StringBuffer类与String类进行字符串连接时有何区别？
+57.调用Thread类的destroy()方法有什么后果？
+58.多线程，用什么关键字修饰同步方法？stop()和suspend()方法为何不推荐使用？
+59.使用socket建立客户端与服务器的通信的过程
+60.JAVA语言国际化应用，Locale类，Unicode
+61.描述反射机制的作用
+62.如何读写一个文件？
+63.在图形界面中，一个按钮如何处理鼠标点击事件？
+64.在图形界面中，一个表格，如何实现编辑单元格时弹出下拉框？
+65.如何加载图片？
+66.什么是模态对话框？
+67.阐述MVC的概念
+68.GUI布局管理器的使用，FlowLayout,BorderLayout,GridBagLayout
+69.如何构造一棵树？选择树的一个节点时，如何得到这个节点？
+70.向编辑框中输入字符时，如何控制只输入整数？
+71.描述使用JDBC连接数据库的过程
+72.EJB分为几类？什么是BMP,CMP?
+73.什么是JNDI?
+
+74.ADO是什么?ActiveX数据对象,是一个应用级程序接口.
+75.四种JDBC方式?目前的版本?
+76.EJB有哪几种?区别是什么?
+77.JavaBean与EJB有什么区别?
+78.软件开发生命周期有哪几个阶段?
+79.软件开发有哪些因素?
+80.软件开发中如何进行版本控制?
+81.UML中,类视图如何表示类中的继承与聚合?
+82.客户端游标与服务器端游标的区别?
+83.动态游标与静态游标的区别?
+84.dotnet由哪几个基本框架组成?
+85.Oracle中SGA是什么?
+86.web servers是什么?
+87.UNIX中QT是什么意思?
+88.在软件开发生命周期中的哪个阶段开始测试?
+89.dotnet与J2EE的比较?
+90.什么是ActiveX?
+91.Java中IDL是什么?
+92.ISO9000和CMM是什么?IS09000和CMM(软件能力成熟度模型)认证是国际上通用的软件质量评估方法.CMM的五个成熟度等级。
+
+
+1.现在输入n个数字，以逗号，分开；
+   然后可选择升或者降序排序；
+   按提交键就在另一页面显示
+   按什么 排序，结果为，   ，
+   提供reset
+
+
+2.请你写一段函数，将一个文本文件a.txt的内容以倒序的方式输出一遍，输出后的文件名仍为a.txt,并且当中不允许生成其它文件。（限用JAVA语言）
+
+
+3.public class Ctest{
+public   static void main (String [] args)
+{
+   System.out.println(6 + 6 + "aa"+ 6 + 6);
+}
+}
+输出结果是什么？ 禁止上机验证
+
+
+4.自选100字的文章
+   人工切分成单字和词组（按中文语言规范切分）
+   用话筒向计算机读入每句话
+   要求计算机按人工拆分的词组，切分出单字、词组和读音
+   建立和词字表对应的录音库
+
+
+5.编写程序请用(java实现)
+   请用冒泡排序或者选择排序实现一个对一列数字的排序:
+   {2,10,3,50,78,22,34,30,65}数字是动态输入的.请以类的形式实现.
+6.在财务应用中一般会把一串阿拉伯数字组成的金额转换为中文大写的形式,请你用类方法的形式实现这个功能.
+
+
+7."我假设是原始社会,有石头,2块石头互磨可以变成石刀,石刀可以去砍木头,木头被砍成木材,木材可以组成椅子,请你用oo的思想把这些事物和他们之间的关系表达出来,但是要考虑到以后可能我会增加以下几点:
+"1.有可能我还想让石刀去砍椅子,把椅子砍成木材,2.可能我还想让石头增加关系,例如互相砸,互相摔,而不只是磨,也可以变成石刀,3也许我又要多添一百种不同的事物,再多添120种不同的关系..."
+
+
+8.运用VC、CforSCOUNIX、Java工具开发基于简单的设备管理 
+设备管理的属性如下: 
+纪录文件名称为:AtmConfig.txt 
+编号(4字节)IP地址(16字节)安装地址(20字节)联系人(10字节) 
+1001192.168.168.1北太平庄王一 
+1002192.168.168.2马甸王二 
+1003192.168.168.3牡丹园王三 
+1004192.168.168.4和平里王四 
+各项纪录之间有空格分开(空格数量不定) 
+
+程序设计要求： 
+n登记设备信息：根据从系统界面输入的ATM编号、IP地址、安装地址和联系人，将它们保存到AtmConfig文件中 
+n设备信息查询：根据输入的ATM编号，从AtmCinfig文件中查询相应的设备信息 
+n界面可以采用JSP开发、或Swing方式 
+
+其中：设备编号必须进行校验：4为数字型，IP地址必须按照IP地址的规范进行校验 
+
+开发环境: 
+Java。 
+ATM配置文件表的存放位置：d:\atm\etc\AtmConfig.txt 
+
+
+9.输出程序运行的结果：
+1、
+public class Test2 extends Test1
+{
+     {
+         System.out.print("1"); 
+     }
+
+     Test2()
+     { 
+         System.out.print("2"); 
+     } 
+     static
+     {
+         System.out.print("3"); 
+     } 
+     { 
+         System.out.print("4"); 
+     } 
+     public static void main(String[] args)
+     { 
+         new Test2(); 
+     } 
+} 
+class Test1
+{ 
+     Test1()
+     { 
+         System.out.print("5");
+     } 
+     static
+     {
+         System.out.print("6");
+     } 
+}
+
+2、
+public class Test3 extends Test4
+{
+     int i=30; 
+     Test3()
+     {
+         print();
+         i=40;
+     } 
+     public static void main(String[] args) 
+     {
+         System.out.println(new Test3().i);
+     } 
+     void print()
+     {
+         System.out.println(i);
+     } 
+} 
+class Test4 
+{ 
+     int i=10;
+
+     Test4()
+     {
+         print();
+         i=20;
+     } 
+     void print()
+     {
+         System.out.println(i);
+     }
+} 
+
+
+10.下面程序运行会发生什么结果?如果有错误,如何改正? (15分)
+interface   A{
+   int x = 0;
+}
+class B{
+   int x =1;
+}
+class C
+     extends B implements A {
+   public void pX(){
+     System.out.println(x);
+   }
+   public static void main(String[] args) {
+     new C().pX();
+   }
+}
+}
+
+
+11.考考你的眼力:
+public String toString(){
+    return this + "@" + this.hashCode();
+}
+这个toString()方法实现有无不当的地方?(toString方法其实可以按你想输出的任何内容输出一些该类的信息)
+ 
+
+类别：java技术(jsp,ejb...) | 添加到搜藏 | 浏览(160) | 评论 (0)  上一篇：java操作各数据库    下一篇：Java面试题专辑（2） 相关文章：? java面试题集2　　　　　　　　　 ? java面试题集 
+? 英文Java面试题(核心知识)　　　　　　　　　 ? Java面试题(答案) 
+? IBM java面试题(附答案)　　　　　　　　　 ? 2007年11月30号,淘宝java笔试题 
+? java面试笔试题大汇总(九)　　　　　　　　　 ? java面试笔试题大汇总(八) 
+? 122条常见的java面试笔试题大汇...　　　　　　　　　 ? JAVA陷阱----面试试题集 
+更多>> 
+ 最近读者： 登录后，您就出现在这里。  
+     
+ 网友评论：    发表评论：姓　名：     注册 | 登录 *姓名最长为50字节 
+   
+网址或邮箱：  (选填) 
+   
+内　容：   
+   
+验证码：  请输入下图中的四位验证码，字母不区分大小写。
+ 看不清?  
+   
+
+      
+
+?2007 Baidu 

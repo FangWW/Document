@@ -1,0 +1,79 @@
+1.画出效果图
+<html>
+<body>
+<table width="200" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
+2.<input type="?">,列举type，名称。
+3.css样式表，说出display、position:abslolute、cursor:text、margin-top:20pt含义
+4.写js函数，全选所有名字为ccc的多选框
+<html>
+<body>
+<form name="form1" method="post" action="">
+  <input type="checkbox" name="ccc" value="1">1
+  <input type="checkbox" name="ccc" value="2">2
+  <input type="checkbox" name="ccc" value="3">3
+  <input type="checkbox" name="ccc" value="4">4
+  <input type="checkbox" name="ccc" value="n">n
+  <input type="button" value="全选" onClick="ok()">
+</form>
+</body>
+</html>
+
+答案：
+5.int和Integer的区别
+6.String是不是基本数据类型？列举基本数据类型，并说出其长度、初始值
+答案：有8种基本数据类型。
+      
+      类型      缺省值      长度
+      byte        0          8位
+      short       0         16位
+      int         0         32位
+      long        0         64位
+      char      '\u0000'    16位
+      float       0.0       32位
+      double      0.0       64位(范围：\u0000～\uFFFF)
+
+7.&和&&的含义(逻辑与和短路与)
+8.名词解释
+主键、复合主键、约束、索引、外键、级联删除
+9.视图的概念和作用
+10.已知关系R(A,B)和S(B,C)，下列那些SQL语句是错误的
+(1)SELECT R.A,* FROM R GROUP BY A
+(2)SELECT A,B FROM R,S WHERE R.A=s.c
+(3)SELECT A,COUNT(B) FROM R
+(4)SELECT A FROM R WHERE B>=MAX(B)
+我认为1.3.4错误。 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

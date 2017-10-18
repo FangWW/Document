@@ -1,0 +1,377 @@
+Java基础面试题
+
+Java基础方面:
+
+ 
+
+1,作用域public,protected,private,以及不写时的区别
+
+答：区别如下： 
+
+作用域 当前类 同一package 子孙类 其他package 
+
+public √ √ √ √ 
+
+protected √ √ √ × 
+
+friendly √ √ × × 
+
+private √ × × × 
+
+不写时默认为friendly 
+
+ 
+
+2,ArrayList和Vector的区别,HashMap和Hashtable的区别
+
+答：就ArrayList与Vector主要从二方面来说. 
+
+一.同步性:Vector是线程安全的，也就是说是同步的，而ArrayList是线程序不安全的，不是同步的 
+
+二.数据增长:当需要增长时,Vector默认增长为原来一培，而ArrayList却是原来的一半 
+
+就HashMap与HashTable主要从三方面来说。 
+
+一.历史原因:Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现 
+
+二.同步性:Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的 
+
+三.值：只有HashMap可以让你将空值作为一个表的条目的key或value 
+
+ 
+
+3,char型变量能不能定义为一个中文?为什么?
+
+答：是能够定义成为一个中文的，因为java中以unicode编码，一个char占16个字节，所以放一个中文是没问题的
+
+ 
+
+4,多线程有几种表示方法,都是什么?同步有几种实现方法,都是什么?
+
+答：多线程有两种实现方法，分别是继承Thread类与实现Runnable接口 
+
+同步的实现方面有两种，分别是synchronized,wait与notify 
+
+ 
+
+ 
+
+5,继承时候类的执行顺序问题,一般都是选择题,问你将会打印出什么?
+
+答:父类： 
+
+package test; 
+
+public class FatherClass 
+
+{ 
+
+public FatherClass() 
+
+{ 
+
+System.out.println("FatherClass Create"); 
+
+} 
+
+} 
+
+子类: 
+
+package test; 
+
+import test.FatherClass; 
+
+public class ChildClass extends FatherClass 
+
+{ 
+
+public ChildClass() 
+
+{ 
+
+System.out.println("ChildClass Create"); 
+
+} 
+
+public static void main(String[] args) 
+
+{ 
+
+FatherClass fc = new FatherClass(); 
+
+ChildClass cc = new ChildClass(); 
+
+} 
+
+} 
+
+输出结果： 
+
+C:\>java test.ChildClass 
+
+FatherClass Create 
+
+FatherClass Create 
+
+ChildClass Create 
+
+ 
+
+ 
+
+6,内部类的实现方式?
+
+答：示例代码如下： 
+
+package test; 
+
+public class OuterClass 
+
+{ 
+
+private class InterClass 
+
+{ 
+
+public InterClass() 
+
+{ 
+
+System.out.println("InterClass Create"); 
+
+} 
+
+} 
+
+public OuterClass() 
+
+{ 
+
+InterClass ic = new InterClass(); 
+
+System.out.println("OuterClass Create"); 
+
+} 
+
+public static void main(String[] args) 
+
+{ 
+
+OuterClass oc = new OuterClass(); 
+
+} 
+
+} 
+
+输出结果: 
+
+C:\>java test/OuterClass 
+
+InterClass Create 
+
+OuterClass Create 
+
+再一个例题： 
+
+public class OuterClass { 
+
+private double d1 = 1.0; 
+
+//insert code here 
+
+} 
+
+You need to insert an inner class declaration at line 3. Which two inner class declarations are 
+
+ 
+
+valid?(Choose two.) 
+
+A. class InnerOne{ 
+
+public static double methoda() {return d1;} 
+
+} 
+
+B. public class InnerOne{ 
+
+static double methoda() {return d1;} 
+
+} 
+
+C. private class InnerOne{ 
+
+double methoda() {return d1;} 
+
+} 
+
+D. static class InnerOne{ 
+
+protected double methoda() {return d1;} 
+
+} 
+
+E. abstract class InnerOne{ 
+
+public abstract double methoda(); 
+
+} 
+
+说明如下： 
+
+一.静态内部类可以有静态成员，而非静态内部类则不能有静态成员。 故 A、B 错 
+
+二.静态内部类的非静态成员可以访问外部类的静态变量，而不可访问外部类的非静态变量；return d1 出错。 
+
+ 
+
+故 D 错 
+
+三.非静态内部类的非静态成员可以访问外部类的非静态变量。 故 C 正确 
+
+四.答案为C、E 
+
+ 
+
+7,垃圾回收机制,如何优化程序?
+
+ 
+
+8,float型float f=3.4是否正确?
+
+答:不正确。精度不准确,应该用强制类型转换，如下所示：float f=(float)3.4 
+
+ 
+
+9、介绍JAVA中的Collection FrameWork(包括如何写自己的数据结构)? 
+
+答：Collection FrameWork如下： 
+
+Collection 
+
+├List 
+
+│├LinkedList 
+
+│├ArrayList 
+
+│└Vector 
+
+│　└Stack 
+
+└Set 
+
+Map 
+
+├Hashtable 
+
+├HashMap 
+
+└WeakHashMap 
+
+Collection是最基本的集合接口，一个Collection代表一组Object，即Collection的元素（Elements） 
+
+Map提供key到value的映射 
+
+ 
+
+10、Java中异常处理机制，事件机制？ 
+
+ 答:使用New操作创建对象后,JAVA虚拟机自动该对象分配内存并保持跟踪,JAVA虚拟机能判断出对象是否还被引用,对不再被引用的对象释放其占用的内存.
+
+ 
+
+11、JAVA中的多形与继承？ 
+
+希望大家补上，谢谢 
+
+ 
+
+12、抽象类与接口？ 
+
+答：抽象类与接口都用于抽象，但是抽象类(JAVA中)可以有自己的部分实现，而接口则完全是一个标识(同时有多重继承的功能)。 
+
+ 
+
+13、Java 的通信编程，编程题(或问答)，用JAVA SOCKET编程，读服务器几个字符，再写入本地显示？ 
+
+答:Server端程序: 
+
+package test; 
+
+import java.net.*; 
+
+import java.io.*; 
+
+ 
+
+public class Server 
+
+{ 
+
+private ServerSocket ss; 
+
+private Socket socket; 
+
+private BufferedReader in; 
+
+private PrintWriter out; 
+
+public Server() 
+
+{ 
+
+try 
+
+{ 
+
+ss=new ServerSocket(10000); 
+
+while(true) 
+
+{ 
+
+socket = ss.accept(); 
+
+String RemoteIP = socket.getInetAddress().getHostAddress(); 
+
+String RemotePort = ":"+socket.getLocalPort(); 
+
+System.out.println("A client come in!IP:"+RemoteIP+RemotePort); 
+
+in = new BufferedReader(new 
+
+ 
+
+InputStreamReader(socket.getInputStream())); 
+
+String line = in.readLine(); 
+
+System.out.println("Cleint send is :" + line); 
+
+out = new PrintWriter(socket.getOutputStream(),true); 
+
+out.println("Your Message Received!"); 
+
+out.close(); 
+
+in.close(); 
+
+socket.close(); 
+
+} 
+
+}catch (IOException e) 
+
+{ 
+
+out.println("wrong"); 
+
+} 
+
+} 
+
+public static void main(String[] args) 
+ 
+ 

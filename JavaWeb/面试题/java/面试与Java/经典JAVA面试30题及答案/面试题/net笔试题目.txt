@@ -1,0 +1,499 @@
+net笔试题目   [ 日期：2005-08-02 ]   [ 来自：本站原创 ] 姓名：                      日期： 
+
+1.      填空: (1)面向对象的语言具有________性、_________性、________性。
+
+        (2)能用foreach遍历访问的对象需要实现 ________________接口或声明________________方法的类型。
+
+        (3)列举ADO.net中的五个主要对象_______________、_____________、_______________、_______________、_________________。
+
+2. 不定项选择：
+
+(1) 以下叙述正确的是： 
+
+      A. 接口中可以有虚方法。     B. 一个类可以实现多个接口。 
+      C. 接口不能被实例化。       D. 接口中可以包含已实现的方法。 
+
+   (2) 从数据库读取记录，你可能用到的方法有：
+
+      A. ExecuteNonQuery            B. ExecuteScalar
+
+      C. Fill                        D. ExecuteReader
+
+3. 简述 private、 protected、 public、 internal 修饰符的访问权限。
+
+
+4. 写出一条Sql语句： 取出表A中第31到第40记录（SQLServer, 以自动增长的ID作为主键,  注意：ID可能不是连续的。） 
+
+
+5 .列举ASP.NET 页面之间传递值的几种方式。 
+
+
+6. 写出程序的输出结果 
+
+class Class1  { 
+       private string str = "Class1.str"; 
+       private int i = 0; 
+       static void StringConvert(string str)  { 
+           str = "string being converted."; 
+       } 
+       static void StringConvert(Class1 c)  { 
+           c.str = "string being converted."; 
+       } 
+       static void Add(int i)  { 
+           i++; 
+       } 
+       static void AddWithRef(ref int i)  { 
+           i++; 
+       } 
+       static void Main()  { 
+           int i1 = 10; 
+           int i2 = 20; 
+           string str = "str"; 
+           Class1 c = new Class1(); 
+           Add(i1); 
+           AddWithRef(ref i2); 
+           Add(c.i); 
+           StringConvert(str);         
+           StringConvert(c); 
+           Console.WriteLine(i1); 
+           Console.WriteLine(i2); 
+           Console.WriteLine(c.i); 
+           Console.WriteLine(str); 
+           Console.WriteLine(c.str); 
+       }  
+    } 
+
+
+7.写出程序的输出结果 
+
+public abstract class A  
+{ 
+        public A()  
+       { 
+            Console.WriteLine('A'); 
+        } 
+        public virtual void Fun()  
+       { 
+            Console.WriteLine("A.Fun()"); 
+        } 
+} 
+
+public class B: A  
+{ 
+        public B() 
+       { 
+            Console.WriteLine('B'); 
+        } 
+
+        public new void Fun()  
+       { 
+            Console.WriteLine("B.Fun()"); 
+        } 
+
+        public static void Main()  
+       { 
+           A a = new B(); 
+           a.Fun(); 
+        } 
+} 
+
+
+8.      写出程序的输出结果： 
+public class A  
+{ 
+        public virtual void Fun1(int i) 
+       { 
+            Console.WriteLine(i); 
+        } 
+
+        public void Fun2(A a)   
+       { 
+            a.Fun1(1); 
+            Fun1(5); 
+        } 
+} 
+
+
+public class B : A  
+{ 
+        public override void Fun1(int i)    
+       { 
+            base.Fun1 (i + 1); 
+        } 
+
+        public static void Main()   
+       { 
+            B b = new B(); 
+            A a = new A(); 
+            a.Fun2(b); 
+            b.Fun2(a);          
+        } 
+} 
+
+ 
+
+9. 一列数的规则如下: 1、1、2、3、5、8、13、21、34...... 
+
+   求第30位数是多少， 用递归算法实现。(C#语言)
+
+
+10.  程序设计: 猫大叫一声，所有的老鼠都开始逃跑，主人被惊醒。(C#语言) 
+
+要求：  1.要有联动性，老鼠和主人的行为是被动的。
+
+2.考虑可扩展性，猫的叫声可能引起其他联动效应。
+
+ 
+
+ 
+
+
+参考答案: 
+1. (1)  继承性、封装性、多态性。（考基本概念） 
+   (2)  IEnumerable 、 GetEnumerator (对foreach机制的理解，本来不想出这题的，凑分) 
+   (3)  ... (送分题, 对ADO.net的了解) 
+评分标准：一空1分，满分10分。 
+
+ 
+
+2. (1) B、C (考对接口的理解)  (2)  B、C、D (考查对ADO.net的熟练程度) 
+  评分标准: 一题5分，不选或者错选均不得分。漏选得2分。满分10分。 
+
+ 
+
+3. . private :   私有成员, 在类的内部才可以访问。 
+     protected : 保护成员，该类内部和继承类中可以访问。 
+     public :    公共成员，完全公开，没有访问限制。 
+     internal:   在同一命名空间内可以访问。 
+评分标准：答对1题2分，2题5分，3题7分。全对10分。 (送分题) 
+
+ 
+
+4.  解1:  select top 10 * from A where id not in (select top 30 id from A) 
+    解2:  select top 10 * from A where id > (select max(id) from (select top 30 id from A )as A) 
+    评分标准： 写对即10分。(答案不唯一，datagrid 分页可能需要用到) 
+  
+5.  1.使用QueryString,  如....?id=1; response. Redirect().... 
+    2.使用Session变量 
+    3.使用Server.Transfer 
+    .... 
+   评分标准： 答对1点得3分， 两点7分， 3点10分。 
+
+
+6.  (考查值引用和对象引用) 
+10 
+21 
+0 
+str 
+string being converted. 
+评分标准：答对一点得2分，满分10分。 
+
+
+7.  A 
+    B 
+A.Fun() 
+评分标准： 写出A.B 得5分，写出A.Fun()得5分，满分10分。 
+(考查在继承类中构造函数, 以及new 方法, ) 
+
+ 
+
+
+8.  2 
+    5 
+    1 
+    6 
+
+评分标准： 答对一点得2分，两点得5分，3点得7分。全对得10分。
+
+(一些人做这题，头都晕了.... ^_^ )
+
+ 
+
+9.  
+
+    public class MainClass 
+    { 
+        public static void Main()   
+        { 
+            Console.WriteLine(Foo(30)); 
+        } 
+        public static int Foo(int i) 
+        { 
+            if (i <= 0) 
+                return 0; 
+            else if(i > 0 && i <= 2) 
+                return 1; 
+            else return Foo(i -1) + Foo(i - 2); 
+        } 
+    } 
+评分标准： 写出return Foo(i -1) + Foo(i - 2); 得5分。 
+
+ 写出if(i > 0 && i <= 2) return 1; 得5分。
+
+           方法参数过多需要扣分（扣除分数 = 参数个数 － 1）
+
+           不用递归算法扣5分
+
+           (递归算法在树结构建立等方面比较常用)
+
+ 
+
+10           
+
+ 要点：1. 联动效果，运行代码只要执行Cat.Cryed()方法。2. 对老鼠和主人进行抽象 
+评分标准: <1>.构造出Cat、Mouse、Master三个类，并能使程序运行(2分) 
+            <2>从Mouse和Master中提取抽象（5分） 
+            <3>联动效应，只要执行Cat.Cryed()就可以使老鼠逃跑，主人惊醒。(3分) 
+
+
+    public interface Observer 
+    { 
+        void Response();    //观察者的响应，如是老鼠见到猫的反映 
+    } 
+    public interface Subject 
+    { 
+        void AimAt(Observer obs);  //针对哪些观察者，这里指猫的要扑捉的对象---老鼠 
+    } 
+    public class Mouse : Observer 
+    { 
+        private string name; 
+        public Mouse(string name, Subject subj) 
+        {           
+            this.name = name; 
+            subj.AimAt(this); 
+        } 
+        
+        public void Response() 
+        { 
+            Console.WriteLine(name + " attempt to escape!"); 
+        } 
+    } 
+    public class Master : Observer 
+    {   
+        public Master(Subject subj) 
+        {           
+            subj.AimAt(this); 
+        } 
+        
+        public void Response() 
+        { 
+            Console.WriteLine("Host waken!"); 
+        }  
+    } 
+  
+    public class Cat : Subject 
+    { 
+        private ArrayList observers; 
+        public Cat() 
+        {   
+            this.observers = new ArrayList(); 
+        } 
+        public void AimAt(Observer obs) 
+        { 
+            this.observers.Add(obs); 
+        } 
+        public void Cry() 
+        { 
+            Console.WriteLine("Cat cryed!"); 
+            foreach (Observer obs in this.observers) 
+            { 
+                obs.Response(); 
+            } 
+        } 
+    } 
+    class MainClass 
+    {       
+        static void Main(string[] args) 
+        { 
+            Cat cat = new Cat(); 
+            Mouse mouse1 = new Mouse("mouse1", cat); 
+            Mouse mouse2 = new Mouse("mouse2", cat); 
+            Master master = new Master(cat); 
+            cat.Cry(); 
+        } 
+    } 
+
+
+//--------------------------------------------------------------------------------------------- 
+
+设计方法二: 使用event -- delegate设计.. 
+    public delegate void SubEventHandler(); 
+    public abstract class Subject 
+    { 
+        public event SubEventHandler SubEvent; 
+        protected void FireAway() 
+        { 
+            if (this.SubEvent != null) 
+                this.SubEvent(); 
+        }   
+    } 
+    public class Cat : Subject 
+    {  
+        public void Cry() 
+        { 
+            Console.WriteLine("cat cryed."); 
+            this.FireAway(); 
+        } 
+    } 
+    public abstract class Observer 
+    { 
+        public Observer(Subject sub) 
+        { 
+            sub.SubEvent += new SubEventHandler(Response); 
+        } 
+        public abstract void Response();    
+    } 
+    public class Mouse : Observer 
+    { 
+        private string name; 
+        public Mouse(string name, Subject sub) : base(sub) 
+        {   
+            this.name = name; 
+        } 
+        public override void Response() 
+        { 
+            Console.WriteLine(name + " attempt to escape!"); 
+        } 
+    } 
+    public class Master : Observer 
+    { 
+        public Master(Subject sub) : base(sub){} 
+        public override void Response() 
+        { 
+            Console.WriteLine("host waken"); 
+        } 
+    } 
+    class Class1 
+    { 
+        static void Main(string[] args) 
+        { 
+            Cat cat = new Cat(); 
+            Mouse mouse1 = new Mouse("mouse1", cat); 
+            Mouse mouse2 = new Mouse("mouse2", cat); 
+            Master master = new Master(cat); 
+            cat.Cry(); 
+        } 
+
+    }
+
+
+.Net测试
+1． 假设你想在一个project中使用其它dll的assembly，如果它在引用列表中，而且assembly中至少有一个公用项（类、枚举等）,那么加载这个公用项的最好的办法是什么？
+a) Assembly assem = typeof(myclass1).Assembly;
+b) Assembly assem = Assembly.Load("myclass1");
+2． .NET提供了Dispose()和Finalize()两个途径来执行这些清理工作。那么以下正确的是？
+a) Dispose()是提供给应用调用的；而Finalize()是让GC调用的。
+b) 何时调用：Dispose()由程序员决定，Finalize()不可预知什么时候调用。
+c) 资源何时释放：Dispose()调用结束后, Finalize()下次GC过程之后，在此之前对象仍可用。
+3． public void Boxing()
+{
+Int32 v = 5;
+Console.WriteLine("{0},{1},{2}",v,v,v);
+}
+public void Boxing1()
+{
+Int32 v = 5;
+object o = v;
+Console.WriteLine("{0},{1},{2}",o,o,o);
+}
+上述代码那个执行效率高：
+a) Boxing()
+b) Boxing1()
+4． 下面最后执行的语句是 
+Int I = 0;
+Try
+{
+i++; 
+}
+Catch
+{
+i = 0;
+}
+Finally
+{
+i = -1;
+}
+a) i++
+b) i = 0;
+c) i = -1;
+5． 对于Foreach语句和For来遍历集合，那个的效率会高些
+a) Foreach
+b) For
+c) 不确定
+6． 下列语法没有错误的有
+a) Typea obja = b as Typea;
+b) Using Bar = com.EP.outlookbar;
+c) Using(Typea obja = new Typea())
+{
+Obja.Attr1 = 1;
+}
+d) Interface1 Test = new Interface(); //Interface是定义的一个接口
+7． 对于访问控制，c#提供了访问修饰符public,internal,protected,private,protected internal,如果一个业务类位于Assemble A，对于A中所有调用者是可以访问的，但是对于其他Assemble中的调用者是不能访问的，我们应该怎样选择访问修饰符：
+a) Private
+b) Public
+c) Internal
+d) Protected
+8． 有关静态构造函数的调用，以下正确的是：
+a) 不能被显示的调用
+b) 在创建类的任何实例和引用类的任何静态成员之前
+c) 不能被继承
+d) 可以有多个静态构造函数
+9． 有返回值，和没有返回值的委托，那个可以连续调用多个多个方法，为什么?
+a) 有返回值
+b) 没有返回值
+c) 不确定
+10． 对于WebService的调用，VS.Net为我们生成调用代理类，这个代理类有Proxy属性。然而对于用户IE里设置的Proxy，会对整个代理类的调用产生影响吗？
+a) 会
+b) 不会
+c) 不一定
+11． 对于异构(Java, .Net)应用之间的数据通讯，比较好的方式是什么
+a) WebService
+b) Http请求传递数据
+c) FTP传递数据
+d) SMTP＋POP3
+12． 开发商务系统时，我们会采用分层来改善代码结构，数据层的设计是很重要的，对于数据的合法性有很高要求的应用，我们采用什么实现方式比较好
+a) 自定义对象
+b) DataSet
+c) Typed DataSet
+d) 字符串
+13． 如果应用访问的数据库是SqlServer，我们采用什么连接方式是比较好的
+a) OleDb
+b) SqlClient
+c) ODBC
+14． Remoting技术架构在以下那几个通道上
+a) WebService
+b) TCP
+c) HTTP
+d) SOAP
+15． 为什么要使用密封类？
+a) 使用户不能获得继承特征
+b) 保护静态成员
+c) 加快程序运行
+d) 实现代码级安全性
+16． 如果你将一个DataTable或一个DataSet串行到一个二进制（binary stream）中，你得到的输出结果和用WriteXml方法保存到XML文件结果，这两个结果那个更浪费空间，如果知道原因，请写出
+a) 二进制方式
+b) WriteXml方式
+c) 不确定
+17． 在.net中有很多种调用实现：直接方法调用、代理方式调用、接口调用、反射调用。
+按照调用的响应速度由快到慢，进行排序，正确的是：
+a) 接口调用，方法调用，代理调用，反射调用
+b) 反射调用，方法调用，代理调用，接口调用
+c) 方法调用，接口调用，代理调用，反射调用
+d) 方法调用，代理调用，接口调用，反射调用
+18． 对于旧有系统升级到新系统，大家都有各自的方法，以下比较好的办法是什么？
+a) 全部重新写过
+b) 留下可以重用的，添加新的连接代码
+c) 做转换的适配器，改变对外接口
+d) 做桥接程序，过渡逻辑或数据
+19． 对于一个系统，高内聚，低耦合是基本的要求，但是，如果遇到耦合很高的2个模块，怎样调整会是比较方便的做法
+a) 使用消息进行通讯
+b) 使用调用代理进行通讯
+c) 合并2个模块，修改共同的对外接口。
+d) 使用接口调整代码
+20． 如果一类对象初始化需要很长时间，但是经常被使用的是很少的属性，那么我们应该怎样改善代码结构。
+a) 使用Proxy模式
+b) 使用Flyweight模式
+c) 使用Decorate模式
+d) 使用Command模式
+
+

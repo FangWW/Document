@@ -1,0 +1,172 @@
+作者：blackwhites
+日期：2000-10-18 17:26:02
+我来说一下tomcat如何实现JSP的你就明白了。
+预备知识：
+　1.字节和unicode
+　　Java内核是unicode的，就连class文件也是，但是很多媒体，包括文件/流的保存方式
+　　是使用字节流的。 因此Java要对这些字节流经行转化。char是unicode的，而byte是字节.
+　　Java中byte/char互转的函数在sun.io的包中间有。其中ByteToCharConverter类是中调度，
+　　可以用来告诉你，你用的Convertor。其中两个很常用的静态函数是
+　　 public static ByteToCharConverter getDefault() ;
+　　 public static ByteToCharConverter getConverter(String encoding);
+　　如果你不指定converter，则系统会自动使用当前的Encoding,GB平台上用GBK,EN平台上用
+　　8859_1
+　　
+　　我们来就一个简单的例子：
+　　　　　"你"的gb码是：0xC4E3 ,unicode是0x4F60
+　　　　　你用:
+　　　　　--encoding="gb2312";
+　　　　　--byte b[]={(byte)'\u00c4',(byte)'\u00E3'};
+　　　　　--convertor=ByteToCharConverter.getConverter(encoding);
+　　　　　--char [] c=converter.convertAll(b);
+　　　　　--for(int i=0;i<c.length;c++)
+　　　　　--{
+　　　　　-- System.out.println(Integer.toHexString(c[i]));
+　　　　　--}
+　　　　　--打印出来是0x4F60
+　　　　　--但是如果使用8859_1的编码，打印出来是
+　　　　　--0x00C4,0x00E3
+　　　　　----例１
+　　　　 反过来：
+　　　　 --encoding="gb2312";
+　　　　 　　　char c[]={'\u4F60'};
+　　　　　　　 convertor=ByteToCharConverter.getConverter(encoding);
+　　　　　--byte [] b=converter.convertAll(c);
+　　　　　--for(int i=0;i<b.length;c++)
+　　　　　--{
+　　　　　-- System.out.println(Integer.toHexString(b[i]));
+　　　　　--}
+　　　　　　--打印出来是：0xC4,0xE3
+　　　　　　----例２
+　　　　　　--如果用8859_1就是0x3F，?号，表示无法转化　　　　　　--
+　　　　　 很多中文问题就是从这两个最简单的类派生出来的。而却有很多类　　
+　　不直接支持把Encoding输入，这给我们带来诸多不便。很多程序难得用encoding
+　　了，直接用default的encoding，这就给我们移植带来了很多困难
+　　--
+　　2.UTF-8
+　　--UTF-8是和Unicode一一对应的，其实现很简单
+　　--
+　　 -- 7位的Unicode: 0 _ _ _ _ _ _ _
+　　--11位的Unicode: 1 1 0 _ _ _ _ _ 1 0 _ _ _ _ _ _
+　　--16位的Unicode: 1 1 1 0 _ _ _ _ 1 0 _ _ _ _ _ _ 1 0 _ _ _ _ _ _
+　　--21位的Unicode: 1 1 1 1 0 _ _ _ 1 0 _ _ _ _ _ _ 1 0 _ _ _ _ _ _ 1 0 _ _ _ _ _ _
+　　--大多数情况是只使用到16位以下的Unicode:
+　　--"你"的gb码是：0xC4E3 ,unicode是0x4F60
+　　--我们还是用上面的例子
+　　--　　--例１：0xC4E3的二进制：
+　　--　　--　　　 1 1 0 0 0 1 0 0 1 1 1 0 0 0 1 1
+　　--　　--　　　 由于只有两位我们按照两位的编码来排，但是我们发现这行不通，
+　　--　　--　　　 因为第７位不是0因此，返回"?"
+　　--　　--　　　 
+　　--　　--例２：0x4F60的二进制：
+　　--　　--　　　 0 1 0 0 1 1 1 1 0 1 1 0 0 0 0 0 
+　　--　　--　　　 我们用UTF-8补齐，变成：
+　　--　　--　　　 11100100 10111101 10100000
+　　--　　--　　　 E4--BD-- A0
+　　--　　--　　　 于是返回0xE4,0xBD,0xA0
+　　--　　--
+　　3.String和byte[]
+　　--String其实核心是char[],然而要把byte转化成String，必须经过编码。
+　　--String.length()其实就是char数组的长度，如果使用不同的编码，很可
+　　--能会错分，造成散字和乱码。
+　　--例：
+　　----byte [] b={(byte)'\u00c4',(byte)'\u00e3'};
+　　----String str=new String(b,encoding);　　----
+　　----如果encoding=8859_1，会有两个字，但是encoding=gb2312只有一个字　　----
+　　--这个问题在处理分页是经常发生
+　　4.Reader,Writer/InputStream,OutputStream
+　　--Reader和Writer核心是char，InputStream和OutputStream核心是byte。
+　　--但是Reader和Writer的主要目的是要把Char读/写InputStream/OutputStream
+--一个reader的例子：
+--文件test.txt只有一个"你"字，0xC4,0xE3--
+--String encoding=;
+--InputStreamReader reader=new InputStreamReader(
+----new FileInputStream("text.txt"),encoding);
+--char []c=new char[10];
+--int length=reader.read(c);
+--for(int i=0;i<c.length;i++)
+----System.out.println(c[i]);
+　　--如果encoding是gb2312，则只有一个字符，如果encoding=8859_1，则有两个字符
+　　--------
+--
+--
+　　
+　　 ----
+　2.我们要对Java的编译器有所了解：
+　--javac -encoding
+　 我们常常没有用到ENCODING这个参数。其实Encoding这个参数对于跨平台的操作是很重要的。
+　 如果没有指定Encoding，则按照系统的默认Encoding,gb平台上是gb2312，英文平台上是ISO8859_1。　 
+　--Java的编译器实际上是调用sun.tools.javac.Main的类，对文件进行编译，这个类　--
+　有compile函数中间有一个encoding的变量,-encoding的参数其实直接传给encoding变量。
+　编译器就是根据这个变量来读取java文件的，然后把用UTF-8形式编译成class文件。
+　一个例子：
+　--public void test()
+　--{
+　----String str="你";
+　----FileWriter write=new FileWriter("test.txt");
+　----write.write(str);
+　----write.close();
+　--}
+　----例３
+--如果用gb2312编译，你会找到E4 BD A0的字段
+--
+--如果用8859_1编译，
+--00C4 00E3的二进制：
+--00000000 11000100 00000000 11100011--
+--因为每个字符都大于7位，因此用11位编码：
+--11000001 10000100 11000011 10100011 
+--C1-- 84--　C3--　 A3
+--你会找到C1 84 C3 A3 --
+　　　　
+　　但是我们往往忽略掉这个参数，因此这样往往会有跨平台的问题：
+　　--　　例３在中文平台上编译，生成ZhClass
+　　--　　例３在英文平台上编译，输出EnClass
+　　--1.　 ZhClass在中文平台上执行OK,但是在英文平台上不行
+　　--2.　 EnClass在英文平台上执行OK,但是在中文平台上不行
+　　原因：
+　--1.在中文平台上编译后，其实str在运行态的char[]是0x4F60,　----
+　--在中文平台上运行，FileWriter的缺省编码是gb2312,因此
+　--CharToByteConverter会自动用调用gb2312的converter,把str转化
+　--成byte输入到FileOutputStream中，于是0xC4,0xE3放进了文件。
+　--但是如果是在英文平台下，CharToByteConverter的缺省值是8859_1,
+　--FileWriter会自动调用8859_1去转化str,但是他无法解释，因此他会
+　--输出"?"　----
+　--2.　在英文平台上编译后，其实str在运行态的char[]是0x00C4 0x00E3,　----
+　--在中文平台上运行，中文无法识别，因此会出现??
+　--　　在英文平台上，0x00C4-->0xC4,0x00E3->0xE3，因此0xC4,0xE3被放进了
+　--文件
+----
+1.对于JSP正文的解释：
+--Tomcat首先看一下你的叶面中有没有"<%@page include的符号。有，则在相同
+--地方设定response.setContentType(..);按照encoding的来读，没有他按照8859_1
+--读取文件，然后用UTF-8写成.java文件，然后用sun.tools.Main去读取这个文件，
+--（当然它使用UTF-8去读），然后编译成class文件
+--setContentType改变的是out的属性，out变量缺省的encoding是8859_1
+
+2.对Parameter的解释
+--很不幸Parameter只有ISO8859_1的解释，这个质料可以在servlet的实现代码中找到。
+
+3.对include的解释
+格式的，但是很不幸，由于那个写"org.apache.jasper.compiler.Parser"的人
+在数组JspUtil.ValidAttribute[]忘记加了一个参数：encoding,因此导致不支
+持这种方式。你完全可以编译源代码，加上对encoding的支持
+
+总结：
+
+如果你在NT底下，最简单的方法就是欺骗java,不加任何Encoding变量：
+<html>
+你好<%=request.getParameter("value")%>
+</html>
+
+http://localhost/test/test.jsp?value=你
+
+结果:你好你
+
+但这种方法局限性较大，比如对上传的文章分段，这样的做法是死定的，最好的
+解决方案是用这种方案：
+<%@ page contentType="text/html;charset=gb2312" %>
+<html>
+你好<%=new String(request.getParameter("value").getBytes("8859_1"),"gb2312")%>
+</html>
+
+

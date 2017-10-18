@@ -1,0 +1,747 @@
+JAVA考试复习题一
+
+1） 以下Java代码编译运行后，下列选项中，（）会出现在输出结果中。
+
+
+
+（选择三项）ade
+
+
+
+public class text3{
+
+
+
+   public static void main(String args[]) {
+
+
+
+for(int i=0;i<3;i++) {
+
+
+
+   for(int j=3;j>=0;j--) {
+
+
+
+      if(i == j)
+
+
+
+         continue;
+
+
+
+      System.out.println(“i=”+i+“j=”+j);
+
+
+
+   }
+
+
+
+}
+
+
+
+   }
+
+
+
+}
+
+
+
+a)      i=0 j=3
+
+
+
+b)      i=0 j=0
+
+
+
+c)       i=2 j=2
+
+
+
+d)      i=0 j=2
+
+
+
+e)      i=0 j=1
+
+
+
+2） 在Java中，Applet类的（）方法返回一个URL对象，它表示包含此    b
+
+
+
+applet的HTML文件的目录。（选择一项）
+
+
+
+a)      getAbsolutePath()
+
+
+
+b)      getDocumentBase()
+
+
+
+c)       getCodeBase()
+
+
+
+d)      getURL()
+
+
+
+e)      getPath()
+
+
+
+3） 运行下列Java代码后，下面选项中，包含在输出结果中的是（）。（选择两项）de
+
+
+
+public class Example{
+
+
+
+public static void main(String args[]){
+
+
+
+  int i=0;
+
+
+
+  do{
+
+
+
+System.out.println(〞Doing it for i is 〞+i);
+
+
+
+  }while(--i>0);
+
+
+
+  System.out.println(〞Finished〞);
+
+
+
+  }
+
+
+
+}
+
+
+
+a)      Doing it for i is 3
+
+
+
+b)      Doing it for i is 1
+
+
+
+c)       Doing it for i is 2
+
+
+
+d)      Doing it for i is 0
+
+
+
+e)      Finished
+
+
+
+4） 在Java中，下列代码将输出（）。（选择一项）   c
+
+
+
+1． Public class integerequals
+
+
+
+2． {
+
+
+
+3．    Public static void main(String args[ ])
+
+
+
+4．    {
+
+
+
+5．       Integer a=new Integer(3);
+
+
+
+6．       Integer b=new Integer(3);
+
+
+
+7．       System.out.println(a==b);
+
+
+
+8．    }
+
+
+
+9． }
+
+
+
+a)      编译器将显示第7行有错误
+
+
+
+b)      程序编译并打印true
+
+
+
+c)       程序编译并打印false
+
+
+
+d)      程序编译但在第7行引起了一个运行期意外
+
+
+
+5） 在Java中，在单一文件中import、class 和package的正确出现顺序是（）。（选择一项）                      b
+
+
+
+a)      class, import, package
+
+
+
+b)      package, import, class
+
+
+
+c)       import, package, class
+
+
+
+d)      package, class, import
+
+
+
+6） 在Java中，要建立一个线程，可以从下面（）接口继承。（选择一项）  a
+
+
+
+a)      Runnable
+
+
+
+b)      Thread
+
+
+
+c)       Run
+
+
+
+d)      Executable
+
+
+
+e)      少数用于管理系统部件
+
+
+
+7） 在Java语言中，在程序运行时会自动检查数组的下标是否越界，如果越界，会抛掷下面的（）异常。（选择一项）c
+
+
+
+a)      NullpointerException
+
+
+
+b)      ArithmeticExceptioin
+
+
+
+c)       ArrayIndexOutOfBoundsException
+
+
+
+d)      SecurityManager
+
+
+
+
+
+
+8)在Java代码中，public static void main方法的参数描述正确的是（）。（选择两项）ab
+
+
+
+a)      String args[]
+
+
+
+b)      String[] args
+
+
+
+c)       Strings args[]
+
+
+
+d)      String args
+
+
+
+
+
+
+9)编译和运行下列Java语言代码后结果是（）。（选择一项）b
+
+
+
+public class Test{
+
+
+
+static int total=10;
+
+
+
+public static void main(String args[]){
+
+
+
+new Test();
+
+
+
+}
+
+
+
+public Test(){
+
+
+
+System.out.println(〝In test〞);
+
+
+
+Int temp=this.total;
+
+
+
+if (temp>5){
+
+
+
+System.out.println(temp);
+
+
+
+  }
+
+
+
+}
+
+
+
+}
+
+
+
+A)       编译器报第2行有错
+
+
+
+B)       编译器报第8行有错
+
+
+
+C)       在标准输出上打印的内容中有数字10
+
+
+
+D)       通过编译，但是产生运行时错误
+
+
+
+10)在Java中，关键字（）使类不能派生出子类。（选择一项）a
+
+
+
+A)       final
+
+
+
+B)       public
+
+
+
+C)       private
+
+
+
+D)       volatile
+
+
+
+E)        native
+
+
+
+
+
+11)编译，运行下列Java代码后的结果是（）。（选择一项）d
+
+
+
+public class Test{
+
+
+
+public static void main(String args []){
+
+
+
+int age;
+
+
+
+age=age+1;
+
+
+
+System.out.println(“The age is”+age);
+
+
+
+}
+
+
+
+}
+
+
+
+A)       编译，运行后没有输出
+
+
+
+B)       编译，运行后输出：The age is 1
+
+
+
+C)       能通过编译，但运行时产生错误
+D)       不能通过编译
+
+
+
+12)在Java语言中，下列表达式返回true的是（）。（选择两项）ab
+
+
+
+A)       “john”= =“john”
+
+
+
+B)       “john”.equals(“john”)
+
+
+
+C)       “john”=“john”
+
+
+
+D)       “john”.equals(new Button(“john”))
+
+
+
+13)在Java语言中，下列语句中正确的是（）。（选择一项）d
+
+
+
+A)       String temp[]=new String {“j” “a” “z”};
+
+
+
+B)       String temp[]= {“j” “b” “c”};
+
+
+
+C)       String temp= {“a” “b” “c”};
+
+
+
+D)       String temp[]= {“a”, “b” ,“c”};
+
+
+
+
+
+
+14)如果编译运行下面的Java代码，将会（）。（选择一项）c
+
+
+
+class Base{}
+
+
+
+class Sub extends Base{}
+
+
+
+
+
+
+public class Cex{
+
+
+
+public static void main(String argv[]){
+
+
+
+  Base b=new Base();
+
+
+
+  Sub s=(Sub) b;
+
+
+
+}
+
+
+
+}
+
+
+
+a)      能够正确地编译和运行
+
+
+
+b)      发生编译时异常
+
+
+
+c)发生运行时异常
+
+
+
+
+
+
+15)在Java语言中，类Worker是类Person的子类，Worker的构造方法中有一句“super()”，该语句（）。（选择一项）c
+
+
+
+a)      调用类Worker中定义的super()方法
+
+
+
+b)      调用类Person中定义的super()方法
+
+
+
+c)       调用类Person的构造方法
+
+
+
+d)      语法错误
+
+
+
+16)分析下列Java代码：
+
+
+
+class A{
+
+
+
+  public static void main(String[] args){
+
+
+
+method();
+
+
+
+  }
+
+
+
+  static void method(){
+
+
+
+try{
+
+
+
+  System.out.println(“Hello”);
+
+
+
+}
+
+
+
+finally{
+
+
+
+  System.out.println(“good-bye”);
+
+
+
+}
+
+
+
+  }
+
+
+
+}
+
+
+
+编译运行后，输出结果是（）。（选择一项）c
+
+
+
+A)       “Hello”
+
+
+
+B)       “good-bye”
+
+
+
+C)       “hello”       “good-bye”
+
+
+
+D)       代码不能编译
+
+
+
+17)在Java语言中，在类SquareRoot中定义了方法method A，其中包含语句：double my_result=Math.sqrt(1000)；需要导入（）。（选择一项）b
+
+
+
+A)       Java.lang.*
+
+
+
+B)       Java.Math.*
+
+
+
+C)       Java.util.Math.*;
+
+
+
+D)       以上皆非
+
+
+
+
+
+18)在Java语言中，一个Applet具如下init（）方法：
+
+
+
+public void init(){
+
+
+
+  setLayout(new BorderLayout());
+
+
+
+  add(BorderLayout.EAST,new Button(“Click ME!”));
+
+
+
+}
+
+
+
+当该Applet载入时，用户界面的外观将是（）。（选择一项）d
+
+
+
+A)       没有任何内容
+
+
+
+B)       居中位置有个按钮
+
+
+
+C)       左边有个按钮
+
+
+
+D)       右边有个按钮
+
+
+
+E)        一个按钮填充整个在用户界面上
+
+
+
+19)Java Applet的三种状态：1．init(),2．start(),3．paint(),在Applet载入时的顺序是（）。（选择一项）a
+
+
+
+A)       1，2，3
+
+
+
+B)       2，1，3
+
+
+
+C)       2，3，1
+
+
+
+D)       1，3，2
+
+
+
+20)在Java语言中，声明公用的abstract方法的正确格式是（）。（选择一项）a
+
+
+
+A)       public abstract void add();
+
+
+
+B)       public abstract void add(){}
+
+
+
+C)       public abstract add();
+
+
+
+D)       public virtual add();

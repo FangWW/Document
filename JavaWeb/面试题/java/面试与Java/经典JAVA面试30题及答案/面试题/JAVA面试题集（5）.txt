@@ -1,0 +1,353 @@
+JAVA面试题集（5） 
+作者：unknown 更新时间：2005-04-07    
+  
+Jdbc、Jdo方面 
+
+1、可能会让你写一段Jdbc连Oracle的程序,并实现数据查询. 
+
+答:程序如下： 
+
+package hello.ant; 
+
+import java.sql.*; 
+
+public class jdbc 
+
+{ 
+
+String dbUrl="jdbc:oracle:thin:@127.0.0.1:1521:orcl"; 
+
+String theUser="admin"; 
+
+String thePw="manager"; 
+
+Connection c=null; 
+
+Statement conn; 
+
+ResultSet rs=null; 
+
+public jdbc() 
+
+{ 
+
+try{ 
+
+Class.forName("oracle.jdbc.driver.OracleDriver").newInstance(); 
+
+c = DriverManager.getConnection(dbUrl,theUser,thePw); 
+
+conn=c.createStatement(); 
+
+}catch(Exception e){ 
+
+e.printStackTrace(); 
+
+} 
+
+} 
+
+public boolean executeUpdate(String sql) 
+
+{ 
+
+try 
+
+{ 
+
+conn.executeUpdate(sql); 
+
+return true; 
+
+} 
+
+catch (SQLException e) 
+
+{ 
+
+e.printStackTrace(); 
+
+return false; 
+
+} 
+
+} 
+
+public ResultSet executeQuery(String sql) 
+
+{ 
+
+rs=null; 
+
+try 
+
+{ 
+
+rs=conn.executeQuery(sql); 
+
+} 
+
+catch (SQLException e) 
+
+{ 
+
+e.printStackTrace(); 
+
+} 
+
+return rs; 
+
+} 
+
+public void close() 
+
+{ 
+
+try 
+
+{ 
+
+conn.close(); 
+
+c.close(); 
+
+} 
+
+catch (Exception e) 
+
+{ 
+
+e.printStackTrace(); 
+
+} 
+
+} 
+
+public static void main(String[] args) 
+
+{ 
+
+ResultSet rs; 
+
+jdbc conn = new jdbc(); 
+
+rs=conn.executeQuery("select * from test"); 
+
+try{ 
+
+while (rs.next()) 
+
+{ 
+
+System.out.println(rs.getString("id")); 
+
+System.out.println(rs.getString("name")); 
+
+} 
+
+}catch(Exception e) 
+
+{ 
+
+e.printStackTrace(); 
+
+} 
+
+} 
+
+} 
+
+2、Class.forName的作用?为什么要用? 
+
+答：调用该访问返回一个以字符串指定类名的类的对象。 
+
+3、Jdo是什么? 
+
+答:JDO是Java对象持久化的新的规范，为java data object的简称,也是一个用于存取某种数据仓库中的对象的标准化API。JDO提供了透明的对象存储，因此对开发人员来说，存储数据对象完全不需要额外的代码（如JDBC API的使用）。这些繁琐的例行工作已经转移到JDO产品提供商身上，使开发人员解脱出来，从而集中时间和精力在业务逻辑上。另外，JDO很灵活，因为它可以在任何数据底层上运行。JDBC只是面向关系数据库（RDBMS)JDO更通用，提供到任何数据底层的存储功能，比如关系数据库、文件、XML以及对象数据库（ODBMS）等等，使得应用可移植性更强。 
+
+4、在ORACLE大数据量下的分页解决方法。一般用截取ID方法，还有是三层嵌套方法。 
+
+答:一种分页方法 
+
+<% 
+
+int i=1; 
+
+int numPages=14; 
+
+String pages = request.getParameter("page") ; 
+
+int currentPage = 1; 
+
+currentPage=(pages==null)?(1):{Integer.parseInt(pages)} 
+
+sql = "select count(*) from tables"; 
+
+ResultSet rs = DBLink.executeQuery(sql) ; 
+
+while(rs.next()) i = rs.getInt(1) ; 
+
+int intPageCount=1; 
+
+intPageCount=(i%numPages==0)?(i/numPages):(i/numPages+1); 
+
+int nextPage ; 
+
+int upPage; 
+
+nextPage = currentPage+1; 
+
+if (nextPage>=intPageCount) nextPage=intPageCount; 
+
+upPage = currentPage-1; 
+
+if (upPage<=1) upPage=1; 
+
+rs.close(); 
+
+sql="select * from tables"; 
+
+rs=DBLink.executeQuery(sql); 
+
+i=0; 
+
+while((i<numPages*(currentPage-1))&&rs.next()){i++;} 
+
+%> 
+
+//输出内容 
+
+//输出翻页连接 
+
+合计:<%=currentPage%>/<%=intPageCount%><a href="List.jsp?page=1">第一页</a><a 
+
+
+
+href="List.jsp?page=<%=upPage%>">上一页</a> 
+
+<% 
+
+for(int j=1;j<=intPageCount;j++){ 
+
+if(currentPage!=j){ 
+
+%> 
+
+<a href="list.jsp?page=<%=j%>">[<%=j%>]</a> 
+
+<% 
+
+}else{ 
+
+out.println(j); 
+
+} 
+
+} 
+
+%> 
+
+<a href="List.jsp?page=<%=nextPage%>">下一页</a><a href="List.jsp?page=<%=intPageCount%>">最后页 
+
+
+
+</a> 
+
+Xml方面 
+
+1、xml有哪些解析技术?区别是什么? 
+
+答:有DOM,SAX,STAX等 
+
+DOM:处理大型文件时其性能下降的非常厉害。这个问题是由DOM的树结构所造成的，这种结构占用的内存较多，而且DOM必须在解析文件之前把整个文档装入内存,适合对XML的随机访问SAX:不现于DOM,SAX是事件驱动型的XML解析方式。它顺序读取XML文件，不需要一次全部装载整个文件。当遇到像文件开头，文档结束，或者标签开头与标签结束时，它会触发一个事件，用户通过在其回调事件中写入处理代码来处理XML文件，适合对XML的顺序访问 
+
+STAX:Streaming API for XML (StAX) 
+
+2、你在项目中用到了xml技术的哪些方面?如何实现的? 
+
+答:用到了数据存贮，信息配置两方面。在做数据交换平台时，将不能数据源的数据组装成XML文件，然后将XML文件压缩打包加密后通过网络传送给接收者，接收解密与解压缩后再同XML文件中还原相关信息进行处理。在做软件配置时，利用XML可以很方便的进行，软件的各种配置参数都存贮在XML文件中。 
+
+3、用jdom解析xml文件时如何解决中文问题?如何解析? 
+
+答:看如下代码,用编码方式加以解决 
+
+package test; 
+
+import java.io.*; 
+
+public class DOMTest 
+
+{ 
+
+private String inFile = "c:\people.xml"; 
+
+private String outFile = "c:\people.xml"; 
+
+public static void main(String args[]) 
+
+{ 
+
+new DOMTest(); 
+
+} 
+
+public DOMTest() 
+
+{ 
+
+try 
+
+{ 
+
+javax.xml.parsers.DocumentBuilder builder = 
+
+javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder(); 
+
+org.w3c.dom.Document doc = builder.newDocument(); 
+
+org.w3c.dom.Element root = doc.createElement("老师"); 
+
+org.w3c.dom.Element wang = doc.createElement("王"); 
+
+org.w3c.dom.Element liu = doc.createElement("刘"); 
+
+wang.appendChild(doc.createTextNode("我是王老师")); 
+
+root.appendChild(wang); 
+
+doc.appendChild(root); 
+
+javax.xml.transform.Transformer transformer = 
+
+javax.xml.transform.TransformerFactory.newInstance().newTransformer(); 
+
+transformer.setOutputProperty(javax.xml.transform.OutputKeys.ENCODING, "gb2312"); 
+
+transformer.setOutputProperty(javax.xml.transform.OutputKeys.INDENT, "yes"); 
+
+
+
+
+
+transformer.transform(new javax.xml.transform.dom.DOMSource(doc), 
+
+new 
+
+
+
+javax.xml.transform.stream.StreamResult(outFile)); 
+
+} 
+
+catch (Exception e) 
+
+{ 
+
+System.out.println (e.getMessage()); 
+
+} 
+
+} 
+
+} 
+ 

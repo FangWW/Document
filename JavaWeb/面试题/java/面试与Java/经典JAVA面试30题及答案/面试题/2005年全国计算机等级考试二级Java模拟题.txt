@@ -1,0 +1,276 @@
+2005年全国计算机等级考试二级Java模拟题 
+
+  
+          公共基础知识
+
+一、选择题
+
+（１）下列关于栈的叙述正确的是
+A)栈是非线性结构　　B)栈是一种树状结构　　
+C)栈具有先进先出的特征　　D)栈具有后进先出的特征 
+
+（２）结构化程序设计所规定的三种基本控制结构是
+A)输入、处理、输出　　B)树形、网形、环形　　
+C)顺序、选择、循环　　D)主程序、子程序、函数
+
+（３）结构化程序设计的一种基本方法是
+A)筛选法　　B)递归法　　C)归纳法　　D)逐步求精法
+
+  （４）如果对一个关系实施了一种关系运算后得到了一个新的关系，而且新的关系中属性个数少于原来关系中属性个数，这说明所实施的运算关系是：A)选择　　B)投影　　C)连接　　D)并
+
+二、填空题
+
+    １.对于输入为N个数进行快速排序算法的平均时间复杂度是（　　　）
+
+２.在面向对象方法学中，直接反映了用户对目标系统的要求的模型是（　　）
+
+３.软件测试方法中，黑盒测试个白盒测试法是常用的方法，其中黑盒测试法主要是用于测试（　　）
+
+４.关系型数据库管理系统中存储与管理数据的基本形式是（　　）
+
+                                                Java语言程序设计
+
+一、选择题
+
+（１）Java语言具有许多优点和特点，下列选项中，哪个反映了Java程序并行机制的特点？
+A)安全性　　B)多线性　　C)跨平台　　D)可移植
+
+（２）下列哪个类声明是正确的？
+A)abstract final class HI{···｝ B)abstract private move(){···} 
+C)protected private number; D)public abstract class Car{···}
+
+（３）下列关于for循环和while循环的说法中哪个是正确的？
+A)while循环能实现的操作，for循环也都能实现　　
+B)while循环判断条件一般是程序结果，for循环判断条件一般是非程序结果　　
+C)两种循环任何时候都可替换　　
+D)两种循环结构中都必须有循环体，循环体不能为空
+
+（４）异常包含下列那些内容？
+A)程序中的语法错误　　B)程序的编译错误　　
+C)程序执行过程中遇到的事先没有预料到的情况　　D)程序事先定义好的可能出现的意外情况
+
+（５）Character流与Byte流的区别是
+A)每次读入的字节数不同　　B)前者带有缓冲，后者没有　　
+C)前者是块读写，后者是字节读写　　D)二者没有区别，可以互换使用
+
+（６）监听事件和处理事件
+A)都由Listener完成　　B)都由相应事件Listener处登记过的构件完成　　
+C)由Listener和构件分别完成　　D)由Listener和窗口分别完成
+
+（７）Applet可以做下列那些操作？
+A)读取客户端文件　　B)在客户端主机上创建新文件　　
+C)在客户端装载程序库　　D)读取客户端部分系统变量
+
+（８）下列哪个属于容器的构件？
+A)JFrame B)JButton C)JPnel D)JApplet
+
+(9)如果希望所有的控件在界面上均匀排列，应使用下列那种布局管理器？
+A)BoxLayout B)GridLayout C)BorderLayout D)FlowLouLayout
+
+(10)为实现多线程之间的通信，需要使用下列那种流才合适？
+A)Filter stream B)File stream C)Random access stream D)Pipde stream
+
+二、填空题
+
+（１）对象串行化可以很容易地扩展成支持Java对象的 [１]，它提供了对象从流中重建的补充方式.
+
+（２）Vector类的对象是通过capacity和capacityIncrement两个值来改变集合的容量，其中capacity表示集合最多能容纳的[2] ，capacityIncrement表示每次增加多少容量，不是一个一个增加.
+
+（3）下列程序的功能是判断某一年是否为闰年.请在横线处填入适当内容，使程序能够正确运行.
+import java.io.*;
+　　public class LeapYear{
+　　　　public static void main(String arge[])throws IOException{
+　　　　　　InputStreamReader ir;
+　　　　　　BufferdeReadwe in;
+　　　　　　ir=new InputStreamReader(System.in);
+　　　　　　in=new BufferedReader(ir);
+　　　　　　System.out.println(“输入年份是：”）；
+　　　　　　String s= [3] ;
+　　　　　　int year=Integer.parseInt(s);
+　　　　　　if year % 4 = = 0 && year % 100! = 0 // year % 400 = = 
+0)
+　　　　　　{
+　　　　　　　　　System.out.println(""+year+"年是闰年.");
+　　　　　　}
+　　　　　　else
+　　　　　　{
+　　　　　　　　　System.out.println(""+year+"年不是闰年..");
+　　　　　　}
+　　　}
+}
+
+（4）下面程序对数组中每个元素赋值，然后按逆序输出.请在横线处填入适当内容，使程序能正常运行.
+import java.io.*;
+public class ArrayTest{
+　　public static void main(String args[]){
+　　int i;
+　　int a[] = new int[5];
+　　for(i=0;i<5;i++)
+　　　　a[i]=i;
+　　for( [4] ;i>=0;i- -)
+　　　　System.out.println("a["+i+"]="a[i]);
+　　}
+}
+
+（5） 下列程序的功能是：输入一个姓名，程序运行后，输出“姓名Welcome you!”.例如，输入“张三Welcome 
+you !”.请在下面横线处填入正确的方法名，使程序可以正确运行.
+import java,awt,*;
+import java.awt.event.*;
+public class welcomenYou{
+　　public static void main(String args[])
+　　{
+　　　　new FrameInOut();
+　　}
+}
+class FrameInOut extends Frame implements ActionListener
+{
+　　Label prompt;
+　　TextField input,output;
+　　Button btnn;
+void FramInOut()
+{
+　　prompt=new Label("Please input your name");
+　　input=new TextField(10);
+　　output=new TextField(25);
+　　btnn=new Button("Class");
+　　[5] (new FlowLayout());
+　　add(prompt);
+　　add(input);
+　　add(output);
+　　add(btnn);
+　　input.addActionListener(this);
+　　btnn.addActionListener(this);
+　　setSize(300.200);
+　　show();
+}
+
+public void actionperformed(ActionEvent e)
+{
+　　if(e.getSource() = = input)
+　　　　output.setText(input.getText()+"Welcome you!");
+　　else
+　　{
+　　　　dispose();
+　　　　system.exit(0);
+　　}
+}
+}
+
+三、上机操作题
+
+１.下列程序中，指定变量b=50为字节类型，变量f=0.55F为单精度实型，变量1=0xfffL为６４位整型，并将该三个变量打印输出.请将程序补充完整.
+import java.io.*;
+public class Assign}
+　　public static void main(String args[]){
+　　　　_______b=50;
+　　　　_______f=0.55F;
+　　　　_______l=0xfffL;
+　　　　System.out.println("b="+b);
+　　　　System.out.println("f="+f);
+　　　　System.out.println("l="+l);
+　　}
+}
+
+2 请完成下列Java程序：用位于JFrame窗口下方的Open按钮，打开一个文件对话框，检索.gif或者.png图形文件，并在窗口中央将图象显示出来.（提示：将图象文件嵌入图象标内，再将图像图标置于标签中）
+　注意：请勿改动main主方法和其他已有语句内容，仅在下划线处填入适当的语句.
+import java.awt.*;
+import jova.awt.event.*;
+import java.io.*;
+import javax.swing.*;
+public class ImageViewer
+{　 public stratic void main(String[]args)
+　　{ 　JFrame frame=new ImageViewer Frame();
+　　　　frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+　　　　frame.show();
+　　}
+}
+
+class ImgeViewerFrame extends JFrame
+{ 　public ImageViewerFrame()
+　　{ 　setTitle("ImageViewer");
+　　　　setSize(DEFAULT_WIDTH,DEFAULT_HEIGTH);
+　　　　label = new JLAbel();
+　　　　Container contentpane = getContentpane();
+　　　　contentpane.add(label.BorderLayout.CENTER);
+　　　　chooser = new JFileChooser();
+　　　　chooser.setCurrentDirectory(new File("."));
+　　　　Button button = new Button("open");
+　　　　contentpane.add(button,BorderLayout.SOUTH);
+　　　　button.addActionListener(new
+　　　　　　ActionListener()
+　　　　　　{ 　public void actionperformed(ActionEvent evt)
+　　　　　　　　{ 　int r = chooser.showOpenDialog(null));
+　　　　　　　　　　if(r = = JFilechooser.APPROVE_OPTLON)
+　　　　　　　　　　{ 　String name
+　　　　　　　　　　　　=________________
+　　　　　　　　　　　　_______________
+　　　　　　　　　　}
+　　　　　　　　}
+　　　　　　});
+　　}
+　　private JLabel label;
+　　private JFileChooser chooser;
+　　private static final int DEFAULT_WIDTH = 300;
+　　private static final int DEFAULT_HEIGHT = 400;
+}
+
+3.下面是一个Applet程序，其功能是接收用户输入的两个整数，比较它们的大小，并在用户按下“比较”按钮后，将Applet中显示的“请先输入两个待比较的整数”，改为“两个整数中最大值是：x”，x是两个数中的最大值.请改正程序中的错误（有下划线的语句），使程序能输出正确的结果.
+注意：不改动程序的结构，不得增行或删行.
+import java.applet.*;
+import java.awt.*;
+import java.awr.event.*;
+
+public class FindMax extends Applet implements ActionListener{
+　　Label result;
+　　TextField in1,in2;
+　　Button btn;
+　　int a=0,b=0,max;
+
+　　public void init(){
+　　　　result = new Label"请先输入两个待比较的整数");
+　　　　in1=new TextField(5);
+　　　　in2=new TextField(5);
+　　　　btn=new Button("比较")；
+　　　　add(in1);
+　　　　add(in2);
+　　　　add(btn);
+　　　　add(result);
+　　　　btn.addActionListener(this);
+　　}
+　　public void actionperformed(ActionEvent e){
+　　　　a=in1;
+　　　　n=in2;
+　　　　if(a>b)
+　　　　　　max=a;
+　　　　else
+　　　　　　max=b;
+　　　　　　btn.setText("两个数中最大值是:"+max);
+　　}
+}
+
+findmax.html:
+
+                                                      参考答案
+
+公共基础知识
+
+一：选择题：
+(1) D 　　(2) C　　 (3) D 　　(4) B
+二：填空题：
+(1)[1]：O(Nlog2N)
+(2)[2]：功能模型
+(3)[3]：软件外部功能
+(4)[4]：二维表
+
+Java程序设计
+
+一：选择题：
+1-5 ：B D D C C
+6-10：B A A B D
+二：填空题：
+(1)[1]：持续存储或持久存储
+(2)[2]：元素个数
+(3)[3]：in.readLine()
+(4)[4]：i=a.Length-1
+(5)[5]：setLayout 
+ 

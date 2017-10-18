@@ -1,0 +1,262 @@
+java程序设计模拟题三
+ 
+
+--------------------------------------------------------------------------------
+ 
+2003-12-8 11:49:00      阅读574次 
+   
+《Java语言程序设计》期末模拟卷三
+2003-12
+一、 判断题（每题1分，共15分）
+1． 因为Java不支持多重继承，所以定义类时implements关键字后面只能说明一个接口名。                                                （   ）
+2． Java的字符类型采用的是Unicode编码，但所占字节由具体软硬件环境决定。 （   ）
+3． 对象可以赋值，只要使用赋值号（等号）即可，相当于生成了一个各属性与赋值对象相同的新对象。                       （   ）
+4． 抽象方法必须在抽象类中，所以抽象类中的方法都必须是抽象方法。   （   ）
+5． 由继承性可知，子类拥有的成员数目大于等于父类拥有的成员数目。   （   ）
+6． final类中的属性和方法都必须被final修饰符修饰。          （   ）
+7． 如果p是父类Parent的对象，而c是子类Child的对象，则语句p=c是正确的。  （   ）
+8． 当一个方法在运行过程中产生一个异常，则这个方法会终止，但是整个程序不一定终止运行。                （   ）
+9． 设String对象s=”H”，运行语句System.out.println(s.concat(“ello!”));后String对象s的内容为”Hello!”，所以语句输出为”Hello!”         （   ）
+10． 所有的键盘事件都由KeyListener监听接口的监听者来处理。    （   ）
+11． System类不能实例化，即不能创建System类的对象。      （   ）
+12． Java中数组的元素只能是简单数据类型的量。        （   ）
+13． 容器是用来组织其他界面成分和元素的单元，它不能嵌套其他容器。   （   ）
+14． 用户自定义的图形界面元素也可以响应用户的动作，具有交互功能。         （   ）
+15． 一个线程对象的具体操作是由run()方法的内容确定的，但是Thread类的run()方法是空的,其中没有内容;所以用户程序要么派生一个Thread的子类并在子类里重新定义run()方法,要么使一个类实现Runnable接口并书写其中run()方法的方法体。  （   ）
+
+二、选择题（每题2分，共20分）
+1．以下标识符中哪项是不合法的(         )
+A、 BigOlLongStringWithMeaninglessName   B、$int
+C、const           D、firstP
+2．以下声明合法的是（           ）
+A、default  String  s；   B、public  final  static  native  int  w( )
+C、abstract  double  d；   D、abstract  final  double  hyperbolicCosine( )
+3．容器Panel和Applet缺省使用的布局编辑策略是（         ）
+A、BorderLayout  B、FlowLayout C、GridLayout D、CardLayout
+4．为AB类的一个无形式参数无返回值的方法method书写方法头，使得使用类名AB作为前缀就可以调用它，该方法头的形式为(      )。
+A.  static  void  method( )                    B. public  void  method( )    
+C. final  void  method( )                      D. abstract  void  method( )
+5．执行完以下代码int [ ]  x = new int[25]；后，以下哪项说明是正确的（         ）
+A、x[24]为0  B、x[24]未定义  C、x[25]为0  D、x[0]为空
+
+6．下列哪个程序段能通过编译？（             ） 
+A、 int i=0; 
+if (i) {   System.out.println(“Hi”); } 
+B、 boolean b=true; 
+int  b2=1; 
+if(b= =b2) { System.out.println(“So true”); } 
+C、 int i=1; 
+int j=2; 
+if(i= =1|| j= =2) 
+System.out.println(“OK”); 
+D、int i=1; 
+int j=2; 
+if (i= =1 &|  j= =2) 
+System.out.println(“OK”);
+7．类Test1定义如下：
+1．public  class  Test1{
+2．  public  float  aMethod（float  a，float  b）{   }
+3．  
+4．} 
+将以下哪种方法插入行3是不合法的。（           ）
+A、 public  float  aMethod（float  a， float  b，float  c）{  }
+B、 public  float  aMethod（float  c，float d）{  }
+C、 public  int  aMethod（int  a， int b）{  }
+D、 private float aMethod（int a，int b，int c）{  }
+8．创建字符串s：s=new  String（“xyzy”）；以下哪条语句将改变s（            ）
+A、s.append(“aaa”);  B、s.concat(s); C、s.substring(3)  D、以上语句都不会
+9．编译运行以下程序后，关于输出结果的说明正确的是 （        ）
+ public  class   Conditional{
+  public  static  void  main(String  args[  ]){
+   int  x=4;
+   System.out.println(“value  is  “+ ((x>4) ? 99.9 :9));
+}
+}
+A、输出结果为：value  is  99.99  B、输出结果为：value  is  9
+C、输出结果为：value  is  9.0   D、编译错误
+10．关于以下application的说明，正确的是（        ）
+1． class   StaticStuff
+2． { 
+3． static  int  x=10；
+4． static  { x+=5；}
+5． public  static  void  main（String  args[ ]）
+6． {
+7．      System.out.println(“x=” + x);
+8． }
+9． static  { x/=5;}
+10. }
+A、 4行与9行不能通过编译，因为缺少方法名和返回类型 
+B、 9行不能通过编译，因为只能有一个静态初始化器
+C、 编译通过，执行结果为：x=15
+D、 编译通过，执行结果为：x=3
+三、改错题（每题3分，共15分）
+1、判断下面的程序片断是否正确。若有错，说明错在哪里并改正；若正确，打“√”。
+ ①(3分)
+ public class M
+   {
+  int  d；
+  void  M（int  i）
+  { d=i；}
+ }
+
+ 
+
+ 
+
+ ②(3分)
+ final  MIN=8;
+ MIN+=10；
+
+ 
+
+ 
+
+ ③(3分)
+ public class MyMain
+ {
+  public static  void  main（String  args[ ]）
+  {  System.out.println(MyClass1.data);}
+ }
+ class  MyClass1
+ {
+  int  data=10;
+ }
+
+ 
+
+ 
+
+ ④(3分)
+class  A
+ {
+  final  int  f=10;
+  double  d;
+  abstract  void  method();
+ }
+
+ 
+
+ 
+
+ ⑤ (3分)
+ interface  MyInterface
+ {
+  void  method1();
+ }
+ abstract  class  Parent  implements  MyInterface
+ {
+}
+class  Child  extends  Parent 
+{
+  void  method1()
+  {
+   System.out.println(“I  am  implemented  now!”);
+  }
+ }
+
+ 
+
+  
+
+ 
+
+四、程序阅读（每题5分，共20分）
+1．阅读以下程序，输出结果为                   。
+class   Q{
+  public  static  void  main（String   args[  ]）{
+   int   i=40;
+   P    p=new  P(  );
+   p.inc(i);
+   System.out.println(i);
+ }
+ classs   Decrementer{
+  public void  inc(int  addint){
+    addint = addint + 10;
+}
+ }
+
+2．阅读以下程序，输出结果为                   。
+ class  HasStatic{
+    private  static  int  x=100；
+    public  static  void  main(String  args[  ]){
+        HasStatic  hs1=new  HasStatic(  );
+        hs1.x++;
+        HasStatic  hs2=new  HasStatic(  );
+        hs2.x- -;
+   System.out.print (“1: x=”+x);
+        hs1=new  HasStatic( );
+        hs1.x++;
+HasStatic.x++;
+   System.out.println(“  2: x=”+x);
+}
+}
+
+3．以下程序段的输出结果为                      。
+  class  Cruncher{
+     void  crunch( int  i ){
+        System.out.print(“int”);
+      }
+      void  crunch(String  s){
+          System.out.print(“String”);
+       }
+
+       public  static  void main(String  args[ ]){
+           Cruncher crun=new  Cruncher ( );
+char    ch=’p’;
+int    c=12;
+crun.crunch(ch);
+System.out.print(“;”);
+crun.crunch(c);       }
+}
+4．阅读以下程序，输出结果为                   。
+class   Q{
+  public  static  void  main（String   args[  ]）{
+   String  s1=”ac”;
+String  s2=”ac”;
+if(s1= =s2)
+  System.out.println(“true”);
+else 
+System.out.println(“false”);}
+ }
+
+五、综合题（共30分）
+1． 按要求书写语句。（每题3分，共15分）
+①创建线程对象t，它的run()方法来自一个实现了Runnable接口的类RC。
+
+                                           
+
+②为HTML文件书写一个语句，嵌入一个名为FirstApplet.class的Applet字节码文件，其宽度为500，高度为250。
+
+                                           
+
+③ 若输入数据input是合法的秒数（在0到60之间），则赋给变量second，否则将-1赋给second。
+
+                                           
+
+④Applet要响应鼠标的点击，应该在init()方法中加入什么语句(设鼠标事件监听者就是Applet自身)。
+
+                                           
+
+⑤ 声明并创建3行4列的二维char数组。
+
+                                           
+
+2．（15分）编写applet或application，接受用户输入的10个学生信息（包括姓名、性别、英语成绩），输出10个学生的平均分、最高分学生的信息（包括姓名、性别、英语成绩）、所有女生的平均分。
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+<注： 此套题为往年期末试题〉
+
+ 
+ 

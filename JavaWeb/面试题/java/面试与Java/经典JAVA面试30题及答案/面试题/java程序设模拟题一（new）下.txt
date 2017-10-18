@@ -1,0 +1,416 @@
+java程序设模拟题一（new）下
+ 
+
+--------------------------------------------------------------------------------
+ 
+2003-12-8 11:22:00      阅读586次 
+   
+一、             改错题
+
+判断下面的程序片断是否正确。若有错，指出错在哪里并改正；若正确，打“√”。
+
+1、    (max为整型变量)
+
+if (max<>1)
+
+g.drawString(“不等于1”, 20,20);
+
+2、    void  test(int  x)
+
+{  
+
+              System.out.println(x);
+
+              return x;
+
+}
+
+4、abstract  final  class  OurClasses {      }
+
+5、final  MAX_NUMBER;
+
+       MAX_NUMBER++；
+
+6、class  MyClass
+
+   {              int  var=100；
+
+              static int  getVar()
+
+              {
+
+                     return  var;
+
+              }
+
+       }
+
+7、public class MyMain
+
+       {
+
+              public static  void  main（String  args[ ]）
+
+              {  System.out.println(MyClass1.data);}
+
+       }
+
+       class  MyClass1
+
+       {
+
+              int  data=10;
+
+       }
+
+8、class  IamAbstract
+
+       {
+
+              final  int  f;
+
+              double  d;
+
+              abstract  void  method();
+
+       }
+
+9、class  parent
+
+       {
+
+              private  int  mine;
+
+       }
+
+       class  child extends parent
+
+       {
+
+              int  getMine()
+
+              {       return  mine;      }
+
+       }
+
+10、class  Parent
+
+       {     int  field; }
+
+       class  Child  extends  Parent
+
+       {  int  field; }
+
+       class  UseChild
+
+       {  static  int  getField(Child  c)
+
+              {  return (c.field); }
+
+       }
+
+       public class MainClass 
+
+       {
+
+              public static void main(String args[ ])
+
+              {    Parent  p=new  Parent();
+
+                       System.out.println(UseChild.getField(p));
+
+              }
+
+       }
+
+11、interface  MyInterface
+
+       {
+
+              void method1();
+
+       }
+
+       abstract  class  Parent  implements  MyInterface
+
+       {    }
+
+       class Child  extends  Parent
+
+       {    }
+
+12、public static  void  main(String  args[ ])
+
+      {
+
+              try{
+
+                     char  ch=(char)System.in.read();
+
+                            . . .//其他语句
+
+                     }
+
+              catch(Exception e)
+
+              {
+
+                     return;
+
+              }
+
+              catch(IOException  e)
+
+              {
+
+                     System.out.println(e.toString());
+
+              }
+
+       }
+
+四、程序阅读 
+
+1、阅读以下程序，输出结果为                   。
+
+class         Q1{
+
+              public  static      void  main（String   args[  ]）{
+
+                     double  d=1.23;
+
+                     Dec  dec=new  Dec(  );
+
+                     dec.decrement(d);
+
+                     System.out.println(d);
+
+       }
+
+       classs   Dec{
+
+              public void  decrement(double   decMe){
+
+                            decMe = decMe － 0.1;
+
+}
+
+       }
+
+2、以下程序段的输出结果为                      。
+
+       int   x=0,y=4, z=5;
+
+      if ( x>2){
+
+       if (y<5){
+
+              System.out.println(“Message  one”);
+
+              }
+
+       else {
+
+              System.out.println(“Message  two”);
+
+              }
+
+       }
+
+       else if(z>5){
+
+              System.out.println(“Message  three”);
+
+              }
+
+       else {
+
+              System.out.println(“Message  four”);
+
+       }
+
+3、以下程序段的输出结果为                                       。
+
+              int   j=2;
+
+              switch  ( j ) {
+
+                      case  2:
+
+                            System.out.print(“Value is two.”);
+
+                     case  2+1 :
+
+                            System.out.println(“Value is three.”);
+
+                            break; 
+
+                     default:
+
+                            System.out.println(“value is “+j);
+
+                            break;
+
+              }
+
+4、阅读以下程序段:
+
+class  Parent
+
+{
+
+              void  printMe()
+
+              {
+
+                     System.out.println(“parent”);
+
+              }
+
+}
+
+class  Child  extends Parent
+
+{
+
+              void  printMe()
+
+              {
+
+                     System.out.println(“child”);
+
+              }
+
+              void  printAll()
+
+              {
+
+                     super.printMe();
+
+              this.printMe();
+
+              printMe();
+
+       }
+
+}
+
+public class Test_this
+
+{
+
+       public static void main(String  args[ ])
+
+       {
+
+       Child  myC=new  Child();
+
+              myC.printAll();}
+
+}
+
+输出结果为:
+
+5、以下程序段的输出结果为                                       。
+
+import    java.io.* ;
+
+    public   class  X
+
+    {
+
+          public   static   void    main(String  args[ ])
+
+          {    int   i , s = 0, c=0;
+
+               int  a[ ] = { 1 , 2 , 3 , 4 , 5,  6,  7,  8,  9 };
+
+               for  ( i = 0 ; i < a.length ; i ++ )
+
+                     if ( a[i]%2 = = 1 )  {s += a[i] ; c++;}
+
+               System.out.println("s="+s+”,c=”+c);
+
+           }
+
+     }
+
+五、             综合填空
+
+（1）语句填空
+
+1、书写一个语句完成以下要求：先将整型变量a的值加1,再把它加入到变量sum中。
+
+                                        。
+
+3、书写一个语句完成以下要求：若输入数据input是合法的秒数（在0到60之间），则赋给变量second，否则将-1赋给second。                                            
+
+4、声明并创建一个含有10个数据的整型数组，且每个数组元素的初值等于其数组下标。
+
+5、定义一个无形参无返回值的方法method，使得使用类名作前缀就可以引用它。
+
+6、为HTML文件书写一个语句，嵌入一个名为MyApplet.class的Applet字节码文件，其宽度为300，高度为200。
+
+（2）编程题
+
+1．  一个字符界面的Java  Application 程序，接受用户从键盘输入的一个正整数，然后统计并输出从1到这个正整数的累加和。
+
+ 
+
+2．编写一个完整的Java  Applet 程序使用复数类Complex验证两个复数 1+2i 和3+4i 相加产生一个新的复数 4+6i 。
+
+     复数类Complex必须满足如下要求：
+
+(1)   复数类Complex 的属性有：
+
+RealPart :    int型，代表复数的实数部分
+
+ImaginPart :  int型，代表复数的虚数部分
+
+(2)   复数类Complex 的方法有：
+
+Complex( ) : 构造函数，将复数的实部和虚部都置0
+
+Complex( int  r , int  i ) : 构造函数，形参 r 为实部的初值，i为虚部的初值。
+
+Complex  complexAdd(Complex  a) : 将当前复数对象与形参复数对象相加，所得的结果仍是一个复数值，返回给此方法的调用者。
+
+String  ToString( ) : 把当前复数对象的实部、虚部组合成 a+bi 的字符串形式，其中a 和 b分别为实部和虚部的数据。
+
+ 
+
+3．编写一个学生类 Student ，要求：
+
+(1) 学生类 Student 属性有：
+
+id    :  long型，代表学号
+
+name  :  String类对象，代表姓名
+
+age   :  int型，代表年龄
+
+sex   :  boolen型，代表性别（其中：true表示男，false表示女）
+
+phone :  String类对象，代表联系电话
+
+(2) 学生类 Student的方法有：
+
+Student(long  i , String  n , int  a , boolean  s , String  p) 
+
+: 有参构造函数，形参表中的参数分别初始化学号、姓名、
+
+年龄、性别和联系电话。
+
+int  getAge() ( ) : 获取年龄作为方法的返回值。
+
+boolean  getSex( ) ( ) : 获取性别作为方法的返回值。
+
+String  getPhone ( ) : 获取联系电话作为方法的返回值。
+
+public  String  toString( ) : 以 姓名：性别：学号：联系电话 的形式作为方法的返回值
+
+ 
+
+ 
+ 
+ 

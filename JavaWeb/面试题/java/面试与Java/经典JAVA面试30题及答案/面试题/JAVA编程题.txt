@@ -1,0 +1,320 @@
+JAVA编程题
+1．现在输入n个数字，以逗号，分开；然后可选择升或者降序排序；按提交键就在另一页面显示按什么排序，结果为，提供reset
+import java.util.*;
+public class bycomma{ 
+public static String[] splitStringByComma(String source){ 
+if(source==null||source.trim().equals(""))
+return null;
+StringTokenizer commaToker = new StringTokenizer(source,",");
+String[] result = new String[commaToker.countTokens()];
+int i=0;
+while(commaToker.hasMoreTokens()){ 
+result[i] = commaToker.nextToken();
+i++;
+}
+return result;
+}
+public static void main(String args[]){ 
+String[] s = splitStringByComma("5,8,7,4,3,9,1");
+int[] ii = new int[s.length];
+for(int i = 0;i ii[i] =Integer.parseInt(s[i]);
+}
+Arrays.sort(ii);
+//asc
+for(int i=0;i System.out.println(ii[i]);
+}
+//desc
+for(int i=(s.length-1);i>=0;i--){ 
+System.out.println(ii[i]);
+}
+}
+}
+2．金额转换，阿拉伯数字的金额转换成中国传统的形式如：（￥1011）－>（一千零一拾一元整）输出。
+package test.format;
+import java.text.NumberFormat;
+import java.util.HashMap;
+public class SimpleMoneyFormat { 
+public static final String EMPTY = "";
+public static final String ZERO = "零";
+public static final String ONE = "壹";
+public static final String TWO = "贰";
+public static final String THREE = "叁";
+public static final String FOUR = "肆";
+public static final String FIVE = "伍";
+public static final String SIX = "陆";
+public static final String SEVEN = "柒";
+public static final String EIGHT = "捌";
+public static final String NINE = "玖";
+public static final String TEN = "拾";
+public static final String HUNDRED = "佰";
+public static final String THOUSAND = "仟";
+public static final String TEN_THOUSAND = "万";
+public static final String HUNDRED_MILLION = "亿";
+public static final String YUAN = "元";
+public static final String JIAO = "角";
+public static final String FEN = "分";
+public static final String DOT = ".";
+
+private static SimpleMoneyFormat formatter = null;
+private HashMap chineseNumberMap = new HashMap();
+private HashMap chineseMoneyPattern = new HashMap();
+private NumberFormat numberFormat = NumberFormat.getInstance();
+
+private SimpleMoneyFormat() { 
+numberFormat.setMaximumFractionDigits(4);
+numberFormat.setMinimumFractionDigits(2);
+numberFormat.setGroupingUsed(false);
+
+chineseNumberMap.put("0", ZERO);
+chineseNumberMap.put("1", ONE);
+chineseNumberMap.put("2", TWO);
+chineseNumberMap.put("3", THREE);
+chineseNumberMap.put("4", FOUR);
+chineseNumberMap.put("5", FIVE);
+chineseNumberMap.put("6", SIX);
+chineseNumberMap.put("7", SEVEN);
+chineseNumberMap.put("8", EIGHT);
+chineseNumberMap.put("9", NINE);
+chineseNumberMap.put(DOT, DOT);
+
+chineseMoneyPattern.put("1", TEN);
+chineseMoneyPattern.put("2", HUNDRED);
+chineseMoneyPattern.put("3", THOUSAND);
+chineseMoneyPattern.put("4", TEN_THOUSAND);
+chineseMoneyPattern.put("5", TEN);
+chineseMoneyPattern.put("6", HUNDRED);
+chineseMoneyPattern.put("7", THOUSAND);
+chineseMoneyPattern.put("8", HUNDRED_MILLION);
+}
+
+public static SimpleMoneyFormat getInstance() { 
+if (formatter == null)
+formatter = new SimpleMoneyFormat();
+return formatter;
+}
+
+public String format(String moneyStr) { 
+checkPrecision(moneyStr);
+String result;
+result = convertToChineseNumber(moneyStr);
+result = addUnitsToChineseMoneyString(result);
+return result;
+}
+
+public String format(double moneyDouble) { 
+return format(numberFormat.format(moneyDouble));
+}
+
+public String format(int moneyInt) { 
+return format(numberFormat.format(moneyInt));
+}
+
+public String format(long moneyLong) { 
+return format(numberFormat.format(moneyLong));
+}
+
+public String format(Number moneyNum) { 
+return format(numberFormat.format(moneyNum));
+}
+
+private String convertToChineseNumber(String moneyStr) { 
+String result;
+StringBuffer cMoneyStringBuffer = new StringBuffer();
+for (int i = 0; i < moneyStr.length(); i++) { 
+cMoneyStringBuffer.append(chineseNumberMap.get(moneyStr.substring(i, i + 1)));
+}
+//拾佰仟万亿等都是汉字里面才有的单位，加上它们
+int indexOfDot = cMoneyStringBuffer.indexOf(DOT);
+int moneyPatternCursor = 1;
+for (int i = indexOfDot - 1; i > 0; i--) { 
+cMoneyStringBuffer.insert(i, chineseMoneyPattern.get(EMPTY + moneyPatternCursor));
+moneyPatternCursor = moneyPatternCursor == 8 ? 1 : moneyPatternCursor + 1;
+}
+
+String fractionPart = cMoneyStringBuffer.substring(cMoneyStringBuffer.indexOf("."));
+cMoneyStringBuffer.delete(cMoneyStringBuffer.indexOf("."), cMoneyStringBuffer.length());
+while (cMoneyStringBuffer.indexOf("零拾") != -1) { 
+cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零拾"), cMoneyStringBuffer.indexOf("零拾") + 2, ZERO);
+}
+while (cMoneyStringBuffer.indexOf("零佰") != -1) { 
+cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零佰"), cMoneyStringBuffer.indexOf("零佰") + 2, ZERO);
+}
+while (cMoneyStringBuffer.indexOf("零仟") != -1) { 
+cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零仟"), cMoneyStringBuffer.indexOf("零仟") + 2, ZERO);
+}
+while (cMoneyStringBuffer.indexOf("零万") != -1) { 
+cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零万"), cMoneyStringBuffer.indexOf("零万") + 2, TEN_THOUSAND);
+}
+while (cMoneyStringBuffer.indexOf("零亿") != -1) { 
+cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零亿"), cMoneyStringBuffer.indexOf("零亿") + 2, HUNDRED_MILLION);
+}
+while (cMoneyStringBuffer.indexOf("零零") != -1) { 
+cMoneyStringBuffer.replace(cMoneyStringBuffer.indexOf("零零"), cMoneyStringBuffer.indexOf("零零") + 2, ZERO);
+}
+if (cMoneyStringBuffer.lastIndexOf(ZERO) == cMoneyStringBuffer.length() - 1)
+cMoneyStringBuffer.delete(cMoneyStringBuffer.length() - 1, cMoneyStringBuffer.length());
+cMoneyStringBuffer.append(fractionPart);
+
+result = cMoneyStringBuffer.toString();
+return result;
+}
+
+
+private String addUnitsToChineseMoneyString(String moneyStr) { 
+String result;
+StringBuffer cMoneyStringBuffer = new StringBuffer(moneyStr);
+int indexOfDot = cMoneyStringBuffer.indexOf(DOT);
+cMoneyStringBuffer.replace(indexOfDot, indexOfDot + 1, YUAN);
+
+
+1. 以下三条输出语句分别输出什么？[C易]
+char str1[]       = "abc";
+char str2[]       = "abc";
+const char str3[] = "abc"; 
+const char str4[] = "abc"; 
+const char* str5  = "abc";
+const char* str6  = "abc";
+cout << boolalpha << ( str1==str2 ) << endl; // 输出什么？
+cout << boolalpha << ( str3==str4 ) << endl; // 输出什么？
+cout << boolalpha << ( str5==str6 ) << endl; // 输出什么？
+
+13. 非C++内建型别 A 和 B，在哪几种情况下B能隐式转化为A？[C++中等]
+答：
+a. class B : public A { …… } // B公有继承自A，可以是间接继承的
+b. class B { operator A( ); } // B实现了隐式转化为A的转化
+c. class A { A( const B& ); } // A实现了non-explicit的参数为B（可以有其他带默认值的参数）构造函数
+d. A& operator= ( const A& ); // 赋值操作，虽不是正宗的隐式类型转换，但也可以勉强算一个
+
+12. 以下代码中的两个sizeof用法有问题吗？[C易]
+void UpperCase( char str[] ) // 将 str 中的小写字母转换成大写字母
+{ 
+   for( size_t i=0; i        if( 'a'<=str[i] && str[i]<='z' )
+           str[i] -= ('a'-'A' );
+}
+char str[] = "aBcDe";
+cout << "str字符长度为: " << sizeof(str)/sizeof(str[0]) << endl;
+UpperCase( str );
+cout << str << endl;
+
+7. 以下代码有什么问题？[C难]
+void char2Hex( char c ) // 将字符以16进制表示
+{ 
+   char ch = c/0x10 + '0'; if( ch > '9' ) ch += ('A'-'9'-1);
+   char cl = c%0x10 + '0'; if( cl > '9' ) cl += ('A'-'9'-1);
+   cout << ch << cl << ' ';
+}
+char str[] = "I love 中国";
+for( size_t i=0; i    char2Hex( str[i] );
+cout << endl;
+
+4. 以下代码有什么问题？[C++易]
+struct Test
+{ 
+   Test( int ) { }
+   Test() { }
+   void fun() { }
+};
+void main( void )
+{ 
+   Test a(1);
+   a.fun();
+   Test b();
+   b.fun();
+}
+
+5. 以下代码有什么问题？[C++易]
+cout << (true?1:"1") << endl;
+
+8. 以下代码能够编译通过吗，为什么？[C++易]
+unsigned int const size1 = 2;
+char str1[ size1 ];
+unsigned int temp = 0;
+cin >> temp;
+unsigned int const size2 = temp;
+char str2[ size2 ];
+
+9. 以下代码中的输出语句输出0吗，为什么？[C++易]
+struct CLS
+{ 
+   int m_i;
+   CLS( int i ) : m_i(i) { }
+   CLS()
+   { 
+       CLS(0);
+    }
+};
+CLS obj;
+cout << obj.m_i << endl;
+
+10. C++中的空类，默认产生哪些类成员函数？[C++易]
+答：
+class Empty
+{ 
+public:
+   Empty();                          // 缺省构造函数
+   Empty( const Empty& );            // 拷贝构造函数
+   ~Empty();                         // 析构函数
+   Empty& operator=( const Empty& ); // 赋值运算符
+   Empty* operator&();               // 取址运算符
+   const Empty* operator&() const;   // 取址运算符 const
+};
+
+3. 以下两条输出语句分别输出什么？[C++难]
+float a = 1.0f;
+cout << (int)a << endl;
+cout << (int&)a << endl;
+cout << boolalpha << ( (int)a == (int&)a ) << endl; // 输出什么？
+float b = 0.0f;
+cout << (int)b << endl;
+cout << (int&)b << endl;
+cout << boolalpha << ( (int)b == (int&)b ) << endl; // 输出什么？
+
+2. 以下反向遍历array数组的方法有什么错误？[STL易]
+vector array;
+array.push_back( 1 );
+array.push_back( 2 );
+array.push_back( 3 );
+for( vector::size_type i=array.size()-1; i>=0; --i ) // 反向遍历array数组
+{ 
+   cout << array[i] << endl;
+}
+
+6. 以下代码有什么问题？[STL易]
+typedef vector IntArray;
+IntArray array;
+array.push_back( 1 );
+array.push_back( 2 );
+array.push_back( 2 );
+array.push_back( 3 );
+// 删除array数组中所有的2
+for( IntArray::iterator itor=array.begin(); itor!=array.end(); ++itor )
+{ 
+   if( 2 == *itor ) array.erase( itor );
+}
+
+11. 写一个函数，完成内存之间的拷贝。[考虑问题是否全面]
+答：
+void* mymemcpy( void *dest, const void *src, size_t count )
+{ 
+   char* pdest = static_cast( dest );
+   const char* psrc = static_cast( src );
+   if( pdest>psrc && pdest    { 
+       for( size_t i=count-1; i!=-1; --i )
+               pdest[i] = psrc[i];
+    }
+   else
+   { 
+       for( size_t i=0; i            pdest[i] = psrc[i];
+    }
+   return dest;
+}
+int main( void )
+{ 
+   char str[] = "0123456789";
+   mymemcpy( str+1, str+0, 9 );
+   cout << str << endl;
+
+   system( "Pause" );
+   return 0;
+}
+

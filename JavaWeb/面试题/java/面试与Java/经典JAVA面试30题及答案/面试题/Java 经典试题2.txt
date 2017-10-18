@@ -1,0 +1,1806 @@
+Java æ≠µ‰ ‘Ã‚£®2£©
+
+**The following questions have appeared on actual exams.  Situational details (ie, names, locations, and quantities) have been changed to avoid copyright infringement. Memorize as many of these questions as possible in the 5 nights prior to your exam. Good luck 
+
+
+1.Given: 
+
+1.public class test ( 
+2.  public static void main (String args[])    { 
+3.      int  i = 0xFFFFFFF1; 
+4.      int  j = ~i; 
+5. 
+6.     } 
+7.) 
+
+What is the decimal value of j at line 5? 
+
+A.0 
+B.1 
+C.14 
+D.®C15 
+E.An error at line 3 causes compilation to fail. 
+F.An error at line 4 causes compilation to fail. 
+
+2.Given: 
+
+Integer i = new Integer (42); 
+Long 1 = new Long (42); 
+Double d = new Double (42.0); 
+
+Which two expressions evaluate to True? (Choose Two) 
+
+A.(i ==1) 
+B.(i == d) 
+C.(d == 1) 
+D.(i.equals (d)) 
+E.(d.equals (i)) 
+F.(i.equals (42)) 
+
+3.Click the exhibit button: 
+
+1.public class test (     
+2.         private static int j = 0; 
+3.       
+4.       private static boolean methodB(int k) ( 
+5.               j += k; 
+6.               return true; 
+7.) 
+8. 
+9.public static void methodA(int  i) { 
+10.         boolean b:   
+11.         b = i < 10 | methodB (4); 
+12.         b = i < 10 || methodB (8); 
+13.) 
+14. 
+15. public static void main (String args[] }   ( 
+16.             methodA (0); 
+17.             system.out.printIn(j); 
+18.           ) 
+19.) 
+
+What is the result? 
+
+A.The program prints °∞0°± 
+B.The program prints °∞4°± 
+C.The program prints °∞8°± 
+D.The program prints °∞12°± 
+E.The code does not complete 
+
+4.Given: 
+
+1.Public class test ( 
+2.    Public static void main (String args[])  ( 
+3.     System.out.printIn (6 ^ 3); 
+4.   ) 
+5.) 
+
+What is the output? 
+
+Ans: 
+
+
+5.Given: 
+
+1.public class Foo { 
+2.  public static void main (String [] args)  { 
+3.     StringBuffer a = new StringBuffer (°∞A°±); 
+4.     StringBuffer b = new StringBuffer (°∞B°±); 
+5.    operate (a,b); 
+6.    system.out.printIn{a + °∞,°± +b}; 
+7.) 
+8.static void operate (StringBuffer x, StringBuffer y)  { 
+9.          x.append {y}; 
+10.          y = x; 
+11.    ) 
+12.} 
+
+What is the result? 
+
+A.The code compiles and prints °∞A,B°±. 
+B.The code compiles and prints °∞A,A°±. 
+C.The code compiles and prints °∞B,B°±. 
+D.The code compiles and prints °∞AB,B°±. 
+E.The code compiles and prints °∞AB,AB°±. 
+F.The code does not compile because °∞+°± cannot be overloaded for StringBuffer. 
+
+6.Click the exhibit button: 
+
+1.Public class test ( 
+2.Public static void stringReplace (String text)  ( 
+3.     Text = text.replace (°Æj°Ø , °Æi°Ø); 
+4.) 
+5. 
+6.public static void bufferReplace (StringBuffer text)  ( 
+7.    text = text.append (°∞C°±) 
+8.) 
+9. 
+10.public static void main (String args[]}  ( 
+11.   String textString = new String (°∞java°±); 
+12.   StringBuffer text BufferString = new StringBuffer (°∞java°±); 
+13. 
+14.    stringReplace (textString); 
+15.    BufferReplace (textBuffer); 
+16. 
+17.    System.out.printIn (textString + textBuffer); 
+18.    } 
+19. ) 
+
+What is the output? 
+Ans: 
+
+
+7.Click the Exhibit button: 
+
+1.public class test { 
+2.     public static void add3 (Integer i) } 
+3.    int val = i.intvalue ( ); 
+4.          val += 3; 
+5.          i = new Integer (val); 
+6.     } 
+7. 
+8.  public static void main (String args [ ] )  { 
+9.   Integer  i = new Integer (0); 
+10.    add3 (i); 
+11.     system.out.printIn (i.intvalue ( )  ); 
+12.  } 
+13.) 
+
+What is the result? 
+
+A.Compilation will fail. 
+B.The program prints °∞0°±. 
+C.The program prints °∞3°±. 
+D.Compilation will succeed but an exception will be thrown at line 3. 
+
+8.Given: 
+
+1.public class ConstOver { 
+2.  public ConstOver (int x, int y, int z)  { 
+3.     } 
+4.} 
+
+Which two overload the ConstOver constructor? (Choose Two) 
+
+A.ConstOver ( ) { } 
+B.Protected int ConstOver ( ) { } 
+C.Private ConstOver (int z, int y, byte x) { } 
+D.public Object ConstOver (int x, int y, int z) { } 
+E.public void ConstOver (byte x, byte y, byte z) { } 
+
+9.Given: 
+
+1.public class MethodOver  { 
+2.    public void setVar (int a, int b, float c)  { 
+3.    } 
+4.} 
+
+Which two overload the setVar method? (Choose Two) 
+
+A.private void setVar (int a, float c, int b)  { } 
+B.protected void setVar (int a, int b, float c) { } 
+C.public int setVar (int a, float c, int b) (return a;) 
+D.public int setVar (int a, int b, float c) (return a;) 
+E.protected float setVar (int a, int b, float c) (return c;) 
+
+10.Given: 
+
+1.class BaseClass { 
+2.   Private float x = 1.0f ; 
+3.    protected float getVar ( ) ( return x;) 
+4.} 
+5.class Subclass extends BaseClass ( 
+6.      private float x = 2.0f; 
+7.      //insert code here 
+8.) 
+
+Which two are valid examples of method overriding? (Choose Two) 
+
+A.float getVar ( ) { return x;} 
+B.public float getVar ( ) { return x;} 
+C.float double getVar ( ) { return x;} 
+D.protected float getVar ( ) { return x;} 
+E.public float getVar (float f ) { return f;} 
+
+11.Which two demonstrate an °∞is a°± relationship? (Choose Two) 
+
+A.public interface Person { } 
+public class Employee extends Person { } 
+B.public interface Shape { } 
+public class Employee extends Shape { } 
+C.public interface Color { } 
+public class Employee extends Color { } 
+D.public class Species { } 
+public class Animal (private Species species;) 
+E.interface Component { } 
+Class Container implements Component ( 
+         Private Component[ ] children; 
+) 
+
+12.Which statement is true? 
+
+A.An anonymous inner class may be declared as final 
+B.An anonymous inner class can be declared as private 
+C.An anonymous inner class can implement multiple interfaces 
+D.An anonymous inner class can access final variables in any enclosing scope 
+E.Construction of an instance of a static inner class requires an instance of the enclosing outer class. 
+
+13.Given: 
+
+1.package foo; 
+2. 
+3.public class Outer ( 
+4.   public static class Inner ( 
+5.   ) 
+6.) 
+
+Which statement is true? 
+
+A.An instance of the Inner class can be constructed with °∞new Outer.Inner ()°± 
+B.An instance of the inner class cannot be constructed outside of package foo 
+C.An instance of the inner class can only be constructed from within the outer class 
+D.From within the package bar, an instance of the inner class can be constructed with °∞new inner()°± 
+
+14.Click the exhibit button: 
+
+
+1.public class enclosingone ( 
+2.public class insideone{} 
+3.) 
+4.public class inertest( 
+5.public static void main (string[]args)( 
+6.enclosingone eo= new enclosingone (); 
+7.//insert code here 
+8.)9.) 
+
+Which statement at line 7 constructs an instance of the inner class? 
+
+A.InsideOnew ei= eo.new InsideOn(); 
+B.Eo.InsideOne ei = eo.new InsideOne(); 
+C.InsideOne ei = EnclosingOne.new InsideOne(); 
+D.EnclosingOne.InsideOne ei = eo.new InsideOne(); 
+
+15.Click the exhibit button: 
+
+
+1.interface foo { 
+2.int k = 0; 
+3.] 
+4. 
+5.public class test implements Foo ( 
+6.public static void main(String args[]) ( 
+7.int i; 
+8.Test test = new test (); 
+9.i= test.k; 
+10.i= Test.k; 
+11.i= Foo.k; 
+12.) 
+13.) 
+14.     
+
+What is the result? 
+
+A.Compilation succeeds. 
+B.An error at line 2 causes compilation to fail. 
+C.An error at line 9 causes compilation to fail. 
+D.An error at line 10 causes compilation to fail. 
+E.An error at line 11 causes compilation to fail. 
+
+16. Given: 
+
+1.//point X 
+2.public class foo ( 
+3.public static void main (String[]args) throws Exception { 
+4.printWriter out = new PrintWriter (new 
+5.java.io.outputStreamWriter (System.out), true; 
+6.out.printIn(°∞Hello°±); 
+7.} 
+8.) 
+
+Which statement at PointX on line 1 allows this code to compile and run? 
+
+A.import java.io.PrintWriter; 
+B.include java.io.PrintWriter; 
+C.import java.io.OutputStreamWriter; 
+D.include java.io.OutputStreamWriter; 
+E.no statement is needed. 
+
+17.Which two statements are reserved words in Java? (Choose Two) 
+
+A.run 
+B.import 
+C.default 
+D.implement 
+
+18.Which three are valid declarations of a float? (Choose Three) 
+
+A.float foo = -1; 
+B.float foo = 1.0; 
+C.float foo = 42e1; 
+D.float foo = 2.02f; 
+E.float foo = 3.03d; 
+F.float foo = 0x0123; 
+
+19.Given: 
+
+8.   int index = 1; 
+9.   boolean[] test = new Boolean[3]; 
+10.boolean foo= test [index]; 
+
+What is the result? 
+
+A.foo has the value of 0 
+B.foo has the value of null 
+C.foo has the value of true 
+D.foo has the value of false 
+E.an exception is thrown 
+F.the code will not compile 
+
+20.Given: 
+
+1.public class test( 
+2.public static void main(string[]args){ 
+3.string foo = args [1]; 
+4.string foo = args [2]; 
+5.string foo = args [3]; 
+6.} 
+7.} 
+
+And the command line invocation: 
+Java Test red green blue 
+
+What is the result? 
+
+A.baz has the value of °∞°± 
+B.baz has the value of null 
+C.baz has the value of °∞red°± 
+D.baz has the value of °∞blue°± 
+E.bax has the value of °∞green°± 
+F.the code does not compile 
+G.the program throws an exception 
+
+21.Given: 
+
+8.int index = 1; 
+9.int [] foo = new int [3]; 
+10.int bar = foo [index]; 
+11.int baz = bar + index; 
+
+What is the result? 
+
+A.baz has the value of 0 
+B.baz has the value of 1 
+C.baz has the value of 2 
+D.an exception is thrown 
+E.the code will not compile 
+
+22.Given: 
+
+1.public class foo { 
+2.public static void main (String[]args) { 
+3.String s; 
+4.system.out.printIn (°∞s=°± + s); 
+5.} 
+6.} 
+
+What is the result? 
+
+A.The code compiles and °∞s=°± is printed. 
+B.The code compiles and °∞s=null°± is printed. 
+C.The code does not compile because string s is not initialized. 
+D.The code does not compile because string s cannot be referenced. 
+E.The code compiles, but a NullPointerException is thrown when toString is called. 
+
+23.Which will declare a method that forces a subclass to implement it? 
+
+A.Public double methoda(); 
+B.Static void methoda (double d1) {} 
+C.Public native double methoda(); 
+D.Abstract public void methoda(); 
+E.Protected void methoda (double d1){} 
+
+24.You want subclasses in any package to have access to members of a superclass. Which is the most restrictive access modifier that will accomplish this objective? 
+
+A.Public 
+B.Private 
+C.Protected 
+D.Transient 
+E.No access modifier is qualified 
+
+25.Given: 
+
+1.abstract class abstrctIt { 
+2.abstract float getFloat (); 
+3.) 
+4.public class AbstractTest extends AbstractIt { 
+5.private float f1= 1.0f; 
+6.private float getFloat () {return f1;} 
+7.} 
+
+What is the result? 
+
+A.Compilation is successful. 
+B.An error on line 6 causes a runtime failure. 
+C.An error at line 6 causes compilation to fail. 
+D.An error at line 2 causes compilation to fail. 
+
+
+26.Click the exhibit button: 
+
+
+1.public class test( 
+2.public int aMethod()[ 
+3.static int i=0; 
+4.i++; 
+5.return I; 
+6.) 
+7.public static void main (String args[]){ 
+8.test test = new test(); 
+9.test.aMethod(); 
+10.int j = test.aMethod(); 
+11.System.out.printIn(j); 
+12.] 
+13.} 
+    
+
+What is the result? 
+
+A.Compilation will fail. 
+B.Compilation will succeed and the program will print °∞0°±. 
+C.Compilation will succeed and the program will print °∞1°±. 
+D.Compilation will succeed and the program will print °∞2°±. 
+
+27.Given: 
+
+1.class super { 
+2.public float getNum() {return 3.0f;} 
+3.) 
+4. 
+5.public class Sub extends Super { 
+6. 
+7.) 
+
+Which method, placed at line 6, will cause a compiler error? 
+
+A. public float getNum()   {return 4.0f; } 
+B. public void getNum ()  { } 
+C. public void getNum (double d)   { } 
+D. public double getNum (float d) {retrun 4.0f; } 
+
+28.Which declaration prevents creating a subclass of an outer class? 
+
+A.static class FooBar{} 
+B.private class FooBar{} 
+C.abstract public class FooBar{} 
+D.final public class FooBar{} 
+E.final abstract class FooBar{} 
+
+29.Given: 
+
+1.byte [] arry1, array2[]; 
+2.byte array3 [][]; 
+3.byte[][] array4; 
+
+If each array has been initialized, which statement will cause a compiler error? 
+
+A.array2 = array1; 
+B.array2 = array3; 
+C.array2 = array4; 
+D.both A and B 
+E.both A and C 
+F.both B and C 
+
+30.Click the exhibit button: 
+
+
+1.class super ( 
+2.public int I = 0; 
+3. 
+4.public super (string text) ( 
+5.I = 1 
+6.) 
+7.  ) 
+8.   
+9.public class sub extends super ( 
+10.public sub (string text)   ( 
+11.i= 2 
+12.) 
+13. 
+14.public static void main (straing args[])   ( 
+15.sub sub = new sub (°∞Hello°±); 
+16.system.out. PrintIn(sub.i); 
+17.    )  18.) 
+
+What is the result? 
+A.Compilation will fail. 
+B.Compilation will succeed and the program will print °∞0°±. 
+C.Compilation will succeed and the program will print °∞1°±. 
+D.Compilation will succeed and the program will print °∞2°±. 
+
+31.Given: 
+
+1.public class returnIt ( 
+2.returnType methodA(byte x, double y) ( 
+3.return (short) x/y * 2; 
+4.    ) 
+5.) 
+
+What is the valid returnType for methodA in line 2? 
+
+A.int 
+B.byte 
+C.long 
+D.short 
+E.float 
+F.double 
+
+32.Given the ActionEvent, which method allows you to identify the affected component? 
+
+A.getClass 
+B.getTarget 
+C.getSource 
+D.getComponent 
+E.getTargetComponent 
+
+33.Which is a method of the MouseMotionListener interface? 
+
+A.Public void mouseMoved(MouseEvent) 
+B.Public boolean mouseMoved(MouseEvent) 
+C.Public void mouseMoved(MouseMotionEvent) 
+D.Public boolean MouseMoved(MouseMotionEvent) 
+E.Public boolean mouseMoved(MouseMotionEvent) 
+
+
+34.Click the exhibit button: 
+
+
+1.import java.awt*; 
+2. 
+3.public class X extends Frame ( 
+4.public static void main(string []args)  ( 
+5.X x = new X (); 
+6.X.pack(); 
+7.x.setVisible(true); 
+8.) 
+9. 
+10.public X ()  ( 
+11.setlayout (new GridLayout (2,2)); 
+12. 
+13.Panel p1 = new panel(); 
+14.Add(p1); 
+15.Button b1= new Button (°∞One°±); 
+16.P1.add(b1); 
+17. 
+18.Panel p2 = new panel(); 
+19.Add(p2); 
+20.Button b2= new Button (°∞Two°±); 
+21.P2.add(b2); 
+22. 
+23.Button b3= new Button (°∞Three°±); 
+24.add(b3); 
+25. 
+26.Button b4= new Button (°∞Four°±); 
+27.add(b4); 
+28.    )29.) 
+
+Which two statements are true? (Choose Two) 
+
+A.All the buttons change height if the frame height is resized. 
+B.All the buttons change width if the Frame width is resized. 
+C.The size of the button labeled °∞One°± is constant even if the Frame is resized. 
+D.Both width and height of the button labeled °∞Three°± might change if the Frame is resized. 
+
+35.You are assigned the task of building a panel containing a TextArea at the top, a label directly below it, and a button directly below the label. If the three components are added directly to the panel, which layout manager can the panel use to ensure that the TextArea absorbs all of the free vertical space when the panel is resized? 
+
+A.GridLayout 
+B.CardLayout 
+C.FlowLayout 
+D.BorderLayout 
+E.GridBagLayout 
+
+36.Which of the following gets the name of the parent directory file °∞file.txt°±? 
+
+A.String name= File.getParentName(°∞file.txt°±); 
+B.String name= (new File(°∞file.txt°±)).getParent(); 
+C.String name = (new File(°∞file.txt°±)).getParentName(); 
+D.String name= (new File(°∞file.txt°±)).getParentFile(); 
+E.Directory dir=(new File (°∞file.txt°±)).getParentDir(); 
+String name= dir.getName(); 
+
+37.Which can be used to encode charS for output? 
+
+A.java.io.OutputStream 
+B.java.io.OutputStreamWriter 
+C.java.io.EncodeOutputStream 
+D.java.io.EncodeWriter 
+E.java.io.BufferedOutputStream 
+    
+38.The file °∞file.txt°± exists on the file system and contains ASCII text. 
+
+Given: 
+
+38. try { 
+39. File f = new File(°∞file.txt°±); 
+40. OutputStream out = new FileOutputStream(f, true); 
+41. } 
+42. catch (IOException)   {} 
+
+What is the result? 
+
+A.The code does not compile. 
+B.The code runs and no change is made to the file. 
+C.The code runs and sets the length of the file to 0. 
+D.An exception is thrown because the file is not closed.   
+E.The code runs and deletes the file from the file system. 
+
+39.Which constructs a DataOutputStream? 
+
+A.new dataOutputStream(°∞out.txt°±); 
+B.new dataOutputStream(new file(°∞out.txt°±)); 
+C.new dataOutputStream(new writer(°∞out.txt°±)); 
+D.new dataOutputStream(new FileWriter(°∞out.txt°±)); 
+E.new dataOutputStream(new OutputStream(°∞out.txt°±)); 
+F.new dataOutputStream(new FileOutputStream(°∞out.txt°±)); 
+
+40.What writes the text °∞<end>°± to the end of the file °∞file.txt°±? 
+
+A. OutputStream out= new FileOutputStream (°∞file.txt°±); 
+Out.writeBytes (°∞<end>/n°±); 
+B. OutputStream os= new FileOutputStream (°∞file.txt°±, true); 
+DataOutputStream out = new DataOutputStream(os); 
+out.writeBytes (°∞<end>/n°±); 
+C. OutputStream os= new FileOutputStream (°∞file.txt°±); 
+DataOutputStream out = new DataOutputStream(os); 
+out.writeBytes (°∞<end>/n°±); 
+D. OutputStream os= new OutputStream (°∞file.txt°±, true); 
+DataOutputStream out = new DataOutputStream(os); 
+out.writeBytes (°∞<end>/n°±); 
+
+41.Given: 
+
+1.public class X ( 
+2.public object m ()  { 
+3.object o = new float (3.14F); 
+4.object [] oa = new object [1]; 
+5.oa[0]= o; 
+6.o = null; 
+7.return oa[0]; 
+8.} 
+9.} 
+
+When is the float object created in line 3, eligible for garbage collection? 
+
+A.Just after line 5 
+B.Just after line 6 
+C.Just after line 7 (that is, as the method returns) 
+D.Never in this method 
+
+
+42.Given: 
+
+3. string foo = °∞ABCDE°±; 
+4.foo.substring(3); 
+5.foo.concat(°∞XYZ°±); 
+6. 
+
+Type the value of foo at line 6. 
+
+Ans: 
+
+
+43.Which method is an appropriate way to determine the cosine of 42 degrees? 
+
+A.double d = Math.cos(42); 
+B.double d = Math.cosine(42); 
+C.double d = Math.cos(Math.toRadians(42)); 
+D.double d = Math.cos(Math.toDegrees(42)); 
+E.double d = Math.cosine(Math.toRadians(42)); 
+
+44.You need to store elements in a collection that guarantees that no duplicates are stored and all elements can be accessed in natural order. Which interface provides that capability? 
+
+A.java.util.Map 
+B.java.util.Set 
+C.java.util.List 
+D.java.util.StoredSet 
+E.java.util.StoredMap 
+F.java.util.Collection 
+
+45.Which statement is true for the class java.util.HashSet? 
+
+A.The elements in the collection are ordered. 
+B.The collection is guaranteed to be immutable. 
+C.The elements in the collection are guaranteed to be unique. 
+D.The elements in the collection are accessed using a unique key. 
+E.The elements in the collections are guaranteed to be synchronized. 
+
+46.Given: 
+
+1.public class IfTest ( 
+2.public static void main(string[]args) { 
+3.int x = 3; 
+4.int y = 1; 
+5.if (x = y) 
+6.system.out.printIn(°∞Not equal°±); 
+7.else 
+8.system.out.printIn(°∞Equal°±); 
+9.} 
+10.) 
+
+What is the result? 
+    
+A.The output is °∞Equal°±. 
+B.The output in °∞Not Equal°±. 
+C.An error at line 5 causes compilation to fall. 
+D.The program executes but does not print a message. 
+
+47.Click the exhibit button: 
+
+
+1.public class test ( 
+2.public static void main(string args[]) { 
+3.int 1= 0; 
+4.while (i)  { 
+5.if (i==4) { 
+6.break; 
+7.) 
+8.++i; 
+9.) 
+10. 
+11.)12.) 
+
+What is the value of i at line 10? 
+
+A.0 
+B.3 
+C.4 
+D.5 
+E.the code will not compile 
+
+48.Given: 
+
+3. int i= 1, j= 10 ; 
+4. do ( 
+5.  if (i++> --j) continue; 
+6. ) while (i<5); 
+
+After execution, what are the values for I and j? 
+
+A.i = 6 and j= 5 
+B.i = 5 and j= 5 
+C.i = 6 and j= 4 
+D.i = 5 and j= 6 
+E.i = 6 and j= 6 
+
+49.Given: 
+
+1.switch (i)  { 
+2.default: 
+3.System.out.printIn(°∞Hello°±); 
+4.) 
+
+What are the two acceptable types for the variable i? (Choose Two) 
+
+A.char 
+B.byte 
+C.float 
+D.double 
+E.object 
+
+50.Given: 
+
+1.public class foo { 
+2.public static void main (string[]args) 
+3.try {return;} 
+4.finally {system.out.printIn(°∞Finally°±);} 
+5.} 
+6.) 
+
+What is the result? 
+
+A.The program runs and prints nothing. 
+B.The program runs and prints °∞Finally°±. 
+C.The code compiles, but an exception is thrown at runtime. 
+D.The code will not compile because the catch block is missing. 
+
+
+51.Click the exhibit button. 
+
+
+1.import java.io.IOException; 
+2.public class ExceptionTest( 
+3.public static void main (String[]args) 
+4.try ( 
+5.methodA(); 
+6.) catch (IOException e)  ( 
+7.system.out.printIn(°∞Caught IOException°±); 
+8.) catch (Exception e)   ( 
+9.system.out.printIn(°∞Caught Exception°±); 
+10.   ) 
+11.) 
+12.public void methodA ()   { 
+13.throw new IOException (); 
+14.    )15.) 
+
+What is the result? 
+A.The code will not compile. 
+B.The output is caught exception. 
+C.The output is caught IOException. 
+D.The program executes normally without printing a message. 
+
+52.Click the exhibit button: 
+
+
+1.public class test { 
+2.public static string output = °∞°± 
+3. 
+4.public static void foo(int i) { 
+5.try { 
+6.if(i= =1) { 
+7.throw new Exception (); 
+8.} 
+9.output += °∞1°±; 
+10.) 
+11.catch(Exception e)  { 
+12.output += °∞2°±; 
+13.return; 
+14.) 
+15.finally ( 
+16.output += °∞3°±; 
+17.) 
+18.output += °∞4°±; 
+19.) 
+20. 
+21.public static void main (string args[])  ( 
+22.foo(0); 
+23.foo(1); 
+24. 
+25.    )26.) 
+
+What is the value of the variable output at line 24? 
+
+Ans: 
+
+
+53.Given: 
+
+1.public class Foo implements Runnable ( 
+2.public void run (Thread t) { 
+3.system.out.printIn(°∞Running.°±); 
+4.} 
+5.public static void main (String[] args)  { 
+6.new thread (new Foo()).start(); 
+7.) 
+8.) 
+
+What is the result? 
+    
+A.An exception is thrown 
+B.The program exists without printing anything 
+C.An error at line 1 causes compilation to fail. 
+D.An error at line 2 causes the compilation to fail.     
+E.°∞Running°± is printed and the program exits 
+
+54.Which statement is true? 
+
+A.If only one thread is blocked in the wait method of an object, and another thread executes the modify on that same object, then the first thread immediately resumes execution. 
+B.If a thread is blocked in the wait method of an object, and another thread executes the notify method on the same object, it is still possible that the first thread might never resume execution. 
+C.If a thread is blocked in the wait method of an object, and another thread executes the notify method on the same object, then the first thread definitely resumes execution as a direct and sole consequence of the notify call. 
+D.If two threads are blocked in the wait method of one object, and another thread executes the notify method on the same object, then the first thread that executed the wait call first definitely resumes execution as a direct and sole consequence of the notify call. 
+
+55.Which two CANNOT directly cause a thread to stop executing? (Choose Two) 
+
+A.Calling the yield method 
+B.Calling the wait method on an object 
+C.Calling the notify method on an object 
+D.Calling the NotifyAll method on an object 
+E.Calling the start method on another Thread object 
+
+56.Which two can be used to create a new Thread? (Choose Two) 
+
+A.Extend java.lang.Thread and override the run method. 
+B.Extend java.lang.Runnable and override the start method. 
+C.Implement java.lang.thread and implement the run method. 
+D.Implement java.lang.Runnable and implement the run method.     
+E.Implement java.lang.Thread and implement the start method. 
+
+57.Given: 
+
+1.public class SyncTest ( 
+2.private int x; 
+3.private int y; 
+4.private synchronized void setX (int i) (x=1;) 
+5.private synchronized void setY (int i) (y=1;) 
+6.public void setXY(int 1)(set X(i); setY(i);) 
+7.public synchronized Boolean check() (return x !=y;) 
+8.) 
+
+Under which conditions will check () return true when called from a different class?   
+
+A.Check() can never return true 
+B.Check() can return true when setXY is called by multiple threads 
+C.Check() can return true when multiple threads call setX and setY separately. 
+D.Check() can only return true if SyncTest is changed to allow x and y to be set separately. 
+
+58.Click the exhibit button: 
+
+
+1.class A implements runable ( 
+2.int i; 
+3.public void run () ( 
+4.try ( 
+5.thread.sleep(5000); 
+6.i= 10; 
+7.) catch(InterruptedException e) {} 
+8.) 
+9.) 
+10. 
+11.public class Test { 
+12.public static void  main (string args[]) ( 
+13.try ( 
+14.A a = new A (); 
+15.Thread t = new Thread (a); 
+16.t.start(); 
+17. 
+18.int j= a.i; 
+19. 
+20.) catch (Exception e) {} 
+21.) 
+22.)   
+
+Which statement al line 17 will ensure that j=10 at line 19? 
+
+A.a.wait(); 
+B.t.wait(); 
+C.t.join(); 
+D.t.yield(); 
+E.t.notify(); 
+F.a.notify(); 
+G.t.interrupt(); 
+
+59.Click the exhibit button: 
+
+1.public class X implements Runnable ( 
+2.   private int x; 
+3.   private int y; 
+4. 
+5.   public static void main(String [] args) ( 
+6.      X that = new X(); 
+7.      (new Thread(that)) . start( ); 
+8.      (new Thread(that)) . start( ); 
+9.) 
+10. 
+11.public synchronized void run( ) ( 
+12.     for (;;) ( 
+13.      x++; 
+14.      y++; 
+15.      System.out.printIn(°∞x = °∞ +  x  + °∞, y = °∞ + y); 
+16.       ) 
+17.    ) 
+18.) 
+
+What is the result? 
+
+A.An error at line 11 causes compilation to fail. 
+B.Errors at lines 7 and 8 cause compilation to fail. 
+C.The program prints pairs of values for x and y that might not always be the same on the same line (for example, °∞x=2, y=1°±) 
+D.The program prints pairs of values for x and y that are always the same on the same line (for example, °∞x=1, y=1°±. In addition, each value appears twice (for example, °∞x=1, y=1°± followed by °∞x=1, y=1°±) 
+E.The program prints pairs of values for x and y that are always the same on the same line (for example, °∞x=1, y=1°±. In addition, each value appears twice (for example, °∞x=1, y=1°± followed by °∞x=2s, y=2°±) 
+
+60.Which two CANNOT directly cause a thread to stop executing? (Choose Two) 
+
+
+A.Existing from a synchronized block 
+B.Calling the wait method on an object 
+C.Calling notify method on an object 
+D.Calling read method on an InputStream object 
+E.Calling the SetPriority method on a Thread object 
+
+61.Click the exhibit button: 
+
+
+1.public class SyncTest{ 
+2.public static void main(String[] args)  { 
+3.final StringBuffer s1= new StringBuffer(); 
+4.final StringBuffer s2= new StringBuffer(); 
+5.new Thread ()   { 
+6.  public void run() { 
+7.    synchronized(s1) { 
+8.        s2.append(°∞A°±); 
+9.         synchronized(s2) { 
+10.  s2.append(°∞B°±); 
+11.    System.out.print(s1); 
+12.      System.out.print(s2); 
+13.      } 
+14.    } 
+15.  }   
+16.}.start(); 
+17.new Thread() { 
+18.  public void run() { 
+19.    synchronized(s2) { 
+20.      s2.append(°∞C°±); 
+21.      synchronized(s1) { 
+22.        s1.append(°∞D°±); 
+23.        System.out.print(s2); 
+24.        System.out.print(s1); 
+25.       } 
+26.      } 
+27.     } 
+28.   }.start(); 
+29.  }30.} 
+
+Which two statements are true? (Choose Two) 
+
+A.The program prints °∞ABBCAD°± 
+B.The program prints °∞CDDACB°± 
+C.The program prints °∞ADCBADBC°± 
+D.The output is a non-deterministic point because of a possible deadlock condition 
+E.The output is dependent on the threading model of the system the program is running on. 
+
+62.Which method in the Thread class is used to create and launch a new thread of execution? 
+
+A.run(); 
+B.start(); 
+C.execute(); 
+D.run(Runnable r); 
+E.start(Runnable r); 
+F.execute(Thread t); 
+
+63.Given: 
+
+5.String foo = °∞base°±; 
+6.foo.substring(0,3); 
+7.foo.concat(°∞ket°±) 
+8. 
+
+Type the value of foo at line 8. 
+
+Ans:   
+
+
+64.Which code determines the int value foo closest to, but not greater than, a double value bar? 
+
+A.int foo = (int) Math.max(bar); 
+B.int foo = (int) Math.min(bar); 
+C.int foo = (int) Math.abs(bar); 
+D.int foo = (int) Math.ceil(bar); 
+E.int foo = (int) Math.floor(bar); 
+F.int foo = (int) Math.round(bar);     
+
+65.Which statement is true? 
+
+A.A flow layout can be used to position a component that should resize horizontally when the container is resized. 
+B.A grid layout can be used to position a component that should maintain a constant size even when the container is resized. 
+C.A border layout can be used to position a component that should maintain a constant size even when the container is resized. 
+D.The grid bag layout can be used to give a grid-like layout which differs from the normal grid in that individual rows and columns can have unique sizes. 
+E.If two components are placed in the same column of a grid bag layout, and one component resizes horizontally, then the other component must resize horizontally. 
+
+66.Given an ActionEvent, which method allows you to identify the affected Component? 
+
+A.public class getClass() 
+B.public Object getSource() 
+C.public Component getSource() 
+D.public Component getTarget() 
+E.public Component getComponent() 
+F.public Component getTargetComponent() 
+
+67.Click the exhibit button: 
+
+
+1.import java.awt.*; 
+2. 
+3.public class Test extends Frame { 
+4.public Test()  { 
+5.add(new Label(°∞Hello°±)  ); 
+6.add(new TextField(°∞Hello°±)  ); 
+7.add(new Button(°∞Hello°±)  ); 
+8.pack(); 
+9.show(); 
+10.} 
+11. 
+12.public static void main(String args[]) { 
+13.        new Test (); 
+14. }15.) 
+
+What is the result? 
+
+A.The code will not compile. 
+B.A Window will appear containing only a Button. 
+C.An IllegalArgumentException is thrown at line 6. 
+D.A Window button will appear but will not contain the Label, TextField, or Button. 
+E.A Window will appear containing a Label at the top, a TextField below the Label, and a Button below the TextField. 
+F.A Window will appear containing a Label on the left, a TextField to the right of the Label, and a button to the right of the TextField. 
+
+68.Click the exhibit button: 
+
+
+1.class A { 
+2.public int getNumber(int a) { 
+3.    return a + 1; 
+4.} 
+5.} 
+6. 
+7.class B extends A { 
+8.public int getNumber (int a) { 
+9.return a + 2 
+10.} 
+11. 
+12.public static void main (String args[])  { 
+13.A a = new B(); 
+14.System.out.printIn(a.getNumber(0)); 
+15.   } 
+16.}   
+
+What is the result? 
+
+A.Compilation succeeds and 1 is printed. 
+B.Compilation succeeds and 2 is printed. 
+C.An error at line 8 causes compilation to fail. 
+D.An error at line 13 causes compilation to fail. 
+E.An error at line 14 causes compilation to fail. 
+
+69.Given: 
+
+1.class BaseClass{ 
+2.private float x= 1.0f; 
+3.protected void setVar (float f) {x = f;} 
+4.} 
+5.class SubClass exyends BaseClass   { 
+6.private float x = 2.0f; 
+7.//insert code here 
+8.} 
+
+Which two are valid examples of method overriding? (Choose Two)   
+
+A.void setVar(float f) {x = f;} 
+B.public void setVar(int f) {x = f;} 
+C.public void setVar(float f) {x = f;} 
+D.public double setVar(float f) {x = f;} 
+E.public final void setVar(float f) {x = f;} 
+F.protected float setVar() {x=3.0f; return 3.0f; } 
+
+70.Which statement about static inner classes is true? 
+
+A.An anonymous class can be declared as static. 
+B.A static inner class cannot be a static member of the outer class 
+C.A static inner class does not require an instance of the enclosing class. 
+D.Instance members of a static inner class can be referenced using the class name of the static inner class. 
+
+71.Click the exhibit button: 
+
+
+1.class A { 
+2.public byte getNumber ()  { 
+3.  return 1; 
+4.  } 
+5.} 
+6. 
+7.class B extends A { 
+8.public short getNumber()  { 
+9. return 2; 
+10.} 
+11. 
+12.public static void main (String args[]) { 
+13.   B  b = new B (); 
+14.     System.out.printIn(b.getNumber())   
+15.  }16.} 
+
+What is the result? 
+
+A.Compilation succeeds and 1 is printed. 
+B.Compilation succeeds and 2 is printed. 
+C.An error at line 8 causes compilation to fail. 
+D.An error at line 14 causes compilation to fail. 
+E.Compilation succeeds but an exception is thrown at line 14. 
+
+72.Given: 
+
+AnInterface is an interface. 
+AnAdapter0 is a non-abstract, non-final class with a zero argument constructor. 
+AnAdapter1 is a non-abstract, non-final class without a zero argument constructor, but with a constructor that takes one int argument. 
+
+Which two construct an anonymous inner class? (Choose Two) 
+
+A.AnAdapter1 aa=new AnAdapter1(){} 
+B.AnAdapter0 aa=new AnAdapter0(){} 
+C.AnAdapter0 aa=new AnAdapter0(5){} 
+D.AnAdapter1 aa=new AnAdapter1(5){} 
+E.AnInterface a1=new AnInterface(5){} 
+
+73.Which two statements are true? (Choose Two) 
+
+A.An inner class may be declared as static 
+B.An anonymous inner class can be declared as public. 
+C.An anonymous inner class can be declared as private. 
+D.An anonymous inner class can extend an abstract class. 
+E.An anonymous inner class can be declared as protected. 
+
+74.Click the exhibit button: 
+
+
+1.public class Mycircle { 
+2.public double radius; 
+3.public double diameter; 
+4. 
+5.public void setRadius(double radius) 
+6.this.radius = radius; 
+7.this.diameter= radius * 2; 
+8.} 
+9. 
+10.public double getRadius()   { 
+11.return radius; 
+12. } 
+13.}   
+
+Which statement is true? 
+
+A.The Mycircle class is fully encapsulated. 
+B.The diameter of a given MyCircle is guaranteed to be twice its radius. 
+C.Lines 6 and 7 should be in a synchronized block to ensure encapsulation. 
+D.The radius of a MyCircle object can be set without affecting its diameter. 
+
+75.You want to limit access to a method of a public class to members of the same class. Which access modifier accomplishes this objective? 
+
+A.Public 
+B.Private 
+C.Protected 
+D.Transient 
+E.No access modifier is required 
+
+76.Click the exhibit button. 
+
+
+ClassOne.java 
+1.package com.abc.pkg1; 
+2.public class ClassOne { 
+3.private char var = °Æa°Ø; 
+4.char getVar()  {return var;} 
+5.} 
+
+ClassTest.java   
+1.package com.abc.pkg2; 
+2.import com.abc.pkg1.ClassOne; 
+3.public class ClassTest extends ClassOne { 
+4.  public static void main(String[]args)  { 
+5.    char a = new ClassOne().getVar(); 
+6.    char b = new ClassTest().getVar(); 
+7.  } 
+8.}   
+
+What is the result? 
+
+A.Compilation will fail. 
+B.Compilation succeeds and no exceptions are thrown. 
+C.Compilation succeeds but an exception is thrown at line 5 in ClassTest.java. 
+D.Compilation succeeds but an exception is thrown at line 6 in ClassTest.java. 
+
+77.Given: 
+
+1.public class ArrayTest { 
+2.public static void main (String[]args)  { 
+3.float f1[], f2[]; 
+4.f1 = new float [10]; 
+5.f2 = f1; 
+6.System.out.printIn (°∞f2[0]=°± + f2[0]); 
+7. } 
+8.} 
+
+What is the result? 
+
+A.It prints f2[0] = 0.0. 
+B.It prints f2[0] = NaN. 
+C.An error at line 5 causes compile to fail. 
+D.An error at line 6 causes compile to fail. 
+E.An error at line 6 causes an exception at runtime. 
+
+78.Which two statements are true regarding the creation of a default constructor? (Choose Two) 
+
+A.The default constructor initializes method variables. 
+B.The compiler always creates a default constructor for every class. 
+C.The default constructor invokes the no-parameter constructor of the superclass. 
+D.The default constructor initializes the instance variables declared in the class. 
+E.When a class has only constructors with parameters, the compiler does not create a default constructor. 
+
+79.Click the exhibit button: 
+
+
+1.class super { 
+2.  public int getLength()  {return 4;} 
+3.} 
+4. 
+5.public class Sub extends Super { 
+6.   public long getLength() {return 5;} 
+7. 
+8.public static void main (String[]args)  { 
+9.         super sooper = new Super (); 
+10.Sub sub = new Sub(); 
+11.System.out.printIn( 
+12.   sooper.getLength()+ °∞,°± + sub.getLength()   }; 
+13. } 
+14.} 
+    
+
+What is the output? 
+
+A.4, 4 
+B.4, 5 
+C.5, 4 
+D.5, 5 
+E.the code will not compile 
+
+80.Given: 
+
+1.public abstract class Test { 
+2.public abstract void methodA(); 
+3. 
+4.public abstract void methodB() 
+5.{ 
+6.  System.out.printIn(°∞Hello°±); 
+7. } 
+8.} 
+
+Which three changes (made independently) allow the code to compile? (Choose Three) 
+
+A.Add a method body to methodA. 
+B.Replace lines 5-7 with a semicolon (°∞.°±). 
+C.Remove the abstract qualifier from the declaration of Test. 
+D.Remove the abstract qualifier from the declaration of methodB. 
+E.Remove the abstract qualifier from the declaration of methodA. 
+F.Remove methodB in its entirely and change class o interface in line 1. 
+
+81.Which determines if °∞prefs°± is a directory and exists on the file system? 
+
+A.Boolean exists=Directory.exists (°∞prefs°±); 
+B.Boolean exists=(new File(°∞prefs°±)).isDir(); 
+C.Boolean exists=(new Directory(°∞prefs°±)).exists(); 
+D.Boolean exists=(new File(°∞prefs°±)).isDirectory(); 
+E.Boolean exists=true; 
+Try{ 
+  Directory d = new Directory(°∞prefs°±); 
+} 
+catch (FileNotFoundException e) { 
+   exists = false; 
+} 
+
+82.Which two create an InputStream and open file the °∞file.txt°± for reading? (Choose Two) 
+
+A.InputStream in=new FileReader(°∞file.txt°±); 
+B.InputStream in=new FileInputStream(°∞file.txt°±); 
+C.InputStream in=new InputStreamFileReader (°∞file.txt°±, °∞read°±); 
+D.FileInputStream in=new FileReader(new File(°∞file.txt°±)); 
+E.FileInputStream in=new FileInputStream(new File(°∞file.txt°±));   
+
+83.Which two construct an OutputSream that appends to the file °∞file.txt°±? (Choose Two) 
+
+A.OutputStream out=new FileOutputStream(°∞file.txt°±); 
+B.OutputStream out=new FileOutputStream(°∞file.txt°±, °∞append°±); 
+C.FileOutputStream out=new FileOutputStream(°∞file.txt°±, true); 
+D.FileOutputStream out=new FileOutputStream(new file(°∞file.txt°±)); 
+E.OutputStream out=new FileOutputStream(new File(°∞file.txt°±)true); 
+
+84.Which constructs a BufferedInputStream? 
+
+A.New BufferedInputStream(°∞in.txt°±); 
+B.New BufferedInputStream(new File(°∞in.txt°±)); 
+C.New BufferedInputStream(new Writer(°∞in.txt°±)); 
+D.New BufferedInputStream(new Writer(°∞in.txt°±)); 
+E.New BufferedInputStream(new InputStream(°∞in.txt°±)); 
+F.New BufferedInputStream(new FileInputStream(°∞in.txt°±)); 
+
+85.Which is a valid identifier? 
+
+A.false 
+B.default 
+C._object 
+D.a-class 
+
+86.Click the exhibit button: 
+
+
+1.package foo; 
+2. 
+3.import java.util.Vector; 
+4. 
+5.private class MyVector extends Vector { 
+6.int i = 1; 
+7.public MyVector()  { 
+8.i = 2; 
+9.   } 
+10.} 
+11. 
+12.public class MyNewVector extends MyVector { 
+13.public MyNewVector ()  { 
+14.i = 4; 
+15.} 
+16.public static void main (String args [])  { 
+17.MyVector v = new MyNewVector(); 
+18.  }19.} 
+
+The file MyNewVector.java is shown in the exhibit. 
+
+What is the result? 
+
+A.Compilation will succeed 
+B.Compilation will fail at line 5 
+C.Compilation will fail at line 6 
+D.Compilation will fail at line 14 
+E.Compilation will fail at line 17 
+
+87.Given: 
+
+1.public class Test { 
+2.public static void main (String[]args) { 
+3.  String foo = args[1]; 
+4.  String bar = args[2]; 
+5.  String baz = args[3]; 
+6.System.out.printIn(°∞baz = °± + baz); 
+7.  } 
+8.} 
+
+And the output: 
+Baz = 2 
+
+Which command line invocation will produce the output? 
+
+A.java Test 2222 
+B.java Test 1 2 3 4 
+C.java Test 4 2 4 2 
+D.java Test 4 3 2 1 
+
+88.Given: 
+
+8. int index = 1; 
+9. String [] test = new String[3]; 
+10. String foo = test[index];   
+
+What is the result? 
+
+A.foo has the value °∞°± 
+B.foo has the value null 
+C.an exception is thrown 
+D.the code will not compile 
+
+89.Given: 
+
+1.public interface Foo{ 
+2.int k = 4; 
+3.} 
+
+Which three are equivalent to line 2? (Choose Three) 
+
+A.final int k = 4; 
+B.public int k = 4; 
+C.static int k = 4; 
+D.private int k = 4; 
+E.abstract int k = 4; 
+F.volatile int k = 4; 
+G.transient int k = 4; 
+H.protected int k = 4; 
+
+90.Given: 
+
+1.public class foo { 
+2.static String s; 
+3.public static void main (String[]args) { 
+4.system.out.printIn (°∞s=°± + s); 
+5.} 
+6.} 
+
+What is the result? 
+
+A.The code compiles and °∞s=°± is printed. 
+B.The code compiles and °∞s=null°± is printed. 
+C.The code does not compile because string s is not initialized. 
+D.The code does not compile because string s cannot be referenced. 
+E.The code compiles, but a NullPointerException is thrown when toString is called. 
+
+91.Which of the following two are valid declarations of a char? (Choose Two) 
+
+A.char ch = °∞a°±; 
+B.char ch = °Æ\°Ø °Æ; 
+C.char ch = °Æcafe°Ø; 
+D.char ch = °∞cafe°±; 
+E.char ch = °Æ\ucafe°Ø; 
+F.char ch = °Æ\u10100°Ø; 
+G.char ch = (char) true; 
+
+92.Given: 
+
+1.String foo = °∞blue°±; 
+2.Boolean[]bar = new Boolean [1]; 
+3.if (bar[0])  { 
+4.  foo = °∞green°±; 
+5.} 
+
+What is the result? 
+
+A.foo has the value of °∞°± 
+B.foo has the value of null 
+C.foo has the value of °∞blue°± 
+D.foo has the value of °∞green°± 
+E.an exception is thrown 
+F.the code will not compile 
+
+93.Click the exhibit button: 
+
+
+1.public class X { 
+2.public static void main (String[]args)  { 
+3.String s1 = new String (°∞true°±); 
+4.Boolean b1 = new Boolean (true); 
+5.if (s2.equals(b1))   { 
+6.System.out.printIn(°∞Equal°±); 
+7.      } 
+8.     } 
+9.    }   
+
+What is the result? 
+
+A.The program runs and prints nothing. 
+B.The program runs and prints °∞Equal.°± 
+C.An error at line 5 causes compilation to fail. 
+D.The program runs but aborts with an exception. 
+
+94.Given: 
+
+1.public class Foo { 
+2.public static void main (String []args) { 
+3.int i = 1; 
+4.int j = i++; 
+5.if ((i>++j) && (i++ ==j))  { 
+6.        i +=j; 
+7.       } 
+8.     } 
+9.   } 
+
+What is the final value of i? 
+
+A.1 
+B.2 
+C.3 
+D.4 
+E.5 
+
+95.Click the exhibit button: 
+
+
+1.public class X { 
+2.public static void main (String[]args)   { 
+3.string s = new string (°∞Hello°±); 
+4.modify(s); 
+5.System.out.printIn(s); 
+6.} 
+7. 
+8.public static void modify (String s)  { 
+9.s += °∞world!°±; 
+10.   } 
+11.}   
+
+What is the result? 
+
+A.The program runs and prints °∞Hello°±. 
+B.An error causes compilation to fail. 
+C.The program runs and prints °∞Hello world!°±. 
+D.The program runs but aborts with an exception. 
+
+96.Which two are equivalent? (Choose Two) 
+
+A.16>4 
+B.16/2 
+C.16*4 
+D.16>>2 
+E.16/2^2 
+F.16>>>2 
+
+97.Click the exhibit button 
+
+
+1.public class X { 
+2.public static void main (String[]args)   { 
+3.int [] a = new int [1] 
+4.modify(a); 
+5.System.out.printIn(a[0]); 
+6.} 
+7. 
+8.public static void modify (int[] a)  { 
+9.  a[0] ++; 
+10.   } 
+11.}   
+
+What is the result? 
+
+A.The program runs and prints °∞0°±. 
+B.The program runs and prints °∞1°±. 
+C.The program runs but aborts with an exception. 
+D.An error °∞possible undefined variable°± at line 4 causes compilation to fail. 
+E.An error °∞possible undefined variable°± at line 9 causes compilation to fail. 
+
+98.Given: 
+
+13.public class Foo { 
+14.  public static void main (String [] args)  { 
+15.     StringBuffer a = new StringBuffer (°∞A°±); 
+16.     StringBuffer b = new StringBuffer (°∞B°±); 
+17.    operate (a,b); 
+18.    system.out.printIn{a + °∞,°± +b}; 
+19.) 
+20.static void operate (StringBuffer x, StringBuffer y)  { 
+21.          y.append {x}; 
+22.          y = x; 
+23.    ) 
+24.} 
+
+What is the result? 
+
+A.The code compiles and prints °∞A,B°±. 
+B.The code compiles and prints °∞A, BA°±. 
+C.The code compiles and prints °∞AB, B°±. 
+D.The code compiles and prints °∞AB, AB°±. 
+E.The code compiles and prints °∞BA, BA°±. 
+F.The code does not compile because °∞+°± cannot be overloaded for stringBuffer. 
+
+99.Given: 
+
+1.public class X { 
+2.public static void main (String[] args)  { 
+3.  byte b = 127; 
+4.  byte c = 126; 
+5.  byte d = b + c; 
+6.  } 
+7.} 
+
+Which statement is true? 
+
+A.Compilation succeeds and d takes the value 253. 
+B.Line 5 contains an error that prevents compilation. 
+C.Line 5 throws an exception indicating °∞Out of range°±. 
+D.Line 3 and 4 contain error that prevent compilation. 
+E.The compilation succeeds and d takes the value of 1. 
+
+100.Given: 
+
+1.public class WhileFoo { 
+2.public static void main (String []args)   { 
+3.int x= 1, y = 6; 
+4.while (y--)  {x--;} 
+5.system.out.printIn(°∞x=°± + x °∞y =°± + y); 
+6.   } 
+7.} 
+
+What is the result? 
+
+A.The output is x = 6 y = 0 
+B.The output is x = 7 y = 0 
+C.The output is x = 6 y = -1 
+D.The output is x = 7 y = -1 
+E.Compilation will fail 
+
+101.Which statement is true? 
+
+A.The Error class is a untimeException. 
+B.No exceptions are subclasses of Error. 
+C.Any statement that may throw an Error must be enclosed in a try block. 
+D.Any statement that may throw an Exception must be enclosed in a try block. 
+E.Any statement that may thro a runtimeException must be enclosed in a try block. 
+
+102.Click the exhibit button: 
+
+
+1.int I=1, j=0 
+2. 
+3.switch(i)  { 
+4.case 2: 
+5.j+=6; 
+6. 
+7.case 4: 
+8.j+=1; 
+9. 
+10.default: 
+11.j +=2; 
+12. 
+13.case 0: 
+14.j +=4; 
+15.}16.   
+
+What is the value of j at line 16? 
+
+A.0 
+B.1 
+C.2 
+D.4 
+E.6 
+
+103.Given: 
+
+1. switch (i)  { 
+2. default: 
+3. System.out.printIn(°∞Hello°±); 
+4. ) 
+
+What is the acceptable type for the variable i? 
+
+A.byte 
+B.long 
+C.float 
+D.double 
+E.object 
+F.A and B 
+G.C and D   
+
+104.You need to store elements in a collection that guarantees that no duplicates are stored. Which two interfaces provide that capability? (Choose Two) 
+
+A.java.util.Map 
+B.java.util.Set 
+C.java.util.List 
+D.java.util.StoredSet 
+E.java.util.StoredMap 
+F.java.util.Collection 
+
+105.Which statement is true for the class java.util.ArrayList? 
+
+A.The elements in the collection are ordered. 
+B.The collection is guaranteed to be immutable. 
+C.The elements in the collection are guaranteed to be unique. 
+D.The elements in the collection are accessed using a unique key. 
+E.The elements in the collections are guaranteed to be synchronized. 
+
+106.Click the exhibit button: 
+
+1.public class X implements Runnable( 
+2.private int x; 
+3.private int y; 
+4. 
+5.public static void main(String[]args) 
+6.X that = new X(); 
+7.(new Thread(that)).start(); 
+8.(new Thread(that)).start(); 
+9.) 
+10. 
+11.public void run()  ( 
+12.for (;;)  ( 
+13.x++; 
+14.y++; 
+15.System.out.printIn(°∞x=°± + x + °∞, y = °± + y); 
+16.         ) 
+17.      ) 
+18.   )   
+
+What is the result? 
+
+A. Errors at lines 7 and 8 cause compilation to fail. 
+B. The program prints pairs of values for x and y that might not always be the same on the same line (for example, °∞x=2, y=1°±). 
+C. The program prints pairs of values for x and y that are always the same on the same line (for example, °∞x=1, y=1°±. In addition, each value appears twice (for example, °∞x=1, y=1°± followed by °∞x=1, y=1°±). 
+D. The program prints pairs of values for x and y that are always the same on the same line (for example, °∞x=1, y=1°±. In addition, each value appears only for once (for example, °∞x=1, y=1°± followed by °∞x=2, y=2°±). 
+
+107.Given: 
+
+1.public class SyncTest { 
+2.private int x; 
+3.private int y; 
+4.public synchronized void setX (int i) (x=1;) 
+5.public synchronized void setY (int i) (y=1;) 
+6.public synchronized void setXY(int 1)(set X(i); setY(i);) 
+7.public synchronized Boolean check() (return x !=y;) 
+8.) 
+
+Under which conditions will check () return true when called from a different class?   
+
+A.check() can never return true 
+B.check() can return true when setXY is called by multiple threads 
+C.check() can return true when multiple threads call setX and setY separately. 
+D.Check() can only return true if SyncTest is changed to allow x and y to be set separately. 
+
+108.Which is a method of the MouseMotionListener interface? 
+
+A.Public void mouseDragged(MouseEvent) 
+B.Public boolean mouseDragged(MouseEvent) 
+C.Public void mouseDragged(MouseMotionEvent) 
+D.Public boolean MouseDragged(MouseMotionEvent) 
+E.Public boolean mouseDragged(MouseMotionEvent) 
+
+109.Given: 
+
+1.String foo = °∞base°±; 
+2.foo.substring(0,3); 
+3.foo.concat(°∞ket°±); 
+4.foo += R 
+ 

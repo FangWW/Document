@@ -1,0 +1,301 @@
+JAVA面试题集（6） 
+作者：unknown 更新时间：2005-04-07    
+  
+4、编程用JAVA解析XML的方式. 
+
+答:用SAX方式解析XML，XML文件如下： 
+
+<?xml version="1.0" encoding="gb2312"?> 
+
+<person> 
+
+<name>王小明</name> 
+
+<college>信息学院</college> 
+
+<telephone>6258113</telephone> 
+
+<notes>男,1955年生,博士，95年调入海南大学</notes> 
+
+</person> 
+
+事件回调类SAXHandler.java 
+
+import java.io.*; 
+
+import java.util.Hashtable; 
+
+import org.xml.sax.*; 
+
+public class SAXHandler extends HandlerBase 
+
+{ 
+
+private Hashtable table = new Hashtable(); 
+
+private String currentElement = null; 
+
+private String currentValue = null; 
+
+public void setTable(Hashtable table) 
+
+{ 
+
+this.table = table; 
+
+} 
+
+public Hashtable getTable() 
+
+{ 
+
+return table; 
+
+} 
+
+public void startElement(String tag, AttributeList attrs) 
+
+throws SAXException 
+
+{ 
+
+currentElement = tag; 
+
+} 
+
+public void characters(char[] ch, int start, int length) 
+
+throws SAXException 
+
+{ 
+
+currentValue = new String(ch, start, length); 
+
+} 
+
+public void endElement(String name) throws SAXException 
+
+{ 
+
+if (currentElement.equals(name)) 
+
+table.put(currentElement, currentValue); 
+
+} 
+
+} 
+
+JSP内容显示源码,SaxXml.jsp: 
+
+<HTML> 
+
+<HEAD> 
+
+<TITLE>剖析XML文件people.xml</TITLE> 
+
+</HEAD> 
+
+<BODY> 
+
+<%@ page errorPage="ErrPage.jsp" 
+
+contentType="text/html;charset=GB2312" %> 
+
+<%@ page import="java.io.*" %> 
+
+<%@ page import="java.util.Hashtable" %> 
+
+<%@ page import="org.w3c.dom.*" %> 
+
+<%@ page import="org.xml.sax.*" %> 
+
+<%@ page import="javax.xml.parsers.SAXParserFactory" %> 
+
+<%@ page import="javax.xml.parsers.SAXParser" %> 
+
+<%@ page import="SAXHandler" %> 
+
+<% 
+
+File file = new File("c:\people.xml"); 
+
+FileReader reader = new FileReader(file); 
+
+Parser parser; 
+
+SAXParserFactory spf = SAXParserFactory.newInstance(); 
+
+SAXParser sp = spf.newSAXParser(); 
+
+SAXHandler handler = new SAXHandler(); 
+
+sp.parse(new InputSource(reader), handler); 
+
+Hashtable hashTable = handler.getTable(); 
+
+out.println("<TABLE BORDER=2><CAPTION>教师信息表</CAPTION>"); 
+
+out.println("<TR><TD>姓名</TD>" + "<TD>" + 
+
+(String)hashTable.get(new String("name")) + "</TD></TR>"); 
+
+out.println("<TR><TD>学院</TD>" + "<TD>" + 
+
+(String)hashTable.get(new String("college"))+"</TD></TR>"); 
+
+out.println("<TR><TD>电话</TD>" + "<TD>" + 
+
+(String)hashTable.get(new String("telephone")) + "</TD></TR>"); 
+
+out.println("<TR><TD>备注</TD>" + "<TD>" + 
+
+(String)hashTable.get(new String("notes")) + "</TD></TR>"); 
+
+out.println("</TABLE>"); 
+
+%> 
+
+</BODY> 
+
+</HTML> 
+
+EJB方面 
+
+1、EJB2.0有哪些内容?分别用在什么场合? EJB2.0和EJB1.1的区别? 
+
+答：规范内容包括Bean提供者，应用程序装配者，EJB容器，EJB配置工具，EJB服务提供者，系统管理员。这里面，EJB容器是EJB之所以能够运行的核心。EJB容器管理着EJB的创建，撤消，激活，去活，与数据库的连接等等重要的核心工作。JSP,Servlet,EJB,JNDI,JDBC,JMS..... 
+
+2、EJB与JAVA BEAN的区别？ 
+
+答:Java Bean 是可复用的组件，对Java Bean并没有严格的规范，理论上讲，任何一个Java类都可以是一个Bean。但通常情况下，由于Java Bean是被容器所创建（如Tomcat)的，所以Java Bean应具有一个无参的构造器，另外，通常Java Bean还要实现Serializable接口用于实现Bean的持久性。Java Bean实际上相当于微软COM模型中的本地进程内COM组件，它是不能被跨进程访问的。Enterprise Java Bean 相当于DCOM，即分布式组件。它是基于Java的远程方法调用（RMI）技术的，所以EJB可以被远程访问（跨进程、跨计算机）。但EJB必须被布署在诸如Webspere、WebLogic这样的容器中，EJB客户从不直接访问真正的EJB组件，而是通过其容器访问。EJB容器是EJB组件的代理，EJB组件由容器所创建和管理。客户通过容器来访问真正的EJB组件。 
+
+3、EJB的基本架构 
+
+答:一个EJB包括三个部分: 
+
+Remote Interface 接口的代码 
+
+package Beans; 
+
+import javax.ejb.EJBObject; 
+
+import java.rmi.RemoteException; 
+
+public interface Add extends EJBObject 
+
+{ 
+
+//some method declare 
+
+} 
+
+Home Interface 接口的代码 
+
+package Beans; 
+
+import java.rmi.RemoteException; 
+
+import jaax.ejb.CreateException; 
+
+import javax.ejb.EJBHome; 
+
+public interface AddHome extends EJBHome 
+
+{ 
+
+//some method declare 
+
+} 
+
+EJB类的代码 
+
+package Beans; 
+
+import java.rmi.RemoteException; 
+
+import javax.ejb.SessionBean; 
+
+import javx.ejb.SessionContext; 
+
+public class AddBean Implements SessionBean 
+
+{ 
+
+//some method declare 
+
+} 
+
+
+
+J2EE,MVC方面 
+
+1、MVC的各个部分都有那些技术来实现?如何实现? 
+
+答:MVC是Model－View－Controller的简写。"Model" 代表的是应用的业务逻辑（通过JavaBean，EJB组件实现）， "View" 是应用的表示面（由JSP页面产生），"Controller" 是提供应用的处理过程控制（一般是一个Servlet），通过这种设计模型把应用逻辑，处理过程和显示逻辑分成不同的组件实现。这些组件可以进行交互和重用。 
+
+2、应用服务器与WEB SERVER的区别？ 
+
+希望大家补上，谢谢 
+
+3、J2EE是什么？ 
+
+答:Je22是Sun公司提出的多层(multi-diered),分布式(distributed),基于组件(component-base)的企业级应用模型(enterpriese application model).在这样的一个应用系统中，可按照功能划分为不同的组件，这些组件又可在不同计算机上，并且处于相应的层次(tier)中。所属层次包括客户层(clietn tier)组件,web层和组件,Business层和组件,企业信息系统(EIS)层。 
+
+4、WEB SERVICE名词解释。JSWDL开发包的介绍。JAXP、JAXM的解释。SOAP、UDDI,WSDL解释。 
+
+答：Web Service描述语言WSDL 
+
+SOAP即简单对象访问协议(Simple Object Access Protocol)，它是用于交换XML编码信息的轻量级协议。 
+
+UDDI 的目的是为电子商务建立标准；UDDI是一套基于Web的、分布式的、为Web Service提供的、信息注册中心的实现标准规范，同时也包含一组使企业能将自身提供的Web Service注册，以使别的企业能够发现的访问协议的实现标准。 
+
+5、BS与CS的联系与区别。 
+
+希望大家补上，谢谢 
+
+6、STRUTS的应用(如STRUTS架构) 
+
+答：Struts是采用Java Servlet/JavaServer Pages技术，开发Web应用程序的开放源码的framework。 采用Struts能开发出基于MVC(Model-View-Controller)设计模式的应用构架。 Struts有如下的主要功能： 
+
+一.包含一个controller servlet，能将用户的请求发送到相应的Action对象。 
+
+二.JSP自由tag库，并且在controller servlet中提供关联支持，帮助开发员创建交互式表单应用。 
+
+三.提供了一系列实用对象：XML处理、通过Java reflection APIs自动处理JavaBeans属性、国际化的提示和消息。 
+
+设计模式方面 
+
+1、开发中都用到了那些设计模式?用在什么场合? 
+
+答：每个模式都描述了一个在我们的环境中不断出现的问题，然后描述了该问题的解决方案的核心。通过这种方式，你可以无数次地使用那些已有的解决方案，无需在重复相同的工作。主要用到了MVC的设计模式。用来开发JSP/Servlet或者J2EE的相关应用。简单工厂模式等。 
+
+2、UML方面 
+
+答：标准建模语言UML。用例图,静态图(包括类图、对象图和包图),行为图,交互图(顺序图,合作图),实现图, 
+
+JavaScript方面 
+
+1、如何校验数字型? 
+
+var re=/^d{1,8}$|.d{1,2}$/; 
+
+var str=document.form1.all(i).value; 
+
+var r=str.match(re); 
+
+if (r==null) 
+
+{ 
+
+sign=-4; 
+
+break; 
+
+} 
+
+else{ 
+
+document.form1.all(i).value=parseFloat(str); 
+
+} 
+ 

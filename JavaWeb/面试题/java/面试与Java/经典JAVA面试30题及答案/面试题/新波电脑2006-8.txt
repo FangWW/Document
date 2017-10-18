@@ -1,0 +1,145 @@
+面试题（2006/08/01）：
+
+ 
+
+1、  使用JDBC访问数据库的步骤。
+
+2、  在数据层是怎样对JDBC进行封装的。
+
+3、  HASHTABLE和HASHMAP的区别。
+
+4、  解说AWT和SWING的区别以及怎么使用。
+
+5、  STRUTS中的VALIDATOR验证框架一般用来验证什么。
+
+6、  STRUTS中自定义的ACTION是继承哪个类，它的主要方法是什么，返回值是什么。
+
+7、  MVC是什么，在STRUTS中是如何应用的。
+
+8、  在JAVA中读取文件操作是如何实现的。
+
+9、  在UML中，有那些图。他们的作用分别是什么。
+
+10、在SQL Server中，有几种表的连接，它们分别是什么，详细说明外连接及输出结果。
+
+11、中间件是什么，并说明它的作用。
+
+12、JAVA中访问存储过程，并解说参数OUT 和IN的用法及作用。
+
+笔试题：
+
+1、  读下面程序段，
+
+Public static void main(String []args){
+
+        int x=4;
+
+        int y=3;
+
+        int s=x+++y++;
+
+    System.out.println(“s=”+s+”x=”+x+”y”+y);
+
+}
+
+输出结果是（）
+
+s=9 x=4 y=3 
+s=7 x=5 y=4 
+s=9 x=5 y=3 
+s=7 x=4 y=3
+2、  在下面程序段中，那行代码会发生错误，若无错误，输出结果是什么（）
+
+Public static void mian(String []args){
+
+(1)   int i=255;
+
+(2)   byte b ;
+
+(3)  b=(byte)i;
+
+(4)   System.out.println(b);
+
+}
+
+A、（1）处会发生编译时错误
+
+B、（3）处会发生运行时错误
+
+C、不会发生错误，输出结果为255
+
+D、不会发生错误，输出结果为-1
+
+3、下面说法正确的是（）
+
+   A、在运行是，解释器负责加载代码，编译器负责加载字节码
+
+   B、在运行时，编译器负责加载代码，解释器负责加载字节码
+
+   C、解释器在执行时一次只执行一行代码
+
+   D、编译器负责将源代码直接转换为目标机器语言。
+
+ 
+
+ 
+
+4、在JAVA中使用AssertionError时，需要导入（）包
+
+   A、java.AssertionError
+
+ B、java.lang.AssertionError 
+
+C、java.Errors
+
+ D、以上都不对
+
+5、在下面代码段中，要访问类B中的AddPrint()方法，应添加（）代码
+
+       Public class A{
+
+              Public void AddPrint(){
+
+                     //do something
+
+}
+
+}
+
+Public class B extends A{
+
+       Public void AddPrint(){
+
+              //do something
+
+}
+
+}
+
+Public static void main(String a[]){
+
+       A  a = (A) new B();
+
+       //此处添加代码；
+
+}
+
+A、a. AddPrint(); B、((B)a). AddPrint();C、以上都不对
+
+6、要只能在同一包中的不同类中访问其他类中的成员，则使用（）修饰符
+
+   A、private
+
+   B  public 
+
+   C  (default)
+
+   D  protect
+
+ 
+
+（线程和异常处理的题最多）
+
+ 
+
+电话：13076085184     许岩龙
