@@ -1,0 +1,92 @@
+1.Struts 2的基本流程 
+  Struts 2框架由3个部分组成：核心控制器FilterDispatcher、业务控制器和用户实现的业务逻辑组件。在这3个部分里，Struts 2框架提供了核心控制器FilterDispatcher，而用户需要实现业务控制器和业务逻辑组件。 
+2.核心控制器：FilterDispatcher 
+  FilterDispatcher是Struts 2框架的核心控制器，该控制器作为一个Filter运行在Web应用中，它负责拦截所有的用户请求，当用户请求到达时，该Filter会过滤用户请求。如果用户请求以action结尾，该请求将被转入Struts 2框架处理。 
+
+Struts 2框架获得了*.action请求后，将根据*.action请求的前面部分决定调用哪个业务逻辑组件，例如，对于login.action请求，Struts 2调用名为login的Action来处理该请求。 
+
+Struts 2应用中的Action都被定义在struts.xml文件中，在该文件中定义Action时，定义了该Action的name属性和class属性，其中name属性决定了该Action处理哪个用户请求，而class属性决定了该Action的实现类。 
+
+Struts 2用于处理用户请求的Action实例，并不是用户实现的业务控制器，而是Action代理——因为用户实现的业务控制器并没有与Servlet API耦合，显然无法处理用户请求。而Struts 2框架提供了系列拦截器，该系列拦截器负责将HttpServletRequest请求中的请求参数解析出来，传入到Action中，并回调Action 的execute方法来处理用户请求。 
+
+显然，上面的处理过程是典型的AOP（面向切面编程）处理方式。图3.19显示了这种处理模型。 
+
+
+
+图3.19  Struts 2的拦截器和Action 
+
+从图3.19中可以看出，用户实现的Action类仅仅是Struts 2的Action代理的代理目标。用户实现的业务控制器（Action）则包含了对用户请求的处理。用户的请求数据包含在 HttpServletRequest对象里，而用户的Action类无需访问HttpServletRequest对象。拦截器负责将 HttpServletRequest里的请求数据解析出来，并传给业务逻辑组件Action实例。 
+3.业务控制器 
+  正如从图3.19所看到的，业务控制器组件就是用户实现Action类的实例，Action类里通常包含了一个execute方法，该方法返回一个字符串——该字符串就是一个逻辑视图名，当业务控制器处理完用户请求后，根据处理结果不同，execute方法返回不同字符串   ——每个字符串对应一个视图名。 
+
+程序员开发出系统所需要的业务控制器后，还需要配置Struts 2的Action，即需要配置Action的如下三个部分定义： 
+
+—  Action所处理的URL。 
+
+—  Action组件所对应的实现类。 
+
+—  Action里包含的逻辑视图和物理资源之间的对应关系。 
+
+每个Action都要处理一个用户请求，而用户请求总是包含了指定URL。当Filter Dispatcher拦截到用户请求后，根据请求的URL和Action处理URL之间的对应关系来处理转发。 
+4.Struts 2的模型组件 
+  实际上，模型组件已经超出了MVC框架的覆盖范围。对于Struts 2框架而言，通常没有为模型组件的实现提供太多的帮助。 
+
+文本框: 图3.20 控制器调用模型组件Java EE应用里的模型组件，通常指系统的业务逻辑组件。而隐藏在系统的业务逻辑组件下面的，可能还包含了DAO、领域对象等组件。 
+
+通常，MVC框架里的业务控制器会调用模型组件的方法来处理用户请求。也就是说，业务逻辑控制器不会对用户请求进行任何实际处理，用户请求最终由模型组件负责处理。业务控制器只是中间负责调度的调度器，这也是称Action为控制器的原因。 
+
+
+
+图3.20显示了这种处理流程。 
+
+提示  在图3.20中看到Action调用业务逻辑组件的方法。当控制器需要获得业务逻辑组件实例时，通常并不会直接获取业务逻辑组件实例，而是通过工厂模式来获得业务逻辑组件的实例；或者利用其他IoC容器（如Spring容器）来管理业务逻辑组件的实例。 
+5.Struts 2的视图组件 
+  Struts 2已经改变了Struts 1只能使用JSP作为视图技术的现状，Struts 2允许使用其他的模板技术，如FreeMarker、Velocity作为视图技术。 
+
+当Struts 2的控制器返回逻辑视图名时，逻辑视图并未与任何的视图技术关联，仅仅是返回一个字符串，该字符串作为逻辑视图名。 
+
+当我们在struts.xml文件中配置 Action时，不仅需要指定Action的name属性和class属性，还要为Action元素指定系列result子元素，每个result子元素定义一个逻辑视图和物理视图之间的映射。前面所介绍的应用都使用了JSP技术作为视图，故配置result子元素时没有指定type属性，默认使用JSP 作为视图资源。 
+
+如果需要在Struts 2中使用其他视图技术，则可以在配置result子元素时，指定相应的type属性即可。例如，如果需要使用FreeMarker，则为result指定值为freemarker的type属性；如果想使用Velocity模板技术作为视图资源，则为result指定值为velocity的type属性…… 
+6.Struts 2的运行流程 
+  经过上面介绍，我们发现Struts 2框架的运行流程非常类似于WebWork框架的流程。 
+
+提示  在Struts 2的官方站点，我们可以找到如下说法：Essentially，Struts 2.0 is the technical equivalent of WebWork 2.3。Aside from the package and property renaming，it isn't much different than，say，migrating from WebWork 2.1 to 2.2——意思是说：Struts 2.0技术等同于WebWork 2.3框架，除了包和属性被改名外。从WebWork 2.2迁移到Struts 2不会比从WebWork 2.1迁移到WebWork 2.2更复杂。 
+
+这里我们可以看到，Struts 2其实就是WebWork 2.2的升级版，这也就不难理解：为什么WebWork和Struts 2如此相似！ 
+
+Struts Struts只是一个MVC框架（Framework）,用于快速开发Java Web应用。Struts实现的重点在C(Controller)，包括ActionServlet/RequestProcessor和我们定制的Action,也为V(View)提供了一系列定制标签（Custom Tag）。但Struts几乎没有涉及M(Model),所以Struts可以采用JAVA实现的任何形式的商业逻辑。 Spring Spring是一个轻型容器(light-weight container)，其核心是Bean工厂(Bean Factory)，用以构造我们所需要的M(Model)。在此基础之上，
+Spring提供了AOP（Aspect-Oriented Programming, 面向层面的编程）的实现，用它来提供非管理环境下申明方式的事务、安全等服务；对Bean工厂的扩展ApplicationContext更加方便我们实现J2EE的应用；DAO/ORM的实现方便我们进行数据库的开发；Web MVC和Spring Web提供了Java Web应用的框架或与其他流行的Web框架进行集成。 就是说可将两者一起使用，达到将两者自身的特点进行互补。 Hibernate Hibernate是一个免费的开源Java包，它使得与关系数据库
+打交道变得十分轻松，就像您的数据库中包含每天使用的普通Java对象一样，同时不必考虑如何把它们从神秘的数据库表中取出(或放回到数据库表中)。它解放了您，使您可以专注于应用程序的对象和功能，而不必担心如何保存它们或稍后如何找到它们。 EJB 一个技术规范：EJB 从技术上而言不是一种"产品" EJB 是一种标准描述了构建应用组件要解决的: 可扩展 (Scalable) 分布式 (Distributed) 事务处理 (Transactional) 数据存储 (Persistent) 安全性 (Secure) ANT －. Ant简介
+ Ant是一个类似make的工具，用来编译/运行/测试java程序。 构建、包装和发布过程中几乎每一件事都可以由Ant的任务来处理. 二．Ant的安装及配置 你可以从Jakata网站下载预编译的ANT,解压至任一目录； 设置自己的环境变量，即ANT_HOME，指向解压目录; 设置JAVA_HOME环境变量,指向jdk的根目录; 三：用ant管理项目 Ant一启动就会自动地加载一个叫做Build.xml的项目配置文件。如果想给这个项目配置文件取别的名字，你可以使用buildfile标记来运行ant，就像下面这样： ant -buildfile Project_configuration.xml 主要特点： 使用xml文件作为配置文件，即build.xml； 可与junit作无缝整合，达到系统测试、编译到发布的功能； 强大、详细的报表功能； 控制灵活，可自定义要执行的任务组合。
+
+1 说说Struts的优点、缺点
+Struts是开源软件，使开发者能更深入的了解其内部实现机制。
+Struts 优点：
+业界”标准”（很多成功案例），学习资源丰富。
+Struts的优点主要集中体现在两个方面：Taglib和页面导航。
+a、利用Struts提供的taglib可以大大节约开发时间。
+b、维护扩展比较方便。通过一个配置文件，即可把握整个系统各部分之间的联系，这对于后期的维护有着莫大的好处。
+c、表现与逻辑分离
+d、表单验证解决了请求数据的验证问题，增强了系统健壮性。
+e、便于团队开发
+Struts缺点：
+a、大量的使用标签，对于初学者难度较大。
+b、ActionForms使用不便、无法进行单元测试（StrutsTestCase只能用于集成）
+Struts提供了几个标签库？都是什么标签库？
+Struts提供了五个标签库，即：HTML、Bean、Logic、Template和Nested。
+HTML 标签 用来创建能够和Struts 框架和其他相应的HTML 标签交互的HTML 输入表单
+Bean 标签      在访问JavaBeans 及其属性，以及定义一个新的bean 时使用
+Logic 标签      管理条件产生的输出和对象集产生的循环
+Template 标签      随着Tiles框架包的出现，此标记已开始减少使用
+Nested 标签      增强对其他的Struts 标签的嵌套使用的能力
+2 分析一下struts是如何实现MVC的。
+Struts采用jsp作为MVC的视图,由ActionServlet具体指定的action动作类作为控制器即MVC中的C，负责视图与模型之间的交互。控制器的每个入口点都由名为struts-config.xml的配置文件设置。该文件把来自视图的请求映射为特定的JAVA类以进行相应的处理，控制器还指定下一个视图的位置。Struts中的模型主要指的就是javabean，它是模型的代表，主要封装数据和业务逻辑。
+3 说说Struts的处理流程：
+控制器进行初始化工作，读取配置文件，为不同的Struts模块初始化相应的ModuleConfig对象。控制器接收Http请求，并从ActionConfig中找出对应于该请求的Action子类，如果没有对应的Action，控制器直接将请求转发给JSP或者静态页面，否则控制器将请求分发至具体的Action类进行处理。
+在控制器调用具体的Action的Execute方法之前，ActionForm对象将利用Http请求中的参数来填充自已。还可以在 ActionForm类中调用Validate方法来检查请求参数的合法性，并且可以返回一个包含所有错误信息的ActionErrors对象。
+执行具体的的Execute的方法，它负责执行相应的业务逻辑。执行完后，返回一个ActionForward对象，控制器通过该 ActionForward对象来进行转发工作。也可以把Action要处理的业务逻辑封装在JavaBean中，如果系统中还有EJB，那么通过 JavaBean调用EJB以完成业务处理；如果没有EJB，那么就直接在JavaBean中连接数据库，进行数据库相关的操作。
+4 说说Struts几个关键对象的作用：Action、ActionServlet、ActionForm
+
+Struts 2框架本身大致可以分为3个部分：核心控制器FilterDispatcher、业务控制器Action和用户实现的企业业务逻辑组件。核心控制器FilterDispatcher是Struts 2框架的基础，包含了框架内部的控制流程和处理机制。业务控制器Action和业务逻辑组件是需要用户来自己实现的。用户在开发Action和业务逻辑组件的同时，还需要编写相关的配置文件，供核心控制器FilterDispatcher来使用。 Struts 2的工作流程相对于Struts 1要简单，与WebWork框架基本相同，所以说Struts 2是WebWork的升级版本。基本简要流程如下：1、客户端浏览器发出HTTP请求。2、根据web.xml配置，该请求被FilterDispatcher接收。3、根据struts.xml配置，找到需要调用的Action类和方法， 并通过IoC方式，将值注入给Aciton。4、Action调用业务逻辑组件处理业务逻辑，这一步包含表单验证。5、Action执行完毕，根据struts.xml中的配置找到对应的返回结果result，并跳转到相应页面。6、返回HTTP响应到客户端浏览器。
+
