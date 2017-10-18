@@ -1,0 +1,10 @@
+var dpcfg = {};
+dpcfg.skin = "default";		
+dpcfg.dateFmt = "%Y-%M-%D";
+dpcfg.realValueShortFmt = "%Y-%M-%D";
+dpcfg.realValueLongFmt = "%Y-%M-%D %h:%m:%s";
+dpcfg.showTime = false;	
+dpcfg.highLineWeekDay = true;
+dpcfg.minDate = "1900-1-1";
+dpcfg.maxDate = "2099-12-30";
+dpcfg.errDealMode = 0;

@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>registerl.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <link href="../js/Stip/Stip.css" type="text/css" rel="stylesheet" />
+    <link href="../CSS/style.css" rel="stylesheet">
+   <script type="text/javascript" src="../js/data.js"></script>
+   <script type="text/javascript" src="../js/jquery-1.4.1.js"></script>
+   <script type="text/javascript" src="../js/Stip/Stip.js"></script>
+  
+   <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+       <style>
+.btn34
+{
+	width:74px;
+	height:38px;
+	line-height:18px;
+	font-size:18px;
+	color:#955686;	
+	background:url(../images/register.jpg) no-repeat left top ;	
+	padding-bottom:4px;
+}
+  .color{
+	  background-color:#D8CAFF;
+  }
+
+      </style>
+ <script type="text/javascript">
+ $(function(){
+	 $("input").hover(function(){$(this).addClass("color")},
+		  function(){$(this).removeClass("color")}			 
+	  )
+			 
+			  
+	 $("textarea").hover(function(){$(this).addClass("color")},
+		  function(){$(this).removeClass("color")}			 
+	  )
+	  
+
+	
+	Stip.config.p='right';// String [left|top|right|bottom] 默认弹出框的方向 
+	Stip.config.closeBtn=true;
+	Stip.config.time=5000;
+	Stip.config.kind="error";
+    var str="" ;
+    
+    //表单验证
+	$("#nickname").focusout(function() {
+		var nickname=$(this).val().length;
+		
+		if(nickname==0){
+		  Stip('nickname').show(function(){
+
+                str="请填写昵称";
+            	return  str;
+     	  });
+     	}
+
+      if( nickname >6 ){
+               
+                 Stip('nickname').show(function(){
+                 
+                 str="昵称不能超过6个字符";
+            	 return  str;
+     	  });
+               
+	  } 
+			 
+  });
+	
+	$("#sex").focusout(function() {
+		var sex =$("#sex").val().length;
+		if(sex==0){
+		
+		     Stip('sex').show(function(){  
+                 str="请填写性别";
+         	     return  str;
+    	     }) ;
+		 }
+    });
+	
+	$("#password").focusout(function() {
+		 var password=$("#password").val().length;
+		 if(password==0){
+		     Stip('password').show(function(){
+                 str="请输入密码";
+          	     return  str;
+          	    });
+        	}
+        	
+
+        if( password>0 && password <6 || password >12 ){
+             Stip('password').show(function(){
+                 str="请输入正确长度的密码（6--12位）";
+                 return  str ;	 
+			 }) ;
+		}
+	});
+	
+	$("#ampwd").focusout(function() {
+		var ampwd =$("#ampwd").val().length;
+		if(ampwd==0){
+		  Stip('ampwd').show(function(){
+              str="请再次输入你的密码";
+        	  return  str;
+          });
+ 	    }
+
+      if(  $("#password").val() != ( $("#ampwd").val()) ){
+         Stip('ampwd').show(function(){
+            str="密码和确认密码输入不一致";
+            return  str ;	 
+			}); 
+		}
+	});
+	
+	$("#age").focusout(function() {
+		var age=$("#age").val().length;
+		if(age==0){
+		   Stip('age').show(function(){
+              str="请输入年龄";
+      	      return  str;
+      	      });
+	     }
+		
+	});
+	
+/**
+	$("#birthday").focusout(function() {
+		var birthday=$(this).val().length;
+		alert($(this).val());
+		if(birthday==0){
+		        Stip('birthday').show(function(){
+                   str="请输入生日";
+      	           return  str;
+      	            }) ;
+     	}	
+	});
+*/
+
+	$("#sign").focusout(function() {
+		var sign=$("#sign").val().length;
+		if(sign > 25){
+		     Stip('sign').show(function(){
+                 str="请输入正确的字符数（25个）";
+    	         return  str;
+    	      }) ;
+	   }	
+	});
+	
+	
+	  
+	 })
+	
+	 
+
+ </script>
+
+  </head>
+  
+  <body>
+   <table width="784"  border="0" align="center" cellpadding="0" cellspacing="0" height="123">
+  <tr>
+   <td width="778"   bgcolor="#D9EEEE"  background="../images/top.jpg"  height="150" colspan="2" ></td>
+  </tr>
+  </table>
+<form action="user_reg.do" method="post"  enctype="multipart/form-data">
+  <table width="658" height="355"  border="0" align="center" cellpadding="0" cellspacing="0"    background="../images/register.JPG">
+   <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+      <td align="right" > <h2><em>POPO </em></h2></td>
+      <td ><h2><em>&nbsp;聊天平台 &mdash;&mdash;&mdash; 个 人 注 册</em></h2></td>
+</tr>
+        <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="250" align="right"><p><strong>昵 称&nbsp; <br></strong></p></td>
+        <td width="528" ><strong>
+         <input type="text" name="nickname" id="nickname" maxlength="23">
+        </strong></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><strong>个人头像&nbsp; </strong></td>
+        <td><input type="file" name="photo" id="photo"></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><p><strong>性 别&nbsp; </strong></p></td>
+        <td>&nbsp;
+         <input name="sex" type="radio" id="sex" value="女" checked > <strong>女</strong>&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="sex" id="sex" value="男">
+            <strong>  男</strong><strong></strong>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><br></td>
+      </tr>
+      <tr>
+      <td align="right"><p><strong>密 码&nbsp; <br></strong></p></td>
+      <td><strong>
+        <input type="password" name="password" id="password" maxlength="23">
+      </strong></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><p><strong>确认密码&nbsp; <br></strong></p></td>
+        <td><strong>
+          <input type="password" name="ampwd" id="ampwd" maxlength="23">
+        </strong></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><p><strong>年 龄&nbsp; <br></strong></p></td>
+        <td>
+          <select name="age" id="age">
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><p><strong>生 日&nbsp; <br></strong></p></td>
+        <td><strong>
+          <input type="text" name="birthday" id="birthday"  class="Wdate" onClick='popUpCalendar(this, this, "yyyy-mm-dd")' />
+        </strong></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp; </td>
+      </tr>
+      <tr>
+        <td align="right"><p><strong>个性签名&nbsp; <br></strong></p></td>
+        <td>
+        <textarea name="sign" id="sign" cols="30" rows="2"></textarea></td>
+      </tr>
+        
+        <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><p><strong>
+ 
+        </strong></p></td>
+        <td><strong><input type="submit" value="注册" class="btn34"  />&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="重填" class="btn34"/>
+        </strong></td>
+      </tr>
+         <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      
+  </table>
+  </form>
+  </body>
+</html>

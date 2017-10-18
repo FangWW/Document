@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/login.do" location="650,450" dimension="228,104" />
+  <StrutsActivity path="/chatjsp/user_reg.do" location="650,50" dimension="265,104" />
+  <StrutsActivity path="/user.do" location="950,450" dimension="241,104" />
+  <StrutsActivity path="" location="650,650" dimension="32,53" />
+  <StrutsActivity path="/chatjsp/reg_success.jsp" location="350,50" dimension="172,53" />
+  <StrutsActivity path="/user_info.jsp" location="350,550" dimension="109,53" />
+  <StrutsActivity path="/chatjsp/MyJsp.jsp" location="50,150" dimension="140,53" />
+  <StrutsActivity path=" " location="50,550" dimension="36,53" />
+  <StrutsActivity path="/Login/Login.jsp" location="650,250" dimension="136,48" />
+  <StrutsActivity path="/stu_insert_do.jsp" location="950,250" dimension="148,48" />
+  <StrutsActivity path="/stu_updata.jsp" location="650,350" dimension="130,48" />
+  <StrutsActivity path="/stu_Updata_do.jsp" location="950,350" dimension="148,48" />
+  <StrutsActivity path="/student_list.jsp" location="50,450" dimension="142,48" />
+  <StrutsActivity path="/stu_del.jsp" location="350,450" dimension="112,48" />
+  <StrutsActivity path="/updataUserInfo.jsp" location="950,650" dimension="148,53" />
+  <StrutsActivity path="/updata.do" />
+  <StrutsTransition id="/login.do,,,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="666,554" />
+      <AbsolutePoint location="666,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/updata.do,, ,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="68,576" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,updata_success,/user_info.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1100,554" />
+      <AbsolutePoint location="1100,778" />
+      <AbsolutePoint location="404,778" />
+      <AbsolutePoint location="404,603" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,updata_success,/updataUserInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1070,554" />
+      <AbsolutePoint location="1070,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,findByQq_success,/user_info.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1024,554" />
+      <AbsolutePoint location="1024,576" />
+      <AbsolutePoint location="459,576" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/chatjsp/user_reg.do,userReg_success,/chatjsp/reg_success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,76" />
+      <AbsolutePoint location="522,76" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

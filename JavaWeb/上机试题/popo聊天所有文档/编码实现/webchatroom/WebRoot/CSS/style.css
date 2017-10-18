@@ -1,0 +1,46 @@
+a {
+	font-size: 9pt;	text-decoration: none;	color: #3C404D;
+}
+td{
+	font-size:12px;
+}
+.btn_grey {
+	font-family: "宋体";	font-size: 9pt;color: #333333;
+	background-color: #eeeeee;cursor: hand;padding:1px;height:19px;
+	border-top: 1px solid #FFFFFF;border-right:1px solid #666666;
+	border-bottom: 1px solid #666666;border-left: 1px solid #FFFFFF;
+}
+.btn_bg {
+	background-image:url(../images/button.jpg); border:#436E9B thin 0px;
+	width:56px;
+	height:20px;padding:4px;
+	color:#FFFFFF;
+}
+
+input {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	border: 1px solid #777777;
+}
+input.login {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	border: 1px solid #6f9c61;
+	width:150px;
+    height:22px;
+}
+.wenbenkuang {
+	font-family: "宋体";
+	font-size: 9pt;
+	color: #333333;
+	border: 1px solid #444444;
+}
+
+
+.noborder{
+border-style:none;
+}
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

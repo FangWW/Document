@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* Download by http://www.codefans.net
+ * Stip 3.0
+ * lujun  idche@qq.com   http://www.cnblogs.com/idche/
+ * 2011/01/21 14:39
+ */
+.lj-tipsWrap{min-width:10px;min-height:15px;font-family:'Segoe UI',Calibri, 'Myriad Pro', Myriad, 'Trebuchet MS', Helvetica, Arial, sans-serif;}
+.lj-tipsWrap,.lj-in,.lj-close{display:inline-block;}
+.lj-tipsWrap{background:#F4FBFF;line-height:1.5em;padding:5px 15px;border:1px solid #2192D3;position:absolute;text-align:left;}
+.lj-in{position:absolute;zoom:1;border:10px dashed transparent;width:0px;height:0px;}
+.lj-in .lj-span{zoom:1;width:0px;height:0px;overflow:hidden;}
+.lj-close{position:absolute;text-decoration:none;color:#000;font-size:14px;zoom:1;text-indent:1px;height:9px; width:9px; overflow:hidden;line-height:0.5em; right:0; top:0;}
+.lj-close:hover{color:#39F;}
+.lj-content{}
+.lj-top{border-top:10px solid #2192D3;bottom:-20px; left:3px;}
+.lj-top .lj-span{border-top:10px solid #F4FBFF;margin:-11px 0 0 -10px;}
+.lj-right{border-right:10px solid #2192D3;left:-20px; top:3px;}
+.lj-right .lj-span{border-right:10px solid #F4FBFF;margin:-10px 0 0 -9px;}
+.lj-bottom{border-bottom:10px solid #2192D3;top:-20px; left:3px;}
+.lj-bottom .lj-span{border-bottom:10px solid #F4FBFF;margin:-9px 0 0 -10px;}
+.lj-left{border-left:10px solid #2192D3;right:-21px; top:3px; }
+.lj-left .lj-span{border-left:10px solid #F4FBFF;margin:-10px 0 0 -11px;}
+.lj-left ~ .lj-close{left:0;}
+/*css 3 渐进增强*/
+.lj-tipsWrap{-webkit-border-radius:3px;-moz-border-radius:3px;-webkit-box-shadow:2px 2px 3px #eee;-moz-box-shadow:2px 2px 3px #eee;}
+
+
+
+/*----------- 可配置css  kind ------------*/
+.lj-tipsWrap{ position:absolute; z-index:1;} /* 可修改z-index 让他不会被盖住*/
+/* error css */
+.lj-error{background:#F90;color:#f30; border:1px solid #FB8888; background:#FEF2F2;}
+.lj-error .lj-top{border-top-color:#FB8888;}
+.lj-error .lj-right{border-right-color:#FB8888;}
+.lj-error .lj-left{border-left-color:#FB8888;}
+.lj-error .lj-bottom{border-bottom-color:#FB8888;}
+
+.lj-error .lj-top .lj-span{border-top-color:#FEF2F2;}
+.lj-error .lj-right .lj-span{border-right-color:#FEF2F2;}
+.lj-error .lj-left .lj-span{border-left-color:#FEF2F2;}
+.lj-error .lj-bottom .lj-span{border-bottom-color:#FEF2F2;}
+
+/* correct css */
+.lj-correct{color:#000; border:1px solid #2192D3; background:#F4FBFF;}
+.lj-correct .lj-top{border-top-color:#2192D3;}
+.lj-correct .lj-right{border-right-color:#2192D3;}
+.lj-correct .lj-left{border-left-color:#2192D3;}
+.lj-correct .lj-bottom{border-bottom-color:#2192D3;}
+
+.lj-correct .lj-top .lj-span{border-top-color:#F4FBFF;}
+.lj-correct .lj-right .lj-span{border-right-color:#F4FBFF;}
+.lj-correct .lj-left .lj-span{border-left-color:#F4FBFF;}
+.lj-correct .lj-bottom .lj-span{border-bottom-color:#F4FBFF;}
+
+/* kind css 你可以像上面一样添加一个kind */

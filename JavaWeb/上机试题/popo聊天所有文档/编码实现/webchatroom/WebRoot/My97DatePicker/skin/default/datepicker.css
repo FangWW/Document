@@ -1,0 +1,164 @@
+/* 
+ * My97日期控件 My97 DatePicker Ver 3.0.1
+ * 皮肤名称:default
+ * 皮肤作者:My97
+ * 作者主页:blog.csdn.net/my97/
+ */
+/* 日期选择容器 DIV */
+.WdateDiv{
+	width:180px;
+	background-color:#FFFFFF;
+	border:#bbb 1px solid;
+	padding:2px;
+}
+.WdateDiv *{font-size:9pt;}
+
+/****************************
+ * 年份月份相关
+ ***************************/
+/* 年份月份栏 DIV */
+.WdateDiv #dpTitle{
+	height:26px;
+	margin-bottom:2px;
+}
+/* 年份月份输入框 INPUT */
+.WdateDiv .yminput{
+	padding-top:2px;
+	text-align:center;
+	border:0px;
+	height:16px;
+	cursor:pointer;	
+}
+/* 年份月份输入框获得焦点时的样式 INPUT */
+.WdateDiv .yminputfocus{
+	text-align:center;
+	font-weight:bold;
+	color:blue;
+	border:#ccc 1px solid;
+	height:16px;
+}
+/* 年份月份选择框 DIV */
+.WdateDiv .ymsel{
+	position:absolute;
+	margin-left:24px;
+	top:22px;
+	background-color:#FFFFFF;
+	padding:2px;
+	border:#ccc 1px solid;
+	display:none;
+}
+/* 年月选择框的样式 TD */
+.WdateDiv .Wym{
+	cursor:pointer;
+	background-color:#fff;
+}
+/* 年月选择框的mouseover样式 TD */
+.WdateDiv .WymOn{
+	cursor:pointer;
+	background-color:#BEEBEE;
+}
+/* 年月选择框无效时的样式 TD */
+.WdateDiv .Winvalidym{
+	color:#aaa;
+}
+/****************************
+ * 星期,日期相关
+ ***************************/
+/* 星期栏 TR */
+.WdateDiv #dpWeekTitle{
+	background-color:#BDEBEE;
+}
+/* 日期栏表格 TABLE */
+.WdateDiv #dpDayTable{
+	line-height:20px;
+	border:#c5d9e8 1px solid;
+}
+/* 日期格的样式 TD */
+.WdateDiv .Wday{
+	cursor:pointer;
+}
+/* 日期格的mouseover样式 TD */
+.WdateDiv .WdayOn{
+	cursor:pointer;
+	background-color:#C0EBEF;
+}
+/* 周末日期格的样式 TD */
+.WdateDiv .Wwday{
+	cursor:pointer;
+	color:#FF2F2F;
+}
+/* 周末日期格的mouseover样式 TD */
+.WdateDiv .WwdayOn{
+	cursor:pointer;
+	color:#000;
+	background-color:#C0EBEF;
+}
+.WdateDiv .Wtoday{
+	cursor:pointer;
+	color:blue;
+}
+.WdateDiv .Wselday{
+	background-color:#D8F3F5;
+	color:red;
+}
+/* 无效日期的样式,即在日期范围以外日期格的样式,不能选择的日期 */
+.WdateDiv .WinvalidDay{
+	color:#aaa;
+}
+
+/****************************
+ * 时间相关
+ ***************************/
+/* 时间栏 DIV */
+.WdateDiv #dpTime{
+	
+}
+/* 时间文字 SPAN */
+.WdateDiv #dpTime #dpTimeStr{
+	margin-left:1px;
+}
+/* 时间输入框 INPUT */
+.WdateDiv #dpTime input{
+	height:16px;
+	width:18px;
+	text-align:center;
+	border:#ccc 1px solid;	
+}
+/* 时间 时 INPUT */
+.WdateDiv #dpTime .tB{
+	border-right:0px;
+}
+/* 时间 分和间隔符 ':' INPUT */
+.WdateDiv #dpTime .tE{
+	border-left:0;
+	border-right:0;
+}
+/* 时间 秒 INPUT */
+.WdateDiv #dpTime .tm{
+	width:7px;
+	border-left:0;
+	border-right:0;
+}
+/* 时间右边的向上按钮 BUTTON */
+.WdateDiv #dpTime #dpTimeUp{
+	height:10px;
+	width:13px;
+	border:0px;
+	background-image:url(up.jpg);
+}
+/* 时间右边的向下按钮 BUTTON */
+.WdateDiv #dpTime #dpTimeDown{
+	height:10px;
+	width:13px;
+	border:0px;
+	background-image:url(down.jpg);
+}
+/****************************
+ * 其他
+ ***************************/
+.WdateDiv #dpButton input{ 
+	height:20px;
+	width:45px;
+	border:#ccc 1px solid;
+	padding:2px;
+}

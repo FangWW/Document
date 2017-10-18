@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+<form-beans>
+   <form-bean name="UserActionForm" type="com.lsy.userinfo_actionform.UserActionForm"></form-bean>
+</form-beans>
+
+ <action-mappings>
+ 
+<!-- 用户登陆 -->
+    <action
+     path="/login"
+      parameter="op"
+      name="UserActionForm"
+      scope="request"
+      type="com.lsy.user.actions.LoginAction" 
+     > 
+      <forward name="" path=""/>   
+    </action>
+ 
+ <!-- 用户注册 -->
+   <action path="/chatjsp/user_reg"
+           attribute="UserForm"
+           name="UserActionForm"
+           scope="request"
+           type="com.lsy.user.actions.UserRegiterAction"
+           >
+  <forward name="userReg_success" path="/chatjsp/reg_success.jsp"/>
+  </action>
+  
+  <!-- 用户信息查找-->
+    <action path="/user"
+	           type="com.lsy.user.actions.UserActions"
+		       name="UserActionForm"
+			   scope="request"
+			   parameter="command"
+	           > 
+     <forward name="findByQq_success" path="/user_info.jsp" />
+      <forward name="updata_success" path="/updataUserInfo.jsp" />
+  </action>
+  
+    <!-- 用户信息更新-->
+    <action path="/updata"
+	           type="com.lsy.user.actions.UpdataAction"
+		       name="UserActionForm"
+			   scope="request"
+			   
+	           > 
+     <forward name="" path=" " />
+      
+  </action>
+ </action-mappings>
+    <message-resources parameter="MessageResources" />
+    
+</struts-config>
+
+
+
+
+
+   <!--   
+    <form-beans>
+		<form-bean name="StudentForm" type="zte.lsy.Student.ActionForm.StudentActionForm"></form-bean>
+        <form-bean name="loginForm" type="zte.lsy.StudentProject.Login.LoginActionForm" />
+  </form-beans>
+  <action-mappings >
+    <action
+      attribute="loginForm"
+      input="/Login/Login.jsp"
+      name="loginForm"
+      path="/Login/login"
+      scope="request"
+      type="zte.lsy.Student.Actions.LoginAction">
+     
+   </action>
+  
+	   <action path="/StudentList"
+	           type="zte.lsy.Student.Actions.StudentActions"
+		       name="StudentForm"
+			   scope="request"
+			   parameter="command"
+	           >
+	         
+	          <exception key="basedata.student.error.add" type="zte.lsy.Student.Exception.AddException" path="/stu_insert_do.jsp"/>
+	           <exception key="basedata.student.error.del" type="zte.lsy.Student.Exception.DelException" path="/stu_del.jsp" />
+	           <exception key="basedata.student.error.updata" type="zte.lsy.Student.Exception.UpdataException" path="/stu_Updata_do.jsp" />
+	           <exception key="basedata.student.error.selectStudent" type="zte.lsy.Student.Exception.SelectStudentException" path="/stu_del.jsp"/>
+	      
+	           <forward name="success" path="/student_list.jsp"></forward>
+	           <forward name="add_success" path="/stu_insert_do.jsp"></forward>
+	            <forward name="del_success" path="/stu_del.jsp"></forward>
+	            <forward name="updata_success" path="/stu_Updata_do.jsp" ></forward>
+	           	<forward name="findById_success" path="/stu_updata.jsp" ></forward>
+	           	<forward name="findByLike_success" path="/student_list.jsp" ></forward>
+	           </action>
+	   
+	 
+     
+		    <action path="/Login/CheckAction"
+          type="zte.lsy.StudentProject.Login.CheckAction"
+  ></action>
+    </action-mappings>
+    -->

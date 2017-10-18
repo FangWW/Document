@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MyEclipseStrutsProperties>
+    <strutsVersion>2</strutsVersion>
+    <basePackage>com.yourcompany.struts</basePackage>
+    <strutsPattern>0</strutsPattern>
+    <servletName>action</servletName>
+</MyEclipseStrutsProperties>
