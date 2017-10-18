@@ -1,0 +1,96 @@
+注意事务     增删改要事务提交
+
+
+
+一对一关联：主键关联和惟一外键关联两种方式。
+例子：User-IdCard(外键关联)
+<class name=" com.test.hibernate .User" table="TBL_USER">
+	<id name="id" column="userId"><generator class="native"/></id>
+	<many-to-one name=“idCard” column=“idCardId” outer-join="false“
+	 unique=“true”/>
+</class>
+
+<class name="com.test.hibernate.IdCard" table="TBL_IDCARD">
+	<id name="id" column="idCardId"><generator class="native"/></id>
+</class>
+
+
+
+ unique=“true”/>
+
+多对一   一是主    主次要分清
+noe to one   用many to noe  加 unique = true
+<many-to-one
+
+) property-ref: (可选) 指定关联类的一个属性，这个属性将会和本外相对应。
+set
+(4) inverse (可选——默认为false) 标记有哪一方来维护关联关系（双向关联中使用）。 true
+(5) cascade (可选——默认为none) 让操作级联到子实体 all
+(6) order-by (可选, 仅用于jdk1.4) 指定表的字段(一个或几个)再加上asc或者desc(可选), 定义Map,Set和Bag的迭代顺序 
+(7) where (可选) 指定任意的SQL where条件
+(8) outer-join(可选-默认为auto)是否使用外联接
+		<one-to-one name="student" 约束constrained="true"></one-to-one>
+组件   一张表属性多了  就分两个类里
+<component name="wife" class=“”>
+			<property name="wifeName"></property>
+			<property name="age"></property>
+		</component>
+
+
+      
+	<class name="com.bjsxt.hibernate.Group" table="t_group">
+		<set name="users">
+			<key column="groupId"></key>
+			<one-to-many class="com.bjsxt.hibernate.User"/>
+		</set>
+	
+	<class name="com.bjsxt.hibernate.User" table="t_user">
+	<many-to-one name="group" column="groupId"></many-to-one>
+
+
+
+
+
+<class name="Person" table="person_inf">
+		<set name="addresses" table="person_address">
+			<!-- 指定关联的外键列 -->
+			<key column="person_id"/>
+			<!-- 用以映射到关联类属性 -->
+			<many-to-many class="Address" column="address_id"/>
+		</set>
+
+
+
+		<!-- 使用join元素强制使用连接表 -->
+		<join table="person_address" >
+			<!-- 映射连接表中参照本表主键的外键列 -->
+			<key column="person_id"/>
+			<!-- 映射连接表中参照关联实体的外键列 -->
+			<many-to-one name="address" cascade="all"
+				class="Address" column="address_id"/>
+		</join>
+
+
+
+
+
+
+inverse=“false”，由主动方Group负责维护group-user的关联关系.
+User user = new User(“Jak”);
+adminGroup.getUsers.add(user);
+session.save(user);	session.update(group);
+inverse=“true”，由Group的反向段User负责维护关联关系。
+User user = new User(“Jak”);
+user .setGroup(adminGroup);	session.save(user);
+
+
+
+
+
+
+
+
+
+
+
+
