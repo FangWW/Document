@@ -1,0 +1,178 @@
+﻿百度Android开发面试题
+
+本文来自安卓航班网整理搜集 www.apkway.com
+
+原文地址：http://www.apkway.com/forum.php?mod=viewthread&tid=2057
+1、 Android dvm的进程和Linux的进程, 应用程序的进程是否为同一个概念
+DVM指dalivk的虚拟机。每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟机实例。而每一个DVM都是在Linux 中的一个进程，所以说可以认为是同一个概念。
+2、sim卡的EF 文件有何作用
+sim卡的文件系统有自己规范，主要是为了和手机通讯，sim本
+身可以有自己的操作系统，EF就是作存储并和手机通讯用的
+3、嵌入式操作系统内存管理有哪几种，各有何特性 ?
+页式，段式，段页，用到了MMU,虚拟空间等技术
+4、什么是嵌入式实时操作系统, Android 操作系统属于实时操作系统吗?
+嵌入式实时操作系统是指当外界事件或数据产生时，能够接受并以足够快的速度予以处理，其处理的结果又能在规定的时间之内来控制生产过程或对处理系统作出快速响应，并控制所有实时任务协调一致运行的嵌入式操作系统。主要用于工业控制、军事设备、
+航空航天等领域对系统的响应时间有苛刻的要求，这就需要使用实时系统。又可分为软实时和硬实时两种，而android是基于linux内核的，因此属于软实时。
+5、一条最长的短信息约占多少byte?
+中文70(包括标点)，英文160个字节
+6、 android中的动画有哪几类，它们的特点和区别是什么？
+两种，一种是Tween动画、还有一种是Frame动画。Tween动画，这种实现方式可以使视图组件移动、放大、缩小以及产生透明度的变化；另一种Frame动画，传统的动画方法，通过顺序的播放排列好的图片来实现，类似电影。
+7、handler机制的原理
+andriod提供了 Handler 和 Looper 来满足线程间的通信。Handler 先进先出原则。Looper类用来管理特定线程内对象之间的消息交换(Message Exchange)。
+1）Looper: 一个线程可以产生一个Looper对象，由它来管理此线程里的Message Queue(消息队列)。
+2）Handler: 你可以构造Handler对象来与Looper沟通，以便push新消息到Message Queue里；或者接收Looper从Message Queue取出)所送来的消息。
+3） Message Queue(消息队列):用来存放线程放入的消息。
+4）线程：UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。
+8、说说mvc模式的原理，它在android中的运用
+MVC(Model_view_contraller)” 模型_视图_控制器”。 MVC应用程序总是由这三个部分组成。Event(事件)导致Controller改变Model或View，或者同时改变两者。只要 Controller改变了Models的数据或者属性，所有依赖的View都会自动更新。类似的，只要Controller改变了View，View会
+从潜在的Model中获取数据来刷新自己。
+View重绘和内存泄露的好像是面试经常问的问题
+1. View的刷新:
+在需要刷新的地方,使用handle.sendmessage发送信息,然后在handle的getmessage里面执行invaliate或者postinvaliate.
+2. GC内存泄露
+出现情况:
+1.数据库的cursor没有关闭
+2.构造adapter时,没有使用缓存contentview
+衍生listview的优化问题-----减少创建view的对象,充分使用contentview,可以使用一静态类来优化处理getview的过程/
+3.Bitmap对象不使用时采用recycle()释放内存
+4.activity中的对象的生命周期大于activity
+调试方法: DDMS==> HEAPSZIE==>dataobject==>[Total Size]
+还有其他问题,大家欢迎提出阿,可以是整体架构的,还有这个Hal层.
+这篇文章会涉及到以下几个内容
+一 Activity的生命周期
+二 让Activity变成一个窗口：Activity属性设定
+三 你后台的Activity被系统
+回收怎么办：onSaveInstanceState
+四 调用与被调用：我们的通信使者 - Intent
+一 Activity的生命周期
+和其他手机 平台 的应用程序一样，Android的应用程序的生命周期是被统一掌控的，也就是说我们写的应用程序命运掌握在别人（系统）的手里，我们不能改变它，只能学习并适应它。
+简单地说一下为什么是这样：我们手机在运行
+一个应用程序的时候，有可能打进来电话发进来短信，或者没有电了，这时候程序都会被中断，优先去服务电话的基本功能，另外系统也不允许你占用太多资源，至少要保证电话功能吧,所以资源不足的时候也就有可能被干掉。言归正传，Activity的基本生命周期如下代码所示：
+Java 代码
+public class MyActivity extends Activity
+{
+protected void onCreate(Bundle savedInstanceState);
+protected void onStart();
+protected void onRestart();
+protected void onResume();
+protected void onPause();
+protected void onStop();
+protected void onDestroy();
+}
+你自己写的Activity会按需要
+重 载这些方法，onCreate是免不了的，在一个Activity正常启动的过程中，他们被调用的顺序是 onCreate -> onStart ->onResume, 在Activity被干掉的时候顺序是onPause -> onStop -> onDestroy ，这样就是一个完整的生命周期，但是有人问了
+，程序正运行着呢来电话了，这个程序咋办？中止了呗，如果中止的时候新出的一个Activity是全屏的那么：onPause->onStop ，恢复的时候onStart->onResume ，如果打断
+这个应用程序的是一个Theme为Translucent 或者Dialog 的Activity那么只是onPause ,恢复
+的时候onResume 。
+详细介绍一下这几个方法中系统在做什么以及我们应该做什么：
+onCreate:
+在这里创建界面，做一些数据的初始化工作
+onStart:
+到这一步变成用户可见不可交互的
+onResume:
+变成和用户可交互的，（在activity 栈系统通过栈的方式管理这些个Activity的最上面，运行完弹出栈，则回到上一个Activity)
+onPause:
+到 这一步是可见但不可交互的，系统会停止动画等消耗CPU 的事情从上文的描述已经知道，应该在这里保存你的一些数据,因为这个时候你的程序的优先级降低，有可能被系统收回。在这里保存的数据，应该在 onResume里读出来，注意：这个方法里做的事情时间要短，因为下一个activity不会等到这个方法完成才启动
+onstop:
+变得不可见，被下一个activity覆盖了
+onDestroy: 这是activity被干掉前最后一个被调用方法了，可能是外面类调用finish方法或者是系统为了节省空间将它暂时性的干掉，可以用 isFinishing()来判断它，如果你有一个Progress Dialog在线程中转动，请在onDestroy里把他cancel掉，不然等线程结束的时候，调用Dialog的cancel方法会抛异常的。
+onPause，onstop， onDestroy，三种状态下 activity都有可能被系统干掉为了保证程序的正确性，你要在onPause()里写上持久层操作的代码，将用户编辑的内容都保存到存储介质上（一般 都是数据库）。实际工作中因为生命周期的变化而带来的问题也很多，比如你的应用程序起了新的线程在跑，这时候中断了，你还要去维护那个线程，是暂停还是杀 掉还是数据回滚，是吧？因为Activity可能被杀掉，所以线程中使用的变量和一些界面元素就千万要注意了，一般我都是采用Android的消息机制 [Handler,Message]来处理多线程和界面交互的问题。这个我后面会讲一些，最近因为这些东西头已经很大了，等我理清思绪再跟大家分享。
+二 让Activity变成一个窗口：Activity属性设定
+讲点轻松的吧,可能有人希望做出来的应用程序是一个漂浮在手机主界面的东西，那么很 简单你只需要设置一下Activity的主题就可以了在AndroidManifest.xml 中定义 Activity的地方一句话：
+Xml代码
+android
+:theme="@android:style/Theme.Dialog"
+android:theme="@android:style/Theme.Dialog"
+这就使你的应用程序变成对话框的形式弹出来了，或者 Xml代码
+android:theme="@android:style/Theme.Translucent"
+android:theme="@android:style/Theme.Translucent"
+就 变成半透明的，[友情提示-.-]类似的这种activity的属性可以在android.R.styleable 类的AndroidManifestActivity 方法中看到，AndroidManifest.xml中所有元素的属性的介绍都可以参考这个类android.R.styleable
+上面说的是属性名称，具体有什么值是在android.R.style中
+可以看到，比如这个"@android:style/Theme.Dialog"就对应于android.R.style.Theme_Dialog ,（'_'换成'.' <--注意：这个是文章内容不是笑脸）就可以用在描述文件
+中了,找找类定义和描述文件中的对应关系就都明白了。
+三 你后台的Activity被系统回收怎么办：onSaveInstanceState
+当你的程序中某一个Activity A 在运行时中，主动或被动地运行另一个新的Activity B 这个时候A会执行
+Java代码
+public
+void onSaveInstanceState(Bundle outState) {
+super.onSaveInstanceState(outState);
+outState.putLong("id", 1234567890);
+}
+public void
+onSaveInstanceState(Bundle outState) {
+B 完成以后又会来找A, 这个时候就有两种情况，一种是A被回收，一种是没有被回收，被回 收的A就要重新调用onCreate()方法，不同于直接启动的是这回 onCreate()里是带上参数 savedInstanceState，没被收回的就还是onResume就好了。
+savedInstanceState是一个Bundle对象，你基本上可以把他理解为系统帮你维护的一个Map对象。在onCreate()里你可能会用到它，如果正常启动onCreate就不会有它，所以用的时候要判断一下是否为空。
+Java代码
+if(savedInstanceState !=null){
+long id =savedInstanceState.getLong("id");
+}
+if(savedInstanceState !=null){
+就像官方的Notepad教程
+里的情况，你正在编辑某一个note，突然被中断，那么就把这个note的id记住，再起来的时候就可以根据这个id去把那个note取出来，程序就完整一些。这也是看你的应用需不需要保存什么，比如你的界面就是读取一个列表，那就不需要特殊记住什么，哦，
+没准你需要记住滚动条的位置...
+四 调用与被调用：我们的通信使者Intent
+要 说Intent了，Intent就是这个这个意图，应用程序间Intent进行交流，打个电话啦，来个电话啦都会发Intent, 这个是Android架构的松耦合的精髓部分，大大提高了组件的复用性，比如你要在你的应用程序中点击按钮，给某人打电话，很简单啊，看下代码先：
+Java代码 :
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_CALL);
+intent.setData(Uri.parse("tel:"+ number));
+startActivity(intent); 复制代码
+扔出这样一个意图，系统看到了你的意图就唤醒了电话拨号程序，打出来电话。什么读联系人，发短信啊，邮件啊，统统只需要扔出intent就好了，这个部分设计地确实很好啊。
+那Intent通过什么来告诉系统需要谁来接受他呢？
+通常使用Intent有两种方法，第一种是直接说明需要哪一个类来接收代码如下:
+Java代码
+Intent intent = new Intent(this,MyActivity.class);
+intent.getExtras().putString("id","1");
+startActivity(intent);
+Intent intent = new Intent(this,MyActivity.class);intent.getExtras().putString("id","1");tartActivity(intent);复制代码
+第一种方式很明显，直接指定了MyActivity为接受者,并且传了一些数据给MyActivity，在MyActivity里可以用getIntent()来的到这个intent和数据。
+第二种就需要先看一下AndroidMenifest中的intentfilter的配置了
+Xml代码
+<intent-filter>
+<action android:name="android.intent.action.VIEW" />
+<action android:value="android.intent.action.EDIT" />
+<action android:value="android.intent.action.PICK" />
+<category android:name="android.intent.category.DEFAULT"/>
+<data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
+</intent-filter>
+<intent-filter>
+<action android:name="android.intent.action.VIEW"/>
+<action android:value="android.intent.action.EDIT" />
+<action android:value="android.intent.action.PICK" />
+<category android:name="android.intent.category.DEFAULT" />
+<data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
+</intent-filter>
+这里面配置用到了action, data, category这些东西，那么聪明的你一定想到intent里也会有这些东西，然后一匹配不就找到接收者了吗？
+action其实就是一个意图的字符串名称。
+上 面这段intent-filter的配置文件说明了这个Activity可以接受不同的 Action，当然相应的程序逻辑也不一样咯,提一下那个 mimeType,他是在
+ContentProvider里定义的，你要是自己实现一个ContentProvider就知道了，必须指定 mimeType才能让数据被别人使用。
+不知道原理说明白没，总结一句，就是你调用别的界面不是直接new那个界面，而是通过扔出一个intent，让系统帮你去调用那个界面，这样就多么松藕合啊，而且符合了生命周期被系统管理的原则。
+想知道category都有啥，Android为你预先定制好的action都有啥等等，请亲自访问官方链接Intent
+ps:想知道怎么调用系统应用程序的同学，可以仔细看一下你的logcat，每次运行一个程序的时候是不是有一些信息比如:
+Starting activity: Intent {action=android.intent.action.MAINcategories={android.intent.category.LAUNCHER}flags=0x10200000comp={com.android.camera/com.android.camera.GalleryPicker} }
+再对照一下Intent的一些set方法，就知道怎么调用咯，希望你喜欢：）
+一，listview你是怎么优化的。
+二，view的刷新，之前说过
+三，IPC及原理
+四，Android多线程
+五，Android为什么要设计4大组件，他们之间的联系，不设计行不行（主要是为了实现MVC模式，然而java中最难的模式也是这个，很少有产品能将这个模式做得很好【Technicolor的面试官问的这个】）
+六，service的周期，activity的周期，谈下你对Android内部应用的了解，比如他做电话，以及联系人等等应用。框架层有很多东西还是多看看，熟悉Android怎么做的，不管你做应用程开发还是应用框架层开发很有好处的。
+在就是你项目经验，突出你遇到什么难点，然后是怎么解决的！尽量将每个技术点凸显出来，当然面试官有时候会为了体现你是否真正做过，他会问你，你在这个应用中做那个模块，用了多少个类之类的问题。
+偶尔有的面试官会问你，你用过Android自带的单元测试了没，怎么用的？
+当然我面试过很多家单位，有的是做平板，手机，数字电视，有的是做出个erp之类的客户端等等，出于前面的三个，基本上都是将Android的全部改掉，如果真正要做Android的话，大家要学的还很多。
+总 之，一句话，什么样的面试官都有，去面试的时候要做好一切心理准备，不管是技术还是基础都得扎实。一个人的交谈能力也很重要，总之不是非常标准的普通话， 最起码你说的得让别人听得懂，而且得把面试官讲得非常彻底，这样你获得offer的机会更大，谈工资也有优势~~当然曾经一家公司的面试官跟我说过，技术 是不惜钱的，只要你有能力，多少钱他都请。
+1.View如何刷新？
+2.DDMS与TraceView的区别？
+3.activity被回收了怎么办？
+4.在Java中如何引入C语言？
+参考答案 :
+1.View 可以调用invalidate()和postInvalidate()这两个方法刷新
+2.DDMS是一个程序执行查看器，在里面你可以看见线程和堆栈等信息，TraceView是程序性能分析器
+3.activity回收了，那就只有另起了
+4.java调用C语言程序，可以用JNI接口来实现
+上面答案仅作参考，毕竟我个人能力也有限嘛，难免会回答错误，呵呵.....
+解答：
+1.View受系统刷新（系统内部有个循环，监控事件、做业务处理、绘UI），可以用postInvalidate()促使系统刷新。
+2.（还真不知道）
+3.请参照Activity生命周期，如果被系统destroy了，也就是说的回收，只有从新start了
+4.通过JNI调用。建议阅读《The Java Native InterfaceProgrammer's Guide and Specification》，英文版的，从sun网站下吧。
