@@ -1,0 +1,33 @@
+android中，锁屏之后是不是会关掉部分服务？怎么让我的服务不被关掉？
+我自己编写的一个定时发送短信的程序。我用service来让它在后台运行，在service里面用handler来添加线程。我测试过了，在手机屏幕亮着的情况下，是完好的，可是一旦锁屏之后，就发不出短信了，这是为什么呢？怎么解决啊？
+
+
+
+用WakeLock
+ WakeLock mWakeLock;
+服务启动时acquire，退出时release
+
+//申请设备电源锁
+	private void acquireWakeLock()
+	{
+		if (null == mWakeLock)
+		{
+			PowerManager pm = (PowerManager)mContext.getSystemService(Context.POWER_SERVICE);
+			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE, TAG);
+			if (null != mWakeLock)
+			{
+				mWakeLock.acquire();
+			}
+		}
+	}
+	
+	//释放设备电源锁
+	private void releaseWakeLock()
+	{
+		if (null != mWakeLock)
+		{
+			mWakeLock.release();
+			mWakeLock = null;
+		}
+	}
+分类: Android编程

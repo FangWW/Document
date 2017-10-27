@@ -1,0 +1,3 @@
+activity控制线程的暂停  和重启//surface。getThread（）；有findviewbyid实例化surface
+surface中实例化thread并传递参数holder  surfacechange（）中启动线程
+thread 由得到的holder 绘制游戏   另外开启线程修改对象的属性  实例化游戏对象

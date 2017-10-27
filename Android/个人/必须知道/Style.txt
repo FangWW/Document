@@ -1,0 +1,76 @@
+---values
+String。xml
+style。xml
+color
+arrays
+dimens尺寸 长宽高
+ 		
+--drawable
+selector。xml
+selector选择样式
+shape定义形状
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" >  
+        <shape>  
+            <!-- 渐变 -->  
+            <gradient  
+                android:startColor="#ff8c00"  
+                android:endColor="#FFFFFF"  
+                android:type="radial"  
+                android:gradientRadius="50" />  
+            <!-- 描边 -->  
+            <stroke  
+                android:width="2dp"  
+                android:color="#dcdcdc"  
+                android:dashWidth="5dp"  
+                android:dashGap="3dp" />  
+            <!-- 圆角 -->  
+            <corners  
+                android:radius="2dp" />  
+            <padding  
+                android:left="10dp"  
+                android:top="10dp"  
+                android:right="10dp"  
+                android:bottom="10dp" />  
+        </shape>  
+    </item>  
+    <item android:state_focused="true" >  
+        <shape>  
+            <gradient  
+                android:startColor="#ffc2b7"  
+                android:endColor="#ffc2b7"  
+                android:angle="270" />  
+            <stroke  
+                android:width="2dp"  
+                android:color="#dcdcdc" />  
+            <corners  
+                android:radius="2dp" />  
+            <padding  
+                android:left="10dp"  
+                android:top="10dp"  
+                android:right="10dp"  
+                android:bottom="10dp" />  
+        </shape>  
+    </item>  
+    <item>        
+        <shape>  
+            <solid android:color="#ff9d77"/>  
+            <stroke  
+                android:width="2dp"  
+                android:color="#fad3cf" />  
+            <corners  
+                android:topRightRadius="5dp"  
+                android:bottomLeftRadius="5dp"  
+                android:topLeftRadius="0dp"  
+                android:bottomRightRadius="0dp"  
+            />  
+            <padding  
+                android:left="10dp"  
+                android:top="10dp"  
+                android:right="10dp"  
+                android:bottom="10dp" />  
+        </shape>  
+    </item>  
+
+
+</selector>  

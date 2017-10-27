@@ -1,0 +1,3 @@
+@id/  @drawable  自定义已有
+@+id/取名
+@Android：id/安卓系统已有

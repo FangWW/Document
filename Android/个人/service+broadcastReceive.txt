@@ -1,0 +1,37 @@
+Intent serviceIntent = new Intent(MainActivity.this, MyService.class);
+serviceIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//开启服务传intent
+startService(serviceIntent);//stopService(serviceIntent)
+
+		unregisterReceiver(myServiceBroadcast);
+		//开始程序是注册广播
+		//service服务和broadcastreceive广播都需要intent意图的传达
+		IntentFilter intentFilter;
+		//IntentFilter意图过滤，接收指定的意图
+		//设置接收的标志MyService.BFS_SERVIC_IDENTIFIER字符串
+		//intentFilter = new IntentFilter(MyService.BFS_SERVIC_IDENTIFIER);
+		intentFilter = new IntentFilter();
+		intentFilter.addAction(MyService.BFS_SERVIC_IDENTIFIER);
+		myServiceBroadcast = new MyServiceBroadcast();
+		System.out.println("注册广播。");
+		//当使用intentfliter时用这种方式，注册广播接收
+		//注册广播接收传一个广播和一个意图
+		registerReceiver(myServiceBroadcast, intentFilter);
+				
+		//广播在注册和发送时需要设置action标示
+
+				Bundle bundle = intent.getExtras();
+				String BFS = bundle.getString("BFS");
+				t.setText("收到的广播为："+BFS);
+				System.out.println("收到的广播为："+BFS);
+				if (stopService(serviceIntent) == true)
+					mMakeTextToast("后台服务关闭成功！", false);
+				Intent broadcastIntent=new Intent();
+				broadcastIntent.putExtra("BFS", "这是从服务中发出的广播！！！！");
+				//将这段广播意图的标志设为MyService.BFS_SERVIC_IDENTIFIER字符串
+				broadcastIntent.setAction(MyService.BFS_SERVIC_IDENTIFIER);
+				//发送广播     传的意图
+				sendBroadcast(broadcastIntent);
+
+
+startService与bindService都可以启动Service，那么它们之间有什么区别呢？它们两者的区别就是使Service的周期改变。由 startService启动的Service必须要有stopService来结束Service，不调用stopService则会造成 Activity结束了而Service还运行着。bindService启动的Service可以由unbindService来结束，也可以在 Activity结束之后(onDestroy)自动结束。

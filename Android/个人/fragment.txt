@@ -1,0 +1,24 @@
+替换Fragment的流程和添加的流程类似，只不过需要利用replace方法替换add方法。
+ 
+需要记住的是，当你是Fragment切换的时候，例如替换或者一处，最好让用户拥有返回或者撤销的机会
+ 
+当你允许用户返回或者撤销Fragment操作的时候，你必须在调用FragmentTransaction之前调用addToBackStack。
+ 
+以下是一个示例：
+ 1.// Create fragment and give it an argument specifying thearticle it should show
+2.ArticleFragment newFragment = new ArticleFragment();
+3.Bundle args = new Bundle();
+4.args.putInt(ArticleFragment.ARG_POSITION, position);
+传递消息
+5.newFragment.setArguments(args);
+6. 
+7.FragmentTransaction transaction =getSupportFragmentManager().beginTransaction();
+8. 
+9.// Replace whatever is in the fragment_container viewwith this fragment,
+10.// and add the transaction to the back stack so the usercan navigate back
+替换fragment
+11.transaction.replace(R.id.fragment_container,newFragment);
+12.transaction.addToBackStack(null);
+13. 
+14.// Commit the transaction
+15.transaction.commit();

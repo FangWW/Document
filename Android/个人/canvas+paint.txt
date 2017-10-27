@@ -1,0 +1,138 @@
+void drawRect(RectF rect, Paint paint) //绘制区域，参数一为RectF一个区域
+
+void drawPath(Path path, Paint paint) //绘制一个路径，参数一为Path路径对象 
+
+void  drawBitmap(Bitmap bitmap, Rect src, Rect dst, Paint paint)  //贴图，参数一就是我们常规的Bitmap对象，参数二是源区域(这里是bitmap)，参数三是目标区域(应该在 canvas的位置和大小)，参数四是Paint画刷对象，因为用到了缩放和拉伸的可能，当原始Rect不等于目标Rect时性能将会有大幅损失。 
+
+void  drawLine(float startX, float startY, float stopX, float stopY, Paint paint)  //画线，参数一起始点的x轴位置，参数二起始点的y轴位置，参数三终点的x轴水平位置，参数四y轴垂直位置，最后一个参数为Paint画刷对象。
+
+void  drawPoint(float x, float y, Paint paint) //画点，参数一水平x轴，参数二垂直y轴，第三个参数为Paint对象。
+
+void drawText(String text, float x, float y, Paint paint)  //渲染文本，Canvas类除了上面的还可以描绘文字，参数一是String类型的文本，参数二x轴，参数三y轴，参数四是Paint对象。
+
+void  drawTextOnPath(String text, Path path, float hOffset, float vOffset, Paint paint) //在路径上绘制文本，相对于上面第二个参数是Path路径对象
+
+void  setARGB(int a, int r, int g, int b)  设置Paint对象颜色，参数一为alpha透明通道
+
+void  setAlpha(int a)  设置alpha不透明度，范围为0~255
+
+void  setAntiAlias(boolean aa)  //是否抗锯齿
+
+void  setColor(int color)  //设置颜色，这里Android内部定义的有Color类包含了一些常见颜色定义
+
+void  setFakeBoldText(boolean fakeBoldText)  //设置伪粗体文本
+  
+void  setLinearText(boolean linearText)  //设置线性文本
+
+PathEffect  setPathEffect(PathEffect effect)  //设置路径效果
+
+Rasterizer  setRasterizer(Rasterizer rasterizer) //设置光栅化
+
+Shader  setShader(Shader shader)  //设置阴影 
+
+void  setTextAlign(Paint.Align align)  //设置文本对齐
+
+void  setTextScaleX(float scaleX)  //设置文本缩放倍数，1.0f为原始
+
+void  setTextSize(float textSize)  //设置字体大小
+
+Typeface  setTypeface(Typeface typeface)  //设置字体，Typeface包含了字体的类型，粗细，还有倾斜、颜色等。
+
+void  setUnderlineText(boolean underlineText)  //设置下划线
+
+最后最后，再提醒一下哈，canvas和paint都可以在onraw中直接使用的哟～～～
+
+
+跟你说简单点吧，surface是用来绘图的，比如照相录像界面，而surfaceView是用来显示surface所绘制的图像，你可以通过SurfaceHolder来访问这个surface，而SurfaceView.getHolder()方法就是用来返回SurfaceHolder对象以便访问surface,而holder.addCallback(this)是因为当前Activity实现了一个接口SurfaceHolder.Callback，所以this也是Callback的一个对象，在surface的各个生命周期(create change destroy)中会调用你重写的那三个方法。 正因为你调用了holder.addCallback(this)，就将当前重写的三个方法与surface关联起来了
+
+只要继承SurfaceView类并实现SurfaceHolder.Callback接口就可以实现一个自定义的SurfaceView了，
+
+ 这种情况最简单了，一般只是希望在View发生改变时对UI进行重绘。你只需在Activity中显式地调用View对象中的invalidate()方法即可。系统会自动调用 View的onDraw()方法。
+
+Android中SurfaceView是View的子类，她同时也实现了双缓冲。你可以定义一个她的子类并实现SurfaceHolder.Callback接口。由于实现SurfaceHolder.Callback接口，新线程就不需要android.os.Handler帮忙了。SurfaceHolder中lockCanvas()方法可以锁定画布，绘制玩新的图像后调用unlockCanvasAndPost(canvas)解锁（显示），还是比较方便得。 
+ 
+。invalidate()函数重绘 
+
+1. public class PuzzleView extends View {   
+ 
+2.     @Override  
+ 
+3.     protected void onDraw(Canvas canvas) {   
+ 
+4.      ...   
+ 
+5.     }   
+ 
+6.   
+ 
+7.     @Override  
+ 
+8.     public boolean onTouchEvent(MotionEvent event) {   
+ 
+9.       invalidate();   
+ 
+10.       //处理逻辑   
+ 
+11.       invalidate();   //刷
+ 
+12.    }   
+ 
+13. }  
+ 复制代码 当调用线程处于空闲状态时，会调用onDraw，刷新界面,也就是说，该函数仅是标记当前界面过期，并不直接负责刷新界面（） 
+
+1. public class PuzzleView extends SurfaceView implements SurfaceHolder.Callback{   
+ 
+2.     private SurfaceHolder surfaceHolder;   
+ 
+3.   
+ 
+4.     public PuzzleView(Context context){   
+ 
+5.       //....   
+ 
+6.       surfaceHolder = this.getHolder();//获取holder      
+ 
+7.       surfaceHolder.addCallback(this);   
+ 
+8.     }   
+ 
+9.   
+ 
+10.     protected void paint(Canvas canvas) {   
+ 
+11.       //这里的代码跟继承View时OnDraw中一样   
+ 
+12.     }   
+ 
+13.   
+ 
+14.     public void repaint() {    
+ 
+15.        Canvas c = null;    
+ 
+16.        try {    
+ 
+17.          c = surfaceHolder.lockCanvas();    
+ 
+18.          paint(c);    
+ 
+19.        } finally {    
+ 
+20.          if (c != null) {    
+ 
+21.            surfaceHolder.unlockCanvasAndPost(c);    
+ 
+22.          }    
+ 
+23.        }    
+ 
+24.     }    
+ 
+25. }  
+
+
+
+
+
+
+

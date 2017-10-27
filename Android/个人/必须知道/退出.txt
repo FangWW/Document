@@ -1,0 +1,9 @@
+
+							TransActivity.this.finish();
+							android.os.Process.killProcess(android.os.Process
+									.myPid());
+							android.os.Process.killProcess(android.os.Process
+									.myTid());
+							android.os.Process.killProcess(android.os.Process
+									.myUid());
+						

@@ -1,0 +1,49 @@
+	aManager = (AlarmManager) getSystemService(Service.ALARM_SERVICE);
+		// 指定启动ChangeService组件
+		Intent intent = new Intent(AlarmChangeWallpaper.this
+			, ChangeService.class);
+		// 创建PendingIntent对象
+		final PendingIntent pi = PendingIntent.getService(
+			AlarmChangeWallpaper.this, 0, intent, 0);
+		start.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View arg0)
+			{
+				// 设置每隔5秒执行pi代表的组件一次
+				aManager.setRepeating(AlarmManager.RTC_WAKEUP
+					, 0 , 5000, pi); 
+
+
+
+ServerSocket ss = new ServerSocket(30000);
+		// 采用循环不断接受来自客户端的请求
+		while (true) {
+			// 每当接受到客户端Socket的请求，服务器端也对应产生一个Socket
+			Socket s = ss.accept();
+			OutputStream os = s.getOutputStream();
+			os.write("您好，您收到了服务器的新年祝福！\n".getBytes("utf-8"));
+			// 关闭输出流，关闭Socket
+			os.close();
+			s.close();
+		}\
+
+
+
+			//电脑本机地址   localhost已经变为Android的本机地址
+			Socket socket = new Socket("10.0.2.2" , 8000);
+			//将Socket对应的输入流包装成BufferedReader
+			BufferedReader br = new BufferedReader(
+				new InputStreamReader(socket.getInputStream()));
+			//进行普通IO操作
+			String line = br.readLine();
+			show.setText("来自服务器的数据：" + line);			
+			br.close();
+			socket.close();	
+
+
+
+
+实时壁纸是服务
+快捷图标是广播
+widget是广播

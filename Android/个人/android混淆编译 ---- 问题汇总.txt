@@ -1,0 +1,60 @@
+android混淆编译 ---- 问题汇总
+问题一：使用gson包解析数据时，出现missing type parameter异常
+程序中用到了gson的new typeToken，结果打包成apk发布时，发现抛出异常，但不通过打包apk时发现一切正常，百思不得其解，最初怀疑没有将gson-1.7.1.JAR打包进去，后来经过测试发现gson的其他方法经过打包也能正常运行，最后上网找了2天，终于在google gson论坛中找到了解决方法。
+ 
+第一种：在 proguard.cfg中添加
+-dontobfuscate 
+-dontoptimize
+第二种：在 proguard.cfg中添加
+# removes such information by default, so configure it to keep all of it. 
+-keepattributes Signature 
+# Gson specific classes 
+-keep class sun.misc.Unsafe { *; } 
+#-keep class com.google.gson.stream.** { *; } 
+# Application classes that will be serialized/deserialized over Gson 
+-keep class com.google.gson.examples.android.model.** { *; } 
+ 
+这两种方法都测试可行，第一个方法没有混淆编译，第二个方法能够混淆编译
+问题二：
+反射类不能进行混淆编译，需加入
+-keep class com.test.model.response.** {*;}
+问题三：
+android辅助jar包异常，在proguard.cfg中加入
+-dontwarn android.support.v4.**
+-keep class android.support.v4.** {*;}
+ 
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-dontwarn android.support.v4.**
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class com.android.vending.licensing.ILicensingService
+-keep class android.support.v4.** {*;}
+ 
+-keep class com.test.model.response.** {*;}
+-keepattributes Signature 
+-keep class sun.misc.Unsafe {*;}
+-keep class com.google.gson.examples.android.model.** {*;}
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}

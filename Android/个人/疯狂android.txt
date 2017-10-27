@@ -1,0 +1,1661 @@
+第一章
+==========================================
+		//定义一个AlertDialog.Builder对象
+		final Builder builder = new AlertDialog.Builder(this);
+				// 设置对话框的图标
+				builder.setIcon(R.drawable.tools);
+				// 设置对话框的标题
+				builder.setTitle("自定义普通对话框");
+				//装载/res/layout/login.xml界面布局
+				TableLayout loginForm = (TableLayout)getLayoutInflater()
+					.inflate( R.layout.login, null);
+				// 设置对话框显示的View对象
+				builder.setView(loginForm);
+				// 为对话框设置一个“确定”按钮
+				builder.setPositiveButton("登录"
+					// 为按钮设置监听器
+					, new OnClickListener()
+					{
+						@Override
+						public void onClick(DialogInterface dialog, int which)
+						{
+							//此处可执行登录处理
+						}
+					});
+				// 为对话框设置一个“取消”按钮
+				builder.setNegativeButton("取消"
+					,  new OnClickListener()
+					{
+						@Override
+						public void onClick(DialogInterface dialog, int which)
+						{
+							//取消登录，不做任何事情。
+						}
+					});
+				//创建、并显示对话框
+				builder.create().show();
+===========================================================
+//获取LinearLayout布局容器
+		LinearLayout main = (LinearLayout)findViewById(R.id.root);
+		//程序创建ImageView组件
+		final ImageView image = new ImageView(this);
+		//将ImageView组件添加到LinearLayout布局容器中
+		main.addView(image);
+		//初始化时显示第一张图片
+		image.setImageResource(images[0]);
+====================================================================
+	public void onClick(View source)
+			{
+				// 显示对话框   调用当前类中已有复写的onCreateDialog（）方法
+				showDialog(SINGLE_DIALOG);
+			}
+		});
+	}
+	@Override
+	public Dialog onCreateDialog(int id, Bundle state)
+	{
+		// 判断需要生成哪种类型的对话框
+		switch (id)
+		{
+			case SINGLE_DIALOG:
+				Builder b = new AlertDialog.Builder(this);
+				// 设置对话框的图标
+				b.setIcon(R.drawable.tools);
+				// 设置对话框的标题
+				b.setTitle("多选列表对话框");
+				final boolean[] checkStatus = new boolean[] { true, false, true };
+				// 为对话框设置多个列表
+				b.setMultiChoiceItems(new String[] { "红色", "绿色", "蓝色" }
+				// 设置默认勾选了哪些列表项
+					, checkStatus
+					// 为列表项的单击事件设置监听器
+					, new OnMultiChoiceClickListener()
+					{
+						@Override
+						public void onClick(DialogInterface dialog, int which,
+							boolean isChecked)
+						{
+							EditText show = (EditText) findViewById(R.id.show);
+							String result = "您喜欢的颜色为：";
+							for (int i = 0; i < checkStatus.length; i++)
+							{
+								// 如果该选项被选中
+								if (checkStatus[i])
+								{
+									result += colorNames[i] + "、";
+								}
+							}
+							show.setText(result);
+						}
+					});
+				// 添加一个“确定”按钮，用于关闭该对话框
+				b.setPositiveButton("确定", null);
+				// 创建对话框
+				return b.create();
+		}
+		return null;
+	}
+==========================================================
+
+		bn.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View source)
+			{
+				//创建一个启动其他Activity的Intent
+				Intent intent = new Intent(NotificationTest.this
+					, OtherActivity.class);
+				PendingIntent pi = PendingIntent.getActivity(NotificationTest.this
+					, 0, intent , 0);
+				//创建一个Notification
+				Notification notify = new Notification();
+				//为Notification设置图标，该图标显示在状态栏
+				notify.icon = R.drawable.notify;
+				//为Notification设置文本内容，该文本会显示在状态栏
+				notify.tickerText = "启动其他Activity的通知";
+				//为Notification设置发送时间
+				notify.when = System.currentTimeMillis();
+				//为Notification设置声音
+				notify.defaults = Notification.DEFAULT_SOUND;
+				//为Notification设置默认声音、默认振动、默认闪光灯
+				notify.defaults = Notification.DEFAULT_ALL;
+				//设置事件信息
+				notify.setLatestEventInfo(NotificationTest.this, "普通通知",
+					"点击查看", pi);
+				//获取系统的NotificationManager服务
+				NotificationManager notificationManager = (NotificationManager) 
+					getSystemService(NOTIFICATION_SERVICE);
+				//发送通知
+				notificationManager.notify(NOTIFICATION_ID, notify);
+			}
+		});
+		Button del = (Button)findViewById(R.id.del);
+		del.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				//获取系统的NotificationManager服务
+				NotificationManager notificationManager = (NotificationManager) 
+					getSystemService(NOTIFICATION_SERVICE);
+				//取消通知
+				notificationManager.cancel(NOTIFICATION_ID);
+			}
+		});
+===============================================
+自定义弹出窗口
+	// 装载R.layout.popup对应的界面布局
+		=======View root = this.getLayoutInflater().inflate(R.layout.popup, null);
+		// 创建PopupWindow对象
+		final PopupWindow popup = new PopupWindow(root, 280, 360);
+		Button button = (Button) findViewById(R.id.bn);
+		button.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				// 以下拉方式显示。
+//				popup.showAsDropDown(v);
+				//将PopupWindow显示在指定位置
+				popup.showAtLocation(findViewById(R.id.bn), Gravity.CENTER, 20,
+					20);
+			}
+		});
+		// 获取Popup窗口中的关闭按钮。
+		  =====root.findViewById(R.id.close).setOnClickListener(
+			new View.OnClickListener()
+			{
+				public void onClick(View v)
+				{
+					// 关闭Popup窗口
+					popup.dismiss();
+				}
+			});
+	}
+=================================================
+
+				// 创建进度对话框
+				pd = new ProgressDialog(this);
+				pd.setMax(100);
+				// 设置对话框的标题
+				pd.setTitle("任务完成百分比");
+				// 设置对话框 显示的内容
+				pd.setMessage("耗时任务的完成百分比");
+				// 设置对话框不能用“取消”按钮关闭
+			//	pd.setCancelable(false);
+				// 设置对话框的进度条风格
+//				pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+				pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+				// 设置对话框的进度条是否显示进度
+				pd.setIndeterminate(false);
+
+
+							// 关闭对话框
+							pd.dismiss();
+=============================================
+<!-- 定义ScrollView，为里面的组件添加垂直滚动条 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+<!-- 定义HorizontalScrollView，为里面的组件添加水平滚动条 -->	
+<HorizontalScrollView
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content">
+<LinearLayout android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+<TextView android:layout_width="wrap_content"
+	android:layout_height="wrap_content" 
+	android:text="滚动视图滚动视图滚动视图"
+	android:textSize="30dp" />				
+</LinearLayout>
+</HorizontalScrollView>
+</ScrollView>
+=============================================
+list列表适配器   带图片和文字
+
+		//创建一个List集合，List集合的元素是Map
+		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+		for (int i = 0; i < names.length; i++)
+		{
+			Map<String, Object> listItem = new HashMap<String, Object>();
+			listItem.put("header", imageIds[i]);//数组
+			listItem.put("personName", names[i]);
+			listItems.add(listItem);
+		}
+		//创建一个SimpleAdapter
+		SimpleAdapter simpleAdapter = new SimpleAdapter(this
+			, listItems 
+			, R.layout.main
+			, new String[]{ "personName", "header" }
+			, new int[]{R.id.name , R.id.header});//文本组件和图片组件
+		ListView list = (ListView)findViewById(R.id.mylist);
+		//为ListView设置Adapter
+		list.setAdapter(simpleAdapter);
+=============================================
+单选按钮
+	public Dialog onCreateDialog(int id, Bundle state)
+	{
+		//判断需要生成哪种类型的对话框
+		switch (id)
+		{
+			case SINGLE_DIALOG:
+				Builder b = new AlertDialog.Builder(this);
+				// 设置对话框的图标
+				b.setIcon(R.drawable.tools);
+				// 设置对话框的标题
+				b.setTitle("单选列表对话框");
+				// 为对话框设置多个列表
+				b.setSingleChoiceItems(new String[]
+				{ "红色", "绿色", "蓝色" }
+				// 默认选中第二项
+					, 1
+					//为列表项的单击事件设置监听器
+					, new OnClickListener()
+					{
+						@Override
+						public void onClick(DialogInterface dialog,
+							int which)
+						{
+							TextView show = (TextView) findViewById(R.id.show);
+							// which代表哪个列表项被单击了
+							switch (which)
+							{
+								//修改文本框的背景色
+								case 0:
+									show.setBackgroundColor(Color.RED);
+									break;
+								case 1:
+									show.setBackgroundColor(Color.GREEN);
+									break;
+								case 2:
+									show.setBackgroundColor(Color.BLUE);
+									break;
+							}
+						}
+					});
+				// 添加一个“确定”按钮，用于关闭该对话框
+				b.setPositiveButton("确定", null);
+				// 创建对话框
+				return b.create();
+=============================================
+xml下拉列表
+-values
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="books">
+		<item>疯狂Java讲义</item>
+		<item>疯狂Ajax讲义</item>
+		<item>疯狂XML讲义</item>
+	</string-array>
+ </resources>
+-layout
+<Spinner
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:entries="@array/books"  //注意这里
+	/>
+=============================================
+spring下拉列表和适配器
+
+		BaseAdapter ba = new BaseAdapter()
+		{
+			@Override
+			public int getCount()
+			{
+				//指定一共包含10个选项
+				return 10;
+			}
+
+			@Override
+			public Object getItem(int position)
+			{
+				return null;
+			}
+
+			@Override
+			public long getItemId(int position)
+			{
+				// TODO Auto-generated method stub
+				return 0;
+			}
+//			//重写该方法，该方法返回的View将作为列表框的每项
+//			@Override
+//			public View getView(int position, View convertView, ViewGroup parent) 
+//			{
+//				TextView text = new TextView(SpinnerTest2.this);
+//				text.setText(position"");
+//				text.setTextSize(20);
+//				text.setTextColor(R.color.red);
+//				return text;
+//			}
+			//重写该方法，该方法返回的View将作为列表框的每项
+			@Override
+			public View getView(int position, View convertView, ViewGroup parent) 
+			{
+				//创建一个LinearLayout，并向其中添加2个组件
+				LinearLayout line = new LinearLayout(SpinnerTest2.this);
+				line.setOrientation(0);
+				ImageView image = new ImageView(SpinnerTest2.this);
+				image.setImageResource(R.drawable.icon);
+				TextView text = new TextView(SpinnerTest2.this);
+				text.setText(position + "");
+				text.setTextSize(20);
+				text.setTextColor(R.color.red);
+				line.addView(image);
+				line.addView(text);
+				//返回LinearLayout实例
+				return line;
+			}		
+		};
+		Spinner spinner = (Spinner)findViewById(R.id.test);
+		spinner.setAdapter(ba);
+	}
+==================================================
+选项卡
+
+public class TabHostTest extends TabActivity
+{
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		TabHost tabHost = getTabHost();
+		//设置使用TabHost布局
+		LayoutInflater.from(this).inflate(R.layout.main,
+				tabHost.getTabContentView(), true);
+		//添加第一个标签页
+		tabHost.addTab(tabHost.newTabSpec("tab1")
+			.setIndicator("已接电话")
+			.setContent(R.id.tab01)); 
+
+==================================================
+
+	<!-- 设置中间省略 -->
+	<TextView
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:singleLine="true" 
+	android:text="我爱Java我爱Java我爱Java我爱Java我爱Java我aaaJava"
+	android:ellipsize="middle"
+	/>
+	<!-- 对邮件增加链接 -->
+	<TextView
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:singleLine="true" 
+	android:text="测试kongyeeku@163.com内容"
+	android:autoLink="email"
+	/>
+	<!-- 设置文字颜色 、大小，并使用阴影 -->
+	<TextView
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:text="测试文字"
+	android:shadowColor="#0000ff"
+	android:shadowDx="15.0"
+	android:shadowDy="20.0"
+	android:shadowRadius="45.0"
+	android:textColor="#ff0000"
+	android:textSize="25pt"
+	/>
+	<!-- 测试密码框 -->
+	<TextView android:id="@+id/passwd"
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:text="@string/hello"
+	android:password="true"
+	/>
+
+<!-- 通过android:background指定背景 -->
+<TextView
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:text="带边框的文本"
+	android:background="@drawable/bg_border"
+	/>
+<!-- 通过android:drawableLeft绘制一张图片 -->	
+<TextView  
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:text="带图片的文本"
+	android:drawableLeft="@drawable/icon"
+	/>	
+====================================
+
+				//创建一个Toast提示信息
+				Toast toast = Toast.makeText(ToastTest.this
+					, "带图片的的提示信息"
+					// 设置该Toast提示信息的持续时间
+					, Toast.LENGTH_LONG);				
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				//获取Toast提示里原有的View
+				View toastView = toast.getView();
+				//创建一个ImageView
+				ImageView image = new ImageView(ToastTest.this);
+				image.setImageResource(R.drawable.tools);
+				//创建一个LinearLayout容器
+				LinearLayout ll = new LinearLayout(ToastTest.this);
+				//向LinearLayout中添加图片、原有的View
+				ll.addView(image);
+				ll.addView(toastView);
+				toast.setView(ll);
+				toast.show();	
+====================================
+切换按钮
+		ToggleButton toggle = (ToggleButton)findViewById(R.id.toggle);
+		final LinearLayout test = (LinearLayout)findViewById(R.id.test);
+		toggle.setOnCheckedChangeListener(new OnCheckedChangeListener()
+			{
+
+				@Override
+				public void onCheckedChanged(CompoundButton arg0, boolean arg1)
+				{
+					if(arg1)
+					{
+						//设置LinearLayout垂直布局
+						test.setOrientation(1);
+					}
+					else
+					{
+						//设置LinearLayout水平布局
+						test.setOrientation(0);
+					}			
+				}
+			});	
+view组
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- 定义一个ToggleButton按钮 -->
+<ToggleButton android:id="@+id/toggle"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:textOff="横向排列"
+	android:textOn="纵向排列"
+	android:checked="true"
+	/>
+<!-- 定义一个可以动态改变方向的线性布局 -->
+<LinearLayout android:id="@+id/test"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+</LinearLayout>
+</LinearLayout>
+=========================================================
+第二章
+=========================================================
+<!-- 在标签中为按钮绑定事件处理方法 -->
+<Button
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="单击我"
+	android:onClick="clickHandler"
+	/>	
+	public void clickHandler(View source)
+	{
+		EditText show = (EditText)findViewById(R.id.show);
+		show.setText("bn按钮被单击了");
+	}
+=========================================================
+android配置修改
+	public void onClick(View source)
+			{
+				//getResources()这个方法就可以获取存在系统的资源。
+				//Configuration 类中包含了很多种信息，例如系统字体大小，orientation，输入设备类型等等.
+				Configuration config = getResources().getConfiguration();
+				//如果当前是横屏
+				if (config.orientation 
+					== Configuration.ORIENTATION_LANDSCAPE)
+				{
+					//设为竖屏
+					ChangeCfg.this.setRequestedOrientation(
+						ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+				}
+				//如果当前是竖屏
+				if (config.orientation 
+					== Configuration.ORIENTATION_PORTRAIT)
+				{
+					//设为横屏
+					ChangeCfg.this.setRequestedOrientation(
+						ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE );
+				}			
+			}
+		});		
+	}
+	//重写该方法，用于监听系统设置的更改，主要是监控屏幕方向的更改
+onConfigurationChanged()方法。在AndroidManifest.xml中添加（android:configChanges="orientation|keyboard|keyboardHidden"）上诉代码的含义是表示在改变屏幕方向、弹出软件盘和隐藏软键盘时，不再去执行onCreate()方法，而是直接执行onConfigurationChanged()。
+	@Override
+	public void onConfigurationChanged(Configuration newConfig)
+	{
+		super.onConfigurationChanged(newConfig);
+		String screen = newConfig.orientation == 
+			Configuration.ORIENTATION_LANDSCAPE ? "横向屏幕": "竖向屏幕";
+		Toast.makeText(this, "系统的屏幕方向发生改变"
+			+ "\n修改后的屏幕方向为：" + screen
+			, Toast.LENGTH_LONG)
+			.show();		
+	}	
+		<!-- 设置Activity允许修改屏幕方向（orientationorientation） -->
+		<activity android:name=".ChangeCfg"
+				  android:label="@string/app_name"
+				  android:configChanges="orientation">
+	<!-- 授予应用程序修改系统设置的权限 -->
+	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+Configuration config = getResources().getConfiguration();
+CONFIG_FONT_SCALE   全局字体大小缩放发生改变
+CONFIG_MCC  --移动国家号码，由三位数字组成，每个国家都有自己独立的MCC，可以识别手机用户所属国家。
+CONFIG_MNC  --移动网号，在一个国家或者地区中，用于区分手机用户的服务商。
+CONFIG_LOCALE  --用户所在地区发生变化。
+CONFIG_TOUCHSCREEN --触摸屏发生了变化，这个基本不会发生。
+CONFIG_KEYBOARD --键盘模式发生变化
+CONFIG_NAVIGATION--导航模式发生变化
+config.orientation
+CONFIG_ORIENTATION  设备旋转，横向显示和竖向显示模式切换
+
+=========================================================
+<!-- 使用自定义组件 -->
+<org.crazyit.event.DrawView
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+/>
+public class DrawView extends View
+{
+	public float currentX = 40;
+	public float currentY = 50;
+	/**
+	 * @param context
+	 */
+	public DrawView(Context context , AttributeSet set)
+	{
+		super(context , set);
+	}
+	@Override
+	public void onDraw (Canvas canvas)
+	{
+		super.onDraw(canvas);
+		//创建画笔
+		Paint p = new Paint();
+		//设置画笔的颜色
+		p.setColor(Color.RED);
+		//绘制一个小圆（作为小球）
+		canvas.drawCircle(currentX , currentY , 15 , p);		
+	}
+	@Override
+	public boolean onTouchEvent(MotionEvent event)
+	{
+		//当前组件的currentX、currentY两个属性
+		this.currentX = event.getX();
+		this.currentY = event.getY();
+		//通知改组件重绘
+		this.invalidate();//调用该方法就会重新调用onDraw （）方法；
+		//返回true表明处理方法已经处理该事件
+		return true;
+	}	
+
+=========================================================
+定时修改UI，不允许在主线程修改UI	
+		final Handler myHandler = new Handler()
+		{
+			@Override
+			public void handleMessage(Message msg)
+			{
+				//如果该消息是本程序所发送的
+				if (msg.what == 0x1222)
+				{
+					//动态地修改所显示的图片
+					show.setImageResource(imageIds[currentImageId++]);
+					if (currentImageId >= 4)
+					{
+						currentImageId = 0; 
+					}
+				}
+			}
+		};
+		//定义一个计时器，让该计时器周期性地执行指定任务
+		new Timer().schedule(new TimerTask()
+		{
+			@Override
+			public void run()
+			{
+				//新启动的线程无法访问该Activity里的组件
+				//所以需要通过Handler发送信息
+				Message msg = new Message();
+				msg.what = 0x1222;
+				//发送消息
+				myHandler.sendMessage(msg);
+			}
+		}, 0 , 2*1000);
+	}  
+timer.schedule(new MyTask(), 1000, 2000);//在1秒后执行此任务,每次间隔2秒,如果传递一个Data参数,就可以在某个固定的时间执行这个任务.
+=========================================================
+		bn.setOnKeyListener(new OnKeyListener()
+		{
+			@Override
+			public boolean onKey(View source
+				, int keyCode, KeyEvent event)
+			{
+				//只处理按下键的事件
+				if (event.getAction() == KeyEvent.ACTION_DOWN)
+				{
+					Log.v("-Listener-" , "the onKeyDown in Listener");
+				}
+				// 返回false，表明该事件会向外传播
+				return true;
+			}
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		super.onKeyDown(keyCode , event);
+		Log.v("-Activity-" , "the onKeyDown in Activity");
+		//返回false，表明并未完全处理该事件，该事件依然向外扩散
+		return false;
+	}
+基于回调的事件传播
+     几乎所有的基于回调的事件处理方法都有一个boolean类型的返回值，该返回值用于标识该处理方法是否能完全处理该事件：
+ 1.如果返回true，则表明该处理方法已完全处理了该事件，该事件不会被传播出去。
+ 2.如果返回false，表明该处理方法未完全处理该事件，该事件会传播出去。
+=========================================================
+		SmsManager smsManager = SmsManager.getDefault();
+		PendingIntent sentIntent = PendingIntent.getBroadcast(activity类, 0,
+			new Intent(), 0);
+		smsManager.sendTextMessage(addressStr, null, contentStr
+			, sentIntent, null);
+pendingIntent是一种特殊的Intent。主要的区别在于Intent的执行立刻的，而pendingIntent的执行不是立刻的。pendingIntent执行的操作实质上是参数传进来的Intent的操作，但是使用pendingIntent的目的在于它所包含的Intent的操作的执行是需要满足某些条件的。
+PendingIntent就是一个可以在满足一定条件下执行的Intent，它相比于Intent的优势在于自己携带有Context对象，这样他就不必依赖于某个activity才可以存在。
+
+//获取通知管理器
+
+NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)
+
+int icon = android.R.drawable.stat_notify_chat;
+
+long when = System.currentTimeMillis();//通知发生的时间为系统当前时间
+
+//新建一个通知，指定其图标和标题
+
+Notification notification = new Notification(icon, null, when);//第一个参数为图标,第二个参数为短暂提示标题,第三个为通知时间
+
+notification.defaults = Notification.DEFAULT_SOUND;//发出默认声音
+
+notification.flags |= Notification.FLAG_AUTO_CANCEL;//点击通知后自动清除通知
+
+Intent openintent = new Intent(this, OtherActivity.class);
+
+PendingIntent contentIntent = PendingIntent.getActivity(this, 0, openintent, 0);//当点击消息时就会向系统发送openintent意图
+
+notification.setLatestEventInfo(this, “标题”, “我是内容", contentIntent);
+
+mNotificationManager.notify(0, notification);//第一个参数为自定义的通知唯一标识
+
+ 
+
+重点是setLatestEventInfo( )方法的最后一个参数！！！！它是一个PendingIntent!!!!!!!!!
+
+这里使用到了PendingIntent(pend本意是待定，不确定的意思)
+
+PendingIntent可以看作是对Intent的包装。PendingIntent主要持有的信息是它所包装的Intent和当前Application的Context。正由于PendingIntent中保存有当前Application的Context，使它赋予带他程序一种执行的Intent的能力，就算在执行时当前Application已经不存在了，也能通过存在PendingIntent里的Context照样执行Intent。
+
+ 
+
+PendingIntent的一个很好的例子：
+SmsManager的用于发送短信的方法：
+
+sendTextMessage(destinationAddress, scAddress, text, sentIntent, deliveryIntent);
+
+第一个参数：destinationAddress 对方手机号码
+第二个参数：scAddress 短信中心号码 一般设置为空
+第三个参数：text 短信内容
+第四个参数：sentIntent判断短信是否发送成功，如果你没有SIM卡，或者网络中断，则可以通过这个itent来判断。注意强调的是“发送”的动作是否成功。那么至于对于对方是否收到，另当别论
+第五个参数：deliveryIntent当短信发送到收件人时，会收到这个deliveryIntent。即强调了“发送”后的结果
+
+就是说是在"短信发送成功"和"对方收到此短信"才会激活 sentIntent和deliveryIntent这两个Intent。这也相当于是延迟执行了Intent
+
+=========================================================
+第三章
+=========================================================
+//启动指定Activity并等待返回的结果，其中0是请求码，用于标识该请求
+				startActivityForResult(intent , 0);
+	//重写该方法，该方法以回调的方式来获取指定Activity返回的结果
+	@Override
+	public void onActivityResult(int requestCode , int resultCode
+		, Intent intent)
+	{
+		System.out.println(requestCode + "   " + resultCode);
+		//当requestCode、resultCode同时为0，也就是处理特定的结果
+		if (requestCode == 0
+			&& resultCode == 1)
+		{
+			//取出Intent里的Extras数据
+			Bundle data = intent.getExtras();
+			//取出Bundle中的数据
+			String resultCity = data.getString("city");
+				// 设置该SelectActivity的结果码，并设置结束之后退回的Activity
+				SelectCityActivity.this.setResult(1 , intent);
+				//结束SelectCityActivity。
+				SelectCityActivity.this.finish();
+
+				//创建一个Bundle对象 并附加一个对象的信息
+				Bundle data = new Bundle();
+				data.putSerializable("person", p);
+生命周期
+	public void onStart() 
+	public void onRestart() 重启
+	public void onResume() 再开始；回到（之前的位置），重返
+	public void onPause() 暂停
+	public void onStop() 
+	public void onDestroy()
+===========================================
+list列表 点击选项对应跳转 继承LauncherActivity
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+			android.R.layout.simple_list_item_1 , names);
+		// 设置该窗口显示的列表所需的Adapter
+		setListAdapter(adapter);
+	}
+	//根据列表项来返回指定Activity对应的Intent
+	@Override public Intent intentForPosition(int position)
+	{
+		return new Intent(OtherActivity.this , clazzs[position]);
+	}
+===========================================
+第四章
+===========================================
+
+25.                intent.setAction(Intent.ACTION_CALL);  
+26.                                //也可以使用intent.setAction("android.intent.action.CALL");  
+27.                intent.setData(Uri.parse("tel:"+et1.getText()));  
+28.                startActivity(intent);  
+===========================================
+activity一
+				Intent intent = new Intent();
+				//设置Action属性
+				intent.setAction(ActionCateAttr.CRAZYIT_ACTION);
+				//添加Category属性
+				intent.addCategory(ActionCateAttr.CRAZYIT_CATEGORY);
+				startActivity(intent);
+activity二    貌似像过滤器  intent设置的条件符合要求就启动
+		<activity android:name=".SecondActivity"
+				  android:label="@string/app_name">
+			<intent-filter>
+				<!-- 指定该Activity能响应action为指定字符串的Intent -->
+				<action android:name="org.crazyit.intent.action.CRAZYIT_ACTION" />
+				<!-- 指定该Activity能响应category为指定字符串的Intent -->
+				<category android:name="org.crazyit.intent.category.CRAZYIT_CATEGORY" />
+				<!-- 指定该Activity能响应category为android.intent.category.DEFAULT的Intent -->
+				<category android:name="android.intent.category.DEFAULT" />   
+			</intent-filter>
+		</activity>
+===========================================
+选项卡 extends TabActivity
+TabHost tabHost = getTabHost();
+		//使用Intent添加第一个Tab页面
+		tabHost.addTab(tabHost.newTabSpec("tab1")
+			.setIndicator("已接电话"
+				, getResources().getDrawable(R.drawable.icon))
+			.setContent(new Intent(this, BeCalledActivity.class)));
+		//使用Intent添加第二个Tab页面
+		tabHost.addTab(tabHost.newTabSpec("tab1")
+			.setIndicator("呼出电话")
+			.setContent(new Intent(this, CalledActivity.class)));
+===========================================
+第五章
+===========================================
+	final ImageView image = (ImageView) findViewById(R.id.image);
+		//加载动画资源
+		final Animation anim = AnimationUtils
+			.loadAnimation(this, R.anim.my_anim);//动画布局文件
+		//设置动画结束后保留结束状态
+		anim.setFillAfter(true);
+		Button bn = (Button)findViewById(R.id.bn);
+		bn.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View arg0)
+			{
+				//开始动画
+				image.startAnimation(anim);
+			}
+		});
+移动补间动画：TranslateAnimation
+缩放补间动画：ScaleAnimation
+透明补间动画： AlphaAnimation
+旋转补间动画：RotateAnimation
+===========================================
+<!-- 定义一个拖动条，并改变轨道外观 -->
+<SeekBar
+ 	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:max="100"
+	android:progressDrawable="@drawable/my_bar"//重新定义seekbar的样式
+	style="@android:style/Widget.ProgressBar.Horizontal"
+	/>
+my_bar。xml
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- 定义轨道的背景 -->
+	<item android:id="@android:id/background"
+		android:drawable="@drawable/grow" />
+	<!-- 定义轨道上已完成部分的外观-->
+	<item android:id="@android:id/progress"
+		android:drawable="@drawable/ok" />
+</layer-list>  
+===========================================
+mediaPlayer1 = MediaPlayer.create(this, R.raw.bomb);
+
+		// 获取该应用的AssetManager
+		AssetManager am = getAssets();
+			// 获取指定文件对应的AssetFileDescriptor。
+			AssetFileDescriptor afd = am.openFd("shot.mp3");
+			mediaPlayer2 = new MediaPlayer();
+			// 使用MediaPlayer加载指定的声音文件。
+			mediaPlayer2.setDataSource(afd.getFileDescriptor());
+			mediaPlayer2.prepare();
+mediaPlayer1.start();
+===========================================
+BaseAdapter ba = new BaseAdapter()//需百度还有simple
+===========================================
+第六章
+===========================================
+
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		//使用FrameLayout布局管理器，它允许组件自己控制位置
+		FrameLayout frame = new FrameLayout(this);
+		setContentView(frame);		
+		//设置使用背景
+		frame.setBackgroundResource(R.drawable.back);
+		//加载音效
+		bomb = MediaPlayer.create(this , R.raw.bomb);
+		myView = new MyView(this);
+		//设置myView用于显示blast动画
+		myView.setBackgroundResource(R.anim.blast);
+		//设置myView默认为隐藏
+		myView.setVisibility(View.INVISIBLE);
+		//获取动画对象
+		anim = (AnimationDrawable) myView.getBackground();
+		frame.addView(myView);
+		frame.setOnTouchListener(new OnTouchListener()
+		{
+			@Override
+			public boolean onTouch(View source, MotionEvent event)
+			{
+				//只处理按下事件（避免每次产生两个动画效果）
+				if (event.getAction() 
+					== MotionEvent.ACTION_DOWN )
+				{
+					//先停止动画播放
+					anim.stop();
+					float x = event.getX();
+					float y = event.getY();
+					//控制myView的显示位置
+					myView.setLocation((int) y - 40, (int) x - 20);
+					myView.setVisibility(View.VISIBLE);
+					//启动动画
+					anim.start();
+					//播放音效
+					bomb.start();
+				}
+				return false;
+			}			
+		});
+	}
+	//定义一个自定义View，该自定义View用于播放“爆炸”效果
+	class MyView extends ImageView
+	{
+		public MyView(Context context)
+		{
+			super(context);
+		}
+		// 定义一个方法，该方法用于控制MyView的显示位置
+		public void setLocation(int top, int left)
+		{
+			this.setFrame(left, top, left + 40, top + 40);
+		}
+		//重写该方法，控制如果动画播放到最后一帧时，隐藏该View
+		@Override
+		protected void onDraw(Canvas canvas)
+		{
+			try
+			{
+				Field field = AnimationDrawable.class
+					.getDeclaredField("mCurFrame");
+				field.setAccessible(true);
+				// 获取anim动画的当前帧
+				int curFrame = field.getInt(anim);
+				// 如果已经到了最后一帧
+				if (curFrame == anim.getNumberOfFrames() - 1)
+				{
+					//让该View隐藏
+					setVisibility(View.INVISIBLE);
+				}
+			}
+			catch (Exception e)
+			{
+			}
+			super.onDraw(canvas);
+		}
+	}
+=========================================================
+飞行的蝴蝶（翅膀，左右，上下）
+		final ImageView imageView = (ImageView)findViewById(R.id.butterfly);
+<ImageView
+	android:id="@+id/butterfly"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:background="@anim/butterfly"
+	/>
+butterfly.xml
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+	android:oneshot="false">
+	<item android:drawable="@drawable/butterfly_f01" android:duration="120" />
+	<item android:drawable="@drawable/butterfly_f02" android:duration="120" />
+	<item android:drawable="@drawable/butterfly_f03" android:duration="120" />
+	<item android:drawable="@drawable/butterfly_f04" android:duration="120" />
+	<item android:drawable="@drawable/butterfly_f05" android:duration="120" />
+	<item android:drawable="@drawable/butterfly_f06" android:duration="120" />	
+</animation-list>
+		final AnimationDrawable butterfly = (AnimationDrawable)imageView
+			.getBackground();
+				butterfly.start();
+//在启动新线程
+					//横向上一直向右飞
+					if(nextX > 320)
+					{
+						curX = nextX = 0;
+					}
+					else
+					{
+						nextX += 8;
+					}
+					//纵向上可以随机上下
+					nextY = curY + (float)(Math.random() * 10 - 5);
+					//设置显示蝴蝶的ImageView发生位移改变
+					TranslateAnimation anim 
+						= new TranslateAnimation(curX , nextX , curY , nextY);
+					curX = nextX;
+					curY = nextY;
+					anim.setDuration(200);
+					//开始位移动画
+					imageView.startAnimation(anim);	
+=========================================================	
+list.setAnimation(new MyAnimation(screenWidth / 2
+			, screenHeight / 2  , 3500));
+//自定义动画
+public class MyAnimation extends Animation
+{
+	private int centerX;
+	private int centerY;
+	//定义动画的持续事件
+	private int duration;
+	private Camera camera = new Camera();
+	public MyAnimation(int centerX, int centerY , int duration)
+	{
+		this.centerX = centerX;
+		this.centerY = centerY;
+		this.duration = duration;
+	}
+	@Override
+	public void initialize(int width, int height, int parentWidth,
+		int parentHeight)
+	{
+		super.initialize(width, height, parentWidth, parentHeight);
+		//设置动画的持续时间
+		setDuration(duration);
+		//设置动画结束后效果保留
+		setFillAfter(true);
+		setInterpolator(new LinearInterpolator());
+	}
+	/*
+	 * 该方法的interpolatedTime代表了抽象的动画持续时间，不管动画实际持续时间多长，
+	 * interpolatedTime参数总是从0（动画开始时）～1（动画结束时）
+	 * Transformation参数代表了对目标组件所做的变.
+	 */
+	@Override
+	protected void applyTransformation(float interpolatedTime, Transformation t)
+	{
+		camera.save();
+		//根据interpolatedTime时间来控制X、Y、Z上的偏移
+		camera.translate(100.0f - 100.0f * interpolatedTime ,
+			150.0f * interpolatedTime - 150 ,
+			80.0f - 80.0f * interpolatedTime);
+		// 设置根据interpolatedTime时间在Y柚上旋转不同角度。
+		camera.rotateY(360 * (interpolatedTime));
+		// 设置根据interpolatedTime时间在X柚上旋转不同角度
+		camera.rotateX((360 * interpolatedTime));
+		//获取Transformation参数的Matrix对象
+		Matrix matrix = t.getMatrix();
+		camera.getMatrix(matrix);
+		matrix.preTranslate(-centerX, -centerY);
+		matrix.postTranslate(centerX, centerY);
+		camera.restore();
+	}
+}
+============================================================
+飞机向上飞动   向上截取背景
+public class MoveBack extends Activity
+{
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(new MyView(this));
+	}
+	class MyView extends View
+	{
+		//记录背景位图的实际高度
+		final int BACK_HEIGHT = 1700;
+		//背景图片
+		private Bitmap back;
+		private Bitmap plane;
+		//背景图片的开始位置
+		final int WIDTH = 320;
+		final int HEIGHT = 440;
+		private int startY = BACK_HEIGHT - HEIGHT;		
+		public MyView(Context context)
+		{
+			super(context);
+			// TODO Auto-generated constructor stub
+			back = BitmapFactory.decodeResource(context.getResources()
+				, R.drawable.back_img);
+			plane = BitmapFactory.decodeResource(context.getResources()
+				, R.drawable.plane);			
+			final Handler handler = new Handler()
+			{
+				public void handleMessage(Message msg)
+				{
+					if (msg.what == 0x123)
+					{
+						//重新开始移动
+						if (startY <= 0)
+						{
+							startY = BACK_HEIGHT - HEIGHT;
+						}
+						else
+						{
+							startY -= 3;
+						}
+					}
+					invalidate();
+				}
+			};
+			new Timer().schedule(new TimerTask()
+			{
+				@Override
+				public void run()
+				{
+					handler.sendEmptyMessage(0x123);					
+				}
+				
+			}, 0 , 100);
+		}
+		@Override
+		public void onDraw(Canvas canvas)
+		{
+			// 根据原始位图和Matrix创建新图片
+			Bitmap bitmap2 = Bitmap.createBitmap(back, 0, startY
+				, WIDTH , HEIGHT);
+			// 绘制新位图
+			canvas.drawBitmap(bitmap2, 0 , 0  , null);
+			// 绘制飞机
+			canvas.drawBitmap(plane, 160 , 380  , null);				
+		}		
+	}
+}
+======================================================
+					// 锁定SurfaceView的局部区域，只更新局部内容
+					Canvas canvas = holder.lockCanvas(new Rect(cx - 50,
+						cy - 50, cx + 50, cy + 50));
+					// 保存canvas的当前状态
+					canvas.save();
+					// 旋转画布
+					canvas.rotate(30, cx, cy);
+					paint.setColor(Color.RED);
+					// 绘制红色方块
+					canvas.drawRect(cx - 40, cy - 40, cx, cy, paint);
+					// 恢复Canvas之前的保存状态
+					canvas.restore();
+					paint.setColor(Color.GREEN);
+					// 绘制绿色方块
+					canvas.drawRect(cx, cy, cx + 40, cy + 40, paint);
+					// 绘制完成，释放画布，提交修改
+					holder.unlockCanvasAndPost(canvas);
+=====================================================
+第七章
+=====================================================
+使用SQLiteOpenHelper操作数据库：
+获得数据库实例： 
+getReadableDatabase()获得可读的SQLiteDatabase 
+getWritableDatabase() 获得可写的SQLiteDatabase 
+SQLiteOpenHelper子类中需要重写的常用事件： 
+onCreate(SQLiteDatabase) 
+onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) 
+onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
+public class DBHelp extends SQLiteOpenHelper {public DBHelp(Context context, String name, CursorFactory factory, 
+
+int version) { 
+
+super(context, name, factory, version); 
+
+} 
+
+@Override 
+
+public void onCreate(SQLiteDatabase db) { 
+
+db.execSQL(createTableSQL); // 执行SQL 需要使用execSQL（） 
+
+｝ 
+
+@Override 
+
+public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { 
+
+｝ 
+
+@Override 
+
+public void onOpen(SQLiteDatabase db) { 
+
+｝ 
+
+InsertData() 
+
+UpdateData() 
+
+DeleteData() 
+
+rawQuery() 
+
+query() 
+ }
+ 
+
+创建并打开数据库： 
+
+SQLiteDatabase db = new DBHelp(SQLiteActivity.this).getReadableDatabase(); 
+
+添加数据： 
+
+DBHelp dbHelp = new DBHelp(SQLiteActivity.this); 
+
+SQLiteDatabase db = dbHelp.getWritableDatabase(); 
+
+ContentValues contentValues = new ContentValues(); 
+
+contentValues.put("sName", txtName.getText().toString()); 
+
+contentValues.put("sSex", "男"); 
+
+dbHelp.InsertData(db, contentValues)； 
+
+修改数据： 
+
+DBHelp dbHelp = new DBHelp(SQLiteActivity.this); 
+
+SQLiteDatabase db = dbHelp.getWritableDatabase(); 
+
+ContentValues contentValues = new ContentValues(); 
+
+contentValues.put("sName", txtsName.getText().toString()); 
+
+String whereClause = "sid=?"; //要修改数据的条件 值用？占位符 
+
+String[] whereArgs = new String[]{txtsID.getText().toString()}; 
+
+dbHelp.UpdateData(db, contentValues, whereClause, whereArgs)； 
+
+删除数据： 
+
+DBHelp dbHelp = new DBHelp(SQLiteActivity.this); 
+
+SQLiteDatabase db = dbHelp.getWritableDatabase(); 
+
+String whereClause = "sid=?"; //要删除数据的条件 值用？占位符 
+
+String[] whereArgs = new String[]{txtID.getText().toString()}; 
+
+dbHelp.DeleteData(db, whereClause, whereArgs)； 
+
+查询数据： 
+
+Cursor cur =db.rawQuery(“SELECT * FROM Student WHERE sid=1 AND sname=‘zhangsan'", null); 
+
+Cursor cur =db.rawQuery(...) 
+
+每一个rawQuery()或query()都会返回一个SQLite数据库Cursor。 
+
+操作游标： 
+
+通过使用 getCount() 方法得到结果集中有多少记录； 
+
+通过 moveToFirst(), moveToNext(), 和 isAfterLast() 方法遍历所有记录； 
+
+通过 getColumnNames() 得到字段名； 
+
+通过 getColumnIndex() 转换成字段号； 
+
+通过 getString()，getInt() 等方法得到给定字段当前记录的值； 
+
+通过 requery() 方法重新执行查询得到游标； 
+
+通过 close() 方法释放游标资源； 
+
+SimpleCursorAdapter：和游标关联，绑定到ListView以呈现数据,前提条件，表中有_id列，并且是主键。 
+
+SimpleCursorAdapter simple = new SimpleCursorAdapter(SQLiteActivity.this, android.R.layout.simple_list_item_1, cur, new String[]{"sName","sSex"}, new int[]{android.R.id.text1,android.R.id.text2}); 
+
+studentList.setAdapter(simple); 
+
+当_id不是主键时，先从游标是把数据取出来，然后采用SimpleAdapter来呈现数据： 
+
+ArrayList> students = new ArrayList>(); 
+
+HashMap hs ; 
+for (cur.moveToFirst();!cur.isAfterLast();cur.moveToNext()) { 
+hs = new HashMap(); 
+hs.put("sID", cur.getInt(cur.getColumnIndex("sid"))); 
+hs.put("sName", cur.getString(cur.getColumnIndex("sName"))); 
+hs.put("sSex", cur.getString(cur.getColumnIndex("sSex"))); 
+students.add(hs); 
+} 
+SimpleAdapter sim = new SimpleAdapter(SQLiteActivity.this, students, android.R.layout.simple_list_item_1, new String[]{"sName","sSex"}, new int[]{android.R.id.text1,android.R.id.text2}); 
+
+studentList.setAdapter(sim);
+=============================================================================================
+				Bundle data = new Bundle();
+				data.putSerializable("data", converCursorToList(cursor));//cursor相当于结果集
+	protected ArrayList<Map<String , String>> converCursorToList(Cursor cursor)
+	{
+		ArrayList<Map<String , String>> result = 
+			new ArrayList<Map<String , String>>();
+		//遍历Cursor结果集
+		while(cursor.moveToNext())
+		{
+			//将结果集中的数据存入ArrayList中
+			Map<String , String> map = new 
+				HashMap<String , String>();
+			//取出查询记录中第2列、第3列的值
+			map.put("word" , cursor.getString(1));
+			map.put("detail" , cursor.getString(2));
+			result.add(map);
+		}
+		return result;		
+	}
+=============================================================================================
+	final String FILE_NAME = "crazyit.bin";
+		  写入	  String (content);
+			// 以追加模式打开文件输出流
+			FileOutputStream fos = openFileOutput(FILE_NAME, MODE_APPEND);
+			// 将FileOutputStream包装成PrintStream
+			PrintStream ps = new PrintStream(fos);
+			// 输出文件内容
+			ps.println(content);
+			ps.close();
+			读取
+			// 打开文件输入流
+			FileInputStream fis = openFileInput(FILE_NAME);
+			byte[] buff = new byte[1024];
+			int hasRead = 0;
+			StringBuilder sb = new StringBuilder("");
+			while ((hasRead = fis.read(buff)) > 0)
+			{
+				sb.append(new String(buff, 0, hasRead));
+			}
+			return sb.toString();
+=============================================================================================
+sd卡操作
+	private String read() {
+		try {
+			// 如果手机插入了SD卡，而且应用程序具有访问SD的权限
+			if (Environment.getExternalStorageState().equals(
+					Environment.MEDIA_MOUNTED)) {
+				// 获取SD卡对应的存储目录
+				File sdCardDir = Environment.getExternalStorageDirectory();
+				// 获取指定文件对应的输入流
+				FileInputStream fis = new FileInputStream(sdCardDir
+						.getCanonicalPath()
+						+ FILE_NAME);
+				// 将指定输入流包装成BufferedReader
+				BufferedReader br = new BufferedReader(new InputStreamReader(
+						fis));
+				StringBuilder sb = new StringBuilder("");
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					sb.append(line);
+				}
+				return sb.toString();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private void write(String content) {
+		try {
+			// 如果手机插入了SD卡，而且应用程序具有访问SD的权限
+			if (Environment.getExternalStorageState().equals(
+					Environment.MEDIA_MOUNTED)) {
+				// 获取SD卡的目录
+				File sdCardDir = Environment.getExternalStorageDirectory();
+				File targetFile = new File(sdCardDir.getCanonicalPath()
+						+ FILE_NAME);
+				// 以指定文件创建 RandomAccessFile对象
+				RandomAccessFile raf = new RandomAccessFile(targetFile, "rw");
+				// 将文件记录指针移动到最后
+				raf.seek(targetFile.length());
+				// 输出文件内容
+				raf.write(content.getBytes());
+				raf.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+=============================================================================================
+ 第八章
+=============================================================================================
+内容提供者
+=============================================================================================
+ 第九章
+=============================================================================================
+				MediaPlayer mPlayer = MediaPlayer.create(AudioTest.this,
+					R.raw.earth);
+				// 设置循环播放
+				mPlayer.setLooping(true);
+				// 开始播放
+				mPlayer.start();
+=============================================================================================
+		//创建启动Service的Intent
+		final Intent intent = new Intent();
+		//为Intent设置Action属性
+		intent.setAction("org.crazyit.service.FIRST_SERVICE");
+				startService(intent);	
+				stopService(intent);	
+		<service android:name=".FirstService">
+			<intent-filter>
+				<!-- 为该Service组件的intent-filter配置action -->
+				<action android:name="org.crazyit.service.FIRST_SERVICE" />
+			</intent-filter>		
+		</service>
+=============================================================================================
+		Intent tIntent = new Intent(context , LaunchService.class);
+		// 启动指定Service
+		context.startService(tIntent);
+=============================================================================================
+	//如果是在xml中注册的   广播就不用实例化
+		activityReceiver = new ActivityReceiver();
+		// 创建IntentFilter
+		IntentFilter filter = new IntentFilter();
+		// 指定BroadcastReceiver监听的Action
+		filter.addAction(UPDATE_ACTION);
+		// 注册BroadcastReceiver
+		registerReceiver(activityReceiver, filter);
+		2  //注册后才可以发送广播    根据action区分是被那个广播接收到
+		Intent intent = new Intent("org.crazyit.action.CTL_ACTION");
+		// 发送广播 ，将被Service组件中的BroadcastReceiver接收到
+		sendBroadcast(intent);	
+=============================================================================================
+ 第十章
+=============================================================================================	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

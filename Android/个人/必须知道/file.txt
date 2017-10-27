@@ -1,0 +1,93 @@
+字节流 inputStream outputStream 
+字符流 reader       writer
+file f=new file("d://aa.text");
+//既可以创建也可以得到文件
+跨平台  File.separator 相当于 /   d:+File.separator+aa.text;
+        File.pathSeparator    ;
+file.delete();//删除文件
+file.mkdir();//创建文件夹
+file.list();这个文件夹下的所有文件
+f.isDirectory()是否是文件夹
+浏览指定目录下所有文件 需要递归调用
+
+写文件
+RandomAccessFile ran=new RandomAccessFile(file,"rw");
+ran.writeXxxx(xxxx);
+ran.close();//会乱码‘
+
+OutputStream out=new OutputStream(file);
+byte[] aa="你好".getBytes();
+out.write(aa);
+out.close();
+
+for(byte b:aa)  一个一个的输入   下载？
+	out.write(b);
+
+读文件
+InputStream in=new InputStream(file);
+byte[] b=new byte[1024];
+in.read(b);  b在输入流的read方法内进行赋值
+new String(b);   如果文本中字符没有1k字符会有多的空格
+
+int len=in.read(b);
+new String（b,0,len）;
+
+Write w=new FileWrite(file);
+w.write("aa");
+w.close();
+实际上字节流在操作的时候本身是不会用到缓冲区的，是文件本身的直接操作的，但是字符流在操作的时候下后是会用到缓冲区的，是通过缓冲区来操作文件的。
+so，字符流一定要关闭
+
+磁盘上的文件都是都是以字节形式传输或者保存  so  多用字节流
+
+OutputStreramWriter 将输出的字符流转化为字节流
+InputStreamReader 将输入的字节流转换为字符流
+
+Write out=new OutputStreramWriter(new FileoutputStream(file));
+Reader read=new InputStreamReader(new FileInputStream(file));
+
+ ByteArrayOutputStream output=newByteArrayOutputStream();
+int temp=0;
+while((temp=input.read())!=-1){ 
+ char ch=(char)temp; ascm转字符
+ output.write(Character.toLowerCase(ch)); //大写转小写
+ }
+
+打印流print scanner
+
+合并流
+SequenceInputStream sis = newSequenceInputStream(input1, input2);
+
+ File zipFile = new File("d:"+ File.separator + "hello.zip");
+InputStream input = new FileInputStream(file);
+ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile)); 
+zipOut.putNextEntry(new ZipEntry(file.getName()));
+ // 设置注释
+ zipOut.setComment("hello"); 
+int temp = 0;
+ while((temp = input.read()) != -1){ 
+ zipOut.write(temp); 
+} 
+input.close(); 
+zipOut.close();
+
+对象的序列化
+ 对象序列化就是把一个对象变为二进制数据流的一种方法。
+ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream( file));
+oos.writeObject(new Person("rollen",20));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

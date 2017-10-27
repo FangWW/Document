@@ -1,0 +1,59 @@
+给对象   当成功时就主动调用
+	public void doHttpGetUIData() {
+		HttpRestClient.doHttpGetFirst(getActivity(), null, null,
+				//传递实例化对象  并重写其方法  该方法就是当请求成功时调用的方法
+				new JsonHttpResponseHandler() {
+					@Override
+					public void onFailure(Throwable error, String content) {
+						// TODO Auto-generated method stub
+						super.onFailure(error, content);
+						if (GlobalApplication.NO_NETWORK.equals(content)) {
+							// uiHandler.sendEmptyMessage(404);
+						} else {
+							// uiHandler.sendEmptyMessage(500);
+						}
+					}
+
+					@Override
+					public void onSuccess(JSONArray response) {
+						// TODO Auto-generated method stub
+						super.onSuccess(response);
+						// ArrayList<HashMap<String, Object>> data = new
+						// ArrayList<HashMap<String, Object>>();
+						HashMap<String, String> map = null;
+						int size = response.length();
+						System.out.println("size = " + size);
+						try {
+							for (int i = 0; i < size; i++) {
+								obj = response.getJSONObject(i);
+								map = new HashMap<String, String>();
+								map.put("user_name", obj.get("username")
+										.toString());
+								map.put("user_time", obj.get("inputtime")
+										.toString());
+								map.put("user_comment",
+										String.valueOf(obj.get("total")));
+								map.put("user_content_text",
+										String.valueOf(obj.get("newsContent")));
+								// <div
+								// style="text-align: center; "><img
+								// src="http://img2.quwenjiemi.com/2013/1107/20131107103209805.jpg"
+								// /></div>[page]
+								map.put("user_content_ic", obj.get("thumb")
+										.toString());
+								map.put("user_agree_numbers",
+										String.valueOf(obj.get("love_num")));
+								map.put("user_disagree_numbers",
+										String.valueOf(obj.get("hate_num")));
+								listItems.add(map);
+								//
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+
+						}
+
+					}
+				});
+	}

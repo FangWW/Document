@@ -1,0 +1,125 @@
+
+　　例 : 1 . 声明控件对象(略)
+　　2 . 获得控件对象(略)
+　　3 . 绑定事件(略)
+　　4 . 创建监听器对象
+　　
+　　Public void onClick(View v ) {
+　　WifiManager wifiManager = (WifiManager)WifiActivity.this.getSystemService(Serivce.WIFI_SERVICE);
+　　wifiManager.setWifiEnabled(true);   // 打开WIfi网卡 false 关闭
+　　System.out.println("wifi state --->" + wifiManager.getWifiState());
+　　Toast.makeText(WifuActivity.this , "当前的WIFI网卡状态为" + wifiManager.getWifiState());
+　　}
+　　
+十八 . Scoket编程
+　　1 . 什么是Socket
+　　
+　　Socket英文意为"插座"
+　　
+　　所谓Scoket通常也称作"套接字",用于描述IP地址和端口,是一个通信链的句柄
+　　
+　　应用程序通常通过"套接字"向网络发出请求或者应答网络请求
+　　
+　　2 . Socket基本通信模型
+　　
+
+　　
+　　3 . 使用基于TCP协议的Socket
+　　
+
+
+　　ServerSocketActivity代码 例 :  1 . 声明控件对象(略)
+　　2 . 获得控件对象(略)
+　　3 . 绑定事件(略)
+　　4 . 创建监听器对象
+　　Public void onClick(View v) {
+　　New ServerThread().start();
+　　}
+　　
+　　// TCPserver
+　　Class ServerThread extends Thread {
+　　Public void run () {
+　　// 声明一个serverSocket对象
+　　ServerSocket serverSocket = null;
+　　Try {
+　　// 创建serverSocket对象并在4567端口监听
+　　serverSocket = new ServerSocket(4567);
+　　// 调用serverSocket的accept方法,接受客户端所发送的请求
+　　Socket socket = serverSocket.accept(); // 阻塞函数
+　　// 从socket当中得到inputstream对象
+　　InputStream inputStream = socket.getInputStream();
+　　Byte buffer [] new bute [1024 * 4];
+　　Int temp = 0 ;
+　　// 从inputStream当中读取客户端所发送的数据
+　　While ((temp = inputStream.read(buffer))  !=  -1) {
+　　System.out,println(new String(buffer , 0 ,temp));
+　　}
+　　} catch (Execption e) {
+　　e.printStackTrace();
+　　} finally {
+　　Try {
+　　serverSocket.close();
+　　} catch (IOExecption e) {
+　　e.printStackTrace();
+　　}
+　　}
+　　}
+　　}
+　　
+　　TCPClient 代码 例 :
+　　Public static void main (String [] args) {
+　　Try {
+　　// 创建一个Socket对象,指定服务器端的ip地址和端口号
+　　Socket socket = new Socket("192.168.1.1" , 4567);
+　　// 使用InputStream读取硬盘上的文件
+　　InputStream inputStream = new FileInputStream("F://file/words.txt");
+　　// 从Socket上得到outputStream
+　　outputStream outputStream = socket.getOutputStream();
+　　Byte buffer [] = new byte[4*1024];
+　　Int temp = 0;
+　　// 将inputStream的数据取出并写入到outputStream
+　　While ((temp = inputStream.read(buffer)) != -1) {
+　　outputStream.write(buffer , 0 ,temp);
+　　}
+　　outpurStream.flush();
+　　} catch (Execption e) {
+　　e.printStackTrace();
+　　}
+　　}
+　　
+　　
+　　// UDPServer
+　　Class ServerThread extends Thread {
+　　Public void run () {
+　　Try {
+　　// 创建一个DatagramSocket 对象,并制定监听端口号
+　　DatagramSocket socket = new DatagramSocket(4567);
+　　Byte data [] = new byte [1024];
+　　// 创建一个空的DatagramPacket对象
+　　DatagramPacket packet = new DatagramPacket (data , data.length);
+　　// 使用receive方法接受客户端所发送的数据
+　　Socket.receive(packet); // 阻塞方法
+　　String result = new String(packet.getData() , packet.getOffset() , packet.getLength()); // 设置数据偏移量 , 得到该次数据的长度
+　　System.out.println("result-->" + result);
+　　} catch (Execption e) {
+　　e.printStackTrace();
+　　}
+　　}
+　　}
+　　
+　　// UDPClient
+　　Public static void main (String [] args) {
+　　Try {
+　　// 创建一个DatagramSocket 对象,并制定监听端口号
+　　DatagramSocket socket = new DatagramSocket(4567);
+　　InetAddress serverAddress = InetAddress.getByName("192.168.1.1");
+　　String str = "hello";
+　　Byte data [] = str.getBytes();
+　　DatagramPacket packet = new DatagramPacket(data , data.length , serverAddress , 4567);
+　　Socket.send(packet);
+　　} catch (Execption e) {
+　　e.printStackTrace();
+　　}
+　　}
+　　
+　　4 . 使用基于UDP协议的Socket

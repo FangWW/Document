@@ -1,0 +1,59 @@
+编译头文件
+E:\workspace\ndk5\src>javah com.example.ndk5.MainActivity
+
+，JNIEnv*, jobject是所有jni函数必有的两个参数，分别表示jni环境和对应的java类（或对象）本身），
+
+r8以上直接在项目根目录   cmd中 前提  环境变量    ndk-build    jni文件件  编译出 libs/armeabi   还生成obj文件夹
+
+    public native String  getStringFromJNI();
+    
+    /**
+     * 载入JNI生成的so库文件
+     */
+    static {
+        System.loadLibrary(libSoName);
+    }
+    
+Aplication.mk
+APP_ABI := armeabi armeabi-v7a x86 
+
+
+Android.mk
+
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
+
+LOCAL_MODULE    := NDK_01
+LOCAL_SRC_FILES := \
+HelloWorld.c
+
+include $(BUILD_SHARED_LIBRARY)
+
+#include <string.h>
+#include <jni.h>
+
+jstring
+Java_com_duicky_MainActivity_getStringFromJNI( JNIEnv* env,jobject thiz )
+{
+	//返回一个字符串给Java层
+    return (*env)->NewStringUTF(env, "HelloWorld from JNI !");
+}
+
+
+
+ /*注意，这里 
+15.  
+16. jstring 表示返回值 
+17.  
+18. Java_com_conowen_helloworld_HelloWorldActivity_helloWorldFromJNI 
+19.  
+20. 写法是Java+Android工程的包名+Android工程的Activity名+方法名,点号用下划线表示，这个写法很严格。 
+21. 包名：com_conowen_helloworld 
+22. Activity名：HelloWorldActivity 
+23. 方法名：helloWorldFromJNI 
+24.  
+25. JNIEnv* env, jobject thiz是Native方法自带的参数，可以用来转换一个数据类型。也就是说其实这个helloWorldFromJNI是没有形参的。 
+26. */ 

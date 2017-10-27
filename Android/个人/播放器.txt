@@ -1,0 +1,8 @@
+  Uri playUri = Uri.parse("/sdcard/download/mp3.mp3");
+             releaseMediaPlayer();
+            mMediaPlayer = MediaPlayer.create(mContext, playUri);
+             mMediaPlayer.start();
+
+
+
+  try       {       /* 重置MediaPlayer */       mMediaPlayer.reset();       /* 设置要播放的文件的路径 */       mMediaPlayer.setDataSource(path);       /* 准备播放 */       mMediaPlayer.prepare();       /* 开始播放 */       mMediaPlayer.start();      }catch (IOException e){　　}

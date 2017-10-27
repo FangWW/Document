@@ -1,0 +1,64 @@
+当Android应用程序访问WEB服务器的时候，我们为了与服务器保持同一会话，也就是说当前登录用户与服务器的交互是在同一个SessionId下。
+ 当我们登录成功的时候，可以通过HTTP请求获取到Cookie信息，其中包括会话的SessionId，同时也可以自己将SessionId放入Json中返回。Session我们可以用一个静态变量来存放，每次向服务器发送请求的时候将SessionId带过去，服务器会自动检验这个SessionId有没有失效。
+ DefaultHttpClient httpclient = new DefaultHttpClient();
+ HttpPost httpPost = new HttpPost(访问地址);
+ httpPost.setHeader("Cookie", "JSESSIONID=" + 我们在静态变量里存放的SessionId);
+ HttpResponse httpResponse = httpclient.execute(httpPost);
+ 这样就可以将SessionId带过去了。
+ 
+如果 是 HttpURLConnection 那么设置 
+
+
+httpURLConnection.setRequestProperty("("Cookie", "JSESSIONID=" + 我们在静态变量里存放的SessionId");
+ httpURLConnection.getOutputStream();
+
+
+public class MyHttpClient {
+     private DefaultHttpClient httpClient;
+     private HttpPost httpPost;
+     private HttpEntity httpEntity;
+     private HttpResponse httpResponse;
+     public static String JSPSESSID = null;
+ 
+
+    public String executeRequest(String path, List<NameValuePair> params) {
+         String ret = "none";
+         try {
+             this.httpPost = new HttpPost(path);
+             httpEntity = new UrlEncodedFormEntity(params, HTTP.UTF_8);
+             httpPost.setEntity(httpEntity);
+             //第一次一般是还未被赋值，若有值则将SessionId发给服务器
+             if(null != JSPSESSID){
+                 httpPost.setHeader("Cookie", "JSPSESSID=" + JSPSESSID);
+             }            
+             httpClient = new DefaultHttpClient();
+         } catch (UnsupportedEncodingException e) {
+             e.printStackTrace();
+         }
+         try {
+             httpResponse = httpClient.execute(httpPost);
+             if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                 HttpEntity entity = httpResponse.getEntity();
+                 ret = EntityUtils.toString(entity);
+                 CookieStore mCookieStore = httpClient.getCookieStore();
+                 List<Cookie> cookies = mCookieStore.getCookies();
+                 for (int i = 0; i < cookies.size(); i++) {
+                     //这里是读取Cookie['JSPSESSID']的值存在静态变量中，保证每次都是同一个值
+                     if ("JSPSESSID".equals(cookies.get(i).getName())) {
+                             JSPSESSID = cookies.get(i).getValue();
+                         break;
+                     }
+                 }
+             }
+         } catch (ClientProtocolException e) {
+             e.printStackTrace();
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+         return ret;
+     }
+ }
+ 
+其实web的原理都是一样的，基于http协议的，那么如果网站不是jsp做的话，那个叫做Sessionid的Cookie可能叫做别的了，不叫JSPSESSID，如PHP是PHPSESSID，这个可能要具体情况去查了。
+
+其实不只是Android程序，其他任何程序需要这么用的时候只需要在http协议请求header里头加上发送相应的SessionId就可以了。刚刚这种方法是可以帮助理解sessionid的，其实还有一种方法如果更通用的话，就可以将刚刚所有的Cookie每次都发回到服务器端，也就可以解决session保持的问题了，只是这样可能会稍微大些网络流量开销而已。
