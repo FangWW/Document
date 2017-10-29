@@ -1,0 +1,45 @@
+简述你所了解的 android 和 iphone 之间的区别？
+2：Dalvik和标准Java虚拟机之间的主要差别？
+Dalvik和标准Java虚拟机（JVM）之间的首要差别之一，就是Dalvik基于寄存器，而JVM基于栈。
+Dalvik和Java之间的另外一大区别就是运行环境——Dalvik经过优化，允许在有限的内存中同时运行多个虚拟机的实例，并且每一个 Dalvik应用作为一个独立的Linux进程执行。
+（1）虚拟机很小，使用的空间也小；
+（2）Dalvik没有JIT编译器；
+（3）常量池已被修改为只使用32位的索引，以简化解释器；
+（4）它使用自己的字节码，而非Java字节码。
+
+
+3：简述activity/service生命周期？
+
+4：service的特点？使用service有什么要注意的地方？
+
+5：bundle onSaveInstanceState,有什么作用？为了保证程序的正确性，一般在哪里写上持久层操作的代码
+
+
+6：view如何刷新？简述什么是双缓冲？
+android中实现view的更新有两个方法，一个是invalidate，另一个是postInvalidate，其中前者是在UI线程自身中使用，而后者在非UI线程中使用。 
+
+双缓冲
+闪烁是图形编程的一个常见问题。当进行复杂的绘制操作时会导致呈现的图像闪烁或具有其他不可接受的外观。双缓冲的使用解决这些问题。双缓冲使用内存缓冲区来解决由多重绘制操作造成的闪烁问题。当使用双缓冲时，首先在内存缓冲区里完成所有绘制操作，而不是在屏幕上直接进行绘图。当所有绘制操作完成后，把内存缓冲区完成的图像直接复制到屏幕。因为在屏幕上只执行一个图形操作，所以消除了由复杂绘制操作造成的图像闪烁问题。
+在android中实现双缓冲,可以使用一个后台画布backcanvas,先把所有绘制操作都在这上面进行。等图画好了，然后在把backcanvas拷贝到
+与屏幕关联的canvas上去,如下: 
+Bitmap bitmapBase = new Bitmap()
+Canvas backcanvas = new Canvas(bitmapBase)
+backcanvas.draw()...//画图
+
+Canvas c = lockCanvas(null);
+c.drawbitmap(bitmapBase);//把已经画好的图像输出到屏幕上
+unlock(c)....
+
+7. 如何实现多点触控、手指轻点、拖拽？
+http://407827531.javaeye.com/blog/586284
+
+8：DDMS中traceview的作用？
+Traceview是android平台配备一个很好的性能分析的工具。它可以通过图形化的方式让我们了解我们要跟踪的程序的性能，并且能具体到method。
+http://wbdban.javaeye.com/blog/564309
+
+9：简述SoundPool类和MediaPlayer的使用有什么要注意的地方？
+
+10. 在android里面做怎样做单元测试？
+11. 写一段简单代码，用到 gesture （内容不限），加入必要的注释。
+12. 写一段简单代码，用到  sensor （内容不限），加入必要的注释。
+--------------------------------　　

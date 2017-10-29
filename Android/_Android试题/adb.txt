@@ -1,0 +1,213 @@
+ADB
+ADB = Android Debug Bridge
+
+顾名思义，这个是PC机与Android设备的连接桥。简单的说，就是通过adb ,PC可以控制与之相连的Android设备。
+
+1，android手机连上PC，或者虚拟机启动之后，一般PC都会检测到设备并且自动连接上。我们用以下命令可以查看当前连接的设备列表：
+
+>>adb devices
+
+2，android是个Linux系统。我们可以通过adb启动一个Linux终端，执行Android上的Linux命令。通过以下操作：
+
+>>adb shell
+执行之后，进入android终端，输入的命令都是在手机上执行的。例如我们输入ls，看到的文件和目录都是手机里的。
+
+3，重启手机。有时候手机被锁屏了，或者被无限的弹出窗口占用了屏幕，无法重启了，可以利用adb来重启手机。
+
+>>adb reboot
+
+4，有时候，手机连接PC会出现问题，用adb devices查看到的是一串问号。这个时候，可以尝试：
+
+>>adb kill-server
+
+输入这个命令之后，立即(经验，10秒以内)输入：
+
+>>adb devices
+
+这样，手机会重新连接PC。
+
+5，拷贝文件到手机里
+
+>>adb push [PC文件路径] [手机的目录]
+
+因为每次只能拷贝一个文件到手机上，如果需要批量拷贝，可以自己写一个shell。\
+
+6，从手机上拷贝文件到PC里
+
+>>adb pull [手机文件路径] [PC的目录]
+
+同样，每次只能拷贝一个文件
+
+7，安装apk到手机上。repo start bugXXXXXXX frameworks/base/media
+
+>>adb install [PC上的APK路径]
+
+Android手机有个设置，可以设置是否允许安装非签名的应用程序。但是用adb install方式，可以绕开这个设置。也就是说，不论手机是否允许安装非签名的应用程序，用adb install总能把apk安装到手机上。
+
+与之相对应的，还有
+
+>>adb uninstall [应用程序包名]
+
+8，有时候，连接会变的不稳定。这个时候，需要重新挂载一下手机。用以下命令：
+
+>>adb remount
+
+9，查看Log
+
+>>adb logcat
+
+10、如果adb没有权限就
+sudo ~/android-sdk-linux/platform-tools/adb kill-server
+sudo ~/android-sdk-linux/platform-tools/adb start-server
+
+
+
+
+
+1. 显示系统中全部Android平台：
+
+    android list targets
+
+2. 显示系统中全部AVD（模拟器）：
+
+    android list avd
+
+3. 创建AVD（模拟器）：
+
+    android create avd --name 名称 --target 平台编号
+
+4. 启动模拟器：
+
+    emulator -avd 名称 -sdcard ~/名称.img (-skin 1280x800)
+
+5. 删除AVD（模拟器）：
+
+    android delete avd --name 名称
+
+6. 创建SDCard：
+
+    mksdcard 1024M ~/名称.img
+
+7. AVD(模拟器)所在位置：
+
+    Linux(~/.android/avd)      Windows(C:\Documents and Settings\Administrator\.android\avd)
+
+8. 启动DDMS：
+
+    ddms
+
+9. 显示当前运行的全部模拟器：
+
+    adb devices
+
+10. 对某一模拟器执行命令：
+
+      abd -s 模拟器编号 命令
+
+11. 安装应用程序：
+
+      adb install -r 应用程序.apk
+
+12. 获取模拟器中的文件：
+
+      adb pull <remote> <local>
+
+13. 向模拟器中写文件：
+
+      adb push <local> <remote>
+
+14. 进入模拟器的shell模式：
+
+      adb shell
+
+15. 启动SDK，文档，实例下载管理器：
+
+      android
+
+16. 缷载apk包：
+
+      adb shell
+
+      cd data/app
+
+      rm apk包
+
+      exit
+
+      adb uninstall apk包的主包名
+
+      adb install -r apk包
+
+17. 查看adb命令帮助信息：
+
+      adb help
+
+18. 在命令行中查看LOG信息：
+
+      adb logcat -s 标签名
+
+19. adb shell后面跟的命令主要来自：
+
+      源码\system\core\toolbox目录和源码\frameworks\base\cmds目录。
+
+20. 删除系统应用：
+
+      adb remount （重新挂载系统分区，使系统分区重新可写）。
+
+      adb shell
+
+      cd system/app
+
+      rm *.apk
+
+21. 获取管理员权限：
+
+      adb root
+
+22. 启动Activity：
+
+      adb shell am start -n 包名/包名＋类名（-n 类名,-a action,-d date,-m MIME-TYPE,-c category,-e 扩展数据,等）。
+
+23、发布端口：
+
+    你可以设置任意的端口号，做为主机向模拟器或设备的请求端口。如： 
+adb forward tcp:5555 tcp:8000
+
+24、复制文件：
+
+    你可向一个设备或从一个设备中复制文件， 
+     复制一个文件或目录到设备或模拟器上： 
+  adb push <source> <destination></destination></source> 
+      如：adb push test.txt /tmp/test.txt 
+     从设备或模拟器上复制一个文件或目录： 
+     adb pull <source> <destination></destination></source> 
+     如：adb pull /addroid/lib/libwebcore.so .
+
+25、搜索模拟器/设备的实例：
+
+     取得当前运行的模拟器/设备的实例的列表及每个实例的状态： 
+    adb devices
+
+26、查看bug报告： 
+adb bugreport 
+27、记录无线通讯日志：
+
+    一般来说，无线通讯的日志非常多，在运行时没必要去记录，但我们还是可以通过命令，设置记录： 
+    adb shell 
+    logcat -b radio
+
+28、获取设备的ID和序列号：
+
+     adb get-product 
+     adb get-serialno
+
+29、访问数据库SQLite3
+
+     adb shell 
+     sqlite3
+
+#cd system/sd/data //进入系统内指定文件夹 
+#ls //列表显示当前文件夹内容 
+#rm -r xxx //删除名字为xxx的文件夹及其里面的所有文件 
+#rm xxx //删除文件xxx 
+#rmdir xxx //删除xxx的文件夹
