@@ -1,0 +1,184 @@
+一：不同的layout
+
+Android手机屏幕大小不一，有480x320, 640x360, 800x480.怎样才能让App自动适应不同的屏幕呢？
+
+其实很简单，只需要在res目录下创建不同的layout文件夹，比如layout-640x360,layout-800x480,所有的layout文件在编译之后都会写入R.Java里，而系统会根据屏幕的大小自己选择合适的layout进行使用。
+
+二：hdpi、mdpi、ldpi
+
+在之前的版本中，只有一个drawable，而2.1版本中有drawable-mdpi、drawable-ldpi、drawable-hdpi三个，这三个主要是为了支持多分辨率。
+
+drawable- hdpi、drawable- mdpi、drawable-ldpi的区别：
+
+(1)drawable-hdpi里面存放高分辨率的图片,如WVGA (480x800),FWVGA (480x854)
+
+(2)drawable-mdpi里面存放中等分辨率的图片,如HVGA (320x480)
+
+(3)drawable-ldpi里面存放低分辨率的图片,如QVGA (240x320)
+
+系统会根据机器的分辨率来分别到这几个文件夹里面去找对应的图片。
+
+三：横屏竖屏
+
+在开发程序时为了兼容不同平台不同屏幕，建议各自文件夹根据需求均存放不同版本图片。以下步骤是网上流传的，不过我自己之前是通过图形化界面实现这个配置，算是殊途同归，有空我会把图片贴上来。
+
+还要说明一点：每个activity都有这个属性screenOrientation，每个activity都需要设置，可以设置为竖屏（portrait），也可以设置为无重力感应（nosensor）。
+
+要让程序界面保持一个方向，不随手机方向转动而变化的处理办法： 
+  
+在AndroidManifest.xml里面配置一下就可以了。加入这一行
+
+android:screenOrientation="landscape"  
+例如（landscape是横向，portrait是纵向）：
+
+Java代码:
+
+<?xml version="1.0" encoding="utf-8"?>      <manifest xmlns:android="http://schemas.android.com/apk/res/android"      
+      package="com.ray.linkit"            android:versionCode="1"      
+      android:versionName="1.0">          <application android:icon="@drawable/icon" android:label="@string/app_name">      
+        <activity android:name=".Main"                        android:label="@string/app_name"      
+                  android:screenOrientation="portrait">                  <intent-filter>      
+                <action android:name="android.intent.action.MAIN" />                      <category android:name="android.intent.category.LAUNCHER" />      
+            </intent-filter>              </activity>      
+                <activity android:name=".GamePlay"                      android:screenOrientation="portrait"></activity>      
+                <activity android:name=".OptionView"                      android:screenOrientation="portrait"></activity>      
+    </application>          <uses-sdk android:minSdkVersion="3" />      
+</manifest>    
+另外，android中每次屏幕的切换动会重启Activity，所以应该在Activity销毁前保存当前活动的状态，在Activity再次Create的时候载入配置，那样，进行中的游戏就不会自动重启了！
+
+有的程序适合从竖屏切换到横屏，或者反过来，这个时候怎么办呢？可以在配置Activity的地方进行如下的配置android:screenOrientation="portrait"。这样就可以保证是竖屏总是竖屏了，或者landscape横向。
+
+而有的程序是适合横竖屏切换的。如何处理呢？首先要在配置Activity的时候进行如下的配置：android:configChanges="keyboardHidden|orientation"，另外需要重写Activity的onConfigurationChanged方法。实现方式如下，不需要做太多的内容：
+
+@Override          public void onConfigurationChanged(Configuration newConfig) {  
+                super.onConfigurationChanged(newConfig);                  if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {  
+                        // land do nothing is ok                  } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {  
+                        // port do nothing is ok                  }  
+        }    
+
+Android学习笔记：Activity跳转
+
+Android开发中插入新的Activity
+
+Android开发：Activity之间的传值
+
+Android趣事五则 不“地道”的Linux
+
+
+
+
+禁止Android 横屏竖屏切换 .
+
+在Android中要让一个程序的界面始终保持一个方向，不随手机方向转动而变化的办法： 只要在AndroidManifest.xml里面配置一下就可以了。
+
+在AndroidManifest.xml的activity(需要禁止转向的activity)配置中加入android:screenOrientation=”landscape”属性即可(landscape是横向，portrait是纵向)。
+
+
+另外，android中每次屏幕方向切换时都会重启Activity，所以应该在Activity销毁前保存当前活动的状态，在Activity再次Create的时候载入配置。要避免在转屏时重启activity，可以通过在androidmanifest.xml文件中重新定义方向(给每个activity加上android:configChanges=”keyboardHidden|orientation”属性)，并根据Activity的重写onConfigurationChanged(Configuration newConfig)方法来控制，这样在转屏时就不会重启activity了，而是会去调用onConfigurationChanged(Configuration newConfig)这个方法。
+
+示例代码如下：
+
+查看源码打印?01 <?xml version="1.0" encoding="utf-8"?>  
+
+02 <manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+
+03     package="com.liananse.ideal" 
+
+04     android:versionCode="1" 
+
+05     android:versionName="1.1" >  
+
+06    
+
+07     <uses-sdk android:minSdkVersion="10" />  
+
+08    
+
+09     <application 
+
+10         android:icon="@drawable/ic_launcher" 
+
+11         android:label="@string/app_name" >  
+
+12         <activity 
+
+13             android:label="@string/app_name" 
+
+14             android:name="com.liananse.WelcomeActivity"  
+
+15             android:screenOrientation="portrait" 
+
+16             android:configChanges="keyboardHidden|orientation">  
+
+17             <intent-filter >  
+
+18                 <action android:name="android.intent.action.MAIN" />  
+
+19    
+
+20                 <category android:name="android.intent.category.LAUNCHER" />  
+
+21             </intent-filter>  
+
+22         </activity>  
+
+23         <activity  
+
+24             android:name="com.liananse.activity.MainActivity" 
+
+25             android:screenOrientation="portrait" 
+
+26             android:configChanges="keyboardHidden|orientation"></activity>  
+
+27         <activity  
+
+28             android:name="com.liananse.activity.MusicActivity" 
+
+29             android:screenOrientation="portrait" 
+
+30             android:configChanges="keyboardHidden|orientation"></activity>  
+
+31         <activity  
+
+32             android:name="com.liananse.activity.config.IdealAbout" 
+
+33             android:theme="@android:style/Theme.NoTitleBar" 
+
+34             android:screenOrientation="portrait" 
+
+35             android:configChanges="keyboardHidden|orientation"></activity>  
+
+36         <activity  
+
+37             android:name="com.liananse.activity.config.IdealSetting" 
+
+38             android:theme="@android:style/Theme.NoTitleBar" 
+
+39             android:screenOrientation="portrait" 
+
+40             android:configChanges="keyboardHidden|orientation"></activity>  
+
+41         <activity  
+
+42             android:name="net.youmi.android.AdActivity" 
+
+43             android:configChanges="keyboard|keyboardHidden|orientation" 
+
+44             android:screenOrientation="portrait"/>  
+
+45         <meta-data android:name="YOUMI_CHANNEL" android:value="0" />  
+
+46     </application>  
+
+47     <uses-permission android:name="android.permission.INTERNET"/>  
+
+48     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>  
+
+49     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>  
+
+50     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>  
+
+51     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>  
+
+52 </manifest> 
+
