@@ -1,0 +1,29 @@
+jni  Java native interface
+ndk  
+把c/c++编译成linux下可执行的二进制文件
+java使用jni调用可执行的二进制文件
+
+指针变量只能赋值地址
+
+     int i = 3;
+     float f = 3.1415;
+     double d = 6.2815;
+     char c = 'A';   //通过单引号定义字符 
+     short s = 2;   
+       
+     printf("int i=%d\n",i);
+     printf("float f=%f\n",f);
+     printf("char c=%c\n",c);
+     printf("double d=%lf\n",d);
+     printf("short s=%d\n",s);
+     
+     /*char arr[20] ; //定义一个长度为20的数组
+     scanf("%s",arr);  // 从键盘接受一个字符串,放在c数组里面 
+     
+     printf("s =%s\n",arr); 
+       */
+       
+     int j ;
+     scanf("%d", &j);//&代表的是取地址  
+     printf("j=%d\n",j); 
+        

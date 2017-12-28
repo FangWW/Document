@@ -1,0 +1,29 @@
+       刚接触JNI 的 兄弟在看一些demo的时候 发现有类似与“([Ljava/lang/String;)V”的东西的时候肯定会很“蛋疼”，完全不懂这是啥东西，怎么来的，有啥用处？
+
+       今天就讲讲这个“蛋疼”的东西把，俗称 方法签名
+
+ 
+
+直接来个Demo 把 ：
+
+ 
+
+观察下面四个方法对应的签名
+
+       publicvoid test(){}              ()V
+
+       
+
+       publicvoid test1(int i){}              (I)V
+
+       
+
+       publicint test2(){ return 1;}         ()I
+
+       
+
+       publicint test3(int i) { return i;}          (I)I
+
+ 
+
+哥们，你发现什么了没？　不错，签名是由两部分组成，＂（）＂　里面代表的是方法的参数，后面外面的部分代表的是该方法的返回值
