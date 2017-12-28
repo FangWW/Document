@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* HelloBeijingAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {509, 406}}";
+			sepNavSelRange = "{112, 0}";
+			sepNavVisRange = "{0, 374}";
+			sepNavWindowFrame = "{{4, 20}, {750, 558}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* HelloBeijingAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1261}}";
+			sepNavSelRange = "{2719, 0}";
+			sepNavVisRange = "{0, 1040}";
+			sepNavWindowFrame = "{{218, 88}, {750, 558}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* HelloBeijing */ = {
+		activeExec = 0;
+		executables = (
+			8C77A3F011E650730070CC1A /* HelloBeijing */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C77A3F011E650730070CC1A /* HelloBeijing */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* HelloBeijing */;
+		breakpoints = (
+			8C9BDAE1122C33B600011BA5 /* BeijingController.m:19 */,
+		);
+		codeSenseManager = 8C77A3FB11E650930070CC1A /* Code sense */;
+		executables = (
+			8C77A3F011E650730070CC1A /* HelloBeijing */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					317,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 305751261;
+			PBXWorkspaceStateSaveDate = 305751261;
+		};
+		perUserProjectItems = {
+			8C79A54911FE495100E9CFDD = 8C79A54911FE495100E9CFDD /* PBXTextBookmark */;
+			8C79A5E911FE60E300E9CFDD = 8C79A5E911FE60E300E9CFDD /* PBXTextBookmark */;
+			8C79E4A9123964E700BDE446 /* PBXTextBookmark */ = 8C79E4A9123964E700BDE446 /* PBXTextBookmark */;
+			8C79E4AA123964E700BDE446 /* PBXTextBookmark */ = 8C79E4AA123964E700BDE446 /* PBXTextBookmark */;
+			8C7A2716122EDDB600E1A4DF = 8C7A2716122EDDB600E1A4DF /* PBXTextBookmark */;
+			8C7A2717122EDDB600E1A4DF = 8C7A2717122EDDB600E1A4DF /* PBXTextBookmark */;
+			8C7A2718122EDDB600E1A4DF = 8C7A2718122EDDB600E1A4DF /* PlistBookmark */;
+			8C7A2719122EDDB600E1A4DF = 8C7A2719122EDDB600E1A4DF /* PBXTextBookmark */;
+			8C7A271A122EDDB600E1A4DF = 8C7A271A122EDDB600E1A4DF /* PBXTextBookmark */;
+			8C7A271B122EDDB600E1A4DF = 8C7A271B122EDDB600E1A4DF /* PBXTextBookmark */;
+			8C7A271C122EDDB600E1A4DF = 8C7A271C122EDDB600E1A4DF /* PBXTextBookmark */;
+			8C7A271D122EDDB600E1A4DF = 8C7A271D122EDDB600E1A4DF /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C77A3FA11E650930070CC1A /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {495, 415}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 356}";
+			sepNavWindowFrame = "{{15, 183}, {750, 558}}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* HelloBeijing_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {684, 406}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 193}";
+		};
+	};
+	8C77A3F011E650730070CC1A /* HelloBeijing */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = HelloBeijing;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	8C77A3FA11E650930070CC1A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C77A3FB11E650930070CC1A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8C79A54911FE495100E9CFDD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 189;
+		vrLoc = 126;
+	};
+	8C79A57411FE521000E9CFDD /* DrawView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {495, 406}}";
+			sepNavSelRange = "{115, 98}";
+			sepNavVisRange = "{0, 214}";
+		};
+	};
+	8C79A57511FE521000E9CFDD /* DrawView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {495, 520}}";
+			sepNavSelRange = "{883, 0}";
+			sepNavVisRange = "{136, 810}";
+			sepNavWindowFrame = "{{15, 311}, {691, 430}}";
+		};
+	};
+	8C79A5E911FE60E300E9CFDD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C7B40CA11E8CCBA00FBE2B9 /* BeijingController.h */;
+		name = "BeijingController.h: 15";
+		rLen = 0;
+		rLoc = 306;
+		rType = 0;
+		vrLen = 428;
+		vrLoc = 30;
+	};
+	8C79E4A9123964E700BDE446 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C79A57511FE521000E9CFDD /* DrawView.m */;
+		name = "DrawView.m: 35";
+		rLen = 0;
+		rLoc = 883;
+		rType = 0;
+		vrLen = 810;
+		vrLoc = 136;
+	};
+	8C79E4AA123964E700BDE446 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C79A57511FE521000E9CFDD /* DrawView.m */;
+		name = "DrawView.m: 35";
+		rLen = 0;
+		rLoc = 883;
+		rType = 0;
+		vrLen = 810;
+		vrLoc = 136;
+	};
+	8C7A2716122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* HelloBeijingAppDelegate.h */;
+		name = "HelloBeijingAppDelegate.h: 6";
+		rLen = 0;
+		rLoc = 112;
+		rType = 0;
+		vrLen = 374;
+		vrLoc = 0;
+	};
+	8C7A2717122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* HelloBeijing_Prefix.pch */;
+		name = "HelloBeijing_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 193;
+		vrLoc = 0;
+	};
+	8C7A2718122EDDB600E1A4DF /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* HelloBeijing-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/svp/Documents/HelloBeijing/HelloBeijing-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	8C7A2719122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C79A57411FE521000E9CFDD /* DrawView.h */;
+		name = "DrawView.h: 8";
+		rLen = 98;
+		rLoc = 115;
+		rType = 0;
+		vrLen = 214;
+		vrLoc = 0;
+	};
+	8C7A271A122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */;
+		name = "BeijingController.m: 23";
+		rLen = 64;
+		rLoc = 415;
+		rType = 0;
+		vrLen = 486;
+		vrLoc = 0;
+	};
+	8C7A271B122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* HelloBeijingAppDelegate.m */;
+		name = "HelloBeijingAppDelegate.m: 89";
+		rLen = 0;
+		rLoc = 2719;
+		rType = 0;
+		vrLen = 1040;
+		vrLoc = 0;
+	};
+	8C7A271C122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C79A57511FE521000E9CFDD /* DrawView.m */;
+		name = "DrawView.m: 35";
+		rLen = 0;
+		rLoc = 883;
+		rType = 0;
+		vrLen = 813;
+		vrLoc = 0;
+	};
+	8C7A271D122EDDB600E1A4DF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C79A57511FE521000E9CFDD /* DrawView.m */;
+		name = "DrawView.m: 35";
+		rLen = 0;
+		rLoc = 883;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 115;
+	};
+	8C7B40CA11E8CCBA00FBE2B9 /* BeijingController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {495, 406}}";
+			sepNavSelRange = "{306, 0}";
+			sepNavVisRange = "{0, 458}";
+			sepNavWindowFrame = "{{90, 73}, {750, 558}}";
+		};
+	};
+	8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {495, 406}}";
+			sepNavSelRange = "{415, 64}";
+			sepNavVisRange = "{0, 486}";
+			sepNavWindowFrame = "{{18, 188}, {750, 558}}";
+		};
+	};
+	8C9BDAE1122C33B600011BA5 /* BeijingController.m:19 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */;
+		functionName = "-changeWords:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 19;
+		modificationTime = 304886710.518496;
+		originalNumberOfMultipleMatches = 0;
+		state = 1;
+	};
+}

@@ -1,0 +1,203 @@
+// !$*UTF8*$!
+{
+	1D3623250D0F684500981E51 /* HelloBeijingAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {810, 1222}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{244, 290}";
+			sepNavWindowFrame = "{{38, 162}, {750, 558}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* HelloBeijing */ = {
+		activeExec = 0;
+		executables = (
+			8C77A3F011E650730070CC1A /* HelloBeijing */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C77A3F011E650730070CC1A /* HelloBeijing */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* HelloBeijing */;
+		breakpoints = (
+			8C7B5FC411FA519900B10058 /* BeijingController.m:13 */,
+		);
+		codeSenseManager = 8C77A3FB11E650930070CC1A /* Code sense */;
+		executables = (
+			8C77A3F011E650730070CC1A /* HelloBeijing */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					422,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 301624101;
+			PBXWorkspaceStateSaveDate = 301624101;
+		};
+		perUserProjectItems = {
+			8C7B5FBC11FA509B00B10058 /* PBXTextBookmark */ = 8C7B5FBC11FA509B00B10058 /* PBXTextBookmark */;
+			8C7C693011FA6D54003D1A35 /* PBXTextBookmark */ = 8C7C693011FA6D54003D1A35 /* PBXTextBookmark */;
+			8C7D401F11F674D40014929C /* PBXTextBookmark */ = 8C7D401F11F674D40014929C /* PBXTextBookmark */;
+			8C8EEBC411F7C96D0081007E /* PBXTextBookmark */ = 8C8EEBC411F7C96D0081007E /* PBXTextBookmark */;
+			8C8EEBC511F7C96D0081007E /* PBXTextBookmark */ = 8C8EEBC511F7C96D0081007E /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C77A3FA11E650930070CC1A /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {633, 234}}";
+			sepNavSelRange = "{257, 0}";
+			sepNavVisRange = "{123, 233}";
+			sepNavWindowFrame = "{{15, 183}, {750, 558}}";
+		};
+	};
+	8C77A3F011E650730070CC1A /* HelloBeijing */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = HelloBeijing;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	8C77A3FA11E650930070CC1A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C77A3FB11E650930070CC1A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8C7B40CA11E8CCBA00FBE2B9 /* BeijingController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {600, 273}}";
+			sepNavSelRange = "{305, 0}";
+			sepNavVisRange = "{124, 269}";
+			sepNavWindowFrame = "{{58, 161}, {750, 558}}";
+		};
+	};
+	8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {600, 312}}";
+			sepNavSelRange = "{314, 0}";
+			sepNavVisRange = "{155, 259}";
+			sepNavWindowFrame = "{{15, 183}, {750, 558}}";
+		};
+	};
+	8C7B5FBC11FA509B00B10058 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */;
+		name = "BeijingController.m: 14";
+		rLen = 0;
+		rLoc = 314;
+		rType = 0;
+		vrLen = 267;
+		vrLoc = 155;
+	};
+	8C7B5FC411FA519900B10058 /* BeijingController.m:13 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */;
+		functionName = "-changeNumber:";
+		hitCount = 2;
+		ignoreCount = 0;
+		lineNumber = 13;
+		location = HelloBeijing;
+		modificationTime = 301624553.31216;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	8C7C693011FA6D54003D1A35 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C7B40CB11E8CCBA00FBE2B9 /* BeijingController.m */;
+		name = "BeijingController.m: 14";
+		rLen = 0;
+		rLoc = 314;
+		rType = 0;
+		vrLen = 259;
+		vrLoc = 155;
+	};
+	8C7D401F11F674D40014929C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 315;
+		vrLoc = 0;
+	};
+	8C8EEBC411F7C96D0081007E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C7B40CA11E8CCBA00FBE2B9 /* BeijingController.h */;
+		name = "BeijingController.h: 8";
+		rLen = 269;
+		rLoc = 124;
+		rType = 0;
+		vrLen = 269;
+		vrLoc = 124;
+	};
+	8C8EEBC511F7C96D0081007E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* HelloBeijingAppDelegate.m */;
+		name = "HelloBeijingAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 290;
+		vrLoc = 244;
+	};
+}

@@ -1,0 +1,261 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* MultiTouchDemoAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {537, 273}}";
+			sepNavSelRange = "{57, 0}";
+			sepNavVisRange = "{3, 411}";
+		};
+	};
+	1D3623250D0F684500981E51 /* MultiTouchDemoAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {474, 338}}";
+			sepNavSelRange = "{54, 0}";
+			sepNavVisRange = "{0, 375}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* MultiTouchDemo */ = {
+		activeExec = 0;
+		executables = (
+			8CD6E5851221C57D0063CD6A /* MultiTouchDemo */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* MultiTouchDemoViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {432, 237}}";
+			sepNavSelRange = "{57, 0}";
+			sepNavVisRange = "{0, 155}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* MultiTouchDemoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {649, 650}}";
+			sepNavSelRange = "{795, 0}";
+			sepNavVisRange = "{0, 359}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeExecutable = 8CD6E5851221C57D0063CD6A /* MultiTouchDemo */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* MultiTouchDemo */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* MultiTouchDemo */,
+		);
+		codeSenseManager = 8CD6E59E1221C5920063CD6A /* Code sense */;
+		executables = (
+			8CD6E5851221C57D0063CD6A /* MultiTouchDemo */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					208,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 305086026;
+			PBXWorkspaceStateSaveDate = 305086026;
+		};
+		perUserProjectItems = {
+			8C7EF9171223367200354D8C = 8C7EF9171223367200354D8C /* PBXTextBookmark */;
+			8C7EF9181223367200354D8C = 8C7EF9181223367200354D8C /* PBXTextBookmark */;
+			8C7EF9191223367200354D8C = 8C7EF9191223367200354D8C /* PBXTextBookmark */;
+			8C7EF91A1223367200354D8C = 8C7EF91A1223367200354D8C /* PBXBookmark */;
+			8C7EF91B1223367200354D8C = 8C7EF91B1223367200354D8C /* PBXTextBookmark */;
+			8CD6E5BA1221CECA0063CD6A = 8CD6E5BA1221CECA0063CD6A /* PBXTextBookmark */;
+			8CD6E5BB1221CECA0063CD6A = 8CD6E5BB1221CECA0063CD6A /* PBXTextBookmark */;
+			8CD6E5BC1221CECA0063CD6A = 8CD6E5BC1221CECA0063CD6A /* PBXTextBookmark */;
+			8CD6E5BD1221CECA0063CD6A = 8CD6E5BD1221CECA0063CD6A /* PBXTextBookmark */;
+			8CD6E5BE1221CECA0063CD6A = 8CD6E5BE1221CECA0063CD6A /* PBXBookmark */;
+			8CD6E5C11221CECA0063CD6A = 8CD6E5C11221CECA0063CD6A /* PBXBookmark */;
+			8CD6E5C41221CECA0063CD6A = 8CD6E5C41221CECA0063CD6A /* PBXBookmark */;
+		};
+		sourceControlManager = 8CD6E59D1221C5920063CD6A /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8C7EF9171223367200354D8C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* MultiTouchDemoViewController.m */;
+		name = "MultiTouchDemoViewController.m: 30";
+		rLen = 0;
+		rLoc = 795;
+		rType = 0;
+		vrLen = 811;
+		vrLoc = 305;
+	};
+	8C7EF9181223367200354D8C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 962A26990DEFA63800A51639 /* TouchImageView.m */;
+		name = "TouchImageView.m: 11";
+		rLen = 0;
+		rLoc = 151;
+		rType = 0;
+		vrLen = 440;
+		vrLoc = 1514;
+	};
+	8C7EF9191223367200354D8C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 965DB66F0DF65F3C006A9048 /* TouchImageView_Private.h */;
+		name = "TouchImageView_Private.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 412;
+		vrLoc = 0;
+	};
+	8C7EF91A1223367200354D8C /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 965DB6700DF65F53006A9048 /* TouchImageView_Private.m */;
+	};
+	8C7EF91B1223367200354D8C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 965DB6700DF65F53006A9048 /* TouchImageView_Private.m */;
+		name = "TouchImageView_Private.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 449;
+		vrLoc = 0;
+	};
+	8CD6E5851221C57D0063CD6A /* MultiTouchDemo */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = MultiTouchDemo;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8CD6E59D1221C5920063CD6A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8CD6E59E1221C5920063CD6A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8CD6E5BA1221CECA0063CD6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 962A26980DEFA63800A51639 /* TouchImageView.h */;
+		name = "TouchImageView.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 304;
+		vrLoc = 0;
+	};
+	8CD6E5BB1221CECA0063CD6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MultiTouchDemoAppDelegate.h */;
+		name = "MultiTouchDemoAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 451;
+		vrLoc = 57;
+	};
+	8CD6E5BC1221CECA0063CD6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MultiTouchDemoAppDelegate.m */;
+		name = "MultiTouchDemoAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 395;
+		vrLoc = 0;
+	};
+	8CD6E5BD1221CECA0063CD6A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* MultiTouchDemoViewController.h */;
+		name = "MultiTouchDemoViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 252;
+		vrLoc = 0;
+	};
+	8CD6E5BE1221CECA0063CD6A /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8CD6E5AC1221CA480063CD6A /* aircraft2.png */;
+	};
+	8CD6E5C11221CECA0063CD6A /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8CD6E5B01221CC060063CD6A /* sky.png */;
+	};
+	8CD6E5C41221CECA0063CD6A /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8CD6E5B61221CE670063CD6A /* aircraft.png */;
+	};
+	962A26980DEFA63800A51639 /* TouchImageView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {422, 237}}";
+			sepNavSelRange = "{46, 0}";
+			sepNavVisRange = "{0, 210}";
+		};
+	};
+	962A26990DEFA63800A51639 /* TouchImageView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {796, 923}}";
+			sepNavSelRange = "{151, 0}";
+			sepNavVisRange = "{1514, 440}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	965DB66F0DF65F3C006A9048 /* TouchImageView_Private.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {502, 260}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 412}";
+		};
+	};
+	965DB6700DF65F53006A9048 /* TouchImageView_Private.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {740, 1586}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 379}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+}
