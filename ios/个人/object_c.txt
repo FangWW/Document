@@ -1,0 +1,317 @@
+类的申明@interface @end
+类的实现@implementation @end
++类的方法
+-对象的方法
+#import<Foundation/Foundation.h>
+@interface Dod:NSObject{
+int age;    字段定义在此
+}
+-（void）setAge:(int)newAge;  函数定义在此
+-（id）init;
+-(id) initWithAge:(int)newAge;
+-(int) getAge;
+@end
+
+#import "Dog.h"
+@@implementation  Dog
+
+@end
+
+c/c++使用#include
+oc使用#import
+
+创建对象
+Dog *dog=[Dog alloc];
+初始化构造函数
+[dog init];
+销毁对象
+[dog release];
+
+@public @protected @private默认为@public
+
+实例化的*指针也是引用
+
+#import "Dog.h"
+@implementation Dog
+-（void）setAge:(int)newAge{
+	age=newAge;
+}
+-（id）init{
+	return [self initWithAge10]
+}
+-(id) initWithAge:(int)newAge{
+	self=[super init];
+	if(self){
+		age=newAge;
+	}
+	return self;
+}
+-(int) getAge{
+	return age;	
+}
+
+在@interface{中不能定义方法}
+方法的定义：
+-(int)f:(int)x;
+第一个int返回值
+第二个int参数类型
+参数分割用：
+
+文件Foo.h
+@interface Foo:NSObject{
+	double x;
+}
+-(float)f:(int)x :(int)y;
+@end
+文件Foo.m
+#import"Foo.h"
+@implementation Foo
+-(float)f:(int)x :(int)y{...}
+@emd
+
+-(float)f:(int)x g:(int)y;
+
+函数调用
+-(int)foo;
+int ret=[obj foo];
+-(int)foo:(int)al
+int ret=[obj foo:100];
+-(int)foo(int)a :(int)b;
+int ret=[obj foo:10 :20];
+-(int) foo:(int)a andB:(int)b;
+int ret=[obj foo:10 andB:2];
+
+@property NSString * name;
+@synthesizee name;
+//getter setter
+retain  //retainCount++  
+release //retainCount--
+retainCount
+//当retainCount==0是自动调用  当对象的retaincount为0时，系统会自动调用delloc
+dealloc
+//复写父类函数时记得[super ...]
+copy后retainCount=1
+copy,mutableCopy
+   复制一个实例，retainCount数为“1”，返回此实例。所得到的对象是与其它上下文无关的，独立的对象(干净对象)。
+
+NSMutableArray *array=[[NSMutableArray alloc]init];
+for(int=0;i<10;i++){
+	Dog *dog=[[Dog alloc]init];
+	[dog setId:i];
+	[array addObject:dog];//dog的retainCount会被+1
+	[array release];//dog在这里就不会被释放
+}
+for(Dog *dog in array){
+	NSlog(@"dog is %d",[dog id]);
+}
+[array release];//将内存中所有的对象都释放
+
+id _objs=512;
+-init{
+	connt=0;
+}
+-(void)addObject:(id)object{
+	if(count>=512)
+		return;
+	_objs[count]=[object retain];
+	count++;
+}
+
+-(id)objectAtIndex:(NSinteger)indes{
+	return _objes[indes];
+}
+
+-(void)removeObjectAtIndes:(NSInteger)index{
+	id obj=objs[index];
+	[obj release];
+	_objs[index]=nil;
+}
+-(void)removeAll{
+	for(int i=0;i<count;i++){
+		[self removeObjectAtIndes:i]
+	}
+}
+
+字典
+NSDictionary这种容器与NSArray一样，是不可变的。
+它将 键-值关联起来，使用它，你可以方便高效的利用键值检索数据。
+通过setValue增加字典元素，然后调用objectForKey取出元素活和强大作用才真正显示出来。这里联合NSArray做一个简单的演示。
+
+NSMutableArray *books = [ NSMutableArray alloc ]init];
+//在book里存5本书的信息
+for(int i = 0; i < 5; i ++){
+   NSMutableDictionary *book =  [[NSMutableDictionary  alloc ]init];
+    [ book  setValue : [NSString stringWithFormat : @"bookName %d", i ]  forKey :@"Name" ];
+    [ book  setValue : [NSString stringWithFormat : @"bookAuthor%d",i ] forKey :@"Author" ];
+    [ book  setValue : [NSString stringWithFormat : @"Publisher%d",i ] forKey :@"Publisher" ];
+    [ book  setValue : [NSNumber  numberWithInt : i+ 20] forKey : @"Price"];
+    [ books  addObject:book ];
+    [ book release ] ;
+}
+//打印储存的书本信息
+NSDictionary *book;
+for (book  in  books){
+       NSString *bookName = [book  objectForKey:@"Name"];
+       NSLog( @"bookName: %@", bookName);
+       NSLog(@"book: %@", book);
+
+}
+
+这样用NSMutableDictionary和NSMutableArray配合，将一本书的名称，作者，出版商和价格组织起来，数组里的每一个元素是一个NSMutableDictionary对象，代表一本书，书的具体细节通过objectForKey就可以得到。
+
+- (NSArray *)allKeys    返回一个数组，数组里包含的是所有的key
+- (NSArray *)allValues   返回一个数组，数组里包含的是所有的value
+- (id)objectForKey : (id)aKey       返回给定key与之关联的value,若key不存在,返回nil.
+- (id)valueForKey:(NSString *)key   返回给定key与之关联的value
+
+
+//ios5.0新方式
+@autoreleasepool{
+
+}
+//ios5.0之前老方式
+NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
+
+[pool release];
+
+
+DOg *dog=[[[dog alloc]init]autorelease];
+//这里不能[dog release];
+
+Foo.h //头文件
+@protocol MyProtocol<NSObject>
+//要定义的变量
+@optional
+	-(void)init;
+@required
+	-(int)update:(init)time;
+@end
+
+@required//必须实现
+@optional//可以不实现,java中都必须实现
+//协议相当于java的接口
+
+@interface Foo:NSObject<MyPtorocol,My2Protocol>{
+	-(void)init;
+	-(int)update:(init)time;
+}
+@end
+
+@implementation Foo
+	-(void)init{
+
+	}
+	-(int)update:(int)time	{
+	
+	}
+@end
+
+
+int main(int argc,const char *argv[]){
+	id<MyProtocol> test = [[MyProtocol alloc]init];
+	[test update:10];
+}
+
+SEL sel=@selector(update:)
+[test respondsToSelect:@selector(update:)]//检查是否实现了该方法
+
+NStimer *timer;
+//定时器 
+timer=[NStimer scheduledTimerWithTimeIntercal:0.1f 
+target:self selector:@selectot(updateTimer:)....];
+while(1){
+[[NSRunLoop currentRunLoop]run];
+}
+
+Category
+扩展类名+扩展变量.h.m
+类别用于对一个已经存在的类添加方法(Methods)。你只需要知道这个类的公开接口，不需要知道类的源代码。需要注意的是，类别不能为已存在的类添加实例变量(Instance Variables)。 
+
+NSString+Reverse.h
+@interface NSString (reverse)
+-(NSString *)reversString;
+@end
+类别的基本语法如下：
+@interface ClassName(CategoryName)
+//method declarations
+@end
+@interface 类名(类别名)
+类别方法申明
+@end
+
+//比较字符串
+[str3 isEqualToString:str4]
+
+objective-c 结构体 
+
+typedef struct _NSRange{
+unsigned intlocation;
+Unsigned intlength;
+} NSRange;
+这个结构体用来表示相关事物的范围，通常是字符串里的字符范围或者数组的元素范围，location用来表示起始位置，length表示该范围所含元素的个数。
+
+NSPoint代表的是笛卡儿平面中的一个点（x,y），而NSSize用来存储长度和宽度，而NSRect则是一个矩形数据类型，由点和大小复合而成：
+typedef struct_NSPoint{
+float x;
+float y;
+} NSPoint;
+
+NSSize用来存储长度和宽度：
+typedef struct_NSSize{
+float width;
+float height;
+} NSSize;
+
+NSRect提供一个矩形数据类型，它是由点和大小复合而成的：
+typedef struct _NSRect{
+NSPoint origin;
+NSSize size;
+} NSRect;
+
+ 这些结构体的创建有三种方式，以NSRange为例：
+第一种直接给字段赋值
+NSRange range;
+range.location = 8;
+range.length = 2;
+第二种方式，聚合结构赋值机制
+NSRange range = {8,2};
+第三种利用Cocoa的快捷函数NSMakeRange()
+NSRange range =NSMakeRange(8, 2);
+使用这个快捷函数的好算是可以在任何能够使用函数的地方使用它。
+其他的结构体也有相应的快捷函数：NSMakePoint()，NSMakeSize，NSMakeRect。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

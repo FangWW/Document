@@ -1,0 +1,1 @@
+gcc -o "$1" "$2" -fconstant-string-class=NSConstantString -I/GNUstep/System/Library/Headers -L/GNUstep/System/Library/Libraries -lobjc -lgnustep-base
