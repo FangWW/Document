@@ -1,0 +1,142 @@
+
+	public String intercept(ActionInvocation invocation) throws Exception {
+		long start = System.currentTimeMillis();
+		String r = invocation.invoke();
+		long end = System.currentTimeMillis();
+		System.out.println("action time = " + (end - start));
+		return r;
+	}
+
+
+
+
+
+
+
+	<constant name="struts.devMode" value="true"></constant>
+	<package name="test" namespace="/" extends="struts-default">
+		<interceptorS>多一个S
+			<interceptor name="my" class="com.bjsxt.interceptor.MyInterceptor">
+				参数传入拦截器
+				<param name="参数名">参数值</param>
+			</interceptor>
+			
+
+			<interceptor-stack name="拦截栈">
+				<interceptor-ref name="拦截器一"></interceptor-ref>
+				<interceptor-ref name="拦截器二"></interceptor-ref>
+				<interceptor-ref name="拦截栈二"></interceptor-ref>
+				.....
+			</interceptor-stack>	
+		</interceptorS>				
+
+
+			<default-interceptor-ref name="拦截器名"/ >对包下所有cation只能有一个，否则用栈
+		<action name="test" class="com.bjsxt.action.TestAction">
+			<result>/test.jsp</result>
+			<interceptor-ref name="my">
+				<param name="参数名">参数值</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack">
+			</interceptor-ref>
+		</action>
+
+	</package>
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index">
+            <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+        </action>
+    </package>
+
+    <include file="example.xml"/>
+
+    <!-- Add packages here -->
+
+</struts>
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Struts Blank</display-name>
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
