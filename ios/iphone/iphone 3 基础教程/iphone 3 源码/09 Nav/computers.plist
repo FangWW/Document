@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>Apple I</string>
+	<string>Apple II</string>
+	<string>Apple II Plus</string>
+	<string>Apple IIGS</string>
+	<string>Apple III</string>
+	<string>Apple III Plus</string>
+	<string>Apple IIc</string>
+	<string>Apple IIc Plus</string>
+	<string>Apple IIe</string>
+	<string>Apple Lisa</string>
+	<string>Duo Dock</string>
+	<string>Duo MiniDock</string>
+	<string>Lisa 2/10</string>
+	<string>Lisa 2/5</string>
+	<string>Mac Mini</string>
+	<string>MacBook</string>
+	<string>MacBook Air</string>
+	<string>MacBook Pro</string>
+	<string>Macintosh 128K</string>
+	<string>Macintosh 512K</string>
+	<string>Macintosh 512Ke</string>
+	<string>Macintosh Centris</string>
+	<string>Macintosh Centris 610</string>
+	<string>Macintosh Centris 650</string>
+	<string>Macintosh Centris 660AV</string>
+	<string>Macintosh Classic</string>
+	<string>Macintosh Classic II</string>
+	<string>Macintosh Color Classic II</string>
+	<string>Macintosh Color Classic</string>
+	<string>Macintosh II</string>
+	<string>Macintosh II series</string>
+	<string>Macintosh IIci</string>
+	<string>Macintosh IIcx</string>
+	<string>Macintosh IIfx</string>
+	<string>Macintosh IIsi</string>
+	<string>Macintosh IIvi</string>
+	<string>Macintosh IIvx</string>
+	<string>Macintosh IIx</string>
+	<string>Macintosh LC</string>
+	<string>Macintosh LC 475</string>
+	<string>Macintosh LC 475/605</string>
+	<string>Macintosh LC 520</string>
+	<string>Macintosh LC 550</string>
+	<string>Macintosh LC 575</string>
+	<string>Macintosh LC 580</string>
+	<string>Macintosh LC 630 DOS Compatible</string>
+	<string>Macintosh LC 630</string>
+	<string>Macintosh LC II</string>
+	<string>Macintosh LC III</string>
+	<string>Macintosh LC III+</string>
+	<string>Macintosh Performa</string>
+	<string>Macintosh Performa 200</string>
+	<string>Macintosh Performa 250</string>
+	<string>Macintosh Performa 275</string>
+	<string>Macintosh Performa 400</string>
+	<string>Macintosh Performa 405</string>
+	<string>Macintosh Performa 410</string>
+	<string>Macintosh Performa 430</string>
+	<string>Macintosh Performa 450</string>
+	<string>Macintosh Performa 460</string>
+	<string>Macintosh Performa 466</string>
+	<string>Macintosh Performa 467</string>
+	<string>Macintosh Performa 475</string>
+	<string>Macintosh Performa 476</string>
+	<string>Macintosh Performa 520</string>
+	<string>Macintosh Performa 5200CD</string>
+	<string>Macintosh Performa 5210CD</string>
+	<string>Macintosh Performa 5215CD</string>
+	<string>Macintosh Performa 5220CD</string>
+	<string>Macintosh Performa 5260</string>
+	<string>Macintosh Performa 5260CD</string>
+	<string>Macintosh Performa 5270CD</string>
+	<string>Macintosh Performa 5280</string>
+	<string>Macintosh Performa 5300CD</string>
+	<string>Macintosh Performa 5320CD</string>
+	<string>Macintosh Performa 5400</string>
+	<string>Macintosh Performa 5400CD</string>
+	<string>Macintosh Performa 5410CD</string>
+	<string>Macintosh Performa 5420CD</string>
+	<string>Macintosh Performa 5430</string>
+	<string>Macintosh Performa 5440</string>
+	<string>Macintosh Performa 550</string>
+	<string>Macintosh Performa 560</string>
+	<string>Macintosh Performa 575</string>
+	<string>Macintosh Performa 577</string>
+	<string>Macintosh Performa 578</string>
+	<string>Macintosh Performa 580CD</string>
+	<string>Macintosh Performa 588CD</string>
+	<string>Macintosh Performa 600 and 600CD</string>
+	<string>Macintosh Performa 6110CD</string>
+	<string>Macintosh Performa 6112CD</string>
+	<string>Macintosh Performa 6115CD</string>
+	<string>Macintosh Performa 6116CD</string>
+	<string>Macintosh Performa 6117CD</string>
+	<string>Macintosh Performa 6118CD</string>
+	<string>Macintosh Performa 6200CD</string>
+	<string>Macintosh Performa 6205CD</string>
+	<string>Macintosh Performa 6210CD</string>
+	<string>Macintosh Performa 6214CD</string>
+	<string>Macintosh Performa 6216CD</string>
+	<string>Macintosh Performa 6218CD</string>
+	<string>Macintosh Performa 6220CD</string>
+	<string>Macintosh Performa 6230CD</string>
+	<string>Macintosh Performa 6260CD</string>
+	<string>Macintosh Performa 6290CD</string>
+	<string>Macintosh Performa 630 and 630CD</string>
+	<string>Macintosh Performa 6300CD</string>
+	<string>Macintosh Performa 630CD DOS Compatible</string>
+	<string>Macintosh Performa 6310CD</string>
+	<string>Macintosh Performa 631CD</string>
+	<string>Macintosh Performa 6320CD</string>
+	<string>Macintosh Performa 635CD</string>
+	<string>Macintosh Performa 636 and 636CD</string>
+	<string>Macintosh Performa 6360</string>
+	<string>Macintosh Performa 637CD</string>
+	<string>Macintosh Performa 638CD</string>
+	<string>Macintosh Performa 6400</string>
+	<string>Macintosh Performa 640CD DOS Compatible</string>
+	<string>Macintosh Performa 6410</string>
+	<string>Macintosh Performa 6420</string>
+	<string>Macintosh Plus</string>
+	<string>Macintosh Quadra</string>
+	<string>Macintosh Quadra 605</string>
+	<string>Macintosh Quadra 610 DOS Compatible</string>
+	<string>Macintosh Quadra 610</string>
+	<string>Macintosh Quadra 630</string>
+	<string>Macintosh Quadra 650</string>
+	<string>Macintosh Quadra 660AV</string>
+	<string>Macintosh Quadra 700</string>
+	<string>Macintosh Quadra 800</string>
+	<string>Macintosh Quadra 840 AV</string>
+	<string>Macintosh Quadra 900</string>
+	<string>Macintosh Quadra 950</string>
+	<string>Macintosh SE</string>
+	<string>Macintosh SE FDHD</string>
+	<string>Macintosh SE/30</string>
+	<string>Macintosh XL</string>
+	<string>Power Mac</string>
+	<string>Power Mac G4</string>
+	<string>Power Mac G4 Cube</string>
+	<string>Power Mac G5</string>
+	<string>Power Macintosh</string>
+	<string>Power Macintosh 4400</string>
+	<string>Power Macintosh 5200</string>
+	<string>Power Macintosh 5260</string>
+	<string>Power Macintosh 5300</string>
+	<string>Power Macintosh 5400</string>
+	<string>Power Macintosh 5500</string>
+	<string>Power Macintosh 6100</string>
+	<string>Power Macintosh 6200</string>
+	<string>Power Macintosh 6300</string>
+	<string>Power Macintosh 6400</string>
+	<string>Power Macintosh 6500</string>
+	<string>Power Macintosh 7100</string>
+	<string>Power Macintosh 7200</string>
+	<string>Power Macintosh 7215</string>
+	<string>Power Macintosh 7220</string>
+	<string>Power Macintosh 7300</string>
+	<string>Power Macintosh 7500</string>
+	<string>Power Macintosh 7600</string>
+	<string>Power Macintosh 8100</string>
+	<string>Power Macintosh 8115</string>
+	<string>Power Macintosh 8200</string>
+	<string>Power Macintosh 8500</string>
+	<string>Power Macintosh 8515</string>
+	<string>Power Macintosh 8600</string>
+	<string>Power Macintosh 9500</string>
+	<string>Power Macintosh 9600</string>
+	<string>Power Macintosh G3 (Blue &amp; White)</string>
+	<string>Power Macintosh G3 All-in-one</string>
+	<string>Power Macintosh G3 Desktop</string>
+	<string>Power Macintosh G3 Minitower</string>
+	<string>PowerBook 100</string>
+	<string>PowerBook 140</string>
+	<string>PowerBook 1400c/117</string>
+	<string>PowerBook 1400c/133</string>
+	<string>PowerBook 1400c/166</string>
+	<string>PowerBook 1400cs/117</string>
+	<string>PowerBook 1400cs/133</string>
+	<string>PowerBook 1400cs/166</string>
+	<string>PowerBook 145</string>
+	<string>PowerBook 145B</string>
+	<string>PowerBook 150</string>
+	<string>PowerBook 160</string>
+	<string>PowerBook 165</string>
+	<string>PowerBook 165c</string>
+	<string>PowerBook 170</string>
+	<string>PowerBook 180</string>
+	<string>PowerBook 180c</string>
+	<string>PowerBook 190</string>
+	<string>PowerBook 190cs</string>
+	<string>PowerBook 2400c/180</string>
+	<string>PowerBook 3400c/180</string>
+	<string>PowerBook 3400c/200</string>
+	<string>PowerBook 3400c/240</string>
+	<string>PowerBook 500 with PowerPC</string>
+	<string>PowerBook 520</string>
+	<string>PowerBook 520c</string>
+	<string>PowerBook 5300/100</string>
+	<string>PowerBook 5300c/100</string>
+	<string>PowerBook 5300ce/117</string>
+	<string>PowerBook 5300cs/100</string>
+	<string>PowerBook 540</string>
+	<string>PowerBook 540c</string>
+	<string>PowerBook 550c</string>
+	<string>PowerBook Duo 210</string>
+	<string>PowerBook Duo 230</string>
+	<string>PowerBook Duo 2300c</string>
+	<string>PowerBook Duo 2300c/100</string>
+	<string>PowerBook Duo 250</string>
+	<string>PowerBook Duo 270c</string>
+	<string>PowerBook Duo 280</string>
+	<string>PowerBook Duo 280c</string>
+	<string>PowerBook Duo Dock II</string>
+	<string>PowerBook Duo Dock Plus</string>
+	<string>PowerBook G3</string>
+	<string>PowerBook G4</string>
+	<string>Twentieth Anniversary Mac</string>
+	<string>Xserve</string>
+	<string>iBook</string>
+	<string>iBook Clamshell</string>
+	<string>iBook Dual USB</string>
+	<string>iBook G4</string>
+	<string>iMac</string>
+	<string>iPhone</string>
+	<string>iPhone 3G</string>
+	<string>TV</string>
+</array>
+</plist>

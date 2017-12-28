@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>More Settings</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Favorites</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Favorite Tea</string>
+			<key>Key</key>
+			<string>favoriteTea</string>
+			<key>AutocapitalizationType</key>
+			<string>No</string>
+			<key>AutocorrectionType </key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Favorite Candy</string>
+			<key>Key</key>
+			<string>favoriteCandy</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType </key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Favorite Game</string>
+			<key>Key</key>
+			<string>favoriteGame</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType </key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Favorite Excuse</string>
+			<key>Key</key>
+			<string>favoriteExcuse</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType </key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Favorite Sin</string>
+			<key>Key</key>
+			<string>favoriteSin</string>
+			<key>DefaultValue</key>
+			<string>Greed</string>
+			<key>Values</key>
+			<array>
+				<string>Lust</string>
+				<string>Gluttony</string>
+				<string>Greed</string>
+				<string>Sloth</string>
+				<string>Wrath</string>
+				<string>Envy</string>
+				<string>Pride</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Lust</string>
+				<string>Gluttony</string>
+				<string>Greed</string>
+				<string>Sloth</string>
+				<string>Wrath</string>
+				<string>Envy</string>
+				<string>Pride</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
