@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, WebCodeViewerActivity!</string>
+    <string name="app_name">WebCodeViewer</string>
+	<string name="path">The Path of the web</string>
+    <string name="button">GetWebCode</string>
+    <string name="error">Failed to get web code</string>
+    
+</resources>

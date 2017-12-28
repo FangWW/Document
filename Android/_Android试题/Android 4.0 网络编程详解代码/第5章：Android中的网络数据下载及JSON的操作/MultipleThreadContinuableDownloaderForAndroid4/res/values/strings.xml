@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MultipleThreadContinuableDownloaderForAndroid4Activity!</string>
+    <string name="app_name">MultipleThreadContinuableDownloaderForAndroid4</string>
+    <string name="path">Download URL</string>
+    <string name="button">Start Downloading</string>
+    <string name="success">Downloading Completed Successfully</string>
+    <string name="error">Downloading Error</string>
+    <string name="stopbutton">Pause Downloading</string>
+    <string name="sdcarderror">There is no SDCard or it is not allowed to write</string>
+
+</resources>

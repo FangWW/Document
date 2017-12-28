@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+	<person id = "23">
+		<name>NEwii</name>
+		<age>21</age>
+	</person>
+	<person id = "20">
+		<name>WiiWill</name>
+		<age>25</age>
+	</person>
+</persons>

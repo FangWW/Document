@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, GetAPictureFromInternetActivity!</string>
+    <string name="app_name">GetAPictureFromInternet</string>
+    <string name="path">The Path of the Picture</string>
+    <string name="button">View</string>
+    <string name="error">Failed to get the picture.</string>
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AndroidInteractWithWebServiceActivity!</string>
+    <string name="app_name">AndroidInteractWithWebService</string>
+    <string name="mobile">手机号</string>
+    <string name="button">查询</string>
+    <string name="error">查询失败</string>
+
+</resources>

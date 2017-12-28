@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, UserInformationActivity!</string>
+    <string name="app_name">UserInformation</string>
+    <string name="title">name</string>
+    <string name="length">age</string>
+    <string name="button">save</string>
+    <string name="success">Succeeded to save</string>
+    <string name="fail">failed to save</string>
+
+</resources>

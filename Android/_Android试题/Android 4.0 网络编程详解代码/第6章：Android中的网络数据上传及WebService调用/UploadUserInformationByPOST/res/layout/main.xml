@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/title"
+    />
+    
+    <EditText
+     android:layout_width="fill_parent" 
+     android:layout_height="wrap_content" 
+     android:id="@+id/title"
+    />
+    
+    <TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/length"
+    />
+    
+    <EditText
+     android:layout_width="fill_parent" 
+     android:layout_height="wrap_content" 
+     android:numeric="integer"
+     android:id="@+id/length"
+    />
+    
+    <Button
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:text="@string/button"
+    android:onClick="save"
+    />
+
+</LinearLayout>
