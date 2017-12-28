@@ -1,0 +1,206 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* WebPhotoesAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 273}}";
+			sepNavSelRange = "{78, 0}";
+			sepNavVisRange = "{0, 416}";
+		};
+	};
+	1D3623250D0F684500981E51 /* WebPhotoesAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1144}}";
+			sepNavSelRange = "{2419, 0}";
+			sepNavVisRange = "{2166, 450}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* WebPhotoes */ = {
+		activeExec = 0;
+		executables = (
+			8C8671F3120C80CF00B95C3C /* WebPhotoes */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C8671F3120C80CF00B95C3C /* WebPhotoes */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* WebPhotoes */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* WebPhotoes */,
+		);
+		codeSenseManager = 8C867206120C80EF00B95C3C /* Code sense */;
+		executables = (
+			8C8671F3120C80CF00B95C3C /* WebPhotoes */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					359,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 304375234;
+			PBXWorkspaceStateSaveDate = 304375234;
+		};
+		perUserProjectItems = {
+			8C764592122466BA00234165 /* PBXTextBookmark */ = 8C764592122466BA00234165 /* PBXTextBookmark */;
+			8C7F2ECA120CA8DE00771B61 /* PBXTextBookmark */ = 8C7F2ECA120CA8DE00771B61 /* PBXTextBookmark */;
+			8C7F2ECC120CA8DE00771B61 /* PBXTextBookmark */ = 8C7F2ECC120CA8DE00771B61 /* PBXTextBookmark */;
+			8CE1320C120CC13600619C94 /* PBXTextBookmark */ = 8CE1320C120CC13600619C94 /* PBXTextBookmark */;
+			8CE1320D120CC13600619C94 /* PBXTextBookmark */ = 8CE1320D120CC13600619C94 /* PBXTextBookmark */;
+			8CE1320E120CC13600619C94 /* PBXTextBookmark */ = 8CE1320E120CC13600619C94 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C867205120C80EF00B95C3C /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	32CA4F630368D1EE00C91783 /* WebPhotoes_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {656, 237}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 189}";
+		};
+	};
+	8C764592122466BA00234165 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C867208120C811700B95C3C /* PhotoTableViewController.m */;
+		name = "PhotoTableViewController.m: 199";
+		rLen = 85;
+		rLoc = 6105;
+		rType = 0;
+		vrLen = 1295;
+		vrLoc = 1188;
+	};
+	8C7F2ECA120CA8DE00771B61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* WebPhotoesAppDelegate.h */;
+		name = "WebPhotoesAppDelegate.h: 5";
+		rLen = 0;
+		rLoc = 78;
+		rType = 0;
+		vrLen = 416;
+		vrLoc = 0;
+	};
+	8C7F2ECC120CA8DE00771B61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C867207120C811700B95C3C /* PhotoTableViewController.h */;
+		name = "PhotoTableViewController.h: 13";
+		rLen = 0;
+		rLoc = 257;
+		rType = 0;
+		vrLen = 304;
+		vrLoc = 0;
+	};
+	8C8671F3120C80CF00B95C3C /* WebPhotoes */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = WebPhotoes;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8C867205120C80EF00B95C3C /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C867206120C80EF00B95C3C /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8C867207120C811700B95C3C /* PhotoTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {507, 234}}";
+			sepNavSelRange = "{257, 0}";
+			sepNavVisRange = "{0, 304}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	8C867208120C811700B95C3C /* PhotoTableViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{5357, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{5408, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{5458, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6199}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1657, 2652}}";
+			sepNavSelRange = "{6048, 85}";
+			sepNavVisRange = "{1188, 1295}";
+		};
+	};
+	8C867229120C8EB900B95C3C /* FlickrAPIKey.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {719, 618}}";
+			sepNavSelRange = "{234, 0}";
+			sepNavVisRange = "{0, 236}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	8CE1320C120CC13600619C94 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* WebPhotoes_Prefix.pch */;
+		name = "WebPhotoes_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 189;
+		vrLoc = 0;
+	};
+	8CE1320D120CC13600619C94 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* WebPhotoesAppDelegate.m */;
+		name = "WebPhotoesAppDelegate.m: 73";
+		rLen = 0;
+		rLoc = 2419;
+		rType = 0;
+		vrLen = 450;
+		vrLoc = 2166;
+	};
+	8CE1320E120CC13600619C94 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C867208120C811700B95C3C /* PhotoTableViewController.m */;
+		name = "PhotoTableViewController.m: 199";
+		rLen = 85;
+		rLoc = 6105;
+		rType = 0;
+		vrLen = 1296;
+		vrLoc = 1188;
+	};
+}

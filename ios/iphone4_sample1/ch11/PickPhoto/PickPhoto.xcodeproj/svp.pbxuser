@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* PickPhotoAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {565, 299}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{47, 429}";
+		};
+	};
+	1D3623250D0F684500981E51 /* PickPhotoAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1092}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{698, 937}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* PickPhoto */ = {
+		activeExec = 0;
+		executables = (
+			8C2E0C641217165C00951FC3 /* PickPhoto */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* PickPhotoViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1090, 325}}";
+			sepNavSelRange = "{205, 0}";
+			sepNavVisRange = "{81, 338}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* PickPhotoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1006, 1404}}";
+			sepNavSelRange = "{1427, 0}";
+			sepNavVisRange = "{1213, 325}";
+			sepNavWindowFrame = "{{130, 0}, {750, 746}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C2E0C641217165C00951FC3 /* PickPhoto */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* PickPhoto */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* PickPhoto */,
+		);
+		codeSenseManager = 8C2E0C751217166B00951FC3 /* Code sense */;
+		executables = (
+			8C2E0C641217165C00951FC3 /* PickPhoto */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					269,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 304041050;
+			PBXWorkspaceStateSaveDate = 304041050;
+		};
+		perUserProjectItems = {
+			8CDA25E11217270F00FB88C4 /* PBXTextBookmark */ = 8CDA25E11217270F00FB88C4 /* PBXTextBookmark */;
+			8CDA25F91217297900FB88C4 /* PBXTextBookmark */ = 8CDA25F91217297900FB88C4 /* PBXTextBookmark */;
+			8CDA25FA1217297900FB88C4 /* PBXTextBookmark */ = 8CDA25FA1217297900FB88C4 /* PBXTextBookmark */;
+			8CDA25FC1217297900FB88C4 /* PBXTextBookmark */ = 8CDA25FC1217297900FB88C4 /* PBXTextBookmark */;
+			8CDA260B121729CF00FB88C4 /* PBXTextBookmark */ = 8CDA260B121729CF00FB88C4 /* PBXTextBookmark */;
+			8CDA261F121731DB00FB88C4 /* PBXTextBookmark */ = 8CDA261F121731DB00FB88C4 /* PBXTextBookmark */;
+			8CDA2620121731DB00FB88C4 /* PBXTextBookmark */ = 8CDA2620121731DB00FB88C4 /* PBXTextBookmark */;
+			8CDA2621121731DB00FB88C4 /* PBXTextBookmark */ = 8CDA2621121731DB00FB88C4 /* PBXTextBookmark */;
+			8CDA2622121731DB00FB88C4 /* PBXTextBookmark */ = 8CDA2622121731DB00FB88C4 /* PBXTextBookmark */;
+			8CDF7573121F4C6000723D41 /* PBXTextBookmark */ = 8CDF7573121F4C6000723D41 /* PBXTextBookmark */;
+			8CDF7578121F4C9100723D41 /* PBXTextBookmark */ = 8CDF7578121F4C9100723D41 /* PBXTextBookmark */;
+			8CE05A15121721C4002E03EB /* PBXTextBookmark */ = 8CE05A15121721C4002E03EB /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C2E0C741217166B00951FC3 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8C2E0C641217165C00951FC3 /* PickPhoto */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = PickPhoto;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8C2E0C741217166B00951FC3 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C2E0C751217166B00951FC3 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8C2E0C83121719C700951FC3 /* PickersAppDelegate.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = PickersAppDelegate.h;
+		path = /Users/svp/Documents/Pickers/Classes/PickersAppDelegate.h;
+		sourceTree = "<absolute>";
+	};
+	8C2E0C85121719C700951FC3 /* PickersViewController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = PickersViewController.h;
+		path = /Users/svp/Documents/Pickers/Classes/PickersViewController.h;
+		sourceTree = "<absolute>";
+	};
+	8C2E0C87121719C700951FC3 /* PickersViewController.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = PickersViewController.m;
+		path = /Users/svp/Documents/Pickers/Classes/PickersViewController.m;
+		sourceTree = "<absolute>";
+	};
+	8C2E0CA012171A4900951FC3 /* InputWordsViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {733, 455}}";
+			sepNavSelRange = "{541, 0}";
+			sepNavVisRange = "{145, 361}";
+			sepNavWindowFrame = "{{219, 0}, {750, 746}}";
+		};
+	};
+	8C2E0CA112171A4900951FC3 /* InputWordsViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 897}}";
+			sepNavSelRange = "{307, 0}";
+			sepNavVisRange = "{271, 657}";
+			sepNavWindowFrame = "{{12, 0}, {750, 746}}";
+		};
+	};
+	8CDA25E11217270F00FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* PickPhotoAppDelegate.h */;
+		name = "PickPhotoAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 429;
+		vrLoc = 47;
+	};
+	8CDA25F91217297900FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8CE05A23121721C4002E03EB /* TypeSomethingViewController.m */;
+		name = "TypeSomethingViewController.m: 11";
+		rLen = 289;
+		rLoc = 140;
+		rType = 0;
+		vrLen = 229;
+		vrLoc = 0;
+	};
+	8CDA25FA1217297900FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8CE05A17121721C4002E03EB /* TypeSomethingViewController.h */;
+		name = "TypeSomethingViewController.h: 18";
+		rLen = 0;
+		rLoc = 430;
+		rType = 0;
+		vrLen = 323;
+		vrLoc = 0;
+	};
+	8CDA25FC1217297900FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2E0C85121719C700951FC3 /* PickersViewController.h */;
+		name = "PickersViewController.h: 6";
+		rLen = 685;
+		rLoc = 47;
+		rType = 0;
+		vrLen = 379;
+		vrLoc = 353;
+	};
+	8CDA260B121729CF00FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2E0C87121719C700951FC3 /* PickersViewController.m */;
+		name = "PickersViewController.m: 93";
+		rLen = 552;
+		rLoc = 2462;
+		rType = 0;
+		vrLen = 353;
+		vrLoc = 2666;
+	};
+	8CDA261F121731DB00FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2E0CA112171A4900951FC3 /* InputWordsViewController.m */;
+		name = "InputWordsViewController.m: 65";
+		rLen = 62;
+		rLoc = 1746;
+		rType = 0;
+		vrLen = 271;
+		vrLoc = 0;
+	};
+	8CDA2620121731DB00FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2E0CA012171A4900951FC3 /* InputWordsViewController.h */;
+		name = "InputWordsViewController.h: 28";
+		rLen = 0;
+		rLoc = 541;
+		rType = 0;
+		vrLen = 361;
+		vrLoc = 145;
+	};
+	8CDA2621121731DB00FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* PickPhotoAppDelegate.m */;
+		name = "PickPhotoAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 937;
+		vrLoc = 698;
+	};
+	8CDA2622121731DB00FB88C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* PickPhotoViewController.m */;
+		name = "PickPhotoViewController.m: 50";
+		rLen = 0;
+		rLoc = 1427;
+		rType = 0;
+		vrLen = 437;
+		vrLoc = 1286;
+	};
+	8CDF7573121F4C6000723D41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* PickPhotoViewController.h */;
+		name = "PickPhotoViewController.h: 11";
+		rLen = 0;
+		rLoc = 205;
+		rType = 0;
+		vrLen = 338;
+		vrLoc = 81;
+	};
+	8CDF7578121F4C9100723D41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* PickPhotoViewController.m */;
+		name = "PickPhotoViewController.m: 52";
+		rLen = 0;
+		rLoc = 1427;
+		rType = 0;
+		vrLen = 325;
+		vrLoc = 1213;
+	};
+	8CE05A15121721C4002E03EB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C2E0C83121719C700951FC3 /* PickersAppDelegate.h */;
+		name = "PickersAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 387;
+		vrLoc = 0;
+	};
+	8CE05A17121721C4002E03EB /* TypeSomethingViewController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TypeSomethingViewController.h;
+		path = /Users/svp/Documents/Pickers/Classes/TypeSomethingViewController.h;
+		sourceTree = "<absolute>";
+	};
+	8CE05A23121721C4002E03EB /* TypeSomethingViewController.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = TypeSomethingViewController.m;
+		path = /Users/svp/Documents/Pickers/Classes/TypeSomethingViewController.m;
+		sourceTree = "<absolute>";
+	};
+}

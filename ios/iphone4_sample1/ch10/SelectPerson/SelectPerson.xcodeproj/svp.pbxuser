@@ -1,0 +1,212 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* SelectPersonAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {586, 299}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 493}";
+		};
+	};
+	1D3623250D0F684500981E51 /* SelectPersonAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {810, 1222}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 480}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* SelectPerson */ = {
+		activeExec = 0;
+		executables = (
+			8C7D003A1216FDCA00CA7556 /* SelectPerson */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* SelectPersonViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {943, 312}}";
+			sepNavSelRange = "{355, 83}";
+			sepNavVisRange = "{3, 475}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* SelectPersonViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1580, 1196}}";
+			sepNavSelRange = "{1384, 0}";
+			sepNavVisRange = "{800, 854}";
+			sepNavWindowFrame = "{{14, 0}, {750, 746}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C7D003A1216FDCA00CA7556 /* SelectPerson */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* SelectPerson */;
+		codeSenseManager = 8C7D004B1216FDE100CA7556 /* Code sense */;
+		executables = (
+			8C7D003A1216FDCA00CA7556 /* SelectPerson */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 304041280;
+			PBXWorkspaceStateSaveDate = 304041280;
+		};
+		perUserProjectItems = {
+			8C9858861217092000EC6FFF /* PBXTextBookmark */ = 8C9858861217092000EC6FFF /* PBXTextBookmark */;
+			8C9858871217092000EC6FFF /* PBXTextBookmark */ = 8C9858871217092000EC6FFF /* PBXTextBookmark */;
+			8C9858881217092000EC6FFF /* PBXTextBookmark */ = 8C9858881217092000EC6FFF /* PBXTextBookmark */;
+			8C9858891217092000EC6FFF /* PBXTextBookmark */ = 8C9858891217092000EC6FFF /* PBXTextBookmark */;
+			8CB0E2DD121F4DC700E5A697 /* PBXTextBookmark */ = 8CB0E2DD121F4DC700E5A697 /* PBXTextBookmark */;
+			8CB0E2DE121F4DC700E5A697 /* PBXTextBookmark */ = 8CB0E2DE121F4DC700E5A697 /* PBXTextBookmark */;
+			8CB0E2DF121F4DC700E5A697 /* PBXTextBookmark */ = 8CB0E2DF121F4DC700E5A697 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C7D004A1216FDE100CA7556 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8C7D003A1216FDCA00CA7556 /* SelectPerson */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SelectPerson;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8C7D004A1216FDE100CA7556 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C7D004B1216FDE100CA7556 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8C9858781217076A00EC6FFF /* PickersViewController.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = PickersViewController.m;
+		path = /Users/svp/Documents/Pickers/Classes/PickersViewController.m;
+		sourceTree = "<absolute>";
+	};
+	8C9858861217092000EC6FFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C9858781217076A00EC6FFF /* PickersViewController.m */;
+		name = "PickersViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 586;
+		vrLoc = 2433;
+	};
+	8C9858871217092000EC6FFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SelectPersonAppDelegate.m */;
+		name = "SelectPersonAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 480;
+		vrLoc = 0;
+	};
+	8C9858881217092000EC6FFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8CA8C2001217028200301818 /* PickersViewController.h */;
+		name = "PickersViewController.h: 7";
+		rLen = 39;
+		rLoc = 71;
+		rType = 0;
+		vrLen = 685;
+		vrLoc = 47;
+	};
+	8C9858891217092000EC6FFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* SelectPersonViewController.h */;
+		name = "SelectPersonViewController.h: 14";
+		rLen = 0;
+		rLoc = 380;
+		rType = 0;
+		vrLen = 478;
+		vrLoc = 0;
+	};
+	8CA8C2001217028200301818 /* PickersViewController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = PickersViewController.h;
+		path = /Users/svp/Documents/Pickers/Classes/PickersViewController.h;
+		sourceTree = "<absolute>";
+	};
+	8CB0E2DD121F4DC700E5A697 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* SelectPersonViewController.m */;
+		name = "SelectPersonViewController.m: 43";
+		rLen = 0;
+		rLoc = 1384;
+		rType = 0;
+		vrLen = 854;
+		vrLoc = 800;
+	};
+	8CB0E2DE121F4DC700E5A697 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* SelectPersonAppDelegate.h */;
+		name = "SelectPersonAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 493;
+		vrLoc = 0;
+	};
+	8CB0E2DF121F4DC700E5A697 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* SelectPersonViewController.h */;
+		name = "SelectPersonViewController.h: 14";
+		rLen = 83;
+		rLoc = 355;
+		rType = 0;
+		vrLen = 475;
+		vrLoc = 3;
+	};
+}

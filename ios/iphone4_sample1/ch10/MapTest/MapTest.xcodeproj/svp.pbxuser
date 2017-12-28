@@ -1,0 +1,189 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* MapTestAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {481, 351}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 161}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* MapTestAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {481, 1261}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 168}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* MapTest */ = {
+		activeExec = 0;
+		executables = (
+			8C83AC4F121499AF00272FFC /* MapTest */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* MapTestViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {573, 351}}";
+			sepNavSelRange = "{138, 0}";
+			sepNavVisRange = "{43, 408}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* MapTestViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {985, 1651}}";
+			sepNavSelRange = "{2627, 0}";
+			sepNavVisRange = "{2268, 577}";
+			sepNavWindowFrame = "{{51, 0}, {750, 746}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C83AC4F121499AF00272FFC /* MapTest */;
+		activeSDKPreference = iphonesimulator4.0;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* MapTest */;
+		codeSenseManager = 8C83AC5A121499C100272FFC /* Code sense */;
+		executables = (
+			8C83AC4F121499AF00272FFC /* MapTest */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					291,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 305575639;
+			PBXWorkspaceStateSaveDate = 305575639;
+		};
+		perUserProjectItems = {
+			8C7887371226E1B100B31758 = 8C7887371226E1B100B31758 /* PBXTextBookmark */;
+			8C7C02C312231C0B00AD2BD7 = 8C7C02C312231C0B00AD2BD7 /* PBXTextBookmark */;
+			8C7E10621222F3D7007D8831 = 8C7E10621222F3D7007D8831 /* PBXTextBookmark */;
+			8C7E10631222F3D7007D8831 = 8C7E10631222F3D7007D8831 /* PBXTextBookmark */;
+			8C820751123195B000794F74 = 8C820751123195B000794F74 /* PBXTextBookmark */;
+			8CE8AE3B1223170100EF0D99 = 8CE8AE3B1223170100EF0D99 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C83AC59121499C100272FFC /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8C7887371226E1B100B31758 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* MapTestViewController.m */;
+		name = "MapTestViewController.m: 99";
+		rLen = 0;
+		rLoc = 2627;
+		rType = 0;
+		vrLen = 601;
+		vrLoc = 2244;
+	};
+	8C7C02C312231C0B00AD2BD7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* MapTestViewController.m */;
+		name = "MapTestViewController.m: 99";
+		rLen = 0;
+		rLoc = 2627;
+		rType = 0;
+		vrLen = 703;
+		vrLoc = 2268;
+	};
+	8C7E10621222F3D7007D8831 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* MapTestAppDelegate.h */;
+		name = "MapTestAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 161;
+		vrLoc = 0;
+	};
+	8C7E10631222F3D7007D8831 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* MapTestAppDelegate.m */;
+		name = "MapTestAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 168;
+		vrLoc = 0;
+	};
+	8C820751123195B000794F74 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* MapTestViewController.m */;
+		name = "MapTestViewController.m: 99";
+		rLen = 0;
+		rLoc = 2627;
+		rType = 0;
+		vrLen = 577;
+		vrLoc = 2268;
+	};
+	8C83AC4F121499AF00272FFC /* MapTest */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = MapTest;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8C83AC59121499C100272FFC /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C83AC5A121499C100272FFC /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8CE8AE3B1223170100EF0D99 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* MapTestViewController.h */;
+		name = "MapTestViewController.h: 7";
+		rLen = 0;
+		rLoc = 138;
+		rType = 0;
+		vrLen = 408;
+		vrLoc = 43;
+	};
+}

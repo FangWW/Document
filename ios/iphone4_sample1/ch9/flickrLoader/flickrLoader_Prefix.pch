@@ -1,0 +1,11 @@
+//
+// Prefix header for all source files of the 'flickrLoader' target in the 'flickrLoader' project
+//
+#import <Availability.h>
+
+
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif

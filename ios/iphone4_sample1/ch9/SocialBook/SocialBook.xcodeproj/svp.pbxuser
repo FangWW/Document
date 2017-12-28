@@ -1,0 +1,252 @@
+// !$*UTF8*$!
+{
+	1819FE2C0DEF0C6300138068 /* SocialPeopleTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {488, 210}}";
+			sepNavSelRange = "{262, 0}";
+			sepNavVisRange = "{0, 284}";
+		};
+	};
+	1819FE2D0DEF0C6300138068 /* SocialPeopleTableViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {817, 1664}}";
+			sepNavSelRange = "{491, 0}";
+			sepNavVisRange = "{988, 828}";
+			sepNavWindowFrame = "{{14, 0}, {750, 746}}";
+		};
+	};
+	181BAEC80DECE49D00C4C494 /* SocialBookWebService.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {434, 221}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 221}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	181BAEC90DECE49D00C4C494 /* SocialBookWebService.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {899, 624}}";
+			sepNavSelRange = "{903, 0}";
+			sepNavVisRange = "{498, 771}";
+			sepNavWindowFrame = "{{106, 0}, {750, 746}}";
+		};
+	};
+	181BAECD0DECE77F00C4C494 /* WebPerson.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 618}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 325}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	181BAECE0DECE77F00C4C494 /* WebPerson.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {434, 208}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 161}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	1D3623240D0F684500981E51 /* SocialBookAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {537, 208}}";
+			sepNavSelRange = "{67, 0}";
+			sepNavVisRange = "{0, 343}";
+		};
+	};
+	1D3623250D0F684500981E51 /* SocialBookAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {726, 299}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 534}";
+			sepNavWindowFrame = "{{15, 0}, {750, 746}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* SocialBook */ = {
+		activeExec = 0;
+		executables = (
+			8C9219B712173CB800220838 /* SocialBook */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C9219B712173CB800220838 /* SocialBook */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* SocialBook */;
+		codeSenseManager = 8C9219D212173CDB00220838 /* Code sense */;
+		executables = (
+			8C9219B712173CB800220838 /* SocialBook */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					256,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 304466545;
+			PBXWorkspaceStateSaveDate = 304466545;
+		};
+		perUserProjectItems = {
+			8C7D498D121C62F2000D04C9 = 8C7D498D121C62F2000D04C9 /* PBXTextBookmark */;
+			8C7D498E121C62F2000D04C9 = 8C7D498E121C62F2000D04C9 /* PBXTextBookmark */;
+			8C7D498F121C62F2000D04C9 = 8C7D498F121C62F2000D04C9 /* PBXTextBookmark */;
+			8C7D4990121C62F2000D04C9 = 8C7D4990121C62F2000D04C9 /* PBXTextBookmark */;
+			8C7D4993121C62F2000D04C9 = 8C7D4993121C62F2000D04C9 /* PBXTextBookmark */;
+			8C7DB0FF121C938D003832D8 = 8C7DB0FF121C938D003832D8 /* PBXTextBookmark */;
+			8C8067BA121DADAF00BC8E91 = 8C8067BA121DADAF00BC8E91 /* PBXTextBookmark */;
+			8C8067BB121DADAF00BC8E91 = 8C8067BB121DADAF00BC8E91 /* PBXTextBookmark */;
+			8C8067BC121DADAF00BC8E91 = 8C8067BC121DADAF00BC8E91 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 8C9219D112173CDB00220838 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8C7D498D121C62F2000D04C9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 181BAECE0DECE77F00C4C494 /* WebPerson.m */;
+		name = "WebPerson.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 161;
+		vrLoc = 0;
+	};
+	8C7D498E121C62F2000D04C9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 181BAECD0DECE77F00C4C494 /* WebPerson.h */;
+		name = "WebPerson.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 270;
+		vrLoc = 0;
+	};
+	8C7D498F121C62F2000D04C9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* SocialBookAppDelegate.h */;
+		name = "SocialBookAppDelegate.h: 5";
+		rLen = 0;
+		rLoc = 67;
+		rType = 0;
+		vrLen = 343;
+		vrLoc = 0;
+	};
+	8C7D4990121C62F2000D04C9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SocialBookAppDelegate.m */;
+		name = "SocialBookAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 534;
+		vrLoc = 0;
+	};
+	8C7D4993121C62F2000D04C9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 181BAEC80DECE49D00C4C494 /* SocialBookWebService.h */;
+		name = "SocialBookWebService.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 221;
+		vrLoc = 0;
+	};
+	8C7DB0FF121C938D003832D8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 181BAEC90DECE49D00C4C494 /* SocialBookWebService.m */;
+		name = "SocialBookWebService.m: 29";
+		rLen = 0;
+		rLoc = 903;
+		rType = 0;
+		vrLen = 771;
+		vrLoc = 498;
+	};
+	8C8067BA121DADAF00BC8E91 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1819FE2C0DEF0C6300138068 /* SocialPeopleTableViewController.h */;
+		name = "SocialPeopleTableViewController.h: 10";
+		rLen = 0;
+		rLoc = 262;
+		rType = 0;
+		vrLen = 284;
+		vrLoc = 0;
+	};
+	8C8067BB121DADAF00BC8E91 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1819FE2D0DEF0C6300138068 /* SocialPeopleTableViewController.m */;
+		name = "SocialPeopleTableViewController.m: 21";
+		rLen = 0;
+		rLoc = 491;
+		rType = 0;
+		vrLen = 871;
+		vrLoc = 988;
+	};
+	8C8067BC121DADAF00BC8E91 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1819FE2D0DEF0C6300138068 /* SocialPeopleTableViewController.m */;
+		name = "SocialPeopleTableViewController.m: 21";
+		rLen = 0;
+		rLoc = 491;
+		rType = 0;
+		vrLen = 871;
+		vrLoc = 988;
+	};
+	8C9219B712173CB800220838 /* SocialBook */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SocialBook;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8C9219D112173CDB00220838 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C9219D212173CDB00220838 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
