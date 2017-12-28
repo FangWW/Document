@@ -1,0 +1,13 @@
+LearnObjectiveC written by Scott Stevenson.
+
+The purpose of this code is to provide an example of how to
+write Mac software.
+
+You may use this code for any purpose, though I ask you receive
+permission before re-using any substantial portion of it in a
+tutorial of your own. For info: theocacao at mac dot com.
+
+An acknowledgement in release notes of your software is always
+appreciated, but not required.
+
+http://theocacao.com/

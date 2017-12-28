@@ -1,0 +1,275 @@
+TLearnObjectiveC
+v7
+r0
+t317096737.909196
+cCheck dependencies
+cProcessInfoPlistFile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Info.plist Info.plist
+cStripNIB /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/MainMenu.nib
+cCopyStringsFile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+cProcessPCH /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch.gch LearnObjectiveC_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/main.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/Photo.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/NSString-Utilities.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/AppController.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/MacOS/LearnObjectiveC normal i386
+cTouch /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app
+
+N/Developer/SDKs/MacOSX10.5.sdk
+c000000004CC7D66D00000000000000EE
+t1288164973
+s238
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004CC7D67500000000000000EE
+t1288164981
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004C8170CF000000000000A5E0
+t1283551439
+s42464
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.h
+c00000000480305A70000000000000114
+t1208157607
+s276
+i<Cocoa/Cocoa.h>
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m
+c00000000480305AB0000000000000313
+t1208157611
+s787
+i"AppController.h"
+i"Photo.h"
+i"NSString-Utilities.h"
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/InfoPlist.strings
+c00000000480301B100000000000000CA
+t1208156593
+s202
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/MainMenu.nib
+c00000000480302FC0000000000000088
+t1208156924
+s136
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/LearnObjectiveC_Prefix.pch
+c00000000480301B100000000000000A1
+t1208156593
+s161
+i<Cocoa/Cocoa.h>
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.h
+c000000004803059F0000000000000104
+t1208157599
+s260
+i<Cocoa/Cocoa.h>
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m
+c00000000480305A300000000000001FE
+t1208157603
+s510
+i"NSString-Utilities.h"
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.h
+c00000000480305960000000000000165
+t1208157590
+s357
+i<Cocoa/Cocoa.h>
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m
+c0000000048030B5B00000000000002A2
+t1208159067
+s674
+i"Photo.h"
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app
+t1295403937
+s102
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Info.plist
+t1295403933
+s793
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/MacOS/LearnObjectiveC
+t1295403937
+s19888
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/PkgInfo
+t1295403933
+s8
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1295403933
+s202
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj/MainMenu.nib
+t1295403933
+s19120
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/AppController.o
+t1295403937
+s7320
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/LearnObjectiveC.LinkFileList
+c000000004D364B9D00000000000002B0
+t1295403933
+s688
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/NSString-Utilities.o
+t1295403937
+s6616
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/Photo.o
+t1295403937
+s10204
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/main.o
+t1295403937
+s4944
+
+N/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m
+c00000000480301B10000000000000108
+t1208156593
+s264
+i<Cocoa/Cocoa.h>
+
+N/var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch.gch
+t1295403937
+s56768272
+
+N/var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-fgsvhffekfcukkgcreehizntxjow/LearnObjectiveC_Prefix.pch.gch
+t2
+s0
+
+NInfo.plist
+c00000000480301B1000000000000034C
+t1208156593
+s844
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies317096733#317096733#0(0"0(0#1#0"8614408640#0"0#
+
+CCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/AppController.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s317096737.428256
+e317096737.592331
+r1
+xCompileC
+xbuild/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/AppController.o
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@106"Compile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m317096737#317096737#0(0"0(0#0#98"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m8620405792#1527"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/LearnObjectiveC.hmap -F/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/include -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources/i386 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources -include /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch -c /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/AppController.m -o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/AppController.o0#
+
+CCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/NSString-Utilities.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s317096737.427354
+e317096737.592148
+r1
+xCompileC
+xbuild/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/NSString-Utilities.o
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@111"Compile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m317096737#317096737#0(0"0(0#0#103"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m8608502752#1537"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/LearnObjectiveC.hmap -F/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/include -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources/i386 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources -include /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch -c /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/NSString-Utilities.m -o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/NSString-Utilities.o0#
+
+CCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/Photo.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s317096737.426682
+e317096737.591950
+r1
+xCompileC
+xbuild/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/Photo.o
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@98"Compile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m317096737#317096737#0(0"0(0#0#90"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m8616665280#1511"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/LearnObjectiveC.hmap -F/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/include -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources/i386 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources -include /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch -c /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Photo.m -o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/Photo.o0#
+
+CCompileC build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/main.o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s317096737.425866
+e317096737.591697
+r1
+xCompileC
+xbuild/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/main.o
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@97"Compile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m317096737#317096737#0(0"0(0#0#89"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m8603804928#1509"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/LearnObjectiveC.hmap -F/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/include -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources/i386 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources -include /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch -c /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/main.m -o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/main.o0#
+
+CCopyStringsFile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+s317096733.443147
+e317096733.629586
+r1
+xCopyStringsFile
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings317096733#317096733#0(0"0(0#0#114"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/InfoPlist.strings8617473760#462"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj0#
+
+CLd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/MacOS/LearnObjectiveC normal i386
+s317096737.592416
+e317096737.906742
+r1
+xLd
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/MacOS/LearnObjectiveC
+xnormal
+xi386
+lSLF07#2@150"Link /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/MacOS/LearnObjectiveC317096737#317096737#0(0"0(0#0#0"8614560800#798"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -F/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -filelist /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/Objects-normal/i386/LearnObjectiveC.LinkFileList -mmacosx-version-min=10.6 -framework Cocoa -o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/MacOS/LearnObjectiveC0#
+
+CProcessInfoPlistFile /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Info.plist Info.plist
+s317096733.427369
+e317096733.442463
+r1
+xProcessInfoPlistFile
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Info.plist
+xInfo.plist
+lSLF07#2@18"Process Info.plist317096733#317096733#0(0"0(0#0#93"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/Info.plist8614640352#450"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    builtin-infoPlistUtility Info.plist -genpkginfo /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Info.plist0#
+
+CProcessPCH /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch.gch LearnObjectiveC_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s317096733.629695
+e317096737.425691
+r1
+xProcessPCH
+x/var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch.gch
+xLearnObjectiveC_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@37"Precompile LearnObjectiveC_Prefix.pch317096733#317096737#0(0"0(0#0#109"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/LearnObjectiveC_Prefix.pch8614040768#1365"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/LearnObjectiveC.hmap -F/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/include -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources/i386 -I/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/LearnObjectiveC.build/Debug/LearnObjectiveC.build/DerivedSources -c /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/LearnObjectiveC_Prefix.pch -o /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-ermxafidhjrfbjcervxunohztudj/LearnObjectiveC_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/qF/qFv-plB6Ej40FXUIc3+uK++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/LearnObjectiveC_Prefix-fgsvhffekfcukkgcreehizntxjow/LearnObjectiveC_Prefix.pch.gch LearnObjectiveC_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CStripNIB /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/MainMenu.nib
+s317096733.442537
+e317096733.534921
+r1
+xStripNIB
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/MainMenu.nib
+lSLF07#2@35"StripNIB English.lproj/MainMenu.nib317096733#317096733#0(0"0(0#0#109"/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/MainMenu.nib8621474528#435"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    /Developer/usr/bin/ibtool --strip /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app/Contents/Resources/English.lproj/MainMenu.nib --output-format human-readable-text /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/English.lproj/MainMenu.nib0#
+
+CTouch /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app
+s317096737.906822
+e317096737.909168
+r1
+xTouch
+x/users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app
+lSLF07#2@120"Touch /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app317096737#317096737#0(0"0(0#0#0"8612762656#227"    cd /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC    /usr/bin/touch -c /users/mac/Documents/iphone资料类/object-c初学者中文教程/LearnObjectiveC/build/Debug/LearnObjectiveC.app0#
+
