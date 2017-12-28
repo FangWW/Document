@@ -1,0 +1,147 @@
+// !$*UTF8*$!
+{
+	142056450D611772009CA2B3 /* CalibrationView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 2327}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 926}";
+			sepNavWindowFrame = "{{38, 192}, {776, 528}}";
+		};
+	};
+	142056460D611772009CA2B3 /* CalibrationView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 832}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 926}";
+		};
+	};
+	14FEDF1A0D5D311900487C46 /* LevelViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {572, 949}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 908}";
+		};
+	};
+	14FEDF1B0D5D311900487C46 /* LevelViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1195, 2340}}";
+			sepNavSelRange = "{3739, 0}";
+			sepNavVisRange = "{3282, 579}";
+		};
+	};
+	14FEDF1C0D5D311900487C46 /* LevelView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {572, 975}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 904}";
+		};
+	};
+	14FEDF1D0D5D311900487C46 /* LevelView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1041, 3874}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{6355, 1848}";
+			sepNavWindowFrame = "{{15, 213}, {776, 528}}";
+		};
+	};
+	14FEDF1E0D5D311900487C46 /* LevelAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {572, 845}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 895}";
+		};
+	};
+	14FEDF1F0D5D311900487C46 /* LevelAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {971, 1404}}";
+			sepNavSelRange = "{3771, 4}";
+			sepNavVisRange = "{3666, 749}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* BubbleLevel */ = {
+		activeExec = 0;
+		executables = (
+			8C97DBD612496948000D965D /* BubbleLevel */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8C97DBD612496948000D965D /* BubbleLevel */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* BubbleLevel */;
+		codeSenseManager = 8C97DBED12496951000D965D /* Code sense */;
+		executables = (
+			8C97DBD612496948000D965D /* BubbleLevel */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 306803916;
+			PBXWorkspaceStateSaveDate = 306803916;
+		};
+		sourceControlManager = 8C97DBEC12496951000D965D /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8C97DBD612496948000D965D /* BubbleLevel */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = BubbleLevel;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8C97DBEC12496951000D965D /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8C97DBED12496951000D965D /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
