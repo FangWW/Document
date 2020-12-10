@@ -1,8 +1,8 @@
 # 学习资料
 希望能帮助到大家
 
-## 
-| [阿里云 优惠热门 上云服务器](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=wc7gaisb)|[腾讯云 云产品限时秒杀](https://curl.qcloud.com/1yal4nZ6)|[华为云 精选性价比 云产品](https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=4d010448-9aed-48d9-9849-db754e1256f9&utm_source=V1g3MDY4NTY=&utm_medium=cps&utm_campaign=201905)|
+## 综合服务器资源
+| [阿里云](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=wc7gaisb)|[腾讯云](https://curl.qcloud.com/1yal4nZ6)|[华为云](https://activity.huaweicloud.com/discount_area_v5/index.html?fromacct=4d010448-9aed-48d9-9849-db754e1256f9&utm_source=V1g3MDY4NTY=&utm_medium=cps&utm_campaign=201905)|
 | ------------- |:-------------:|:-------------:|
 
 
